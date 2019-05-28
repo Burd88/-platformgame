@@ -4,6 +4,8 @@ var speed = 150
 var jump_speed = 150
 var gravity = 200
 
+var health = 100
+
 
 var swim = false
 #var cont = 0
