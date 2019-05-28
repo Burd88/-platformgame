@@ -5,8 +5,8 @@ var jump_speed = 150
 var gravity = 200
 
 ## жизни игрока
-var health = 100
-var health_now = health
+var health = 400
+var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
 
@@ -36,6 +36,7 @@ func _ready():
 func _physics_process(delta):
 	_move(delta)
 	_attack()
+	_gui()
 
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
@@ -129,10 +130,14 @@ func _attack():
 	if attack:
 		$spr.animation = "attack1"
 
-
+func _gui():
+	php = (health_now*100)/health
+	$GUI/ProgressBar.value = php
 		
 
 func _on_spr_animation_finished():
 	if $spr.animation == "attack1":
 		print("attack")
+		health_now -= 5
+		print(health_now)
 	pass # Replace with function body.
