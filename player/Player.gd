@@ -23,17 +23,12 @@ var collision_info
 
 var attack = false
 var wall = false
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-	pass # Replace with function body.
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-	
-	
+
 func _physics_process(delta):
 	_move(delta)
 	_attack()
@@ -70,8 +65,6 @@ func _move(delta):
 		elif velocity.y > 0:
 			$spr.animation = "fall"
 
-	print(velocity.y)
-	print(velocity.x)
 	if direction.x > 0:
 		$spr.flip_h = false
 	#	$colis_down.position.x = 4
