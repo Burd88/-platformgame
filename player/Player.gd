@@ -4,7 +4,11 @@ var speed = 150
 var jump_speed = 150
 var gravity = 200
 
+## жизни игрока
 var health = 100
+var health_now = health
+var php = (health_now*100)/health
+##----------------------- 
 
 
 var swim = false
