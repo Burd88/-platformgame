@@ -138,6 +138,6 @@ func _gui():
 func _on_spr_animation_finished():
 	if $spr.animation == "attack1":
 		print("attack")
-		health_now -= 5
+		health_now -= rand_range(1,10)
 		print(health_now)
 	pass # Replace with function body.
