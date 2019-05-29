@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=2]
@@ -164,18 +164,31 @@ height = 6.47198
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.733333, 0.0588235, 0.0588235, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 0.2, 0.0235294, 0.0235294, 1 )
 border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color( 0.129412, 0.0117647, 0.0117647, 0.6 )
-shadow_size = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.6, 0.372549, 0.372549, 0.6 )
+anti_aliasing_size = 2
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.47451, 0.490196, 0.607843, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0352941, 0.0392157, 0.0352941, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -184,7 +197,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "idle"
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 flip_h = true
@@ -192,6 +205,7 @@ flip_h = true
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.05408, 7.90561 )
@@ -206,5 +220,7 @@ margin_right = 130.0
 margin_bottom = 44.0
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 value = 100.0
+percent_visible = false
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
