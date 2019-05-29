@@ -119,6 +119,12 @@ func _move(delta):
 			$spr.animation = "crouch"
 			direction.y = -1
 
+	if is_on_wall():
+		print("wall")
+	elif is_on_floor():
+		print("floor")
+	else:
+		print("xz")
 
 		
 		
@@ -132,7 +138,7 @@ func _attack():
 
 func _gui():
 	php = (health_now*100)/health
-	$GUI/ProgressBar.value = php
+	$GUI/Healthbar.value = php
 		
 
 func _on_spr_animation_finished():
