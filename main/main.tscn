@@ -1,8 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
 [ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "collapse"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.992865, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 490, 302 ), Vector2( 491, 302 ), Vector2( 490, 302 ), Vector2( 492, 302 ), Vector2( 493, 302 ), Vector2( 494, 302 ), Vector2( 493, 302 ), Vector2( 492, 302 ), Vector2( 491, 302 ) ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -24,12 +41,13 @@ font_data = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="background" type="Sprite" parent="."]
-position = Vector2( 511.474, 297.04 )
-scale = Vector2( 0.538105, 0.552709 )
+position = Vector2( 490, 302 )
+scale = Vector2( 0.557828, 0.584344 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background"]
+autoplay = "collapse"
+anims/collapse = SubResource( 6 )
 
 [node name="Start_game" type="Button" parent="."]
 margin_left = 425.0
