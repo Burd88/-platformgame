@@ -14,7 +14,7 @@ func _ready():
 
 
 func _on_Start_game_pressed():
-	get_tree().change_scene("res://game.tscn")
+	get_tree().change_scene("res://levels/game.tscn")
 	pass # начать новую игру
 
 
