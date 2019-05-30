@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 200
 
 ## жизни игрока
-var health = 400
+var health = 1000
 var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
@@ -37,6 +37,7 @@ func _physics_process(delta):
 	_move(delta)
 	_attack()
 	_gui()
+	_death()
 
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
@@ -98,19 +99,17 @@ func _move(delta):
 
 			
 
-			
-	if is_on_wall()  and !is_on_floor() and direction.y == 1:
-		velocity.y = 0
-		wall = true
-		$spr.animation = "hang1"
-		
-		
-		if Input.is_action_just_pressed("ui_up"):
-			velocity.y = -jump_speed
-			direction.y = 1
-		if Input.is_action_just_pressed("ui_down"):
-			velocity.y = jump_speed
-			direction.y = 1
+	if !is_on_floor():
+		if is_on_wall() and direction.y == 1:
+			velocity.y = 0
+			wall = true
+			$spr.animation = "hang1"
+			if Input.is_action_just_pressed("ui_up"):
+				velocity.y = -jump_speed
+				direction.y = 1
+			if Input.is_action_just_pressed("ui_down"):
+				velocity.y = jump_speed
+				direction.y = 1
 		
 	if is_on_ceiling():
 		velocity.y = 0
@@ -137,13 +136,19 @@ func _attack():
 		$spr.animation = "attack1"
 
 func _gui():
+	$GUI/HPlabel.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$GUI/Healthbar.value = php
-		
+		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
 	if $spr.animation == "attack1":
 		print("attack")
-		health_now -= rand_range(1,100)
+		health_now -= randi()%50
 		print(health_now)
 	pass # Replace with function body.
+	
+func _death():
+	if health_now <= 0:
+		get_tree().change_scene("res://main/main.tscn")
+	pass

@@ -15,12 +15,12 @@ func _ready():
 
 func _on_Start_game_pressed():
 	get_tree().change_scene("res://game.tscn")
-	pass # Replace with function body.
+	pass # начать новую игру
 
 
 func _on_Exit_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
+	pass # закрыть игру
 
 
 func _on_Continue_pressed():
