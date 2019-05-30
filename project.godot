@@ -16,11 +16,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Platformgame"
-run/main_scene="res://game.tscn"
+run/main_scene="res://main/main.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://logo/logo.png"
+
+[gui]
+
+theme/custom_font="res://fonts/space_age_cyrillic.ttf"
 
 [input]
 
