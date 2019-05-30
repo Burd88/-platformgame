@@ -22,10 +22,6 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://logo/logo.png"
 
-[gui]
-
-theme/custom_font="res://fonts/space_age_cyrillic.ttf"
-
 [input]
 
 ui_left={

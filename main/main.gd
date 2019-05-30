@@ -19,6 +19,7 @@ func _on_Start_game_pressed():
 
 
 func _on_Exit_pressed():
+	print("Quit the Game")
 	get_tree().quit()
 	pass # закрыть игру
 
