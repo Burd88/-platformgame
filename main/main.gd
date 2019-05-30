@@ -21,3 +21,8 @@ func _on_Start_game_pressed():
 func _on_Exit_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_Continue_pressed():
+	print("должно быть загружено сохранение")
+	pass # Replace with function body.

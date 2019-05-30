@@ -90,4 +90,5 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="pressed" from="Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
