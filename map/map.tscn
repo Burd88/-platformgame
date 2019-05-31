@@ -39,6 +39,7 @@ tile_data = PoolIntArray( 1245235, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1376305, 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+visible = false
 position = Vector2( 509.354, 305.5 )
 scale = Vector2( 2.95206, 2.18108 )
 texture = ExtResource( 2 )

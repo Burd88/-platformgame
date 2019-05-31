@@ -25,6 +25,7 @@ func _ready():
 func _process(delta):
 	_gui()
 	_move_enemy(delta)
+	_damage()
 	pass
 
 func _move_enemy(delta):
@@ -50,6 +51,8 @@ func _gui():
 	$healthbar.value = php
 
 func _damage():
-	
+	if health_now <= 0:
+		GLOBAL.player_dead()
+		queue_free()
 	pass
 		# Графический интерфейс игрока
