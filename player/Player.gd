@@ -10,6 +10,9 @@ var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
 
+##
+var damage = randi()%40+30
+
 
 var swim = false
 #var cont = 0
@@ -24,6 +27,8 @@ var velocity = Vector2()
 var direction = Vector2()
 
 var collision_info
+
+
 
 var attack = false
 var wall = false
@@ -71,14 +76,16 @@ func _move(delta):
 
 	if direction.x > 0:
 		$spr.flip_h = false
+		$attack_area.position.x = 18
 
 	elif direction.x < 0:
 		$spr.flip_h = true
+		$attack_area.position.x = -18
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
-	if !is_on_wall():
-		velocity.y += gravity*delta
+	#if !is_on_wall():
+	velocity.y += gravity*delta
 	
 	collision_info = move_and_slide(velocity,Vector2(0,-1))
 	
@@ -118,12 +125,13 @@ func _move(delta):
 			$spr.animation = "crouch"
 			direction.y = -1
 
-	if is_on_wall():
-		print("wall")
-	elif is_on_floor():
-		print("floor")
-	else:
-		print("xz")
+	#if is_on_wall():
+	#	print("wall")
+	#elif is_on_floor():
+	#	print("floor")
+	#else:
+	#	print("xz")
+
 
 		
 		
@@ -139,16 +147,39 @@ func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$GUI/Healthbar.value = php
+	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
 	if $spr.animation == "attack1":
 		print("attack")
-		health_now -= randi()%50
-		print(health_now)
+				
 	pass # Replace with function body.
 	
 func _death():
 	if health_now <= 0:
 		get_tree().change_scene("res://main/main.tscn")
+		
 	pass
+
+func _on_attack_area_body_entered(body):
+	if body.name == "Enemy":
+		print("enemy")
+		body.health_now -= damage
+	elif !body:
+		$attack_area/col_Atack.disabled = true
+		
+	else :
+		print("xz")
+	pass # Replace with function body.
+
+
+func _on_spr_frame_changed():
+	if $spr.animation == "attack1":
+		if $spr.frame == 1:
+			$attack_area/col_Atack.disabled = false
+		elif $spr.frame == 4:
+			$attack_area/col_Atack.disabled = true
+	if $spr.animation != "attack1":
+		$attack_area/col_Atack.disabled = true
+	pass # Replace with function body.
