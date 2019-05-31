@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://map/tileset.png" type="Texture" id=1]
-[ext_resource path="res://map/back.png" type="Texture" id=2]
+[ext_resource path="res://map/background/layers/skill-desc_0003_bg.png" type="Texture" id=2]
+[ext_resource path="res://map/background/layers/skill-desc_0002_far-buildings.png" type="Texture" id=3]
+[ext_resource path="res://map/background/layers/skill-desc_0001_buildings.png" type="Texture" id=4]
+[ext_resource path="res://map/background/layers/skill-desc_0000_foreground.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -34,11 +37,41 @@ tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 1245235, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1376305, 0, 0, 1441840, 0, 0, 1441841, 0, 0, 1507334, 0, 0, 1507335, 0, 0, 1507376, 0, 0, 1572871, 0, 0, 1572872, 0, 0, 1572873, 0, 0, 1572874, 0, 0, 1572875, 0, 0, 1572876, 0, 0, 1572877, 0, 0, 1572878, 0, 0, 1572879, 0, 0, 1572880, 0, 0, 1572881, 0, 0, 1572882, 0, 0, 1572883, 0, 0, 1572884, 0, 0, 1572885, 0, 0, 1572886, 0, 0, 1572910, 0, 0, 1572911, 0, 0, 1572912, 0, 0, 1638422, 0, 0, 1638423, 0, 0, 1638424, 0, 0, 1638425, 0, 0, 1638426, 0, 0, 1638427, 0, 0, 1638428, 0, 0, 1638429, 0, 0, 1638437, 0, 0, 1638438, 0, 0, 1638439, 0, 0, 1638440, 0, 0, 1638441, 0, 0, 1638442, 0, 0, 1638443, 0, 0, 1638444, 0, 0, 1638445, 0, 0, 1638446, 0, 0, 1703966, 0, 0, 1703967, 0, 0, 1703968, 0, 0, 1703969, 0, 0, 1703970, 0, 0, 1703971, 0, 0, 1703972, 0, 0, 1703973, 0, 0 )
+tile_data = PoolIntArray( 720937, 0, 0, 1179689, 0, 0, 1245235, 0, 0, 1245288, 0, 0, 1245289, 0, 0, 1245290, 0, 0, 1310770, 0, 0, 1310771, 0, 0, 1310824, 0, 0, 1376359, 0, 0, 1441831, 0, 0, 1441832, 0, 0, 1441833, 0, 0, 1441840, 0, 0, 1441841, 0, 0, 1441895, 0, 0, 1507334, 0, 0, 1507335, 0, 0, 1507347, 0, 0, 1507348, 0, 0, 1507349, 0, 0, 1507350, 0, 0, 1507351, 0, 0, 1507355, 0, 0, 1507367, 0, 0, 1507376, 0, 0, 1507424, 0, 0, 1507425, 0, 0, 1507430, 0, 0, 1507431, 0, 0, 1572871, 0, 0, 1572872, 0, 0, 1572873, 0, 0, 1572874, 0, 0, 1572875, 0, 0, 1572876, 0, 0, 1572877, 0, 0, 1572878, 0, 0, 1572879, 0, 0, 1572880, 0, 0, 1572881, 0, 0, 1572882, 0, 0, 1572883, 0, 0, 1572884, 0, 0, 1572885, 0, 0, 1572886, 0, 0, 1572887, 0, 0, 1572889, 0, 0, 1572890, 0, 0, 1572904, 0, 0, 1572910, 0, 0, 1572911, 0, 0, 1572912, 0, 0, 1572919, 0, 0, 1572920, 0, 0, 1572921, 0, 0, 1572922, 0, 0, 1572923, 0, 0, 1572924, 0, 0, 1572925, 0, 0, 1572926, 0, 0, 1572958, 0, 0, 1572959, 0, 0, 1572962, 0, 0, 1572966, 0, 0, 1638422, 0, 0, 1638423, 0, 0, 1638424, 0, 0, 1638425, 0, 0, 1638426, 0, 0, 1638427, 0, 0, 1638428, 0, 0, 1638429, 0, 0, 1638437, 0, 0, 1638439, 0, 0, 1638440, 0, 0, 1638441, 0, 0, 1638442, 0, 0, 1638443, 0, 0, 1638444, 0, 0, 1638445, 0, 0, 1638446, 0, 0, 1638450, 0, 0, 1638451, 0, 0, 1638452, 0, 0, 1638453, 0, 0, 1638454, 0, 0, 1638455, 0, 0, 1638463, 0, 0, 1638464, 0, 0, 1638465, 0, 0, 1638491, 0, 0, 1638492, 0, 0, 1638493, 0, 0, 1638499, 0, 0, 1638502, 0, 0, 1703966, 0, 0, 1703967, 0, 0, 1703968, 0, 0, 1703969, 0, 0, 1703970, 0, 0, 1703971, 0, 0, 1703973, 0, 0, 1704001, 0, 0, 1704002, 0, 0, 1704024, 0, 0, 1704025, 0, 0, 1704026, 0, 0, 1704036, 0, 0, 1704037, 0, 0, 1704038, 0, 0, 1769539, 0, 0, 1769540, 0, 0, 1769558, 0, 0, 1769559, 0, 0, 1769573, 0, 0, 1835077, 0, 0, 1835078, 0, 0, 1835091, 0, 0, 1835092, 0, 0, 1835093, 0, 0, 1900614, 0, 0, 1900615, 0, 0, 1900616, 0, 0, 1900617, 0, 0, 1900618, 0, 0, 1900619, 0, 0, 1900620, 0, 0, 1900621, 0, 0, 1900622, 0, 0, 1900623, 0, 0, 1900624, 0, 0, 1900625, 0, 0, 1900626, 0, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2( 4, 4 )
+transform = Transform2D( 4, 0, 0, 4, 0, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 509.354, 305.5 )
-scale = Vector2( 2.95206, 2.18108 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 272, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 27.3307, 16.8189 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( -5.4577, 8.26276 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 2.5708, 52.9034 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 272, 0 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -58.0168, -42.194 )
+motion_mirroring = Vector2( 272, 0 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -66.8073, -1.75812 )
+motion_mirroring = Vector2( 272, 0 )
