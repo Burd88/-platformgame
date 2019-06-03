@@ -29,6 +29,11 @@ func _process(delta):
 	pass
 
 func _move_enemy(delta):
+	if is_on_floor():
+		velocity.y = 0
+		direction.y = 0
+	
+	
 	if is_on_wall():
 		#print("wall")
 		
