@@ -61,8 +61,7 @@ func _gui():
 
 func _damage():
 	if health_now <= 0:
-		GLOBAL.player_dead()
-		queue_free()
+		$sprite.animation = "die"
 	pass
 		# Графический интерфейс игрока
 func _check_place():
@@ -71,6 +70,15 @@ func _check_place():
 		if $RayCast2D.is_colliding() == false:
 			direction.x =direction.x*(-1)
 			$RayCast2D.position.x = $RayCast2D.position.x*(-1)
+			if $sprite.flip_h == false:
+				$sprite.flip_h = true
+			else:
+				$sprite.flip_h = false
 			pass
 	else:
 		pass			
+
+func _on_AnimatedSprite_animation_finished():
+	if $sprite.animation == 'die':
+		queue_free()
+	pass # Replace with function body.
