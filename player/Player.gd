@@ -12,7 +12,7 @@ var php = (health_now*100)/health
 var attack_name = ['attack1','attack2','attack3']
 var rand_attack_name = 1
 ##
-var damage = randi()%100
+var damage = randi()%50
 
 
 var swim = false
@@ -167,6 +167,7 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get_class() == "KinematicBody2D" :
 		body.health_now -= damage
+		body.anim = 'hurt'
 		GLOBAL.position_enemy = body.position
 	elif !body:
 		$attack_area/col_Atack.disabled = true

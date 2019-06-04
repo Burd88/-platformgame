@@ -4,13 +4,12 @@ var speed = 50
 var jump_speed = 150
 var gravity = 200
 
-var Ename = 'Enemy'
-
 ## жизни игрока
 var health = 300
 var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
+var anim = 'idle'
 
 var distance = Vector2()
 var velocity = Vector2()
@@ -29,7 +28,7 @@ func _process(delta):
 	_move_enemy(delta)
 	_damage()
 	_check_place()
-	
+	$sprite.animation = anim
 	pass
 
 func _move_enemy(delta):
@@ -55,13 +54,19 @@ func _move_enemy(delta):
 	pass
 	
 func _gui():
+	if health_now > 0 :
+		$healthbar.show()
+		$HPlable.show()
+	else:
+		$healthbar.hide()
+		$HPlable.hide()
 	$HPlable.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$healthbar.value = php
 
 func _damage():
 	if health_now <= 0:
-		$sprite.animation = "die"
+		anim = 'die'
 	pass
 		# Графический интерфейс игрока
 func _check_place():
