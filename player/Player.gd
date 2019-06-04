@@ -11,7 +11,7 @@ var php = (health_now*100)/health
 ##----------------------- 
 
 ##
-var damage = randi()%40+30
+var damage = randi()%100+30
 
 
 var swim = false
@@ -164,15 +164,16 @@ func _death():
 
 func _on_attack_area_body_entered(body):
 	if body.get_class() == "KinematicBody2D" :
-		print("enemy")
+		print(body.get_class())
 		body.health_now -= damage
 		GLOBAL.position_enemy = body.position
 
+	
 	elif !body:
 		$attack_area/col_Atack.disabled = true
 		
 	else :
-		print("xz")
+		print(body.get_class())
 	pass # Replace with function body.
 
 
