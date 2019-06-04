@@ -163,10 +163,11 @@ func _death():
 	pass
 
 func _on_attack_area_body_entered(body):
-	if body.name == "Enemy" :
+	if body.get_class() == "KinematicBody2D" :
 		print("enemy")
 		body.health_now -= damage
 		GLOBAL.position_enemy = body.position
+
 	elif !body:
 		$attack_area/col_Atack.disabled = true
 		

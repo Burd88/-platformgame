@@ -10,7 +10,16 @@
 position = Vector2( -72.9482, -7.98096 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 124.242, 30.8321 )
+position = Vector2( 196.06, 308.083 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 171.007, 391.592 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 99.1892, 430.006 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 520.076, 418.315 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 72.571, 29.097 )
+position = Vector2( 4.09341, 401.548 )

@@ -4,6 +4,8 @@ var speed = 50
 var jump_speed = 150
 var gravity = 200
 
+var Ename = 'Enemy'
+
 ## жизни игрока
 var health = 300
 var health_now = health-35
@@ -12,7 +14,7 @@ var php = (health_now*100)/health
 
 var distance = Vector2()
 var velocity = Vector2()
-var direction = Vector2(1,0)
+var direction = Vector2(-1,0)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -26,6 +28,8 @@ func _process(delta):
 	_gui()
 	_move_enemy(delta)
 	_damage()
+	_check_place()
+	
 	pass
 
 func _move_enemy(delta):
@@ -34,13 +38,13 @@ func _move_enemy(delta):
 		direction.y = 0
 	
 	
-	if is_on_wall():
+	#if is_on_wall():
 		#print("wall")
 		
-		if direction.x == 1:
-		 	direction.x = -1 
-		elif direction.x == -1:
-			direction.x = 1
+	#	if direction.x == 1:
+	#	 	direction.x = -1 
+	#	elif direction.x == -1:
+		#	direction.x = 1
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/(delta+0.00001)
@@ -61,3 +65,12 @@ func _damage():
 		queue_free()
 	pass
 		# Графический интерфейс игрока
+func _check_place():
+	if is_on_floor():
+		#print($RayCast2D.get_collider())
+		if $RayCast2D.is_colliding() == false:
+			direction.x =direction.x*(-1)
+			$RayCast2D.position.x = $RayCast2D.position.x*(-1)
+			pass
+	else:
+		pass			
