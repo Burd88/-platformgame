@@ -2,16 +2,17 @@ extends KinematicBody2D
 
 var speed = 150
 var jump_speed = 150
-var gravity = 200
+var gravity = 230
 
 ## жизни игрока
 var health = 1000
 var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
-
+var attack_name = ['attack1','attack2','attack3']
+var rand_attack_name = 1
 ##
-var damage = randi()%100+30
+var damage = randi()%100
 
 
 var swim = false
@@ -106,17 +107,17 @@ func _move(delta):
 
 			
 
-	if !is_on_floor():
-		if is_on_wall() and direction.y == 1:
-			velocity.y = 0
-			wall = true
-			$spr.animation = "hang1"
-			if Input.is_action_just_pressed("ui_up"):
-				velocity.y = -jump_speed
-				direction.y = 1
-			if Input.is_action_just_pressed("ui_down"):
-				velocity.y = jump_speed
-				direction.y = 1
+	#if !is_on_floor():
+		#if is_on_wall() and direction.y == 1:
+		#	velocity.y = 0
+		#	wall = true
+		#	$spr.animation = "hang1"
+			#if Input.is_action_just_pressed("ui_up"):
+			#	velocity.y = -jump_speed
+			#	direction.y = 1
+			#if Input.is_action_just_pressed("ui_down"):
+			#	velocity.y = jump_speed
+			#	direction.y = 1
 		
 	if is_on_ceiling():
 		velocity.y = 0
@@ -141,19 +142,20 @@ func _attack():
 	else:
 		attack = false
 	if attack:
-		$spr.animation = "attack1"
+		$spr.animation = str(attack_name[rand_attack_name])
 
 func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
+	if health_now < health:
+		health_now += 0.1
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
-	if $spr.animation == "attack1":
-		print("attack")
-				
+	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
+		rand_attack_name = randi()%3
 	pass # Replace with function body.
 	
 func _death():
@@ -164,25 +166,18 @@ func _death():
 
 func _on_attack_area_body_entered(body):
 	if body.get_class() == "KinematicBody2D" :
-		print(body.get_class())
 		body.health_now -= damage
 		GLOBAL.position_enemy = body.position
-
-	
 	elif !body:
 		$attack_area/col_Atack.disabled = true
-		
-	else :
-		print(body.get_class())
-	pass # Replace with function body.
 
 
 func _on_spr_frame_changed():
-	if $spr.animation == "attack1":
+	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
 		if $spr.frame == 1:
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
-	if $spr.animation != "attack1":
+	elif $spr.animation != "attack2" or $spr.animation != "attack1" or $spr.animation != "attack3":
 		$attack_area/col_Atack.disabled = true
 	pass # Replace with function body.

@@ -26,6 +26,11 @@ config/icon="res://logo/logo.png"
 
 GLOBAL="*res://GLOBAL.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_left={
