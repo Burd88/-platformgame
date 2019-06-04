@@ -9,7 +9,7 @@ var health = 300
 var health_now = health-35
 var php = (health_now*100)/health
 ##----------------------- 
-var anim = 'idle'
+var anim = 'move'
 
 var distance = Vector2()
 var velocity = Vector2()
@@ -80,10 +80,33 @@ func _check_place():
 			else:
 				$sprite.flip_h = false
 			pass
+			if $attack_area.position.x == 0:
+				$attack_area.position.x = 60
+			else:
+				$attack_area.position.x = 0
 	else:
 		pass			
 
 func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
+	
+	pass # Replace with function body.
+
+
+func _on_attack_area_body_entered(body):
+	if body.name == 'Player':
+		body.health_now -= 50
+		anim = 'attack'
+	
+	print(body.get_class())
+	pass # Replace with function body.
+
+
+func _on_sprite_frame_changed():
+	if $sprite.animation == 'attack':
+		if $sprite.frame == 1:
+			$attack_area/attack_col.disabled = false
+		elif $sprite.frame == 4:
+			$attack_area/attack_col.disabled = true
 	pass # Replace with function body.

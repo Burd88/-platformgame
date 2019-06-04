@@ -6,7 +6,7 @@ var gravity = 230
 
 ## жизни игрока
 var health = 1000
-var health_now = health-35
+var health_now = health-500
 var php = (health_now*100)/health
 ##----------------------- 
 var attack_name = ['attack1','attack2','attack3']
@@ -149,18 +149,21 @@ func _gui():
 	php = (health_now*100)/health
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
-	if health_now < health:
-		health_now += 0.1
+	#if health_now < health:
+	#	health_now += 1
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
 	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
 		rand_attack_name = randi()%3
+	elif $spr.animation == 'die':
+		get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
 func _death():
 	if health_now <= 0:
-		get_tree().change_scene("res://main/main.tscn")
+		$spr.animation = 'die'
+	
 		
 	pass
 
