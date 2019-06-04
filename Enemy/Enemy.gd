@@ -98,6 +98,7 @@ func _on_attack_area_body_entered(body):
 	if body.name == 'Player':
 		body.health_now -= 50
 		anim = 'attack'
+
 	
 	print(body.get_class())
 	pass # Replace with function body.
@@ -106,7 +107,7 @@ func _on_attack_area_body_entered(body):
 func _on_sprite_frame_changed():
 	if $sprite.animation == 'attack':
 		if $sprite.frame == 1:
-			$attack_area/attack_col.disabled = false
-		elif $sprite.frame == 4:
 			$attack_area/attack_col.disabled = true
+		elif $sprite.frame == 4:
+			$attack_area/attack_col.disabled = false
 	pass # Replace with function body.
