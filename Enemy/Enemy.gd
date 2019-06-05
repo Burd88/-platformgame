@@ -79,7 +79,7 @@ func _damage():
 		# Графический интерфейс игрока
 		
 func aim():
-	print('0')
+	#print('0')
 	hit_pos = []
 	var space_state = get_world_2d().direct_space_state
 	var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5, 5)
@@ -91,10 +91,10 @@ func aim():
 		var result = space_state.intersect_ray(position,
 				pos, [self], collision_mask)
 		if result:
-			print('1')
+			#print('1')
 			hit_pos.append(result.position)
 			if result.collider.name == "Player":
-				print('2')
+				#print('2')
 				anim = 'attack'
 				#rotation = (target.position - position).angle()
 				if can_shoot:

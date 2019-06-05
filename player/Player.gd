@@ -44,17 +44,25 @@ func _physics_process(delta):
 	_attack()
 	_gui()
 	_death()
-
+	if health_now<=0:
+		print($spr.animation)
+		print($spr.frame)
+		if is_on_floor():
+			print('floor')
+		elif is_on_wall():
+			print('wall')
+		else:
+			print('xz')
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	
-	if direction.y > 0 and swim == false and attack == false and !is_on_wall():
+	if direction.y > 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 0 :
 			$spr.animation = "jump"
 		elif velocity.y > 0:
 			$spr.animation = "fall"
 			
-	if direction.y < 0 and swim == false and attack == false and !is_on_wall():
+	if direction.y < 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0 and velocity.x == 0:
 			$spr.animation = "crouch"
 		elif velocity.y == 0 and velocity.x != 0:
@@ -62,14 +70,14 @@ func _move(delta):
 		elif velocity.y > 0:
 			$spr.animation = "fall"
 		
-	if direction.x != 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall():
+	if direction.x != 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "walk"
 
 		elif velocity.y > 0:
 			$spr.animation = "fall"
 		
-	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall():
+	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "idle"
 		elif velocity.y > 0:
@@ -137,7 +145,7 @@ func _move(delta):
 		
 		
 func _attack():
-	if Input.is_action_pressed("ui_attack1") and !is_on_wall(): 
+	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0: 
 		attack = true
 	else:
 		attack = false
@@ -156,22 +164,20 @@ func _gui():
 func _on_spr_animation_finished():
 	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
 		rand_attack_name = randi()%3
-	elif $spr.animation == 'die':
+	if $spr.animation == 'die':
 		get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
 func _death():
 	if health_now <= 0:
-		$spr.animation = 'die'
-	
-		
+			$spr.animation = 'die'
 	pass
 
 func _on_attack_area_body_entered(body):
+	print(body.name)
 	if body.get_class() == "KinematicBody2D" :
 		body.health_now -= damage
 		#body.anim = 'hurt'
-		GLOBAL.position_enemy = body.position
 	elif !body:
 		$attack_area/col_Atack.disabled = true
 
