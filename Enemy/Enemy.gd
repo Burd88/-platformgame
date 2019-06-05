@@ -19,7 +19,7 @@ var direction = Vector2(0,0)
 # var b = "text"
 var target
 var hit_pos
-var can_shoot = true
+var can_shoot = false
 onready var bullet = preload("res://Enemy/bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
