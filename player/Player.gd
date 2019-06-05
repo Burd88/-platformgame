@@ -170,7 +170,7 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get_class() == "KinematicBody2D" :
 		body.health_now -= damage
-		body.anim = 'hurt'
+		#body.anim = 'hurt'
 		GLOBAL.position_enemy = body.position
 	elif !body:
 		$attack_area/col_Atack.disabled = true
