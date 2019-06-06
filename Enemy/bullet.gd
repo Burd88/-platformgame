@@ -14,6 +14,8 @@ func _on_bullet_body_entered(body):
 	if body.name == 'Player':
 		body.health_now -= 53
 		queue_free()
+	elif body.name == 'TileMap':
+		queue_free()
 	pass # Replace with function body.
 
 

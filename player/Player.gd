@@ -44,15 +44,7 @@ func _physics_process(delta):
 	_attack()
 	_gui()
 	_death()
-	if health_now<=0:
-		print($spr.animation)
-		print($spr.frame)
-		if is_on_floor():
-			print('floor')
-		elif is_on_wall():
-			print('wall')
-		else:
-			print('xz')
+	
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	
@@ -174,7 +166,6 @@ func _death():
 	pass
 
 func _on_attack_area_body_entered(body):
-	print(body.name)
 	if body.get_class() == "KinematicBody2D" :
 		body.health_now -= damage
 		#body.anim = 'hurt'
