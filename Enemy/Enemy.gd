@@ -111,7 +111,9 @@ func aim():
 				break
 			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 20:
 				direction = (target.position - position).normalized()
-				print(direction)
+				if direction.x < 0 :
+					_change_position()
+				
 		
 func shoot(pos):
 	var b = bullet.instance()
