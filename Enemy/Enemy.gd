@@ -73,6 +73,10 @@ func _gui():
 
 func _damage():
 	if health_now <= 0:
+		velocity = Vector2(0,0)
+		direction = Vector2(0,0)
+		$CollisionShape2D.disabled = true
+		
 		anim = 'die'
 	pass
 		# Графический интерфейс игрока
@@ -92,7 +96,7 @@ func aim():
 		if result:
 			#print('1')
 			hit_pos.append(result.position)
-			if result.collider.name == "Player":
+			if result.collider.name == "Player" and health_now > 0:
 				#print('2')
 				anim = 'attack'
 				#rotation = (target.position - position).angle()
@@ -139,21 +143,21 @@ func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
 		
-	if $sprite.animation == 'attack':
+	if $sprite.animation == 'attack'  and health_now > 0:
 		can_shoot = true
 	
 	pass # Replace with function body.
 
 
 func _on_attack_area_body_entered(body):
-	if body.name == 'Player':
+	if body.name == 'Player' and health_now > 0:
 		body.health_now -= 50
 		anim = 'attack'
 	pass # Replace with function body.
 
 
 func _on_sprite_frame_changed():
-	if $sprite.animation == 'attack':
+	if $sprite.animation == 'attack' and health_now > 0:
 		if $sprite.frame == 1:
 			$attack_area/attack_col.disabled = true
 		elif $sprite.frame == 4:
