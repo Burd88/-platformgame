@@ -38,6 +38,7 @@ var wall = false
 func _ready():
 	set_physics_process(true)
 	set_process(true)
+	health_now = GLOBAL.Player_health
 
 func _physics_process(delta):
 	_move(delta)
@@ -168,6 +169,7 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get_class() == "KinematicBody2D" :
 		body.health_now -= damage
+		
 		#body.anim = 'hurt'
 	elif !body:
 		$attack_area/col_Atack.disabled = true

@@ -13,7 +13,7 @@ var anim = 'move'
 
 var distance = Vector2()
 var velocity = Vector2()
-var direction = Vector2(0,0)
+var direction = Vector2(-1,0)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -45,9 +45,8 @@ func _move_enemy(delta):
 		direction.y = 0
 	
 	
-	#if is_on_wall():
-		#print("wall")
-		
+	if is_on_wall():
+		_change_position()
 	#	if direction.x == 1:
 	#	 	direction.x = -1 
 	#	elif direction.x == -1:

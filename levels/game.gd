@@ -15,5 +15,6 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
+		GLOBAL.Player_health = body.health_now
 		get_tree().change_scene('res://levels/Level2.tscn')
 	pass # Replace with function body.
