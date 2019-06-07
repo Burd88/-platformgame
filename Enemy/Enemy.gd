@@ -31,11 +31,13 @@ func _process(delta):
 	update()
 	if target:
 		aim()
+		_attack_player()
 	_gui()
 	_move_enemy(delta)
 	_damage()
 	_check_place()
 	_check_player()
+	_attack_player()
 	$sprite.animation = anim
 	pass
 
@@ -58,6 +60,11 @@ func _move_enemy(delta):
 	velocity.y += gravity*delta
 	
 	move_and_slide(velocity,Vector2(0,-1))
+	pass
+	
+func _attack_player():
+
+	pass
 	pass
 	
 func _gui():
@@ -95,13 +102,16 @@ func aim():
 		if result:
 			#print('1')
 			hit_pos.append(result.position)
-			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 60:
+			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70:
 				#print('2')
 				anim = 'attack'
 				#rotation = (target.position - position).angle()
 				if can_shoot:
 					shoot(pos)
 				break
+			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 20:
+				direction = (target.position - position).normalized()
+				print(direction)
 		
 func shoot(pos):
 	var b = bullet.instance()
