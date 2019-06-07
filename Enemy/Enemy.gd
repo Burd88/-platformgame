@@ -76,7 +76,6 @@ func _damage():
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		$CollisionShape2D.disabled = true
-		
 		anim = 'die'
 	pass
 		# Графический интерфейс игрока
@@ -96,7 +95,7 @@ func aim():
 		if result:
 			#print('1')
 			hit_pos.append(result.position)
-			if result.collider.name == "Player" and health_now > 0:
+			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 60:
 				#print('2')
 				anim = 'attack'
 				#rotation = (target.position - position).angle()
