@@ -102,18 +102,24 @@ func aim():
 		if result:
 			#print('1')
 			hit_pos.append(result.position)
-			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70:
-				#print('2')
+			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70 and global_position.distance_to(target.global_position) < 90:
+				print(global_position.distance_to(target.global_position))#print('2')
 				anim = 'attack'
-				#rotation = (target.position - position).angle()
+				#print((target.position - position).angle()))
+				
 				if can_shoot:
 					shoot(pos)
 				break
-			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 20:
+			
+			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 30:
 				direction = (target.position - position).normalized()
-				if direction.x < 0 :
-					_change_position()
-				
+				#if direction.x < 0 :
+					#_change_position()
+			elif global_position.distance_to(target.global_position) > 90 :
+				anim = 'move'
+			elif global_position.distance_to(target.global_position) <= 30 :
+				anim = 'attack'
+				direction = Vector2(0,0)
 		
 func shoot(pos):
 	var b = bullet.instance()
