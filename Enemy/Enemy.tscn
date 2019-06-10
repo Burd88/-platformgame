@@ -10,14 +10,14 @@
 [ext_resource path="res://Enemy/Individual Sprites/slime-attack-2.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/Individual Sprites/slime-attack-3.png" type="Texture" id=9]
 [ext_resource path="res://Enemy/Individual Sprites/slime-attack-4.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/Individual Sprites/slime-die-0.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/Individual Sprites/slime-die-1.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/Individual Sprites/slime-die-2.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/Individual Sprites/slime-die-3.png" type="Texture" id=14]
-[ext_resource path="res://Enemy/Individual Sprites/slime-move-0.png" type="Texture" id=15]
-[ext_resource path="res://Enemy/Individual Sprites/slime-move-1.png" type="Texture" id=16]
-[ext_resource path="res://Enemy/Individual Sprites/slime-move-2.png" type="Texture" id=17]
-[ext_resource path="res://Enemy/Individual Sprites/slime-move-3.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/Individual Sprites/slime-move-0.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/Individual Sprites/slime-move-1.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Individual Sprites/slime-move-2.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/Individual Sprites/slime-move-3.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/Individual Sprites/slime-die-0.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/Individual Sprites/slime-die-1.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/Individual Sprites/slime-die-2.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/Individual Sprites/slime-die-3.png" type="Texture" id=18]
 [ext_resource path="res://Enemy/Individual Sprites/slime-hurt-0.png" type="Texture" id=19]
 [ext_resource path="res://Enemy/Individual Sprites/slime-hurt-1.png" type="Texture" id=20]
 [ext_resource path="res://Enemy/Individual Sprites/slime-hurt-2.png" type="Texture" id=21]
@@ -37,13 +37,13 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "die",
-"speed": 4.0
+"name": "move",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "move",
-"speed": 5.0
+"name": "die",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
@@ -76,8 +76,8 @@ corner_radius_bottom_left = 3
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4.50776, 10 )
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 167.497
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 69.0904, 168.533 )
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -90,7 +90,7 @@ position = Vector2( 0.270546, -6.22268 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "die"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -137,7 +137,7 @@ shape = SubResource( 5 )
 [node name="Visible" type="Area2D" parent="."]
 
 [node name="visible_col" type="CollisionShape2D" parent="Visible"]
-position = Vector2( -0.447723, -1.57751 )
+position = Vector2( -0.447723, -50.0376 )
 rotation = 1.5708
 shape = SubResource( 6 )
 

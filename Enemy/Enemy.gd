@@ -83,6 +83,8 @@ func _damage():
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		$CollisionShape2D.disabled = true
+		$attack_area/attack_col.disabled = true
+		$Visible/visible_col.disabled = true
 		anim = 'die'
 	pass
 		# Графический интерфейс игрока
@@ -105,7 +107,7 @@ func aim():
 			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70 and global_position.distance_to(target.global_position) < 90:
 				print(global_position.distance_to(target.global_position))#print('2')
 				anim = 'attack'
-				#print((target.position - position).angle()))
+				print((target.position - position).angle())
 				
 				if can_shoot:
 					shoot(pos)
@@ -117,7 +119,7 @@ func aim():
 					#_change_position()
 			elif global_position.distance_to(target.global_position) > 90 :
 				anim = 'move'
-			elif global_position.distance_to(target.global_position) <= 30 :
+			elif global_position.distance_to(target.global_position) <= 20 :
 				anim = 'attack'
 				direction = Vector2(0,0)
 		
