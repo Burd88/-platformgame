@@ -90,7 +90,6 @@ position = Vector2( 0.270546, -6.22268 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "move"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -123,11 +122,6 @@ position = Vector2( -28, 0 )
 enabled = true
 cast_to = Vector2( 0, 30 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( -37.0374, 0 )
-rotation = 1.5708
-
 [node name="attack_area" type="Area2D" parent="."]
 
 [node name="attack_col" type="CollisionShape2D" parent="attack_area"]
@@ -140,13 +134,8 @@ shape = SubResource( 5 )
 position = Vector2( -0.447723, -50.0376 )
 rotation = 1.5708
 shape = SubResource( 6 )
-
-[node name="ShootTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
 [connection signal="animation_finished" from="sprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="Visible" to="." method="_on_Visible_body_entered"]
 [connection signal="body_exited" from="Visible" to="." method="_on_Visible_body_exited"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

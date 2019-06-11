@@ -14,9 +14,8 @@ var anim = 'move'
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+var move_to_player = false
 var target
 var hit_pos
 var can_shoot = false
@@ -36,7 +35,6 @@ func _process(delta):
 	_move_enemy(delta)
 	_damage()
 	_check_place()
-	_check_player()
 	_attack_player()
 	$sprite.animation = anim
 	pass
@@ -47,12 +45,7 @@ func _move_enemy(delta):
 		direction.y = 0
 	
 	
-	if is_on_wall():
-		_change_position()
-	#	if direction.x == 1:
-	#	 	direction.x = -1 
-	#	elif direction.x == -1:
-		#	direction.x = 1
+	
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/(delta+0.00001)
@@ -111,7 +104,7 @@ func aim():
 					shoot(pos)
 				break
 			
-			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 30:
+			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 20:
 				direction = (target.position - position).normalized()
 				if direction.x < 0 :
 					$sprite.flip_h = false
@@ -121,11 +114,14 @@ func aim():
 					$sprite.flip_h = true
 					$attack_area.position.x = 60
 					$check_place.position.x = 28
+				move_to_player = true
 			elif global_position.distance_to(target.global_position) > 90 :
 				anim = 'move'
+				move_to_player = false
 			elif global_position.distance_to(target.global_position) <= 20 :
 				anim = 'attack'
 				direction = Vector2(0,0)
+				move_to_player = false
 		
 func shoot(pos):
 	var b = bullet.instance()
@@ -133,20 +129,18 @@ func shoot(pos):
 	b.start(global_position, a + rand_range(-0.30, 0.30))
 	get_parent().add_child(b)
 	can_shoot = false
-	#$ShootTimer.start()
-
-
-func _check_player():
-	if $RayCast2D.is_colliding() == true:
-		pass
 
 
 func _check_place():
 	if is_on_floor():
-		if $check_place.is_colliding() == false:
+		if $check_place.is_colliding() == false and !move_to_player:
 			_change_position()
-	else:
-		pass			
+		elif $check_place.is_colliding() == false and move_to_player:
+			velocity.y = -jump_speed
+	if is_on_wall() and !move_to_player :
+		_change_position()
+	elif is_on_wall() and move_to_player:
+		velocity.y = -jump_speed
 		
 func _change_position():
 	direction.x =direction.x*(-1)
@@ -203,5 +197,4 @@ func _on_Visible_body_exited(body):
 	pass # Replace with function body.
 
 
-func _on_ShootTimer_timeout():
-	can_shoot = true
+
