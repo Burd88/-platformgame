@@ -80,7 +80,7 @@ func _damage():
 		$Visible/visible_col.disabled = true
 		anim = 'die'
 	pass
-		# Графический интерфейс игрока
+		# Графический интерфейс
 		
 func aim():
 
