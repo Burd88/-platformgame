@@ -90,7 +90,7 @@ func _damage():
 		# Графический интерфейс игрока
 		
 func aim():
-	#print('0')
+
 	hit_pos = []
 	var space_state = get_world_2d().direct_space_state
 	var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5, 5)
@@ -102,21 +102,25 @@ func aim():
 		var result = space_state.intersect_ray(position,
 				pos, [self], collision_mask)
 		if result:
-			#print('1')
 			hit_pos.append(result.position)
 			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70 and global_position.distance_to(target.global_position) < 90:
-				print(global_position.distance_to(target.global_position))#print('2')
 				anim = 'attack'
-				print((target.position - position).angle())
-				
+				#print((target.position - position).angle())
+				print(direction.x)
 				if can_shoot:
 					shoot(pos)
 				break
 			
 			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 30:
 				direction = (target.position - position).normalized()
-				#if direction.x < 0 :
-					#_change_position()
+				if direction.x < 0 :
+					$sprite.flip_h = false
+					$attack_area.position.x = 0
+					$check_place.position.x = -28
+				elif direction.x > 0:
+					$sprite.flip_h = true
+					$attack_area.position.x = 60
+					$check_place.position.x = 28
 			elif global_position.distance_to(target.global_position) > 90 :
 				anim = 'move'
 			elif global_position.distance_to(target.global_position) <= 20 :
@@ -134,12 +138,11 @@ func shoot(pos):
 
 func _check_player():
 	if $RayCast2D.is_colliding() == true:
-		print($RayCast2D.get_collider())
+		pass
 
 
 func _check_place():
 	if is_on_floor():
-		#print($RayCast2D.get_collider())
 		if $check_place.is_colliding() == false:
 			_change_position()
 	else:
@@ -189,25 +192,12 @@ func _on_sprite_frame_changed():
 
 func _on_Visible_body_entered(body):
 	if body.name == 'Player':
-		
-		#print(body.name)
-		#direction = (body.global_position - global_position).normalized()
-		#print(direction.normalized())
-		#var angle = global_position.angle_to_point(body.global_position)
-		#if angle > 0 or angle < 1:
-		#	_change_position()
-		#elif angle > 1 or angle < 3:
-		#	_change_position()
 		target = body
-		#print(target)
-		#	pass
-		#print(angle)
 	pass # Replace with function body.
 
 
 func _on_Visible_body_exited(body):
 	if body.name == 'Player':
-		#direction = Vector2(1,0)
 		target = null
 		pass
 	pass # Replace with function body.
