@@ -132,11 +132,10 @@ func shoot(pos):
 
 
 func _check_place():
-	if is_on_floor():
-		if $check_place.is_colliding() == false and !move_to_player:
-			_change_position()
-		elif $check_place.is_colliding() == false and move_to_player:
-			velocity.y = -jump_speed
+	if $check_place.is_colliding() == false and !move_to_player and is_on_floor():
+		_change_position()
+	elif $check_place.is_colliding() == false and move_to_player and is_on_floor() :
+		velocity.y = -jump_speed
 	if is_on_wall() and !move_to_player :
 		_change_position()
 	elif is_on_wall() and move_to_player:
@@ -187,12 +186,14 @@ func _on_sprite_frame_changed():
 func _on_Visible_body_entered(body):
 	if body.name == 'Player':
 		target = body
+		move_to_player = true
 	pass # Replace with function body.
 
 
 func _on_Visible_body_exited(body):
 	if body.name == 'Player':
 		target = null
+		move_to_player = false
 		pass
 	pass # Replace with function body.
 
