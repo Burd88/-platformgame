@@ -6,7 +6,7 @@ var gravity = 200
 
 ## жизни игрока
 var health = 300
-var health_now = health-35
+var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
 var anim = 'move'
