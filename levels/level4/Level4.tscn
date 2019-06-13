@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/level4/Assets/Assets.png" type="Texture" id=1]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Assets.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 80, 64, 48, 48 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 0
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 256, Vector2( 0, 1 ), 260, Vector2( 0, 2 ), 4, Vector2( 1, 0 ), 320, Vector2( 1, 1 ), 325, Vector2( 1, 2 ), 5, Vector2( 2, 0 ), 64, Vector2( 2, 1 ), 65, Vector2( 2, 2 ), 1 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Assets.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 144, 64, 48, 48 )
+1/tile_mode = 1
+1/autotile/bitmask_mode = 0
+1/autotile/bitmask_flags = [ Vector2( 0, 0 ), 256, Vector2( 0, 1 ), 260, Vector2( 0, 2 ), 4, Vector2( 1, 0 ), 320, Vector2( 1, 1 ), 325, Vector2( 1, 2 ), 5, Vector2( 2, 0 ), 64, Vector2( 2, 1 ), 65, Vector2( 2, 2 ), 1 ]
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Assets.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 352, 160, 32, 112 )
+2/tile_mode = 1
+2/autotile/bitmask_mode = 0
+2/autotile/bitmask_flags = [ Vector2( 0, 0 ), 256, Vector2( 0, 1 ), 260, Vector2( 0, 2 ), 260, Vector2( 0, 3 ), 260, Vector2( 0, 4 ), 260, Vector2( 0, 5 ), 260, Vector2( 0, 6 ), 4, Vector2( 1, 0 ), 64, Vector2( 1, 1 ), 65, Vector2( 1, 2 ), 65, Vector2( 1, 3 ), 65, Vector2( 1, 4 ), 65, Vector2( 1, 5 ), 65, Vector2( 1, 6 ), 1 ]
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 16, 16 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+
+[node name="Level4" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 196624, 2, 0, 196625, 2, 1, 262160, 2, 262144, 262161, 2, 65537, 327696, 2, 327680, 327697, 2, 327681, 393232, 2, 65536, 393233, 2, 131073, 524285, 0, 0, 458768, 2, 196608, 458769, 2, 131073, 524304, 2, 327680, 524305, 2, 327681, 589840, 2, 65536, 589841, 2, 131073, 655376, 2, 393216, 655377, 2, 393217, 720909, 1, 0, 720910, 1, 1, 720911, 1, 1, 720912, 1, 1, 720913, 1, 1, 720914, 1, 1, 720915, 1, 1, 720916, 1, 1, 720917, 1, 1, 720918, 1, 2, 786439, 0, 0, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 2, 786445, 1, 65536, 786446, 1, 65537, 786447, 1, 65537, 786448, 1, 65537, 786449, 1, 65537, 786450, 1, 65537, 786451, 1, 65537, 786452, 1, 65537, 786453, 1, 65537, 786454, 1, 65538, 851975, 0, 65536, 851976, 0, 65537, 851977, 0, 65537, 851978, 0, 65537, 851979, 0, 65537, 851980, 0, 65538, 851981, 1, 65536, 851982, 1, 65537, 851983, 1, 65537, 851984, 1, 65537, 851985, 1, 65537, 851986, 1, 65537, 851987, 1, 65537, 851988, 1, 65537, 851989, 1, 65537, 851990, 1, 65538, 917511, 0, 65536, 917512, 0, 65537, 917513, 0, 65537, 917514, 0, 65537, 917515, 0, 65537, 917516, 0, 65538, 917517, 1, 65536, 917518, 1, 65537, 917519, 1, 65537, 917520, 1, 65537, 917521, 1, 65537, 917522, 1, 65537, 917523, 1, 65537, 917524, 1, 65537, 917525, 1, 65537, 917526, 1, 65538, 983047, 0, 65536, 983048, 0, 65537, 983049, 0, 65537, 983050, 0, 65537, 983051, 0, 65537, 983052, 0, 65538, 983053, 1, 65536, 983054, 1, 65537, 983055, 1, 65537, 983056, 1, 65537, 983057, 1, 65537, 983058, 1, 65537, 983059, 1, 65537, 983060, 1, 65537, 983061, 1, 65537, 983062, 1, 65538, 1048583, 0, 65536, 1048584, 0, 65537, 1048585, 0, 65537, 1048586, 0, 65537, 1048587, 0, 65537, 1048588, 0, 65538, 1048589, 1, 65536, 1048590, 1, 65537, 1048591, 1, 65537, 1048592, 1, 65537, 1048593, 1, 65537, 1048594, 1, 65537, 1048595, 1, 65537, 1048596, 1, 65537, 1048597, 1, 65537, 1048598, 1, 65538, 1114119, 0, 131072, 1114120, 0, 131073, 1114121, 0, 131073, 1114122, 0, 131073, 1114123, 0, 131073, 1114124, 0, 131074, 1114125, 1, 131072, 1114126, 1, 131073, 1114127, 1, 131073, 1114128, 1, 131073, 1114129, 1, 131073, 1114130, 1, 131073, 1114131, 1, 131073, 1114132, 1, 131073, 1114133, 1, 131073, 1114134, 1, 131074 )
