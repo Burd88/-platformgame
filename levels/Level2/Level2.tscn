@@ -1,8 +1,9 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=1]
-[ext_resource path="res://Enemy/Slime/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
+
 
 
 [sub_resource type="ConvexPolygonShape2D" id=1]

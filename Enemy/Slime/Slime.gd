@@ -101,8 +101,8 @@ func aim():
 			hit_pos.append(result.position)
 			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70 and global_position.distance_to(target.global_position) < 90:
 				anim = 'attack'
-				#print((target.position - position).angle())
-				print(direction.x)
+				
+				
 				if can_shoot:
 					shoot(pos)
 				break
@@ -164,7 +164,10 @@ func _change_position():
 func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
-		_health_potion()
+		var item_rand = randi()%6
+		print(item_rand)
+		if item_rand == 0 :
+			_health_potion()
 		
 	if $sprite.animation == 'attack'  and health_now > 0:
 		can_shoot = true

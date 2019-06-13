@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://Enemy/Slime/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-0.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-1.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-2.png" type="Texture" id=4]
@@ -79,7 +79,7 @@ extents = Vector2( 4.50776, 10 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 69.0904, 168.533 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Slime" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 3
@@ -90,7 +90,7 @@ position = Vector2( 0.270546, -6.22268 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "move"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
