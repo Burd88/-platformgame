@@ -14,10 +14,11 @@ func _physics_process(delta):
 	velocity.y += gravity*delta
 
 func _on_bullet_body_entered(body):
+	
 	if body.name == 'Player':
 		body.health_now -= 53
 		queue_free()
-	elif body.name == 'TileMap':
+	elif body.name == 'frontground':
 		queue_free()
 	pass # Replace with function body.
 
