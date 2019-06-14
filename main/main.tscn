@@ -114,6 +114,22 @@ __meta__ = {
 stream = ExtResource( 4 )
 volume_db = 5.0
 autoplay = true
+
+[node name="ru" type="Button" parent="."]
+margin_left = 876.081
+margin_top = 21.766
+margin_right = 888.081
+margin_bottom = 41.766
+text = "ru"
+
+[node name="en" type="Button" parent="."]
+margin_left = 933.216
+margin_top = 23.1264
+margin_right = 945.216
+margin_bottom = 43.1264
+text = "en"
 [connection signal="pressed" from="Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="ru" to="." method="_on_ru_pressed"]
+[connection signal="pressed" from="en" to="." method="_on_en_pressed"]

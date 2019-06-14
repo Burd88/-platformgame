@@ -29,7 +29,7 @@ var direction = Vector2()
 
 var collision_info
 
-
+var torch = false
 
 var attack = false
 var wall = false
@@ -38,6 +38,7 @@ var wall = false
 func _ready():
 	set_physics_process(true)
 	set_process(true)
+	$GUI/Label.text = translationt.tr_text
 	health_now = GLOBAL.Player_health
 
 func _physics_process(delta):
@@ -45,6 +46,8 @@ func _physics_process(delta):
 	_attack()
 	_gui()
 	_death()
+	_light_mode()
+	
 	
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
@@ -135,6 +138,11 @@ func _move(delta):
 	#	print("xz")
 
 func _light_mode():
+	if torch == true:
+		$Light2D.enabled = true
+		$GUI/Label.visible = false
+	else:
+		$Light2D.enabled = false
 	pass
 	
 		

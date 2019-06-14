@@ -25,6 +25,7 @@ config/icon="res://logo/logo.png"
 [autoload]
 
 GLOBAL="*res://GLOBAL.gd"
+translationt="*res://translation/translationt.gd"
 
 [display]
 

@@ -27,3 +27,13 @@ func _on_Exit_pressed():
 func _on_Continue_pressed():
 	print("должно быть загружено сохранение")
 	pass # Replace with function body.
+
+
+func _on_ru_pressed():
+	translationt.language = 1
+	pass # Replace with function body.
+
+
+func _on_en_pressed():
+	translationt.language = 2
+	pass # Replace with function body.
