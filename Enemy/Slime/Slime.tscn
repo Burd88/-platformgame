@@ -120,6 +120,7 @@ valign = 1
 
 [node name="check_place" type="RayCast2D" parent="."]
 position = Vector2( -28, 0 )
+scale = Vector2( 1, 2.04 )
 enabled = true
 cast_to = Vector2( 0, 30 )
 

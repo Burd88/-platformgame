@@ -134,7 +134,9 @@ func _move(delta):
 	#else:
 	#	print("xz")
 
-
+func _light_mode():
+	pass
+	
 		
 		
 func _attack():
@@ -183,4 +185,11 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = true
 	elif $spr.animation != "attack2" or $spr.animation != "attack1" or $spr.animation != "attack3":
 		$attack_area/col_Atack.disabled = true
+	pass # Replace with function body.
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == 'TileMap':
+		print(body.tile_set.tile_get_z_index(1))
+		
 	pass # Replace with function body.
