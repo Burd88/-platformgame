@@ -9,8 +9,16 @@ func _ready():
 		pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if translationt.language == 1 :
+		$Start_game.text = 'Начать игру'
+		$Continue.text = 'Продолжить'
+		$Exit.text = 'Выход'
+	elif translationt.language == 2 :
+		$Start_game.text = 'Start Game'
+		$Continue.text = 'Continue'
+		$Exit.text = 'Exit'
+	pass
 
 
 func _on_Start_game_pressed():
