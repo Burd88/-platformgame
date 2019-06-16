@@ -440,4 +440,13 @@ position = Vector2( 695.988, 362.448 )
 
 [node name="Slime7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 306.538, 832.261 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 405.778
+margin_top = 452.193
+margin_right = 445.778
+margin_bottom = 466.193
+text = "fdsfsdfsdfsdfsdfsdfsdfsdf"
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

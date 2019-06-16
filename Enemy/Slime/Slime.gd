@@ -129,7 +129,7 @@ func aim():
 func shoot(pos):
 	var b = bullet.instance()
 	var a = (pos - global_position).angle()
-	b.start(global_position, a + rand_range(-0.30, 0.30))
+	b.start(global_position, a + rand_range(-0.05, 0.05))
 	get_parent().add_child(b)
 	can_shoot = false
 
