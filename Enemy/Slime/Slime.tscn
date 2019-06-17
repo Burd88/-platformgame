@@ -1,27 +1,31 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Enemy/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-0.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-1.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-2.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-3.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-1.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=9]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=14]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=15]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=16]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=17]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-1.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/Slime/sounds/qubodupSlimeMonster-idle1.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Enemy/Slime/sounds/qubodupSlimeMonster-attack1.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Enemy/Slime/sounds/qubodupSlimeMonster-damage1.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Enemy/Slime/sounds/qubodupSlimeMonster-damage2.ogg" type="AudioStream" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,24 +34,24 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "die",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "move",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "die",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -90,7 +94,7 @@ position = Vector2( 0.270546, -6.22268 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "move"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -136,6 +140,26 @@ shape = SubResource( 5 )
 position = Vector2( -0.447723, -50.0376 )
 rotation = 1.5708
 shape = SubResource( 6 )
+
+[node name="sound_idle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 23 )
+volume_db = 1.0
+max_distance = 200.0
+
+[node name="sound_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 24 )
+volume_db = 1.0
+max_distance = 200.0
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 25 )
+volume_db = 1.0
+max_distance = 200.0
+
+[node name="damage2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 26 )
+volume_db = 1.0
+max_distance = 200.0
 [connection signal="animation_finished" from="sprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

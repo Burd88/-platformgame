@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/qubodupSlimeMonster-damage2.ogg-d749417ed459e3687c24d6e081447b1b.oggstr"
+
+[deps]
+
+source_file="res://Enemy/Slime/sounds/qubodupSlimeMonster-damage2.ogg"
+dest_files=[ "res://.import/qubodupSlimeMonster-damage2.ogg-d749417ed459e3687c24d6e081447b1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

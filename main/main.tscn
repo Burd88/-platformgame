@@ -3,7 +3,7 @@
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
 [ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://main/sounds/474353__erokia__ambient-wave-single-8.wav" type="AudioStream" id=4]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collapse"
@@ -112,7 +112,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = 5.0
+volume_db = 3.0
 autoplay = true
 
 [node name="ru" type="Button" parent="."]

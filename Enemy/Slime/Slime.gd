@@ -11,6 +11,8 @@ var php = (health_now*100)/health
 ##----------------------- 
 var anim = 'move'
 
+var damage
+
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
@@ -107,7 +109,7 @@ func aim():
 					shoot(pos)
 				break
 			
-			elif position.distance_to(target.position) < 70 and position.distance_to(target.position) > 20:
+			elif position.distance_to(target.position) < 90 and position.distance_to(target.position) > 20:
 				direction = (target.position - position).normalized()
 				if direction.x < 0 :
 					$sprite.flip_h = false
@@ -145,8 +147,8 @@ func _check_place():
 		velocity.y = -jump_speed
 	if is_on_wall() and !move_to_player :
 		_change_position()
-	elif is_on_wall() and move_to_player:
-		velocity.y = -jump_speed
+	#elif is_on_wall() and move_to_player:
+		#velocity.y = -jump_speed
 		
 func _change_position():
 	direction.x =direction.x*(-1)
@@ -171,13 +173,17 @@ func _on_AnimatedSprite_animation_finished():
 		
 	if $sprite.animation == 'attack'  and health_now > 0:
 		can_shoot = true
+		
+
 	
 	pass # Replace with function body.
 
 
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
-		body.health_now -= 50
+		damage = randi()%40+30
+		body.health_now -= damage
+		print(damage)
 		anim = 'attack'
 	pass # Replace with function body.
 
@@ -188,8 +194,14 @@ func _on_sprite_frame_changed():
 			$attack_area/attack_col.disabled = true
 		elif $sprite.frame == 4:
 			$attack_area/attack_col.disabled = false
-	pass # Replace with function body.
-
+	if $sprite.animation == 'move':
+		#$sound_idle.autoplay = true
+		#$sound_idle.playing = true
+		pass
+	elif $sprite.animation == 'attack':
+		#$sound_attack.autoplay = true
+		#$sound_attack.playing = true
+		pass
 
 
 

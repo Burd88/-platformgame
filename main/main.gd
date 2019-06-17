@@ -39,11 +39,9 @@ func _on_Continue_pressed():
 
 func _on_ru_pressed():
 	translationt.language = 1
-	print(translationt.language)
 	pass # Replace with function body.
 
 
 func _on_en_pressed():
 	translationt.language = 2
-	print(translationt.language)
 	pass # Replace with function body.
