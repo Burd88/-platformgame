@@ -47,7 +47,7 @@ func _physics_process(delta):
 	_gui()
 	_death()
 	_light_mode()
-	
+	use()
 	
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
@@ -136,6 +136,11 @@ func _move(delta):
 	#	print("floor")
 	#else:
 	#	print("xz")
+func use():
+	if Input.is_action_pressed('use_button'):
+		$use/CollisionShape2D.disabled = false
+	else:
+		$use/CollisionShape2D.disabled = true
 
 func _light_mode():
 	if torch == true:
@@ -197,7 +202,9 @@ func _on_spr_frame_changed():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == 'TileMap':
-		print(body.tile_set.tile_get_z_index(1))
+	if body.name == 'door':
+		body.open = true
 		
+	if body.name == 'lever':
+		body.use_lever = true
 	pass # Replace with function body.

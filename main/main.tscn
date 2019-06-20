@@ -112,8 +112,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = 3.0
-autoplay = true
+volume_db = 1.0
 
 [node name="ru" type="Button" parent="."]
 margin_left = 876.081
