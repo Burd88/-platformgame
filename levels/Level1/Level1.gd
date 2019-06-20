@@ -11,7 +11,7 @@ func _process(delta):
 	update()
 	if lever1:
 		$exit_level.open_door = true
-		print("2")
+		
 #	pass
 
 

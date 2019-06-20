@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	if open_door:
 		$CollisionShape2D.disabled = false
-		print("3")
+		
 	else:
 		$CollisionShape2D.disabled = true
 #	pass

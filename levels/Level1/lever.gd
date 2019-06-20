@@ -13,6 +13,6 @@ func _process(delta):
 	if use_lever:
 		$Sprite.flip_h = true
 		$"..".lever1 = true
-		print('1')
+
 		
 #	pass
