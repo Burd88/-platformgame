@@ -210,6 +210,7 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "block"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -285,9 +286,8 @@ disabled = true
 enabled = false
 texture = ExtResource( 71 )
 texture_scale = 0.3
+color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
-shadow_gradient_length = 1.2
-shadow_filter_smooth = 55.0
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
