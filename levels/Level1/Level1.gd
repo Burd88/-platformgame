@@ -11,6 +11,8 @@ func _process(delta):
 	update()
 	if lever1:
 		$exit_level.open_door = true
+	if Input.action_press("ui_select"):
+		pause_mode
 		
 #	pass
 
@@ -62,5 +64,5 @@ func _on_door_text_area_body_entered(body):
 
 func _on_door_tree_exited():
 	$Text_field/text.hide()
-	$Text_field/text.text = ' '
+	$Text_field/text.text = ' '  
 	pass # Replace with function body.
