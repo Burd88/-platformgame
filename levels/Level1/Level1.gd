@@ -55,7 +55,7 @@ func _on_door_text_area_body_entered(body):
 		if translationt.language == 1:
 			$Text_field/text.text = 'От этой стены дует прохладный ветерок... \n попробуй ее сдвинуть \n используй "E"'
 		elif translationt.language == 2:
-			$Text_field/text.text = 'this dark... \n you need torch'
+			$Text_field/text.text = 'From this wall blows cool breeze... \n try to move it \n use "E"'
 	pass # Replace with function body.
 
 
