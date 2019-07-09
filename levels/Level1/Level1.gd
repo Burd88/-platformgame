@@ -11,8 +11,7 @@ func _process(delta):
 	update()
 	if lever1:
 		$exit_level.open_door = true
-	if Input.action_press("ui_select"):
-		pause_mode
+
 		
 #	pass
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
-[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -36,6 +36,12 @@ size = 30
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 3 )
 
 [node name="main" type="Node2D"]
@@ -119,6 +125,7 @@ margin_left = 876.081
 margin_top = 21.766
 margin_right = 888.081
 margin_bottom = 41.766
+custom_fonts/font = SubResource( 7 )
 text = "ru"
 
 [node name="en" type="Button" parent="."]
@@ -126,6 +133,7 @@ margin_left = 933.216
 margin_top = 23.1264
 margin_right = 945.216
 margin_bottom = 43.1264
+custom_fonts/font = SubResource( 8 )
 text = "en"
 [connection signal="pressed" from="Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
