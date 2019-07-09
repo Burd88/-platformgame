@@ -65,3 +65,8 @@ func _on_door_tree_exited():
 	$Text_field/text.hide()
 	$Text_field/text.text = ' '  
 	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	$Text_field/text.hide()
+	pass # Replace with function body.
