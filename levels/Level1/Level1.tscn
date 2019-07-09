@@ -539,21 +539,23 @@ position = Vector2( 306.538, 832.261 )
 [node name="Text_field" type="CanvasLayer" parent="."]
 
 [node name="text" type="Label" parent="Text_field"]
-margin_left = 46.0
+anchor_right = 1.0
+margin_left = 55.0
 margin_top = 490.0
-margin_right = 964.0
+margin_right = -60.0
 margin_bottom = 585.0
 custom_styles/normal = SubResource( 28 )
 custom_fonts/font = SubResource( 24 )
 text = "text field"
 align = 1
 valign = 1
+percent_visible = -0.111111
 
 [node name="Button" type="Button" parent="Text_field/text"]
-margin_left = 899.912
-margin_top = -3.86899
-margin_right = 919.912
-margin_bottom = 16.131
+margin_left = 883.166
+margin_top = 6.43652
+margin_right = 903.166
+margin_bottom = 26.4365
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = SubResource( 29 )
 custom_styles/focus = ExtResource( 9 )
