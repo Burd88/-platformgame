@@ -228,7 +228,6 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "block"
-frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
