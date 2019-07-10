@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=2]
@@ -70,7 +70,9 @@
 [ext_resource path="res://player/Individual Sprites/adventurer-crnr-clmb-03.png" type="Texture" id=68]
 [ext_resource path="res://player/Individual Sprites/adventurer-crnr-clmb-04.png" type="Texture" id=69]
 [ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=70]
-[ext_resource path="res://player/light.png" type="Texture" id=71]
+[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=71]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=72]
+[ext_resource path="res://player/light.png" type="Texture" id=73]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -194,6 +196,22 @@ corner_radius_bottom_left = 5
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 70 )
 
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.32549, 0.054902, 0.054902, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.964706, 0.309804, 0.309804, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=9]
+size = 12
+font_data = ExtResource( 72 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 72 )
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 6.78125, 9.70228 )
 
@@ -210,7 +228,7 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "block"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -265,6 +283,39 @@ text = "Тут очень темно.... и сыро...
 align = 1
 valign = 1
 
+[node name="health_potion_label" type="Label" parent="GUI"]
+margin_left = 165.186
+margin_top = 4.73522
+margin_right = 215.186
+margin_bottom = 54.7352
+custom_styles/normal = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="GUI/health_potion_label"]
+position = Vector2( 25.7358, 21.6164 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 71 )
+
+[node name="count" type="Label" parent="GUI/health_potion_label"]
+margin_left = 33.7606
+margin_top = 34.7606
+margin_right = 45.7606
+margin_bottom = 46.7606
+custom_fonts/font = SubResource( 9 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="GUI/health_potion_label"]
+margin_left = 1.25171
+margin_top = 30.2613
+margin_right = 18.2517
+margin_bottom = 51.2613
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.72549, 0.482353, 0.0588235, 1 )
+text = "Q"
+align = 1
+valign = 1
+
 [node name="attack_area" type="Area2D" parent="."]
 position = Vector2( 18, 0 )
 
@@ -284,7 +335,7 @@ disabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
-texture = ExtResource( 71 )
+texture = ExtResource( 73 )
 texture_scale = 0.3
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true

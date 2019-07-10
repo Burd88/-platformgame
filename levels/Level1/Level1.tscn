@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=6]
 [ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=9]
-[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=10]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=11]
+[ext_resource path="res://items/Health Potion/Health_potion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=10]
+[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=11]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -424,7 +425,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=24]
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="StyleBoxFlat" id=29]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -536,6 +537,12 @@ position = Vector2( 983.44, 510.81 )
 [node name="Slime7" parent="." instance=ExtResource( 7 )]
 position = Vector2( 306.538, 832.261 )
 
+[node name="Health_potion" parent="." instance=ExtResource( 8 )]
+position = Vector2( 187.426, 353.294 )
+
+[node name="Health_potion2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 230.074, 361.048 )
+
 [node name="Text_field" type="CanvasLayer" parent="."]
 
 [node name="text" type="Label" parent="Text_field"]
@@ -549,17 +556,16 @@ custom_fonts/font = SubResource( 24 )
 text = "text field"
 align = 1
 valign = 1
-percent_visible = -0.111111
 
 [node name="Button" type="Button" parent="Text_field/text"]
 margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 9 )
+custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = SubResource( 29 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 9 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
 text = "x"
@@ -568,14 +574,14 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = 3.0
 max_distance = 5000.0
 
 [node name="lever" type="StaticBody2D" parent="."]
 position = Vector2( 1046.46, 536.293 )
 collision_layer = 2
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever"]
 position = Vector2( 0, 2.71124 )

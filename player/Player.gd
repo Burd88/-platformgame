@@ -14,6 +14,8 @@ var rand_attack_name = 1
 ##
 var damage = randi()%100+50
 
+##
+var health_potion = 0
 
 var swim = false
 #var cont = 0
@@ -48,6 +50,7 @@ func _physics_process(delta):
 	_death()
 	_light_mode()
 	use()
+	use_health_potion()
 	
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
@@ -136,6 +139,23 @@ func _move(delta):
 	#	print("floor")
 	#else:
 	#	print("xz")
+
+		
+	
+	
+func use_health_potion():
+	$GUI/health_potion_label/count.text = str(health_potion)
+	if Input.is_action_just_pressed("use_health_potion"):
+		if health_potion > 0 and health_now < health:
+			health_potion -= 1
+			health_now += 100
+			if health_now > health:
+				health_now = health
+		elif health_potion > 0 and health_now == health:
+			print("full hp")
+		elif health_potion == 0:
+			pass
+		pass
 func use():
 	if Input.is_action_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
