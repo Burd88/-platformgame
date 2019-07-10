@@ -496,7 +496,6 @@ position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="Torch"]
-visible = false
 position = Vector2( -298.912, -675.826 )
 scale = Vector2( 2, 2 )
 
@@ -505,7 +504,7 @@ position = Vector2( 165.509, 356.344 )
 shape = SubResource( 25 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 97.3296, 359.4 )
+position = Vector2( 91.8881, 385.247 )
 
 [node name="exit_level" type="Area2D" parent="."]
 position = Vector2( 492.631, 163.076 )
