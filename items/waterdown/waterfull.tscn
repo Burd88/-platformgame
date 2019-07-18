@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://items/waterdown/waterfull1.png" type="Texture" id=1]
+[ext_resource path="res://items/waterdown/waterfull2.png" type="Texture" id=2]
+[ext_resource path="res://items/waterdown/waterfull3.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]
+
+[node name="waterfull" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "New Anim"
+speed_scale = 0.7
+playing = true
