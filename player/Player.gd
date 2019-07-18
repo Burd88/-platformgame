@@ -40,7 +40,6 @@ var wall = false
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-	$GUI/Label.text = translationt.tr_text
 	health_now = GLOBAL.Player_health
 
 func _physics_process(delta):

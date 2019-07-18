@@ -11,7 +11,8 @@ func _process(delta):
 	update()
 	if lever1:
 		$exit_level.open_door = true
-
+	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
+	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 		
 #	pass
 
