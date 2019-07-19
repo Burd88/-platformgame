@@ -5,18 +5,28 @@ var lever1 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CanvasModulate.show()
+	$Text_field/text.show()
+	$Chain/AnimatedSprite.stop()
+	$Gear6.visible = false
+	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
+	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
+	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update()
+	start_mechanism()
 	if lever1:
 		$exit_level.open_door = true
-	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
-	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
+
 		
 #	pass
-
+func start_mechanism():
+	if $Gear6.visible == true:
+		$Chain/AnimatedSprite.play("default")
+	else :
+		$Chain/AnimatedSprite.stop()
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':

@@ -221,9 +221,15 @@ func _on_spr_frame_changed():
 
 
 func _on_Area2D_body_entered(body):
+	if body.name == 'Gear6':
+		print("ssd")
+		body.visible = true
 	if body.name == 'door':
 		body.open = true
+		print("door open")
 		
 	if body.name == 'lever':
 		body.use_lever = true
+	
+
 	pass # Replace with function body.
