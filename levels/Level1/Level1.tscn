@@ -534,7 +534,7 @@ position = Vector2( 218.211, 619.311 )
 position = Vector2( 234.969, 605.864 )
 
 [node name="Chain" parent="." instance=ExtResource( 7 )]
-position = Vector2( 255.149, 571.885 )
+position = Vector2( 257, 571 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Gear6" type="StaticBody2D" parent="."]
