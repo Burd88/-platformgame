@@ -57,8 +57,8 @@ func _move(delta):
 	if direction.y > 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 0 :
 			$spr.animation = "jump"
-		elif velocity.y > 0:
-			$spr.animation = "fall"
+		#elif velocity.y > 0:
+		#	$spr.animation = "fall"
 			
 	if direction.y < 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0 and velocity.x == 0:
@@ -78,8 +78,8 @@ func _move(delta):
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "idle"
-		elif velocity.y > 0:
-			$spr.animation = "fall"
+		#elif velocity.y > 0:
+		#	$spr.animation = "fall"
 
 	if direction.x > 0:
 		$spr.flip_h = false
@@ -94,7 +94,7 @@ func _move(delta):
 	#if !is_on_wall():
 	velocity.y += gravity*delta
 	
-	collision_info = move_and_slide(velocity,Vector2(0,-1))
+	collision_info = move_and_slide(velocity,Vector2(0,-2))
 	
 	#var get_col = get_slide_collision(get_slide_count()-1)
 	
@@ -102,6 +102,7 @@ func _move(delta):
 		direction.y = 1
 	
 	if is_on_floor():
+		print('floor')
 		velocity.y = 0
 		direction.y = 0
 
@@ -110,7 +111,7 @@ func _move(delta):
 			direction.y = 1
 		if Input.is_action_pressed("ui_down") :
 			direction.y = -1
-
+	
 			
 
 	#if !is_on_floor():
