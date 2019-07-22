@@ -26,7 +26,8 @@ func _process(delta):
 func start_mechanism():
 	if $Gear6.visible == true:
 		$Chain/AnimatedSprite.play("default")
-		$Lift_level1/AnimationPlayer.play("work")
+		#$Lift_level1/AnimationPlayer.play("work")
+		$Lift_level1/moveTween.start()
 	else :
 		$Chain/AnimatedSprite.stop()
 

@@ -102,7 +102,7 @@ func _move(delta):
 		direction.y = 1
 	
 	if is_on_floor():
-		print('floor')
+		
 		velocity.y = 0
 		direction.y = 0
 
