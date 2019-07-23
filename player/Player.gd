@@ -50,8 +50,7 @@ func _physics_process(delta):
 	_light_mode()
 	use()
 	use_health_potion()
-	if velocity.y != 0:
-		print(velocity.y)
+
 	
 	
 func _move(delta):

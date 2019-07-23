@@ -11,7 +11,7 @@ func _ready():
 	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
-	$Lift_level1/AnimationPlayer.stop(true)
+
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +28,7 @@ func start_mechanism():
 		$Chain/AnimatedSprite.play("default")
 		#$Lift_level1/AnimationPlayer.play("work")
 		$Lift_level1/moveTween.start()
+		$Lift_exit/moveTween.start()
 	else :
 		$Chain/AnimatedSprite.stop()
 
