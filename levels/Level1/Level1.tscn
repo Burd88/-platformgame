@@ -560,6 +560,7 @@ position = Vector2( 234.969, 605.864 )
 [node name="Lift_level1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 392, 711 )
 move_to = Vector2( 0, -304 )
+speed = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lift_level1"]
 anims/work = SubResource( 7 )
