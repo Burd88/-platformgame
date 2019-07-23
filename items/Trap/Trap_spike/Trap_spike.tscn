@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Trap_spike.gd" type="Script" id=1]
+[ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.90263, 4.56602 )
+
+[node name="Trap_spike" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="trap" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="trap"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 352, 128, 16, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
+position = Vector2( 0.184029, -3.49652 )
+shape = SubResource( 1 )
+
+[node name="move_trap" type="Tween" parent="."]
+repeat = true
+playback_process_mode = 0
+playback/repeat = true
