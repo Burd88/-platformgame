@@ -4,7 +4,7 @@
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.90263, 4.56602 )
+extents = Vector2( 6.6857, 20.9216 )
 
 [node name="Trap_spike" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,8 +16,23 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 352, 128, 16, 16 )
 
+[node name="Sprite2" type="Sprite" parent="trap"]
+position = Vector2( 0, -24 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 288, 48, 16, 32 )
+
+[node name="Sprite3" type="Sprite" parent="trap"]
+position = Vector2( -8.22452, -71.9803 )
+texture = ExtResource( 2 )
+centered = false
+flip_v = true
+region_enabled = true
+region_rect = Rect2( 288, 48, 16, 32 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
-position = Vector2( 0.184029, -3.49652 )
+visible = false
+position = Vector2( -0.0306091, -18.9506 )
 shape = SubResource( 1 )
 
 [node name="move_trap" type="Tween" parent="."]

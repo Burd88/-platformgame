@@ -56,13 +56,13 @@ func _physics_process(delta):
 func _move(delta):
 	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	
-	if direction.y > 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
+	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3 :
 			$spr.animation = "jump"
 		elif velocity.y > 4:
 			$spr.animation = "fall"
 			
-	if direction.y < 0 and swim == false and attack == false and !is_on_wall() and health_now > 0:
+	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0 and velocity.x == 0:
 			$spr.animation = "crouch"
 		elif velocity.y == 0 and velocity.x != 0:
@@ -70,7 +70,7 @@ func _move(delta):
 		elif velocity.y > 0:
 			$spr.animation = "fall"
 		
-	if direction.x != 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
+	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "walk"
 
