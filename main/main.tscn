@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=4]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collapse"
@@ -31,8 +32,12 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 3 )
 
+[sub_resource type="StyleBoxFlat" id=9]
+draw_center = false
+
 [sub_resource type="DynamicFont" id=5]
 size = 30
+outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -48,6 +53,7 @@ font_data = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="background" type="Sprite" parent="."]
+visible = false
 position = Vector2( 506.223, 296.592 )
 scale = Vector2( 0.621114, 0.621114 )
 texture = ExtResource( 2 )
@@ -57,56 +63,55 @@ autoplay = "collapse"
 playback_speed = 0.1
 anims/collapse = SubResource( 1 )
 
-[node name="Start_game" type="Button" parent="."]
+[node name="inter" type="CanvasLayer" parent="."]
+
+[node name="button" type="Node2D" parent="inter"]
+position = Vector2( 14.0647, 172.293 )
+
+[node name="Start_game" type="Button" parent="inter/button"]
 margin_left = 425.0
 margin_top = 200.0
 margin_right = 575.0
 margin_bottom = 229.0
 custom_fonts/font = SubResource( 2 )
 text = "Начать Игру"
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="inter/button"]
 margin_left = 425.0
 margin_top = 260.0
-margin_right = 575.0
+margin_right = 580.0
 margin_bottom = 289.0
 custom_fonts/font = SubResource( 3 )
 text = "Продолжить"
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="inter/button"]
 margin_left = 425.0
 margin_top = 320.0
 margin_right = 575.0
 margin_bottom = 349.0
 custom_fonts/font = SubResource( 4 )
 text = "Выход"
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Game_name" type="Label" parent="."]
+[node name="Game_name" type="Label" parent="inter"]
 margin_left = 350.0
 margin_top = 82.0
 margin_right = 658.0
 margin_bottom = 139.0
+custom_styles/normal = SubResource( 9 )
 custom_fonts/font = SubResource( 5 )
-text = "НазВание игры"
+text = "Пропасть
+и
+Испытания"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="copyright" type="Label" parent="."]
+[node name="copyright" type="Label" parent="inter"]
 margin_left = 38.2107
 margin_top = 555.544
-margin_right = 167.211
+margin_right = 243.211
 margin_bottom = 579.544
 custom_fonts/font = SubResource( 6 )
 text = "(c) Darkil Corp. 2019"
@@ -116,27 +121,30 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="inter"]
 stream = ExtResource( 4 )
 volume_db = 1.0
 
-[node name="ru" type="Button" parent="."]
+[node name="ru" type="Button" parent="inter"]
 margin_left = 876.081
 margin_top = 21.766
-margin_right = 888.081
-margin_bottom = 41.766
+margin_right = 912.081
+margin_bottom = 43.766
 custom_fonts/font = SubResource( 7 )
 text = "ru"
 
-[node name="en" type="Button" parent="."]
+[node name="en" type="Button" parent="inter"]
 margin_left = 933.216
 margin_top = 23.1264
-margin_right = 945.216
-margin_bottom = 43.1264
+margin_right = 971.216
+margin_bottom = 45.1264
 custom_fonts/font = SubResource( 8 )
 text = "en"
-[connection signal="pressed" from="Start_game" to="." method="_on_Start_game_pressed"]
-[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="ru" to="." method="_on_ru_pressed"]
-[connection signal="pressed" from="en" to="." method="_on_en_pressed"]
+
+[node name="Intro" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2.38394, 223.312 )
+[connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
+[connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="inter/ru" to="." method="_on_ru_pressed"]
+[connection signal="pressed" from="inter/en" to="." method="_on_en_pressed"]

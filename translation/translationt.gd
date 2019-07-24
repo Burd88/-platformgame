@@ -1,5 +1,5 @@
 extends Node
-var language = 2 # 1 - ru, 2  - en
+var language = 1 # 1 - ru, 2  - en
 var tr_text
 # var a = 2
 # var b = "text"

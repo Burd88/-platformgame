@@ -11,13 +11,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if translationt.language == 1 :
-		$Start_game.text = 'Начать игру'
-		$Continue.text = 'Продолжить'
-		$Exit.text = 'Выход'
+		$inter/button/Start_game.text = 'Начать игру'
+		$inter/button/Continue.text = 'Продолжить'
+		$inter/button/Exit.text = 'Выход'
 	elif translationt.language == 2 :
-		$Start_game.text = 'Start Game'
-		$Continue.text = 'Continue'
-		$Exit.text = 'Exit'
+		$inter/button/Start_game.text = 'Start Game'
+		$inter/button/Continue.text = 'Continue'
+		$inter/button/Exit.text = 'Exit'
 	pass
 
 
