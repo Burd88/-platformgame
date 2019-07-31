@@ -58,28 +58,28 @@ func _move(delta):
 	
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3 :
-			$spr.animation = "jump"
+			$spr.animation = "прыжок"
 		elif velocity.y > 4:
-			$spr.animation = "fall"
+			$spr.animation = "падение"
 			
 	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0 and velocity.x == 0:
-			$spr.animation = "crouch"
+			$spr.animation = "присяд"
 		elif velocity.y == 0 and velocity.x != 0:
-			$spr.animation = "tackle"
+			$spr.animation = "подкат"
 		elif velocity.y > 0:
-			$spr.animation = "fall"
+			$spr.animation = "падение"
 		
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "walk"
+			$spr.animation = "бег"
 
 		elif velocity.y > 0:
-			$spr.animation = "fall"
+			$spr.animation = "падение"
 		
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "idle2"
+			$spr.animation = "стойка"
 		#elif velocity.y > 0:
 		#	$spr.animation = "fall"
 
@@ -132,7 +132,7 @@ func _move(delta):
 		velocity.y = 0
 		direction.y = 0
 		if is_on_floor():
-			$spr.animation = "crouch"
+			$spr.animation = "присяд"
 			direction.y = -1
 
 	#if is_on_wall():
@@ -180,7 +180,7 @@ func _attack():
 	else:
 		attack = false
 	if attack:
-		$spr.animation = 'attack_foot'#str(attack_name[rand_attack_name])
+		$spr.animation = 'удар_ногой'#str(attack_name[rand_attack_name])
 
 func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
@@ -194,13 +194,13 @@ func _gui():
 func _on_spr_animation_finished():
 	if $spr.animation == "attack_hand" or $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
 		rand_attack_name = randi()%3
-	if $spr.animation == 'die':
+	if $spr.animation == 'смерть':
 		get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
 func _death():
 	if health_now <= 0:
-			$spr.animation = 'die'
+			$spr.animation = 'смерть'
 	pass
 
 func _on_attack_area_body_entered(body):
@@ -221,20 +221,20 @@ func _on_spr_frame_changed():
 	elif $spr.animation != "attack2" or $spr.animation != "attack1" or $spr.animation != "attack3":
 		$attack_area/col_Atack.disabled = true
 	
-	if $spr.animation == "attack_hand":
+	if $spr.animation == "удар_рукой":
 		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "attack_hand":
+	elif $spr.animation != "удар_рукой":
 		$attack_area/col_Atack.disabled = true
 	
-	if $spr.animation == "attack_foot":
+	if $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "attack_foot":
+	elif $spr.animation != "удар_ногой":
 		$attack_area/col_Atack.disabled = true
 	
 	
