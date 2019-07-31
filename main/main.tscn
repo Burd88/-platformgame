@@ -3,8 +3,8 @@
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=4]
-[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collapse"
@@ -32,21 +32,21 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=5]
 draw_center = false
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 30
 outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 3 )
 
 [node name="main" type="Node2D"]
@@ -97,8 +97,8 @@ margin_left = 350.0
 margin_top = 82.0
 margin_right = 658.0
 margin_bottom = 139.0
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Пропасть
 и
 Испытания"
@@ -113,7 +113,7 @@ margin_left = 38.2107
 margin_top = 555.544
 margin_right = 243.211
 margin_bottom = 579.544
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "(c) Darkil Corp. 2019"
 align = 1
 valign = 1
@@ -121,16 +121,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="inter"]
-stream = ExtResource( 4 )
-volume_db = 1.0
-
 [node name="ru" type="Button" parent="inter"]
 margin_left = 876.081
 margin_top = 21.766
 margin_right = 912.081
 margin_bottom = 43.766
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "ru"
 
 [node name="en" type="Button" parent="inter"]
@@ -138,11 +134,17 @@ margin_left = 933.216
 margin_top = 23.1264
 margin_right = 971.216
 margin_bottom = 45.1264
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "en"
 
-[node name="Intro" parent="." instance=ExtResource( 5 )]
+[node name="Intro" parent="." instance=ExtResource( 4 )]
 position = Vector2( -2.38394, 223.312 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Intro"]
+position = Vector2( 2.38394, -223.312 )
+stream = ExtResource( 5 )
+volume_db = 1.0
+autoplay = true
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]

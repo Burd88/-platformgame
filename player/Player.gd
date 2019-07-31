@@ -79,7 +79,7 @@ func _move(delta):
 		
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "idle"
+			$spr.animation = "idle2"
 		#elif velocity.y > 0:
 		#	$spr.animation = "fall"
 
@@ -108,11 +108,11 @@ func _move(delta):
 		velocity.y = 0
 		direction.y = 0
 
-	if Input.is_action_just_pressed("ui_up") and velocity.y < 3.84  and velocity.y >=0:
-		velocity.y = -jump_speed
-		direction.y = 1
-	if Input.is_action_pressed("ui_down") :
-		direction.y = -1
+		if Input.is_action_just_pressed("ui_up") and velocity.y < 3.84  and velocity.y >=0:
+			velocity.y = -jump_speed
+			direction.y = 1
+		if Input.is_action_pressed("ui_down") :
+			direction.y = -1
 	
 	
 
@@ -180,7 +180,7 @@ func _attack():
 	else:
 		attack = false
 	if attack:
-		$spr.animation = str(attack_name[rand_attack_name])
+		$spr.animation = 'attack_foot'#str(attack_name[rand_attack_name])
 
 func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
@@ -192,7 +192,7 @@ func _gui():
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
-	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
+	if $spr.animation == "attack_hand" or $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
 		rand_attack_name = randi()%3
 	if $spr.animation == 'die':
 		get_tree().change_scene("res://main/main.tscn")
@@ -220,6 +220,24 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = true
 	elif $spr.animation != "attack2" or $spr.animation != "attack1" or $spr.animation != "attack3":
 		$attack_area/col_Atack.disabled = true
+	
+	if $spr.animation == "attack_hand":
+		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
+			$attack_area/col_Atack.disabled = false
+		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
+			$attack_area/col_Atack.disabled = true
+	elif $spr.animation != "attack_hand":
+		$attack_area/col_Atack.disabled = true
+	
+	if $spr.animation == "attack_foot":
+		if $spr.frame == 2 or $spr.frame == 5 :
+			$attack_area/col_Atack.disabled = false
+		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
+			$attack_area/col_Atack.disabled = true
+	elif $spr.animation != "attack_foot":
+		$attack_area/col_Atack.disabled = true
+	
+	
 	pass # Replace with function body.
 
 
