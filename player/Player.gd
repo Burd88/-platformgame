@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 150
+var speed = 75
 var jump_speed = 150
 var gravity = 230
 
@@ -9,7 +9,7 @@ var health = 1000
 var health_now = health-500
 var php = (health_now*100)/health
 ##----------------------- 
-var attack_name = ['attack1','attack2','attack3']
+var attack_name = ['удар_мечом_1','удар_мечом_2','удар_мечом_3']
 var rand_attack_name = 1
 ##
 var damage = randi()%100+50
@@ -66,13 +66,13 @@ func _move(delta):
 		if velocity.y == 0 and velocity.x == 0:
 			$spr.animation = "присяд"
 		elif velocity.y == 0 and velocity.x != 0:
-			$spr.animation = "подкат"
+			$spr.animation = "шаг_присяд"
 		elif velocity.y > 0:
 			$spr.animation = "падение"
 		
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "бег"
+			$spr.animation = "шаг"
 
 		elif velocity.y > 0:
 			$spr.animation = "падение"
@@ -192,7 +192,7 @@ func _gui():
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
-	if $spr.animation == "attack_hand" or $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
+	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		rand_attack_name = randi()%3
 	if $spr.animation == 'смерть':
 		get_tree().change_scene("res://main/main.tscn")
@@ -213,12 +213,12 @@ func _on_attack_area_body_entered(body):
 
 
 func _on_spr_frame_changed():
-	if $spr.animation == "attack2" or $spr.animation == "attack1" or $spr.animation == "attack3":
+	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "attack2" or $spr.animation != "attack1" or $spr.animation != "attack3":
+	elif $spr.animation != "удар_мечом_1" or $spr.animation != "удар_мечом_2" or $spr.animation != "удар_мечом_3":
 		$attack_area/col_Atack.disabled = true
 	
 	if $spr.animation == "удар_рукой":
