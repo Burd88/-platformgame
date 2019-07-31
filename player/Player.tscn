@@ -258,7 +258,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.33609, 12.7138 )
+extents = Vector2( 5.33609, 14.0887 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.733333, 0.0588235, 0.0588235, 1 )
@@ -322,8 +322,8 @@ script = ExtResource( 1 )
 pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
-animation = "удар_лук_прыжок"
-frame = 4
+animation = "стойка"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -332,8 +332,7 @@ zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 1.05408, 6.3962 )
+position = Vector2( 0.05408, 4.3962 )
 shape = SubResource( 2 )
 
 [node name="GUI" type="CanvasLayer" parent="."]

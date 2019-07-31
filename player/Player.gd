@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 75
+var speed = 150
 var jump_speed = 150
 var gravity = 230
 
@@ -72,7 +72,7 @@ func _move(delta):
 		
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "шаг"
+			$spr.animation = "бег"
 
 		elif velocity.y > 0:
 			$spr.animation = "падение"
