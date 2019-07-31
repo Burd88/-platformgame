@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=2]
+[gd_scene load_steps=149 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=2]
@@ -65,64 +65,79 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=63]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=64]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=65]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-00.png" type="Texture" id=66]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-01.png" type="Texture" id=67]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-02.png" type="Texture" id=68]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=69]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-00.png" type="Texture" id=70]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-01.png" type="Texture" id=71]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-02.png" type="Texture" id=72]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-03.png" type="Texture" id=73]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-04.png" type="Texture" id=74]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-00.png" type="Texture" id=75]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-01.png" type="Texture" id=76]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-02.png" type="Texture" id=77]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-03.png" type="Texture" id=78]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-04.png" type="Texture" id=79]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-05.png" type="Texture" id=80]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=81]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=82]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-00.png" type="Texture" id=83]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-01.png" type="Texture" id=84]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-02.png" type="Texture" id=85]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-03.png" type="Texture" id=86]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-04.png" type="Texture" id=87]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-05.png" type="Texture" id=88]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-00.png" type="Texture" id=89]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-01.png" type="Texture" id=90]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-02.png" type="Texture" id=91]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-03.png" type="Texture" id=92]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-04.png" type="Texture" id=93]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-05.png" type="Texture" id=94]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-00.png" type="Texture" id=95]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=96]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=97]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=98]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-00.png" type="Texture" id=99]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-01.png" type="Texture" id=100]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-02.png" type="Texture" id=101]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-01.png" type="Texture" id=102]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-02.png" type="Texture" id=103]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-03.png" type="Texture" id=104]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-04.png" type="Texture" id=105]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-05.png" type="Texture" id=106]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-06.png" type="Texture" id=107]
-[ext_resource path="res://player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=108]
-[ext_resource path="res://player/Individual Sprites/adventurer-fall-01.png" type="Texture" id=109]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-00.png" type="Texture" id=110]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-01.png" type="Texture" id=111]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-02.png" type="Texture" id=112]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-03.png" type="Texture" id=113]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-00.png" type="Texture" id=114]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-01.png" type="Texture" id=115]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-02.png" type="Texture" id=116]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-03.png" type="Texture" id=117]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-04.png" type="Texture" id=118]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-05.png" type="Texture" id=119]
-[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=120]
-[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=121]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=122]
-[ext_resource path="res://player/light.png" type="Texture" id=123]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-00.png" type="Texture" id=66]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-01.png" type="Texture" id=67]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-02.png" type="Texture" id=68]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-03.png" type="Texture" id=69]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-04.png" type="Texture" id=70]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-05.png" type="Texture" id=71]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-00.png" type="Texture" id=72]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-01.png" type="Texture" id=73]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-02.png" type="Texture" id=74]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=75]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-00.png" type="Texture" id=76]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-01.png" type="Texture" id=77]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-02.png" type="Texture" id=78]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-03.png" type="Texture" id=79]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-04.png" type="Texture" id=80]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-00.png" type="Texture" id=81]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-01.png" type="Texture" id=82]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-02.png" type="Texture" id=83]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-03.png" type="Texture" id=84]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-04.png" type="Texture" id=85]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-05.png" type="Texture" id=86]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=87]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=88]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-00.png" type="Texture" id=89]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-01.png" type="Texture" id=90]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-02.png" type="Texture" id=91]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-03.png" type="Texture" id=92]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-04.png" type="Texture" id=93]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-05.png" type="Texture" id=94]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-00.png" type="Texture" id=95]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-01.png" type="Texture" id=96]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-02.png" type="Texture" id=97]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-03.png" type="Texture" id=98]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-04.png" type="Texture" id=99]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-05.png" type="Texture" id=100]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-00.png" type="Texture" id=101]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=102]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=103]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=104]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-00.png" type="Texture" id=105]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-01.png" type="Texture" id=106]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-02.png" type="Texture" id=107]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-01.png" type="Texture" id=108]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-02.png" type="Texture" id=109]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-03.png" type="Texture" id=110]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-04.png" type="Texture" id=111]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-05.png" type="Texture" id=112]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-06.png" type="Texture" id=113]
+[ext_resource path="res://player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=114]
+[ext_resource path="res://player/Individual Sprites/adventurer-fall-01.png" type="Texture" id=115]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-00.png" type="Texture" id=116]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-01.png" type="Texture" id=117]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-02.png" type="Texture" id=118]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-03.png" type="Texture" id=119]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-04.png" type="Texture" id=120]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-05.png" type="Texture" id=121]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-06.png" type="Texture" id=122]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-07.png" type="Texture" id=123]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-08.png" type="Texture" id=124]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-00.png" type="Texture" id=125]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-01.png" type="Texture" id=126]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-02.png" type="Texture" id=127]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-03.png" type="Texture" id=128]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-00.png" type="Texture" id=129]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-01.png" type="Texture" id=130]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-02.png" type="Texture" id=131]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-03.png" type="Texture" id=132]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-04.png" type="Texture" id=133]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-05.png" type="Texture" id=134]
+[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=135]
+[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=136]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=137]
+[ext_resource path="res://player/light.png" type="Texture" id=138]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -171,62 +186,72 @@ animations = [ {
 "name": "смерть",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ) ],
+"frames": [ ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
+"loop": true,
+"name": "удар_лук_прыжок",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ) ],
 "loop": true,
 "name": "присяд",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ) ],
+"frames": [ ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ) ],
 "loop": true,
 "name": "удар_мечом_3",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ) ],
+"frames": [ ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ) ],
 "loop": true,
 "name": "бег_постенам",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 81 ), ExtResource( 82 ) ],
+"frames": [ ExtResource( 87 ), ExtResource( 88 ) ],
 "loop": true,
 "name": "стойка",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ) ],
+"frames": [ ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ) ],
 "loop": true,
 "name": "ускоренный_бег",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ) ],
+"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ) ],
 "loop": true,
 "name": "шаг",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ) ],
+"frames": [ ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ) ],
 "loop": true,
 "name": "удар_ногой_сверху",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ) ],
+"frames": [ ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
 "loop": true,
 "name": "подкат",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
+"frames": [ ExtResource( 108 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 113 ) ],
 "loop": true,
 "name": "удар_рукой_бег",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 108 ), ExtResource( 109 ) ],
+"frames": [ ExtResource( 114 ), ExtResource( 115 ) ],
 "loop": true,
 "name": "падение",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 110 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 113 ), ExtResource( 108 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ) ],
+"frames": [ ExtResource( 116 ), ExtResource( 117 ), ExtResource( 118 ), ExtResource( 119 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 122 ), ExtResource( 123 ), ExtResource( 124 ) ],
+"loop": true,
+"name": "удар_лук",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 125 ), ExtResource( 126 ), ExtResource( 127 ), ExtResource( 128 ), ExtResource( 114 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ) ],
 "loop": true,
 "name": "прыжок",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 117 ), ExtResource( 118 ), ExtResource( 119 ) ],
+"frames": [ ExtResource( 129 ), ExtResource( 130 ), ExtResource( 131 ), ExtResource( 132 ), ExtResource( 133 ), ExtResource( 134 ) ],
 "loop": true,
 "name": "бег",
 "speed": 10.0
@@ -264,7 +289,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 120 )
+font_data = ExtResource( 135 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.32549, 0.054902, 0.054902, 1 )
@@ -277,10 +302,10 @@ border_blend = true
 
 [sub_resource type="DynamicFont" id=7]
 size = 12
-font_data = ExtResource( 122 )
+font_data = ExtResource( 137 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 122 )
+font_data = ExtResource( 137 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 6.78125, 9.70228 )
@@ -297,8 +322,8 @@ script = ExtResource( 1 )
 pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
-animation = "бег_постенам"
-frame = 5
+animation = "удар_лук_прыжок"
+frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -364,7 +389,7 @@ custom_styles/normal = SubResource( 6 )
 [node name="Sprite" type="Sprite" parent="GUI/health_potion_label"]
 position = Vector2( 25.7358, 21.6164 )
 scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 121 )
+texture = ExtResource( 136 )
 
 [node name="count" type="Label" parent="GUI/health_potion_label"]
 margin_left = 33.7606
@@ -408,7 +433,7 @@ disabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
-texture = ExtResource( 123 )
+texture = ExtResource( 138 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
