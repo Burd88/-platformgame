@@ -110,19 +110,18 @@ func _onlift_body_exited(body):
 		$Text_field/text.hide()
 	pass # Replace with function body.
 
-
+## Недостоющий итем для механизма для ливтов ##
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
 		$Text_field/ItemList.add_item("Gear",icon)
 		$Gear7.queue_free()
-	
 	pass # Replace with function body.
 
-
+## установка недостающей шестерни ##
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
-		print('fuck')
+		#print('fuck')
 		for i in range(0, $Text_field/ItemList.get_item_count()):
 			if $Text_field/ItemList.get_item_text(i) == "Gear":
 				$Gear6.visible = true

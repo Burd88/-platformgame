@@ -591,7 +591,6 @@ shape = SubResource( 7 )
 [node name="Lift_exit" parent="." instance=ExtResource( 8 )]
 position = Vector2( 696, 407 )
 move_to = Vector2( 0, -193 )
-speed = 2.0
 
 [node name="Chain" parent="." instance=ExtResource( 9 )]
 position = Vector2( 256, 571 )
