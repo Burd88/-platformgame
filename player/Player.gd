@@ -270,9 +270,9 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_use_area_entered(area):
-	if area.name == 'Gear6':
-		print("шестерня на месте")
-		area.visible = true
+	#if area.name == 'Gear6':
+	#	print("шестерня на месте")
+	#	area.visible = true
 		
 	#elif area.name == 'lever':
 	#	area.use_lever = true

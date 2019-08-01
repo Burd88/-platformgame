@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -9,17 +9,20 @@
 [ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=7]
 [ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=9]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=10]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=12]
-[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=15]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=16]
-[ext_resource path="res://items/Health Potion/Health_potion.tscn" type="PackedScene" id=17]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=19]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=20]
+[ext_resource path="res://levels/Level1/Gear6.gd" type="Script" id=10]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=11]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=13]
+[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=16]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=17]
+[ext_resource path="res://items/Health Potion/Health_potion.tscn" type="PackedScene" id=18]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=20]
+[ext_resource path="res://levels/Level1/ItemList.gd" type="Script" id=21]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=22]
+[ext_resource path="res://levels/Level1/Gear7.gd" type="Script" id=23]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -457,7 +460,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=30]
-font_data = ExtResource( 18 )
+font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -472,8 +475,19 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.2, 0.027451, 0.027451, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.905882, 0.0941176, 0.0941176, 1 )
+border_blend = true
+
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 5.45142, 5.5163 )
+
+[sub_resource type="CircleShape2D" id=34]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( -8.08606, 17.6423 )
@@ -585,6 +599,7 @@ scale = Vector2( 0.8, 0.8 )
 
 [node name="Gear6" type="Area2D" parent="."]
 position = Vector2( 255.922, 601.272 )
+script = ExtResource( 10 )
 
 [node name="Gear6" parent="Gear6" instance=ExtResource( 7 )]
 
@@ -594,7 +609,7 @@ shape = SubResource( 8 )
 
 [node name="exit_level" type="Area2D" parent="."]
 position = Vector2( 492.631, 163.076 )
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="exit_level"]
 scale = Vector2( 0.605263, 0.720394 )
@@ -607,50 +622,50 @@ position = Vector2( -0.0946045, 12.0309 )
 scale = Vector2( 2.28963, 2.74184 )
 shape = SubResource( 9 )
 
-[node name="Player" parent="." instance=ExtResource( 11 )]
+[node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 91.8881, 385.247 )
 z_index = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2( -91.8881, -385.247 )
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = 3.0
 max_distance = 1000.0
 
-[node name="waterfull" parent="." instance=ExtResource( 13 )]
+[node name="waterfull" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 177.169, 634.905 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull2" parent="." instance=ExtResource( 13 )]
+[node name="waterfull2" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 54.3945, 640.074 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull3" parent="." instance=ExtResource( 13 )]
+[node name="waterfull3" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( -68.38, 640.074 )
 scale = Vector2( 2, 1.02476 )
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Slime" parent="enemies" instance=ExtResource( 14 )]
+[node name="Slime" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 269.448, 1119.71 )
 
-[node name="Slime2" parent="enemies" instance=ExtResource( 14 )]
+[node name="Slime2" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 430.173, 1119.71 )
 
-[node name="Slime3" parent="enemies" instance=ExtResource( 14 )]
+[node name="Slime3" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 575.444, 600.446 )
 z_as_relative = false
 
-[node name="Slime4" parent="enemies" instance=ExtResource( 14 )]
-position = Vector2( 983.44, 510.81 )
+[node name="Slime4" parent="enemies" instance=ExtResource( 15 )]
+position = Vector2( 951.786, 533.42 )
 
-[node name="Slime7" parent="enemies" instance=ExtResource( 14 )]
+[node name="Slime7" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 306.538, 832.261 )
 
-[node name="Bat" parent="enemies" instance=ExtResource( 15 )]
+[node name="Bat" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 464.012, 375.178 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -664,7 +679,7 @@ tile_data = PoolIntArray( 65528, 2, 65536, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2
 visible = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="Torch" parent="." instance=ExtResource( 16 )]
+[node name="Torch" parent="." instance=ExtResource( 17 )]
 position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -676,10 +691,10 @@ scale = Vector2( 2, 2 )
 position = Vector2( 165.509, 356.344 )
 shape = SubResource( 28 )
 
-[node name="Health_potion" parent="." instance=ExtResource( 17 )]
+[node name="Health_potion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 187.426, 353.294 )
 
-[node name="Health_potion2" parent="." instance=ExtResource( 17 )]
+[node name="Health_potion2" parent="." instance=ExtResource( 18 )]
 position = Vector2( 230.074, 361.048 )
 
 [node name="Text_field" type="CanvasLayer" parent="."]
@@ -702,10 +717,10 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 19 )
+custom_styles/hover = ExtResource( 20 )
 custom_styles/pressed = SubResource( 31 )
-custom_styles/focus = ExtResource( 19 )
-custom_styles/normal = ExtResource( 19 )
+custom_styles/focus = ExtResource( 20 )
+custom_styles/normal = ExtResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
 text = "x"
@@ -713,10 +728,24 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="ItemList" type="ItemList" parent="Text_field"]
+margin_left = 11.0
+margin_top = 60.0
+margin_right = 71.0
+margin_bottom = 245.0
+custom_styles/bg = SubResource( 33 )
+allow_reselect = true
+allow_rmb_select = true
+auto_height = true
+same_column_width = true
+fixed_column_width = 50
+icon_mode = 0
+script = ExtResource( 21 )
+
 [node name="lever" type="Area2D" parent="."]
 position = Vector2( 1046.46, 536.293 )
 collision_layer = 2
-script = ExtResource( 20 )
+script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever"]
 position = Vector2( 0, 2.71124 )
@@ -727,15 +756,24 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 320, 64, 16, 16 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Gear7" type="Area2D" parent="."]
+position = Vector2( 879.237, 532.56 )
+script = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gear7"]
+shape = SubResource( 34 )
+
+[node name="Gear7" parent="Gear7" instance=ExtResource( 7 )]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/Sprite/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="door/door_text_area" to="." method="_on_door_text_area_body_entered"]
 [connection signal="body_entered" from="Lift_level1/Area2D" to="." method="_on_lift_body_entered"]
 [connection signal="body_exited" from="Lift_level1/Area2D" to="." method="_onlift_body_exited"]
+[connection signal="area_entered" from="Gear6" to="Gear6" method="_on_Gear6_area_entered"]
 [connection signal="body_entered" from="exit_level" to="." method="_on_Area2D_body_entered"]
 [connection signal="tree_exited" from="Torch" to="." method="_on_Torch_tree_exited"]
 [connection signal="body_entered" from="Torch/tourch_area" to="." method="_on_tourch_area_body_entered"]
 [connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
 [connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]
+[connection signal="area_entered" from="Gear7" to="." method="_on_Gear7_area_entered"]

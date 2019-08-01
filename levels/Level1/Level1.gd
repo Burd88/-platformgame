@@ -11,6 +11,7 @@ func _ready():
 	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
+	$Gear7/Gear7/Sprite/AnimationPlayer.stop()
 
 	pass # Replace with function body.
 
@@ -26,8 +27,11 @@ func _process(delta):
 #	pass
 func start_mechanism():
 	if $Gear6.visible == true:
+	
 		$Chain/AnimatedSprite.play("default")
-		#$Lift_level1/AnimationPlayer.play("work")
+		for i in range(0, $Text_field/ItemList.get_item_count()):
+			if $Text_field/ItemList.get_item_text(i) == "Gear":
+				$Text_field/ItemList.remove_item(i)
 
 		$Lift_level1/moveTween.start()
 		$Lift_exit/moveTween.start()
@@ -104,4 +108,13 @@ func _on_lift_body_entered(body):
 func _onlift_body_exited(body):
 	if body.name == 'Player':
 		$Text_field/text.hide()
+	pass # Replace with function body.
+
+
+func _on_Gear7_area_entered(area):
+	if area.name == 'use':
+		var icon = ResourceLoader.load("res://items/gear/gear.png")
+		$Text_field/ItemList.add_item("Gear",icon)
+		$Gear7.queue_free()
+	
 	pass # Replace with function body.
