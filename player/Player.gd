@@ -9,8 +9,11 @@ var health = 1000
 var health_now = health-500
 var php = (health_now*100)/health
 ##----------------------- 
-var attack_name = ['удар_мечом_1','удар_мечом_2','удар_мечом_3']
+var attack_name_sword = ['удар_мечом_1','удар_мечом_2','удар_мечом_3']
+var rand_attack_name_sword = 1
+var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
+var weapon = 'sword'
 ##
 var damage = randi()%100+50
 
@@ -180,7 +183,12 @@ func _attack():
 	else:
 		attack = false
 	if attack:
-		$spr.animation = 'удар_ногой'#str(attack_name[rand_attack_name])
+		if weapon == 'sword':
+			$spr.animation = str(attack_name_sword[rand_attack_name_sword])
+		elif weapon == null:
+			$spr.animation = str(attack_name[rand_attack_name])
+		elif weapon == 'bow':
+			$spr.animation = 'удар_лук'
 
 func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
@@ -192,8 +200,9 @@ func _gui():
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
-	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
-		rand_attack_name = randi()%3
+	if $spr.animation == "удар_рукой" or $spr.animation == "удар_ногой" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
+		rand_attack_name_sword = randi()%3
+		rand_attack_name = randi()%2
 	if $spr.animation == 'смерть':
 		get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
@@ -218,23 +227,24 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "удар_мечом_1" or $spr.animation != "удар_мечом_2" or $spr.animation != "удар_мечом_3":
-		$attack_area/col_Atack.disabled = true
+	#elif $spr.animation != "удар_мечом_1" or $spr.animation != "удар_мечом_2" or $spr.animation != "удар_мечом_3":
+	#	$attack_area/col_Atack.disabled = true
 	
-	if $spr.animation == "удар_рукой":
+	elif $spr.animation == "удар_рукой":
 		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "удар_рукой":
-		$attack_area/col_Atack.disabled = true
+	#elif $spr.animation != "удар_рукой":
+	#	$attack_area/col_Atack.disabled = true
 	
-	if $spr.animation == "удар_ногой":
+	elif $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
 			$attack_area/col_Atack.disabled = true
-	elif $spr.animation != "удар_ногой":
+	#elif $spr.animation != "удар_ногой":
+	else:
 		$attack_area/col_Atack.disabled = true
 	
 	
