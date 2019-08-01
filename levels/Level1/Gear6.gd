@@ -14,8 +14,3 @@ func _process(delta):
 	pass
 
 
-func _on_Gear6_area_entered(area):
-
-	if area.name == 'use':
-		visible = true
-	pass # Replace with function body.

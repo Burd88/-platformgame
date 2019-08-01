@@ -2,11 +2,11 @@
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
-[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=4]
-[ext_resource path="res://items/waterdown/waterdown.tscn" type="PackedScene" id=5]
-[ext_resource path="res://items/waterdown/waterdow.tscn" type="PackedScene" id=6]
-[ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/waterdown/waterdown.tscn" type="PackedScene" id=3]
+[ext_resource path="res://items/waterdown/waterdow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=5]
+[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=7]
 [ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/Level1/Gear6.gd" type="Script" id=10]
@@ -511,27 +511,52 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1179653, 0, 0, 1179660, 0, 0, 1310726, 4, 0, 1310733, 4, 0, 1376262, 4, 0, 1376269, 4, 0, 1441798, 4, 0, 1441805, 4, 0, 1507334, 4, 0, 1507341, 4, 0, 1572870, 4, 0, 1572877, 4, 0, 1638406, 4, 0, 1638413, 4, 0, 1769498, 0, 0, 1769501, 8, 0, 1769502, 7, 0, 1769503, 6, 0, 1769504, 0, 0, 1769509, 9, 0, 1900571, 4, 0, 1900577, 4, 0, 1966107, 4, 0, 1966113, 4, 0, 2031643, 4, 0, 2031649, 4, 0, 2097179, 4, 0, 2097185, 4, 0, 2228239, 0, 0, 2359311, 0, 0, 2359312, 4, 0, 2359315, 0, 0, 2359322, 0, 0, 2359328, 0, 0, 2359334, 0, 0, 2359340, 0, 0, 2359346, 0, 0, 2359352, 0, 0, 2359358, 0, 0, 2424848, 4, 0, 2490384, 4, 0, 2490388, 4, 0, 2490395, 4, 0, 2490401, 4, 0, 2490407, 4, 0, 2490413, 4, 0, 2490419, 4, 0, 2490425, 4, 0, 2490431, 4, 0, 2555948, 4, 0, 2621492, 4, 0, 2686995, 0, 0, 3211284, 0, 0, 3211294, 0, 0, 3211302, 0, 0, 3342357, 4, 0, 3342367, 4, 0, 3342375, 4, 0, 3407893, 4, 0, 3407896, 0, 0, 3407903, 4, 0, 3407911, 4, 0, 3473429, 4, 0, 3473439, 4, 0, 3473447, 4, 0, 3538983, 4, 0, 3604519, 4, 0, 3670055, 4, 0, 3735591, 4, 0, 3866656, 11, 0, 3997728, 11, 0, 4063245, 0, 0, 4063250, 0, 0, 4063254, 9, 0, 4063257, 0, 0, 4063278, 0, 0, 4063283, 0, 0, 4063288, 0, 0, 4063293, 0, 0, 4063297, 11, 0, 4063298, 0, 0, 4128800, 11, 0, 4194318, 4, 0, 4194323, 4, 0, 4194330, 4, 0, 4194351, 4, 0, 4194356, 4, 0, 4194361, 4, 0, 4259854, 4, 0, 4259859, 4, 0, 4259866, 4, 0, 4259887, 4, 0, 4259892, 4, 0, 4325390, 4, 0, 4325395, 4, 0, 4325402, 4, 0, 4325423, 4, 0, 4325428, 4, 0, 4390926, 4, 0, 4390931, 4, 0, 4390938, 4, 0, 4390942, 7, 0, 4390944, 6, 0, 4390946, 8, 0, 4390959, 4, 0, 4390964, 4, 0, 4456462, 4, 0, 4456467, 4, 0, 4456474, 4, 0, 4456495, 4, 0, 4456500, 4, 0, 4521998, 4, 0, 4522003, 4, 0, 4522010, 4, 0, 4522016, 10, 0, 4522019, 0, 0, 4522022, 5, 0, 4522023, 11, 0, 4522025, 0, 0, 4522031, 4, 0, 4522076, 5, 0, 4587534, 4, 0, 4587539, 4, 0, 4587546, 4, 0, 4653070, 4, 0, 4653075, 4, 0, 4653082, 4, 0, 4653092, 4, 0, 4653095, 11, 0, 4653098, 4, 0, 4718654, 0, 0, 4718655, 8, 0, 4718658, 0, 0, 4718659, 7, 0, 4718662, 0, 0, 4718663, 6, 0, 4718666, 0, 0, 4718667, 7, 0, 4718670, 0, 0, 4718671, 8, 0, 4849727, 4, 0, 4849731, 4, 0, 4849735, 4, 0, 4849739, 4, 0, 4849743, 4, 0, 4915263, 4, 0, 4915267, 4, 0, 4915271, 4, 0, 4915275, 4, 0, 4915279, 4, 0 )
 
+[node name="waterdown" parent="decor" instance=ExtResource( 3 )]
+modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
+position = Vector2( 157.718, 578.438 )
+scale = Vector2( 0.265542, 2.35643 )
+
+[node name="waterdow" parent="decor" instance=ExtResource( 4 )]
+modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
+position = Vector2( 153.985, 622.764 )
+scale = Vector2( 1.25368, 1 )
+
+[node name="Gear" parent="decor" instance=ExtResource( 5 )]
+position = Vector2( 166.687, 615.679 )
+
+[node name="Gear2" parent="decor" instance=ExtResource( 5 )]
+position = Vector2( 180.458, 631.845 )
+
+[node name="Gear3" parent="decor" instance=ExtResource( 5 )]
+position = Vector2( 197.043, 617.421 )
+
+[node name="Gear4" parent="decor" instance=ExtResource( 5 )]
+position = Vector2( 218.211, 619.311 )
+
+[node name="Gear5" parent="decor" instance=ExtResource( 5 )]
+position = Vector2( 234.969, 605.864 )
+
 [node name="trap" type="Node2D" parent="."]
 position = Vector2( -0.418152, -0.418121 )
 
-[node name="Trap_spike" parent="trap" instance=ExtResource( 3 )]
+[node name="Trap_spike" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 488, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 6.0
 
-[node name="Trap_spike2" parent="trap" instance=ExtResource( 3 )]
+[node name="Trap_spike2" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 552.044, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 8.0
 
-[node name="Trap_spike3" parent="trap" instance=ExtResource( 3 )]
+[node name="Trap_spike3" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 616.017, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 7.0
 
 [node name="door" type="StaticBody2D" parent="."]
 position = Vector2( 280.008, 360.048 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="door"]
 texture = ExtResource( 2 )
@@ -552,31 +577,6 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door/door_text_area"]
 position = Vector2( 0.836243, -11.7075 )
 shape = SubResource( 6 )
-
-[node name="waterdown" parent="." instance=ExtResource( 5 )]
-modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
-position = Vector2( 157.718, 578.438 )
-scale = Vector2( 0.265542, 2.35643 )
-
-[node name="waterdow" parent="." instance=ExtResource( 6 )]
-modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
-position = Vector2( 153.985, 622.764 )
-scale = Vector2( 1.25368, 1 )
-
-[node name="Gear" parent="." instance=ExtResource( 7 )]
-position = Vector2( 166.687, 615.679 )
-
-[node name="Gear2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 180.458, 631.845 )
-
-[node name="Gear3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 197.043, 617.421 )
-
-[node name="Gear4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 218.211, 619.311 )
-
-[node name="Gear5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 234.969, 605.864 )
 
 [node name="Lift_level1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 392, 647 )
@@ -601,7 +601,7 @@ scale = Vector2( 0.8, 0.8 )
 position = Vector2( 255.922, 601.272 )
 script = ExtResource( 10 )
 
-[node name="Gear6" parent="Gear6" instance=ExtResource( 7 )]
+[node name="Gear6" parent="Gear6" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gear6"]
 z_index = 1
@@ -648,6 +648,7 @@ position = Vector2( -68.38, 640.074 )
 scale = Vector2( 2, 1.02476 )
 
 [node name="enemies" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Slime" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 269.448, 1119.71 )
@@ -680,6 +681,7 @@ visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Torch" parent="." instance=ExtResource( 17 )]
+editor/display_folded = true
 position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -763,13 +765,13 @@ script = ExtResource( 23 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gear7"]
 shape = SubResource( 34 )
 
-[node name="Gear7" parent="Gear7" instance=ExtResource( 7 )]
+[node name="Gear7" parent="Gear7" instance=ExtResource( 5 )]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/Sprite/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="door/door_text_area" to="." method="_on_door_text_area_body_entered"]
 [connection signal="body_entered" from="Lift_level1/Area2D" to="." method="_on_lift_body_entered"]
 [connection signal="body_exited" from="Lift_level1/Area2D" to="." method="_onlift_body_exited"]
-[connection signal="area_entered" from="Gear6" to="Gear6" method="_on_Gear6_area_entered"]
+[connection signal="area_entered" from="Gear6" to="." method="_on_Gear6_area_entered"]
 [connection signal="body_entered" from="exit_level" to="." method="_on_Area2D_body_entered"]
 [connection signal="tree_exited" from="Torch" to="." method="_on_Torch_tree_exited"]
 [connection signal="body_entered" from="Torch/tourch_area" to="." method="_on_tourch_area_body_entered"]

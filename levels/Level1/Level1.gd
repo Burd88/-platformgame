@@ -8,8 +8,8 @@ func _ready():
 	$Text_field/text.show()
 	$Chain/AnimatedSprite.stop()
 	$Gear6.visible = false
-	$Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
-	$Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
+	$decor/Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
+	$decor/Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear7/Gear7/Sprite/AnimationPlayer.stop()
 
@@ -118,3 +118,12 @@ func _on_Gear7_area_entered(area):
 		$Gear7.queue_free()
 	
 	pass # Replace with function body.
+
+
+func _on_Gear6_area_entered(area):
+	if area.name == 'use':
+		print('fuck')
+		for i in range(0, $Text_field/ItemList.get_item_count()):
+			if $Text_field/ItemList.get_item_text(i) == "Gear":
+				$Gear6.visible = true
+	
