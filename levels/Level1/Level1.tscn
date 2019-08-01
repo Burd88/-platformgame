@@ -583,7 +583,7 @@ speed = 2.0
 position = Vector2( 256, 571 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="Gear6" type="StaticBody2D" parent="."]
+[node name="Gear6" type="Area2D" parent="."]
 position = Vector2( 255.922, 601.272 )
 
 [node name="Gear6" parent="Gear6" instance=ExtResource( 7 )]
@@ -713,7 +713,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lever" type="StaticBody2D" parent="."]
+[node name="lever" type="Area2D" parent="."]
 position = Vector2( 1046.46, 536.293 )
 collision_layer = 2
 script = ExtResource( 20 )
@@ -738,3 +738,4 @@ region_rect = Rect2( 320, 64, 16, 16 )
 [connection signal="body_entered" from="Torch/tourch_area" to="." method="_on_tourch_area_body_entered"]
 [connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
+[connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]

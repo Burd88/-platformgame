@@ -13,7 +13,10 @@ var attack_name_sword = ['удар_мечом_1','удар_мечом_2','уда
 var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
-var weapon = 'sword'
+var weapon = 0
+		# 0 = нет оружия
+		# 1 = меч
+		# 2 = лук
 ##
 var damage = randi()%100+50
 
@@ -183,11 +186,11 @@ func _attack():
 	else:
 		attack = false
 	if attack:
-		if weapon == 'sword':
+		if weapon == 1:
 			$spr.animation = str(attack_name_sword[rand_attack_name_sword])
-		elif weapon == null:
+		elif weapon == 0:
 			$spr.animation = str(attack_name[rand_attack_name])
-		elif weapon == 'bow':
+		elif weapon == 2:
 			$spr.animation = 'удар_лук'
 
 func _gui():
@@ -263,4 +266,15 @@ func _on_Area2D_body_entered(body):
 		body.use_lever = true
 	
 
+	pass # Replace with function body.
+
+
+func _on_use_area_entered(area):
+	if area.name == 'Gear6':
+		print("шестерня на месте")
+		area.visible = true
+		
+	#elif area.name == 'lever':
+	#	area.use_lever = true
+	#	print('Рычаг использован')
 	pass # Replace with function body.
