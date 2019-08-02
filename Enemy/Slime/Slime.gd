@@ -101,10 +101,8 @@ func aim():
 				pos, [self], collision_mask)
 		if result:
 			hit_pos.append(result.position)
-			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 70 and global_position.distance_to(target.global_position) < 90:
+			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 30 and global_position.distance_to(target.global_position) < 90:
 				anim = 'attack'
-				
-				
 				if can_shoot:
 					shoot(pos)
 				break
@@ -183,16 +181,17 @@ func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
-		print(damage)
+		print("attack")
 		anim = 'attack'
+
 	pass # Replace with function body.
 
 
 func _on_sprite_frame_changed():
 	if $sprite.animation == 'attack' and health_now > 0:
-		if $sprite.frame == 1:
+		if $sprite.frame == 0:
 			$attack_area/attack_col.disabled = true
-		elif $sprite.frame == 4:
+		elif $sprite.frame == 3:
 			$attack_area/attack_col.disabled = false
 	if $sprite.animation == 'move':
 		#$sound_idle.autoplay = true
@@ -217,8 +216,18 @@ func _on_Visible_body_exited(body):
 	if body.name == 'Player':
 		target = null
 		move_to_player = false
+		anim = "move"
+		$attack_area/attack_col.disabled = false
 		pass
 	pass # Replace with function body.
 
 
 
+
+
+func _on_attack_area_body_exited(body):
+	if body.name == 'Player' and health_now > 0:
+		$attack_area/attack_col.disabled = false
+		print("exit")
+
+	pass # Replace with function body.
