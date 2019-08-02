@@ -11,7 +11,7 @@ func _ready():
 	$decor/Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
 	$decor/Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
-	$Gear7/Gear7/Sprite/AnimationPlayer.stop()
+	$decor/Gear7/Gear7/Sprite/AnimationPlayer.stop()
 
 	pass # Replace with function body.
 
@@ -41,7 +41,7 @@ func start_mechanism():
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
 		GLOBAL.Player_health = body.health_now
-		get_tree().change_scene('res://levels/Level2/Level2.tscn')
+		body.position = Vector2(296,844)
 	pass # Replace with function body.
 
 
@@ -115,7 +115,7 @@ func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
 		$Text_field/ItemList.add_item("Gear",icon)
-		$Gear7.queue_free()
+		$decor/Gear7.queue_free()
 	pass # Replace with function body.
 
 ## установка недостающей шестерни ##
