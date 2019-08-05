@@ -9,7 +9,7 @@ var health = 300
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
-var anim = 'move'
+var anim = 'idle'
 
 var damage
 
@@ -50,8 +50,8 @@ func _move_enemy(delta):
 	
 	
 	
-	distance.x = speed*delta
-	velocity.x = (direction.x*distance.x)/(delta+0.00001)
+	#distance.x = speed*delta
+	#velocity.x = (direction.x*distance.x)/(delta+0.00001)
 	#if !is_on_wall():
 	velocity.y += gravity*delta
 	
@@ -92,19 +92,25 @@ func aim():
 	hit_pos = []
 	var space_state = get_world_2d().direct_space_state
 	var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5, 5)
+	#print(target.name)
 	var nw = target.position - target_extents
 	var se = target.position + target_extents
 	var ne = target.position + Vector2(target_extents.x, -target_extents.y)
 	var sw = target.position + Vector2(-target_extents.x, target_extents.y)
 	for pos in [target.position, nw, ne, se, sw]:
-		var result = space_state.intersect_ray(position,
-				pos, [self], collision_mask)
+		var result = space_state.intersect_ray(position, pos, [self], collision_mask)
 		if result:
 			hit_pos.append(result.position)
-			if result.collider.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 30 and global_position.distance_to(target.global_position) < 90:
+			#print(result.collider)
+			#if result.collider.name == "frontground" and 
+			if target.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 30 and global_position.distance_to(target.global_position) < 90:
 				anim = 'attack'
+				
+				#print("distance attack")
 				if can_shoot:
+					print("can shoot")
 					shoot(pos)
+					print(pos, "=" , position)
 				break
 			
 			elif position.distance_to(target.position) < 90 and position.distance_to(target.position) > 20:
@@ -118,18 +124,21 @@ func aim():
 					$attack_area.position.x = 60
 					$check_place.position.x = 28
 				move_to_player = true
+				#print("go to player", position.distance_to(target.position))
 			elif global_position.distance_to(target.global_position) > 90 :
 				anim = 'move'
 				move_to_player = false
+				#print("no player")
 			elif global_position.distance_to(target.global_position) <= 20 :
 				anim = 'attack'
 				direction = Vector2(0,0)
 				move_to_player = false
+				#print("attack")
 		
 func shoot(pos):
 	var b = bullet.instance()
-	var a = (pos - global_position).angle()
-	b.start(global_position, a + rand_range(-0.05, 0.05))
+	var a = (pos - position).angle()
+	b.start(position, a + rand_range(-0.15, 0.15))
 	get_parent().add_child(b)
 	can_shoot = false
 
@@ -170,6 +179,7 @@ func _on_AnimatedSprite_animation_finished():
 			_health_potion()
 		
 	if $sprite.animation == 'attack'  and health_now > 0:
+		print("finish attack")
 		can_shoot = true
 		
 
@@ -206,9 +216,13 @@ func _on_sprite_frame_changed():
 
 
 func _on_Visible_body_entered(body):
+	
 	if body.name == 'Player':
 		target = body
 		move_to_player = true
+		print(body.name)
+	else :
+		print("else", body)
 	pass # Replace with function body.
 
 
@@ -216,8 +230,9 @@ func _on_Visible_body_exited(body):
 	if body.name == 'Player':
 		target = null
 		move_to_player = false
-		anim = "move"
+		anim = "idle"
 		$attack_area/attack_col.disabled = false
+		print("exit player")
 		pass
 	pass # Replace with function body.
 

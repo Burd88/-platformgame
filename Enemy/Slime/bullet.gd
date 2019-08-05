@@ -19,6 +19,7 @@ func _on_bullet_body_entered(body):
 		body.health_now -= 53
 		queue_free()
 	elif body.name == 'frontground':
+		print("-_-")
 		queue_free()
 	pass # Replace with function body.
 
