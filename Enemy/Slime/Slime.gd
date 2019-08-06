@@ -34,7 +34,7 @@ func _process(delta):
 	if target:
 		aim()
 		_attack_player()
-		print(global_position.distance_to(target.global_position))
+		#print(global_position.distance_to(target.global_position))
 	_gui()
 	_move_enemy(delta)
 	_damage()
@@ -112,7 +112,7 @@ func aim():
 				if can_shoot:
 					print("can shoot")
 					shoot(pos)
-					print(pos, "=" , position)
+
 				break
 			
 			elif position.distance_to(target.position) < 40 and position.distance_to(target.position) > 20:

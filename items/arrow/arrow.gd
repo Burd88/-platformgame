@@ -9,8 +9,9 @@ func _ready():
 	pass # Replace with function body.
 
 func start(pos):
-	position = pos+ Vector2(5,2)
-	velocity =Vector2(speed , 0)
+	position = -pos#+ Vector2(15,2)
+	rotation = 180
+	velocity =Vector2(speed , 0).rotated(180)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += velocity*delta
