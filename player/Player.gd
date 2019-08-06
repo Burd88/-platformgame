@@ -21,6 +21,8 @@ var weapon = 2
 var damage = randi()%100+50
 
 ##
+onready var arrow = preload("res://items/arrow/arrow.tscn")
+##
 var health_potion = 0
 
 var swim = false
@@ -255,6 +257,14 @@ func _on_spr_frame_changed():
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
 			$attack_area/col_Atack.disabled = true
 	#elif $spr.animation != "удар_ногой":
+	elif $spr.animation == "удар_лук" :
+		if $spr.frame == 7 :
+			print("arrow start")
+			var a = arrow.instance()
+			a.start(position)
+			get_parent().add_child(a)
+			
+			pass
 	else:
 		$attack_area/col_Atack.disabled = true
 	
