@@ -140,7 +140,7 @@ func aim():
 func shoot(pos):
 	var b = bullet.instance()
 	var a = (pos - position).angle()
-	b.start(position, a + rand_range(-0.15, 0.15))
+	b.start(position, a + rand_range(-0.05, 0.05))
 	get_parent().add_child(b)
 	can_shoot = false
 
@@ -209,7 +209,7 @@ func _on_sprite_frame_changed():
 		#$sound_idle.autoplay = true
 		#$sound_idle.playing = true
 		pass
-	elif $sprite.animation == 'attack' and health_now > 0:
+	elif $sprite.animation == 'attack':
 		if $sprite.frame == 2:
 			can_shoot = true
 		#$sound_attack.autoplay = true

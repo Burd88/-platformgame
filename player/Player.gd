@@ -13,7 +13,7 @@ var attack_name_sword = ['удар_мечом_1','удар_мечом_2','уда
 var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
-var weapon = 0
+var weapon = 2
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
@@ -219,7 +219,8 @@ func _on_spr_animation_finished():
 	
 func _death():
 	if health_now <= 0:
-			$spr.animation = 'смерть'
+		health_now = 0
+		$spr.animation = 'смерть'
 	pass
 
 func _on_attack_area_body_entered(body):

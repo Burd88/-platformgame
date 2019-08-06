@@ -224,7 +224,7 @@ animations = [ {
 "frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ) ],
 "loop": true,
 "name": "удар_лук",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ), ExtResource( 108 ), ExtResource( 109 ) ],
 "loop": true,
@@ -323,7 +323,7 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "присяд"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
