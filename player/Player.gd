@@ -64,38 +64,25 @@ func _move(delta):
 	
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3.84 :
-			print("8")
 			$spr.animation = "прыжок"
 		elif velocity.y > 3.84  :
-			print(velocity.y)
-			print("9")
 			$spr.animation = "падение"
-			
 	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y <=3.84 and velocity.x == 0:
 			$spr.animation = "присяд"
-			print("1")
 		elif velocity.y <=3.84 and velocity.x != 0:
 			$spr.animation = "шаг_присяд"
-			print("2")
 		elif velocity.y > 3.84:
-			print("3")
 			$spr.animation = "падение"
-		
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "бег"
-
 		elif velocity.y > 0:
-			print("5")
 			$spr.animation = "падение"
-		
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "стойка"
-			print("7")
 		elif velocity.y > 3.84:
-			print("6")
 			$spr.animation = "падение"
 
 	if direction.x > 0:

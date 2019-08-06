@@ -81,7 +81,7 @@ corner_radius_bottom_left = 3
 extents = Vector2( 4.50776, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 14.0824, 150.211 )
+extents = Vector2( 46.7885, 215.35 )
 
 [node name="Slime" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -92,7 +92,7 @@ position = Vector2( 0.270546, -6.22268 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "hurt"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -137,6 +137,7 @@ shape = SubResource( 5 )
 space_override = 1
 
 [node name="visible_col" type="CollisionShape2D" parent="Visible"]
+position = Vector2( -3.05176e-005, -28.1682 )
 rotation = 1.5708
 shape = SubResource( 6 )
 

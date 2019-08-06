@@ -34,12 +34,14 @@ func _process(delta):
 	if target:
 		aim()
 		_attack_player()
+		print(global_position.distance_to(target.global_position))
 	_gui()
 	_move_enemy(delta)
 	_damage()
 	_check_place()
 	_attack_player()
 	$sprite.animation = anim
+	
 	pass
 
 func _move_enemy(delta):
@@ -83,7 +85,7 @@ func _damage():
 		$attack_area/attack_col.disabled = true
 		$Visible/visible_col.disabled = true
 		anim = 'die'
-	
+		
 	pass
 		# Графический интерфейс
 		
@@ -103,7 +105,7 @@ func aim():
 			hit_pos.append(result.position)
 			#print(result.collider)
 			#if result.collider.name == "frontground" and 
-			if target.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 30 and global_position.distance_to(target.global_position) < 90:
+			if target.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 40 and global_position.distance_to(target.global_position) < 117:
 				anim = 'attack'
 				
 				#print("distance attack")
@@ -113,7 +115,7 @@ func aim():
 					print(pos, "=" , position)
 				break
 			
-			elif position.distance_to(target.position) < 90 and position.distance_to(target.position) > 20:
+			elif position.distance_to(target.position) < 40 and position.distance_to(target.position) > 20:
 				direction = (target.position - position).normalized()
 				if direction.x < 0 :
 					$sprite.flip_h = false
@@ -178,9 +180,9 @@ func _on_AnimatedSprite_animation_finished():
 		if item_rand == 0 :
 			_health_potion()
 		
-	if $sprite.animation == 'attack'  and health_now > 0:
-		print("finish attack")
-		can_shoot = true
+	#if $sprite.animation == 'attack'  and health_now > 0:
+		#print("finish attack")
+		#can_shoot = true
 		
 
 	
@@ -207,7 +209,9 @@ func _on_sprite_frame_changed():
 		#$sound_idle.autoplay = true
 		#$sound_idle.playing = true
 		pass
-	elif $sprite.animation == 'attack':
+	elif $sprite.animation == 'attack' and health_now > 0:
+		if $sprite.frame == 2:
+			can_shoot = true
 		#$sound_attack.autoplay = true
 		#$sound_attack.playing = true
 		pass
