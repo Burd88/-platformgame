@@ -56,7 +56,7 @@ func _physics_process(delta):
 	_light_mode()
 	use()
 	use_health_potion()
-	print(velocity.y ," - ", direction.y)
+	#print(velocity.y ," - ", direction.y)
 	
 	
 func _move(delta):
@@ -64,16 +64,22 @@ func _move(delta):
 	
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3.84 :
+			print("8")
 			$spr.animation = "прыжок"
 		elif velocity.y > 3.84  :
+			print(velocity.y)
+			print("9")
 			$spr.animation = "падение"
 			
 	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
-		if velocity.y <=16 and velocity.x == 0:
+		if velocity.y <=3.84 and velocity.x == 0:
 			$spr.animation = "присяд"
-		elif velocity.y <=16 and velocity.x != 0:
+			print("1")
+		elif velocity.y <=3.84 and velocity.x != 0:
 			$spr.animation = "шаг_присяд"
-		elif velocity.y > 16:
+			print("2")
+		elif velocity.y > 3.84:
+			print("3")
 			$spr.animation = "падение"
 		
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
@@ -81,13 +87,16 @@ func _move(delta):
 			$spr.animation = "бег"
 
 		elif velocity.y > 0:
+			print("5")
 			$spr.animation = "падение"
 		
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			$spr.animation = "стойка"
-		#elif velocity.y > 0:
-		#	$spr.animation = "fall"
+			print("7")
+		elif velocity.y > 3.84:
+			print("6")
+			$spr.animation = "падение"
 
 	if direction.x > 0:
 		$spr.flip_h = false
@@ -106,28 +115,31 @@ func _move(delta):
 	
 	#var get_col = get_slide_collision(get_slide_count()-1)
 	
-	if velocity.y > 0:
+	if velocity.y > 3.84:
 		direction.y = 1
 	
-	if is_on_floor():
+	
+	if is_on_floor() :
 		
 		velocity.y = 0
 		direction.y = 0
 		
 		
 
-		if Input.is_action_just_pressed("ui_up") and velocity.y < 3.84  and velocity.y >=0:
+		if Input.is_action_just_pressed("ui_up") :
+
 			velocity.y = -jump_speed
 			direction.y = 1
-	if Input.is_action_pressed("ui_down") :
-		direction.y = -1
-		$CollisionShape2D.position.y = 10
-		$CollisionShape2D.scale.y = 0.7
+		elif Input.is_action_pressed("ui_down") :
 			
-	else:
-		$CollisionShape2D.position.y = 5
-		$CollisionShape2D.scale.y =  1
-	
+			direction.y = -1
+			$CollisionShape2D.position.y = 9
+			$CollisionShape2D.scale.y = 0.7
+			
+		else:
+			$CollisionShape2D.position.y = 5
+			$CollisionShape2D.scale.y =  1
+		
 	
 
 	#if !is_on_floor():
