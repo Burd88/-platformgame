@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 150 
+var speed = 300 
 var velocity = Vector2()
 var direction = Vector2()
 # Called when the node enters the scene tree for the first time.
@@ -8,10 +8,13 @@ func _ready():
 	
 	pass # Replace with function body.
 
-func start(pos):
-	position = -pos#+ Vector2(15,2)
-	rotation = 180
-	velocity =Vector2(speed , 0).rotated(180)
+func start(pos,dir):
+	position = pos
+	rotation_degrees = dir
+	if dir == 0 :
+		velocity =Vector2(speed , 0)
+	elif dir == 180 :
+		velocity =Vector2(-speed , 0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += velocity*delta

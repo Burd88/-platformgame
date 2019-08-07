@@ -780,6 +780,8 @@ margin_top = 60.0
 margin_right = 71.0
 margin_bottom = 245.0
 custom_styles/bg = SubResource( 33 )
+allow_reselect = true
+allow_rmb_select = true
 auto_height = true
 same_column_width = true
 fixed_column_width = 50
@@ -820,4 +822,5 @@ __meta__ = {
 [connection signal="body_entered" from="Torch/tourch_area" to="." method="_on_tourch_area_body_entered"]
 [connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
+[connection signal="item_selected" from="Text_field/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]

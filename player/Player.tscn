@@ -357,6 +357,15 @@ text = "dvs"
 align = 1
 valign = 1
 
+[node name="arrow" type="Label" parent="GUI"]
+margin_left = 238.599
+margin_top = 32.95
+margin_right = 340.599
+margin_bottom = 46.95
+text = "dvs"
+align = 1
+valign = 1
+
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 335.0
 margin_top = 11.0
@@ -379,6 +388,7 @@ align = 1
 valign = 1
 
 [node name="health_potion_label" type="Label" parent="GUI"]
+editor/display_folded = true
 margin_left = 165.186
 margin_top = 4.73522
 margin_right = 215.186

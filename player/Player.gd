@@ -22,6 +22,7 @@ var damage = randi()%100+50
 
 ##
 onready var arrow = preload("res://items/arrow/arrow.tscn")
+var arrow_count = 5
 ##
 var health_potion = 0
 
@@ -194,19 +195,22 @@ func _attack():
 		attack = true
 	else:
 		attack = false
-	if attack:
-		if weapon == 1:
-			$spr.animation = str(attack_name_sword[rand_attack_name_sword])
-		elif weapon == 0:
-			$spr.animation = str(attack_name[rand_attack_name])
-		elif weapon == 2:
-			$spr.animation = 'удар_лук'
+	if attack and weapon == 1:
+		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
+	elif attack and weapon == 0:
+		$spr.animation = str(attack_name[rand_attack_name])
+	elif attack and weapon == 2 and arrow_count >0:
+		$spr.animation = 'удар_лук'
+	elif attack and weapon == 2 and arrow_count <=0 :
+		weapon = 1
+		$spr.animation = "стойка"
 
 func _gui():
 	$GUI/HPlabel.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
+	$GUI/arrow.text = str("Arrow : ", arrow_count)
 	#if health_now < health:
 	#	health_now += 1
 		# Графический интерфейс игрока
@@ -258,12 +262,22 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = true
 	#elif $spr.animation != "удар_ногой":
 	elif $spr.animation == "удар_лук" :
-		if $spr.frame == 7 :
+		if $spr.frame == 7 and arrow_count > 0:
 			print("arrow start")
 			var a = arrow.instance()
-			a.start(position)
-			get_parent().add_child(a)
-			
+			if $spr.flip_h == false:
+				print("лево")
+				a.start((position+Vector2(15,5)),0)
+				get_parent().add_child(a)
+				arrow_count -=1
+			elif $spr.flip_h == true:
+				print("право")
+				a.start((position-Vector2(15,-5)),180)
+				get_parent().add_child(a)
+				arrow_count -=1
+		elif $spr.frame == 2 and arrow_count <=0:
+			print("no arrow")
+			$spr.animation = "стойка"
 			pass
 	else:
 		$attack_area/col_Atack.disabled = true

@@ -6,9 +6,9 @@ extends ItemList
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var Gear = ResourceLoader.load("res://items/gear/gear.png")
+	var arrow = ResourceLoader.load("res://items/arrow/assets/arrow.png")
 	#var health_potion = ResourceLoader.load('res://items/Health Potion/Health Potion 1.png')
-	#add_item("Gear",Gear)
+	add_item("arrow",arrow)
 	#add_item("Gear2",Gear)
 	#add_item("Gear3",Gear)
 	#add_item("Gear32",Gear)

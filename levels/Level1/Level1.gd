@@ -1,5 +1,5 @@
 extends Node2D
-
+var arrow_count_random
 var tourch = false
 var lever1 = false
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +19,7 @@ func _ready():
 func _process(delta):
 	update()
 	start_mechanism()
+	arrow_count_random = randi()%10+1
 	if lever1:
 		$exit_level.open_door = true
 
@@ -126,3 +127,16 @@ func _on_Gear6_area_entered(area):
 			if $Text_field/ItemList.get_item_text(i) == "Gear":
 				$Gear6.visible = true
 	
+
+
+func _on_ItemList_item_selected(index):
+	var rando = randi()%6
+	if $Text_field/ItemList.get_item_text(index) == "arrow":
+		print(arrow_count_random)
+		print("arrow")
+		$Player.arrow_count += arrow_count_random
+		#$Text_field/ItemList.remove_item(index)
+	pass # Replace with function body.
+
+
+
