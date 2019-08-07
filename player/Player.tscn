@@ -134,11 +134,10 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=132]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=133]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=134]
-[ext_resource path="res://player/inventory/Inventory.tscn" type="PackedScene" id=135]
-[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=136]
-[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=137]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=138]
-[ext_resource path="res://player/light.png" type="Texture" id=139]
+[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=135]
+[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=136]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=137]
+[ext_resource path="res://player/light.png" type="Texture" id=138]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -261,6 +260,41 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.33609, 14.0887 )
 
+[sub_resource type="GDScript" id=11]
+script/source = "extends ItemList
+
+# Declare member variables here. Examples:
+# var a = 2
+var arrow_count_random
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_max_columns(10)
+	set_fixed_icon_size(Vector2(16,16))
+	set_icon_mode(ICON_MODE_TOP)
+	set_select_mode(SELECT_SINGLE)
+	set_same_column_width(true)
+	set_allow_rmb_select(true)
+	
+	var arrow = ResourceLoader.load(\"res://items/arrow/assets/arrow.png\")
+	#var health_potion = ResourceLoader.load('res://items/Health Potion/Health Potion 1.png')
+	add_item(\"arrow\",arrow)
+	
+	
+
+
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	arrow_count_random = randi()%10+1
+	pass
+
+
+func _on_ItemList_item_selected(index):
+
+	pass # Replace with function body.
+"
+
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.733333, 0.0588235, 0.0588235, 1 )
 border_width_left = 1
@@ -290,7 +324,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 136 )
+font_data = ExtResource( 135 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.32549, 0.054902, 0.054902, 1 )
@@ -303,10 +337,10 @@ border_blend = true
 
 [sub_resource type="DynamicFont" id=7]
 size = 12
-font_data = ExtResource( 138 )
+font_data = ExtResource( 137 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 138 )
+font_data = ExtResource( 137 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 6.78125, 9.70228 )
@@ -324,7 +358,7 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "присяд"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -336,14 +370,24 @@ smoothing_enabled = true
 position = Vector2( 0, 5 )
 shape = SubResource( 2 )
 
-[node name="GUI" type="CanvasLayer" parent="."]
+[node name="inventary" type="CanvasLayer" parent="."]
+offset = Vector2( 300, 150 )
+transform = Transform2D( 1, 0, 0, 1, 300, 150 )
 
-[node name="Inventory" parent="GUI" instance=ExtResource( 135 )]
-visible = false
-margin_left = 300.0
-margin_top = 150.0
-margin_right = 300.0
-margin_bottom = 150.0
+[node name="Panel" type="Panel" parent="inventary"]
+margin_right = 450.0
+margin_bottom = 300.0
+
+[node name="ItemList" type="ItemList" parent="inventary/Panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 430.0
+margin_bottom = 280.0
+allow_reselect = true
+allow_rmb_select = true
+script = SubResource( 11 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" type="ProgressBar" parent="GUI"]
 margin_left = 30.0
@@ -406,7 +450,7 @@ custom_styles/normal = SubResource( 6 )
 [node name="Sprite" type="Sprite" parent="GUI/health_potion_label"]
 position = Vector2( 25.7358, 21.6164 )
 scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 137 )
+texture = ExtResource( 136 )
 
 [node name="count" type="Label" parent="GUI/health_potion_label"]
 margin_left = 33.7606
@@ -450,12 +494,13 @@ disabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
-texture = ExtResource( 139 )
+texture = ExtResource( 138 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
+[connection signal="item_selected" from="inventary/Panel/ItemList" to="." method="_on_inventory_item_selected" flags=3]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="use" to="." method="_on_use_area_entered"]
 [connection signal="body_entered" from="use" to="." method="_on_Area2D_body_entered"]

@@ -115,7 +115,7 @@ func _onlift_body_exited(body):
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
-		$Player/GUI/Inventory/Panel/ItemList.add_item("Gear",icon)
+		$Player/inventary/Panel/ItemList.add_item("Gear",icon)
 		$decor/Gear7.queue_free()
 	pass # Replace with function body.
 
@@ -123,10 +123,10 @@ func _on_Gear7_area_entered(area):
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
 		#print('fuck')
-		for i in range(0, $Player/GUI/Inventory/Panel/ItemList.get_item_count()):
-			if $Player/GUI/Inventory/Panel/ItemList.get_item_text(i) == "Gear":
+		for i in range(0, $Player/inventary/Panel/ItemList.get_item_count()):
+			if $Player/inventary/Panel/ItemList.get_item_text(i) == "Gear":
 				$Gear6.visible = true
-				$Player/GUI/Inventory/Panel/ItemList.remove_item(i)
+				$Player/inventary/Panel/ItemList.remove_item(i)
 			else:
 				$Text_field/text.show()
 				if translationt.language == 1:

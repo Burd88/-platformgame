@@ -17,3 +17,4 @@ margin_top = 20.0
 margin_right = 428.64
 margin_bottom = 280.0
 icon_mode = 0
+[connection signal="item_selected" from="Panel/ItemList" to="." method="_on_ItemList_item_selected"]

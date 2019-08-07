@@ -295,10 +295,10 @@ func _on_Area2D_body_entered(body):
 	pass # Replace with function body.
 
 func _open_inventory():
-	if Input.is_action_just_pressed("open_inventory") and $GUI/Inventory.visible == false:
-		$GUI/Inventory.visible = true
-	elif Input.is_action_just_pressed("open_inventory") and $GUI/Inventory.visible == true:
-		$GUI/Inventory.visible = false
+	if Input.is_action_just_pressed("open_inventory") and $inventary/Panel.visible == false:
+		$inventary/Panel.visible = true
+	elif Input.is_action_just_pressed("open_inventory") and $inventary/Panel.visible == true:
+		$inventary/Panel.visible = false
 
 
 
@@ -310,4 +310,13 @@ func _on_use_area_entered(area):
 	#elif area.name == 'lever':
 	#	area.use_lever = true
 	#	print('Рычаг использован')
+	pass # Replace with function body.
+
+
+func _on_inventory_item_selected(index):
+	if $inventary/Panel/ItemList.get_item_text(index) == "arrow":
+		print($inventary/Panel/ItemList.arrow_count_random)
+		print("arrow")
+		arrow_count += $inventary/Panel/ItemList.arrow_count_random
+		$inventary/Panel/ItemList.remove_item(index)
 	pass # Replace with function body.
