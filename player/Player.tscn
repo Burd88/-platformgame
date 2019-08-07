@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=150 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=2]
@@ -134,10 +134,11 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=132]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=133]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=134]
-[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=135]
-[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=136]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=137]
-[ext_resource path="res://player/light.png" type="Texture" id=138]
+[ext_resource path="res://player/inventory/Inventory.tscn" type="PackedScene" id=135]
+[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=136]
+[ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=137]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=138]
+[ext_resource path="res://player/light.png" type="Texture" id=139]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -289,7 +290,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 135 )
+font_data = ExtResource( 136 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.32549, 0.054902, 0.054902, 1 )
@@ -302,10 +303,10 @@ border_blend = true
 
 [sub_resource type="DynamicFont" id=7]
 size = 12
-font_data = ExtResource( 137 )
+font_data = ExtResource( 138 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 137 )
+font_data = ExtResource( 138 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 6.78125, 9.70228 )
@@ -336,6 +337,13 @@ position = Vector2( 0, 5 )
 shape = SubResource( 2 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="GUI" instance=ExtResource( 135 )]
+visible = false
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 300.0
+margin_bottom = 150.0
 
 [node name="Healthbar" type="ProgressBar" parent="GUI"]
 margin_left = 30.0
@@ -398,7 +406,7 @@ custom_styles/normal = SubResource( 6 )
 [node name="Sprite" type="Sprite" parent="GUI/health_potion_label"]
 position = Vector2( 25.7358, 21.6164 )
 scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 136 )
+texture = ExtResource( 137 )
 
 [node name="count" type="Label" parent="GUI/health_potion_label"]
 margin_left = 33.7606
@@ -442,7 +450,7 @@ disabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
-texture = ExtResource( 138 )
+texture = ExtResource( 139 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true

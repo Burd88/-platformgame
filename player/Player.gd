@@ -59,6 +59,7 @@ func _physics_process(delta):
 	_light_mode()
 	use()
 	use_health_potion()
+	_open_inventory()
 	#print(velocity.y ," - ", direction.y)
 	
 	
@@ -292,6 +293,13 @@ func _on_Area2D_body_entered(body):
 		print("door open")
 		
 	pass # Replace with function body.
+
+func _open_inventory():
+	if Input.is_action_just_pressed("open_inventory") and $GUI/Inventory.visible == false:
+		$GUI/Inventory.visible = true
+	elif Input.is_action_just_pressed("open_inventory") and $GUI/Inventory.visible == true:
+		$GUI/Inventory.visible = false
+
 
 
 func _on_use_area_entered(area):

@@ -775,17 +775,22 @@ __meta__ = {
 }
 
 [node name="ItemList" type="ItemList" parent="Text_field"]
+visible = false
+anchor_right = 0.82
+anchor_bottom = 1.0
 margin_left = 11.0
 margin_top = 60.0
-margin_right = 71.0
-margin_bottom = 245.0
+margin_right = -768.68
+margin_bottom = -355.0
+rect_clip_content = false
 custom_styles/bg = SubResource( 33 )
 allow_reselect = true
 allow_rmb_select = true
 auto_height = true
+max_columns = 0
 same_column_width = true
-fixed_column_width = 50
 icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_lock_": true

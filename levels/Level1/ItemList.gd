@@ -8,7 +8,6 @@ extends ItemList
 func _ready():
 	var arrow = ResourceLoader.load("res://items/arrow/assets/arrow.png")
 	#var health_potion = ResourceLoader.load('res://items/Health Potion/Health Potion 1.png')
-	add_item("arrow",arrow)
 	#add_item("Gear2",Gear)
 	#add_item("Gear3",Gear)
 	#add_item("Gear32",Gear)

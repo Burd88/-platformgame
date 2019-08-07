@@ -115,7 +115,7 @@ func _onlift_body_exited(body):
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
-		$Text_field/ItemList.add_item("Gear",icon)
+		$Player/GUI/Inventory/Panel/ItemList.add_item("Gear",icon)
 		$decor/Gear7.queue_free()
 	pass # Replace with function body.
 
@@ -123,19 +123,24 @@ func _on_Gear7_area_entered(area):
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
 		#print('fuck')
-		for i in range(0, $Text_field/ItemList.get_item_count()):
-			if $Text_field/ItemList.get_item_text(i) == "Gear":
+		for i in range(0, $Player/GUI/Inventory/Panel/ItemList.get_item_count()):
+			if $Player/GUI/Inventory/Panel/ItemList.get_item_text(i) == "Gear":
 				$Gear6.visible = true
-	
+				$Player/GUI/Inventory/Panel/ItemList.remove_item(i)
+			else:
+				$Text_field/text.show()
+				if translationt.language == 1:
+					$Text_field/text.text = 'Нужно найти деталь, чтоб механизм заработал'
+				elif translationt.language == 2:
+					$Text_field/text.text = 'need find item for this meshanism'
 
 
 func _on_ItemList_item_selected(index):
-	var rando = randi()%6
 	if $Text_field/ItemList.get_item_text(index) == "arrow":
 		print(arrow_count_random)
 		print("arrow")
 		$Player.arrow_count += arrow_count_random
-		#$Text_field/ItemList.remove_item(index)
+		$Text_field/ItemList.remove_item(index)
 	pass # Replace with function body.
 
 
