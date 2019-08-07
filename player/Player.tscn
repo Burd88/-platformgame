@@ -358,7 +358,7 @@ pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
 animation = "присяд"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -375,6 +375,7 @@ offset = Vector2( 300, 150 )
 transform = Transform2D( 1, 0, 0, 1, 300, 150 )
 
 [node name="Panel" type="Panel" parent="inventary"]
+visible = false
 margin_right = 450.0
 margin_bottom = 300.0
 
