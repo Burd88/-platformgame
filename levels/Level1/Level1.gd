@@ -125,6 +125,7 @@ func _on_Gear6_area_entered(area):
 		#print('fuck')
 		for i in range(0, $Player/inventary/Panel/ItemList.get_item_count()):
 			if $Player/inventary/Panel/ItemList.get_item_text(i) == "Gear":
+				
 				$Gear6.visible = true
 				$Player/inventary/Panel/ItemList.remove_item(i)
 			else:
@@ -137,8 +138,8 @@ func _on_Gear6_area_entered(area):
 
 func _on_ItemList_item_selected(index):
 	if $Text_field/ItemList.get_item_text(index) == "arrow":
-		print(arrow_count_random)
-		print("arrow")
+	#	print(arrow_count_random)
+	#	print("arrow")
 		$Player.arrow_count += arrow_count_random
 		$Text_field/ItemList.remove_item(index)
 	pass # Replace with function body.

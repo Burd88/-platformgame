@@ -110,7 +110,7 @@ func aim():
 				
 				#print("distance attack")
 				if can_shoot:
-					print("can shoot")
+					#print("can shoot")
 					shoot(pos)
 
 				break
@@ -176,7 +176,7 @@ func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
 		var item_rand = randi()%6
-		print(item_rand)
+	#	print(item_rand)
 		if item_rand == 0 :
 			_health_potion()
 		
@@ -193,7 +193,7 @@ func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
-		print("attack")
+	#	print("attack")
 		anim = 'attack'
 
 	pass # Replace with function body.
@@ -224,10 +224,10 @@ func _on_Visible_body_entered(body):
 	if body.name == 'Player':
 		target = body
 		move_to_player = true
-		print(body.name)
+	#	print(body.name)
 	else :
-		print("else", body)
-	pass # Replace with function body.
+	#	print("else", body)
+		pass # Replace with function body.
 
 
 func _on_Visible_body_exited(body):
@@ -236,7 +236,7 @@ func _on_Visible_body_exited(body):
 		move_to_player = false
 		anim = "idle"
 		$attack_area/attack_col.disabled = false
-		print("exit player")
+	#	print("exit player")
 		pass
 	pass # Replace with function body.
 
@@ -247,6 +247,6 @@ func _on_Visible_body_exited(body):
 func _on_attack_area_body_exited(body):
 	if body.name == 'Player' and health_now > 0:
 		$attack_area/attack_col.disabled = false
-		print("exit")
+	#	print("exit")
 
 	pass # Replace with function body.

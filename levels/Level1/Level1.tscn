@@ -1,27 +1,26 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
 [ext_resource path="res://items/waterdown/waterdown.tscn" type="PackedScene" id=3]
 [ext_resource path="res://items/waterdown/waterdow.tscn" type="PackedScene" id=4]
 [ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=5]
-[ext_resource path="res://levels/Level1/Gear7.gd" type="Script" id=6]
-[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=7]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=8]
-[ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=10]
-[ext_resource path="res://levels/Level1/Gear6.gd" type="Script" id=11]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=12]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=14]
-[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=17]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=18]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=20]
-[ext_resource path="res://levels/Level1/ItemList.gd" type="Script" id=21]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=22]
+[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=7]
+[ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Level1/Gear6.gd" type="Script" id=10]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=11]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=13]
+[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=16]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=17]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=19]
+[ext_resource path="res://levels/Level1/ItemList.gd" type="Script" id=20]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -239,7 +238,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -50 ) ]
+"values": [ Vector2( 280, 360 ), Vector2( 280, 310 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -469,7 +468,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=31]
-font_data = ExtResource( 19 )
+font_data = ExtResource( 18 )
 
 [sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -548,7 +547,6 @@ position = Vector2( 234.969, 605.864 )
 
 [node name="Gear7" type="Area2D" parent="decor"]
 position = Vector2( 307.072, 611.935 )
-script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="decor/Gear7"]
 shape = SubResource( 3 )
@@ -561,27 +559,29 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Trap_spike" parent="trap" instance=ExtResource( 7 )]
+[node name="Trap_spike" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 488, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 6.0
 
-[node name="Trap_spike2" parent="trap" instance=ExtResource( 7 )]
+[node name="Trap_spike2" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 552.044, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 8.0
 
-[node name="Trap_spike3" parent="trap" instance=ExtResource( 7 )]
+[node name="Trap_spike3" parent="trap" instance=ExtResource( 6 )]
 position = Vector2( 616.017, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 7.0
 
 [node name="door" type="StaticBody2D" parent="."]
-position = Vector2( 280.008, 360.048 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 280, 360 )
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="door"]
+playback_speed = 0.7
+anims/opendoor = SubResource( 4 )
+"anims/Новая анимация" = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="door"]
 texture = ExtResource( 2 )
@@ -591,10 +591,6 @@ region_rect = Rect2( 0, 16, 16, 48 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="door/Sprite"]
-anims/opendoor = SubResource( 4 )
-"anims/Новая анимация" = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
 position = Vector2( 0.35849, -2.5094 )
@@ -612,7 +608,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Lift_level1" parent="." instance=ExtResource( 9 )]
+[node name="Lift_level1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 392, 647 )
 move_to = Vector2( 0, -241 )
 
@@ -628,17 +624,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Lift_exit" parent="." instance=ExtResource( 9 )]
+[node name="Lift_exit" parent="." instance=ExtResource( 8 )]
 position = Vector2( 696, 407 )
 move_to = Vector2( 0, -193 )
 
-[node name="Chain" parent="." instance=ExtResource( 10 )]
+[node name="Chain" parent="." instance=ExtResource( 9 )]
 position = Vector2( 256, 571 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Gear6" type="Area2D" parent="."]
 position = Vector2( 255.922, 601.272 )
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -654,7 +650,7 @@ __meta__ = {
 
 [node name="exit_level" type="Area2D" parent="."]
 position = Vector2( 492.631, 163.076 )
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -676,39 +672,45 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
+[node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 94.5963, 316.64 )
 z_index = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2( -91.8881, -385.247 )
-stream = ExtResource( 14 )
+stream = ExtResource( 13 )
 volume_db = 3.0
 max_distance = 1000.0
 
-[node name="waterfull" parent="." instance=ExtResource( 15 )]
+[node name="waterfull" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 177.169, 634.905 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull2" parent="." instance=ExtResource( 15 )]
+[node name="waterfull2" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 54.3945, 640.074 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull3" parent="." instance=ExtResource( 15 )]
+[node name="waterfull3" parent="." instance=ExtResource( 14 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( -68.38, 640.074 )
 scale = Vector2( 2, 1.02476 )
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Slime3" parent="enemies" instance=ExtResource( 16 )]
+[node name="Slime3" parent="enemies" instance=ExtResource( 15 )]
 position = Vector2( 575.444, 600.446 )
 z_as_relative = false
 
-[node name="Bat" parent="enemies" instance=ExtResource( 17 )]
+[node name="Bat" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 464.012, 375.178 )
+
+[node name="Slime" parent="enemies" instance=ExtResource( 15 )]
+position = Vector2( 933.659, 469.32 )
+
+[node name="Slime2" parent="enemies" instance=ExtResource( 15 )]
+position = Vector2( 837.196, 608.714 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 28 )
@@ -727,7 +729,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="." instance=ExtResource( 18 )]
+[node name="Torch" parent="." instance=ExtResource( 17 )]
 editor/display_folded = true
 position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
@@ -763,10 +765,10 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 20 )
+custom_styles/hover = ExtResource( 19 )
 custom_styles/pressed = SubResource( 32 )
-custom_styles/focus = ExtResource( 20 )
-custom_styles/normal = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
 text = "x"
@@ -791,7 +793,7 @@ max_columns = 0
 same_column_width = true
 icon_mode = 0
 fixed_icon_size = Vector2( 16, 16 )
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -799,7 +801,7 @@ __meta__ = {
 [node name="lever" type="Area2D" parent="."]
 position = Vector2( 822.019, 472.076 )
 collision_layer = 2
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever"]
 position = Vector2( 0, 2.71124 )
@@ -817,7 +819,7 @@ __meta__ = {
 }
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
-[connection signal="animation_finished" from="door/Sprite/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="door/door_text_area" to="." method="_on_door_text_area_body_entered"]
 [connection signal="body_entered" from="Lift_level1/Area2D" to="." method="_on_lift_body_entered"]
 [connection signal="body_exited" from="Lift_level1/Area2D" to="." method="_onlift_body_exited"]

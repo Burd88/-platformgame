@@ -9,8 +9,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if open:
-		$Sprite/AnimationPlayer.play("opendoor")
-		$CollisionShape2D.disabled = true
+		$AnimationPlayer.play("opendoor")
+		
 	else:
 		
 		pass

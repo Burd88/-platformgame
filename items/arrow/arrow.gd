@@ -23,13 +23,16 @@ func _process(delta):
 
 
 func _on_arrow_body_entered(body):
-	print(body)
-	for i in range(0, 10) :
-		if body.name == str("Slime",+i):
-			print("sdas")
-			body.health_now -=100
-			queue_free()
-		else:
-			queue_free()
+	
+	if body.name == "Slime":
+		body.health_now -=100
+		queue_free()
+	elif body.name != "Slime":
+		for i in range(0, 10) :
+			if body.name == str("Slime",+i) or body.name == "Slime":
+				body.health_now -=100
+				queue_free()
+			else:
+				queue_free()
 	
 	pass # Replace with function body.

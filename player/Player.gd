@@ -231,11 +231,15 @@ func _death():
 	pass
 
 func _on_attack_area_body_entered(body):
-	if body.get_class() == "KinematicBody2D" :
-		body.health_now -= damage
-		
-		#body.anim = 'hurt'
-	elif !body:
+	if body.name == "Slime":
+		body.health_now -=100
+	elif body.name != "Slime":
+		for i in range(0, 10) :
+			if body.name == str("Slime",+i) :
+				body.health_now -=100
+			#print("sdas")
+			
+	if !body:
 		$attack_area/col_Atack.disabled = true
 
 
@@ -264,20 +268,20 @@ func _on_spr_frame_changed():
 	#elif $spr.animation != "удар_ногой":
 	elif $spr.animation == "удар_лук" :
 		if $spr.frame == 7 and arrow_count > 0:
-			print("arrow start")
+		#	print("arrow start")
 			var a = arrow.instance()
 			if $spr.flip_h == false:
-				print("лево")
+			#	print("лево")
 				a.start((position+Vector2(15,5)),0)
 				get_parent().add_child(a)
 				arrow_count -=1
 			elif $spr.flip_h == true:
-				print("право")
+			#	print("право")
 				a.start((position-Vector2(15,-5)),180)
 				get_parent().add_child(a)
 				arrow_count -=1
 		elif $spr.frame == 2 and arrow_count <=0:
-			print("no arrow")
+		#	print("no arrow")
 			$spr.animation = "стойка"
 			pass
 	else:
@@ -290,7 +294,7 @@ func _on_spr_frame_changed():
 func _on_Area2D_body_entered(body):
 	if body.name == 'door':
 		body.open = true
-		print("door open")
+	#	print("door open")
 		
 	pass # Replace with function body.
 
@@ -315,8 +319,8 @@ func _on_use_area_entered(area):
 
 func _on_inventory_item_selected(index):
 	if $inventary/Panel/ItemList.get_item_text(index) == "arrow":
-		print($inventary/Panel/ItemList.arrow_count_random)
-		print("arrow")
+	#	print($inventary/Panel/ItemList.arrow_count_random)
+	#	print("arrow")
 		arrow_count += $inventary/Panel/ItemList.arrow_count_random
 		$inventary/Panel/ItemList.remove_item(index)
 	pass # Replace with function body.
