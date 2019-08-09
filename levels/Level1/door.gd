@@ -19,6 +19,6 @@ func _process(delta):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == 'opendoor':
-		print('open')
+#		print('open')
 		queue_free()
 	pass # Replace with function body.

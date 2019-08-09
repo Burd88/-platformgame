@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 150 
+var speed = 250 
 var velocity = Vector2()
 var direction = Vector2()
 # Called when the node enters the scene tree for the first time.
