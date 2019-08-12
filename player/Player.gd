@@ -64,8 +64,10 @@ func _physics_process(delta):
 	
 	
 func _move(delta):
-	direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
-	
+	if health_now > 0: 
+		direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+	elif health_now <=0:
+		direction.x = 0
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3.84 :
 			$spr.animation = "прыжок"
@@ -226,6 +228,7 @@ func _on_spr_animation_finished():
 	
 func _death():
 	if health_now <= 0:
+		velocity = Vector2(0,0)
 		health_now = 0
 		$spr.animation = 'смерть'
 	pass

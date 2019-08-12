@@ -18,7 +18,7 @@ func start(pos,dir):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += velocity*delta
-	velocity.y = gravity*delta
+	velocity.y += gravity*delta
 	pass
 
 

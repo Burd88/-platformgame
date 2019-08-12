@@ -9,7 +9,7 @@ var health = 300
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
-var anim = 'idle'
+var anim = 'move'
 
 var damage
 
@@ -34,7 +34,12 @@ func _process(delta):
 	if target:
 		aim()
 		_attack_player()
-		#print(global_position.distance_to(target.global_position))
+		#print(global_position.angle_to(target.global_position))
+		#if global_position.angle_to(target.global_position) < 1 and global_position.angle_to(target.global_position) > 0:
+		#	pass#print("pravo")
+		#	
+		#elif global_position.angle_to(target.global_position) > -1 and global_position.angle_to(target.global_position) < 0:
+		#	pass#print("levo")
 	_gui()
 	_move_enemy(delta)
 	_damage()
@@ -52,8 +57,8 @@ func _move_enemy(delta):
 	
 	
 	
-	#distance.x = speed*delta
-	#velocity.x = (direction.x*distance.x)/(delta+0.00001)
+	distance.x = speed*delta
+	velocity.x = (direction.x*distance.x)/(delta+0.00001)
 	#if !is_on_wall():
 	velocity.y += gravity*delta
 	
@@ -107,16 +112,8 @@ func aim():
 			#if result.collider.name == "frontground" and 
 			if target.name == "Player" and health_now > 0 and global_position.distance_to(target.global_position) > 40 and global_position.distance_to(target.global_position) < 117:
 				anim = 'attack'
-				
-				#print("distance attack")
-				if can_shoot:
-					#print("can shoot")
-					shoot(pos)
-
-				break
-			
-			elif position.distance_to(target.position) < 40 and position.distance_to(target.position) > 20:
 				direction = (target.position - position).normalized()
+				#print("direct : ",direction)
 				if direction.x < 0 :
 					$sprite.flip_h = false
 					$attack_area.position.x = 0
@@ -126,8 +123,27 @@ func aim():
 					$attack_area.position.x = 60
 					$check_place.position.x = 28
 				move_to_player = true
+					#print("distance attack")
+				if can_shoot:
+					#print("can shoot")
+					shoot(pos)
+
+				break
+			
+			#elif position.distance_to(target.position) < 117 and position.distance_to(target.position) > 20:
+			#	direction = (target.position - position).normalized()
+			#	print("direct : ",direction)
+			#	if direction.x < 0 :
+			#		$sprite.flip_h = false
+			#		$attack_area.position.x = 0
+			#		$check_place.position.x = -28
+			#	elif direction.x > 0:
+			#		$sprite.flip_h = true
+			#		$attack_area.position.x = 60
+			#		$check_place.position.x = 28
+			#	move_to_player = true
 				#print("go to player", position.distance_to(target.position))
-			elif global_position.distance_to(target.global_position) > 90 :
+			elif global_position.distance_to(target.global_position) > 60 :
 				anim = 'move'
 				move_to_player = false
 				#print("no player")
@@ -158,6 +174,7 @@ func _check_place():
 		_change_position()
 	#elif is_on_wall() and move_to_player:
 		#velocity.y = -jump_speed
+		
 		
 func _change_position():
 	direction.x =direction.x*(-1)
