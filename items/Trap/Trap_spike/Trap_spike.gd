@@ -25,3 +25,11 @@ func _init_tween():
 func _physics_process(delta):
 	$trap.position = $trap.position.linear_interpolate(follow, 0.075)
 	pass
+
+func _on_kill_area_body_entered(body):
+	if body.name == "Player":
+		body.health_now = 0
+		print("Player killing")
+	else:
+		print("no Player")
+	pass # Replace with function body.
