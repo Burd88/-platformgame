@@ -163,7 +163,7 @@ func shoot(pos):
 func _health_potion():
 	var b = health_potion.instance()
 	get_parent().add_child(b)
-	b.position = global_position
+	b.position = position
 
 func _check_place():
 	if $check_place.is_colliding() == false and !move_to_player and is_on_floor():
@@ -192,10 +192,11 @@ func _change_position():
 func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
-		var item_rand = randi()%6
+		var item_rand = randi()%2
 	#	print(item_rand)
 		if item_rand == 0 :
 			_health_potion()
+			print("бутылек")
 		
 	#if $sprite.animation == 'attack'  and health_now > 0:
 		#print("finish attack")
@@ -203,9 +204,7 @@ func _on_AnimatedSprite_animation_finished():
 		
 
 	
-	pass # Replace with function body.
-
-
+	pass # Replace with function bodyввв
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
