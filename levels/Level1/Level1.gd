@@ -28,12 +28,7 @@ func _process(delta):
 #	pass
 func start_mechanism():
 	if $Gear6.visible == true:
-	
 		$Chain/AnimatedSprite.play("default")
-		for i in range(0, $Text_field/ItemList.get_item_count()):
-			if $Text_field/ItemList.get_item_text(i) == "Gear":
-				$Text_field/ItemList.remove_item(i)
-
 		$Lift_level1/moveTween.start()
 		$Lift_exit/moveTween.start()
 	else :
@@ -115,19 +110,40 @@ func _onlift_body_exited(body):
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
-		$Player/inventary/Panel/ItemList.add_item("Gear",icon)
-		$decor/Gear7.queue_free()
+		if $Player/inventary/inventory/bag1.get_item_count() < 1:
+			$Player/inventary/inventory/bag1.add_item("Gear",icon)
+			$decor/Gear7.queue_free()
+		elif $Player/inventary/inventory/bag2.get_item_count() < 1:
+			$Player/inventary/inventory/bag2.add_item("Gear",icon)
+			$decor/Gear7.queue_free()
+		elif $Player/inventary/inventory/bag3.get_item_count() < 1:
+			$Player/inventary/inventory/bag3.add_item("Gear",icon)
+			$decor/Gear7.queue_free()
+		elif $Player/inventary/inventory/bag4.get_item_count() < 1:
+			$Player/inventary/inventory/bag4.add_item("Gear",icon)
+			$decor/Gear7.queue_free()
+		else:
+			print("Inventory is full")
+		
 	pass # Replace with function body.
 
 ## установка недостающей шестерни ##
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
 		#print('fuck')
-		for i in range(0, $Player/inventary/Panel/ItemList.get_item_count()):
-			if $Player/inventary/Panel/ItemList.get_item_text(i) == "Gear":
-				
+		for i in range(0, 1):
+			if $Player/inventary/inventory/bag1.get_item_text(i) == "Gear":
 				$Gear6.visible = true
-				$Player/inventary/Panel/ItemList.remove_item(i)
+				$Player/inventary/inventory/bag1.remove_item(i)
+			elif $Player/inventary/inventory/bag2.get_item_text(i) == "Gear":
+				$Gear6.visible = true
+				$Player/inventary/inventory/bag2.remove_item(i)
+			elif $Player/inventary/inventory/bag3.get_item_text(i) == "Gear":
+				$Gear6.visible = true
+				$Player/inventary/inventory/bag3.remove_item(i)
+			elif $Player/inventary/inventory/bag4.get_item_text(i) == "Gear":
+				$Gear6.visible = true
+				$Player/inventary/inventory/bag4.remove_item(i)
 			else:
 				$Text_field/text.show()
 				if translationt.language == 1:
@@ -136,13 +152,7 @@ func _on_Gear6_area_entered(area):
 					$Text_field/text.text = 'need find item for this meshanism'
 
 
-func _on_ItemList_item_selected(index):
-	if $Text_field/ItemList.get_item_text(index) == "arrow":
-	#	print(arrow_count_random)
-	#	print("arrow")
-		$Player.arrow_count += arrow_count_random
-		$Text_field/ItemList.remove_item(index)
-	pass # Replace with function body.
+
 
 
 

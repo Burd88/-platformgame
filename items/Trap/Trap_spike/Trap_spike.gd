@@ -31,5 +31,4 @@ func _on_kill_area_body_entered(body):
 		body.health_now = 0
 		print("Player killing")
 	else:
-		print("no Player")
-	pass # Replace with function body.
+		pass # Replace with function body.

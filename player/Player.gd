@@ -302,10 +302,14 @@ func _on_Area2D_body_entered(body):
 	pass # Replace with function body.
 
 func _open_inventory():
-	if Input.is_action_just_pressed("open_inventory") and $inventary/Panel.visible == false:
-		$inventary/Panel.visible = true
-	elif Input.is_action_just_pressed("open_inventory") and $inventary/Panel.visible == true:
-		$inventary/Panel.visible = false
+	if Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == false:
+		$inventary/inventory.visible = true
+		print($inventary/inventory/bag1.get_item_count())
+		print($inventary/inventory/bag2.get_item_count())
+		print($inventary/inventory/bag3.get_item_count())
+		print($inventary/inventory/bag4.get_item_count())
+	elif Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == true:
+		$inventary/inventory.visible = false
 
 
 
@@ -320,10 +324,38 @@ func _on_use_area_entered(area):
 	pass # Replace with function body.
 
 
-func _on_inventory_item_selected(index):
-	if $inventary/Panel/ItemList.get_item_text(index) == "arrow":
+
+func _on_bag1_item_selected(index):
+	if $inventary/inventory/bag1.get_item_text(index) == "arrow":
 	#	print($inventary/Panel/ItemList.arrow_count_random)
 	#	print("arrow")
-		arrow_count += $inventary/Panel/ItemList.arrow_count_random
-		$inventary/Panel/ItemList.remove_item(index)
+		arrow_count += $inventary/inventory/bag1.arrow_count_random
+		$inventary/inventory/bag1.remove_item(index)
+	pass # Replace with function body.
+
+
+func _on_bag2_item_selected(index):
+	if $inventary/inventory/bag2.get_item_text(index) == "arrow":
+	#	print($inventary/Panel/ItemList.arrow_count_random)
+	#	print("arrow")
+		arrow_count += $inventary/inventory/bag2.arrow_count_random
+		$inventary/inventory/bag2.remove_item(index)
+	pass # Replace with function body.
+
+
+func _on_bag3_item_selected(index):
+	if $inventary/inventory/bag3.get_item_text(index) == "arrow":
+	#	print($inventary/Panel/ItemList.arrow_count_random)
+	#	print("arrow")
+		arrow_count += $inventary/inventory/bag3.arrow_count_random
+		$inventary/inventory/bag3.remove_item(index)
+	pass # Replace with function body.
+
+
+func _on_bag4_item_selected(index):
+	if $inventary/inventory/bag4.get_item_text(index) == "arrow":
+	#	print($inventary/Panel/ItemList.arrow_count_random)
+	#	print("arrow")
+		arrow_count += $inventary/inventory/bag4.arrow_count_random
+		$inventary/inventory/bag4.remove_item(index)
 	pass # Replace with function body.
