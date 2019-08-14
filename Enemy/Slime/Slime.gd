@@ -24,8 +24,17 @@ var can_shoot = false
 onready var bullet = preload("res://Enemy/Slime/bullet.tscn")
 onready var health_potion = preload("res://items/Health Potion/Health_potion.tscn")
 
+export (int) var detect_radius = 250
+export (PackedScene) var Bullet
+var vis_color = Color(.867, .91, .247, 0.1)
+var laser_color = Color(1.0, .329, .298)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var shape = CircleShape2D.new()
+	shape.radius = detect_radius
+	$Visible/visible_col.shape = shape
+
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +42,7 @@ func _process(delta):
 	update()
 	if target:
 		aim()
-		_attack_player()
+		#_attack_player()
 		#print(position.distance_to(target.position))
 		#print(global_position.angle_to(target.global_position))
 		#if global_position.angle_to(target.global_position) < 1 and global_position.angle_to(target.global_position) > 0:
@@ -45,7 +54,7 @@ func _process(delta):
 	_move_enemy(delta)
 	_damage()
 	_check_place()
-	_attack_player()
+	#_attack_player()
 	$sprite.animation = anim
 	
 	pass
@@ -58,10 +67,10 @@ func _move_enemy(delta):
 	
 	
 	
-	#distance.x = speed*delta
-	#velocity.x = (direction.x*distance.x)/(delta+0.00001)
+	distance.x = speed*delta
+	velocity.x = (direction.x*distance.x)/(delta+0.00001)
 	#if !is_on_wall():
-	#velocity.y += gravity*delta
+	velocity.y += gravity*delta
 	
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
@@ -97,41 +106,41 @@ func _damage():
 		
 func aim():
 
-	hit_pos = []
-	var space_state = get_world_2d().direct_space_state
-	var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5,14 )
-	print(target_extents)
-	var nw = target.position - target_extents
-	var se = target.position + target_extents
-	var ne = target.position + Vector2(target_extents.x, -target_extents.y)
-	var sw = target.position + Vector2(-target_extents.x, target_extents.y)
-	for pos in [target.position, nw, ne, se, sw]:
-		var result = space_state.intersect_ray(position, pos, [self], collision_mask)
+	#hit_pos = []
+	#var space_state = get_world_2d().direct_space_state
+	#var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5,5 )
+	#print(target_extents)
+	#var nw = target.position - target_extents
+	#var se = target.position + target_extents
+	#var ne = target.position + Vector2(target_extents.x, -target_extents.y)
+	#var sw = target.position + Vector2(-target_extents.x, target_extents.y)
+	#for pos in [target.position, nw, ne, se, sw]:
+	#	var result = space_state.intersect_ray(position, pos, [self], collision_mask)
 		#print(result)
-		if result:
-			hit_pos.append(result.position)
+	#	if result:
+		#	hit_pos.append(result.position)
 			#print(hit_pos.append(result.position))
 			#if result.collider.name == "frontground" and 
-			if target.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 and position.distance_to(target.position) < 150:
-				anim = 'attack'
-				print(2)
-				direction = (target.position - position).normalized()
+		#	if target.collider.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 and position.distance_to(target.position) < 150:
+		#		anim = 'attack'
+		#		print(2)
+		#		direction = (target.position - position).normalized()
 				#print(global_position.distance_to(target.global_position))
-				if direction.x < 0 :
-					$sprite.flip_h = false
-					$attack_area.position.x = 0
-					$check_place.position.x = -28
-				elif direction.x > 0:
-					$sprite.flip_h = true
-					$attack_area.position.x = 60
-					$check_place.position.x = 28
-				move_to_player = true
+		#		if direction.x < 0 :
+		#			$sprite.flip_h = false
+		#			$attack_area.position.x = 0
+		#			$check_place.position.x = -28
+		#		elif direction.x > 0:
+		#			$sprite.flip_h = true
+		#			$attack_area.position.x = 60
+		#			$check_place.position.x = 28
+		#		move_to_player = true
 					#print("distance attack")
-				if can_shoot:
+		#		if can_shoot:
 					#print("can shoot")
-					shoot(pos)
+		#			shoot(pos)
 
-				break
+		#		break
 			
 			#elif position.distance_to(target.position) < 117 and position.distance_to(target.position) > 20:
 			#	direction = (target.position - position).normalized()
@@ -146,20 +155,51 @@ func aim():
 			#		$check_place.position.x = 28
 			#	move_to_player = true
 				#print("go to player", position.distance_to(target.position))
-			elif position.distance_to(target.position) > 60 :
-				anim = 'move'
-				move_to_player = false
-				print("no player")
-			elif position.distance_to(target.position) <= 20 :
-				anim = 'attack'
-				direction = Vector2(0,0)
-				move_to_player = false
-				print("attack")
+		#	elif position.distance_to(target.position) > 60 :
+		#		anim = 'move'
+		#		move_to_player = false
+		#		print("no player")
+		#	elif position.distance_to(target.position) <= 20 :
+		#		anim = 'attack'
+		#		direction = Vector2(0,0)
+		#		move_to_player = false
+		#		print("attack")
+		hit_pos = []
+		var space_state = get_world_2d().direct_space_state
+		var target_extents = target.get_node('CollisionShape2D').shape.extents #+ Vector2(2 , 4)
+		var nw = target.position - target_extents
+		var se = target.position + target_extents
+		var ne = target.position + Vector2(target_extents.x, -target_extents.y)
+		var sw = target.position + Vector2(-target_extents.x, target_extents.y)
+		#print(nw)
+		#print(se)
+		#print(ne)
+		#print(sw)
+		#print("taret : ",target.position)
+		for pos in [target.position, nw, ne, se, sw]:
+			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
+			#print(result)
+			if result:
+				hit_pos.append(result.position)
+				if result.collider.name == "Player":
+					anim = 'attack'
+						#$Sprite.self_modulate.r = 1.0
+				#	rotation = (target.position - position).angle()
+					if can_shoot:
+						shoot(pos)
+					break
+		
+func _draw():
+	draw_circle(Vector2(), detect_radius, vis_color)
+	if target:
+		for hit in hit_pos:
+			draw_circle((hit - global_position).rotated(-rotation), 5, laser_color)
+			draw_line(Vector2(), (hit - global_position).rotated(-rotation), laser_color)
 		
 func shoot(pos):
 	var b = bullet.instance()
-	var a = (pos - position).angle()
-	b.start(position, a + rand_range(-0.05, 0.05))
+	var a = (pos - global_position).angle()
+	b.start(position, a + rand_range(-0.15, 0.15))
 	get_parent().add_child(b)
 	can_shoot = false
 
@@ -243,8 +283,8 @@ func _on_Visible_body_entered(body):
 	if body.name == 'Player':
 		target = body
 		move_to_player = true
-		print(body.name)
-		print(body.position, " = " , position)
+	#	print(body.name)
+	#	print(body.position, " = " , position)
 	else :
 		print("else", body)
 		pass # Replace with function body.
