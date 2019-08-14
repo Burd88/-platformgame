@@ -12,7 +12,7 @@ func start(pos, dir):
 
 func _physics_process(delta):
 	position += velocity * delta
-	#velocity.y += gravity*delta
+	velocity.y += gravity*delta
 
 func _on_bullet_body_entered(body):
 	

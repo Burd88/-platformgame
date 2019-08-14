@@ -69,11 +69,11 @@ func _move_enemy(delta):
 	
 	
 	
-	distance.x = speed*delta
-	velocity.x = (direction.x*distance.x)/(delta+0.00001)
+	distance.x = speed
+	velocity.x = (direction.x*distance.x)
 	#if !is_on_wall():
 	velocity.y += gravity*delta
-	
+	#print(velocity)
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
 	
@@ -218,7 +218,7 @@ func _draw():
 func shoot(pos):
 	var b = bullet.instance()
 	var a = (pos - global_position).angle()
-	b.start(position, a + rand_range(-0.15, 0.15))
+	b.start(position, a + rand_range(-0.05, 0.05))
 	get_parent().add_child(b)
 	can_shoot = false
 
@@ -305,7 +305,7 @@ func _on_Visible_body_entered(body):
 	#	print(body.name)
 	#	print(body.position, " = " , position)
 	else :
-		print("else", body)
+		#print("else", body)
 		pass # Replace with function body.
 
 
@@ -315,7 +315,7 @@ func _on_Visible_body_exited(body):
 		move_to_player = false
 		anim = "idle"
 		$attack_area/attack_col.disabled = false
-		print("exit player")
+		#print("exit player")
 		pass
 	pass # Replace with function body.
 

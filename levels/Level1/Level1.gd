@@ -1,5 +1,5 @@
 extends Node2D
-var arrow_count_random
+
 var tourch = false
 var lever1 = false
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	update()
 	start_mechanism()
-	arrow_count_random = randi()%10+1
+	
 	if lever1:
 		$exit_level.open_door = true
 
