@@ -25,6 +25,7 @@ onready var bullet = preload("res://Enemy/Slime/bullet.tscn")
 onready var health_potion = preload("res://items/Health Potion/Health_potion.tscn")
 
 export (int) var detect_radius = 250
+var shape_ext = Vector2(60,250)
 export (PackedScene) var Bullet
 var vis_color = Color(.867, .91, .247, 0.1)
 var laser_color = Color(1.0, .329, .298)
@@ -207,10 +208,12 @@ func aim():
 		
 func _draw():
 	#draw_circle(Vector2(), detect_radius, vis_color)
-	if target:
-		for hit in hit_pos:
-			draw_circle((hit - global_position).rotated(-rotation), 5, laser_color)
-			draw_line(Vector2(), (hit - global_position).rotated(-rotation), laser_color)
+	#draw_rect(Rect2($Visible.position,$Visible/visible_col.shape.extents) , vis_color)
+	#if target:
+	#	for hit in hit_pos:
+	#		draw_circle((hit - global_position).rotated(-rotation), 5, laser_color)
+	#		draw_line(Vector2(), (hit - global_position).rotated(-rotation), laser_color)
+	pass
 		
 func shoot(pos):
 	var b = bullet.instance()
