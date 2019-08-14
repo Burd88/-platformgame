@@ -55,8 +55,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 20 )
+[sub_resource type="RectangleShape2D" id=7]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.521569, 0.0117647, 0.0117647, 1 )
@@ -80,7 +79,7 @@ corner_radius_bottom_left = 3
 extents = Vector2( 4.50776, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 132.82, 245.307 )
+extents = Vector2( 60, 250 )
 
 [node name="Slime" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -93,12 +92,12 @@ position = Vector2( -1.3967, -13.9668 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "hurt"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="healthbar" type="ProgressBar" parent="."]
 margin_left = -19.0
@@ -123,6 +122,7 @@ valign = 1
 [node name="check_place" type="RayCast2D" parent="."]
 position = Vector2( -28, 0 )
 scale = Vector2( 1, 2.04 )
+enabled = true
 exclude_parent = false
 cast_to = Vector2( 0, 30 )
 
@@ -131,12 +131,12 @@ cast_to = Vector2( 0, 30 )
 [node name="attack_col" type="CollisionShape2D" parent="attack_area"]
 position = Vector2( -28.1373, 4.59937 )
 shape = SubResource( 5 )
-disabled = true
 
 [node name="Visible" type="Area2D" parent="."]
 space_override = 1
 
 [node name="visible_col" type="CollisionShape2D" parent="Visible"]
+position = Vector2( 4.19, -60.0571 )
 rotation = 1.5708
 shape = SubResource( 6 )
 

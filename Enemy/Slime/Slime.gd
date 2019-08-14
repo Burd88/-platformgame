@@ -31,9 +31,9 @@ var laser_color = Color(1.0, .329, .298)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var shape = CircleShape2D.new()
-	shape.radius = detect_radius
-	$Visible/visible_col.shape = shape
+	#var shape = CircleShape2D.new()
+	#shape.radius = detect_radius
+	#$Visible/visible_col.shape = shape
 
 	pass # Replace with function body.
 
@@ -50,6 +50,7 @@ func _process(delta):
 		#	
 		#elif global_position.angle_to(target.global_position) > -1 and global_position.angle_to(target.global_position) < 0:
 		#	pass#print("levo")
+	
 	_gui()
 	_move_enemy(delta)
 	_damage()
@@ -181,16 +182,31 @@ func aim():
 			#print(result)
 			if result:
 				hit_pos.append(result.position)
-				if result.collider.name == "Player":
+				if result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) > 40 and position.distance_to(target.position) < 150:
 					anim = 'attack'
-						#$Sprite.self_modulate.r = 1.0
-				#	rotation = (target.position - position).angle()
+		#		print(2)
+					direction = (target.position - position).normalized()
+					#print(global_position.distance_to(target.global_position))
+					if direction.x < 0 :
+						$sprite.flip_h = false
+						$attack_area.position.x = 0
+						$check_place.position.x = -28
+					elif direction.x > 0:
+						$sprite.flip_h = true
+						$attack_area.position.x = 60
+						$check_place.position.x = 28
+					move_to_player = true
+					
 					if can_shoot:
+						print("distance attack")
+					#print("can shoot")
 						shoot(pos)
+
+		#		break)
 					break
 		
 func _draw():
-	draw_circle(Vector2(), detect_radius, vis_color)
+	#draw_circle(Vector2(), detect_radius, vis_color)
 	if target:
 		for hit in hit_pos:
 			draw_circle((hit - global_position).rotated(-rotation), 5, laser_color)
@@ -252,7 +268,7 @@ func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
-	#	print("attack")
+		print("attack")
 		anim = 'attack'
 
 	pass # Replace with function body.
@@ -291,7 +307,7 @@ func _on_Visible_body_entered(body):
 
 
 func _on_Visible_body_exited(body):
-	if body.name == 'Player':
+	if body == target:
 		target = null
 		move_to_player = false
 		anim = "idle"

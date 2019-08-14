@@ -191,13 +191,7 @@
 11/tile_mode = 0
 11/occluder_offset = Vector2( 0, 0 )
 11/navigation_offset = Vector2( 0, 0 )
-11/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+11/shapes = [  ]
 11/z_index = 0
 12/name = "tileset.png 12"
 12/texture = ExtResource( 2 )
@@ -488,7 +482,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 5.45142, 5.5163 )
 
 [node name="Level1" type="Node2D"]
@@ -681,7 +675,7 @@ max_distance = 1000.0
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="Slime3" parent="enemies" instance=ExtResource( 14 )]
-position = Vector2( 531.338, 504.497 )
+position = Vector2( 573.122, 649.968 )
 z_as_relative = false
 
 [node name="Bat" parent="enemies" instance=ExtResource( 15 )]
@@ -775,7 +769,7 @@ script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever"]
 position = Vector2( 0, 2.71124 )
-shape = SubResource( 34 )
+shape = SubResource( 33 )
 __meta__ = {
 "_edit_lock_": true
 }
