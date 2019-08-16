@@ -262,7 +262,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 14 )
+extents = Vector2( 3.52299, 14 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.447059, 0.0784314, 0.0784314, 1 )
@@ -350,24 +350,24 @@ extents = Vector2( 7.6976, 16.2632 )
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
 z_as_relative = false
-collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="spr" type="AnimatedSprite" parent="."]
 pause_mode = 2
 position = Vector2( 0, 0.643921 )
 frames = SubResource( 1 )
-animation = "присяд"
+animation = "стойка"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2( -0.0828136, 0.873131 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.6, 0.6 )
 smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.38986, 5 )
+position = Vector2( 0.135504, 4.58188 )
 shape = SubResource( 2 )
 
 [node name="inventary" type="CanvasLayer" parent="."]

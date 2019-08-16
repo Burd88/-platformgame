@@ -304,10 +304,7 @@ func _on_Area2D_body_entered(body):
 func _open_inventory():
 	if Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == false:
 		$inventary/inventory.visible = true
-		print($inventary/inventory/bag1.get_item_count())
-		print($inventary/inventory/bag2.get_item_count())
-		print($inventary/inventory/bag3.get_item_count())
-		print($inventary/inventory/bag4.get_item_count())
+		print($inventary/inventory/bag1.get_item_icon(0))
 	elif Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == true:
 		$inventary/inventory.visible = false
 

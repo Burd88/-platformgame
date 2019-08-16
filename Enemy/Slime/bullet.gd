@@ -1,7 +1,7 @@
 extends Area2D
 var speed = 200
 
-
+onready var puddle = preload("res://Enemy/Slime/лужа.tscn")
 var velocity = Vector2()
 
 func start(pos, dir):
@@ -21,7 +21,13 @@ func _on_bullet_body_entered(body):
 		queue_free()
 	elif body.name == 'frontground':
 		print("-_-")
+		var now_position = position
+		var b = puddle.instance()
+		b.start(now_position)
+		get_parent().add_child(b)
 		queue_free()
+
+		
 	pass # Replace with function body.
 
 
