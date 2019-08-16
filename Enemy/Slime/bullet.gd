@@ -1,7 +1,7 @@
 extends Area2D
 var speed = 200
 
-onready var puddle = preload("res://Enemy/Slime/лужа.tscn")
+onready var puddle = preload("res://Enemy/Slime/puddle.tscn")
 var velocity = Vector2()
 
 func start(pos, dir):

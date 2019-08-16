@@ -14,17 +14,27 @@ func _ready():
 func _process(delta):
 	if $ray1.is_colliding() :
 		rotation_degrees = 90
+		if $RayCast2D.is_colliding() == false:
+			position.y += 10
+		elif $RayCast2D2.is_colliding() == false:
+			position.y -= 10
 		$ray1.enabled = false
 		$ray2.enabled = false
 	elif $ray2.is_colliding() :
-		rotation_degrees = 90
+		rotation_degrees = 270
+		if $RayCast2D.is_colliding() == false:
+			position.y -= 10
+		elif $RayCast2D2.is_colliding() == false:
+			position.y += 10
 		$ray1.enabled = false
 		$ray2.enabled = false
 	else:
 		$ray1.enabled = false
 		$ray2.enabled = false
+
 	#print($Timer.time_left)
 	pass
+
 func start(now_position):
 	position = now_position 
 
