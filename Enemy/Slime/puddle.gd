@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $ray1.is_colliding() :
-		print($ray1.is_colliding())
+		print($ray1)
 		rotation_degrees = 90
 		if $RayCast2D.is_colliding() == false:
 			position.y += 10
