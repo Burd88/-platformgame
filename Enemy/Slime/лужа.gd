@@ -12,7 +12,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print($Timer.time_left)
+	if $ray1.is_colliding() :
+		rotation_degrees = 90
+		$ray1.enabled = false
+		$ray2.enabled = false
+	elif $ray2.is_colliding() :
+		rotation_degrees = 90
+		$ray1.enabled = false
+		$ray2.enabled = false
+	else:
+		$ray1.enabled = false
+		$ray2.enabled = false
+	#print($Timer.time_left)
 	pass
 func start(now_position):
 	position = now_position 
@@ -25,4 +36,11 @@ func _on_Timer_timeout():
 func _on__body_entered(body):
 	if body.name == "Player":
 		body.health_now -= 100
+		print("damage")
+	pass # Replace with function body.
+
+
+func _on_Timer2_timeout():
+	$CollisionShape2D.disabled = true
+	$CollisionShape2D.disabled = false
 	pass # Replace with function body.
