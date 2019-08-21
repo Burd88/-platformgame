@@ -13,7 +13,7 @@ var attack_name_sword = ['удар_мечом_1','удар_мечом_2','уда
 var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
-var weapon = 0
+var weapon = 1
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
@@ -60,6 +60,7 @@ func _physics_process(delta):
 	use()
 	use_health_potion()
 	_open_inventory()
+	#print(velocity.y)
 	#print(velocity.y ," - ", direction.y)
 	
 	
@@ -70,26 +71,49 @@ func _move(delta):
 		direction.x = 0
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3.84 :
-			$spr.animation = "прыжок"
+			if weapon == 0:
+				$spr.animation = "прыжок"
+			elif weapon == 1:
+				$spr.animation =  "прыжок_меч"
 		elif velocity.y > 3.84  :
-			$spr.animation = "падение"
+			if weapon == 0:
+				$spr.animation = "падение"
+			elif weapon == 1:
+				$spr.animation =  "падение_меч"
 	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y <=3.84 and velocity.x == 0:
 			$spr.animation = "присяд"
 		elif velocity.y <=3.84 and velocity.x != 0:
 			$spr.animation = "шаг_присяд"
 		elif velocity.y > 3.84:
-			$spr.animation = "падение"
+			if weapon == 0:
+				$spr.animation = "падение"
+			elif weapon == 1:
+				$spr.animation =  "падение_меч"
 	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "бег"
+			if weapon == 0:
+				$spr.animation = "бег"
+			elif weapon == 1:
+				$spr.animation =  "бег_меч_2"
+
 		elif velocity.y > 0:
-			$spr.animation = "падение"
+			if weapon == 0:
+				$spr.animation = "падение"
+			elif weapon == 1:
+				$spr.animation =  "падение_меч"
 	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
-			$spr.animation = "стойка"
+			if weapon == 0:
+				$spr.animation = "стойка"
+			elif weapon == 1:
+				$spr.animation =  "стойка_меч"
+
 		elif velocity.y > 3.84:
-			$spr.animation = "падение"
+			if weapon == 0:
+				$spr.animation = "падение"
+			elif weapon == 1:
+				$spr.animation =  "падение_меч"
 
 	if direction.x > 0:
 		$spr.flip_h = false
@@ -116,36 +140,25 @@ func _move(delta):
 		
 		velocity.y = 0
 		direction.y = 0
-		
-		
-
-		if Input.is_action_just_pressed("ui_up") :
-
-			velocity.y = -jump_speed
-			direction.y = 1
-		elif Input.is_action_pressed("ui_down") :
+	
 			
-			direction.y = -1
-			$CollisionShape2D.position.y = 9
-			$CollisionShape2D.scale.y = 0.7
-			
-		else:
-			$CollisionShape2D.position.y = 5
-			$CollisionShape2D.scale.y =  1
+		#	direction.y = -1
+		#	$CollisionShape2D.position.y = 9
+		#	$CollisionShape2D.scale.y = 0.7
+		
+	#else:
+	#	$CollisionShape2D.position.y = 5
+	#	$CollisionShape2D.scale.y =  1
+
+	if Input.is_action_just_pressed("ui_up") and velocity.y >=0 and velocity.y <= 4 :
+		
+		velocity.y = -jump_speed
+		direction.y = 1
+
 		
 	
 
-	#if !is_on_floor():
-		#if is_on_wall() and direction.y == 1:
-		#	velocity.y = 0
-		#	wall = true
-		#	$spr.animation = "hang1"
-			#if Input.is_action_just_pressed("ui_up"):
-			#	velocity.y = -jump_speed
-			#	direction.y = 1
-			#if Input.is_action_just_pressed("ui_down"):
-			#	velocity.y = jump_speed
-			#	direction.y = 1
+
 		
 	if is_on_ceiling():
 		velocity.y = 0
@@ -228,7 +241,7 @@ func _on_spr_animation_finished():
 	
 func _death():
 	if health_now <= 0:
-		velocity = Vector2(0,0)
+		velocity = Vector2(0,150)
 		health_now = 0
 		$spr.animation = 'смерть'
 	pass

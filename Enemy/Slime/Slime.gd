@@ -32,9 +32,9 @@ var laser_color = Color(1.0, .329, .298)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var shape = CircleShape2D.new()
-	#shape.radius = detect_radius
-	#$Visible/visible_col.shape = shape
+	var shape = CircleShape2D.new()
+	shape.radius = detect_radius
+	$Visible/visible_col.shape = shape
 
 	pass # Replace with function body.
 
@@ -65,15 +65,9 @@ func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0
 		direction.y = 0
-	
-	
-	
-	
 	distance.x = speed
 	velocity.x = (direction.x*distance.x)
-	#if !is_on_wall():
 	velocity.y += gravity*delta
-	#print(velocity)
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
 	
@@ -82,7 +76,7 @@ func _attack_player():
 	pass
 	pass
 	
-func _gui():
+func _gui():# Графический интерфейс
 	if health_now > 0 :
 		$healthbar.show()
 		$HPlable.show()
@@ -104,115 +98,53 @@ func _damage():
 		anim = 'die'
 		
 	pass
-		# Графический интерфейс
+		
 		
 func aim():
 
-	#hit_pos = []
-	#var space_state = get_world_2d().direct_space_state
-	#var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5,5 )
-	#print(target_extents)
-	#var nw = target.position - target_extents
-	#var se = target.position + target_extents
-	#var ne = target.position + Vector2(target_extents.x, -target_extents.y)
-	#var sw = target.position + Vector2(-target_extents.x, target_extents.y)
-	#for pos in [target.position, nw, ne, se, sw]:
-	#	var result = space_state.intersect_ray(position, pos, [self], collision_mask)
-		#print(result)
-	#	if result:
-		#	hit_pos.append(result.position)
-			#print(hit_pos.append(result.position))
-			#if result.collider.name == "frontground" and 
-		#	if target.collider.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 and position.distance_to(target.position) < 150:
-		#		anim = 'attack'
-		#		print(2)
-		#		direction = (target.position - position).normalized()
-				#print(global_position.distance_to(target.global_position))
-		#		if direction.x < 0 :
-		#			$sprite.flip_h = false
-		#			$attack_area.position.x = 0
-		#			$check_place.position.x = -28
-		#		elif direction.x > 0:
-		#			$sprite.flip_h = true
-		#			$attack_area.position.x = 60
-		#			$check_place.position.x = 28
-		#		move_to_player = true
-					#print("distance attack")
-		#		if can_shoot:
-					#print("can shoot")
-		#			shoot(pos)
-
-		#		break
-			
-			#elif position.distance_to(target.position) < 117 and position.distance_to(target.position) > 20:
-			#	direction = (target.position - position).normalized()
-			#	print("direct : ",direction)
-			#	if direction.x < 0 :
-			#		$sprite.flip_h = false
-			#		$attack_area.position.x = 0
-			#		$check_place.position.x = -28
-			#	elif direction.x > 0:
-			#		$sprite.flip_h = true
-			#		$attack_area.position.x = 60
-			#		$check_place.position.x = 28
-			#	move_to_player = true
-				#print("go to player", position.distance_to(target.position))
-		#	elif position.distance_to(target.position) > 60 :
-		#		anim = 'move'
-		#		move_to_player = false
-		#		print("no player")
-		#	elif position.distance_to(target.position) <= 20 :
-		#		anim = 'attack'
-		#		direction = Vector2(0,0)
-		#		move_to_player = false
-		#		print("attack")
 		hit_pos = []
 		var space_state = get_world_2d().direct_space_state
-		var target_extents = target.get_node('CollisionShape2D').shape.extents #+ Vector2(2 , 4)
+		var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(0 , 3)
 		var nw = target.position - target_extents
 		var se = target.position + target_extents
 		var ne = target.position + Vector2(target_extents.x, -target_extents.y)
 		var sw = target.position + Vector2(-target_extents.x, target_extents.y)
-		#print(nw)
-		#print(se)
-		#print(ne)
-		#print(sw)
-		#print("taret : ",target.position)
 		for pos in [target.position, nw, ne, se, sw]:
-			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
-			#print(result)
+			var result = space_state.intersect_ray(global_position, pos, [self], collision_mask)
 			if result:
 				hit_pos.append(result.position)
-				if result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) > 40 and position.distance_to(target.position) < 150:
+				if result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) > 40 :
+					move_to_player = true
 					anim = 'attack'
-		#		print(2)
 					direction = (target.position - position).normalized()
-					#print(global_position.distance_to(target.global_position))
 					if direction.x < 0 :
 						$sprite.flip_h = false
 						$attack_area.position.x = 0
 						$check_place.position.x = -28
 					elif direction.x > 0:
 						$sprite.flip_h = true
-						$attack_area.position.x = 60
+						$attack_area.position.x = 40
 						$check_place.position.x = 28
 					move_to_player = true
 					
 					if can_shoot:
 						print("distance attack")
-					#print("can shoot")
 						shoot(pos)
-
-		#		break)
 					break
+				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
+					#print("milleattake")
+					pass
+				else:
+					move_to_player = false
+					anim = "move"
 		
 func _draw():
-	#draw_circle(Vector2(), detect_radius, vis_color)
-	#draw_rect(Rect2($Visible.position,$Visible/visible_col.shape.extents) , vis_color)
-	#if target:
-	#	for hit in hit_pos:
-	#		draw_circle((hit - global_position).rotated(-rotation), 5, laser_color)
-	#		draw_line(Vector2(), (hit - global_position).rotated(-rotation), laser_color)
+	draw_circle(Vector2(), detect_radius, vis_color)
+	#draw_rect(Rect2(-360,-130,720,260) , vis_color)
+	if target:
+		for hit in hit_pos:
+			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
+			draw_line(Vector2(), ((hit - position)*2).rotated(-rotation), laser_color)
 	pass
 		
 func shoot(pos):
@@ -234,10 +166,7 @@ func _check_place():
 		velocity.y = -jump_speed
 	if is_on_wall() and !move_to_player :
 		_change_position()
-	#elif is_on_wall() and move_to_player:
-		#velocity.y = -jump_speed
-		
-		
+
 func _change_position():
 	direction.x =direction.x*(-1)
 	$check_place.position.x = $check_place.position.x*(-1)
@@ -247,7 +176,7 @@ func _change_position():
 		$sprite.flip_h = false
 		pass
 	if $attack_area.position.x == 0:
-		$attack_area.position.x = 60
+		$attack_area.position.x = 40
 	else:
 		$attack_area.position.x = 0
 
@@ -259,23 +188,15 @@ func _on_AnimatedSprite_animation_finished():
 		if item_rand == 0 :
 			_health_potion()
 			print("бутылек")
-		
-	#if $sprite.animation == 'attack'  and health_now > 0:
-		#print("finish attack")
-		#can_shoot = true
-		
+	pass
 
-	
-	pass # Replace with function bodyввв
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
 		print("attack")
 		anim = 'attack'
-
-	pass # Replace with function body.
-
+	pass
 
 func _on_sprite_frame_changed():
 	if $sprite.animation == 'attack' and health_now > 0:
@@ -284,30 +205,18 @@ func _on_sprite_frame_changed():
 		elif $sprite.frame == 3:
 			$attack_area/attack_col.disabled = false
 	if $sprite.animation == 'move':
-		#$sound_idle.autoplay = true
-		#$sound_idle.playing = true
 		pass
 	elif $sprite.animation == 'attack':
 		if $sprite.frame == 2:
 			can_shoot = true
-		#$sound_attack.autoplay = true
-		#$sound_attack.playing = true
 		pass
-
-
-
 
 func _on_Visible_body_entered(body):
 	
 	if body.name == 'Player':
 		target = body
-		move_to_player = true
-	#	print(body.name)
-	#	print(body.position, " = " , position)
 	else :
-		#print("else", body)
-		pass # Replace with function body.
-
+		pass 
 
 func _on_Visible_body_exited(body):
 	if body == target:
@@ -315,17 +224,9 @@ func _on_Visible_body_exited(body):
 		move_to_player = false
 		anim = "idle"
 		$attack_area/attack_col.disabled = false
-		#print("exit player")
-		pass
-	pass # Replace with function body.
-
-
-
-
+	pass
 
 func _on_attack_area_body_exited(body):
 	if body.name == 'Player' and health_now > 0:
 		$attack_area/attack_col.disabled = false
-	#	print("exit")
-
-	pass # Replace with function body.
+	pass 

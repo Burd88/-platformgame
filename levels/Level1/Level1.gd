@@ -90,16 +90,6 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 
 
-func _on_lift_body_entered(body):
-	if body.name == 'Player':
-		$Text_field/text.show()
-		if translationt.language == 1:
-			$Text_field/text.text = 'Где-то слышно воду... \n надо сходить посмотреть'
-		elif translationt.language == 2:
-			$Text_field/text.text = 'Where is sound water... \n need see this'
-	pass # Replace with function body.
-
-
 
 func _onlift_body_exited(body):
 	if body.name == 'Player':

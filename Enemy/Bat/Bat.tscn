@@ -76,5 +76,4 @@ anims/fly = SubResource( 3 )
 visible = false
 position = Vector2( 0, -0.611732 )
 shape = SubResource( 4 )
-disabled = true
 [connection signal="body_entered" from="BatArea" to="." method="_on_BatArea_body_entered"]

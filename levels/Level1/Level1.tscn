@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -247,9 +247,6 @@ extents = Vector2( 8.43869, 25.0381 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 25.7159, 25.7895 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 38.4464, 23.701 )
 
 [sub_resource type="CircleShape2D" id=9]
 
@@ -602,18 +599,6 @@ __meta__ = {
 position = Vector2( 392, 647 )
 move_to = Vector2( 0, -241 )
 
-[node name="Area2D" type="Area2D" parent="Lift_level1"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lift_level1/Area2D"]
-position = Vector2( 0.598755, -44.3069 )
-shape = SubResource( 8 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Lift_exit" parent="." instance=ExtResource( 8 )]
 position = Vector2( 696, 407 )
 move_to = Vector2( 0, -193 )
@@ -785,8 +770,6 @@ __meta__ = {
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="door/door_text_area" to="." method="_on_door_text_area_body_entered"]
-[connection signal="body_entered" from="Lift_level1/Area2D" to="." method="_on_lift_body_entered"]
-[connection signal="body_exited" from="Lift_level1/Area2D" to="." method="_onlift_body_exited"]
 [connection signal="area_entered" from="Gear6" to="." method="_on_Gear6_area_entered"]
 [connection signal="body_entered" from="exit_level" to="." method="_on_Area2D_body_entered"]
 [connection signal="tree_exited" from="Torch" to="." method="_on_Torch_tree_exited"]
