@@ -66,7 +66,10 @@ func _move_enemy(delta):
 		velocity.y = 0
 		direction.y = 0
 	distance.x = speed
-	velocity.x = (direction.x*distance.x)
+	if $check_place.is_colliding() == false and move_to_player :
+		velocity.x = 0
+	else:
+		velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
@@ -160,10 +163,9 @@ func _health_potion():
 	b.position = position
 
 func _check_place():
-	if $check_place.is_colliding() == false and !move_to_player and is_on_floor():
-		_change_position()
-	elif $check_place.is_colliding() == false and move_to_player and is_on_floor() :
-		velocity.y = -jump_speed
+	if $check_place.is_colliding() == false :
+		if !move_to_player and is_on_floor():
+			_change_position()
 	if is_on_wall() and !move_to_player :
 		_change_position()
 
