@@ -122,12 +122,13 @@ func aim():
 					move_to_player = true
 					anim = 'attack'
 					#print(position.distance_to(target.position))
-					direction = (target.position - position).normalized()
-					if direction.x < 0 :
+					#direction = (target.position - position).normalized()
+					if (target.position - position).normalized().x < 0 :
+						direction.x = direction.x *-1
 						$sprite.flip_h = false
 						$attack_area.position.x = 0
 						$check_place.position.x = -28
-					elif direction.x > 0:
+					elif (target.position - position).normalized().x > 0 :
 						$sprite.flip_h = true
 						$attack_area.position.x = 40
 						$check_place.position.x = 28
