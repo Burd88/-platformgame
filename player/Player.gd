@@ -140,15 +140,15 @@ func _move(delta):
 		
 		velocity.y = 0
 		direction.y = 0
-	
+	#	if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
 			
 		#	direction.y = -1
 		#	$CollisionShape2D.position.y = 9
-		#	$CollisionShape2D.scale.y = 0.7
+	#		$CollisionShape2D.scale.y = 0.7
 		
-	#else:
-	#	$CollisionShape2D.position.y = 5
-	#	$CollisionShape2D.scale.y =  1
+		#else:
+		#	$CollisionShape2D.position.y = 5
+		#	$CollisionShape2D.scale.y =  1
 
 	if Input.is_action_just_pressed("ui_up") and velocity.y >=0 and velocity.y <= 4 :
 		
@@ -158,7 +158,17 @@ func _move(delta):
 		
 	
 
-
+	#if !is_on_floor():
+		#if is_on_wall() and direction.y == 1:
+		#	velocity.y = 0
+		#	wall = true
+		#	$spr.animation = "hang1"
+			#if Input.is_action_just_pressed("ui_up"):
+			#	velocity.y = -jump_speed
+			#	direction.y = 1
+			#if Input.is_action_just_pressed("ui_down"):
+			#	velocity.y = jump_speed
+			#	direction.y = 1
 		
 	if is_on_ceiling():
 		velocity.y = 0

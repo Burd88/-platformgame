@@ -90,7 +90,7 @@ position = Vector2( -1.3967, -13.9668 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "hurt"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -122,7 +122,7 @@ position = Vector2( -28, 0 )
 scale = Vector2( 1, 2.04 )
 enabled = true
 exclude_parent = false
-cast_to = Vector2( 0, 30 )
+cast_to = Vector2( 0, 5 )
 
 [node name="attack_area" type="Area2D" parent="."]
 

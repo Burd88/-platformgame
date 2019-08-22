@@ -107,18 +107,21 @@ func aim():
 
 		hit_pos = []
 		var space_state = get_world_2d().direct_space_state
-		var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(0 , 3)
+		var target_extents = target.get_node('CollisionShape2D').shape.extents #- Vector2(0 , 3)
 		var nw = target.position - target_extents
 		var se = target.position + target_extents
 		var ne = target.position + Vector2(target_extents.x, -target_extents.y)
 		var sw = target.position + Vector2(-target_extents.x, target_extents.y)
 		for pos in [target.position, nw, ne, se, sw]:
-			var result = space_state.intersect_ray(global_position, pos, [self], collision_mask)
+			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
 			if result:
+				
 				hit_pos.append(result.position)
+				#print(hit_pos.append(result.position))
 				if result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) > 40 :
 					move_to_player = true
 					anim = 'attack'
+					#print(position.distance_to(target.position))
 					direction = (target.position - position).normalized()
 					if direction.x < 0 :
 						$sprite.flip_h = false
@@ -136,6 +139,8 @@ func aim():
 					break
 				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
 					#print("milleattake")
+					pass
+				elif result.collider.name == "frontground":
 					pass
 				else:
 					move_to_player = false
