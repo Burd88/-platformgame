@@ -342,14 +342,11 @@ corner_radius_bottom_left = 5
 bg_color = Color( 0.733333, 0.0588235, 0.0588235, 1 )
 border_width_left = 1
 border_width_top = 1
-border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.2, 0.0235294, 0.0235294, 1 )
+border_color = Color( 0.6, 0.0509804, 0.0509804, 1 )
 border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 shadow_color = Color( 0.6, 0.372549, 0.372549, 0.6 )
 anti_aliasing_size = 2
 
@@ -389,7 +386,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка_меч"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -578,5 +575,4 @@ shadow_enabled = true
 [connection signal="item_selected" from="inventary/inventory/bag3" to="." method="_on_bag3_item_selected"]
 [connection signal="item_selected" from="inventary/inventory/bag4" to="." method="_on_bag4_item_selected"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
-[connection signal="area_entered" from="use" to="." method="_on_use_area_entered"]
 [connection signal="body_entered" from="use" to="." method="_on_Area2D_body_entered"]
