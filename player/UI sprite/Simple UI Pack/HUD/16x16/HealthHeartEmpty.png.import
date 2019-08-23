@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/HealthHeartEmpty.png-386b6bf1d1b0fe696e685cb8a8ebdad6.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://player/UI sprite/Simple UI Pack/HUD/16x16/HealthHeartEmpty.png"
+dest_files=[ "res://.import/HealthHeartEmpty.png-386b6bf1d1b0fe696e685cb8a8ebdad6.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

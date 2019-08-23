@@ -6,7 +6,7 @@ var gravity = 230
 
 ## жизни игрока
 var health = 1000
-var health_now = health-500
+var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
 var attack_name_sword = ['удар_мечом_1','удар_мечом_2','удар_мечом_3']
@@ -18,7 +18,7 @@ var weapon = 1
 		# 1 = меч
 		# 2 = лук
 ##
-var damage = randi()%100+50
+#var damage = randi()%100+50
 
 ##
 onready var arrow = preload("res://items/arrow/arrow.tscn")
@@ -32,7 +32,7 @@ var swim = false
 #var shield = false
 var open_door = false
 
-var check_cell = false
+#var check_cell = false
 
 var distance = Vector2()
 var velocity = Vector2()
@@ -43,13 +43,13 @@ var collision_info
 var torch = false
 
 var attack = false
-var wall = false
+#var wall = false
 
 
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-	health_now = GLOBAL.Player_health
+	#health_now = GLOBAL.Player_health
 
 func _physics_process(delta):
 	_move(delta)
@@ -333,7 +333,7 @@ func _open_inventory():
 
 
 
-func _on_use_area_entered(area):
+#func _on_use_area_entered(area):
 	#if area.name == 'Gear6':
 	#	print("шестерня на месте")
 	#	area.visible = true
@@ -341,7 +341,7 @@ func _on_use_area_entered(area):
 	#elif area.name == 'lever':
 	#	area.use_lever = true
 	#	print('Рычаг использован')
-	pass # Replace with function body.
+	#pass # Replace with function body.
 
 
 

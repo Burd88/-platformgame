@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Cancel_Normal.png-45df4277e2927a4aae060e9c103542f7.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Cancel_Normal.png"
+dest_files=[ "res://.import/Cancel_Normal.png-45df4277e2927a4aae060e9c103542f7.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

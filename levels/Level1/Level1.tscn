@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -15,11 +15,12 @@
 [ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=16]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=17]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=19]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=16]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=18]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=19]
 [ext_resource path="res://levels/Level1/lever.gd" type="Script" id=20]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -464,7 +465,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=31]
-font_data = ExtResource( 18 )
+font_data = ExtResource( 17 )
 
 [sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -688,12 +689,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Slime" parent="frontground" instance=ExtResource( 16 )]
-position = Vector2( 592.041, 135.823 )
-
-[node name="Slime2" parent="frontground" instance=ExtResource( 16 )]
-position = Vector2( 513.339, 470.422 )
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 1 )
@@ -701,7 +696,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="." instance=ExtResource( 17 )]
+[node name="Torch" parent="." instance=ExtResource( 16 )]
 position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -716,7 +711,6 @@ shape = SubResource( 29 )
 [node name="Text_field" type="CanvasLayer" parent="."]
 
 [node name="text" type="Label" parent="Text_field"]
-visible = false
 anchor_right = 1.0
 margin_left = 55.0
 margin_top = 490.0
@@ -736,16 +730,13 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 19 )
+custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = SubResource( 32 )
-custom_styles/focus = ExtResource( 19 )
-custom_styles/normal = ExtResource( 19 )
+custom_styles/focus = ExtResource( 18 )
+custom_styles/normal = ExtResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-text = "x"
-__meta__ = {
-"_edit_lock_": true
-}
+icon = ExtResource( 19 )
 
 [node name="lever" type="Area2D" parent="."]
 position = Vector2( 822.019, 472.076 )
@@ -767,11 +758,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Slime" parent="." instance=ExtResource( 16 )]
-position = Vector2( 930.571, 458.17 )
-
-[node name="Slime2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 620.934, 625.542 )
+[node name="Slime3" parent="." instance=ExtResource( 21 )]
+position = Vector2( 513.339, 470.422 )
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]

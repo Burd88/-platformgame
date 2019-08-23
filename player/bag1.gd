@@ -26,6 +26,6 @@ func _process(delta):
 	pass
 
 
-func _on_ItemList_item_selected(index):
+#func _on_ItemList_item_selected(index):
 
-	pass # Replace with function body.
+#	pass # Replace with function body.

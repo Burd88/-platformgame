@@ -10,16 +10,16 @@ func _ready():
 		pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if translationt.language == 1 :
-		$inter/button/Start_game.text = 'Начать игру'
-		$inter/button/Continue.text = 'Продолжить'
-		$inter/button/Exit.text = 'Выход'
-	elif translationt.language == 2 :
-		$inter/button/Start_game.text = 'Start Game'
-		$inter/button/Continue.text = 'Continue'
-		$inter/button/Exit.text = 'Exit'
-	pass
+#func _process(delta):
+	#if translationt.language == 1 :
+#		$inter/button/Start_game.text = 'Начать игру'
+	#	$inter/button/Continue.text = 'Продолжить'
+	#	$inter/button/Exit.text = 'Выход'
+	#elif translationt.language == 2 :
+	#	$inter/button/Start_game.text = 'Start Game'
+	#	$inter/button/Continue.text = 'Continue'
+	#	$inter/button/Exit.text = 'Exit'
+	#pass
 
 
 func _on_Start_game_pressed():

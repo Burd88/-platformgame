@@ -70,10 +70,11 @@ position = Vector2( 14.0647, 172.293 )
 
 [node name="Start_game" type="Button" parent="inter/button"]
 margin_left = 425.0
-margin_top = 200.0
-margin_right = 575.0
-margin_bottom = 229.0
+margin_top = 206.998
+margin_right = 580.0
+margin_bottom = 235.998
 custom_fonts/font = SubResource( 2 )
+shortcut_in_tooltip = false
 text = "Начать Игру"
 
 [node name="Continue" type="Button" parent="inter/button"]

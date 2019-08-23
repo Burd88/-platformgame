@@ -1,11 +1,11 @@
 extends Node
 
-var Player_health = 1000
+#var Player_health = 1000
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 #onready var dead_scene = preload("res://Enemy/Dead_enemy.tscn")
-var position_enemy
+#var position_enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

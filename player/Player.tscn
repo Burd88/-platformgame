@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=2]
+[gd_scene load_steps=174 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-fall-00.png" type="Texture" id=2]
@@ -159,7 +159,8 @@
 [ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=157]
 [ext_resource path="res://items/Health Potion/Health Potion 1.png" type="Texture" id=158]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=159]
-[ext_resource path="res://player/light.png" type="Texture" id=160]
+[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=160]
+[ext_resource path="res://player/light.png" type="Texture" id=161]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -352,18 +353,7 @@ corner_radius_bottom_left = 5
 shadow_color = Color( 0.6, 0.372549, 0.372549, 0.6 )
 anti_aliasing_size = 2
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.47451, 0.490196, 0.607843, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.0352941, 0.0392157, 0.0352941, 1 )
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxEmpty" id=13]
 
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 157 )
@@ -399,7 +389,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка_меч"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -468,15 +458,18 @@ script = ExtResource( 156 )
 [node name="Healthbar" type="ProgressBar" parent="GUI"]
 margin_left = 29.5599
 margin_top = 30.0
-margin_right = 129.56
+margin_right = 94.5599
 margin_bottom = 44.0
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
-value = 100.0
+custom_styles/bg = SubResource( 13 )
+value = 50.0
+exp_edit = true
+rounded = true
 percent_visible = false
 
 [node name="HPlabel" type="Label" parent="GUI"]
+visible = false
 margin_left = 36.5988
 margin_top = 31.1198
 margin_right = 138.599
@@ -549,6 +542,10 @@ text = "Q"
 align = 1
 valign = 1
 
+[node name="Sprite" type="Sprite" parent="GUI"]
+position = Vector2( 70.0473, 39.0961 )
+texture = ExtResource( 160 )
+
 [node name="attack_area" type="Area2D" parent="."]
 position = Vector2( 18.4633, -0.926575 )
 
@@ -570,7 +567,7 @@ disabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
-texture = ExtResource( 160 )
+texture = ExtResource( 161 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true

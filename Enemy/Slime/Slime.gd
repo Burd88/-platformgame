@@ -122,13 +122,12 @@ func aim():
 					move_to_player = true
 					anim = 'attack'
 					#print(position.distance_to(target.position))
-					#direction = (target.position - position).normalized()
-					if (target.position - position).normalized().x < 0 :
-						direction.x = direction.x *-1
+					direction = (target.position - position).normalized()
+					if direction.x < 0 :
 						$sprite.flip_h = false
 						$attack_area.position.x = 0
 						$check_place.position.x = -28
-					elif (target.position - position).normalized().x > 0 :
+					elif direction.x > 0:
 						$sprite.flip_h = true
 						$attack_area.position.x = 40
 						$check_place.position.x = 28
@@ -208,7 +207,7 @@ func _on_attack_area_body_entered(body):
 
 func _on_sprite_frame_changed():
 	if $sprite.animation == 'attack' and health_now > 0:
-		if $sprite.frame == 0:
+		if $sprite.frame == 1:
 			$attack_area/attack_col.disabled = true
 		elif $sprite.frame == 3:
 			$attack_area/attack_col.disabled = false
@@ -231,10 +230,10 @@ func _on_Visible_body_exited(body):
 		target = null
 		move_to_player = false
 		anim = "idle"
-		$attack_area/attack_col.disabled = false
+		#$attack_area/attack_col.disabled = false
 	pass
 
 func _on_attack_area_body_exited(body):
 	if body.name == 'Player' and health_now > 0:
-		$attack_area/attack_col.disabled = false
-	pass 
+		#$attack_area/attack_col.disabled = false
+		pass 
