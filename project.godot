@@ -29,6 +29,7 @@ translationt="*res://translation/translationt.gd"
 
 [display]
 
+mouse_cursor/custom_image="res://logo/New Piskel.png"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

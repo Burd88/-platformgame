@@ -110,7 +110,8 @@ func _on_Gear7_area_entered(area):
 			$Player/inventary/inventory/bag3.add_item("Gear",icon)
 			$decor/Gear7.queue_free()
 		elif $Player/inventary/inventory/bag4.get_item_count() < 1:
-			$Player/inventary/inventory/bag4.add_item("Gear",icon)
+			$Player/inventary/inventory/bag4.add_item("",icon)
+			$Player/inventary/inventory/bag4.set_item_metadata("Gear")
 			$decor/Gear7.queue_free()
 		else:
 			print("Inventory is full")
@@ -131,7 +132,7 @@ func _on_Gear6_area_entered(area):
 			elif $Player/inventary/inventory/bag3.get_item_text(i) == "Gear":
 				$Gear6.visible = true
 				$Player/inventary/inventory/bag3.remove_item(i)
-			elif $Player/inventary/inventory/bag4.get_item_text(i) == "Gear":
+			elif $Player/inventary/inventory/bag4.get_item_text(i) != "Gear":
 				$Gear6.visible = true
 				$Player/inventary/inventory/bag4.remove_item(i)
 			else:
