@@ -684,7 +684,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1291.41, 508.456 )
+position = Vector2( 109.023, 328.702 )
 z_index = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]

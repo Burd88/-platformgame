@@ -424,6 +424,7 @@ func _on_use_body_entered(body):
 func _on_bag1_item_rmb_selected(index, at_position):
 	print($inventary/inventory/bag1.get_item_count())
 	print(index)
+	print(at_position)
 	print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
 		
@@ -431,7 +432,7 @@ func _on_bag1_item_rmb_selected(index, at_position):
 	#	print("arrow")
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
 		$inventary/inventory/bag1.remove_item(index)
-	if $inventary/inventory/bag1.get_item_metadata(index) == "Health_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "Health_potion":
 		if  health_now < health:
 			health_potion -= 1
 			health_now += 100

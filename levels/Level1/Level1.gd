@@ -4,7 +4,7 @@ extends Node2D
 var lever1 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$CanvasModulate.show()
+	$CanvasModulate.show()
 	$Text_field/text.show()
 	$Chain/AnimatedSprite.stop()
 	$Gear6.visible = false
@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	update()
 	start_mechanism()
-	delta = delta
+	
 	if lever1:
 		$exit_level.open_door = true
 
