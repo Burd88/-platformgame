@@ -4,7 +4,7 @@ extends Node2D
 var lever1 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CanvasModulate.show()
+	#$CanvasModulate.show()
 	$Text_field/text.show()
 	$Chain/AnimatedSprite.stop()
 	$Gear6.visible = false
@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	update()
 	start_mechanism()
-	
+	delta = delta
 	if lever1:
 		$exit_level.open_door = true
 
@@ -36,7 +36,6 @@ func start_mechanism():
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
-		GLOBAL.Player_health = body.health_now
 		body.position = Vector2(296,844)
 	pass # Replace with function body.
 
@@ -100,18 +99,11 @@ func _onlift_body_exited(body):
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
-		if $Player/inventary/inventory/bag1.get_item_count() < 1:
-			$Player/inventary/inventory/bag1.add_item("Gear",icon)
-			$decor/Gear7.queue_free()
-		elif $Player/inventary/inventory/bag2.get_item_count() < 1:
-			$Player/inventary/inventory/bag2.add_item("Gear",icon)
-			$decor/Gear7.queue_free()
-		elif $Player/inventary/inventory/bag3.get_item_count() < 1:
-			$Player/inventary/inventory/bag3.add_item("Gear",icon)
-			$decor/Gear7.queue_free()
-		elif $Player/inventary/inventory/bag4.get_item_count() < 1:
-			$Player/inventary/inventory/bag4.add_item("",icon)
-			$Player/inventary/inventory/bag4.set_item_metadata("Gear")
+		var item_count = $Player/inventary/inventory/bag1.get_item_count()
+		
+		if item_count < 4:
+			$Player/inventary/inventory/bag1.add_item("",icon)
+			$Player/inventary/inventory/bag1.set_item_metadata(item_count,"Gear")
 			$decor/Gear7.queue_free()
 		else:
 			print("Inventory is full")
@@ -122,19 +114,10 @@ func _on_Gear7_area_entered(area):
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
 		#print('fuck')
-		for i in range(0, 1):
-			if $Player/inventary/inventory/bag1.get_item_text(i) == "Gear":
+		for i in range(0, 4):
+			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Gear":
 				$Gear6.visible = true
 				$Player/inventary/inventory/bag1.remove_item(i)
-			elif $Player/inventary/inventory/bag2.get_item_text(i) == "Gear":
-				$Gear6.visible = true
-				$Player/inventary/inventory/bag2.remove_item(i)
-			elif $Player/inventary/inventory/bag3.get_item_text(i) == "Gear":
-				$Gear6.visible = true
-				$Player/inventary/inventory/bag3.remove_item(i)
-			elif $Player/inventary/inventory/bag4.get_item_text(i) != "Gear":
-				$Gear6.visible = true
-				$Player/inventary/inventory/bag4.remove_item(i)
 			else:
 				$Text_field/text.show()
 				if translationt.language == 1:

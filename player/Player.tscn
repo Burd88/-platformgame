@@ -402,24 +402,24 @@ offset = Vector2( 300, 150 )
 transform = Transform2D( 1, 0, 0, 1, 300, 150 )
 
 [node name="inventory" type="Panel" parent="inventary"]
-visible = false
-margin_left = -290.0
-margin_top = -25.0
-margin_right = -229.0
-margin_bottom = 209.0
+margin_left = -289.0
+margin_top = -26.0
+margin_right = -231.0
+margin_bottom = 174.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="bag1" type="ItemList" parent="inventary/inventory"]
 margin_left = 9.0
 margin_top = 18.0
-margin_right = 52.0
-margin_bottom = 64.0
+margin_right = 49.0
+margin_bottom = 178.0
 custom_styles/bg = SubResource( 4 )
 allow_reselect = true
 allow_rmb_select = true
 script = ExtResource( 153 )
 
 [node name="bag2" type="ItemList" parent="inventary/inventory"]
+visible = false
 margin_left = 9.0
 margin_top = 68.0
 margin_right = 52.0
@@ -430,6 +430,7 @@ allow_rmb_select = true
 script = ExtResource( 154 )
 
 [node name="bag3" type="ItemList" parent="inventary/inventory"]
+visible = false
 margin_left = 9.0
 margin_top = 118.0
 margin_right = 52.0
@@ -440,6 +441,7 @@ allow_rmb_select = true
 script = ExtResource( 155 )
 
 [node name="bag4" type="ItemList" parent="inventary/inventory"]
+visible = false
 margin_left = 9.0
 margin_top = 168.0
 margin_right = 52.0
@@ -549,7 +551,6 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="use" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0.469463, -1.59882 )
 scale = Vector2( 2.24179, 1.19754 )
 
@@ -567,9 +568,11 @@ color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
-[connection signal="item_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_selected"]
+[connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
 [connection signal="item_selected" from="inventary/inventory/bag2" to="." method="_on_bag2_item_selected"]
 [connection signal="item_selected" from="inventary/inventory/bag3" to="." method="_on_bag3_item_selected"]
 [connection signal="item_selected" from="inventary/inventory/bag4" to="." method="_on_bag4_item_selected"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="area_entered" from="use" to="." method="_on_use_area_entered"]
 [connection signal="body_entered" from="use" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="use" to="." method="_on_use_body_entered"]

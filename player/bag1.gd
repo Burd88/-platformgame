@@ -5,7 +5,7 @@ var arrow_count_random
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_max_columns(10)
-	set_fixed_icon_size(Vector2(16,16))
+	set_fixed_icon_size(Vector2(32,32))
 	set_icon_mode(ICON_MODE_TOP)
 	set_select_mode(SELECT_SINGLE)
 	set_same_column_width(true)
@@ -13,7 +13,19 @@ func _ready():
 	
 	var arrow = ResourceLoader.load("res://items/arrow/assets/arrow.png")
 	#var health_potion = ResourceLoader.load('res://items/Health Potion/Health Potion 1.png')
-	add_item("arrow",arrow)
+	var item_count = get_item_count()
+	add_item("",arrow)
+	set_item_metadata(item_count, "arrow")
+	item_count = get_item_count()
+	add_item("",arrow)
+	set_item_metadata(item_count, "arrow")
+	item_count = get_item_count()
+	add_item("",arrow)
+	set_item_metadata(item_count, "arrow")
+	item_count = get_item_count()
+	add_item("",arrow)
+	set_item_metadata(item_count, "arrow")
+	item_count = get_item_count()
 	
 	
 
