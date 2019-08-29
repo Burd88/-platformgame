@@ -64,6 +64,7 @@ func _physics_process(delta):
 	#print(velocity.y ," - ", direction.y)
 
 func save():
+	print(get_path())
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),

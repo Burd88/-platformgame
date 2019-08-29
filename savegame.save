@@ -1,7 +1,7 @@
-{"filename":"res://Enemy/Bat/Bat.tscn","parent":"/root/Level1/enemies","pos_x":350.092438,"pos_y":375.17804}
-{"Health_now":1000,"arrow_count":5,"attack_name":["удар_ногой","удар_рукой"],"attack_name_sword":["удар_мечом_1","удар_мечом_2","удар_мечом_3"],"damage":56,"filename":"res://player/Player.tscn","gravity":230,"health":1000,"health_potion":0,"jump_speed":150,"parent":"/root/Level1","php":100,"pos_x":117.128998,"pos_y":365.417969,"rand_attack_name":1,"rand_attack_name_sword":1,"speed":150,"torch":false,"weapon":1}
-{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":456.086792,"pos_y":506.975586}
-{"filename":"res://Enemy/Bat/Bat.tscn","parent":"/root/Level1","pos_x":944.422424,"pos_y":597.776978}
-{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":592.444458,"pos_y":650.955688}
-{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":960.104736,"pos_y":650.955688}
-{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":1186.290894,"pos_y":506.950195}
+{"filename":"res://Enemy/Bat/Bat.tscn","parent":"/root/Level1/enemies","pos_x":429.848816,"pos_y":375.17804}
+{"Health_now":1000,"arrow_count":5,"attack_name":["удар_ногой","удар_рукой"],"attack_name_sword":["удар_мечом_1","удар_мечом_2","удар_мечом_3"],"damage":131,"filename":"res://player/Player.tscn","gravity":230,"health":1000,"health_potion":0,"jump_speed":150,"parent":"/root/Level1","php":100,"pos_x":117.128998,"pos_y":365.417969,"rand_attack_name":1,"rand_attack_name_sword":1,"speed":150,"torch":false,"weapon":1}
+{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":480.842896,"pos_y":506.957214}
+{"filename":"res://Enemy/Bat/Bat.tscn","parent":"/root/Level1","pos_x":1024.176025,"pos_y":597.776978}
+{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":513.848999,"pos_y":650.955017}
+{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":881.501953,"pos_y":650.954102}
+{"filename":"res://Enemy/Slime/Slime.tscn","parent":"/root/Level1","pos_x":1174.327026,"pos_y":506.975586}

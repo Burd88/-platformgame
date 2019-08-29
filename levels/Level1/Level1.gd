@@ -191,8 +191,8 @@ func _on_Button4_pressed():
 		
         # Firstly, we need to create the object and add it to the tree and set its position.
 		
-		var new_object = load("Enemy/Bat/Bat.tscn").instance()
-		
+		var new_object = load(current_line["filename"]).instance()
+		print(current_line["filename"])
 		get_node(current_line["parent"]).add_child(new_object)
 		
 		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
