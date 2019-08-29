@@ -19,7 +19,14 @@ func _ready():
 func _process(delta):
 	update()
 	start_mechanism()
-	
+	if Input.is_action_just_pressed("ui_cancel"):
+		$pause_menu/Popup.show()
+		get_tree().paused = true
+		#$Player/spr.stop()
+		modulate = Color(0.470588, 0.192157, 0.192157)
+		$Text_field.layer = -1
+		#$Player/GUI.layer = -1
+		#$Player/inventary.layer = -1
 	if lever1:
 		$exit_level.open_door = true
 
@@ -130,3 +137,66 @@ func _on_Gear6_area_entered(area):
 
 
 
+
+
+func _on_pause_Button_pressed():
+	get_tree().paused = false
+	$pause_menu/Popup.hide()
+	$Player/spr.playing = true
+	modulate = Color(1, 1, 1)
+	$Text_field.layer = 1
+	$Player/GUI.layer = 1
+	$Player/inventary.layer = 1
+	pass # Replace with function body.
+
+
+func _on_exitgame_pause_menu_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_save_pressed():
+	var save_game = File.new()
+	save_game.open("res://savegame.save", File.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("save_group")
+	print(save_nodes)
+	for i in save_nodes:
+		var node_data = i.call("save")
+		save_game.store_line(to_json(node_data))
+	save_game.close()
+	pass # Replace with function body.
+
+
+func _on_Button4_pressed():
+	print("должно быть загружено сохранение")
+	var save_game = File.new()
+	if not save_game.file_exists("res://savegame.save"):
+		return # Error! We don't have a save to load.
+
+    # We need to revert the game state so we're not cloning objects
+    # during loading. This will vary wildly depending on the needs of a
+    # project, so take care with this step.
+    # For our example, we will accomplish this by deleting saveable objects.
+	var save_nodes = get_tree().get_nodes_in_group("save_group")
+	for i in save_nodes:
+		i.queue_free()
+
+    # Load the file line by line and process that dictionary to restore
+    # the object it represents.
+	save_game.open("res://savegame.save", File.READ)
+	while (!save_game.eof_reached()):
+		var current_line = parse_json(save_game.get_line())
+        # Firstly, we need to create the object and add it to the tree and set its position.
+
+		var new_object = load(current_line["filename"]).instance()
+		get_node(current_line["parent"]).add_child(new_object)
+		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
+        # Now we set the remaining variables.
+		print(current_line.keys())
+		for i in current_line.keys():
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+				continue
+			new_object.set(i, current_line[i])
+	save_game.close()
+	pass # Replace with function body.
+	pass # Replace with function body.

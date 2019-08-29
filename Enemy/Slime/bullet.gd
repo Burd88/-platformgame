@@ -24,6 +24,7 @@ func _on_bullet_body_entered(body):
 		var now_position = position
 		var b = puddle.instance()
 		b.start(now_position)
+		#b.call_deferred("start" , now_position)
 		get_parent().add_child(b)
 		queue_free()
 

@@ -21,6 +21,16 @@ func _process(delta):
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
 
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+
+	}
+
+	return save_dict
 
 func _on_BatArea_body_entered(body):
 	if body.name == 'Player':

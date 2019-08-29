@@ -375,7 +375,9 @@ extents = Vector2( 6.78125, 9.70228 )
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 7.6976, 16.2632 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"save_group",
+]]
 z_index = 1
 z_as_relative = false
 script = ExtResource( 1 )
@@ -384,7 +386,6 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка_меч"
-frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

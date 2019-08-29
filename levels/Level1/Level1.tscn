@@ -11,17 +11,16 @@
 [ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=11]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Level1/sounds/Journey to the East Rocks.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=14]
-[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=15]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=16]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=17]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=18]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=19]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=20]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=21]
-[ext_resource path="res://items/Items/Arrow.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=12]
+[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=13]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=17]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=18]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=19]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=20]
+[ext_resource path="res://items/Items/Arrow.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -466,7 +465,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=30]
-font_data = ExtResource( 17 )
+font_data = ExtResource( 16 )
 
 [sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -484,8 +483,12 @@ corner_radius_bottom_left = 5
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 5.45142, 5.5163 )
 
+[sub_resource type="DynamicFont" id=33]
+size = 32
+font_data = ExtResource( 16 )
+
 [node name="Level1" type="Node2D"]
-position = Vector2( 1.15417, 20.209 )
+position = Vector2( 7.80242, 20.209 )
 script = ExtResource( 1 )
 
 [node name="background" type="TileMap" parent="."]
@@ -683,35 +686,28 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 12 )]
-position = Vector2( 109.023, 328.702 )
-z_index = 0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2( -91.8881, -385.247 )
-stream = ExtResource( 13 )
-volume_db = 3.0
-max_distance = 1000.0
-
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Bat" parent="enemies" instance=ExtResource( 14 )]
+[node name="Bat" parent="enemies" instance=ExtResource( 12 )]
 position = Vector2( 464.012, 375.178 )
 
-[node name="waterfull" parent="." instance=ExtResource( 15 )]
+[node name="waterfull" parent="." instance=ExtResource( 13 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 177.169, 634.905 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull2" parent="." instance=ExtResource( 15 )]
+[node name="waterfull2" parent="." instance=ExtResource( 13 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 54.3945, 640.074 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull3" parent="." instance=ExtResource( 15 )]
+[node name="waterfull3" parent="." instance=ExtResource( 13 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( -68.38, 640.074 )
 scale = Vector2( 2, 1.02476 )
+
+[node name="Player" parent="." instance=ExtResource( 14 )]
+position = Vector2( 117.129, 338.371 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 27 )
@@ -731,7 +727,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="." instance=ExtResource( 16 )]
+[node name="Torch" parent="." instance=ExtResource( 15 )]
 position = Vector2( 149.456, 337.913 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -746,7 +742,6 @@ shape = SubResource( 28 )
 [node name="Text_field" type="CanvasLayer" parent="."]
 
 [node name="text" type="Label" parent="Text_field"]
-visible = false
 anchor_right = 1.0
 margin_left = 55.0
 margin_top = 490.0
@@ -766,18 +761,18 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 18 )
+custom_styles/hover = ExtResource( 17 )
 custom_styles/pressed = SubResource( 31 )
-custom_styles/focus = ExtResource( 18 )
-custom_styles/normal = ExtResource( 18 )
+custom_styles/focus = ExtResource( 17 )
+custom_styles/normal = ExtResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-icon = ExtResource( 19 )
+icon = ExtResource( 18 )
 
 [node name="lever" type="Area2D" parent="."]
 position = Vector2( 822.019, 472.076 )
 collision_layer = 2
-script = ExtResource( 20 )
+script = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever"]
 position = Vector2( 0, 2.71124 )
@@ -794,20 +789,70 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Slime3" parent="." instance=ExtResource( 21 )]
+[node name="Slime3" parent="." instance=ExtResource( 20 )]
 position = Vector2( 513.339, 470.422 )
 
-[node name="Arrow" parent="." instance=ExtResource( 22 )]
+[node name="Arrow" parent="." instance=ExtResource( 21 )]
 position = Vector2( 215.233, 365.673 )
 
-[node name="Slime" parent="." instance=ExtResource( 21 )]
-position = Vector2( 509.561, 637.943 )
+[node name="pause_menu" type="CanvasLayer" parent="."]
+pause_mode = 2
 
-[node name="Slime2" parent="." instance=ExtResource( 21 )]
-position = Vector2( 720.189, 638.574 )
+[node name="Popup" type="Popup" parent="pause_menu"]
+visible = true
+margin_top = -98.892
+margin_right = 40.0
+margin_bottom = -58.892
 
-[node name="Slime4" parent="." instance=ExtResource( 21 )]
-position = Vector2( 829.223, 641.725 )
+[node name="Label" type="Label" parent="pause_menu/Popup"]
+margin_left = 450.0
+margin_top = 250.0
+margin_right = 597.0
+margin_bottom = 350.0
+custom_fonts/font = SubResource( 33 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="pause_menu/Popup"]
+margin_left = 490.0
+margin_top = 350.0
+margin_right = 551.0
+margin_bottom = 370.0
+text = "Contine"
+
+[node name="Button2" type="Button" parent="pause_menu/Popup"]
+margin_left = 500.0
+margin_top = 400.0
+margin_right = 512.0
+margin_bottom = 420.0
+text = "Exit"
+
+[node name="Button3" type="Button" parent="pause_menu/Popup"]
+margin_left = 496.898
+margin_top = 373.748
+margin_right = 539.898
+margin_bottom = 393.748
+text = "SAve"
+
+[node name="Button4" type="Button" parent="pause_menu/Popup"]
+margin_left = 590.962
+margin_top = 357.757
+margin_right = 629.962
+margin_bottom = 377.757
+text = "load"
+
+[node name="Bat" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1058.34, 597.777 )
+
+[node name="Slime" parent="." instance=ExtResource( 20 )]
+position = Vector2( 528.012, 623.805 )
+
+[node name="Slime2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 895.665, 623.805 )
+
+[node name="Slime4" parent="." instance=ExtResource( 20 )]
+position = Vector2( 1188.49, 490.409 )
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
@@ -819,3 +864,7 @@ position = Vector2( 829.223, 641.725 )
 [connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
 [connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]
+[connection signal="pressed" from="pause_menu/Popup/Button" to="." method="_on_pause_Button_pressed"]
+[connection signal="pressed" from="pause_menu/Popup/Button2" to="." method="_on_exitgame_pause_menu_pressed"]
+[connection signal="pressed" from="pause_menu/Popup/Button3" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="pause_menu/Popup/Button4" to="." method="_on_Button4_pressed"]

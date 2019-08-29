@@ -14,12 +14,10 @@ var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
 var weapon = 1
+var damage
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
-##
-var damage
-
 ##
 onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
@@ -61,9 +59,34 @@ func _physics_process(delta):
 	use()
 	use_health_potion()
 	_open_inventory()
+
 	#print(velocity.y)
 	#print(velocity.y ," - ", direction.y)
-	
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"speed" : speed,
+		"jump_speed" : jump_speed,
+		"gravity" : gravity,
+		"health" : health ,
+		"Health_now" : health_now,
+		"php" : php,
+		"attack_name_sword" : attack_name_sword,
+		"rand_attack_name_sword" : rand_attack_name_sword,
+		"attack_name" : attack_name ,
+		"rand_attack_name" : rand_attack_name,
+		"weapon" : weapon,
+		"damage" : damage,
+		"arrow_count" : arrow_count,
+		"health_potion" : health_potion,
+		"torch" : torch
+	}
+
+	return save_dict
 	
 func _move(delta):
 	if health_now > 0: 

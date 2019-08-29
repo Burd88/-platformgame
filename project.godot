@@ -21,11 +21,19 @@ boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://logo/logo.png"
+config/version="0.0.1"
 
 [autoload]
 
 GLOBAL="*res://GLOBAL.gd"
 translationt="*res://translation/translationt.gd"
+
+[debug]
+
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
