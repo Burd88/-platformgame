@@ -182,8 +182,9 @@ func _on_Button4_pressed():
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:
 		i.queue_free()
-	$pause_menu/loading/Timer.start()
-	#$pause_menu/loading/AnimationPlayer.play("loading")
+	#$pause_menu/loading/Timer.start()
+	$pause_menu/loading.show()
+	$pause_menu/loading/AnimationPlayer.play("loading")
 	$pause_menu/Popup.hide()
 	pass # Replace with function body.
 	
@@ -200,37 +201,49 @@ func load_game():
 	
     # Load the file line by line and process that dictionary to restore
 	save_game.open("res://savegame.save", File.READ)
-	while not save_game.eof_reached():
+	while save_game.eof_reached() == false:
 		
 		var current_line = parse_json(save_game.get_line())
 		
-		
+		if current_line != null:
         # Firstly, we need to create the object and add it to the tree and set its position.
 			
-		var new_object = load(current_line['filename']).instance()
+			var new_object = load(current_line['filename']).instance()
 
-		get_node(current_line["parent"]).add_child(new_object)
+			get_node(current_line["parent"]).add_child(new_object)
 		#print(current_line.keys())
 		#print(current_line["pos_x"])
-		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
+			new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
         # Now we set the remaining variables.
 		
-		for i in current_line.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				continue
-			new_object.set(i, current_line[i])
+			for i in current_line.keys():
+				if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+					continue
+				new_object.set(i, current_line[i])
+		elif current_line == null:
+			save_game.eof_reached() == true
 		
 	save_game.close()
 	
 
 func _on_loading_animation_finished(anim_name):
-	$pause_menu/Popup.show()
+	#$pause_menu/Popup.show()
+	
+
 	load_game()
+	$pause_menu/loading/Timer.start()
 
 	pass # Replace with function body.
 
 
 func _on_Timer_timeout():
-	$pause_menu/Popup.show()
-	load_game()
+	$pause_menu/loading.hide()
+	$pause_menu/Popup.hide()
+	get_tree().paused = false
+	modulate = Color(1, 1, 1)
+	$Text_field.layer = 1
+	$Player/GUI.layer = 1
+	$Player/inventary.layer = 1
+	$Player/spr.playing = true
+	$pause_menu/loading.hide()
 	pass # Replace with function body.

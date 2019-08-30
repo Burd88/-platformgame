@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -20,7 +20,8 @@
 [ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=18]
 [ext_resource path="res://levels/Level1/lever.gd" type="Script" id=19]
 [ext_resource path="res://items/Items/Arrow.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=21]
+[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -483,48 +484,57 @@ corner_radius_bottom_left = 5
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 5.45142, 5.5163 )
 
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.0823529, 0.329412, 0.203922, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.803922, 0.0431373, 0.0431373, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=36]
+draw_center = false
+
+[sub_resource type="DynamicFont" id=37]
+size = 25
+outline_color = Color( 0.705882, 0.105882, 0.105882, 1 )
+font_data = ExtResource( 21 )
+
 [sub_resource type="DynamicFont" id=34]
 size = 36
 font_data = ExtResource( 16 )
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=38]
 resource_name = "loading"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:value")
+tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 100.0 ]
+"values": [ 0.0, 1.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ProgressBar:value")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 100.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Label:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true, false, true, false, true, false, true, false, true ]
 }
 
 [sub_resource type="DynamicFont" id=33]
@@ -850,32 +860,35 @@ pause_mode = 2
 visible = false
 
 [node name="ProgressBar" type="ProgressBar" parent="pause_menu/loading"]
-margin_left = 436.241
-margin_top = 222.665
-margin_right = 536.241
-margin_bottom = 252.665
+margin_left = 487.683
+margin_top = 257.862
+margin_right = 687.683
+margin_bottom = 307.862
+custom_styles/fg = SubResource( 35 )
+custom_styles/bg = SubResource( 36 )
+custom_fonts/font = SubResource( 37 )
 value = 100.0
 
 [node name="Label" type="Label" parent="pause_menu/loading"]
-margin_left = 370.461
-margin_top = 174.756
-margin_right = 620.461
-margin_bottom = 220.756
+margin_left = 460.711
+margin_top = 215.369
+margin_right = 710.711
+margin_bottom = 261.369
 custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0.0705882, 0.572549, 0.0666667, 1 )
 text = "Loading..."
 align = 1
 valign = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/loading"]
-anims/loading = SubResource( 35 )
+max_lines_visible = 12
 
 [node name="Timer" type="Timer" parent="pause_menu/loading"]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/loading"]
+anims/loading = SubResource( 38 )
+
 [node name="Popup" type="Popup" parent="pause_menu"]
-visible = true
 margin_top = -98.892
 margin_right = 40.0
 margin_bottom = -58.892
@@ -918,13 +931,13 @@ margin_right = 629.962
 margin_bottom = 377.757
 text = "load"
 
-[node name="Slime" parent="." instance=ExtResource( 21 )]
+[node name="Slime" parent="." instance=ExtResource( 22 )]
 position = Vector2( 716.515, 573.212 )
 
-[node name="Slime2" parent="." instance=ExtResource( 21 )]
+[node name="Slime2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 856.404, 602.995 )
 
-[node name="Slime3" parent="." instance=ExtResource( 21 )]
+[node name="Slime3" parent="." instance=ExtResource( 22 )]
 position = Vector2( 546.844, 614.727 )
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
@@ -937,8 +950,8 @@ position = Vector2( 546.844, 614.727 )
 [connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
 [connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]
-[connection signal="animation_finished" from="pause_menu/loading/AnimationPlayer" to="." method="_on_loading_animation_finished"]
 [connection signal="timeout" from="pause_menu/loading/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="pause_menu/loading/AnimationPlayer" to="." method="_on_loading_animation_finished"]
 [connection signal="pressed" from="pause_menu/Popup/Button" to="." method="_on_pause_Button_pressed"]
 [connection signal="pressed" from="pause_menu/Popup/Button2" to="." method="_on_exitgame_pause_menu_pressed"]
 [connection signal="pressed" from="pause_menu/Popup/Button3" to="." method="_on_save_pressed"]
