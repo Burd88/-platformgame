@@ -67,7 +67,9 @@ func save():
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
-
+		"health" : health ,
+		"Health_now" : health_now,
+		"php" : php,
 	}
 
 	return save_dict

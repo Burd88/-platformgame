@@ -376,7 +376,7 @@ extents = Vector2( 6.78125, 9.70228 )
 extents = Vector2( 7.6976, 16.2632 )
 
 [node name="Player" type="KinematicBody2D" groups=[
-"save_group",
+"save",
 ]]
 z_index = 1
 z_as_relative = false

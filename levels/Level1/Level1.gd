@@ -142,11 +142,12 @@ func _on_Gear6_area_entered(area):
 func _on_pause_Button_pressed():
 	get_tree().paused = false
 	$pause_menu/Popup.hide()
-	$Player/spr.playing = true
+	
 	modulate = Color(1, 1, 1)
 	$Text_field.layer = 1
 	$Player/GUI.layer = 1
 	$Player/inventary.layer = 1
+	$Player/spr.playing = true
 	pass # Replace with function body.
 
 
@@ -158,7 +159,7 @@ func _on_exitgame_pause_menu_pressed():
 func _on_save_pressed():
 	var save_game = File.new()
 	save_game.open("res://savegame.save", File.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("save_group")
+	var save_nodes = get_tree().get_nodes_in_group("save")
 	print(save_nodes)
 	for i in save_nodes:
 		var node_data = i.call("save")
@@ -178,23 +179,25 @@ func _on_Button4_pressed():
     # during loading. This will vary wildly depending on the needs of a
     # project, so take care with this step.
     # For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("save_group")
+	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:
 		i.queue_free()
 	
     # Load the file line by line and process that dictionary to restore
     # the object it represents.
 	save_game.open("res://savegame.save", File.READ)
-	while (!save_game.eof_reached()):
+	while not save_game.eof_reached():
 		
 		var current_line = parse_json(save_game.get_line())
 		
+		var filename_obj = current_line['filename']
         # Firstly, we need to create the object and add it to the tree and set its position.
 		
-		var new_object = load(current_line["filename"]).instance()
-		print(current_line["filename"])
+		var new_object = load(filename_obj).instance()
+
 		get_node(current_line["parent"]).add_child(new_object)
-		
+		#print(current_line.keys())
+		#print(current_line["pos_x"])
 		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
         # Now we set the remaining variables.
 		
@@ -202,6 +205,9 @@ func _on_Button4_pressed():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_object.set(i, current_line[i])
-	save_game.close()
+			
+		get_tree().paused = false
+	
+	
 	pass # Replace with function body.
 	pass # Replace with function body.

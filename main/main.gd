@@ -52,8 +52,10 @@ func _on_Continue_pressed():
 	save_game.open("res://savegame.save", File.READ)
 	while not save_game.eof_reached():
 		var current_line = parse_json(save_game.get_line())
+		get_tree().change_scene(current_line["parent"])
         # Firstly, we need to create the object and add it to the tree and set its position.
 		var new_object = load(current_line["filename"]).instance()
+		
 		get_node(current_line["parent"]).add_child(new_object)
 		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
         # Now we set the remaining variables.
