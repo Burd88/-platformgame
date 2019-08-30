@@ -890,6 +890,7 @@ one_shot = true
 anims/loading = SubResource( 38 )
 
 [node name="Popup" type="Popup" parent="pause_menu"]
+visible = true
 margin_top = -98.892
 margin_right = 40.0
 margin_bottom = -58.892
@@ -919,18 +920,18 @@ margin_bottom = 420.0
 text = "Exit"
 
 [node name="Button3" type="Button" parent="pause_menu/Popup"]
-margin_left = 496.898
-margin_top = 373.748
-margin_right = 539.898
-margin_bottom = 393.748
-text = "SAve"
+margin_left = 449.117
+margin_top = 374.483
+margin_right = 492.117
+margin_bottom = 394.483
+text = "Save"
 
 [node name="Button4" type="Button" parent="pause_menu/Popup"]
-margin_left = 590.962
-margin_top = 357.757
-margin_right = 629.962
-margin_bottom = 377.757
-text = "load"
+margin_left = 548.326
+margin_top = 375.399
+margin_right = 587.326
+margin_bottom = 395.399
+text = "Load"
 
 [node name="Slime" parent="." instance=ExtResource( 22 )]
 position = Vector2( 716.515, 573.212 )
