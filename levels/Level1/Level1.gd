@@ -4,6 +4,11 @@ extends Node2D
 var lever1 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(GLOBAL.load_game)
+	if GLOBAL.load_game == "new_game":
+		pass
+	elif GLOBAL.load_game == "loading_game":
+		preload_game()
 	$CanvasModulate.show()
 	$Text_field/text.show()
 	$Chain/AnimatedSprite.stop()
@@ -165,11 +170,21 @@ func _on_save_pressed():
 		var node_data = i.call("save")
 		save_game.store_line(to_json(node_data))
 	save_game.close()
+	var save_levels = File.new()
+	save_levels.open("res://savelevel.save", File.WRITE)
+	var save_level = get_tree().get_nodes_in_group("save_levels")
+	print(save_nodes)
+	for i in save_level:
+		var level_data = i.call("save_levels")
+		save_levels.store_line(to_json(level_data))
+	save_levels.close()
 	pass # Replace with function body.
 
 
 func _on_Button4_pressed():
-	
+	preload_game()
+
+func preload_game():
 	var save_game = File.new()
 	if not save_game.file_exists("res://savegame.save"):
 		
@@ -222,6 +237,7 @@ func load_game():
 				new_object.set(i, current_line[i])
 		elif current_line == null:
 			save_game.eof_reached() == true
+			$pause_menu/loading/Timer.start()
 		
 	save_game.close()
 	
@@ -231,7 +247,7 @@ func _on_loading_animation_finished(anim_name):
 	
 
 	load_game()
-	$pause_menu/loading/Timer.start()
+	#$pause_menu/loading/Timer.start()
 
 	pass # Replace with function body.
 

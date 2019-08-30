@@ -62,6 +62,11 @@ func _physics_process(delta):
 
 	#print(velocity.y)
 	#print(velocity.y ," - ", direction.y)
+func save_levels():
+	var save_level = {
+		"level" : get_parent().filename,
+		}
+	return save_level
 
 func save():
 	
@@ -280,8 +285,9 @@ func _on_spr_animation_finished():
 	if $spr.animation == "удар_рукой" or $spr.animation == "удар_ногой" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
-	#if $spr.animation == 'смерть':
-		#get_tree().change_scene("res://main/main.tscn")
+	if $spr.animation == 'смерть':
+		get_parent().preload_game()
+				#get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
 func _death():

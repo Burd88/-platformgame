@@ -858,6 +858,7 @@ pause_mode = 2
 [node name="loading" type="Node2D" parent="pause_menu"]
 pause_mode = 2
 visible = false
+position = Vector2( -75.7621, 5.64951 )
 
 [node name="ProgressBar" type="ProgressBar" parent="pause_menu/loading"]
 margin_left = 487.683

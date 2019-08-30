@@ -24,6 +24,7 @@ func _ready():
 
 func _on_Start_game_pressed():
 	get_tree().change_scene("res://levels/Level1/Level1.tscn")
+	GLOBAL.load_game = "new_game"
 	pass # начать новую игру
 
 
@@ -34,37 +35,30 @@ func _on_Exit_pressed():
 
 
 func _on_Continue_pressed():
+	GLOBAL.load_game = "loading_game"
 	print("должно быть загружено сохранение")
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("res://savelevel.save"):
 		return # Error! We don't have a save to load.
 
-    # We need to revert the game state so we're not cloning objects
-    # during loading. This will vary wildly depending on the needs of a
-    # project, so take care with this step.
-    # For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("save_group")
-	for i in save_nodes:
-		i.queue_free()
-
-    # Load the file line by line and process that dictionary to restore
-    # the object it represents.
-	save_game.open("res://savegame.save", File.READ)
+	save_game.open("res://savelevel.save", File.READ)
+	
 	while not save_game.eof_reached():
 		var current_line = parse_json(save_game.get_line())
 		if current_line != null:
 			
-			get_tree().change_scene(current_line["parent"])
+			get_tree().change_scene(current_line["level"])
+			
         # Firstly, we need to create the object and add it to the tree and set its position.
-			var new_object = load(current_line["filename"]).instance()
+			#var new_object = load(current_line["filename"]).instance()
 		
-			get_node(current_line["parent"]).add_child(new_object)
-			new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
+			#get_node(current_line["parent"]).add_child(new_object)
+			#new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
         # Now we set the remaining variables.
-			for i in current_line.keys():
-				if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-					continue
-				new_object.set(i, current_line[i])
+			#for i in current_line.keys():
+			#	if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+			#		continue
+			#	new_object.set(i, current_line[i])
 		elif current_line == null:
 			save_game.eof_reached() == true
 	save_game.close()

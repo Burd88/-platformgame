@@ -1,5 +1,5 @@
 extends Node
-
+var load_game = "new_game"
 #var Player_health = 1000
 # Declare member variables here. Examples:
 # var a = 2
