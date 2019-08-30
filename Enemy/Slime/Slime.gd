@@ -42,6 +42,7 @@ func _ready():
 func _process(delta):
 	update()
 	if target:
+		print(position.distance_to(target.position))
 		aim()
 		#_attack_player()
 		#print(position.distance_to(target.position))
@@ -70,6 +71,7 @@ func save():
 		"health" : health ,
 		"Health_now" : health_now,
 		"php" : php,
+		"name" : name,
 	}
 
 	return save_dict
@@ -136,11 +138,17 @@ func aim():
 					anim = 'attack'
 					#print(position.distance_to(target.position))
 					direction = (target.position - position).normalized()
+					#print(direction)
 					if direction.x < 0 :
+					#if global_position.angle_to(target.global_position) < 1 and global_position.angle_to(target.global_position) > 0:
+		#	pass#print("pravo")
+						
 						$sprite.flip_h = false
 						$attack_area.position.x = 0
 						$check_place.position.x = -28
+					#elif global_position.angle_to(target.global_position) > -1 and global_position.angle_to(target.global_position) < 0:
 					elif direction.x > 0:
+						
 						$sprite.flip_h = true
 						$attack_area.position.x = 40
 						$check_place.position.x = 28
@@ -153,8 +161,8 @@ func aim():
 				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
 					#print("milleattake")
 					pass
-				elif result.collider.name == "frontground":
-					pass
+				#elif result.collider.name == "frontground":
+				#pass
 				else:
 					move_to_player = false
 					anim = "move"
@@ -235,6 +243,7 @@ func _on_Visible_body_entered(body):
 	
 	if body.name == 'Player':
 		target = body
+		move_to_player = true
 	else :
 		pass 
 

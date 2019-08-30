@@ -182,18 +182,32 @@ func _on_Button4_pressed():
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:
 		i.queue_free()
+	$pause_menu/loading/Timer.start()
+	#$pause_menu/loading/AnimationPlayer.play("loading")
+	$pause_menu/Popup.hide()
+	pass # Replace with function body.
+	
+func load_game():
+	var save_game = File.new()
+	if not save_game.file_exists("res://savegame.save"):
+		
+		return print("error")# Error! We don't have a save to load.
+
+    # We need to revert the game state so we're not cloning objects
+    # during loading. This will vary wildly depending on the needs of a
+    # project, so take care with this step.
+    # For our example, we will accomplish this by deleting saveable objects.
 	
     # Load the file line by line and process that dictionary to restore
-    # the object it represents.
 	save_game.open("res://savegame.save", File.READ)
 	while not save_game.eof_reached():
 		
 		var current_line = parse_json(save_game.get_line())
 		
-		var filename_obj = current_line['filename']
-        # Firstly, we need to create the object and add it to the tree and set its position.
 		
-		var new_object = load(filename_obj).instance()
+        # Firstly, we need to create the object and add it to the tree and set its position.
+			
+		var new_object = load(current_line['filename']).instance()
 
 		get_node(current_line["parent"]).add_child(new_object)
 		#print(current_line.keys())
@@ -205,9 +219,18 @@ func _on_Button4_pressed():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
 			new_object.set(i, current_line[i])
-			
-		get_tree().paused = false
+		
+	save_game.close()
 	
-	
+
+func _on_loading_animation_finished(anim_name):
+	$pause_menu/Popup.show()
+	load_game()
+
 	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$pause_menu/Popup.show()
+	load_game()
 	pass # Replace with function body.

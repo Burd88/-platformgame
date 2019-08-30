@@ -1,5 +1,4 @@
-{"Health_now":1000,"arrow_count":19,"attack_name":["удар_ногой","удар_рукой"],"attack_name_sword":["удар_мечом_1","удар_мечом_2","удар_мечом_3"],"damage":52,"filename":"res://player/Player.tscn","gravity":230,"health":1000,"health_potion":0,"jump_speed":150,"parent":"/root/Level1","php":100,"pos_x":230.681381,"pos_y":365.417969,"rand_attack_name":1,"rand_attack_name_sword":1,"speed":150,"torch":true,"weapon":1}
-{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"parent":"/root/Level1","php":100,"pos_x":552.41864,"pos_y":506.975586}
-{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"parent":"/root/Level1","php":100,"pos_x":854.11438,"pos_y":650.975586}
-{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"parent":"/root/Level1","php":100,"pos_x":1221.782715,"pos_y":650.954773}
-{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"parent":"/root/Level1","php":100,"pos_x":1189.770508,"pos_y":506.954773}
+{"Health_now":900,"arrow_count":5,"attack_name":["удар_ногой","удар_рукой"],"attack_name_sword":["удар_мечом_1","удар_мечом_2","удар_мечом_3"],"damage":84,"filename":"res://player/Player.tscn","gravity":230,"health":1000,"health_potion":0,"jump_speed":150,"parent":"/root/Level1","php":90,"pos_x":967.051331,"pos_y":625.238281,"rand_attack_name":1,"rand_attack_name_sword":1,"speed":150,"torch":true,"weapon":1}
+{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"name":"Slime","parent":"/root/Level1","php":100,"pos_x":1087.802734,"pos_y":650.954468}
+{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"name":"Slime2","parent":"/root/Level1","php":100,"pos_x":1245.914795,"pos_y":650.950195}
+{"Health_now":300,"filename":"res://Enemy/Slime/Slime.tscn","health":300,"name":"Slime3","parent":"/root/Level1","php":100,"pos_x":840.22699,"pos_y":650.975586}
