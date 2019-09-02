@@ -8,43 +8,49 @@ extends Area2D
 func _ready():
 	$Timer.wait_time = 60
 	print("лужа")
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $ray1.is_colliding() :
-		print($ray1)
+		print(1)
 		rotation_degrees = 90
 		$ray1.enabled = false
 		$ray2.enabled = false
 	elif $ray2.is_colliding() :
 		rotation_degrees = 270
-	
+		print(2)
 		$ray1.enabled = false
 		$ray2.enabled = false
 	else:
+		print(3)
 		$ray1.enabled = false
 		$ray2.enabled = false
 		
 	if rotation_degrees== 90 and  $RayCast2D.is_colliding() == false:
 		position.y += 10
-		
+		print(4)
 		$RayCast2D.enabled = false
 	elif rotation_degrees== 270 and $RayCast2D.is_colliding() == false:
 		position.y -= 10
-		
+		print(5)
 		$RayCast2D2.enabled = false
-	else : pass
-	
+	else : 
+		print(6)
+		pass
+		
 	if rotation_degrees== 90 and  $RayCast2D2.is_colliding() == false:
 		position.y -= 10
-		
+		print(7)
 		$RayCast2D.enabled = false
 	elif rotation_degrees== 270 and  $RayCast2D2.is_colliding() == false:
 		position.y += 10
-		
+		print(8)
 		$RayCast2D2.enabled = false
-	else : pass
+	else : 
+		print(9)
+		pass
 	#print($Timer.time_left)
 	scale -= Vector2(0.001, 0.001)
 	if scale == Vector2(0,0):

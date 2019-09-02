@@ -22,7 +22,6 @@ script = ExtResource( 1 )
 position = Vector2( 0.661102, -4.29715 )
 scale = Vector2( 0.748597, 0.502034 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,23 +37,25 @@ wait_time = 1.5
 autostart = true
 
 [node name="ray1" type="RayCast2D" parent="."]
-position = Vector2( 4.07814, 0 )
+position = Vector2( -11.3759, -0.214638 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 10 )
 
 [node name="ray2" type="RayCast2D" parent="."]
-position = Vector2( -6.43917, 0.214638 )
+position = Vector2( 11.3759, 0.214638 )
 rotation = 4.71239
 enabled = true
 cast_to = Vector2( 0, 10 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -9.8734, -0.214645 )
+position = Vector2( -9.44412, 1.93175 )
+enabled = true
 cast_to = Vector2( 0, 5 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
-position = Vector2( 9.87341, -7.62939e-006 )
+position = Vector2( 9.01486, 2.36103 )
+enabled = true
 cast_to = Vector2( 0, 5 )
 [connection signal="body_entered" from="." to="." method="_on__body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
