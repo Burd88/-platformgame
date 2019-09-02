@@ -484,7 +484,7 @@ corner_radius_bottom_left = 5
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 5.45142, 5.5163 )
 
-[sub_resource type="StyleBoxFlat" id=35]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.0823529, 0.329412, 0.203922, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -497,19 +497,19 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=36]
+[sub_resource type="StyleBoxFlat" id=34]
 draw_center = false
 
-[sub_resource type="DynamicFont" id=37]
+[sub_resource type="DynamicFont" id=35]
 size = 25
 outline_color = Color( 0.705882, 0.105882, 0.105882, 1 )
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=34]
+[sub_resource type="DynamicFont" id=36]
 size = 36
 font_data = ExtResource( 16 )
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=37]
 resource_name = "loading"
 length = 3.0
 tracks/0/type = "value"
@@ -537,7 +537,7 @@ tracks/1/keys = {
 "values": [ 0.0, 100.0 ]
 }
 
-[sub_resource type="DynamicFont" id=33]
+[sub_resource type="DynamicFont" id=38]
 size = 32
 font_data = ExtResource( 16 )
 
@@ -865,9 +865,9 @@ margin_left = 487.683
 margin_top = 257.862
 margin_right = 687.683
 margin_bottom = 307.862
-custom_styles/fg = SubResource( 35 )
-custom_styles/bg = SubResource( 36 )
-custom_fonts/font = SubResource( 37 )
+custom_styles/fg = SubResource( 33 )
+custom_styles/bg = SubResource( 34 )
+custom_fonts/font = SubResource( 35 )
 value = 100.0
 
 [node name="Label" type="Label" parent="pause_menu/loading"]
@@ -875,7 +875,7 @@ margin_left = 460.711
 margin_top = 215.369
 margin_right = 710.711
 margin_bottom = 261.369
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 36 )
 custom_colors/font_color = Color( 0.0705882, 0.572549, 0.0666667, 1 )
 text = "Loading..."
 align = 1
@@ -887,7 +887,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/loading"]
-anims/loading = SubResource( 38 )
+anims/loading = SubResource( 37 )
 
 [node name="Popup" type="Popup" parent="pause_menu"]
 visible = true
@@ -900,7 +900,7 @@ margin_left = 450.0
 margin_top = 250.0
 margin_right = 597.0
 margin_bottom = 350.0
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 38 )
 text = "Paused"
 align = 1
 valign = 1
@@ -934,13 +934,7 @@ margin_bottom = 395.399
 text = "Load"
 
 [node name="Slime" parent="." instance=ExtResource( 22 )]
-position = Vector2( 716.515, 573.212 )
-
-[node name="Slime2" parent="." instance=ExtResource( 22 )]
-position = Vector2( 856.404, 602.995 )
-
-[node name="Slime3" parent="." instance=ExtResource( 22 )]
-position = Vector2( 546.844, 614.727 )
+position = Vector2( 659.64, 596.141 )
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]

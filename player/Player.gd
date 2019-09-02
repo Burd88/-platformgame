@@ -148,10 +148,12 @@ func _move(delta):
 	if direction.x > 0:
 		$spr.flip_h = false
 		$attack_area.position.x = 18
+		$use.position.x = 6
 
 	elif direction.x < 0:
 		$spr.flip_h = true
 		$attack_area.position.x = -18
+		$use.position.x = -6
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta

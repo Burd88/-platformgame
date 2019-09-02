@@ -42,7 +42,7 @@ func _ready():
 func _process(delta):
 	update()
 	if target:
-		print(position.distance_to(target.position))
+		#print(direction.x)
 		aim()
 		#_attack_player()
 		#print(position.distance_to(target.position))
@@ -122,7 +122,8 @@ func aim():
 
 		hit_pos = []
 		var space_state = get_world_2d().direct_space_state
-		var target_extents = target.get_node('CollisionShape2D').shape.extents #- Vector2(0 , 3)
+		var target_extents = target.get_node('CollisionShape2D').shape.extents# - Vector2(1 , 2)
+		#print("target_extents : ", target_extents)
 		var nw = target.position - target_extents
 		var se = target.position + target_extents
 		var ne = target.position + Vector2(target_extents.x, -target_extents.y)
@@ -130,11 +131,12 @@ func aim():
 		for pos in [target.position, nw, ne, se, sw]:
 			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
 			if result:
-				
+				#print(result)
+		
 				hit_pos.append(result.position)
 				#print(hit_pos.append(result.position))
-				if result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) > 40 :
-					move_to_player = true
+				if result.collider.name == "Player" and health_now > 0 :#and position.distance_to(target.position) > 40 :
+					
 					anim = 'attack'
 					#print(position.distance_to(target.position))
 					direction = (target.position - position).normalized()
@@ -155,21 +157,22 @@ func aim():
 					move_to_player = true
 					
 					if can_shoot:
-						print("distance attack")
+						#print("distance attack")
 						shoot(pos)
 					break
 				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
 					#print("milleattake")
 					pass
-				#elif result.collider.name == "frontground":
-				#pass
+				elif result.collider.name == "frontground":
+					#print("no player")
+					pass
 				else:
 					move_to_player = false
 					anim = "move"
 		
 func _draw():
-	draw_circle(Vector2(), detect_radius, vis_color)
-	#draw_rect(Rect2(-360,-130,720,260) , vis_color)
+	#draw_circle(Vector2(), detect_radius, vis_color)
+	#draw_rect(Rect2(position,$Visible/visible_col.shape.extents) , vis_color)
 	if target:
 		for hit in hit_pos:
 			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
@@ -240,11 +243,16 @@ func _on_sprite_frame_changed():
 		pass
 
 func _on_Visible_body_entered(body):
-	
+
 	if body.name == 'Player':
+		if target:
+			return
 		target = body
-		move_to_player = true
+		print(body.name)
+		#	target = body
+		#	move_to_player = true
 	else :
+		#print(body.name)
 		pass 
 
 func _on_Visible_body_exited(body):
