@@ -935,6 +935,15 @@ text = "Load"
 
 [node name="Slime" parent="." instance=ExtResource( 22 )]
 position = Vector2( 659.64, 596.141 )
+
+[node name="Slime2" parent="." instance=ExtResource( 22 )]
+position = Vector2( 539.263, 457.734 )
+
+[node name="Slime3" parent="." instance=ExtResource( 22 )]
+position = Vector2( 502.112, 632.214 )
+
+[node name="Slime4" parent="." instance=ExtResource( 22 )]
+position = Vector2( 490.185, 842.421 )
 [connection signal="area_entered" from="decor/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]

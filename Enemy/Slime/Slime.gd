@@ -136,7 +136,7 @@ func aim():
 				hit_pos.append(result.position)
 				#print(hit_pos.append(result.position))
 				if result.collider.name == "Player" and health_now > 0 :#and position.distance_to(target.position) > 40 :
-					
+					move_to_player = true
 					anim = 'attack'
 					#print(position.distance_to(target.position))
 					direction = (target.position - position).normalized()
