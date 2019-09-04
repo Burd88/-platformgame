@@ -47,10 +47,13 @@ var attack = false
 func _ready():
 	set_physics_process(true)
 	set_process(true)
+
+	
 	#health_now = GLOBAL.Player_health
 
 func _physics_process(delta):
 	damage = randi()%100+50
+	
 	_move(delta)
 	_attack()
 	_gui()
@@ -62,11 +65,12 @@ func _physics_process(delta):
 
 	#print(velocity.y)
 	#print(velocity.y ," - ", direction.y)
-func save_levels():
-	var save_level = {
-		"level" : get_parent().filename,
-		}
-	return save_level
+#func save_levels():
+	#var save_level = {
+	#	"level" : get_parent().filename,
+		
+	#	}
+	#return save_level
 
 func save():
 	
@@ -75,21 +79,15 @@ func save():
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
-		"speed" : speed,
-		"jump_speed" : jump_speed,
-		"gravity" : gravity,
 		"health" : health ,
-		"Health_now" : health_now,
+		"health_now" : health_now,
 		"php" : php,
-		"attack_name_sword" : attack_name_sword,
-		"rand_attack_name_sword" : rand_attack_name_sword,
-		"attack_name" : attack_name ,
-		"rand_attack_name" : rand_attack_name,
 		"weapon" : weapon,
 		"damage" : damage,
 		"arrow_count" : arrow_count,
 		"health_potion" : health_potion,
-		"torch" : torch
+		"torch" : torch,
+		"name" : name
 	}
 
 	return save_dict
@@ -233,6 +231,7 @@ func use_health_potion():
 			pass
 		pass
 func use():
+
 	if Input.is_action_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
 	else:

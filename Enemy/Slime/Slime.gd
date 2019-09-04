@@ -69,7 +69,7 @@ func save():
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
 		"health" : health ,
-		"Health_now" : health_now,
+		"health_now" : health_now,
 		"php" : php,
 		"name" : name,
 	}

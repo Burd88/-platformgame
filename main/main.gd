@@ -55,10 +55,10 @@ func _on_Continue_pressed():
 			#get_node(current_line["parent"]).add_child(new_object)
 			#new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
         # Now we set the remaining variables.
-			#for i in current_line.keys():
-			#	if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-			#		continue
-			#	new_object.set(i, current_line[i])
+			for i in current_line.keys():
+				if i == "level":
+					continue
+				set(i, current_line[i])
 		elif current_line == null:
 			save_game.eof_reached() == true
 	save_game.close()

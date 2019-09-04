@@ -17,15 +17,7 @@ func _ready():
 	add_item("",arrow)
 	set_item_metadata(item_count, "arrow")
 	item_count = get_item_count()
-	add_item("",arrow)
-	set_item_metadata(item_count, "arrow")
-	item_count = get_item_count()
-	add_item("",arrow)
-	set_item_metadata(item_count, "arrow")
-	item_count = get_item_count()
-	add_item("",arrow)
-	set_item_metadata(item_count, "arrow")
-	item_count = get_item_count()
+
 	
 	
 
