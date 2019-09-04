@@ -5,13 +5,13 @@ var lever1 = false
 var mexanism = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(GLOBAL.load_game)
+	#print(GLOBAL.load_game)
 	if GLOBAL.load_game == "new_game":
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
 	$CanvasModulate.show()
-	$Text_field/text.show()
+	#$Text_field/text.show()
 	$Chain/AnimatedSprite.stop()
 	$Gear6.visible = false
 	$decor/Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
@@ -28,11 +28,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
-		$Player/spr.stop()
-		modulate = Color(0.470588, 0.192157, 0.192157)
-		$Text_field.layer = -1
-		$Player/GUI.layer = -1
-		$Player/inventary.layer = -1
+		#$Player/spr.stop()
+		#modulate = Color(0.470588, 0.192157, 0.192157)
+		#$Text_field.layer = -1
+		#$Player/GUI.layer = -1
+		#$Player/inventary.layer = -1
 	if lever1:
 		$exit_level.open_door = true
 func save_levels():

@@ -88,11 +88,11 @@ func _on_loading_animation_finished(anim_name):
 
 
 func _on_Timer_timeout():
-	print("timeout")
+	#print("timeout")
 	$loading.hide()
 	$Popup.hide()
 	get_parent().get_tree().paused = false
-	get_parent().modulate = Color(1, 1, 1)
+	#get_parent().modulate = Color(1, 1, 1)
 	#$Text_field.layer = 1
 	#$Player/GUI.layer = 1
 	#$Player/inventary.layer = 1

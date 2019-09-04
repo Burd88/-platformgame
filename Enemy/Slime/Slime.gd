@@ -218,14 +218,14 @@ func _on_AnimatedSprite_animation_finished():
 	#	print(item_rand)
 		if item_rand == 0 :
 			_health_potion()
-			print("бутылек")
+			#print("бутылек")
 	pass
 
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
-		print("attack")
+		#print("attack")
 		anim = 'attack'
 	pass
 
@@ -248,7 +248,7 @@ func _on_Visible_body_entered(body):
 		if target:
 			return
 		target = body
-		print(body.name)
+		#print(body.name)
 		#	target = body
 		#	move_to_player = true
 	else :

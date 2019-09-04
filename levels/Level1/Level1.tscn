@@ -530,7 +530,6 @@ shape = SubResource( 3 )
 [node name="Gear7" parent="Gear7" instance=ExtResource( 3 )]
 
 [node name="decor" type="TileMap" parent="."]
-editor/display_folded = true
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -622,7 +621,6 @@ move_to = Vector2( 0, -15 )
 speed = 10.0
 
 [node name="door" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 280, 360 )
 script = ExtResource( 8 )
 
@@ -826,13 +824,9 @@ __meta__ = {
 
 [node name="pause_menu" parent="." instance=ExtResource( 21 )]
 [connection signal="area_entered" from="Gear7" to="." method="_on_Gear7_area_entered"]
-[connection signal="tree_exited" from="door" to="." method="_on_door_tree_exited"]
 [connection signal="animation_finished" from="door/AnimationPlayer" to="door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="door/door_text_area" to="." method="_on_door_text_area_body_entered"]
 [connection signal="area_entered" from="Gear6" to="." method="_on_Gear6_area_entered"]
 [connection signal="body_entered" from="exit_level" to="." method="_on_Area2D_body_entered"]
-[connection signal="tree_exited" from="Torch" to="." method="_on_Torch_tree_exited"]
-[connection signal="body_entered" from="Torch/tourch_area" to="." method="_on_tourch_area_body_entered"]
-[connection signal="body_exited" from="Torch/tourch_area" to="." method="_on_tourch_area_body_exited"]
 [connection signal="pressed" from="Text_field/text/Button" to="." method="_on_Button_pressed"]
 [connection signal="area_entered" from="lever" to="lever" method="_on_lever_area_entered"]

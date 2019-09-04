@@ -42,7 +42,7 @@ tracks/0/keys = {
 extents = Vector2( 4.31224, 8.06178 )
 
 [node name="Bat" type="KinematicBody2D" groups=[
-"save_group",
+"save",
 ]]
 script = ExtResource( 1 )
 

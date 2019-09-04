@@ -7,7 +7,7 @@ var velocity = Vector2()
 func start(pos, dir):
 	position = pos
 	rotation = dir
-	print(dir)
+	#print(dir)
 	velocity = Vector2(speed, 0).rotated(dir)
 
 func _physics_process(delta):
@@ -20,7 +20,7 @@ func _on_bullet_body_entered(body):
 		body.health_now -= 153
 		queue_free()
 	elif body.name == 'frontground':
-		print("-_-")
+		#print("-_-")
 		var now_position = position
 		var b = puddle.instance()
 		b.start(now_position)

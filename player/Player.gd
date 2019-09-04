@@ -287,7 +287,7 @@ func _on_spr_animation_finished():
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
 	if $spr.animation == 'смерть':
-		get_parent().preload_game()
+		pause_menu.preload_game()
 				#get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
@@ -369,7 +369,7 @@ func _on_Area2D_body_entered(body):
 func _open_inventory():
 	if Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == false:
 		$inventary/inventory.visible = true
-		print($inventary/inventory/bag1.get_item_icon(0))
+		#print($inventary/inventory/bag1.get_item_icon(0))
 	elif Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == true:
 		$inventary/inventory.visible = false
 
@@ -377,7 +377,7 @@ func _open_inventory():
 
 func _on_use_area_entered(area):
 	if area.name == "Arrow" or  area.name == "Health_potion":
-		print(area.name)
+		#print(area.name)
 		var item_count = $inventary/inventory/bag1.get_item_count()
 
 		if item_count < 4:
@@ -401,9 +401,9 @@ func _on_use_area_entered(area):
 
 
 func _on_bag1_item_selected(index):
-	print($inventary/inventory/bag1.get_item_count())
-	print(index)
-	print($inventary/inventory/bag1.get_item_metadata(index))
+	#print($inventary/inventory/bag1.get_item_count())
+	#print(index)
+	#print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
 		
 		#print($inventary/Panel/ItemList.arrow_count_random)
@@ -442,7 +442,7 @@ func _on_bag4_item_selected(index):
 
 func _on_use_body_entered(body):
 	if body.name == "Arrow":
-		print(body.name)
+		#print(body.name)
 		var item_count = $inventary/inventory/bag1.get_item_count()
 
 		if item_count < 4:
@@ -453,10 +453,10 @@ func _on_use_body_entered(body):
 
 
 func _on_bag1_item_rmb_selected(index, at_position):
-	print($inventary/inventory/bag1.get_item_count())
-	print(index)
-	print(at_position)
-	print($inventary/inventory/bag1.get_item_metadata(index))
+	#print($inventary/inventory/bag1.get_item_count())
+	#print(index)
+	#print(at_position)
+	#print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
 		
 		#print($inventary/Panel/ItemList.arrow_count_random)
@@ -471,5 +471,6 @@ func _on_bag1_item_rmb_selected(index, at_position):
 			if health_now > health:
 				health_now = health
 			elif  health_now == health:
-				print("full hp")
+				#print("full hp")
+				pass
 	pass # Replace with function body.

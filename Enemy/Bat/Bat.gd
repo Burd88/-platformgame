@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 
 	if is_on_wall():
-		print("Wall bat")
+		#print("Wall bat")
 		velocity.x = velocity.x*(-1)
 		$Sprite.flip_h = true
 	move_and_slide(velocity,Vector2(0,-1))
@@ -27,6 +27,7 @@ func save():
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
+		"name" : name
 
 	}
 

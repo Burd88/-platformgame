@@ -16,7 +16,7 @@ func _process(delta):
 
 	
 	if $ray1.is_colliding() == true:
-		print(1)
+		#print(1)
 		rotation_degrees = 90
 		#while $RayCast2D.is_colliding() == false:
 		#	position.y +=10
@@ -26,7 +26,7 @@ func _process(delta):
 		$ray2.enabled = false
 	elif $ray2.is_colliding() == true :
 		rotation_degrees = 270
-		print(2)
+		#print(2)
 		#while $RayCast2D2.is_colliding() == false:
 		#	position.y +=10
 		#while $RayCast2D.is_colliding() == false:
@@ -79,7 +79,7 @@ func _process(delta):
 	#print($Timer.time_left)
 	scale -= Vector2(0.001, 0.001)
 	if scale == Vector2(0,0):
-		print("delete scale")
+		#print("delete scale")
 		queue_free()
 	pass
 
@@ -88,7 +88,7 @@ func start(now_position):
 
 func _on_Timer_timeout():
 	queue_free()
-	print("delete timer")
+	#print("delete timer")
 	pass # Replace with function body.
 
 func _on_Timer2_timeout():
