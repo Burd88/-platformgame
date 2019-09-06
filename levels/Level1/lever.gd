@@ -11,5 +11,16 @@ func _process(delta):
 
 func _on_lever_area_entered(area):
 	if area.name == 'use':
-	 	use_lever = true
+		use_lever = true
+		get_parent().get_node("Player/E-key").hide()
+	pass
+
+func _on_lever_body_exited(body):
+	if body.name == 'Player':
+		get_parent().get_node("Player/E-key").hide()
+	pass
+
+func _on_lever_body_entered(body):
+	if body.name == 'Player':
+		get_parent().get_node("Player/E-key").show()
 	pass

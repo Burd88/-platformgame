@@ -147,11 +147,13 @@ func _move(delta):
 		$spr.flip_h = false
 		$attack_area.position.x = 18
 		$use.position.x = 6
+		$"E-key".position.x = 14
 
 	elif direction.x < 0:
 		$spr.flip_h = true
 		$attack_area.position.x = -18
 		$use.position.x = -6
+		$"E-key".position.x = - 14
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
@@ -410,33 +412,6 @@ func _on_bag1_item_selected(index):
 	#	print("arrow")
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
 		$inventary/inventory/bag1.remove_item(index)
-	pass # Replace with function body.
-
-
-func _on_bag2_item_selected(index):
-	if $inventary/inventory/bag2.get_item_text(index) == "arrow":
-	#	print($inventary/Panel/ItemList.arrow_count_random)
-	#	print("arrow")
-		arrow_count += $inventary/inventory/bag2.arrow_count_random
-		$inventary/inventory/bag2.remove_item(index)
-	pass # Replace with function body.
-
-
-func _on_bag3_item_selected(index):
-	if $inventary/inventory/bag3.get_item_text(index) == "arrow":
-	#	print($inventary/Panel/ItemList.arrow_count_random)
-	#	print("arrow")
-		arrow_count += $inventary/inventory/bag3.arrow_count_random
-		$inventary/inventory/bag3.remove_item(index)
-	pass # Replace with function body.
-
-
-func _on_bag4_item_selected(index):
-	if $inventary/inventory/bag4.get_item_metadata(index) == "arrow":
-	#	print($inventary/Panel/ItemList.arrow_count_random)
-	#	print("arrow")
-		arrow_count += $inventary/inventory/bag4.arrow_count_random
-		$inventary/inventory/bag4.remove_item(index)
 	pass # Replace with function body.
 
 

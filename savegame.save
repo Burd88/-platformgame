@@ -1,6 +1,6 @@
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime","parent":"/root/Level1/enemies","php":100,"pos_x":382.186127,"pos_y":650.954834}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":429.009888,"pos_y":506.979126}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime3","parent":"/root/Level1/enemies","php":100,"pos_x":405.099426,"pos_y":650.954712}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":412.639465,"pos_y":858.945679}
-{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":87.971909,"pos_y":375.178894}
-{"arrow_count":5,"damage":91,"filename":"res://player/Player.tscn","health":1000,"health_now":747,"health_potion":0,"name":"Player","parent":"/root/Level1","php":74,"pos_x":472.613556,"pos_y":615.777405,"torch":true,"weapon":1}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime","parent":"/root/Level1/enemies","php":100,"pos_x":394.151001,"pos_y":650.975647}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":504.090607,"pos_y":506.975586}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime3","parent":"/root/Level1/enemies","php":100,"pos_x":428.801147,"pos_y":650.954834}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":345.202179,"pos_y":858.975647}
+{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":448.935822,"pos_y":375.178955}
+{"arrow_count":5,"damage":100,"filename":"res://player/Player.tscn","health":1000,"health_now":900,"health_potion":0,"name":"Player","parent":"/root/Level1","php":90,"pos_x":322.907471,"pos_y":605.394165,"torch":true,"weapon":1}

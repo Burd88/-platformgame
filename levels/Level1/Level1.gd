@@ -3,6 +3,8 @@ extends Node2D
 #var tourch = false
 var lever1 = false
 var mexanism = false
+var door_delete = false
+var torch_delete = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
@@ -18,6 +20,15 @@ func _ready():
 	$decor/Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
 	$Gear7/Gear7/Sprite/AnimationPlayer.stop()
+	if torch_delete == true:
+		$Torch.queue_free()
+	if door_delete == true:
+		$door.queue_free()
+		
+	for i in get_child_count():
+		if get_child(i).filename:
+			print(get_child(i).name)
+
 
 	pass # Replace with function body.
 
@@ -28,6 +39,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
+
 		#$Player/spr.stop()
 		#modulate = Color(0.470588, 0.192157, 0.192157)
 		#$Text_field.layer = -1
@@ -40,6 +52,8 @@ func save_levels():
 		"level" : filename,
 		"mexanism" : mexanism,
 		"lever1" : lever1,
+		"door_delete" : door_delete,
+		"torch_delete" : torch_delete,
 		}
 	return save_level
 #	pass
@@ -49,8 +63,8 @@ func start_mechanism():
 		$Lift_level1/moveTween.start()
 		$Lift_exit/moveTween.start()
 		$Gear6.visible = true
-	else :
-		$Chain/AnimatedSprite.stop()
+	else :pass
+		#$Chain/AnimatedSprite.stop()
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
@@ -81,13 +95,10 @@ func _on_Area2D_body_entered(body):
 #	pass # Replace with function body.
 
 func _on_door_text_area_body_entered(body):
-	if body.name == 'Player':
-		#$Text_field/text.show()
-		#if translationt.language == 1:
-		#	$Text_field/text.text = 'От этой стены дует прохладный ветерок... \n попробуй ее сдвинуть \n используй "E"'
-		#elif translationt.language == 2:
-		#	$Text_field/text.text = 'From this wall blows cool breeze... \n try to move it \n use "E"'
-		pass # Replace with function body.
+	if body.name == "Player":
+		body.get_node("E-key").show()
+	else:pass
+
 
 
 
@@ -111,6 +122,7 @@ func _on_door_text_area_body_entered(body):
 ## Недостоющий итем для механизма для ливтов ##
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
+		$"Player/E-key".hide()
 		var icon = ResourceLoader.load("res://items/gear/gear.png")
 		var item_count = $Player/inventary/inventory/bag1.get_item_count()
 		if item_count < 4:
@@ -125,9 +137,18 @@ func _on_Gear7_area_entered(area):
 ## установка недостающей шестерни ##
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
+		
 		for i in range(0, 4):
 			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Gear":
 				$Gear6.visible = true
 				$Player/inventary/inventory/bag1.remove_item(i)
 				mexanism = true
+				$"Player/E-key".hide()
+
+
+
+func _on_Torch_tree_exited():
+	torch_delete = true
+	pass # Replace with function body.
+
 

@@ -1,1 +1,1 @@
-{"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":true}
+{"door_delete":true,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"torch_delete":true}
