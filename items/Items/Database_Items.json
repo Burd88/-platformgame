@@ -1,0 +1,45 @@
+{
+	"0": {
+		"name": "",
+		"icon": "res://player/inventory/empty_slot.png",
+		"type": "misc",
+		"weight": 0.0,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "",
+		"sell_price": 0
+	},
+	
+	"1": {
+		"name": "Health Potion",
+		"icon": "res://items/Health Potion/Health Potion 1.png",
+		"type": "Health_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 10,
+		"description": "",
+		"sell_price": 0
+	},
+	
+	"2": {
+		"name": "Gear",
+		"icon": "res://items/gear/gear.png",
+		"type": "Gear",
+		"weight": 0.0,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "",
+		"sell_price": 0
+	},
+		
+	"3": {
+		"name": "Arrow",
+		"icon": "res://items/arrow/assets/arrow.png",
+		"type": "Arrow",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 10,
+		"description": "",
+		"sell_price": 0
+	},
+}

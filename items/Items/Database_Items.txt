@@ -1,0 +1,28 @@
+{
+	"0": {
+		"name": "",
+		"icon": "res://Database/Item_Icons/empty_slot.png",
+		"type": "misc",
+
+	},
+	
+	"1": {
+		"name": "Health Porion",
+		"icon": "res://items/Health Potion/Health Potion 1.png",
+		"type": "potion",
+		"metadata": "Health_potion",
+	},
+	
+	"2": {
+		"name": "Gear",
+		"icon": "res://items/gear/gear.png",
+		"type": "misc",
+		"metadata": "Gear",
+	},
+		
+	"3": {
+		"name": "Arrow",
+		"icon": "res://items/arrow/assets/arrow.png",
+		"type": "other",
+		"metadata": "arrow",
+	},

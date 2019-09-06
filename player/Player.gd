@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 
 ## жизни игрока
-var health = 1000
+var health = 4000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -42,12 +42,12 @@ var torch = false
 
 var attack = false
 #var wall = false
-
+var inventory
 
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-
+	
 	
 	#health_now = GLOBAL.Player_health
 
@@ -87,7 +87,8 @@ func save():
 		"arrow_count" : arrow_count,
 		"health_potion" : health_potion,
 		"torch" : torch,
-		"name" : name
+		"name" : name,
+	
 	}
 
 	return save_dict
@@ -378,46 +379,21 @@ func _open_inventory():
 
 
 func _on_use_area_entered(area):
-	if area.name == "Arrow" or  area.name == "Health_potion":
-		#print(area.name)
-		var item_count = $inventary/inventory/bag1.get_item_count()
-
-		#if item_count < 4:
-		#	$inventary/inventory/bag1.add_item("",area.icon)
-		#	$inventary/inventory/bag1.set_item_metadata(item_count,area.metadata)
-		#	area.queue_free()
-		for i in range(4):
-			if $inventary/inventory/bag1.get_item_metadata(i) == "Empty":
-				$inventary/inventory/bag1.set_item_icon(i,area.icon)
-				$inventary/inventory/bag1.set_item_metadata(i,area.metadata)
-				area.queue_free()
-				break
-		
-	pass # Replace with function body.
-
-	#if area:
-
-	#if area.name == 'Gear6':
-	#	print("шестерня на месте")
-	#	area.visible = true
-		
-	#elif area.name == 'lever':
-	#	area.use_lever = true
-	#	print('Рычаг использован')
-	#pass # Replace with function body.
+	if area.data_id:
+		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
+		area.queue_free()
+		pass
+	else: print("no item")
+#	elif area.name == "Health_potion":
+#		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(1))
+#		area.queue_free()
+#		pass
+#	pass # Replace with function body.
 
 
 
 func _on_bag1_item_selected(index):
-	#print($inventary/inventory/bag1.get_item_count())
-	#print(index)
-	#print($inventary/inventory/bag1.get_item_metadata(index))
-	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
-		
-		#print($inventary/Panel/ItemList.arrow_count_random)
-	#	print("arrow")
-		arrow_count += $inventary/inventory/bag1.arrow_count_random
-		$inventary/inventory/bag1.remove_item(index)
+
 	pass # Replace with function body.
 
 
@@ -435,24 +411,18 @@ func _on_use_body_entered(body):
 
 
 func _on_bag1_item_rmb_selected(index, at_position):
-	#print($inventary/inventory/bag1.get_item_count())
-	#print(index)
-	#print(at_position)
-	#print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
-		
-		#print($inventary/Panel/ItemList.arrow_count_random)
-	#	print("arrow")
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
-		$inventary/inventory/bag1.remove_item(index)
+		Global_Player.inventory_removeItem(index)
+		$inventary/inventory/bag1.update_slot(index)
 	elif $inventary/inventory/bag1.get_item_metadata(index) == "Health_potion":
 		if  health_now < health:
-			health_potion -= 1
-			health_now += 100
-			$inventary/inventory/bag1.remove_item(index)
-			if health_now > health:
-				health_now = health
-			elif  health_now == health:
-				#print("full hp")
-				pass
+			health_now += randi()%45+1
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
 	pass # Replace with function body.

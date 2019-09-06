@@ -5,6 +5,7 @@ var lever1 = false
 var mexanism = false
 var door_delete = false
 var torch_delete = false
+var gear7_use = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
@@ -24,6 +25,8 @@ func _ready():
 		$use_item/Torch.queue_free()
 	if door_delete == true:
 		$use_item/door.queue_free()
+	if gear7_use == true:
+		$use_item/Gear7.queue_free()
 		
 
 
@@ -52,6 +55,7 @@ func save_levels():
 		"lever1" : lever1,
 		"door_delete" : door_delete,
 		"torch_delete" : torch_delete,
+		"gear7_use" : gear7_use,
 		}
 	return save_level
 #	pass
@@ -121,30 +125,34 @@ func _on_door_text_area_body_entered(body):
 func _on_Gear7_area_entered(area):
 	if area.name == 'use':
 		$"Player/E-key".hide()
-		var icon = ResourceLoader.load("res://items/gear/gear.png")
-		var item_count = $Player/inventary/inventory/bag1.get_item_count()
+#		var icon = ResourceLoader.load("res://items/gear/gear.png")
+#		var item_count = $Player/inventary/inventory/bag1.get_item_count()
+		gear7_use = true
+		$Player/inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(2))
+		$use_item/Gear7.queue_free()
 		#if item_count < 4:
 		#	$Player/inventary/inventory/bag1.add_item("",icon)
 		#	$Player/inventary/inventory/bag1.set_item_metadata(item_count,"Gear")
 		#	$Gear7.queue_free()
 		#else:
 		#	print("Inventory is full")
-		for i in range(4):
-			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Empty":
-				$Player/inventary/inventory/bag1.set_item_icon(i,icon)
-				$Player/inventary/inventory/bag1.set_item_metadata(i,"Gear")
-				$use_item/Gear7.queue_free()
-				break
+#		for i in range(4):
+#			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Empty":
+#				$Player/inventary/inventory/bag1.set_item_icon(i,icon)
+#				$Player/inventary/inventory/bag1.set_item_metadata(i,"Gear")
+#				$use_item/Gear7.queue_free()
+#				break
 		
 	pass # Replace with function body.
 
 ## установка недостающей шестерни ##
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
-		for i in range(4):
+		for i in range(0,Global_Player.inventory_maxSlots):
 			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Gear":
 				$use_item/Gear6.visible = true
-				$Player/inventary/inventory/bag1.remove_item(i)
+				Global_Player.inventory_removeItem(i)
+				$Player/inventary/inventory/bag1.update_slot(i)
 				mexanism = true
 				
 				$"Player/E-key".hide()

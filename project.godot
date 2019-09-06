@@ -28,6 +28,9 @@ config/version="0.0.1"
 GLOBAL="*res://GLOBAL.gd"
 translationt="*res://translation/translationt.gd"
 pause_menu="*res://Global_gui/pause_menu.tscn"
+Global_DataParser="*res://player/inventory/Global_DataParser.gd"
+Global_ItemDatabase="*res://player/inventory/Global_ItemDatabase.gd"
+Global_Player="*res://player/inventory/Global_Player.gd"
 
 [debug]
 

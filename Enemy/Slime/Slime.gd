@@ -23,6 +23,7 @@ var hit_pos
 var can_shoot = false
 onready var bullet = preload("res://Enemy/Slime/bullet.tscn")
 onready var health_potion = preload("res://items/Health Potion/Health_potion.tscn")
+onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 
 export (int) var detect_radius = 250
 var shape_ext = Vector2(60,250)
@@ -186,10 +187,16 @@ func shoot(pos):
 	get_parent().add_child(b)
 	can_shoot = false
 
-func _health_potion():
-	var b = health_potion.instance()
-	get_parent().add_child(b)
-	b.position = position
+func _drop_item():
+	var item_drop = randi()%1
+	if item_drop == 0:
+		var item = health_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+	elif item_drop == 1:
+		var item = arrow_item.instance()
+		get_parent().add_child(item)
+		item.position = position
 
 func _check_place():
 	if $check_place.is_colliding() == false :
@@ -217,7 +224,7 @@ func _on_AnimatedSprite_animation_finished():
 		var item_rand = randi()%2
 	#	print(item_rand)
 		if item_rand == 0 :
-			_health_potion()
+			_drop_item()
 			#print("бутылек")
 	pass
 

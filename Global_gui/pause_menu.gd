@@ -16,6 +16,7 @@ func _on_exitgame_pause_menu_pressed():
 
 
 func _on_save_pressed():
+	Global_Player.save_data()
 	var save_game = File.new()
 	save_game.open("res://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("save")
@@ -80,6 +81,8 @@ func load_game():
 			save_game.eof_reached() == true
 			$loading/Timer.start()
 	save_game.close()
+	Global_Player.load_data()
+	get_parent().get_node("Player/inventary/inventory/bag1").load_items()
 	
 
 func _on_loading_animation_finished(anim_name):

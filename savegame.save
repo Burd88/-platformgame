@@ -1,6 +1,4 @@
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":103,"name":"Slime","parent":"/root/Level1/enemies","php":34,"pos_x":1234.202881,"pos_y":650.950195}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":602.41803,"pos_y":506.975586}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime3","parent":"/root/Level1/enemies","php":100,"pos_x":1010.581604,"pos_y":650.962219}
-{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":485.085602,"pos_y":858.975586}
-{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":227.334763,"pos_y":375.17804}
-{"arrow_count":5,"damage":70,"filename":"res://player/Player.tscn","health":1000,"health_now":685,"health_potion":0,"name":"Player","parent":"/root/Level1","php":68,"pos_x":829.944458,"pos_y":461.394165,"torch":true,"weapon":1}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":548.770081,"pos_y":506.954651}
+{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":291.437134,"pos_y":858.9422}
+{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":663.89624,"pos_y":376.469299}
+{"arrow_count":5,"damage":60,"filename":"res://player/Player.tscn","health":1000,"health_now":1000,"health_potion":-6,"name":"Player","parent":"/root/Level1","php":100,"pos_x":509.880676,"pos_y":637.394104,"torch":true,"weapon":1}
