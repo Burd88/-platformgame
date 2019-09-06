@@ -4,9 +4,9 @@ func _on_pause_Button_pressed():
 	$Popup.hide()
 	
 	get_parent().modulate = Color(1, 1, 1)
-	#$Player/GUI.layer = 1
-	#$Player/inventary.layer = 1
-	#$Player/spr.playing = true
+	get_parent().get_node("Player/GUI").layer = 1
+	get_parent().get_node("Player/inventary").layer = 1
+	get_parent().get_node("Player/spr").playing = true
 	pass # Replace with function body.
 
 
@@ -92,10 +92,10 @@ func _on_Timer_timeout():
 	$loading.hide()
 	$Popup.hide()
 	get_parent().get_tree().paused = false
-	#get_parent().modulate = Color(1, 1, 1)
+	get_parent().modulate = Color(1, 1, 1)
 	#$Text_field.layer = 1
-	#$Player/GUI.layer = 1
-	#$Player/inventary.layer = 1
-	#$Player/spr.playing = true
+	get_parent().get_node("Player/GUI").layer = 1
+	get_parent().get_node("Player/inventary").layer = 1
+	get_parent().get_node("Player/spr").playing = true
 	#$loading.hide()
 	pass

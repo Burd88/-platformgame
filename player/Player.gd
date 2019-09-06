@@ -429,7 +429,7 @@ func _on_use_body_entered(body):
 
 func _on_bag1_item_rmb_selected(index, at_position):
 	#print($inventary/inventory/bag1.get_item_count())
-	#print(index)
+	print(index)
 	#print(at_position)
 	#print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":

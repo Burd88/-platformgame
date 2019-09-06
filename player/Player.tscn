@@ -425,17 +425,18 @@ transform = Transform2D( 1, 0, 0, 1, 300, 150 )
 margin_left = -289.0
 margin_top = -26.0
 margin_right = -231.0
-margin_bottom = 174.0
+margin_bottom = 209.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="bag1" type="ItemList" parent="inventary/inventory"]
 margin_left = 9.0
 margin_top = 18.0
 margin_right = 49.0
-margin_bottom = 178.0
+margin_bottom = 170.0
 custom_styles/bg = SubResource( 4 )
 allow_reselect = true
 allow_rmb_select = true
+icon_mode = 0
 script = ExtResource( 153 )
 
 [node name="bag2" type="ItemList" parent="inventary/inventory"]
