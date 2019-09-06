@@ -12,7 +12,8 @@ func _ready():
 	set_select_mode(SELECT_SINGLE)
 	set_same_column_width(true)
 	set_allow_rmb_select(true)
-	
+	add_item("",empty_slot)
+	set_item_metadata(0,"Empty")
 
 
 	
@@ -24,12 +25,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var item_count = get_item_count()
+	
 	if item_count < max_slots:
+		print(item_count)
 		for i in range(4):
-			if get_item_metadata(i) == null:
+			if get_item_metadata(i) != null :
+				pass
+			else:
 				add_item("",empty_slot)
 				set_item_metadata(i,"Empty")
-		
+		#
 	#var item_count = get_item_count()
 	#if item_count < max_slots:
 	#	add_item("",empty_slot)

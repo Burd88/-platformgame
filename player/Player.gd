@@ -382,11 +382,17 @@ func _on_use_area_entered(area):
 		#print(area.name)
 		var item_count = $inventary/inventory/bag1.get_item_count()
 
-		if item_count < 4:
-			$inventary/inventory/bag1.add_item("",area.icon)
-			$inventary/inventory/bag1.set_item_metadata(item_count,area.metadata)
-			area.queue_free()
-	
+		#if item_count < 4:
+		#	$inventary/inventory/bag1.add_item("",area.icon)
+		#	$inventary/inventory/bag1.set_item_metadata(item_count,area.metadata)
+		#	area.queue_free()
+		for i in range(4):
+			if $inventary/inventory/bag1.get_item_metadata(i) == "Empty":
+				$inventary/inventory/bag1.set_item_icon(i,area.icon)
+				$inventary/inventory/bag1.set_item_metadata(i,area.metadata)
+				area.queue_free()
+				break
+		
 	pass # Replace with function body.
 
 	#if area:
@@ -415,6 +421,7 @@ func _on_bag1_item_selected(index):
 	pass # Replace with function body.
 
 
+
 func _on_use_body_entered(body):
 	if body.name == "Arrow":
 		#print(body.name)
@@ -429,7 +436,7 @@ func _on_use_body_entered(body):
 
 func _on_bag1_item_rmb_selected(index, at_position):
 	#print($inventary/inventory/bag1.get_item_count())
-	print(index)
+	#print(index)
 	#print(at_position)
 	#print($inventary/inventory/bag1.get_item_metadata(index))
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":

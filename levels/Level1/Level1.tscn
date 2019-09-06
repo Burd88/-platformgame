@@ -306,13 +306,13 @@ func _process(delta):
 
 func _on_Gear7_body_entered(body):
 	if body.name == \"Player\":
-		get_parent().get_node(\"Player/E-key\").show()
+		get_parent().get_parent().get_node(\"Player/E-key\").show()
 	pass # Replace with function body.
 
 
 func _on_Gear7_body_exited(body):
 	if body.name == \"Player\":
-		get_parent().get_node(\"Player/E-key\").hide()
+		get_parent().get_parent().get_node(\"Player/E-key\").hide()
 "
 
 [sub_resource type="CircleShape2D" id=3]
@@ -696,7 +696,6 @@ position = Vector2( 490.185, 842.421 )
 position = Vector2( 464.012, 375.178 )
 
 [node name="use_item" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="lever" type="Area2D" parent="use_item"]
 editor/display_folded = true

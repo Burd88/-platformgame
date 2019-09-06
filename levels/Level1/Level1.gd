@@ -130,11 +130,9 @@ func _on_Gear7_area_entered(area):
 		#else:
 		#	print("Inventory is full")
 		for i in range(4):
-			print(i)
 			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Empty":
 				$Player/inventary/inventory/bag1.set_item_icon(i,icon)
 				$Player/inventary/inventory/bag1.set_item_metadata(i,"Gear")
-				print(i)
 				$use_item/Gear7.queue_free()
 				break
 		
@@ -144,7 +142,6 @@ func _on_Gear7_area_entered(area):
 func _on_Gear6_area_entered(area):
 	if area.name == 'use':
 		for i in range(4):
-			print(i)
 			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Gear":
 				$use_item/Gear6.visible = true
 				$Player/inventary/inventory/bag1.remove_item(i)
