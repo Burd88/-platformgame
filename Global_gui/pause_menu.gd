@@ -82,7 +82,7 @@ func load_game():
 			$loading/Timer.start()
 	save_game.close()
 	Global_Player.load_data()
-	get_parent().get_node("Player/inventary/inventory/bag1").load_items()
+	#get_parent().get_node("Player/inventary/inventory/bag1").load_items()
 	
 
 func _on_loading_animation_finished(anim_name):

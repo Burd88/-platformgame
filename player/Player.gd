@@ -47,7 +47,7 @@ var inventory
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-	
+	$inventary/inventory/bag1.load_items()
 	
 	#health_now = GLOBAL.Player_health
 
@@ -379,7 +379,7 @@ func _open_inventory():
 
 
 func _on_use_area_entered(area):
-	if area.data_id:
+	if area.get('data_id') != null:
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
 		area.queue_free()
 		pass

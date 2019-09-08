@@ -1,1 +1,1 @@
-{"door_delete":true,"gear7_use":true,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"torch_delete":true}
+{"door_delete":true,"gear7_use":true,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":true,"torch_delete":true}
