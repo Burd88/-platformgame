@@ -12,14 +12,11 @@ func _ready():
 	set_select_mode(SELECT_SINGLE)
 	set_same_column_width(true)
 	set_allow_rmb_select(true)
-	add_item("",empty_slot)
-	set_item_metadata(0,"Empty")
-	
-	if GLOBAL.load_game == "new_game":
-		load_items()
+	Global_Player.load_data()
+	load_items()
 	set_process(false)
 	set_process_input(true)
-
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

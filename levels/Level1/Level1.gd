@@ -10,6 +10,8 @@ var gear7_use = false
 func _ready():
 	#print(GLOBAL.load_game)
 	if GLOBAL.load_game == "new_game":
+		$pause_menu._on_save_pressed()
+		print("save new game")
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
@@ -40,16 +42,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
-
-		$Player/spr.stop()
-		modulate = Color(0.470588, 0.192157, 0.192157)
+		
+		#$Player/spr.stop()
+		#modulate = Color(0.470588, 0.192157, 0.192157)
 		#$Text_field.layer = -1
-		$Player/GUI.layer = -1
-		$Player/inventary.layer = -1
+		#$Player/GUI.layer = -1
+		#$Player/inventary.layer = -1
 	if lever1:
 		$use_item/exit_level.open_door = true
 func save_levels():
 	var save_level = {
+		"name" : name,
 		"level" : filename,
 		"mexanism" : mexanism,
 		"lever1" : lever1,

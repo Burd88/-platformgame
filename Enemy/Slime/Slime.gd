@@ -43,24 +43,12 @@ func _ready():
 func _process(delta):
 	update()
 	if target:
-		#print(direction.x)
 		aim()
-		#_attack_player()
-		#print(position.distance_to(target.position))
-		#print(global_position.angle_to(target.global_position))
-		#if global_position.angle_to(target.global_position) < 1 and global_position.angle_to(target.global_position) > 0:
-		#	pass#print("pravo")
-		#	
-		#elif global_position.angle_to(target.global_position) > -1 and global_position.angle_to(target.global_position) < 0:
-		#	pass#print("levo")
-	
 	_gui()
 	_move_enemy(delta)
 	_damage()
 	_check_place()
-	#_attack_player()
 	$sprite.animation = anim
-	
 	pass
 
 func save():
@@ -74,7 +62,6 @@ func save():
 		"php" : php,
 		"name" : name,
 	}
-
 	return save_dict
 
 func _move_enemy(delta):
@@ -90,10 +77,6 @@ func _move_enemy(delta):
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
 	
-func _attack_player():
-
-	pass
-	pass
 	
 func _gui():# Графический интерфейс
 	if health_now > 0 :
@@ -132,48 +115,32 @@ func aim():
 		for pos in [target.position, nw, ne, se, sw]:
 			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
 			if result:
-				#print(result)
-		
 				hit_pos.append(result.position)
-				#print(hit_pos.append(result.position))
 				if result.collider.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 :
 					move_to_player = true
 					anim = 'attack'
-					#print(position.distance_to(target.position))
 					direction = (target.position - position).normalized()
-					#print(direction)
 					if direction.x < 0 :
-					#if global_position.angle_to(target.global_position) < 1 and global_position.angle_to(target.global_position) > 0:
-		#	pass#print("pravo")
-						
 						$sprite.flip_h = false
 						$attack_area.position.x = 0
 						$check_place.position.x = -28
-					#elif global_position.angle_to(target.global_position) > -1 and global_position.angle_to(target.global_position) < 0:
 					elif direction.x > 0:
-						
 						$sprite.flip_h = true
 						$attack_area.position.x = 40
 						$check_place.position.x = 28
 					move_to_player = true
-					
 					if can_shoot:
-						#print("distance attack")
 						shoot(pos)
 					break
 				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
-					#print("milleattake")
 					pass
 				elif result.collider.name == "frontground":
-					#print("no player")
 					pass
 				else:
 					move_to_player = false
 					anim = "move"
 		
 func _draw():
-	#draw_circle(Vector2(), detect_radius, vis_color)
-	#draw_rect(Rect2(position,$Visible/visible_col.shape.extents) , vis_color)
 	if target:
 		for hit in hit_pos:
 			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
@@ -188,7 +155,7 @@ func shoot(pos):
 	can_shoot = false
 
 func _drop_item():
-	var item_drop = randi()%1
+	var item_drop = randi()%2
 	if item_drop == 0:
 		var item = health_potion.instance()
 		get_parent().add_child(item)
@@ -255,11 +222,7 @@ func _on_Visible_body_entered(body):
 		if target:
 			return
 		target = body
-		#print(body.name)
-		#	target = body
-		#	move_to_player = true
 	else :
-		#print(body.name)
 		pass 
 
 func _on_Visible_body_exited(body):

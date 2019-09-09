@@ -48,8 +48,7 @@ func _ready():
 	set_physics_process(true)
 	set_process(true)
 	$inventary/inventory/bag1.load_items()
-	
-	#health_now = GLOBAL.Player_health
+
 
 func _physics_process(delta):
 	damage = randi()%100+50
@@ -81,11 +80,7 @@ func save():
 		"pos_y" : position.y,
 		"health" : health ,
 		"health_now" : health_now,
-		"php" : php,
 		"weapon" : weapon,
-		"damage" : damage,
-		"arrow_count" : arrow_count,
-		"health_potion" : health_potion,
 		"torch" : torch,
 		"name" : name,
 	
@@ -290,6 +285,7 @@ func _on_spr_animation_finished():
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
 	if $spr.animation == 'смерть':
+		GLOBAL.load_game = "Load_game"
 		pause_menu.preload_game()
 				#get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.

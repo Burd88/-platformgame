@@ -1,14 +1,29 @@
 extends Node
 
-var url_PlayerData:String = "res://saveinventory.save"
+var url_PlayerData:String ="res://saveinventory.save"
 var inventory:Dictionary = {}
 var inventory_maxSlots:int = 10
 onready var playerData:Dictionary = Global_DataParser.load_data(url_PlayerData)
 
 
 func _ready() -> void:
+	#load_data()
+#	var save_game = File.new()
+#	save_game.open("res://savegame.save", File.READ)
+#	while save_game.eof_reached() == false:
+#		var try_current_line = parse_json(save_game.get_line())
+#		if try_current_line != null:
+#			if try_current_line.get("inventory"):
+#				var current_line = try_current_line["inventory"]
+#				print(current_line)
+#				Global_Player.inventory == current_line
+#				print(Global_Player.inventory)
+#		elif try_current_line == null:
+#			save_game.eof_reached() == true
+#
 	pass
-	load_data()
+	
+
 
 
 func load_data() -> void:
@@ -19,12 +34,18 @@ func load_data() -> void:
 			dict["inventory"][str(slot)] = {"id": "0", "amount": 0}
 		Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
+		
+		print("empty inventory")
 	else:
+		playerData = Global_DataParser.load_data(url_PlayerData)
 		inventory = playerData["inventory"]
+		
+		print("load inventory")
 
 
 func save_data() -> void:
 	Global_DataParser.write_data(url_PlayerData, {"inventory": inventory})
+	print("save inventory")
 
 func inventory_getItem(slot:int) -> Dictionary:
 	return inventory[str(slot)]

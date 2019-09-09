@@ -12,6 +12,7 @@ func load_data(url) -> Dictionary:
 	return data
 
 func write_data(url:String, dict:Dictionary):
+	print("save data")
 	if url == null: return
 	file.open(url, File.WRITE)
 	file.store_line(to_json(dict))
