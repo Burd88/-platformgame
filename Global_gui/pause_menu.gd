@@ -94,11 +94,9 @@ func load_game():
 					if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 						continue
 					new_object.set(i, current_line[i])
-#			elif try_current_line.get("inventory"):
-#				var current_line = try_current_line["inventory"]
-#				print(current_line)
-#				Global_Player.inventory == current_line
-#				print(Global_Player.inventory)
+			#if try_current_line.get("inventory"):
+			#	var current_line = try_current_line["inventory"]
+			#	Global_Player.inventory = current_line
 		elif try_current_line == null:
 			save_game.eof_reached() == true
 			$loading/Timer.start()
@@ -118,7 +116,7 @@ func _on_Timer_timeout():
 	$loading.hide()
 	$Popup.hide()
 	get_parent().get_tree().paused = false
-	get_parent().get_node("Player/inventary/inventory/bag1").load_items()
+	#get_parent().get_node("Player/inventary/inventory/bag1").load_items()
 	#get_parent().modulate = Color(1, 1, 1)
 	#$Text_field.layer = 1
 	#get_parent().get_node("Player/GUI").layer = 1

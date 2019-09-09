@@ -12,8 +12,8 @@ func _ready():
 	set_select_mode(SELECT_SINGLE)
 	set_same_column_width(true)
 	set_allow_rmb_select(true)
-	Global_Player.load_data()
-	load_items()
+	#Global_Player.load_data()
+	#load_items()
 	set_process(false)
 	set_process_input(true)
 	
@@ -67,6 +67,7 @@ func load_items():
 func update_slot(slot:int) -> void:
 	if (slot < 0):
 		return
+	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = Global_Player.inventory[str(slot)]
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem["id"])).duplicate()
 	var icon = ResourceLoader.load(itemMetaData["icon"])

@@ -45,9 +45,11 @@ var attack = false
 var inventory
 
 func _ready():
+	$inventary/inventory/bag1.clear()
 	set_physics_process(true)
 	set_process(true)
 	$inventary/inventory/bag1.load_items()
+	Global_Player.load_data()
 
 
 func _physics_process(delta):
@@ -285,9 +287,9 @@ func _on_spr_animation_finished():
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
 	if $spr.animation == 'смерть':
-		GLOBAL.load_game = "Load_game"
-		pause_menu.preload_game()
-				#get_tree().change_scene("res://main/main.tscn")
+		#GLOBAL.load_game = "Load_game"
+		#pause_menu.preload_game()
+		get_tree().change_scene("res://main/main.tscn")
 	pass # Replace with function body.
 	
 func _death():

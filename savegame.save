@@ -1,6 +1,7 @@
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":455.755951,"pos_y":506.975586}}
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":465.915955,"pos_y":858.955078}}
-{"savedata":{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":413.382477,"pos_y":375.17804}}
-{"savedata":{"filename":"res://player/Player.tscn","health":4000,"health_now":3672,"name":"Player","parent":"/root/Level1","pos_x":1185.108032,"pos_y":637.394165,"torch":true,"weapon":1}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime","parent":"/root/Level1/enemies","php":100,"pos_x":505.87854,"pos_y":650.975586}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime3","parent":"/root/Level1/enemies","php":100,"pos_x":1270.580811,"pos_y":650.975586}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":474.584167,"pos_y":858.954773}}
+{"savedata":{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":133.168304,"pos_y":375.88092}}
+{"savedata":{"filename":"res://player/Player.tscn","health":4000,"health_now":3865,"name":"Player","parent":"/root/Level1","pos_x":666.301453,"pos_y":592.031189,"torch":true,"weapon":1}}
 {"savelevel":{"door_delete":true,"gear7_use":true,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"name":"Level1","torch_delete":true}}
-{"inventory":{"0":{"amount":1,"id":"2"},"1":{"amount":0,"id":"0"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}
+{"inventory":{"0":{"amount":1,"id":"1"},"1":{"amount":1,"id":"2"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}

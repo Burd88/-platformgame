@@ -23,12 +23,12 @@ func _ready():
 
 
 func _on_Start_game_pressed():
-	var save_data = Global_DataParser.load_data("res://savegame.save")
-	if save_data.empty():
+	var save_game = File.new()
+	if not save_game.file_exists("res://savegame.save"):
 		get_tree().change_scene("res://levels/Level1/Level1.tscn")
 		GLOBAL.load_game = "new_game"
-		pass # начать новую игру
-	elif !save_data.empty():
+	
+	elif save_game.file_exists("res://savegame.save"):
 		$inter/chack_save_game.show()
 		pass
 		
