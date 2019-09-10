@@ -4,10 +4,10 @@ var url_PlayerData:String = "res://saveinventory.save"
 var inventory:Dictionary = {}
 var inventory_maxSlots:int = 10
 onready var playerData:Dictionary = Global_DataParser.load_data(url_PlayerData)
-
+var load_inventory = {}
 
 func _ready() -> void:
-	load_data()
+	#load_data()
 	
 	pass
 	
@@ -15,17 +15,17 @@ func _ready() -> void:
 
 
 func load_data() -> void:
-	print(playerData.empty())
-	if  (playerData.empty()) or GLOBAL.load_game == "new_game" :
+	#print(playerData.empty())
+	if  (load_inventory.empty()) or GLOBAL.load_game == "new_game" :
 		var dict:Dictionary = {"inventory":{}}
 		for slot in range (0, inventory_maxSlots):
 			dict["inventory"][str(slot)] = {"id": "0", "amount": 0}
-		Global_DataParser.write_data(url_PlayerData, dict)
+		#Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
 		print("empty inventory")
 	else:
-		playerData = Global_DataParser.load_data(url_PlayerData)
-		inventory = playerData["inventory"]
+		#playerData = Global_DataParser.load_data(url_PlayerData)
+		inventory = load_inventory#playerData["inventory"]
 		print("load inventory")
 
 

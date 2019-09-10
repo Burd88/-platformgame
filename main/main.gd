@@ -74,15 +74,6 @@ func _on_Continue_pressed():
 	pass # Replace with function body.
 
 
-func _on_ru_pressed():
-	translationt.language = 1
-	pass # Replace with function body.
-
-
-func _on_en_pressed():
-	translationt.language = 2
-	pass # Replace with function body.
-
 
 func _on_ok_pressed():
 	get_tree().change_scene("res://levels/Level1/Level1.tscn")

@@ -12,8 +12,8 @@ func _ready():
 	set_select_mode(SELECT_SINGLE)
 	set_same_column_width(true)
 	set_allow_rmb_select(true)
-	#Global_Player.load_data()
-	#load_items()
+	Global_Player.load_data()
+	load_items()
 	set_process(false)
 	set_process_input(true)
 	

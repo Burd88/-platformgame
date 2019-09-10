@@ -19,7 +19,7 @@ func _on_save_pressed():
 	_save_game_data()
 	
 func _save_game_data():
-	Global_Player.save_data()
+	#Global_Player.save_data()
 	var save_game = File.new()
 	save_game.open("res://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("save")
@@ -34,6 +34,7 @@ func _save_game_data():
 		var level_data = i.call("save_levels")
 		save_levels["savelevel"] = level_data	
 	save_game.store_line(to_json(save_levels))
+	#print(Global_Player.inventory)
 	save_game.store_line(to_json({"inventory" : Global_Player.inventory}))
 	save_game.close()
 #	var save_levels = File.new()
@@ -67,6 +68,11 @@ func preload_game():
 					if i == "level" or i == "name":
 						continue
 					get_parent().set(i, current_line[i])
+			if try_current_line.get("inventory"):
+				var current_line = try_current_line["inventory"]
+				Global_Player.load_inventory = current_line
+				Global_Player.load_data()
+				print(Global_Player.load_inventory)
 		elif try_current_line == null:
 			save_game.eof_reached() == true
 	save_game.close()
@@ -94,9 +100,7 @@ func load_game():
 					if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 						continue
 					new_object.set(i, current_line[i])
-			#if try_current_line.get("inventory"):
-			#	var current_line = try_current_line["inventory"]
-			#	Global_Player.inventory = current_line
+			
 		elif try_current_line == null:
 			save_game.eof_reached() == true
 			$loading/Timer.start()

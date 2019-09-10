@@ -45,11 +45,11 @@ var attack = false
 var inventory
 
 func _ready():
-	$inventary/inventory/bag1.clear()
+	#$inventary/inventory/bag1.clear()
 	set_physics_process(true)
 	set_process(true)
-	$inventary/inventory/bag1.load_items()
-	Global_Player.load_data()
+	#$inventary/inventory/bag1.load_items()
+	#Global_Player.load_data()
 
 
 func _physics_process(delta):

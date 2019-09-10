@@ -237,7 +237,5 @@ stream = ExtResource( 14 )
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="inter/ru" to="." method="_on_ru_pressed"]
-[connection signal="pressed" from="inter/en" to="." method="_on_en_pressed"]
 [connection signal="pressed" from="inter/chack_save_game/ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="inter/chack_save_game/cancel" to="." method="_on_cancel_pressed"]

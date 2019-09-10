@@ -10,8 +10,8 @@ var gear7_use = false
 func _ready():
 	#print(GLOBAL.load_game)
 	if GLOBAL.load_game == "new_game":
-		$pause_menu._on_save_pressed()
-		print("save new game")
+		#$pause_menu._on_save_pressed()
+		#print("save new game")
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
