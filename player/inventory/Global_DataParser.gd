@@ -3,8 +3,12 @@ extends Node
 onready var file = File.new()
 
 func load_data(url) -> Dictionary:
-	if url == null: return {}
-	if !file.file_exists(url): return {}
+	if url == null: 
+		print("нету файла") 
+		return {}
+	if !file.file_exists(url): 
+		print("пустой файл") 
+		return {}
 	file.open(url, File.READ)
 	var data:Dictionary = {}
 	data = parse_json(file.get_as_text())

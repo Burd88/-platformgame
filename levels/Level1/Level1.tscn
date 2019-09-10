@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -12,15 +12,16 @@
 [ext_resource path="res://items/Trap/trap_low/trap_low.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=13]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=14]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=15]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=16]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=17]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=19]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=20]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=14]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=16]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=17]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=20]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=21]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -228,6 +229,22 @@
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.45142, 5.5163 )
 
+[sub_resource type="GDScript" id=35]
+script/source = "extends Area2D
+var useable = true
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10.8763, 18.3263 )
 
@@ -240,6 +257,7 @@ script/source = "extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
+var useable = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -250,16 +268,16 @@ func _ready():
 #	pass
 
 
-func _on_Gear6_body_entered(body):
-	if body.name == \"Player\":
-		get_parent().get_parent().get_node(\"Player/E-key\").show()
-	pass # Replace with function body.
+##func _on_Gear6_body_entered(body):
+#	if body.name == \"Player\":
+#		get_parent().get_parent().get_node(\"Player/E-key\").show()
+#	pass # Replace with function body.
 
 
-func _on_Gear6_body_exited(body):
-	if body.name == \"Player\":
-		get_parent().get_parent().get_node(\"Player/E-key\").hide()
-	pass # Replace with function body."
+#func _on_Gear6_body_exited(body):
+#	if body.name == \"Player\":
+#		get_parent().get_parent().get_node(\"Player/E-key\").hide()
+#	pass # Replace with function body."
 
 [sub_resource type="CircleShape2D" id=7]
 
@@ -287,7 +305,7 @@ extents = Vector2( 25.7159, 25.7895 )
 
 [sub_resource type="GDScript" id=12]
 script/source = "extends Area2D
-
+var useable = true
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
@@ -525,7 +543,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=33]
-font_data = ExtResource( 18 )
+font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=34]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -697,10 +715,13 @@ position = Vector2( 464.012, 375.178 )
 
 [node name="use_item" type="Node2D" parent="."]
 
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 13 )]
+position = Vector2( 304.466, 617.756 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="lever" type="Area2D" parent="use_item"]
-editor/display_folded = true
-position = Vector2( 822.019, 472.076 )
-script = ExtResource( 13 )
+position = Vector2( 581.241, 504.372 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -717,14 +738,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="use_item" instance=ExtResource( 14 )]
-editor/display_folded = true
+[node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 position = Vector2( 156.42, 361.126 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
 position = Vector2( -300.46, -677.374 )
 scale = Vector2( 1.81587, 2.00413 )
+script = SubResource( 35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
 position = Vector2( 165.509, 337.812 )
@@ -733,7 +754,7 @@ shape = SubResource( 4 )
 [node name="exit_level" type="Area2D" parent="use_item"]
 editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -770,9 +791,8 @@ __meta__ = {
 }
 
 [node name="door" type="StaticBody2D" parent="use_item"]
-editor/display_folded = true
 position = Vector2( 280, 360 )
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -801,13 +821,13 @@ position = Vector2( 1.19748, 11.376 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door/door_text_area"]
 position = Vector2( 0.836243, -11.7075 )
 shape = SubResource( 11 )
+disabled = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Gear7" type="Area2D" parent="use_item"]
-editor/display_folded = true
-position = Vector2( 307.072, 611.935 )
+position = Vector2( 855.033, 465.898 )
 script = SubResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Gear7"]
@@ -815,7 +835,7 @@ shape = SubResource( 13 )
 
 [node name="Gear7" parent="use_item/Gear7" instance=ExtResource( 5 )]
 
-[node name="Player" parent="." instance=ExtResource( 17 )]
+[node name="Player" parent="." instance=ExtResource( 18 )]
 position = Vector2( 117.129, 338.371 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -860,27 +880,21 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 19 )
+custom_styles/hover = ExtResource( 20 )
 custom_styles/pressed = SubResource( 34 )
-custom_styles/focus = ExtResource( 19 )
-custom_styles/normal = ExtResource( 19 )
+custom_styles/focus = ExtResource( 20 )
+custom_styles/normal = ExtResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-icon = ExtResource( 20 )
+icon = ExtResource( 21 )
 
-[node name="pause_menu" parent="." instance=ExtResource( 21 )]
+[node name="pause_menu" parent="." instance=ExtResource( 22 )]
 [connection signal="area_entered" from="use_item/lever" to="use_item/lever" method="_on_lever_area_entered"]
-[connection signal="body_entered" from="use_item/lever" to="use_item/lever" method="_on_lever_body_entered"]
-[connection signal="body_exited" from="use_item/lever" to="use_item/lever" method="_on_lever_body_exited"]
 [connection signal="tree_exited" from="use_item/Torch" to="." method="_on_Torch_tree_exited"]
+[connection signal="area_entered" from="use_item/Torch/tourch_area" to="use_item/Torch" method="_on_tourch_area_area_entered"]
 [connection signal="body_entered" from="use_item/exit_level" to="." method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="use_item/Gear6" to="." method="_on_Gear6_area_entered"]
-[connection signal="body_entered" from="use_item/Gear6" to="use_item/Gear6" method="_on_Gear6_body_entered"]
-[connection signal="body_exited" from="use_item/Gear6" to="use_item/Gear6" method="_on_Gear6_body_exited"]
 [connection signal="animation_finished" from="use_item/door/AnimationPlayer" to="use_item/door" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="area_entered" from="use_item/door/door_text_area" to="use_item/door" method="_on_door_text_area_area_entered"]
-[connection signal="body_entered" from="use_item/door/door_text_area" to="." method="_on_door_text_area_body_entered"]
-[connection signal="body_exited" from="use_item/door/door_text_area" to="use_item/door" method="_on_door_text_area_body_exited"]
 [connection signal="area_entered" from="use_item/Gear7" to="." method="_on_Gear7_area_entered"]
 [connection signal="body_entered" from="use_item/Gear7" to="use_item/Gear7" method="_on_Gear7_body_entered"]
 [connection signal="body_exited" from="use_item/Gear7" to="use_item/Gear7" method="_on_Gear7_body_exited"]

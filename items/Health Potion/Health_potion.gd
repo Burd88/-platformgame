@@ -2,7 +2,7 @@ extends Area2D
 
 
 var data_id = 1
-
+var useable = true
 
 #func _on_Health_potion_body_entered(body):
 #	if body.name == 'Player':

@@ -13,7 +13,7 @@ var attack_name_sword = ['удар_мечом_1','удар_мечом_2','уда
 var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
-var weapon = 1
+var weapon = 0
 var damage
 		# 0 = нет оружия
 		# 1 = меч
@@ -121,7 +121,7 @@ func _move(delta):
 			if weapon == 0:
 				$spr.animation = "бег"
 			elif weapon == 1:
-				$spr.animation =  "бег_меч_2"
+				$spr.animation =  "бег_меч"
 
 		elif velocity.y > 0:
 			if weapon == 0:
@@ -133,7 +133,7 @@ func _move(delta):
 			if weapon == 0:
 				$spr.animation = "стойка"
 			elif weapon == 1:
-				$spr.animation =  "стойка_меч"
+				$spr.animation =  "стойка_меч_1"
 
 		elif velocity.y > 3.84:
 			if weapon == 0:
@@ -146,12 +146,14 @@ func _move(delta):
 		$attack_area.position.x = 18
 		$use.position.x = 6
 		$"E-key".position.x = 14
+		$use_check.position.x = 14
 
 	elif direction.x < 0:
 		$spr.flip_h = true
 		$attack_area.position.x = -18
 		$use.position.x = -6
 		$"E-key".position.x = - 14
+		$use_check.position.x = -14
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
@@ -218,17 +220,17 @@ func _move(delta):
 	
 	
 func use_health_potion():
-	$GUI/health_potion_label/count.text = str(health_potion)
-	if Input.is_action_just_pressed("use_health_potion"):
-		if health_potion > 0 and health_now < health:
-			health_potion -= 1
-			health_now += 100
-			if health_now > health:
-				health_now = health
-		elif health_potion > 0 and health_now == health:
-			print("full hp")
-		elif health_potion == 0:
-			pass
+#
+#	if Input.is_action_just_pressed("use_health_potion"):
+#		if health_potion > 0 and health_now < health:
+#			health_potion -= 1
+#			health_now += 100
+#			if health_now > health:
+#				health_now = health
+#		elif health_potion > 0 and health_now == health:
+#			print("full hp")
+#		elif health_potion == 0:
+#			pass
 		pass
 func use():
 
@@ -240,7 +242,7 @@ func use():
 func _light_mode():
 	if torch == true:
 		$Light2D.enabled = true
-		$GUI/Label.visible = false
+
 	else:
 		$Light2D.enabled = false
 	pass
@@ -256,14 +258,17 @@ func _attack():
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
 		$spr.animation = str(attack_name[rand_attack_name])
-	elif attack and weapon == 2 and arrow_count >0:
-		$spr.animation = 'удар_лук'
-	elif attack and weapon == 2 and arrow_count <=0 :
-		weapon = 1
-		$spr.animation = "стойка"
+	elif attack and weapon == 2 :
+		for i in range(0,Global_Player.inventory_maxSlots):
+			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
+				$spr.animation = 'удар_лук'
+#	elif attack and weapon == 2 
+			else:
+				weapon = 1
+				$spr.animation = "стойка"
 
 func _gui():
-	$GUI/HPlabel.text = str(health, " / ", health_now )
+	
 	php = (health_now*100)/health
 	if php > 75 and php <=100:
 		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar.png")
@@ -277,7 +282,7 @@ func _gui():
 		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar0.png")
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
-	$GUI/arrow.text = str("Arrow : ", arrow_count)
+
 	#if health_now < health:
 	#	health_now += 1
 		# Графический интерфейс игрока
@@ -286,6 +291,8 @@ func _on_spr_animation_finished():
 	if $spr.animation == "удар_рукой" or $spr.animation == "удар_ногой" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
+	elif $spr.animation == "меч_взял":
+		$spr.animation = "стойка_меч_1"
 	if $spr.animation == 'смерть':
 		#GLOBAL.load_game = "Load_game"
 		#pause_menu.preload_game()
@@ -318,16 +325,13 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
-	#elif $spr.animation != "удар_мечом_1" or $spr.animation != "удар_мечом_2" or $spr.animation != "удар_мечом_3":
-	#	$attack_area/col_Atack.disabled = true
 	
 	elif $spr.animation == "удар_рукой":
 		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
 			$attack_area/col_Atack.disabled = true
-	#elif $spr.animation != "удар_рукой":
-	#	$attack_area/col_Atack.disabled = true
+
 	
 	elif $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
@@ -336,23 +340,27 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = true
 	#elif $spr.animation != "удар_ногой":
 	elif $spr.animation == "удар_лук" :
-		if $spr.frame == 7 and arrow_count > 0:
-		#	print("arrow start")
-			var a = arrow.instance()
-			if $spr.flip_h == false:
+		for i in range(0,Global_Player.inventory_maxSlots):
+			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
+				if $spr.frame == 7:
+			#	print("arrow start")
+					var a = arrow.instance()
+					if $spr.flip_h == false:
 			#	print("лево")
-				a.start((position+Vector2(15,5)),0)
-				get_parent().add_child(a)
-				arrow_count -=1
-			elif $spr.flip_h == true:
+						a.start((position+Vector2(15,5)),0)
+						get_parent().add_child(a)
+						Global_Player.inventory_removeItem(i)
+						$inventary/inventory/bag1.update_slot(i)
+					elif $spr.flip_h == true:
 			#	print("право")
-				a.start((position-Vector2(15,-5)),180)
-				get_parent().add_child(a)
-				arrow_count -=1
-		elif $spr.frame == 2 and arrow_count <=0:
+						a.start((position-Vector2(15,-5)),180)
+						get_parent().add_child(a)
+						Global_Player.inventory_removeItem(i)
+						$inventary/inventory/bag1.update_slot(i)
+			elif $spr.frame == 2 and arrow_count <=0:
 		#	print("no arrow")
-			$spr.animation = "стойка"
-			pass
+				$spr.animation = "стойка"
+				pass
 	else:
 		$attack_area/col_Atack.disabled = true
 	
@@ -363,14 +371,11 @@ func _on_spr_frame_changed():
 func _on_Area2D_body_entered(body):
 	if body.name == 'door':
 		body.open = true
-	#	print("door open")
-		
 	pass # Replace with function body.
 
 func _open_inventory():
 	if Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == false:
 		$inventary/inventory.visible = true
-		#print($inventary/inventory/bag1.get_item_icon(0))
 	elif Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == true:
 		$inventary/inventory.visible = false
 
@@ -381,18 +386,13 @@ func _on_use_area_entered(area):
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
 		area.queue_free()
 		pass
+	elif area.name == "Sword_equip":
+		$spr.animation = "меч_взял"
+		weapon = 1
+		area.queue_free()
 	else: print("no item")
-#	elif area.name == "Health_potion":
-#		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(1))
-#		area.queue_free()
-#		pass
-#	pass # Replace with function body.
 
 
-
-func _on_bag1_item_selected(index):
-
-	pass # Replace with function body.
 
 
 
@@ -424,3 +424,28 @@ func _on_bag1_item_rmb_selected(index, at_position):
 			print("full hp")
 			pass
 	pass # Replace with function body.
+
+
+func _on_use_check_area_entered(area):
+	if area.get("useable") :
+		$"E-key".show()
+	else : pass
+
+
+func _on_use_check_area_exited(area):
+	if area.get("useable") :
+		$"E-key".hide()
+	else : pass
+
+
+
+func _on_use_check_body_entered(body):
+	if body.get("useable") :
+		$"E-key".show()
+	else : pass
+
+
+func _on_use_check_body_exited(body):
+	if body.get("useable") :
+		$"E-key".hide()
+	else : pass

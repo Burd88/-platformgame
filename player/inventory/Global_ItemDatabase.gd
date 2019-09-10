@@ -1,7 +1,7 @@
 extends Node
 
 
-onready var itemData:Dictionary = Global_DataParser.load_data("res://items/Items/Database_Items.json")
+onready var itemData:Dictionary = Global_DataParser.load_data("res://Database_Items.json")
 
 func get_item(id:String) -> Dictionary:
 	if !itemData.has(id):
