@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 
 ## жизни игрока
-var health = 4000
+var health = 1000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -13,6 +13,7 @@ var attack_name_sword = ['удар_мечом_1','удар_мечом_2','уда
 var rand_attack_name_sword = 1
 var attack_name = ['удар_ногой','удар_рукой']
 var rand_attack_name = 1
+var equip_sword_anim = false
 var weapon = 0
 var damage
 		# 0 = нет оружия
@@ -98,9 +99,12 @@ func _move(delta):
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y < 3.84 :
 			if weapon == 0:
+				
 				$spr.animation = "прыжок"
+				equip_sword_anim = false
 			elif weapon == 1:
 				$spr.animation =  "прыжок_меч"
+				equip_sword_anim = false
 		elif velocity.y > 3.84  :
 			if weapon == 0:
 				$spr.animation = "падение"
@@ -120,15 +124,17 @@ func _move(delta):
 		if velocity.y == 0:
 			if weapon == 0:
 				$spr.animation = "бег"
+				equip_sword_anim = false
 			elif weapon == 1:
 				$spr.animation =  "бег_меч"
+				equip_sword_anim = false
 
 		elif velocity.y > 0:
 			if weapon == 0:
 				$spr.animation = "падение"
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
-	elif direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
+	elif !equip_sword_anim and direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
 		if velocity.y == 0:
 			if weapon == 0:
 				$spr.animation = "стойка"
@@ -292,7 +298,7 @@ func _on_spr_animation_finished():
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%2
 	elif $spr.animation == "меч_взял":
-		$spr.animation = "стойка_меч_1"
+		equip_sword_anim = false
 	if $spr.animation == 'смерть':
 		#GLOBAL.load_game = "Load_game"
 		#pause_menu.preload_game()
@@ -387,6 +393,7 @@ func _on_use_area_entered(area):
 		area.queue_free()
 		pass
 	elif area.name == "Sword_equip":
+		equip_sword_anim = true
 		$spr.animation = "меч_взял"
 		weapon = 1
 		area.queue_free()

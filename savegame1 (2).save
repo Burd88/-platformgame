@@ -1,6 +1,0 @@
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":597.418152,"pos_y":506.975586}}
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":360.917603,"pos_y":858.975647}}
-{"savedata":{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":279.106628,"pos_y":376.469971}}
-{"savedata":{"filename":"res://player/Player.tscn","health":4000,"health_now":3714,"name":"Player","parent":"/root/Level1","pos_x":1016.791199,"pos_y":637.417969,"torch":true,"weapon":1}}
-{"savelevel":{"door_delete":true,"gear7_use":false,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"name":"Level1","torch_delete":true}}
-{"inventory":{"0":{"amount":1,"id":"1"},"1":{"amount":1,"id":"3"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}

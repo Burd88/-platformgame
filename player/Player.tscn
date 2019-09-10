@@ -302,7 +302,7 @@ animations = [ {
 "frames": [ ExtResource( 147 ), ExtResource( 148 ), ExtResource( 149 ), ExtResource( 150 ), ExtResource( 151 ), ExtResource( 152 ) ],
 "loop": true,
 "name": "бег_меч",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 156 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 138 ), ExtResource( 138 ), ExtResource( 138 ) ],
 "loop": true,
@@ -395,7 +395,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "меч_взял"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
