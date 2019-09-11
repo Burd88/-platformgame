@@ -234,7 +234,6 @@ position = Vector2( -2.38394, 223.312 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Intro"]
 position = Vector2( 2.38394, -223.312 )
 stream = ExtResource( 14 )
-autoplay = true
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]

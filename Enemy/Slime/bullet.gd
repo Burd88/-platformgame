@@ -4,11 +4,11 @@ var speed = 200
 onready var puddle = preload("res://Enemy/Slime/puddle.tscn")
 var velocity = Vector2()
 
-func start(pos, dir):
+func start(pos, dir,spd):
 	position = pos
 	rotation = dir
 	#print(dir)
-	velocity = Vector2(speed, 0).rotated(dir)
+	velocity = Vector2(spd, 0).rotated(dir)
 
 func _physics_process(delta):
 	position += velocity * delta

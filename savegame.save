@@ -1,7 +1,8 @@
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime","parent":"/root/Level1/enemies","php":100,"pos_x":753.745422,"pos_y":650.955078}}
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":500.927246,"pos_y":506.975586}}
-{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":343.414398,"pos_y":858.975647}}
-{"savedata":{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":638.063232,"pos_y":376.005798}}
-{"savedata":{"filename":"res://player/Player.tscn","health":1000,"health_now":599,"name":"Player","parent":"/root/Level1","pos_x":1425.600464,"pos_y":637.394104,"torch":true,"weapon":1}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime","parent":"/root/Level1/enemies","php":100,"pos_x":990.495544,"pos_y":650.955078}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime2","parent":"/root/Level1/enemies","php":100,"pos_x":616.584351,"pos_y":506.975586}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime3","parent":"/root/Level1/enemies","php":100,"pos_x":1094.228271,"pos_y":650.975586}}
+{"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime4","parent":"/root/Level1/enemies","php":100,"pos_x":276.749756,"pos_y":858.954651}}
+{"savedata":{"filename":"res://Enemy/Bat/Bat.tscn","name":"Bat","parent":"/root/Level1/enemies","pos_x":439.093842,"pos_y":375.17804}}
+{"savedata":{"filename":"res://player/Player.tscn","health":2000,"health_now":2000,"name":"Player","parent":"/root/Level1","pos_x":1335.428345,"pos_y":253.417953,"torch":true,"weapon":1}}
 {"savelevel":{"door_delete":true,"gear7_use":false,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"name":"Level1","torch_delete":true}}
 {"inventory":{"0":{"amount":0,"id":"0"},"1":{"amount":0,"id":"0"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}

@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 
 ## жизни игрока
-var health = 1000
+var health = 2000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -313,13 +313,17 @@ func _death():
 	pass
 
 func _on_attack_area_body_entered(body):
-	if body.name == "Slime":
+	if body.get("enemy_type"):
 		body.health_now -= damage
-	elif body.name != "Slime":
-		for i in range(0, 10) :
-			if body.name == str("Slime",+i) :
-				body.health_now -=damage
-			#print("sdas")
+		print("damage: ", damage)
+	else : pass
+#	if body.name == "Slime":
+#		body.health_now -= damage
+#	elif body.name != "Slime":
+#		for i in range(0, 10) :
+#			if body.name == str("Slime",+i) :
+#				body.health_now -=damage
+#			#print("sdas")
 			
 	if !body:
 		$attack_area/col_Atack.disabled = true

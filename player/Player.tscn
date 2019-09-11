@@ -395,7 +395,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "меч_взял"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -504,7 +504,6 @@ anims/use = SubResource( 13 )
 stream = ExtResource( 166 )
 volume_db = -7.99
 pitch_scale = 1.2
-autoplay = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
