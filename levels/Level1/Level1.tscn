@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -10,20 +10,25 @@
 [ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=9]
 [ext_resource path="res://items/Trap/trap_low/trap_low.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=14]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=15]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=16]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=17]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=18]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=19]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=20]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=21]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=22]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=23]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-1.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=18]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=20]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=21]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=22]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=23]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=24]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=25]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=27]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=28]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=29]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -228,10 +233,82 @@
 14/shapes = [  ]
 14/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+onready var bullet = preload(\"res://Enemy/Slime/bullet.tscn\")
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Timer_timeout():
+#	var b = bullet.instance()
+#	b.start(position, 0,0)
+#	get_parent().add_child(b)
+	
+	pass # Replace with function body.
+
+
+func _on_Sprite_animation_finished():
+	var b = bullet.instance()
+	b.start(position, 0,0)
+	get_parent().add_child(b)
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Area2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if get_node(\"Boss_level1_1\"):
+		if $Boss_level1_1.health_now == 0:
+			get_parent().get_parent().get_node(\"use_item/door_boss1_exit\").activate = true
+	else: pass
+
+
+
+func _on_Area2D_body_entered(body):
+	if body.get(\"player_type\"):
+		$Boss_level1_1/phase1.start()
+		$Boss_level1_1.attack_now = true
+		print(body.name)
+	else : pass
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 177.063, 98.3142 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 5.45142, 5.5163 )
 
-[sub_resource type="GDScript" id=35]
+[sub_resource type="GDScript" id=8]
 script/source = "extends Area2D
 var useable = true
 # Declare member variables here. Examples:
@@ -247,13 +324,13 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10.8763, 18.3263 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 5.38321, 6.22699 )
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=11]
 script/source = "extends Area2D
 
 # Declare member variables here. Examples:
@@ -281,9 +358,9 @@ func _ready():
 #		get_parent().get_parent().get_node(\"Player/E-key\").hide()
 #	pass # Replace with function body."
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=12]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -297,15 +374,15 @@ tracks/0/keys = {
 "values": [ Vector2( 280, 360 ), Vector2( 280, 310 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=14]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 8.43869, 25.0381 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 25.7159, 25.7895 )
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=17]
 script/source = "extends Area2D
 var useable = true
 # Declare member variables here. Examples:
@@ -335,9 +412,9 @@ func _on_Gear7_body_exited(body):
 		get_parent().get_parent().get_node(\"Player/E-key\").hide()
 "
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=18]
 
-[sub_resource type="GDScript" id=37]
+[sub_resource type="GDScript" id=19]
 script/source = "extends StaticBody2D
 var positionv
 var activate = false
@@ -355,38 +432,13 @@ func _process(delta):
 		else: pass
 	pass
 
-
-func _on_Boss_level1_1_tree_exited():
-	activate = true
-	pass # Replace with function body.
 "
 
-[sub_resource type="RectangleShape2D" id=36]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 7.87292, 24.6017 )
 
-[sub_resource type="ConvexPolygonShape2D" id=14]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=15]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=16]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=17]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 16, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=18]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=19]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=20]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
 [sub_resource type="ConvexPolygonShape2D" id=21]
-points = PoolVector2Array( 16, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -395,10 +447,10 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
-points = PoolVector2Array( 0, 0, 0, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=26]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -407,15 +459,36 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 16, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=29]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 0, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=30]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
-[sub_resource type="TileSet" id=31]
+[sub_resource type="ConvexPolygonShape2D" id=31]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=32]
+points = PoolVector2Array( 0, 0, 0, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=36]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 0, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=37]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=38]
 2/name = "Для движения"
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
@@ -437,97 +510,97 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "autotile_coord": Vector2( 1, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 14 ),
+"shape": SubResource( 21 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 2, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 15 ),
+"shape": SubResource( 22 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 24 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 18 ),
+"shape": SubResource( 25 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 2 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 26 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 20 ),
+"shape": SubResource( 27 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 21 ),
+"shape": SubResource( 28 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 22 ),
+"shape": SubResource( 29 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 2, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 23 ),
+"shape": SubResource( 30 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 24 ),
+"shape": SubResource( 31 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 25 ),
+"shape": SubResource( 32 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 26 ),
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 2 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 27 ),
+"shape": SubResource( 34 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 28 ),
+"shape": SubResource( 35 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 29 ),
+"shape": SubResource( 36 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -553,12 +626,12 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 30 ),
+"shape": SubResource( 37 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
 
-[sub_resource type="StyleBoxFlat" id=32]
+[sub_resource type="StyleBoxFlat" id=39]
 bg_color = Color( 0.227451, 0.0705882, 0.0705882, 1 )
 border_width_left = 10
 border_width_top = 10
@@ -571,10 +644,10 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=33]
-font_data = ExtResource( 21 )
+[sub_resource type="DynamicFont" id=40]
+font_data = ExtResource( 26 )
 
-[sub_resource type="StyleBoxFlat" id=34]
+[sub_resource type="StyleBoxFlat" id=41]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -668,7 +741,6 @@ position = Vector2( 256, 571 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="trap" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( -0.418152, -0.418121 )
 __meta__ = {
 "_edit_lock_": true
@@ -724,39 +796,62 @@ position = Vector2( 1303.91, 631.211 )
 move_to = Vector2( 0, -15 )
 speed = 10.0
 
+[node name="trap_bullet" type="Node2D" parent="trap"]
+position = Vector2( 1428.59, 226.233 )
+script = SubResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="trap/trap_bullet"]
+position = Vector2( -6.58606, -7.78369 )
+rotation = 4.71239
+scale = Vector2( 0.738052, 0.760503 )
+frames = SubResource( 4 )
+frame = 3
+playing = true
+
+[node name="Timer" type="Timer" parent="trap/trap_bullet"]
+wait_time = 2.0
+autostart = true
+
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Slime" parent="enemies" instance=ExtResource( 11 )]
+[node name="Slime" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 659.64, 596.141 )
 
-[node name="Slime2" parent="enemies" instance=ExtResource( 11 )]
+[node name="Slime2" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 539.263, 457.734 )
 
-[node name="Slime3" parent="enemies" instance=ExtResource( 11 )]
+[node name="Slime3" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 502.112, 632.214 )
 
-[node name="Slime4" parent="enemies" instance=ExtResource( 11 )]
+[node name="Slime4" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 490.185, 842.421 )
 
-[node name="Bat" parent="enemies" instance=ExtResource( 12 )]
+[node name="Bat" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 464.012, 375.178 )
 
-[node name="Boss_level1_1" parent="enemies" instance=ExtResource( 13 )]
+[node name="Area2D" type="Area2D" parent="enemies"]
+script = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/Area2D"]
+position = Vector2( 1104.22, 252.633 )
+shape = SubResource( 6 )
+
+[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 18 )]
 position = Vector2( 998.06, 314.793 )
 
 [node name="use_item" type="Node2D" parent="."]
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 14 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 19 )]
 position = Vector2( 304.466, 617.756 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )
-script = ExtResource( 15 )
+script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -769,23 +864,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="use_item" instance=ExtResource( 16 )]
+[node name="Torch" parent="use_item" instance=ExtResource( 21 )]
 position = Vector2( 156.42, 361.126 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
 position = Vector2( -300.46, -677.374 )
 scale = Vector2( 1.81587, 2.00413 )
-script = SubResource( 35 )
+script = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
 position = Vector2( 165.509, 337.812 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="exit_level" type="Area2D" parent="use_item"]
 editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
-script = ExtResource( 17 )
+script = ExtResource( 22 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -802,7 +897,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/exit_level"]
 position = Vector2( -0.0946045, 12.0309 )
 scale = Vector2( 2.28963, 2.74184 )
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -810,25 +905,25 @@ __meta__ = {
 [node name="Gear6" type="Area2D" parent="use_item"]
 editor/display_folded = true
 position = Vector2( 255.922, 601.272 )
-script = SubResource( 6 )
+script = SubResource( 11 )
 
 [node name="Gear6" parent="use_item/Gear6" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Gear6"]
 z_index = 1
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="door" type="StaticBody2D" parent="use_item"]
 position = Vector2( 280, 360 )
-script = ExtResource( 18 )
+script = ExtResource( 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
-anims/opendoor = SubResource( 8 )
-"anims/Новая анимация" = SubResource( 9 )
+anims/opendoor = SubResource( 13 )
+"anims/Новая анимация" = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="use_item/door"]
 texture = ExtResource( 2 )
@@ -841,7 +936,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door"]
 position = Vector2( 0.35849, -2.5094 )
-shape = SubResource( 10 )
+shape = SubResource( 15 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -851,7 +946,7 @@ position = Vector2( 1.19748, 11.376 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door/door_text_area"]
 position = Vector2( 0.836243, -11.7075 )
-shape = SubResource( 11 )
+shape = SubResource( 16 )
 disabled = true
 __meta__ = {
 "_edit_lock_": true
@@ -859,16 +954,16 @@ __meta__ = {
 
 [node name="Gear7" type="Area2D" parent="use_item"]
 position = Vector2( 855.033, 465.898 )
-script = SubResource( 12 )
+script = SubResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Gear7"]
-shape = SubResource( 13 )
+shape = SubResource( 18 )
 
 [node name="Gear7" parent="use_item/Gear7" instance=ExtResource( 5 )]
 
 [node name="door_boss1_exit" type="StaticBody2D" parent="use_item"]
 position = Vector2( 909.168, 333.203 )
-script = SubResource( 37 )
+script = SubResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="use_item/door_boss1_exit"]
 position = Vector2( 11.2936, -4.62009 )
@@ -878,7 +973,7 @@ region_rect = Rect2( 352, 0, 16, 48 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
 position = Vector2( 10.7802, -5.13345 )
-shape = SubResource( 36 )
+shape = SubResource( 20 )
 
 [node name="platforms" type="Node2D" parent="."]
 editor/display_folded = true
@@ -887,55 +982,55 @@ position = Vector2( 0.598754, -2.39496 )
 [node name="platform 1" type="Node2D" parent="platforms"]
 editor/display_folded = true
 
-[node name="platform" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform3" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform2" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform2" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 
-[node name="platform4" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform4" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 
-[node name="platform5" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform5" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform6" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform6" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 
-[node name="platform7" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform7" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform8" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform8" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 
-[node name="platform9" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform9" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform10" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform10" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 
-[node name="platform11" parent="platforms/platform 1" instance=ExtResource( 19 )]
+[node name="platform11" parent="platforms/platform 1" instance=ExtResource( 24 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 20 )]
+[node name="Player" parent="." instance=ExtResource( 25 )]
 position = Vector2( 117.129, 338.371 )
 
 [node name="frontground" type="TileMap" parent="."]
-tile_set = SubResource( 31 )
+tile_set = SubResource( 38 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 occluder_light_mask = 3
@@ -962,8 +1057,8 @@ margin_left = 55.0
 margin_top = 490.0
 margin_right = -60.0
 margin_bottom = 585.0
-custom_styles/normal = SubResource( 32 )
-custom_fonts/font = SubResource( 33 )
+custom_styles/normal = SubResource( 39 )
+custom_fonts/font = SubResource( 40 )
 text = "text field"
 align = 1
 valign = 1
@@ -976,16 +1071,18 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 22 )
-custom_styles/pressed = SubResource( 34 )
-custom_styles/focus = ExtResource( 22 )
-custom_styles/normal = ExtResource( 22 )
+custom_styles/hover = ExtResource( 27 )
+custom_styles/pressed = SubResource( 41 )
+custom_styles/focus = ExtResource( 27 )
+custom_styles/normal = ExtResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-icon = ExtResource( 23 )
+icon = ExtResource( 28 )
 
-[node name="pause_menu" parent="." instance=ExtResource( 24 )]
-[connection signal="tree_exited" from="enemies/Boss_level1_1" to="use_item/door_boss1_exit" method="_on_Boss_level1_1_tree_exited"]
+[node name="pause_menu" parent="." instance=ExtResource( 29 )]
+[connection signal="animation_finished" from="trap/trap_bullet/Sprite" to="trap/trap_bullet" method="_on_Sprite_animation_finished"]
+[connection signal="timeout" from="trap/trap_bullet/Timer" to="trap/trap_bullet" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="enemies/Area2D" to="enemies/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="use_item/lever" to="use_item/lever" method="_on_lever_area_entered"]
 [connection signal="tree_exited" from="use_item/Torch" to="." method="_on_Torch_tree_exited"]
 [connection signal="area_entered" from="use_item/Torch/tourch_area" to="use_item/Torch" method="_on_tourch_area_area_entered"]

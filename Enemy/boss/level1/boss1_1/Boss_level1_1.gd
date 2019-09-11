@@ -7,7 +7,7 @@ var enemy_type = true
 var phase1 = true
 var floor_in
 ## жизни игрока
-var health = 500
+var health = 100
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -15,6 +15,7 @@ var anim = 'move'
 onready var enemy_shoot = preload("res://Enemy/Slime/Slime.tscn")
 onready var bullet_shoot = preload("res://Enemy/Slime/bullet.tscn")
 var damage
+var attack_now = false
 var shot_var = true
 var distance = Vector2()
 var velocity = Vector2()
@@ -29,6 +30,7 @@ func _process(delta):
 	_flip_move()
 	fight()
 	_death()
+	
 	distance.x = speed
 	velocity.x = (direction.x*distance.x)
 	if phase1 == true:
@@ -39,6 +41,21 @@ func _process(delta):
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
 #	pass
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"health" : health ,
+		"health_now" : health_now,
+		"php" : php,
+		"name" : name,
+	}
+	return save_dict
+
+
 func _flip_move():
 	if is_on_wall():
 		direction.x =direction.x*(-1)
@@ -70,17 +87,17 @@ func fight():
 			
 			$shot.start()
 			shot_var = false
-			print("enemy timer start")
+			#print("enemy timer start")
 	elif is_on_floor():
 		velocity.y = 0
 		direction.y = 0
 		$spr.flip_v = false
 		$spr.offset.y = 0
 		floor_in = true
-		if shot_var == true:
+		if shot_var == true and attack_now:
 			$bullet.start()
 			shot_var = false
-			print("bullet timer start")
+			#print("bullet timer start")
 	pass
 
 func _on_shot_timeout():
@@ -92,22 +109,18 @@ func _on_shot_timeout():
 		b.health = 120
 		b.damage = 30
 		$shot.start()
-		print("rnrmy timer finish")
+		#print("rnrmy timer finish")
 		shot_var = true
 	else: 
-		print("timer finish and lose")
+		#print("timer finish and lose")
 		shot_var = true
 		pass
 	pass # Replace with function body.
 
 
-func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		$phase1.start()
-	pass # Replace with function body.
-
 
 func _on_phase1_timeout():
+	
 	if !phase1:
 		phase1 = true
 	elif phase1:
@@ -119,6 +132,7 @@ func _death():
 		health_now = 0
 		$spr.animation = "die"
 		velocity = Vector2(0,0)
+		
 
 
 func _on_bullet_timeout():
@@ -126,19 +140,17 @@ func _on_bullet_timeout():
 		var b = bullet_shoot.instance()
 		var c = bullet_shoot.instance()
 		get_parent().add_child(b)
-		
-		var dir = randi()%5+6
-		print(dir)
+
 		b.start((position - Vector2(0 , 5)), 5,100)
 
 		get_parent().add_child(c)
 		c.start((position - Vector2(0 , 5)), -5,-100)
 		
 		$bullet.start()
-		print("bullet timer finish")
+		#print("bullet timer finish")
 		shot_var = true
 	else: 
-		print("timer finish and lose")
+		#print("timer finish and lose")
 		shot_var = true
 		pass
 	pass # Replace with function body.
@@ -148,4 +160,11 @@ func _on_bullet_timeout():
 func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
 		queue_free()
+	pass # Replace with function body.
+
+
+func _on_Area2D_body_entered(body):
+	if body.get("player_type"):
+		body.velocity = Vector2(100 , -70)
+		pass
 	pass # Replace with function body.

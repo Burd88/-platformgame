@@ -5,27 +5,27 @@
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-1.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-2.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-idle-3.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=9]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=13]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=14]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-1.png" type="Texture" id=15]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=16]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=17]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=22]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=23]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=24]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 10 )
 
 [sub_resource type="SpriteFrames" id=2]
@@ -37,12 +37,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "die",
+"name": "hurt",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "hurt",
+"name": "move",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
@@ -52,14 +52,16 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "move",
+"name": "die",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 54.7775, 24.3149 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 18.9781, 13.4848 )
 
-[node name="Boss_level1_1" type="KinematicBody2D"]
+[node name="Boss_level1_1" type="KinematicBody2D" groups=[
+"save",
+]]
 scale = Vector2( 3, 3 )
 collision_layer = 4
 collision_mask = 3
@@ -68,11 +70,12 @@ script = ExtResource( 1 )
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2( -0.71, 6 )
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "move"
+frame = 1
 playing = true
 
 [node name="healthbar" type="ProgressBar" parent="."]
@@ -93,8 +96,8 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.300832, -12.3342 )
-shape = SubResource( 4 )
+position = Vector2( -0.601664, -0.902502 )
+shape = SubResource( 3 )
 
 [node name="phase1" type="Timer" parent="."]
 wait_time = 10.0

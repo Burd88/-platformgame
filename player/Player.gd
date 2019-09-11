@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed = 150
 var jump_speed = 150
 var gravity = 230
-
+var player_type = true
 ## жизни игрока
 var health = 2000
 var health_now = health
