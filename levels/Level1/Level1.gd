@@ -6,6 +6,7 @@ var mexanism = false
 var door_delete = false
 var torch_delete = false
 var gear7_use = false
+var boss1_1_kill = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
@@ -59,6 +60,7 @@ func save_levels():
 		"door_delete" : door_delete,
 		"torch_delete" : torch_delete,
 		"gear7_use" : gear7_use,
+		"boss1_1_kill" : boss1_1_kill,
 		}
 	return save_level
 #	pass

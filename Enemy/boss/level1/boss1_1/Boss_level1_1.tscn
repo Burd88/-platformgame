@@ -75,7 +75,7 @@ shape = SubResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
+frame = 2
 playing = true
 
 [node name="healthbar" type="ProgressBar" parent="."]

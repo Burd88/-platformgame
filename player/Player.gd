@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 var player_type = true
 ## жизни игрока
-var health = 2000
+var health = 3000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -426,7 +426,7 @@ func _on_bag1_item_rmb_selected(index, at_position):
 		$inventary/inventory/bag1.update_slot(index)
 	elif $inventary/inventory/bag1.get_item_metadata(index) == "Health_potion":
 		if  health_now < health:
-			health_now += randi()%45+1
+			health_now += randi()%150+50
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:

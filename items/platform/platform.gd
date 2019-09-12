@@ -3,6 +3,7 @@ extends Node2D
 const IDLE_DURATION = 1.0
 export var move_to = Vector2.RIGHT*192
 export var speed = 3.0
+export var timer_time = 0
 onready var platform = $platform
 onready var tween = $moveTween
 
@@ -13,7 +14,8 @@ var follow = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tween.start()
+	$Timer.wait_time = timer_time
+	$Timer.start()
 	_init_tween()
 	
 func _init_tween():
@@ -26,4 +28,11 @@ func _init_tween():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	platform.position = platform.position.linear_interpolate(follow, 0.075)
+	
 	pass
+
+
+func _on_Timer_timeout():
+	tween.start()
+	print("timer finish " ,timer_time)
+	pass # Replace with function body.

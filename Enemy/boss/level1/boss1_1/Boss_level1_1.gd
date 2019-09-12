@@ -7,7 +7,7 @@ var enemy_type = true
 var phase1 = true
 var floor_in
 ## жизни игрока
-var health = 100
+var health = 2000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -159,6 +159,7 @@ func _on_bullet_timeout():
 
 func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
+		GLOBAL.boss1_1_kill = true
 		queue_free()
 	pass # Replace with function body.
 

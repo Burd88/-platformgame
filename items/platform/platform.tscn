@@ -8,6 +8,7 @@ extents = Vector2( 23.0925, 7.71376 )
 
 [node name="platform" type="Node2D"]
 script = ExtResource( 1 )
+timer_time = 1
 
 [node name="platform" type="RigidBody2D" parent="."]
 mode = 3
@@ -24,3 +25,7 @@ shape = SubResource( 1 )
 repeat = true
 playback_process_mode = 0
 playback/repeat = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

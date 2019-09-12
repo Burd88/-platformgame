@@ -45,6 +45,8 @@ shadow_enabled = true
 
 [node name="use_area" type="Area2D" parent="."]
 visible = false
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_area"]
 visible = false
