@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -11,21 +11,22 @@
 [ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=9]
 [ext_resource path="res://items/Trap/trap_low/trap_low.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemy/gobby/sprite/gobby_swipeL_strip3.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=15]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=16]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=17]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=18]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=19]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=20]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=21]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=22]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=23]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=24]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=25]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=16]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=17]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=18]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=20]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=21]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=22]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=23]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=24]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=25]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=26]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=27]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -274,6 +275,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+
+[sub_resource type="GDScript" id=43]
+script/source = "extends Area2D
+
+# Declare member variables here. Examples:
+# var a = 2
+var enemy_time = 5
+onready var enemy_spawn = preload(\"res://Enemy/Slime/Slime.tscn\")
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if enemy_time == 0:
+		enemy_time = 5
+		if randi()%3 == 0:
+			var b = enemy_spawn.instance()
+			get_parent().get_parent().get_parent().get_parent().get_node(\"/root/Level1/enemies\").add_child(b)
+			b.position = global_position - Vector2(0, 20)
+			pass
+		else: print(\"pass\")
+		pass
+#	pass
+
+
+func _on_Area2D_area_entered(area):
+	if area.get(\"type_bullet\"):
+		enemy_time -= 1
+		area.queue_free()
+		print(enemy_time)
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 16.917, 10 )
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Area2D
@@ -643,7 +680,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=40]
-font_data = ExtResource( 23 )
+font_data = ExtResource( 24 )
 
 [sub_resource type="StyleBoxFlat" id=41]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -810,21 +847,35 @@ frame = 2
 autoplay = "cap"
 anims/cap = SubResource( 42 )
 
+[node name="Area2D" type="Area2D" parent="trap/trap_bullet"]
+position = Vector2( 3, 420.397 )
+script = SubResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap/trap_bullet/Area2D"]
+position = Vector2( 1.99023, 5.97076 )
+shape = SubResource( 44 )
+
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Slime" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( 659.64, 596.141 )
+[node name="Rat_low2" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 346.467, 600.886 )
 
-[node name="Slime2" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( 548.763, 506.184 )
+[node name="Rat_low3" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 600.002, 634.197 )
 
-[node name="Slime3" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( 502.112, 632.214 )
+[node name="Rat_low4" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 899.802, 630.496 )
 
-[node name="Slime4" parent="enemies" instance=ExtResource( 12 )]
-position = Vector2( 490.185, 842.421 )
+[node name="Rat_low5" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 1208.86, 632.346 )
 
-[node name="Bat" parent="enemies" instance=ExtResource( 13 )]
+[node name="Rat_low6" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 1375.41, 636.048 )
+
+[node name="Slime4" parent="enemies" instance=ExtResource( 13 )]
+position = Vector2( 520.494, 496.037 )
+
+[node name="Bat" parent="enemies" instance=ExtResource( 14 )]
 position = Vector2( 464.012, 375.178 )
 
 [node name="Area2D" type="Area2D" parent="enemies"]
@@ -834,22 +885,30 @@ script = SubResource( 5 )
 position = Vector2( 1104.22, 252.633 )
 shape = SubResource( 6 )
 
-[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 14 )]
+[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 15 )]
 position = Vector2( 998.06, 314.793 )
 
-[node name="Gobby" parent="enemies" instance=ExtResource( 15 )]
-position = Vector2( 634.523, 175.511 )
+[node name="Gobby" parent="enemies" instance=ExtResource( 16 )]
+position = Vector2( 267.028, 1122.21 )
 
-[node name="Gobby2" parent="enemies" instance=ExtResource( 15 )]
-position = Vector2( 963.928, 638.249 )
+[node name="Gobby2" parent="enemies" instance=ExtResource( 16 )]
+position = Vector2( 616.406, 1125.58 )
 
-[node name="Gobby3" parent="enemies" instance=ExtResource( 15 )]
-position = Vector2( 511.734, 500.241 )
+[node name="Rat_low" parent="enemies" instance=ExtResource( 12 )]
+position = Vector2( 630.274, 176.474 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Slime5" parent="enemies" instance=ExtResource( 13 )]
+position = Vector2( 631.693, 912.583 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Gobby3" parent="enemies" instance=ExtResource( 16 )]
+position = Vector2( 1070.96, 1003.55 )
 
 [node name="use_item" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 16 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 17 )]
 position = Vector2( 304.466, 617.756 )
 scale = Vector2( 0.5, 0.5 )
 collision_mask = 3
@@ -858,7 +917,7 @@ collision_mask = 3
 position = Vector2( 581.241, 504.372 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -875,7 +934,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="use_item" instance=ExtResource( 18 )]
+[node name="Torch" parent="use_item" instance=ExtResource( 19 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
 position = Vector2( 156.42, 361.126 )
 scale = Vector2( 0.5, 0.5 )
@@ -894,7 +953,7 @@ editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 19 )
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -936,7 +995,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1004,58 +1063,58 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 21 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 21 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 21 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 21 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 21 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 21 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="Player" parent="." instance=ExtResource( 22 )]
+[node name="Player" parent="." instance=ExtResource( 23 )]
 position = Vector2( 117.129, 338.371 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -1101,16 +1160,17 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 24 )
+custom_styles/hover = ExtResource( 25 )
 custom_styles/pressed = SubResource( 41 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/normal = ExtResource( 24 )
+custom_styles/focus = ExtResource( 25 )
+custom_styles/normal = ExtResource( 25 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-icon = ExtResource( 25 )
+icon = ExtResource( 26 )
 
-[node name="pause_menu" parent="." instance=ExtResource( 26 )]
+[node name="pause_menu" parent="." instance=ExtResource( 27 )]
 [connection signal="animation_finished" from="trap/trap_bullet/Sprite2/AnimationPlayer" to="trap/trap_bullet" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="enemies/Area2D" to="enemies/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="use_item/lever" to="use_item/lever" method="_on_lever_area_entered"]
 [connection signal="tree_exited" from="use_item/Torch" to="." method="_on_Torch_tree_exited"]

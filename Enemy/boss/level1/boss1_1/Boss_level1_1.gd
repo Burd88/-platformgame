@@ -166,6 +166,6 @@ func _on_spr_animation_finished():
 
 func _on_Area2D_body_entered(body):
 	if body.get("player_type"):
-		direction = (body.position-position).normalized()
+		#direction = (body.position-position).normalized()
 		pass
 	pass # Replace with function body.

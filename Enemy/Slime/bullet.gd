@@ -1,6 +1,6 @@
 extends Area2D
 var speed = 200
-
+var type_bullet = true
 onready var puddle = preload("res://Enemy/Slime/puddle.tscn")
 var velocity = Vector2()
 

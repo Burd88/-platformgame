@@ -36,7 +36,6 @@ visible = false
 position = Vector2( -0.1313, -1.24734 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 3
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

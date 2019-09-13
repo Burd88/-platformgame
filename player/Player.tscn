@@ -396,6 +396,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "меч_взял"
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

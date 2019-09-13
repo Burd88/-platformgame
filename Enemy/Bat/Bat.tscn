@@ -45,7 +45,7 @@ extents = Vector2( 4.31224, 8.06178 )
 "save",
 ]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 25
 script = ExtResource( 1 )
 
 [node name="BatArea" type="Area2D" parent="."]

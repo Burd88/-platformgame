@@ -52,18 +52,19 @@ func aim():
 		$spriteanim/move.flip_h = false
 		$spriteanim/die.flip_h = false
 		$spriteanim/jump.flip_h = false
-		$attack_area.position.x = -12
-		$damage.position.x = -15
-		$check_place.position.x = -9
+		$attack_area.position.x = -18
+		$damage.position.x = -20
+		$check_place.position.x = -18
 	elif direction.x > 0:
 		$spriteanim/attack.flip_h = true
 		$spriteanim/idle.flip_h = true
 		$spriteanim/move.flip_h = true
 		$spriteanim/die.flip_h = true
 		$spriteanim/jump.flip_h = true
-		$attack_area.position.x = 12
-		$damage.position.x = 15
-		$check_place.position.x = 9
+		$attack_area.position.x = 18
+		$damage.position.x = 20
+		$check_place.position.x = 18
+		
 
 
 
@@ -99,6 +100,7 @@ func _die():
 		$spriteanim/move.hide()
 		$spriteanim/idle.hide()
 		$spriteanim/attack.hide()
+		$spriteanim/jump.hide()
 		$spriteanim/die/AnimationPlayer.play("die")
 		
 	pass
@@ -125,12 +127,12 @@ func _change_position():
 		$spriteanim/die.flip_h = false
 		$spriteanim/jump.flip_h = false
 		pass
-	if $attack_area.position.x == -12:
-		$attack_area.position.x = 12
-		$damage.position.x = 15
+	if $attack_area.position.x == -18:
+		$attack_area.position.x = 18
+		$damage.position.x = 20
 	else:
-		$attack_area.position.x  = -12
-		$damage.position.x = -15
+		$attack_area.position.x  = -18
+		$damage.position.x = -20
 			
 			
 
@@ -186,22 +188,22 @@ func _on_die_animation_finished(anim_name):
 func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		target = body
-		$spriteanim/die.hide()
-		$spriteanim/move.show()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
-		$spriteanim/jump/AnimationPlayer.play("jump")
+#		$spriteanim/die.hide()
+#		$spriteanim/move.hide()
+#		$spriteanim/idle.hide()
+#		$spriteanim/attack.hide()
+#		$spriteanim/jump.show()
+#		$spriteanim/jump/AnimationPlayer.play("jump")
 	pass # Replace with function body.
 
 
 func _on_visible_body_exited(body):
 	if body == target:
 		target = null
-		$spriteanim/die.hide()
-		$spriteanim/move.show()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
-		$spriteanim/jump/AnimationPlayer.stop()
+#		$spriteanim/die.hide()
+#		$spriteanim/move.show()
+#		$spriteanim/idle.hide()
+#		$spriteanim/attack.hide()
+#		$spriteanim/jump.hide()
+#		$spriteanim/jump/AnimationPlayer.stop()
 	pass # Replace with function body.

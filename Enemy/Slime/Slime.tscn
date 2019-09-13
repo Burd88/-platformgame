@@ -93,7 +93,6 @@ margin_bottom = -24.0
 custom_styles/fg = ExtResource( 23 )
 custom_styles/bg = ExtResource( 24 )
 value = 50.0
-percent_visible = false
 
 [node name="HPlable" type="Label" parent="."]
 visible = false
