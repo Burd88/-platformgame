@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemy/Slime/bullet.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=5]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/gobby/sprite/gobby_swipeL_strip3.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.71847, 1.09104 )
@@ -31,10 +32,20 @@ shape = SubResource( 1 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( -0.1313, -1.24734 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.4, 0.454902, 0.815686, 1 )
+self_modulate = Color( 0.862745, 0.866667, 0.909804, 1 )
+position = Vector2( -2.31321, 2.82727 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

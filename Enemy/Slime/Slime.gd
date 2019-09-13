@@ -43,6 +43,7 @@ func _ready():
 func _process(delta):
 	update()
 	if target:
+		#print(target)
 		aim()
 	_gui()
 	_move_enemy(delta)
@@ -81,10 +82,10 @@ func _move_enemy(delta):
 func _gui():# Графический интерфейс
 	if health_now > 0 :
 		$healthbar.show()
-		$HPlable.show()
+		#$HPlable.show()
 	else:
 		$healthbar.hide()
-		$HPlable.hide()
+		#$HPlable.hide()
 	$HPlable.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$healthbar.value = php
@@ -103,43 +104,45 @@ func _damage():
 		
 		
 func aim():
+	hit_pos = []
+	var space_state = get_world_2d().direct_space_state
+	var target_extents = target.get_node('CollisionShape2D').shape.extents# - Vector2(1 , 2)
+	#print("target_extents : ", target_extents)
+	var nw = target.position - target_extents
+	var se = target.position + target_extents
+	var ne = target.position + Vector2(target_extents.x, -target_extents.y)
+	var sw = target.position + Vector2(-target_extents.x, target_extents.y)
+	for pos in [target.position, nw, ne, se, sw]:
+		var result = space_state.intersect_ray(position, pos, [self])
+		if result:
+			#print(result.collider.name)
+			hit_pos.append(result.position)
+			if result.collider.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 :
+				move_to_player = true
+				anim = 'attack'
+				direction = (target.position - position).normalized()
+				if direction.x < 0 :
+					$sprite.flip_h = false
+					$attack_area.position.x = -30
+					$check_attack.position.x = -30
+					$check_place.position.x = -28
+				elif direction.x > 0:
+					$sprite.flip_h = true
+					$attack_area.position.x = 30
+					$check_attack.position.x = 30
+					$check_place.position.x = 28
+				move_to_player = true
+				if can_shoot:
+					shoot(pos)
+				break
+			elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
+				pass
+			elif result.collider.name == "frontground":
+				pass
+			else:
+				move_to_player = false
+				anim = "move"
 
-		hit_pos = []
-		var space_state = get_world_2d().direct_space_state
-		var target_extents = target.get_node('CollisionShape2D').shape.extents# - Vector2(1 , 2)
-		#print("target_extents : ", target_extents)
-		var nw = target.position - target_extents
-		var se = target.position + target_extents
-		var ne = target.position + Vector2(target_extents.x, -target_extents.y)
-		var sw = target.position + Vector2(-target_extents.x, target_extents.y)
-		for pos in [target.position, nw, ne, se, sw]:
-			var result = space_state.intersect_ray(position, pos, [self], collision_mask)
-			if result:
-				hit_pos.append(result.position)
-				if result.collider.name == "Player" and health_now > 0 and position.distance_to(target.position) > 40 :
-					move_to_player = true
-					anim = 'attack'
-					direction = (target.position - position).normalized()
-					if direction.x < 0 :
-						$sprite.flip_h = false
-						$attack_area.position.x = 0
-						$check_place.position.x = -28
-					elif direction.x > 0:
-						$sprite.flip_h = true
-						$attack_area.position.x = 40
-						$check_place.position.x = 28
-					move_to_player = true
-					if can_shoot:
-						shoot(pos)
-					break
-				elif result.collider.name == "Player"and health_now > 0 and position.distance_to(target.position) <= 40:
-					pass
-				elif result.collider.name == "frontground":
-					pass
-				else:
-					move_to_player = false
-					anim = "move"
-#
 #func _draw():
 #	if target:
 #		for hit in hit_pos:
@@ -180,10 +183,12 @@ func _change_position():
 	else:
 		$sprite.flip_h = false
 		pass
-	if $attack_area.position.x == 0:
-		$attack_area.position.x = 40
+	if $attack_area.position.x == -30:
+		$attack_area.position.x = 30
+		$check_attack.position.x = 30
 	else:
-		$attack_area.position.x = 0
+		$attack_area.position.x = -30
+		$check_attack.position.x = -30
 
 func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
@@ -199,7 +204,8 @@ func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
 		damage = randi()%40+30
 		body.health_now -= damage
-		#print("attack")
+		
+		#print("attack  :"  , damage)
 		anim = 'attack'
 	pass
 
@@ -217,10 +223,10 @@ func _on_sprite_frame_changed():
 		pass
 
 func _on_Visible_body_entered(body):
-
-	if body.name == 'Player':
+	if body.get("player_type"): # == 'Player':
 		if target:
 			return
+		#print(body.name)
 		target = body
 	else :
 		pass 
@@ -233,7 +239,15 @@ func _on_Visible_body_exited(body):
 		#$attack_area/attack_col.disabled = false
 	pass
 
-func _on_attack_area_body_exited(body):
+func _on_check_attack_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
-		#$attack_area/attack_col.disabled = false
+		speed = 0
 		pass 
+	pass # Replace with function body.
+
+
+func _on_check_attack_body_exited(body):
+	if body.name == 'Player' and health_now > 0:
+		speed = 50
+		pass 
+	pass # Replace with function body.

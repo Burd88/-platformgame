@@ -361,7 +361,7 @@ anti_aliasing_size = 2
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 6.78125, 9.70228 )
+extents = Vector2( 8.69962, 9.70228 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 6.52091, 16.2632 )
@@ -389,14 +389,13 @@ tracks/0/keys = {
 z_index = 1
 z_as_relative = false
 collision_layer = 2
-collision_mask = 31
+collision_mask = 27
 script = ExtResource( 1 )
 
 [node name="spr" type="AnimatedSprite" parent="."]
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "меч_взял"
-frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -457,16 +456,14 @@ align = 1
 valign = 1
 
 [node name="attack_area" type="Area2D" parent="."]
-visible = false
-position = Vector2( 18.4633, -0.926575 )
+position = Vector2( 16, 5 )
 
 [node name="col_Atack" type="CollisionShape2D" parent="attack_area"]
-position = Vector2( 1.50247, 5.58061 )
 shape = SubResource( 7 )
 disabled = true
 
 [node name="use" type="Area2D" parent="."]
-position = Vector2( -6, 4.5 )
+position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use"]
@@ -475,7 +472,7 @@ shape = SubResource( 8 )
 disabled = true
 
 [node name="use_check" type="Area2D" parent="."]
-position = Vector2( -6, 4.5 )
+position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_check"]
@@ -483,6 +480,7 @@ scale = Vector2( 0.902065, 0.733844 )
 shape = SubResource( 8 )
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -1.02167, 0 )
 enabled = false
 texture = ExtResource( 164 )
 texture_scale = 0.4
@@ -510,7 +508,6 @@ pitch_scale = 1.2
 [connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="use" to="." method="_on_use_area_entered"]
-[connection signal="body_entered" from="use" to="." method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="use_check" to="." method="_on_use_check_area_entered"]
 [connection signal="area_exited" from="use_check" to="." method="_on_use_check_area_exited"]
 [connection signal="body_entered" from="use_check" to="." method="_on_use_check_body_entered"]

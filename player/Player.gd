@@ -61,18 +61,7 @@ func _physics_process(delta):
 	_gui()
 	_death()
 	_light_mode()
-	use()
-	use_health_potion()
 	_open_inventory()
-
-	#print(velocity.y)
-	#print(velocity.y ," - ", direction.y)
-#func save_levels():
-	#var save_level = {
-	#	"level" : get_parent().filename,
-		
-	#	}
-	#return save_level
 
 func save():
 	
@@ -149,27 +138,24 @@ func _move(delta):
 
 	if direction.x > 0:
 		$spr.flip_h = false
-		$attack_area.position.x = 18
+		$attack_area.position.x = 16
 		$use.position.x = 6
 		$"E-key".position.x = 14
 		$use_check.position.x = 14
 
 	elif direction.x < 0:
 		$spr.flip_h = true
-		$attack_area.position.x = -18
+		$attack_area.position.x = -16
 		$use.position.x = -6
 		$"E-key".position.x = - 14
 		$use_check.position.x = -14
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
-	#if !is_on_wall():
 	velocity.y += gravity*delta
 	
 	collision_info = move_and_slide(velocity,Vector2(0,-1))
-	
-	#var get_col = get_slide_collision(get_slide_count()-1)
-	
+
 	if velocity.y > 3.84:
 		direction.y = 1
 	
@@ -193,9 +179,6 @@ func _move(delta):
 		velocity.y = -jump_speed
 		direction.y = 1
 
-		
-	
-
 	#if !is_on_floor():
 		#if is_on_wall() and direction.y == 1:
 		#	velocity.y = 0
@@ -214,32 +197,22 @@ func _move(delta):
 		if is_on_floor():
 			$spr.animation = "присяд"
 			direction.y = -1
-
-	#if is_on_wall():
-	#	print("wall")
-	#elif is_on_floor():
-	#	print("floor")
-	#else:
-	#	print("xz")
-
-		
 	
 	
-func use_health_potion():
-#
-#	if Input.is_action_just_pressed("use_health_potion"):
-#		if health_potion > 0 and health_now < health:
-#			health_potion -= 1
-#			health_now += 100
-#			if health_now > health:
-#				health_now = health
-#		elif health_potion > 0 and health_now == health:
-#			print("full hp")
-#		elif health_potion == 0:
-#			pass
-		pass
-func use():
-
+#func use_health_potion():
+##
+##	if Input.is_action_just_pressed("use_health_potion"):
+##		if health_potion > 0 and health_now < health:
+##			health_potion -= 1
+##			health_now += 100
+##			if health_now > health:
+##				health_now = health
+##		elif health_potion > 0 and health_now == health:
+##			print("full hp")
+##		elif health_potion == 0:
+##			pass
+#		pass
+#func use():
 	if Input.is_action_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
 	else:
@@ -289,8 +262,8 @@ func _gui():
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
-	#if health_now < health:
-	#	health_now += 1
+	if health_now < health and health_now > 0:
+		health_now += 0.1
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
@@ -315,16 +288,9 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get("enemy_type"):
 		body.health_now -= damage
-		print("damage: ", damage)
+		print("body name: ", body.name)
 	else : pass
-#	if body.name == "Slime":
-#		body.health_now -= damage
-#	elif body.name != "Slime":
-#		for i in range(0, 10) :
-#			if body.name == str("Slime",+i) :
-#				body.health_now -=damage
-#			#print("sdas")
-			
+
 	if !body:
 		$attack_area/col_Atack.disabled = true
 
@@ -341,7 +307,6 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
 			$attack_area/col_Atack.disabled = true
-
 	
 	elif $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
@@ -377,19 +342,11 @@ func _on_spr_frame_changed():
 	
 	pass # Replace with function body.
 
-
-func _on_Area2D_body_entered(body):
-	if body.name == 'door':
-		body.open = true
-	pass # Replace with function body.
-
 func _open_inventory():
 	if Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == false:
 		$inventary/inventory.visible = true
 	elif Input.is_action_just_pressed("open_inventory") and $inventary/inventory.visible == true:
 		$inventary/inventory.visible = false
-
-
 
 func _on_use_area_entered(area):
 	if area.get('data_id') != null:
@@ -401,23 +358,8 @@ func _on_use_area_entered(area):
 		$spr.animation = "меч_взял"
 		weapon = 1
 		area.queue_free()
-	else: print("no item")
 
-
-
-
-
-func _on_use_body_entered(body):
-	if body.name == "Arrow":
-		#print(body.name)
-		var item_count = $inventary/inventory/bag1.get_item_count()
-
-		if item_count < 4:
-			$inventary/inventory/bag1.add_item("",body.icon)
-			$inventary/inventory/bag1.set_item_metadata(item_count,body.metadata)
-			body.queue_free()
-	pass # Replace with function body.
-
+	else: pass #print("no item")
 
 func _on_bag1_item_rmb_selected(index, at_position):
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":

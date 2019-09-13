@@ -22,6 +22,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	update()
+	if target and health_now > 0:
+		aim()
 	_move_enemy(delta)
 	_check_place()
 	_die()
@@ -40,7 +43,29 @@ func save():
 		"name" : name,
 	}
 	return save_dict
-	
+
+func aim():
+	direction = (target.position - position).normalized()
+	if direction.x < 0 :
+		$spriteanim/attack.flip_h = false
+		$spriteanim/idle.flip_h = false
+		$spriteanim/move.flip_h = false
+		$spriteanim/die.flip_h = false
+		$attack_area.position.x = -12
+		$damage.position.x = -15
+		$check_place.position.x = -9
+	elif direction.x > 0:
+		$spriteanim/attack.flip_h = true
+		$spriteanim/idle.flip_h = true
+		$spriteanim/move.flip_h = true
+		$spriteanim/die.flip_h = true
+		$attack_area.position.x = 12
+		$damage.position.x = 15
+		$check_place.position.x = 9
+
+
+
+
 func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0
@@ -129,7 +154,7 @@ func _on_attack_area_body_exited(body):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "attack":
+	if anim_name == "attack" and health_now > 0:
 		$damage/CollisionShape2D.disabled = false
 		$spriteanim/attack/AnimationPlayer.play("attack")
 	pass # Replace with function body.
@@ -139,7 +164,7 @@ func _on_damage_body_entered(body):
 	if body.get("player_type"):
 		body.health_now -= 100
 		$damage/CollisionShape2D.set_deferred("disabled" , true)
-		print("attack")
+		#print("attack")
 	pass # Replace with function body.
 
 
@@ -153,4 +178,10 @@ func _on_die_animation_finished(anim_name):
 
 func _on_die_timeout():
 
+	pass # Replace with function body.
+
+
+func _on_visible_body_entered(body):
+	if body.get("player_type"):
+		target = body
 	pass # Replace with function body.

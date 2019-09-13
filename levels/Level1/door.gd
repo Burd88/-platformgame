@@ -31,3 +31,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 #		get_parent().get_parent().get_node("Player/E-key").hide()
 #	pass # Replace with function body.
 
+
+
+func _on_door_area_entered(area):
+	if area.name == "use":
+		open = true
+	else : pass
+	pass # Replace with function body.

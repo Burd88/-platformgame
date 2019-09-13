@@ -34,5 +34,5 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	tween.start()
-	print("timer finish " ,timer_time)
+	#print("timer finish " ,timer_time)
 	pass # Replace with function body.

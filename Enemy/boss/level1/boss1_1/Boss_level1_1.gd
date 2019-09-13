@@ -159,13 +159,13 @@ func _on_bullet_timeout():
 
 func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
-		GLOBAL.boss1_1_kill = true
+		get_parent().get_parent().get_parent().boss1_1_kill = true
 		queue_free()
 	pass # Replace with function body.
 
 
 func _on_Area2D_body_entered(body):
 	if body.get("player_type"):
-		body.velocity = Vector2(100 , -70)
+		direction = (body.position-position).normalized()
 		pass
 	pass # Replace with function body.
