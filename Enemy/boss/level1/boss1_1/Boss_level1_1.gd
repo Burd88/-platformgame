@@ -14,6 +14,7 @@ var php = (health_now*100)/health
 var anim = 'move'
 onready var enemy_shoot = preload("res://Enemy/Slime/Slime.tscn")
 onready var bullet_shoot = preload("res://Enemy/Slime/bullet.tscn")
+var enemy_shoot_count = 6
 var damage
 var attack_now = false
 var shot_var = true
@@ -74,6 +75,11 @@ func _gui():# Графический интерфейс
 	#$HPlable.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$healthbar.value = php
+	if php < 50 and enemy_shoot_count > 0:
+		phase1 = false
+	elif php < 50 and enemy_shoot_count == 0:
+		phase1 = true
+		
 	
 func fight():
 
@@ -108,6 +114,9 @@ func _on_shot_timeout():
 		b.get_node("sprite").speed_scale = 0.7
 		b.health = 120
 		b.damage = 30
+		if enemy_shoot_count >= 0:
+			enemy_shoot_count -=1
+		else: pass
 		$shot.start()
 		#print("rnrmy timer finish")
 		shot_var = true

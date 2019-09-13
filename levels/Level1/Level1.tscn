@@ -1,32 +1,37 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
-[ext_resource path="res://items/waterdown/waterdown.tscn" type="PackedScene" id=3]
-[ext_resource path="res://items/waterdown/waterdow.tscn" type="PackedScene" id=4]
-[ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=5]
-[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=6]
-[ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=8]
-[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=9]
-[ext_resource path="res://items/Trap/trap_low/trap_low.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemy/gobby/sprite/gobby_swipeL_strip3.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=16]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=17]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=18]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=19]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=20]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=21]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=22]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=23]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=24]
-[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=25]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=26]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=27]
+[ext_resource path="res://items/boes/sprite/tile_floorbones.png" type="Texture" id=3]
+[ext_resource path="res://items/boes/sprite/tile_chunks.png" type="Texture" id=4]
+[ext_resource path="res://items/boes/sprite/tile_wallchunk.png" type="Texture" id=5]
+[ext_resource path="res://items/boes/sprite/tile_woodchunks.png" type="Texture" id=6]
+[ext_resource path="res://items/boes/sprite/tile_cages.png" type="Texture" id=7]
+[ext_resource path="res://items/waterdown/waterdown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/waterdown/waterdow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://items/gear/Gear.tscn" type="PackedScene" id=10]
+[ext_resource path="res://items/waterdown/waterfull.tscn" type="PackedScene" id=11]
+[ext_resource path="res://items/lift_level1/Lift_level1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://items/chain/Chain.tscn" type="PackedScene" id=13]
+[ext_resource path="res://items/Trap/Trap_spike/Trap_spike.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/Trap/trap_low/trap_low.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemy/gobby/sprite/gobby_swipeL_strip3.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=21]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=22]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=23]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=24]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=25]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=26]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=27]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=28]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://levels/Level1/style.tres" type="StyleBox" id=30]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/16x16/Icons/Icon_Close2.png" type="Texture" id=31]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=32]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -230,6 +235,132 @@
 14/navigation_offset = Vector2( 0, 0 )
 14/shapes = [  ]
 14/z_index = 0
+15/name = "tile_floorbones.png 15"
+15/texture = ExtResource( 3 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 32, 16 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": null,
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+15/z_index = 0
+16/name = "tile_floorbones.png 16"
+16/texture = ExtResource( 3 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 16, 32, 16 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shapes = [  ]
+16/z_index = 0
+17/name = "tile_chunks.png 17"
+17/texture = ExtResource( 4 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 16, 16 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+17/z_index = 0
+18/name = "tile_chunks.png 18"
+18/texture = ExtResource( 4 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 16, 0, 16, 16 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+18/z_index = 0
+19/name = "tile_chunks.png 19"
+19/texture = ExtResource( 4 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 16, 16, 16 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+19/z_index = 0
+20/name = "tile_chunks.png 20"
+20/texture = ExtResource( 4 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 16, 16, 16, 16 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shapes = [  ]
+20/z_index = 0
+21/name = "tile_wallchunk.png 21"
+21/texture = ExtResource( 5 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 0, 32, 16 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+21/z_index = 0
+22/name = "tile_wallchunk.png 22"
+22/texture = ExtResource( 5 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 0, 16, 32, 16 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shapes = [  ]
+22/z_index = 0
+23/name = "tile_woodchunks.png 23"
+23/texture = ExtResource( 6 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 0, 0, 32, 16 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shapes = [  ]
+23/z_index = 0
+24/name = "tile_woodchunks.png 24"
+24/texture = ExtResource( 6 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 0, 16, 32, 16 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/shapes = [  ]
+24/z_index = 0
+25/name = "tile_cages.png 25"
+25/texture = ExtResource( 7 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 0, 0, 32, 32 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 0, 0 )
+25/navigation_offset = Vector2( 0, 0 )
+25/shapes = [  ]
+25/z_index = 0
+26/name = "tile_cages.png 26"
+26/texture = ExtResource( 7 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 32, 0, 32, 32 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shapes = [  ]
+26/z_index = 0
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
@@ -255,6 +386,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		var b = bullet.instance()
 		b.start(position, 0,0)
 		b.rotation_degrees = 270
+		b.bullet_trap = true
 		get_parent().add_child(b)
 		$Sprite2/AnimationPlayer.play(\"cap\")
 	pass # Replace with function body.
@@ -303,9 +435,10 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 	if area.get(\"type_bullet\"):
-		enemy_time -= 1
-		area.queue_free()
-		print(enemy_time)
+		if area.bullet_trap:
+			enemy_time -= 1
+			area.queue_free()
+			print(enemy_time)
 	pass # Replace with function body.
 "
 
@@ -330,7 +463,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.get(\"player_type\"):
-		$Boss_level1_1/phase1.start()
+		#$Boss_level1_1/phase1.start()
 		$Boss_level1_1.attack_now = true
 		print(body.name)
 	else : pass
@@ -680,7 +813,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=40]
-font_data = ExtResource( 24 )
+font_data = ExtResource( 29 )
 
 [sub_resource type="StyleBoxFlat" id=41]
 bg_color = Color( 0.682353, 0.109804, 0.109804, 1 )
@@ -718,60 +851,60 @@ editor/display_folded = true
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 327713, 0, 0, 327718, 0, 0, 327725, 0, 0, 393288, 11, 0, 458786, 3, 0, 458791, 3, 0, 458798, 3, 0, 458823, 11, 0, 524358, 11, 0, 1179653, 0, 0, 1179660, 0, 0, 1310726, 3, 0, 1310733, 3, 0, 1376282, 0, 0, 1376287, 0, 0, 1376291, 0, 0, 1376295, 0, 0, 1507355, 3, 0, 1507360, 3, 0, 1507364, 3, 0, 1507368, 3, 0, 1572870, 4, 0, 1572877, 4, 0, 1638406, 4, 0, 1638413, 4, 0, 1769498, 0, 0, 1769501, 8, 0, 1769502, 7, 0, 1769503, 6, 0, 1769504, 0, 0, 1769509, 9, 0, 1900571, 3, 0, 1900577, 3, 0, 2097179, 4, 0, 2097185, 4, 0, 2228239, 0, 0, 2228297, 0, 0, 2359311, 0, 0, 2359312, 4, 0, 2359322, 0, 0, 2359328, 0, 0, 2359334, 0, 0, 2359340, 0, 0, 2359346, 0, 0, 2359352, 0, 0, 2359358, 0, 0, 2359370, 3, 0, 2424848, 4, 0, 2490384, 3, 0, 2490395, 3, 0, 2490401, 3, 0, 2490407, 3, 0, 2490413, 3, 0, 2490419, 3, 0, 2490425, 3, 0, 2490431, 3, 0, 2555924, 3, 0, 2555982, 0, 0, 2555986, 0, 0, 2686995, 0, 0, 2687024, 2, 0, 3211280, 14, 0, 3211284, 0, 0, 3211294, 0, 0, 3211302, 0, 0, 3342357, 4, 0, 3342367, 4, 0, 3342375, 4, 0, 3407893, 4, 0, 3407896, 0, 0, 3407903, 4, 0, 3407911, 4, 0, 3473429, 4, 0, 3473439, 4, 0, 3473447, 4, 0, 3538983, 4, 0, 3604519, 4, 0, 3670055, 4, 0, 3670065, 3, 0, 3735591, 4, 0, 3866656, 11, 0, 3997728, 11, 0, 4063245, 0, 0, 4063250, 0, 0, 4063254, 9, 0, 4063257, 0, 0, 4063278, 0, 0, 4063283, 0, 0, 4063288, 0, 0, 4063293, 0, 0, 4063297, 11, 0, 4063298, 0, 0, 4128800, 11, 0, 4194318, 4, 0, 4194323, 4, 0, 4194330, 4, 0, 4194351, 4, 0, 4194356, 4, 0, 4194361, 4, 0, 4259854, 4, 0, 4259859, 4, 0, 4259866, 4, 0, 4259887, 4, 0, 4259892, 4, 0, 4325390, 4, 0, 4325395, 4, 0, 4325402, 4, 0, 4325423, 4, 0, 4325428, 4, 0, 4390926, 4, 0, 4390931, 4, 0, 4390938, 4, 0, 4390942, 7, 0, 4390944, 6, 0, 4390946, 8, 0, 4390959, 4, 0, 4390964, 4, 0, 4456462, 4, 0, 4456467, 4, 0, 4456474, 4, 0, 4456495, 4, 0, 4456500, 4, 0, 4521998, 4, 0, 4522003, 4, 0, 4522010, 4, 0, 4522016, 10, 0, 4522019, 0, 0, 4522022, 5, 0, 4522023, 11, 0, 4522025, 0, 0, 4522031, 4, 0, 4522076, 5, 0, 4587534, 4, 0, 4587539, 4, 0, 4587546, 4, 0, 4653070, 4, 0, 4653075, 4, 0, 4653082, 4, 0, 4653092, 4, 0, 4653095, 11, 0, 4653098, 4, 0, 4718654, 0, 0, 4718655, 8, 0, 4718658, 0, 0, 4718659, 7, 0, 4718662, 0, 0, 4718663, 6, 0, 4718666, 0, 0, 4718667, 7, 0, 4718670, 0, 0, 4718671, 8, 0, 4849727, 4, 0, 4849731, 4, 0, 4849735, 4, 0, 4849739, 4, 0, 4849743, 4, 0, 4915263, 4, 0, 4915267, 4, 0, 4915271, 4, 0, 4915275, 4, 0, 4915279, 4, 0 )
+tile_data = PoolIntArray( 327713, 0, 0, 327718, 0, 0, 327725, 0, 0, 393288, 11, 0, 458786, 3, 0, 458791, 3, 0, 458798, 3, 0, 458823, 11, 0, 524358, 11, 0, 1179653, 0, 0, 1179660, 0, 0, 1310726, 3, 0, 1310733, 3, 0, 1376282, 0, 0, 1376287, 0, 0, 1376291, 0, 0, 1376295, 0, 0, 1376316, 16, 0, 1376318, 16, 0, 1376321, 16, 0, 1376325, 15, 0, 1376327, 15, 0, 1376328, 15, 0, 1376332, 16, 0, 1507332, 22, 0, 1507338, 23, 0, 1507340, 16, 0, 1507355, 3, 0, 1507359, 16, 0, 1507360, 3, 0, 1507363, 16, 0, 1507364, 3, 0, 1507368, 3, 0, 1572870, 4, 0, 1572877, 4, 0, 1638406, 4, 0, 1638413, 4, 0, 1769498, 0, 0, 1769501, 8, 0, 1769502, 7, 0, 1769503, 6, 0, 1769504, 0, 0, 1769509, 9, 0, 1900571, 3, 0, 1900577, 3, 0, 1900609, 16, 0, 1966156, 26, 0, 2031645, 16, 0, 2031649, 19, 0, 2031650, 21, 0, 2097179, 4, 0, 2097185, 4, 0, 2228239, 0, 0, 2228297, 0, 0, 2359311, 0, 0, 2359312, 4, 0, 2359322, 0, 0, 2359328, 0, 0, 2359334, 0, 0, 2359340, 0, 0, 2359346, 0, 0, 2359352, 0, 0, 2359358, 0, 0, 2359370, 3, 0, 2424848, 4, 0, 2490384, 3, 0, 2490385, 24, 0, 2490388, 15, 0, 2490395, 3, 0, 2490401, 3, 0, 2490407, 3, 0, 2490413, 3, 0, 2490419, 3, 0, 2490425, 3, 0, 2490431, 3, 0, 2555924, 3, 0, 2555964, 25, 0, 2555982, 0, 0, 2555986, 0, 0, 2621469, 17, 0, 2621472, 19, 0, 2621474, 17, 0, 2621480, 17, 0, 2621482, 19, 0, 2621483, 19, 0, 2621504, 17, 0, 2621506, 22, 0, 2621513, 22, 0, 2621521, 15, 0, 2686995, 0, 0, 2687009, 19, 0, 2687018, 19, 0, 2687024, 2, 0, 2687040, 17, 0, 2687042, 17, 0, 2687043, 17, 0, 2687044, 17, 0, 3211280, 14, 0, 3211284, 0, 0, 3211294, 0, 0, 3211302, 0, 0, 3342357, 4, 0, 3342367, 4, 0, 3342375, 4, 0, 3407893, 4, 0, 3407896, 0, 0, 3407903, 4, 0, 3407911, 4, 0, 3473429, 4, 0, 3473439, 4, 0, 3473447, 4, 0, 3538983, 4, 0, 3604519, 4, 0, 3670055, 4, 0, 3670065, 3, 0, 3735591, 4, 0, 3866656, 11, 0, 3997728, 11, 0, 4063245, 0, 0, 4063250, 0, 0, 4063254, 9, 0, 4063257, 0, 0, 4063278, 0, 0, 4063283, 0, 0, 4063288, 0, 0, 4063293, 0, 0, 4063297, 11, 0, 4063298, 0, 0, 4128800, 11, 0, 4194318, 4, 0, 4194323, 4, 0, 4194330, 4, 0, 4194351, 4, 0, 4194356, 4, 0, 4194361, 4, 0, 4259854, 4, 0, 4259859, 4, 0, 4259866, 4, 0, 4259887, 4, 0, 4259892, 4, 0, 4325390, 4, 0, 4325395, 4, 0, 4325402, 4, 0, 4325423, 4, 0, 4325428, 4, 0, 4390926, 4, 0, 4390931, 4, 0, 4390938, 4, 0, 4390942, 7, 0, 4390944, 6, 0, 4390946, 8, 0, 4390959, 4, 0, 4390964, 4, 0, 4456462, 4, 0, 4456467, 4, 0, 4456474, 4, 0, 4456495, 4, 0, 4456500, 4, 0, 4521998, 4, 0, 4522003, 4, 0, 4522010, 4, 0, 4522016, 10, 0, 4522019, 0, 0, 4522022, 5, 0, 4522023, 11, 0, 4522025, 0, 0, 4522031, 4, 0, 4522076, 5, 0, 4587534, 4, 0, 4587539, 4, 0, 4587546, 4, 0, 4653070, 4, 0, 4653075, 4, 0, 4653082, 4, 0, 4653092, 4, 0, 4653095, 11, 0, 4653098, 4, 0, 4718654, 0, 0, 4718655, 8, 0, 4718658, 0, 0, 4718659, 7, 0, 4718662, 0, 0, 4718663, 6, 0, 4718666, 0, 0, 4718667, 7, 0, 4718670, 0, 0, 4718671, 8, 0, 4849727, 4, 0, 4849731, 4, 0, 4849735, 4, 0, 4849739, 4, 0, 4849743, 4, 0, 4915263, 4, 0, 4915267, 4, 0, 4915271, 4, 0, 4915275, 4, 0, 4915279, 4, 0, 5570578, 3, 0, 5570579, 3, 0, 5570580, 3, 0, 5636116, 3, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="waterdown" parent="decor" instance=ExtResource( 3 )]
+[node name="waterdown" parent="decor" instance=ExtResource( 8 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 157.718, 578.438 )
 scale = Vector2( 0.265542, 2.35643 )
 
-[node name="waterdow" parent="decor" instance=ExtResource( 4 )]
+[node name="waterdow" parent="decor" instance=ExtResource( 9 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 153.985, 622.764 )
 scale = Vector2( 1.25368, 1 )
 
-[node name="Gear" parent="decor" instance=ExtResource( 5 )]
+[node name="Gear" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 166.687, 615.679 )
 
-[node name="Gear2" parent="decor" instance=ExtResource( 5 )]
+[node name="Gear2" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 180.458, 631.845 )
 
-[node name="Gear3" parent="decor" instance=ExtResource( 5 )]
+[node name="Gear3" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 197.043, 617.421 )
 
-[node name="Gear4" parent="decor" instance=ExtResource( 5 )]
+[node name="Gear4" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 218.211, 619.311 )
 
-[node name="Gear5" parent="decor" instance=ExtResource( 5 )]
+[node name="Gear5" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 234.969, 605.864 )
 
-[node name="waterfull" parent="decor" instance=ExtResource( 6 )]
+[node name="waterfull" parent="decor" instance=ExtResource( 11 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 177.169, 634.905 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull2" parent="decor" instance=ExtResource( 6 )]
+[node name="waterfull2" parent="decor" instance=ExtResource( 11 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 54.3945, 640.074 )
 scale = Vector2( 2, 0.664762 )
 
-[node name="waterfull3" parent="decor" instance=ExtResource( 6 )]
+[node name="waterfull3" parent="decor" instance=ExtResource( 11 )]
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( -68.38, 640.074 )
 scale = Vector2( 2, 1.02476 )
 
-[node name="Lift_level1" parent="decor" instance=ExtResource( 7 )]
+[node name="Lift_level1" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( 392, 647 )
 move_to = Vector2( 0, -241 )
 
-[node name="Lift_exit" parent="decor" instance=ExtResource( 7 )]
+[node name="Lift_exit" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( 696, 407 )
 move_to = Vector2( 0, -193 )
 
-[node name="Chain" parent="decor" instance=ExtResource( 8 )]
+[node name="Chain" parent="decor" instance=ExtResource( 13 )]
 position = Vector2( 256, 571 )
 scale = Vector2( 0.8, 0.8 )
 
@@ -781,52 +914,52 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Trap_spike" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 488, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 9.0
 
-[node name="Trap_spike2" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike2" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 552.044, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 10.0
 
-[node name="Trap_spike3" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike3" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 616.017, 328.081 )
 move_to = Vector2( 0, 60 )
 speed = 12.0
 
-[node name="Trap_spike4" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike4" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 1080, 475 )
 rotation = 3.14159
 move_to = Vector2( 0, -10 )
 speed = 7.0
 
-[node name="Trap_spike5" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike5" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 1000, 475 )
 rotation = 3.14159
 move_to = Vector2( 0, -10 )
 speed = 5.0
 
-[node name="Trap_spike6" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike6" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 950, 475 )
 rotation = 3.14159
 move_to = Vector2( 0, -15 )
 speed = 8.0
 
-[node name="Trap_spike8" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike8" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 900, 475 )
 rotation = 3.14159
 move_to = Vector2( 0, -15 )
 speed = 12.0
 
-[node name="Trap_spike7" parent="trap" instance=ExtResource( 9 )]
+[node name="Trap_spike7" parent="trap" instance=ExtResource( 14 )]
 position = Vector2( 1032, 475 )
 rotation = 3.14159
 move_to = Vector2( 0, -15 )
 speed = 9.0
 
-[node name="trap_low" parent="trap" instance=ExtResource( 10 )]
+[node name="trap_low" parent="trap" instance=ExtResource( 15 )]
 position = Vector2( 1303.91, 631.211 )
 move_to = Vector2( 0, -15 )
 speed = 10.0
@@ -839,7 +972,7 @@ script = SubResource( 3 )
 modulate = Color( 0.352941, 0.360784, 0.843137, 1 )
 position = Vector2( -4.20593, 2.9115 )
 rotation = 4.71239
-texture = ExtResource( 11 )
+texture = ExtResource( 16 )
 hframes = 3
 frame = 2
 
@@ -857,25 +990,25 @@ shape = SubResource( 44 )
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="Rat_low2" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low2" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 346.467, 600.886 )
 
-[node name="Rat_low3" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low3" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 600.002, 634.197 )
 
-[node name="Rat_low4" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low4" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 899.802, 630.496 )
 
-[node name="Rat_low5" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low5" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 1208.86, 632.346 )
 
-[node name="Rat_low6" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low6" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 1375.41, 636.048 )
 
-[node name="Slime4" parent="enemies" instance=ExtResource( 13 )]
+[node name="Slime4" parent="enemies" instance=ExtResource( 18 )]
 position = Vector2( 520.494, 496.037 )
 
-[node name="Bat" parent="enemies" instance=ExtResource( 14 )]
+[node name="Bat" parent="enemies" instance=ExtResource( 19 )]
 position = Vector2( 464.012, 375.178 )
 
 [node name="Area2D" type="Area2D" parent="enemies"]
@@ -885,30 +1018,30 @@ script = SubResource( 5 )
 position = Vector2( 1104.22, 252.633 )
 shape = SubResource( 6 )
 
-[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 15 )]
+[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 20 )]
 position = Vector2( 998.06, 314.793 )
 
-[node name="Gobby" parent="enemies" instance=ExtResource( 16 )]
+[node name="Gobby" parent="enemies" instance=ExtResource( 21 )]
 position = Vector2( 267.028, 1122.21 )
 
-[node name="Gobby2" parent="enemies" instance=ExtResource( 16 )]
+[node name="Gobby2" parent="enemies" instance=ExtResource( 21 )]
 position = Vector2( 616.406, 1125.58 )
 
-[node name="Rat_low" parent="enemies" instance=ExtResource( 12 )]
+[node name="Rat_low" parent="enemies" instance=ExtResource( 17 )]
 position = Vector2( 630.274, 176.474 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="Slime5" parent="enemies" instance=ExtResource( 13 )]
+[node name="Slime5" parent="enemies" instance=ExtResource( 18 )]
 position = Vector2( 631.693, 912.583 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="Gobby3" parent="enemies" instance=ExtResource( 16 )]
+[node name="Gobby3" parent="enemies" instance=ExtResource( 21 )]
 position = Vector2( 1070.96, 1003.55 )
 
 [node name="use_item" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 17 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 22 )]
 position = Vector2( 304.466, 617.756 )
 scale = Vector2( 0.5, 0.5 )
 collision_mask = 3
@@ -917,7 +1050,7 @@ collision_mask = 3
 position = Vector2( 581.241, 504.372 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 18 )
+script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -934,7 +1067,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="use_item" instance=ExtResource( 19 )]
+[node name="Torch" parent="use_item" instance=ExtResource( 24 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
 position = Vector2( 156.42, 361.126 )
 scale = Vector2( 0.5, 0.5 )
@@ -953,7 +1086,7 @@ editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 20 )
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -982,7 +1115,7 @@ collision_layer = 8
 collision_mask = 3
 script = SubResource( 11 )
 
-[node name="Gear6" parent="use_item/Gear6" instance=ExtResource( 5 )]
+[node name="Gear6" parent="use_item/Gear6" instance=ExtResource( 10 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Gear6"]
 z_index = 1
@@ -995,7 +1128,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 21 )
+script = ExtResource( 26 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1037,7 +1170,7 @@ script = SubResource( 17 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Gear7"]
 shape = SubResource( 18 )
 
-[node name="Gear7" parent="use_item/Gear7" instance=ExtResource( 5 )]
+[node name="Gear7" parent="use_item/Gear7" instance=ExtResource( 10 )]
 
 [node name="door_boss1_exit" type="StaticBody2D" parent="use_item"]
 position = Vector2( 909.168, 333.203 )
@@ -1063,58 +1196,58 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 22 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 27 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 27 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 27 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 27 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 27 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 22 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 27 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="Player" parent="." instance=ExtResource( 23 )]
+[node name="Player" parent="." instance=ExtResource( 28 )]
 position = Vector2( 117.129, 338.371 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -1160,15 +1293,15 @@ margin_left = 883.166
 margin_top = 6.43652
 margin_right = 903.166
 margin_bottom = 26.4365
-custom_styles/hover = ExtResource( 25 )
+custom_styles/hover = ExtResource( 30 )
 custom_styles/pressed = SubResource( 41 )
-custom_styles/focus = ExtResource( 25 )
-custom_styles/normal = ExtResource( 25 )
+custom_styles/focus = ExtResource( 30 )
+custom_styles/normal = ExtResource( 30 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut_in_tooltip = false
-icon = ExtResource( 26 )
+icon = ExtResource( 31 )
 
-[node name="pause_menu" parent="." instance=ExtResource( 27 )]
+[node name="pause_menu" parent="." instance=ExtResource( 32 )]
 [connection signal="animation_finished" from="trap/trap_bullet/Sprite2/AnimationPlayer" to="trap/trap_bullet" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="enemies/Area2D" to="enemies/Area2D" method="_on_Area2D_body_entered"]

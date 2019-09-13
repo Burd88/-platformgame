@@ -100,7 +100,8 @@ position = Vector2( -0.601664, 7.95705 )
 shape = SubResource( 3 )
 
 [node name="phase1" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 15.0
+one_shot = true
 
 [node name="bullet" type="Timer" parent="."]
 wait_time = 1.7

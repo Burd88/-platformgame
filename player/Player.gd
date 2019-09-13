@@ -55,7 +55,7 @@ func _ready():
 
 func _physics_process(delta):
 	damage = randi()%100+50
-	
+#	bow_attack()
 	_move(delta)
 	_attack()
 	_gui()
@@ -237,15 +237,26 @@ func _attack():
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
 		$spr.animation = str(attack_name[rand_attack_name])
-	elif attack and weapon == 2 :
-		for i in range(0,Global_Player.inventory_maxSlots):
-			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
-				$spr.animation = 'удар_лук'
-#	elif attack and weapon == 2 
-			else:
-				weapon = 1
-				$spr.animation = "стойка"
-
+#	elif attack and weapon == 2 :
+#		for i in range(0,Global_Player.inventory_maxSlots):
+#			print($inventary/inventory/bag1.get_item_metadata(i))
+#			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
+#				$spr.animation = 'удар_лук'
+##	elif attack and weapon == 2 
+#			else:
+#				print("arrow 0")
+#				#weapon = 1
+#			#	$spr.animation = "стойка"
+#func bow_attack():
+#	if Input.is_action_just_pressed("ui_bow_attack"):
+#		var arrow_true = false
+#		for i in range(0,Global_Player.inventory_maxSlots):
+#			print($inventary/inventory/bag1.get_item_metadata(i))
+#			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
+#				arrow_true = true
+#		if direction.x == 0 and Input.is_action_pressed("ui_bow_attack") and arrow_true:
+#			$spr.animation = 'удар_лук'
+#	else : $spr.animation = "стойка"
 func _gui():
 	
 	php = (health_now*100)/health
@@ -314,28 +325,28 @@ func _on_spr_frame_changed():
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
 			$attack_area/col_Atack.disabled = true
 	#elif $spr.animation != "удар_ногой":
-	elif $spr.animation == "удар_лук" :
-		for i in range(0,Global_Player.inventory_maxSlots):
-			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
-				if $spr.frame == 7:
-			#	print("arrow start")
-					var a = arrow.instance()
-					if $spr.flip_h == false:
-			#	print("лево")
-						a.start((position+Vector2(15,5)),0)
-						get_parent().add_child(a)
-						Global_Player.inventory_removeItem(i)
-						$inventary/inventory/bag1.update_slot(i)
-					elif $spr.flip_h == true:
-			#	print("право")
-						a.start((position-Vector2(15,-5)),180)
-						get_parent().add_child(a)
-						Global_Player.inventory_removeItem(i)
-						$inventary/inventory/bag1.update_slot(i)
-			elif $spr.frame == 2 and arrow_count <=0:
-		#	print("no arrow")
-				$spr.animation = "стойка"
-				pass
+#	elif $spr.animation == "удар_лук" :
+#		for i in range(0,Global_Player.inventory_maxSlots):
+#			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":
+#				if $spr.frame == 7:
+#			#	print("arrow start")
+#					var a = arrow.instance()
+#					if $spr.flip_h == false:
+#			#	print("лево")
+#						a.start((position+Vector2(15,5)),0)
+#						get_parent().add_child(a)
+#						Global_Player.inventory_removeItem(i)
+#						$inventary/inventory/bag1.update_slot(i)
+#					elif $spr.flip_h == true:
+#			#	print("право")
+#						a.start((position-Vector2(15,-5)),180)
+#						get_parent().add_child(a)
+#						Global_Player.inventory_removeItem(i)
+#						$inventary/inventory/bag1.update_slot(i)
+#			else: 
+#				print("no arrow")
+#				#$spr.animation = "стойка"
+#				pass
 	else:
 		$attack_area/col_Atack.disabled = true
 	

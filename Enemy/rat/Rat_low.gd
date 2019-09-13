@@ -52,18 +52,18 @@ func aim():
 		$spriteanim/move.flip_h = false
 		$spriteanim/die.flip_h = false
 		$spriteanim/jump.flip_h = false
-		$attack_area.position.x = -18
-		$damage.position.x = -20
-		$check_place.position.x = -18
+		$attack_area.position.x = -10
+		$damage.position.x = -12
+		$check_place.position.x = -10
 	elif direction.x > 0:
 		$spriteanim/attack.flip_h = true
 		$spriteanim/idle.flip_h = true
 		$spriteanim/move.flip_h = true
 		$spriteanim/die.flip_h = true
 		$spriteanim/jump.flip_h = true
-		$attack_area.position.x = 18
-		$damage.position.x = 20
-		$check_place.position.x = 18
+		$attack_area.position.x = 10
+		$damage.position.x = 12
+		$check_place.position.x = 10
 		
 
 
@@ -127,12 +127,12 @@ func _change_position():
 		$spriteanim/die.flip_h = false
 		$spriteanim/jump.flip_h = false
 		pass
-	if $attack_area.position.x == -18:
-		$attack_area.position.x = 18
-		$damage.position.x = 20
+	if $attack_area.position.x == -10:
+		$attack_area.position.x = 10
+		$damage.position.x = 12
 	else:
-		$attack_area.position.x  = -18
-		$damage.position.x = -20
+		$attack_area.position.x  = -10
+		$damage.position.x = -12
 			
 			
 

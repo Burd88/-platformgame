@@ -29,6 +29,6 @@
 {"savedata":{"filename":"res://Enemy/gobby/Gobby.tscn","health":300,"health_now":300,"name":"Gobby2","parent":"/root/Level1/enemies","php":100,"pos_x":591.060181,"pos_y":1139.969116}}
 {"savedata":{"filename":"res://Enemy/Slime/Slime.tscn","health":300,"health_now":300,"name":"Slime5","parent":"/root/Level1/enemies","php":100,"pos_x":633.085938,"pos_y":924.37616}}
 {"savedata":{"filename":"res://Enemy/gobby/Gobby.tscn","health":300,"health_now":300,"name":"Gobby3","parent":"/root/Level1/enemies","php":100,"pos_x":1002.118408,"pos_y":1011.991699}}
-{"savedata":{"filename":"res://player/Player.tscn","health":3000,"health_now":2313.4,"name":"Player","parent":"/root/Level1","pos_x":1482.722656,"pos_y":605.417969,"torch":true,"weapon":0}}
+{"savedata":{"filename":"res://player/Player.tscn","health":3000,"health_now":2313.4,"name":"Player","parent":"/root/Level1","pos_x":1482.722656,"pos_y":605.417969,"torch":true,"weapon":2}}
 {"savelevel":{"boss1_1_kill":false,"door_delete":true,"gear7_use":false,"level":"res://levels/Level1/Level1.tscn","lever1":false,"mexanism":false,"name":"Level1","torch_delete":true}}
-{"inventory":{"0":{"amount":1,"id":"3"},"1":{"amount":1,"id":"1"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}
+{"inventory":{"0":{"amount":10,"id":"3"},"1":{"amount":1,"id":"1"},"2":{"amount":0,"id":"0"},"3":{"amount":0,"id":"0"},"4":{"amount":0,"id":"0"},"5":{"amount":0,"id":"0"},"6":{"amount":0,"id":"0"},"7":{"amount":0,"id":"0"},"8":{"amount":0,"id":"0"},"9":{"amount":0,"id":"0"}}}

@@ -159,7 +159,6 @@ func _on_Gear6_area_entered(area):
 				Global_Player.inventory_removeItem(i)
 				$Player/inventary/inventory/bag1.update_slot(i)
 				mexanism = true
-				
 				$"Player/E-key".hide()
 
 func _on_Torch_tree_exited():

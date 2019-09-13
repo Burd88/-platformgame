@@ -95,10 +95,10 @@ tracks/0/keys = {
 extents = Vector2( 10, 8.48525 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 5, 5 )
+extents = Vector2( 14, 5 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 5, 5 )
+extents = Vector2( 14, 5 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 101.805, 10 )
@@ -124,7 +124,7 @@ anims/move = SubResource( 1 )
 visible = false
 texture = ExtResource( 3 )
 hframes = 9
-frame = 6
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spriteanim/idle"]
 anims/idle = SubResource( 2 )
@@ -160,13 +160,13 @@ position = Vector2( 0.513351, 5.13344 )
 shape = SubResource( 6 )
 
 [node name="attack_area" type="Area2D" parent="."]
-position = Vector2( -18, 5 )
+position = Vector2( -10, 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 shape = SubResource( 7 )
 
 [node name="damage" type="Area2D" parent="."]
-position = Vector2( -20, 5 )
+position = Vector2( -12, 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 shape = SubResource( 8 )
