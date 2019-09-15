@@ -99,6 +99,6 @@ func _on_Timer2_timeout():
 
 func _on_puddle_body_entered(body):
 	if body.name == "Player":
-		body.health_now -= 100
+		body.health_now -= 40
 		#print("damage")
 	pass

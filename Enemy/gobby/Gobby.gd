@@ -168,7 +168,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_damage_body_entered(body):
 	if body.get("player_type"):
-		body.health_now -= 100
+		body.health_now -= randi()%40+50
 		$damage/CollisionShape2D.set_deferred("disabled" , true)
 		#print("attack")
 	pass # Replace with function body.
@@ -187,10 +187,10 @@ func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		target = body
 		$spriteanim/die.hide()
-		$spriteanim/move.show()
+		$spriteanim/move.hide()
 		$spriteanim/idle.hide()
 		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
+		$spriteanim/jump.show()
 		$spriteanim/jump/AnimationPlayer.play("jump")
 	pass # Replace with function body.
 

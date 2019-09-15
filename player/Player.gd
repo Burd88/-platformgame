@@ -16,6 +16,7 @@ var rand_attack_name = 1
 var equip_sword_anim = false
 var weapon = 0
 var damage
+var damage_sword = 0
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
@@ -54,7 +55,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	damage = randi()%100+50
+
 #	bow_attack()
 	_move(delta)
 	_attack()
@@ -75,6 +76,7 @@ func save():
 		"weapon" : weapon,
 		"torch" : torch,
 		"name" : name,
+		"damage_sword" : damage_sword,
 	
 	}
 
@@ -309,18 +311,24 @@ func _on_attack_area_body_entered(body):
 func _on_spr_frame_changed():
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
+			damage = randi()%100+50+damage_sword
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
 	
 	elif $spr.animation == "удар_рукой":
 		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
+			damage = randi()%100+50
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
 			$attack_area/col_Atack.disabled = true
 	
 	elif $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
+			damage = randi()%100+50+damage_sword
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
 			$attack_area/col_Atack.disabled = true
@@ -364,9 +372,10 @@ func _on_use_area_entered(area):
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
 		area.queue_free()
 		pass
-	elif area.name == "Sword_equip":
+	elif area.get("item_type") == "sword":
 		equip_sword_anim = true
 		$spr.animation = "меч_взял"
+		damage_sword = area.damage
 		weapon = 1
 		area.queue_free()
 

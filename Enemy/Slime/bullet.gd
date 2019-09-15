@@ -17,7 +17,7 @@ func _physics_process(delta):
 func _on_bullet_body_entered(body):
 	
 	if body.name == 'Player':
-		body.health_now -= 153
+		body.health_now -= randi()%50+20
 		queue_free()
 	elif body.name == 'frontground':
 		#print("-_-")
