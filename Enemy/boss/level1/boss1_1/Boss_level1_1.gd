@@ -14,6 +14,14 @@ var php = (health_now*100)/health
 var anim = 'move'
 onready var enemy_shoot = preload("res://Enemy/Slime/Slime.tscn")
 onready var bullet_shoot = preload("res://Enemy/Slime/bullet.tscn")
+
+onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
+onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
+onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_heal_potion.tscn")
+onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
+onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
+onready var arrow_item = preload("res://items/Items/Arrow.tscn")
+
 var enemy_shoot_count = 6
 var damage
 var attack_now = false
@@ -80,6 +88,32 @@ func _gui():# Графический интерфейс
 	elif php < 50 and enemy_shoot_count == 0:
 		phase1 = true
 		
+		
+
+func _drop_item():
+	var item_drop = randi()%2
+	print(item_drop)
+#	if item_drop == 0:
+#		var item = lesser_heal_potion.instance()
+#		get_parent().add_child(item)
+#		item.position = position
+#	if item_drop == 1:
+#		var item = minor_heal_potion.instance()
+#		get_parent().add_child(item)
+#		item.position = position
+	if item_drop == 0:
+		var item = heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+	elif item_drop == 1:
+		var item = big_heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+#	elif item_drop == 1:
+#		var item = arrow_item.instance()
+#		get_parent().add_child(item)
+#		item.position = position
+
 	
 func fight():
 
@@ -168,6 +202,7 @@ func _on_bullet_timeout():
 
 func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
+		_drop_item()
 		get_parent().get_parent().get_parent().boss1_1_kill = true
 		queue_free()
 	pass # Replace with function body.

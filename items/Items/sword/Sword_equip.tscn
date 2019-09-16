@@ -1,18 +1,37 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://items/Items/sword/Sword_equip.gd" type="Script" id=1]
-[ext_resource path="res://items/Items/sword/Swords.png" type="Texture" id=2]
+[ext_resource path="res://items/Items/sword/Swords.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+var useable = true
+var item_type = \"sword\"
+var damage = 50
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 17.0023, 18.2348 )
 
 [node name="Sword_equip" type="Area2D"]
+editor/display_folded = true
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 8
-collision_mask = 2
-script = ExtResource( 1 )
+collision_mask = 3
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )

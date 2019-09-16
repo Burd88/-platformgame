@@ -42,4 +42,60 @@
 		"description": "",
 		"sell_price": 0
 	},
+		
+	"4": {
+		"name": "Leser Heal Potion",
+		"icon": "res://items/Items/health_potion/leser_heal_potion.png",
+		"type": "leser_heal_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 20,
+		"description": "",
+		"sell_price": 0
+	},
+		
+	"5": {
+		"name": "Minor Heal Potion",
+		"icon": "res://items/Items/health_potion/minor_heal_potion.png",
+		"type": "minor_heal_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 20,
+		"description": "",
+		"sell_price": 0
+	},
+		
+	"6": {
+		"name": "Heal Potion",
+		"icon": "res://items/Items/health_potion/heal_potion.png",
+		"type": "heal_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 20,
+		"description": "",
+		"sell_price": 0
+	},
+		
+	"7": {
+		"name": "Big Heal Potion",
+		"icon": "res://items/Items/health_potion/big_heal_potion.png",
+		"type": "big_heal_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 20,
+		"description": "",
+		"sell_price": 0
+	},
+		
+	"8": {
+		"name": "Major Heal Potion",
+		"icon": "res://items/Items/health_potion/major_heal_potion.png",
+		"type": "major_heal_potion",
+		"weight": 0.0,
+		"stackable": true,
+		"stack_limit": 20,
+		"description": "",
+		"sell_price": 0
+	},
+
 }

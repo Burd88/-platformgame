@@ -12,6 +12,12 @@ var php = (health_now*100)/health
 var anim = 'move'
 var target
 var damage
+onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
+onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
+onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_heal_potion.tscn")
+onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
+onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
+onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 
 var distance = Vector2()
 var velocity = Vector2()
@@ -65,7 +71,24 @@ func aim():
 		$damage.position.x = 15
 		$check_place.position.x = 9
 
-
+func _drop_item():
+	var item_drop = randi()%3
+	if item_drop == 0:
+		var item = lesser_heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+	elif item_drop == 1:
+		var item = minor_heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+	elif item_drop == 2:
+		var item = heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+#	elif item_drop == 1:
+#		var item = arrow_item.instance()
+#		get_parent().add_child(item)
+#		item.position = position
 
 
 func _move_enemy(delta):
@@ -176,6 +199,10 @@ func _on_damage_body_entered(body):
 
 func _on_die_animation_finished(anim_name):
 	if anim_name == "die":
+		var item_rand = randi()%2
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
 		queue_free()
 	pass # Replace with function body.
 

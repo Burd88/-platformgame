@@ -22,7 +22,11 @@ var target
 var hit_pos
 var can_shoot = false
 onready var bullet = preload("res://Enemy/Slime/bullet.tscn")
-onready var health_potion = preload("res://items/Health Potion/Health_potion.tscn")
+onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
+onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
+onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_heal_potion.tscn")
+onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
+onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 
 export (int) var detect_radius = 250
@@ -157,16 +161,34 @@ func shoot(pos):
 	get_parent().add_child(b)
 	can_shoot = false
 
+func _on_AnimatedSprite_animation_finished():
+	if $sprite.animation == 'die':
+		queue_free()
+		var item_rand = randi()%2
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
+			#print("бутылек")
+	pass
+
 func _drop_item():
-	var item_drop = randi()%2
+	var item_drop = randi()%3
 	if item_drop == 0:
-		var item = health_potion.instance()
+		var item = lesser_heal_potion.instance()
 		get_parent().add_child(item)
 		item.position = position
 	elif item_drop == 1:
-		var item = arrow_item.instance()
+		var item = minor_heal_potion.instance()
 		get_parent().add_child(item)
 		item.position = position
+	elif item_drop == 2:
+		var item = heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+#	elif item_drop == 1:
+#		var item = arrow_item.instance()
+#		get_parent().add_child(item)
+#		item.position = position
 
 func _check_place():
 	if $check_place.is_colliding() == false :
@@ -190,15 +212,7 @@ func _change_position():
 		$attack_area.position.x = -30
 		$check_attack.position.x = -30
 
-func _on_AnimatedSprite_animation_finished():
-	if $sprite.animation == 'die':
-		queue_free()
-		var item_rand = randi()%2
-	#	print(item_rand)
-		if item_rand == 0 :
-			_drop_item()
-			#print("бутылек")
-	pass
+
 
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:

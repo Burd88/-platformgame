@@ -1,7 +1,5 @@
 extends Area2D
-var useable = true
-var item_type = "sword"
-var damage = 50
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
