@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 var player_type = true
 ## жизни игрока
-var health = 3000
+var health = 2500
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -137,7 +137,7 @@ func _move(delta):
 				$spr.animation = "падение"
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
-
+	
 	if direction.x > 0:
 		$spr.flip_h = false
 		$attack_area.position.x = 16
@@ -311,7 +311,7 @@ func _on_attack_area_body_entered(body):
 func _on_spr_frame_changed():
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
-			damage = randi()%100+50+damage_sword
+			damage = randi()%20+50+damage_sword
 			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
@@ -319,7 +319,7 @@ func _on_spr_frame_changed():
 	
 	elif $spr.animation == "удар_рукой":
 		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
-			damage = randi()%100+50
+			damage = randi()%20+50
 			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
@@ -327,7 +327,7 @@ func _on_spr_frame_changed():
 	
 	elif $spr.animation == "удар_ногой":
 		if $spr.frame == 2 or $spr.frame == 5 :
-			damage = randi()%100+50+damage_sword
+			damage = randi()%20+50+damage_sword
 			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
@@ -376,6 +376,7 @@ func _on_use_area_entered(area):
 	elif area.get("item_type") == "sword":
 		equip_sword_anim = true
 		$spr.animation = "меч_взял"
+
 		damage_sword = area.damage
 		weapon = 1
 		area.queue_free()

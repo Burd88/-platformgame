@@ -21,7 +21,7 @@ onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
-
+onready var gear_item = preload("res://items/Items/Gear/Gear.tscn")
 var enemy_shoot_count = 6
 var damage
 var attack_now = false
@@ -93,6 +93,9 @@ func _gui():# Графический интерфейс
 func _drop_item():
 	var item_drop = randi()%2
 	print(item_drop)
+	var gear_loot = gear_item.instance()
+	get_parent().add_child(gear_loot)
+	gear_loot.position = position+Vector2(-16,0)
 #	if item_drop == 0:
 #		var item = lesser_heal_potion.instance()
 #		get_parent().add_child(item)
@@ -104,7 +107,7 @@ func _drop_item():
 	if item_drop == 0:
 		var item = heal_potion.instance()
 		get_parent().add_child(item)
-		item.position = position
+		item.position = position+Vector2(16,0)
 	elif item_drop == 1:
 		var item = big_heal_potion.instance()
 		get_parent().add_child(item)

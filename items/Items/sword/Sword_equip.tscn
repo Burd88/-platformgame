@@ -18,13 +18,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Sword_equip_area_entered(area):
+	if area.name == \"use\":
+		area.get_parent().get_node(\"$say_label\").text = \"Конечно не мой, но лучше чем кулоками махать\"
+		area.get_parent().get_node(\"$say_label\").show_label = true
+		pass # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 17.0023, 18.2348 )
 
 [node name="Sword_equip" type="Area2D"]
-editor/display_folded = true
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 8
 collision_mask = 3
@@ -35,3 +41,4 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_Sword_equip_area_entered"]

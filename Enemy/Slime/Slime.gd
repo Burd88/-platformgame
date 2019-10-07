@@ -164,7 +164,7 @@ func shoot(pos):
 func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
-		var item_rand = randi()%2
+		var item_rand = randi()%5
 	#	print(item_rand)
 		if item_rand == 0 :
 			_drop_item()
@@ -172,7 +172,7 @@ func _on_AnimatedSprite_animation_finished():
 	pass
 
 func _drop_item():
-	var item_drop = randi()%3
+	var item_drop = randi()%2
 	if item_drop == 0:
 		var item = lesser_heal_potion.instance()
 		get_parent().add_child(item)
@@ -181,10 +181,10 @@ func _drop_item():
 		var item = minor_heal_potion.instance()
 		get_parent().add_child(item)
 		item.position = position
-	elif item_drop == 2:
-		var item = heal_potion.instance()
-		get_parent().add_child(item)
-		item.position = position
+#	elif item_drop == 2:
+#		var item = heal_potion.instance()
+#		get_parent().add_child(item)
+#		item.position = position
 #	elif item_drop == 1:
 #		var item = arrow_item.instance()
 #		get_parent().add_child(item)

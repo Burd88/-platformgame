@@ -273,6 +273,7 @@ centered = false
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 60, -70 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 

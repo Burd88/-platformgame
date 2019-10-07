@@ -79,10 +79,10 @@ func _drop_item():
 		var item = lesser_heal_potion.instance()
 		get_parent().add_child(item)
 		item.position = position
-	elif item_drop == 1:
-		var item = minor_heal_potion.instance()
-		get_parent().add_child(item)
-		item.position = position
+#	elif item_drop == 1:
+#		var item = minor_heal_potion.instance()
+#		get_parent().add_child(item)
+#		item.position = position
 #	elif item_drop == 2:
 #		var item = heal_potion.instance()
 #		get_parent().add_child(item)
@@ -202,7 +202,7 @@ func _on_damage_body_entered(body):
 
 func _on_die_animation_finished(anim_name):
 	if anim_name == "die":
-		var item_rand = randi()%2
+		var item_rand = randi()%3
 	#	print(item_rand)
 		if item_rand == 0 :
 			_drop_item()
