@@ -21,7 +21,6 @@ boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://logo/logo.png"
-config/auto_accept_quit=false
 config/version="0.0.1"
 
 [autoload]
