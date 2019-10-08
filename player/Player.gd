@@ -11,7 +11,7 @@ var php = (health_now*100)/health
 ##----------------------- 
 var attack_name_sword = ['удар_мечом_1','удар_мечом_2','удар_мечом_3']
 var rand_attack_name_sword = 1
-var attack_name = ['удар_ногой','удар_рукой']
+var attack_name = ['удар_ногой_1','удар_ногой_2','удар_рукой_1','удар_рукой_2','удар_рукой_3']
 var rand_attack_name = 1
 var equip_sword_anim = false
 var weapon = 0
@@ -83,7 +83,7 @@ func save():
 	return save_dict
 	
 func _move(delta):
-	if health_now > 0: 
+	if health_now > 0 and attack == false: 
 		direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	elif health_now <=0:
 		direction.x = 0
@@ -156,7 +156,9 @@ func _move(delta):
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y += gravity*delta
 	
-	collision_info = move_and_slide(velocity,Vector2(0,-1))
+	if attack == false :
+		collision_info = move_and_slide(velocity,Vector2(0,-1))
+	else: pass
 
 	if velocity.y > 3.84:
 		direction.y = 1
@@ -166,15 +168,17 @@ func _move(delta):
 		
 		velocity.y = 0
 		direction.y = 0
-	#	if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
-			
-		#	direction.y = -1
-		#	$CollisionShape2D.position.y = 9
-	#		$CollisionShape2D.scale.y = 0.7
-		
-		#else:
-		#	$CollisionShape2D.position.y = 5
-		#	$CollisionShape2D.scale.y =  1
+#		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
+#
+#			direction.y = -1
+#			speed = 75
+#			$CollisionShape2D.position.y = 9
+#			$CollisionShape2D.scale.y = 0.7
+#
+#		else:
+#			speed = 150
+#			$CollisionShape2D.position.y = 5
+#			$CollisionShape2D.scale.y =  1
 
 	if Input.is_action_just_pressed("ui_up") and velocity.y >=0 and velocity.y <= 4 :
 		
@@ -232,9 +236,12 @@ func _light_mode():
 		
 func _attack():
 	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0: 
-		attack = true
+		if attack == false:
+			attack = true
 	else:
-		attack = false
+		#print("attack")
+		#attack = false
+		pass
 	if attack and weapon == 1:
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
@@ -276,13 +283,15 @@ func _gui():
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0:
-		health_now += 0.1
+		health_now += 1
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
-	if $spr.animation == "удар_рукой" or $spr.animation == "удар_ногой" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
+	if $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3" or $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		rand_attack_name_sword = randi()%3
-		rand_attack_name = randi()%2
+		rand_attack_name = randi()%5
+		#print("attack finish")
+		attack = false
 	elif $spr.animation == "меч_взял":
 		equip_sword_anim = false
 	if $spr.animation == 'смерть':
@@ -301,7 +310,7 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get("enemy_type"):
 		body.health_now -= damage
-		print("body name: ", body.name)
+		#print("body name: ", body.name)
 	else : pass
 
 	if !body:
@@ -312,25 +321,25 @@ func _on_spr_frame_changed():
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
 			damage = randi()%20+50+damage_sword
-			print(damage)
+			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
 	
-	elif $spr.animation == "удар_рукой":
-		if $spr.frame == 4 or $spr.frame == 8 or $spr.frame == 12:
+	elif $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2":
+		if $spr.frame == 1:
 			damage = randi()%20+50
-			print(damage)
+			#print(damage)
 			$attack_area/col_Atack.disabled = false
-		elif $spr.frame == 1 or $spr.frame == 5 or $spr.frame == 9:
+		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
 	
-	elif $spr.animation == "удар_ногой":
-		if $spr.frame == 2 or $spr.frame == 5 :
-			damage = randi()%20+50+damage_sword
-			print(damage)
+	elif $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2":
+		if $spr.frame == 1 :
+			damage = randi()%20+50
+			#print(damage)
 			$attack_area/col_Atack.disabled = false
-		elif $spr.frame == 0 or $spr.frame == 4 or $spr.frame == 7:
+		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
 	#elif $spr.animation != "удар_ногой":
 #	elif $spr.animation == "удар_лук" :
@@ -370,7 +379,7 @@ func _open_inventory():
 func _on_use_area_entered(area):
 	if area.get('data_id') != null:
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
-		print(area.data_id)
+		#print(area.data_id)
 		area.queue_free()
 		pass
 	elif area.get("item_type") == "sword":
@@ -443,7 +452,7 @@ func _on_bag1_item_rmb_selected(index, at_position):
 
 
 func _on_use_check_area_entered(area):
-	print(area.name)
+	#print(area.name)
 	if area.get("useable") :
 		
 		$"E-key".show()
@@ -458,7 +467,7 @@ func _on_use_check_area_exited(area):
 
 
 func _on_use_check_body_entered(body):
-	print(body.name)
+	#print(body.name)
 	if body.get("useable") :
 		$"E-key".show()
 	else : pass

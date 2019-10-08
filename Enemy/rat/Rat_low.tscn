@@ -179,7 +179,7 @@ position = Vector2( -12, 5 )
 shape = SubResource( 8 )
 
 [node name="visible" type="Area2D" parent="."]
-scale = Vector2( 0.333334, 1 )
+scale = Vector2( 1.2, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]
 position = Vector2( 1.54002, 3.5934 )
