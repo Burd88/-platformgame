@@ -121,7 +121,12 @@ hframes = 8
 frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spriteanim/idle"]
+autoplay = "idle"
 anims/idle = SubResource( 1 )
+
+[node name="idletimer" type="Timer" parent="spriteanim/idle"]
+wait_time = 3.0
+one_shot = true
 
 [node name="move" type="Sprite" parent="spriteanim"]
 texture = ExtResource( 3 )
@@ -195,10 +200,12 @@ cast_to = Vector2( 0, 15 )
 
 [node name="visible" type="Area2D" parent="."]
 position = Vector2( 0, -15 )
+scale = Vector2( 0.35, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]
 position = Vector2( -0.242138, 20.3398 )
 shape = SubResource( 9 )
+[connection signal="timeout" from="spriteanim/idle/idletimer" to="." method="_on_idletimer_timeout"]
 [connection signal="animation_finished" from="spriteanim/die/AnimationPlayer" to="." method="_on_die_animation_finished"]
 [connection signal="animation_finished" from="spriteanim/attack/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
