@@ -1100,7 +1100,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 3
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -1109,6 +1109,9 @@ playing = true
 [node name="Rat_low2" parent="enemies" instance=ExtResource( 22 )]
 position = Vector2( 334.421, 616.638 )
 distance_max = 50
+
+[node name="Rat_low" parent="enemies" instance=ExtResource( 22 )]
+position = Vector2( 915.444, 639.212 )
 
 [node name="Area2D" type="Area2D" parent="enemies"]
 script = SubResource( 7 )

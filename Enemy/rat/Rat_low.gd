@@ -104,7 +104,7 @@ func _move_enemy(delta):
 		velocity.y = 0
 		direction.y = 0
 	#print($spriteanim/idle/idletimer.time_left)
-	print(position.distance_to(spawn_position))
+	#print(position.distance_to(spawn_position))
 	if position.distance_to(spawn_position) < distance_max and visible_pl == false:
 		distance.x = speed
 		idle_timer = false
