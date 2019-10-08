@@ -19,12 +19,18 @@ onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
-
+###движение
+export var distance_max = 100
+var visible_pl = false
+var idle = true
+var idle_timer = false
+var spawn_position = Vector2()
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawn_position = Vector2(position.x , position.y)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,11 +103,43 @@ func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0
 		direction.y = 0
-	distance.x = speed
+	#print($spriteanim/idle/idletimer.time_left)
+	print(position.distance_to(spawn_position))
+	if position.distance_to(spawn_position) < distance_max and visible_pl == false:
+		distance.x = speed
+		idle_timer = false
+		idle = true
+	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
+		if idle :
+			idle = false
+			$spriteanim/idle/idletimer.start()
+		distance.x = 0
+		$spriteanim/die.hide()
+		$spriteanim/move.hide()
+		$spriteanim/idle.show()
+		$spriteanim/attack.hide()
+		$spriteanim/jump.hide()
+	elif visible_pl == false and idle_timer == true:
+		$spriteanim/die.hide()
+		$spriteanim/move.show()
+		$spriteanim/idle.hide()
+		$spriteanim/attack.hide()
+		$spriteanim/jump.hide()
+	elif visible_pl == true:
+		distance.x = speed
+		velocity.x = (direction.x*distance.x)
+		velocity.y += gravity*delta
+	else: print("move to spawn")
+#	distance.x = speed
 	velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
+func _on_idletimer_timeout():
+	idle_timer = true
+	_change_position()
+	distance.x = speed
+	pass # Replace with function body.
 	
 func _gui():# Графический интерфейс
 	if health_now > 0 :
@@ -216,6 +254,7 @@ func _on_die_animation_finished(anim_name):
 func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		target = body
+		visible_pl = true
 #		$spriteanim/die.hide()
 #		$spriteanim/move.hide()
 #		$spriteanim/idle.hide()
@@ -228,6 +267,7 @@ func _on_visible_body_entered(body):
 func _on_visible_body_exited(body):
 	if body == target:
 		target = null
+		visible_pl = false
 #		$spriteanim/die.hide()
 #		$spriteanim/move.show()
 #		$spriteanim/idle.hide()

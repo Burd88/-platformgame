@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -22,20 +22,18 @@
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=20]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=21]
 [ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Enemy/Bat/Bat.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Enemy/test/test.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=27]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=28]
-[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=29]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=30]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=31]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=32]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=33]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Enemy/spider/Spider.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Enemy/test/test.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=25]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=26]
+[ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=27]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=28]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=29]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=30]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=31]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Enemy/spider/Spider.tscn" type="PackedScene" id=34]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1102,32 +1100,15 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 1
+frame = 3
 speed_scale = 0.8
 playing = true
 
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="Rat_low2" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 346.467, 600.886 )
-
-[node name="Rat_low3" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 600.002, 634.197 )
-
-[node name="Rat_low4" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 899.802, 630.496 )
-
-[node name="Rat_low5" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 1208.86, 632.346 )
-
-[node name="Rat_low6" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 1375.41, 636.048 )
-
-[node name="Slime4" parent="enemies" instance=ExtResource( 23 )]
-position = Vector2( 520.494, 496.037 )
-
-[node name="Bat" parent="enemies" instance=ExtResource( 24 )]
-position = Vector2( 464.012, 375.178 )
+position = Vector2( 334.421, 616.638 )
+distance_max = 50
 
 [node name="Area2D" type="Area2D" parent="enemies"]
 script = SubResource( 7 )
@@ -1136,28 +1117,23 @@ script = SubResource( 7 )
 position = Vector2( 1104.22, 252.633 )
 shape = SubResource( 8 )
 
-[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 25 )]
+[node name="Boss_level1_1" parent="enemies/Area2D" instance=ExtResource( 23 )]
 position = Vector2( 998.06, 314.793 )
 
-[node name="test" parent="enemies" instance=ExtResource( 26 )]
+[node name="test" parent="enemies" instance=ExtResource( 24 )]
 modulate = Color( 0.639216, 0.470588, 0.470588, 1 )
 self_modulate = Color( 0.501961, 0.360784, 0.360784, 1 )
 position = Vector2( 233.989, 342.149 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="Gobby2" parent="enemies" instance=ExtResource( 27 )]
+[node name="Gobby2" parent="enemies" instance=ExtResource( 25 )]
 position = Vector2( 577.745, 1139.14 )
 scale = Vector2( 0.64, 0.64 )
+distance_max = 150
 
-[node name="Gobby" parent="enemies" instance=ExtResource( 27 )]
+[node name="Gobby" parent="enemies" instance=ExtResource( 25 )]
 position = Vector2( 378.722, 1139.87 )
-
-[node name="Rat_low" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 630.274, 176.474 )
-scale = Vector2( 0.8, 0.8 )
-
-[node name="Rat_low7" parent="enemies" instance=ExtResource( 22 )]
-position = Vector2( 1263.23, 987.028 )
+distance_max = 50
 
 [node name="use_item" type="Node2D" parent="."]
 
@@ -1165,7 +1141,7 @@ position = Vector2( 1263.23, 987.028 )
 position = Vector2( 581.241, 504.372 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 28 )
+script = ExtResource( 26 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -1182,18 +1158,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Torch" parent="use_item" instance=ExtResource( 29 )]
+[node name="Torch" parent="use_item" instance=ExtResource( 27 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 522.674, 1012.98 )
+position = Vector2( 576.167, 629.06 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
-position = Vector2( -300.46, -677.374 )
 scale = Vector2( 1.81587, 2.00413 )
 script = SubResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
-position = Vector2( 165.509, 337.812 )
 shape = SubResource( 11 )
 
 [node name="exit_level" type="Area2D" parent="use_item"]
@@ -1201,7 +1175,7 @@ editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 30 )
+script = ExtResource( 28 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1243,7 +1217,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 31 )
+script = ExtResource( 29 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1292,7 +1266,7 @@ region_rect = Rect2( 352, 0, 16, 48 )
 position = Vector2( 10.7802, -5.13345 )
 shape = SubResource( 20 )
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 32 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 30 )]
 position = Vector2( 1228.68, 500.219 )
 
 [node name="platforms" type="Node2D" parent="."]
@@ -1302,59 +1276,59 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="Player" parent="." instance=ExtResource( 34 )]
-position = Vector2( 579.53, 1006.57 )
+[node name="Player" parent="." instance=ExtResource( 32 )]
+position = Vector2( 617.591, 625.994 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 38 )
@@ -1374,9 +1348,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_menu" parent="." instance=ExtResource( 35 )]
+[node name="pause_menu" parent="." instance=ExtResource( 33 )]
 
-[node name="Spider" parent="." instance=ExtResource( 36 )]
+[node name="Spider" parent="." instance=ExtResource( 34 )]
 position = Vector2( 498.177, 998.998 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="trap/trap_bullet/AnimatedSprite" to="trap/trap_bullet" method="_on_AnimatedSprite_animation_finished"]

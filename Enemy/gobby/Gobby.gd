@@ -12,7 +12,7 @@ var php = (health_now*100)/health
 var anim = 'move'
 var target
 var damage
-var visible_pl = false
+
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
 onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_heal_potion.tscn")
@@ -20,6 +20,8 @@ onready var major_heal_potion = preload("res://items/Items/health_potion/major_h
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 ###движение
+export var distance_max = 100
+var visible_pl = false
 var idle = true
 var idle_timer = false
 var spawn_position = Vector2()
@@ -100,13 +102,13 @@ func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0
 		direction.y = 0
-	print($spriteanim/idle/idletimer.time_left)
+	#print($spriteanim/idle/idletimer.time_left)
 	#print(position.distance_to(spawn_position))
-	if position.distance_to(spawn_position) < 150 and visible_pl == false:
+	if position.distance_to(spawn_position) < distance_max and visible_pl == false:
 		distance.x = speed
 		idle_timer = false
 		idle = true
-	elif position.distance_to(spawn_position) >= 150 and visible_pl == false and idle_timer == false:
+	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
 		if idle :
 			idle = false
 			$spriteanim/idle/idletimer.start()

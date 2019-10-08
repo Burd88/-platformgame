@@ -126,10 +126,15 @@ anims/move = SubResource( 1 )
 visible = false
 texture = ExtResource( 3 )
 hframes = 9
-frame = 7
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spriteanim/idle"]
+autoplay = "idle"
 anims/idle = SubResource( 2 )
+
+[node name="idletimer" type="Timer" parent="spriteanim/idle"]
+wait_time = 3.0
+one_shot = true
 
 [node name="attack" type="Sprite" parent="spriteanim"]
 visible = false
@@ -174,6 +179,7 @@ position = Vector2( -12, 5 )
 shape = SubResource( 8 )
 
 [node name="visible" type="Area2D" parent="."]
+scale = Vector2( 0.333334, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]
 position = Vector2( 1.54002, 3.5934 )
@@ -194,6 +200,7 @@ percent_visible = false
 position = Vector2( -18, 5 )
 enabled = true
 cast_to = Vector2( 0, 15 )
+[connection signal="timeout" from="spriteanim/idle/idletimer" to="." method="_on_idletimer_timeout"]
 [connection signal="animation_finished" from="spriteanim/attack/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="spriteanim/die/AnimationPlayer" to="." method="_on_die_animation_finished"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
