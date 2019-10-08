@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -27,13 +27,14 @@
 [ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=25]
 [ext_resource path="res://levels/Level1/lever.gd" type="Script" id=26]
 [ext_resource path="res://items/Torch/Torch.tscn" type="PackedScene" id=27]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=28]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=29]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=30]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=31]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Enemy/spider/Spider.tscn" type="PackedScene" id=34]
+[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=28]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=29]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=30]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=31]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=32]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Enemy/spider/Spider.tscn" type="PackedScene" id=35]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1100,7 +1101,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 4
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -1173,12 +1174,20 @@ script = SubResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
 shape = SubResource( 11 )
 
+[node name="Hook" parent="use_item" instance=ExtResource( 28 )]
+position = Vector2( 891.459, 1090.25 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Hook2" parent="use_item" instance=ExtResource( 28 )]
+position = Vector2( 802.513, 1055.7 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="exit_level" type="Area2D" parent="use_item"]
 editor/display_folded = true
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 28 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1220,7 +1229,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1269,7 +1278,7 @@ region_rect = Rect2( 352, 0, 16, 48 )
 position = Vector2( 10.7802, -5.13345 )
 shape = SubResource( 20 )
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 30 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 31 )]
 position = Vector2( 1228.68, 500.219 )
 
 [node name="platforms" type="Node2D" parent="."]
@@ -1279,58 +1288,58 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 31 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 32 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 32 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 32 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 32 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 32 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 31 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 32 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="Player" parent="." instance=ExtResource( 32 )]
+[node name="Player" parent="." instance=ExtResource( 33 )]
 position = Vector2( 810.343, 1132.48 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -1351,9 +1360,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_menu" parent="." instance=ExtResource( 33 )]
+[node name="pause_menu" parent="." instance=ExtResource( 34 )]
 
-[node name="Spider" parent="." instance=ExtResource( 34 )]
+[node name="Spider" parent="." instance=ExtResource( 35 )]
 position = Vector2( 498.177, 998.998 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="trap/trap_bullet/AnimatedSprite" to="trap/trap_bullet" method="_on_AnimatedSprite_animation_finished"]

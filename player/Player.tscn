@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=2]
+[gd_scene load_steps=184 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-00.png" type="Texture" id=2]
@@ -140,32 +140,36 @@
 [ext_resource path="res://player/Individual Sprites/adventurer-jump-01.png" type="Texture" id=138]
 [ext_resource path="res://player/Individual Sprites/adventurer-jump-02.png" type="Texture" id=139]
 [ext_resource path="res://player/Individual Sprites/adventurer-jump-03.png" type="Texture" id=140]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-08.png" type="Texture" id=141]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-09.png" type="Texture" id=142]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-10.png" type="Texture" id=143]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-11.png" type="Texture" id=144]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-04.png" type="Texture" id=145]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-05.png" type="Texture" id=146]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-06.png" type="Texture" id=147]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-07.png" type="Texture" id=148]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-00.png" type="Texture" id=149]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-01.png" type="Texture" id=150]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-02.png" type="Texture" id=151]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-03.png" type="Texture" id=152]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-00.png" type="Texture" id=153]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-01.png" type="Texture" id=154]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-02.png" type="Texture" id=155]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-03.png" type="Texture" id=156]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-04.png" type="Texture" id=157]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=158]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=159]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=160]
-[ext_resource path="res://player/bag1.gd" type="Script" id=161]
-[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=162]
-[ext_resource path="res://player/light.png" type="Texture" id=163]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=164]
-[ext_resource path="res://main/sounds/474353__erokia__ambient-wave-single-8.wav" type="AudioStream" id=165]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=166]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-00.png" type="Texture" id=141]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-01.png" type="Texture" id=142]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-02.png" type="Texture" id=143]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-03.png" type="Texture" id=144]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-08.png" type="Texture" id=145]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-09.png" type="Texture" id=146]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-10.png" type="Texture" id=147]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-11.png" type="Texture" id=148]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-04.png" type="Texture" id=149]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-05.png" type="Texture" id=150]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-06.png" type="Texture" id=151]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-07.png" type="Texture" id=152]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-00.png" type="Texture" id=153]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-01.png" type="Texture" id=154]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-02.png" type="Texture" id=155]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-03.png" type="Texture" id=156]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-00.png" type="Texture" id=157]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-01.png" type="Texture" id=158]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-02.png" type="Texture" id=159]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-03.png" type="Texture" id=160]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-04.png" type="Texture" id=161]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=162]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=163]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=164]
+[ext_resource path="res://player/bag1.gd" type="Script" id=165]
+[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=166]
+[ext_resource path="res://player/light.png" type="Texture" id=167]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=168]
+[ext_resource path="res://main/sounds/474353__erokia__ambient-wave-single-8.wav" type="AudioStream" id=169]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=170]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -306,25 +310,30 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 141 ), ExtResource( 142 ), ExtResource( 143 ), ExtResource( 144 ) ],
 "loop": true,
-"name": "удар_рукой_3",
-"speed": 7.0
+"name": "зацеп",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ), ExtResource( 148 ) ],
 "loop": true,
-"name": "удар_ногой_2",
+"name": "удар_рукой_3",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 149 ), ExtResource( 150 ), ExtResource( 151 ), ExtResource( 152 ) ],
 "loop": true,
-"name": "удар_рукой_1",
+"name": "удар_ногой_2",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 156 ) ],
 "loop": true,
-"name": "удар_ногой_1",
+"name": "удар_рукой_1",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 157 ), ExtResource( 158 ), ExtResource( 159 ), ExtResource( 160 ) ],
+"loop": true,
+"name": "удар_ногой_1",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 161 ), ExtResource( 162 ), ExtResource( 163 ), ExtResource( 164 ) ],
 "loop": true,
 "name": "удар_рукой_2",
 "speed": 7.0
@@ -411,7 +420,7 @@ corner_radius_bottom_right = 3
 
 [sub_resource type="DynamicFont" id=11]
 size = 8
-font_data = ExtResource( 166 )
+font_data = ExtResource( 170 )
 
 [sub_resource type="GDScript" id=12]
 script/source = "extends Label
@@ -440,6 +449,9 @@ func _on_Timer_timeout():
 	pass # Replace with function body.
 "
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 2.03743, 1.97269 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "save",
 ]]
@@ -452,8 +464,8 @@ script = ExtResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 pause_mode = 2
 frames = SubResource( 1 )
-animation = "удар_ногой_1"
-frame = 1
+animation = "зацеп"
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -486,7 +498,7 @@ custom_styles/bg = SubResource( 4 )
 allow_reselect = true
 allow_rmb_select = true
 icon_mode = 0
-script = ExtResource( 161 )
+script = ExtResource( 165 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -502,7 +514,7 @@ percent_visible = false
 
 [node name="Sprite" type="Sprite" parent="GUI/Healthbar"]
 position = Vector2( 37, 8 )
-texture = ExtResource( 162 )
+texture = ExtResource( 166 )
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 335.0
@@ -543,7 +555,7 @@ shape = SubResource( 8 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -0.481295, 2.70181 )
 enabled = false
-texture = ExtResource( 163 )
+texture = ExtResource( 167 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
@@ -552,7 +564,7 @@ shadow_enabled = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 164 )
+texture = ExtResource( 168 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -561,7 +573,7 @@ playback_speed = 0.4
 anims/use = SubResource( 9 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 165 )
+stream = ExtResource( 169 )
 volume_db = -7.99
 pitch_scale = 1.2
 
@@ -584,6 +596,12 @@ script = SubResource( 12 )
 [node name="Timer" type="Timer" parent="$say_label"]
 wait_time = 2.0
 one_shot = true
+
+[node name="hook_area" type="Area2D" parent="."]
+position = Vector2( 9, -13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook_area"]
+shape = SubResource( 13 )
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
@@ -594,3 +612,5 @@ one_shot = true
 [connection signal="body_entered" from="use_check" to="." method="_on_use_check_body_entered"]
 [connection signal="body_exited" from="use_check" to="." method="_on_use_check_body_exited"]
 [connection signal="timeout" from="$say_label/Timer" to="$say_label" method="_on_Timer_timeout"]
+[connection signal="area_entered" from="hook_area" to="." method="_on_hook_area_area_entered"]
+[connection signal="area_exited" from="hook_area" to="." method="_on_hook_area_area_exited"]

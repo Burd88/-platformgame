@@ -41,10 +41,12 @@ var direction = Vector2()
 var collision_info
 
 var torch = false
-
 var attack = false
 #var wall = false
 var inventory
+
+##зацеп за стену
+var hook_enable = false
 
 func _ready():
 	#$inventary/inventory/bag1.clear()
@@ -83,11 +85,11 @@ func save():
 	return save_dict
 	
 func _move(delta):
-	if health_now > 0 and attack == false: 
+	if health_now > 0 and attack == false and hook_enable == false: 
 		direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	elif health_now <=0:
 		direction.x = 0
-	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0:
+	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
 		if velocity.y < 3.84 :
 			if weapon == 0:
 				
@@ -101,7 +103,7 @@ func _move(delta):
 				$spr.animation = "падение"
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
-	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0:
+	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
 		if velocity.y <=3.84 and velocity.x == 0:
 			$spr.animation = "присяд"
 		elif velocity.y <=3.84 and velocity.x != 0:
@@ -111,7 +113,7 @@ func _move(delta):
 				$spr.animation = "падение"
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
-	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0:
+	if direction.x != 0 and direction.y == 0 and open_door == false and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
 		if velocity.y == 0:
 			if weapon == 0:
 				$spr.animation = "бег"
@@ -125,7 +127,7 @@ func _move(delta):
 				$spr.animation = "падение"
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
-	elif !equip_sword_anim and direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0:
+	elif !equip_sword_anim and direction.x == 0 and direction.y == 0 and swim == false and open_door == false and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
 		if velocity.y == 0:
 			if weapon == 0:
 				$spr.animation = "стойка"
@@ -144,6 +146,7 @@ func _move(delta):
 		$use.position.x = 6
 		$"E-key".position.x = 14
 		$use_check.position.x = 14
+		$hook_area. position.x = 9
 
 	elif direction.x < 0:
 		$spr.flip_h = true
@@ -151,12 +154,13 @@ func _move(delta):
 		$use.position.x = -6
 		$"E-key".position.x = - 14
 		$use_check.position.x = -14
+		$hook_area. position.x = -9
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y += gravity*delta
 	
-	if attack == false :
+	if attack == false and hook_enable == false:
 		collision_info = move_and_slide(velocity,Vector2(0,-1))
 	else: pass
 
@@ -184,18 +188,23 @@ func _move(delta):
 		
 		velocity.y = -jump_speed
 		direction.y = 1
-
+	if hook_enable :
+		$spr.animation = "зацеп"
+		velocity.y = 0
+		velocity.x = 0
 	#if !is_on_floor():
 		#if is_on_wall() and direction.y == 1:
 		#	velocity.y = 0
 		#	wall = true
 		#	$spr.animation = "hang1"
-			#if Input.is_action_just_pressed("ui_up"):
-			#	velocity.y = -jump_speed
-			#	direction.y = 1
-			#if Input.is_action_just_pressed("ui_down"):
-			#	velocity.y = jump_speed
-			#	direction.y = 1
+		if Input.is_action_just_pressed("ui_up"):
+			hook_enable = false
+			velocity.y = -jump_speed
+			direction.y = 1
+		if Input.is_action_just_pressed("ui_down"):
+			hook_enable = false
+			velocity.y = jump_speed
+			direction.y = 1
 		
 	if is_on_ceiling():
 		velocity.y = 0
@@ -283,7 +292,7 @@ func _gui():
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0:
-		health_now += 1
+		health_now += 0.1
 		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
@@ -477,3 +486,15 @@ func _on_use_check_body_exited(body):
 	if body.get("useable") :
 		$"E-key".hide()
 	else : pass
+
+
+func _on_hook_area_area_entered(area):
+	if area.get("type_hook"):
+		hook_enable = true
+	pass # Replace with function body.
+
+
+func _on_hook_area_area_exited(area):
+	if area.get("type_hook"):
+		hook_enable = false
+	pass # Replace with function body.
