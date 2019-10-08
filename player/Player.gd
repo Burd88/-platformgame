@@ -244,7 +244,7 @@ func _light_mode():
 		
 		
 func _attack():
-	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0: 
+	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false: 
 		if attack == false:
 			attack = true
 	else:

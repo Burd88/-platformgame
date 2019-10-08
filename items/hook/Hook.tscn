@@ -7,6 +7,7 @@
 extents = Vector2( 30.5475, 30.6168 )
 
 [node name="Hook" type="Area2D"]
+scale = Vector2( 0.36, 0.4 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
