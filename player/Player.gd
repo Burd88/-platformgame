@@ -65,6 +65,7 @@ func _physics_process(delta):
 	_death()
 	_light_mode()
 	_open_inventory()
+	_use()
 
 func save():
 	
@@ -95,14 +96,18 @@ func _move(delta):
 				
 				$spr.animation = "прыжок"
 				equip_sword_anim = false
+				$CollisionShape2D.scale.y = 0.8
 			elif weapon == 1:
 				$spr.animation =  "прыжок_меч"
 				equip_sword_anim = false
+				$CollisionShape2D.scale.y = 0.8
 		elif velocity.y > 3.84  :
 			if weapon == 0:
 				$spr.animation = "падение"
+				$CollisionShape2D.scale.y = 1
 			elif weapon == 1:
 				$spr.animation =  "падение_меч"
+				$CollisionShape2D.scale.y = 1
 	if direction.y < 0 and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
 		if velocity.y <=3.84 and velocity.x == 0:
 			$spr.animation = "присяд"
@@ -172,17 +177,17 @@ func _move(delta):
 		
 		velocity.y = 0
 		direction.y = 0
-#		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
-#
-#			direction.y = -1
-#			speed = 75
-#			$CollisionShape2D.position.y = 9
-#			$CollisionShape2D.scale.y = 0.7
-#
-#		else:
-#			speed = 150
-#			$CollisionShape2D.position.y = 5
-#			$CollisionShape2D.scale.y =  1
+		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
+
+			direction.y = -1
+			speed = 75
+			$CollisionShape2D.position.y = 9
+			$CollisionShape2D.scale.y = 0.7
+
+		else:
+			speed = 150
+			$CollisionShape2D.position.y = 5
+			$CollisionShape2D.scale.y =  1
 
 	if Input.is_action_just_pressed("ui_up") and velocity.y >=0 and velocity.y <= 4 :
 		
@@ -192,11 +197,7 @@ func _move(delta):
 		$spr.animation = "зацеп"
 		velocity.y = 0
 		velocity.x = 0
-	#if !is_on_floor():
-		#if is_on_wall() and direction.y == 1:
-		#	velocity.y = 0
-		#	wall = true
-		#	$spr.animation = "hang1"
+
 		if Input.is_action_just_pressed("ui_up"):
 			hook_enable = false
 			velocity.y = -jump_speed
@@ -214,20 +215,8 @@ func _move(delta):
 			direction.y = -1
 	
 	
-#func use_health_potion():
-##
-##	if Input.is_action_just_pressed("use_health_potion"):
-##		if health_potion > 0 and health_now < health:
-##			health_potion -= 1
-##			health_now += 100
-##			if health_now > health:
-##				health_now = health
-##		elif health_potion > 0 and health_now == health:
-##			print("full hp")
-##		elif health_potion == 0:
-##			pass
-#		pass
-#func use():
+
+func _use():
 	if Input.is_action_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
 	else:
@@ -236,15 +225,14 @@ func _move(delta):
 func _light_mode():
 	if torch == true:
 		$Light2D.enabled = true
-
 	else:
 		$Light2D.enabled = false
 	pass
-	
-		
-		
+
 func _attack():
 	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false: 
+		velocity.y = 0
+
 		if attack == false:
 			attack = true
 	else:
@@ -275,7 +263,7 @@ func _attack():
 #		if direction.x == 0 and Input.is_action_pressed("ui_bow_attack") and arrow_true:
 #			$spr.animation = 'удар_лук'
 #	else : $spr.animation = "стойка"
-func _gui():
+func _gui():		# Графический интерфейс игрока
 	
 	php = (health_now*100)/health
 	if php > 75 and php <=100:
@@ -293,7 +281,6 @@ func _gui():
 
 	if health_now < health and health_now > 0:
 		health_now += 0.1
-		# Графический интерфейс игрока
 
 func _on_spr_animation_finished():
 	if $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3" or $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
@@ -350,7 +337,7 @@ func _on_spr_frame_changed():
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
-	#elif $spr.animation != "удар_ногой":
+
 #	elif $spr.animation == "удар_лук" :
 #		for i in range(0,Global_Player.inventory_maxSlots):
 #			if $inventary/inventory/bag1.get_item_metadata(i) == "Arrow":

@@ -36,6 +36,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
+
 		
 		#$Player/spr.stop()
 		#modulate = Color(0.470588, 0.192157, 0.192157)
@@ -96,3 +97,8 @@ func _on_Gear6_area_entered(area):
 
 
 
+
+
+func _on_Katboss12_tree_exited():
+	get_tree().paused = false
+	pass # Replace with function body.
