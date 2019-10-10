@@ -170,7 +170,7 @@ position = Vector2( 0.0527625, 4.98001 )
 shape = SubResource( 6 )
 
 [node name="attack_area" type="Area2D" parent="."]
-position = Vector2( -12, 4.21852 )
+position = Vector2( -12, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 shape = SubResource( 7 )
@@ -183,10 +183,10 @@ shape = SubResource( 8 )
 disabled = true
 
 [node name="healthbar" type="ProgressBar" parent="."]
-margin_left = -12.2378
-margin_top = -17.9196
-margin_right = 22.7622
-margin_bottom = -3.91957
+margin_left = -12.0
+margin_top = -18.0
+margin_right = 23.0
+margin_bottom = -3.99997
 rect_scale = Vector2( 0.5, 0.5 )
 custom_styles/fg = ExtResource( 7 )
 custom_styles/bg = ExtResource( 8 )

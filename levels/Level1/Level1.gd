@@ -99,6 +99,9 @@ func _on_Gear6_area_entered(area):
 
 
 
+
+
 func _on_Katboss12_tree_exited():
-	get_tree().paused = false
+	$Player/Camera2D.current = true
+	$Player.kath_scene = false
 	pass # Replace with function body.

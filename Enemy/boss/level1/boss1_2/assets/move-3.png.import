@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1.png-14842183c944c3b4ac8bf87a34e93039.stex"
+path="res://.import/move-3.png-539e9ea692d4bd395aca25fc93746c55.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/gobby/sprite/1.png"
-dest_files=[ "res://.import/1.png-14842183c944c3b4ac8bf87a34e93039.stex" ]
+source_file="res://Enemy/boss/level1/boss1_2/assets/move-3.png"
+dest_files=[ "res://.import/move-3.png-539e9ea692d4bd395aca25fc93746c55.stex" ]
 
 [params]
 

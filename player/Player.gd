@@ -31,9 +31,9 @@ var swim = false
 #var text_actual = null
 #var shield = false
 var open_door = false
-
+var kath_scene = false
 #var check_cell = false
-
+var floor_enable = false
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2()
@@ -57,10 +57,13 @@ func _ready():
 
 
 func _physics_process(delta):
-
+	
 #	bow_attack()
-	_move(delta)
-	_attack()
+	if kath_scene == false:
+		_move(delta)
+		_attack()
+	else: pass
+	
 	_gui()
 	_death()
 	_light_mode()
@@ -174,7 +177,7 @@ func _move(delta):
 	
 	
 	if is_on_floor() :
-		
+		floor_enable = true
 		velocity.y = 0
 		direction.y = 0
 		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
@@ -188,6 +191,8 @@ func _move(delta):
 			speed = 150
 			$CollisionShape2D.position.y = 5
 			$CollisionShape2D.scale.y =  1
+	elif !is_on_floor():
+		floor_enable = false
 
 	if Input.is_action_just_pressed("ui_up") and velocity.y >=0 and velocity.y <= 4 :
 		
