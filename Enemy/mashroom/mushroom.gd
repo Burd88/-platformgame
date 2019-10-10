@@ -31,7 +31,7 @@ var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_position = Vector2(position.x , position.y)
-	
+	$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,8 +39,10 @@ func _process(delta):
 	update()
 	if target and health_now > 0:
 		aim()
-	_move_enemy(delta)
-	_check_place()
+	if health_now > 0:
+		_move_enemy(delta)
+		_check_place()
+	else:pass
 	_die()
 	_gui()
 	pass
@@ -101,20 +103,17 @@ func _move_enemy(delta):
 		distance.x = speed
 		idle_timer = false
 		idle = true
-		print("1")
+		
 	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
-		print("2")
+		
 		if idle :
-			print("3")
 			idle = false
 			$idletimer.start()
 		distance.x = 0
-		$spr.animation = "хотьба"
+		$spr.animation = "стойка"
 	elif visible_pl == false and idle_timer == true:
-		print("4")
 		$spr.animation = "хотьба"
 	elif visible_pl == true:
-		print("5")
 		distance.x = speed
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
@@ -143,15 +142,17 @@ func _gui():# Графический интерфейс
 	
 func _die():
 	if health_now <= 0:
+		speed = 0
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
+		$damage/CollisionShape2D.disabled = true
+		$attack_area/CollisionShape2D.disabled = true
+		$visible/CollisionShape2D.disabled = true
+		$check_place
 		$CollisionShape2D.disabled = true
-		var item_rand = randi()%5
-	#	print(item_rand)
-		if item_rand == 0 :
-			_drop_item()
-		queue_free()
+		$spr.animation = "смерть"
+
 		###нужна анимация смерти
 		
 	pass
@@ -193,10 +194,14 @@ func _on_attack_area_body_exited(body):
 		$spr.animation = "хотьба"
 	pass # Replace with function body.
 
-#func _on_spr_animation_finished():
-#	if $spr.animation == "атака":
-#		$damage/CollisionShape2D.disabled = false
-#	pass # Replace with function body.
+func _on_spr_animation_finished():
+	if $spr.animation == "смерть":
+		var item_rand = randi()%5
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
+		queue_free()
+	pass # Replace with function body.
 
 
 #func _on_AnimationPlayer_animation_finished(anim_name):
