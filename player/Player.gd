@@ -62,7 +62,10 @@ func _physics_process(delta):
 	if kath_scene == false:
 		_move(delta)
 		_attack()
-	else: pass
+	elif kath_scene == true:
+		velocity.x = 0
+		velocity.y += gravity*delta
+		collision_info = move_and_slide(velocity,Vector2(0,-1))
 	
 	_gui()
 	_death()

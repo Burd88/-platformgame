@@ -92,14 +92,14 @@ func save():
 func _on_startkat_body_entered(body):
 	if body.get(\"player_type\") == true:
 		print(\"Player\")
-		if body.velocity.y == 0:
-			body.get_node(\"spr\").animation = \"стойка\"
-			body.kath_scene = true
-			body.get_node(\"Camera2D\").offset.x +=1# body.get_node(\"Camera2D\").offset.x +200
-			$Light2D.enabled = true
-			$AnimationPlayer.play(\"kath_Scene\")
-			end_kath = false
-			$Camera2D.current = true
+#		if body.velocity.y == 0:
+		body.get_node(\"spr\").animation = \"стойка\"
+		body.kath_scene = true
+		#body.get_node(\"Camera2D\").offset.x +=1# body.get_node(\"Camera2D\").offset.x +200
+		$Light2D.enabled = true
+		$AnimationPlayer.play(\"kath_Scene\")
+		end_kath = false
+		$Camera2D.current = true
 func change_back():
 	$Boss_Gobby/AnimatedSprite.flip_h = false
 	$Boss_Gobby/AnimatedSprite.animation = \"хотьба\"
@@ -250,7 +250,6 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Boss_Gobby"]
 frames = SubResource( 5 )
 animation = "стойка"
-frame = 4
 playing = true
 flip_h = true
 
