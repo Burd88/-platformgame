@@ -1,0 +1,311 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-1.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-2.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-3.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-4.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-5.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-6.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-3.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-4.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-5.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-6.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-7.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-1.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-2.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-3.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-4.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-5.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-6.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-7.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-8.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-9.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-1.png" type="Texture" id=24]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-2.png" type="Texture" id=25]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-3.png" type="Texture" id=26]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-4.png" type="Texture" id=27]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-5.png" type="Texture" id=28]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=29]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=30]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=31]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=34]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=35]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=36]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=37]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=38]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=39]
+[ext_resource path="res://player/2DLight.png" type="Texture" id=40]
+[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=41]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=42]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/portret.png" type="Texture" id=43]
+[ext_resource path="res://player/portret.png" type="Texture" id=44]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+export var end_kath = false
+var text1 = \"Гобби...\"
+var text2 = \"Кто пришел в дом, Гобби?\"
+var text3 = \"ты... человек!?\"
+var text4 = \"ДДдавно я их не видел!\"
+var text5 = \"У тебя железяка!?\"
+var text6 = \"Злой человек!!!\"
+var text7 = \"Ну чтож, ловушки гобби ждут тебя!\"
+var text8 = \"Догони Гобби! Гха Гха Гха\"
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$AnimationPlayer.stop()
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if end_kath == true:
+			$Boss_Gobby/AnimatedSprite.flip_h = false
+			$Boss_Gobby/AnimatedSprite.animation = \"хотьба\"
+	elif end_kath == false:
+			$Boss_Gobby/AnimatedSprite.flip_h = true
+			$Boss_Gobby/AnimatedSprite.animation = \"стойка\"
+			
+#
+	pass
+func save():
+	var save_dict = {
+		\"filename\" : get_filename(),
+		\"parent\" : get_parent().get_path(),
+		\"pos_x\" : position.x, # Vector2 is not supported by JSON
+		\"pos_y\" : position.y,
+#		\"health\" : health ,
+#		\"health_now\" : health_now,
+#		\"php\" : php,
+#		\"name\" : name,
+	}
+	return save_dict
+
+func _on_startkat_body_entered(body):
+	if body.get(\"player_type\") == true:
+		print(\"Player\")
+		if body.velocity.y == 0:
+			body.get_node(\"spr\").animation = \"стойка\"
+			body.kath_scene = true
+			body.get_node(\"Camera2D\").offset.x +=1# body.get_node(\"Camera2D\").offset.x +200
+			$Light2D.enabled = true
+			$AnimationPlayer.play(\"kath_Scene\")
+			end_kath = false
+			$Camera2D.current = true
+func change_back():
+	$Boss_Gobby/AnimatedSprite.flip_h = false
+	$Boss_Gobby/AnimatedSprite.animation = \"хотьба\"
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == \"kath_Scene\":
+		pause_menu._save_game_data()
+		queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "хотьба",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "атака",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "смерть",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "стойка",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "урон",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "прыжок",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.40453, 10.3203 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 54.8344, 49.4668 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "kath_Scene"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 5, 7, 8, 11, 14, 15, 18, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Гобби...
+Кто пришел в дом, Гобби?", "ты... человек!?\"
+ДДдавно я их не видел!", "", "Привет, Гобби, да я человек....", "я тут ищу коечто... 
+фалинт, может слышал!?", "", "Да я слышал о нем... но сможешь ли ты дойти до него...", "Попробуй сначала пройти через все мои ловушки!!!", "И найди меня!" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 23 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8, 7, 14.5, 23 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Sprite2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.5, 14 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:end_kath")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 24 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Boss_Gobby:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 24, 29.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.62915, 11.4031 ), Vector2( 200, 11.403 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 42 )
+
+[node name="Katboss12" type="Node2D"]
+pause_mode = 2
+position = Vector2( 1205.89, 982.247 )
+script = SubResource( 1 )
+end_kath = true
+
+[node name="Boss_Gobby" type="KinematicBody2D" parent="."]
+position = Vector2( -0.338417, 11.4031 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Boss_Gobby"]
+frames = SubResource( 5 )
+animation = "стойка"
+frame = 7
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss_Gobby"]
+visible = false
+position = Vector2( 0.397217, 4.76658 )
+shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -9.61499, 11.8987 )
+scale = Vector2( 0.326562, 0.28471 )
+enabled = false
+texture = ExtResource( 40 )
+
+[node name="startkat" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="startkat"]
+position = Vector2( -109.959, -7.33057 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/kath_Scene = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -59.3235, -24.301 )
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+margin_left = 300.168
+margin_top = 577.505
+margin_right = 1020.17
+margin_bottom = 677.505
+grow_horizontal = 0
+grow_vertical = 0
+custom_styles/normal = ExtResource( 41 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 1099.78, 624.035 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 43 )
+flip_h = true
+
+[node name="Sprite2" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 231.566, 628.924 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 44 )
+[connection signal="body_entered" from="startkat" to="." method="_on_startkat_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

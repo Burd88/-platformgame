@@ -20,11 +20,13 @@ func _on_save_pressed():
 	
 func _save_game_data():
 	#Global_Player.save_data()
+	print("Auto save")
 	var save_game = File.new()
 	save_game.open("res://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	var save_data = {"savedata" : {}}
 	for i in save_nodes:
+		print(i)
 		var node_data = i.call("save")
 		save_data["savedata"] = node_data
 		save_game.store_line(to_json(save_data))

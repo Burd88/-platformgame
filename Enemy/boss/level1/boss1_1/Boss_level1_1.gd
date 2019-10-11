@@ -207,7 +207,10 @@ func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
 		_drop_item()
 		get_parent().get_parent().get_parent().boss1_1_kill = true
+		
 		queue_free()
+		
+		
 	pass # Replace with function body.
 
 

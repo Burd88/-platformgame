@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 var player_type = true
 ## жизни игрока
-var health = 2500
+var health = 1000
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -296,9 +296,9 @@ func _on_spr_animation_finished():
 	elif $spr.animation == "меч_взял":
 		equip_sword_anim = false
 	if $spr.animation == 'смерть':
-		#GLOBAL.load_game = "Load_game"
-		#pause_menu.preload_game()
-		get_tree().change_scene("res://main/main.tscn")
+		#get_tree().change_scene("res://main/main.tscn")
+		pause_menu.preload_game()
+		
 	pass # Replace with function body.
 	
 func _death():
@@ -384,6 +384,8 @@ func _on_use_area_entered(area):
 		#print(area.data_id)
 		area.queue_free()
 		pass
+		if area.get('data_id') == 2:
+			pause_menu._save_game_data()
 	elif area.get("item_type") == "sword":
 		equip_sword_anim = true
 		$spr.animation = "меч_взял"

@@ -216,7 +216,7 @@ func _change_position():
 
 func _on_attack_area_body_entered(body):
 	if body.name == 'Player' and health_now > 0:
-		damage = randi()%40+30
+		damage = randi()%20+10
 		body.health_now -= damage
 		
 		#print("attack  :"  , damage)

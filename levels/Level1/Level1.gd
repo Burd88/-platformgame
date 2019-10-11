@@ -36,7 +36,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
-
+		var save_nodes = get_tree().get_nodes_in_group("save")
+		for i in save_nodes:
+			print(i.filename)
+	
 		
 		#$Player/spr.stop()
 		#modulate = Color(0.470588, 0.192157, 0.192157)
@@ -69,6 +72,7 @@ func start_mechanism():
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
+		pause_menu._save_game_data()
 		body.position = Vector2(296,844)
 	pass # Replace with function body.
 

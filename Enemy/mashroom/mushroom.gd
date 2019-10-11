@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 200
 var enemy_type = true
 ## жизни игрока
-export var health = 500
+export var health = 300
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -256,7 +256,7 @@ func _on_visible_body_exited(body):
 func _on_spr_frame_changed():
 	if $spr.animation == "атака":
 		if $spr.frame == 3:
-			damage = randi()%20+50
+			damage = randi()%20+5
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
 		elif $spr.frame == 7:

@@ -57,7 +57,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "move_gear"
 length = 3.0
 loop = true
@@ -74,7 +74,7 @@ tracks/0/keys = {
 "values": [ Vector2( -3.50385, 8.37031 ), Vector2( 3.11454, 7.981 ), Vector2( 0.291987, 4.28248 ), Vector2( -3.5, 8 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16.0205, 4.27572 )
 
 [node name="Boss_level1_1" type="KinematicBody2D" groups=[
@@ -105,7 +105,7 @@ texture = ExtResource( 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spr/Sprite"]
 autoplay = "move_gear"
-anims/move_gear = SubResource( 4 )
+anims/move_gear = SubResource( 3 )
 
 [node name="healthbar" type="ProgressBar" parent="."]
 margin_left = -6.80116
@@ -127,14 +127,14 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.402084, -0.824414 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="phase1" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
 
 [node name="bullet" type="Timer" parent="."]
-wait_time = 1.7
+wait_time = 2.0
 one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="timeout" from="shot" to="." method="_on_shot_timeout"]
