@@ -306,6 +306,7 @@ func _death():
 		velocity = Vector2(0,150)
 		health_now = 0
 		$spr.animation = 'смерть'
+		hook_enable = false
 	pass
 
 func _on_attack_area_body_entered(body):

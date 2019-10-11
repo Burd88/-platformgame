@@ -29,6 +29,7 @@ region_rect = Rect2( 352, 128, 16, 16 )
 position = Vector2( 0.110184, -3.19533 )
 scale = Vector2( 1, 0.695276 )
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
 position = Vector2( 0.220367, -12.3139 )

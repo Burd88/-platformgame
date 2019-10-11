@@ -86,7 +86,7 @@ anims/collapse = SubResource( 1 )
 
 [node name="button" type="Node2D" parent="inter"]
 modulate = Color( 0.498039, 0.756863, 0.498039, 1 )
-position = Vector2( 14.065, 170 )
+position = Vector2( 150, 250 )
 
 [node name="Start_game" type="TextureButton" parent="inter/button"]
 margin_left = 430.0
@@ -131,10 +131,10 @@ __meta__ = {
 }
 
 [node name="Game_name" type="Label" parent="inter"]
-margin_left = 350.0
-margin_top = 82.0
-margin_right = 658.0
-margin_bottom = 139.0
+margin_left = 846.066
+margin_top = 494.689
+margin_right = 1154.07
+margin_bottom = 593.689
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 text = "Пропасть
@@ -142,9 +142,6 @@ text = "Пропасть
 Испытания"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="copyright" type="Label" parent="inter"]
 margin_left = 38.2107
@@ -180,9 +177,9 @@ text = "en"
 
 [node name="chack_save_game" type="Panel" parent="inter"]
 visible = false
-margin_left = 350.0
+margin_left = 500.0
 margin_top = 336.0
-margin_right = 660.0
+margin_right = 810.0
 margin_bottom = 562.0
 custom_styles/panelf = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )

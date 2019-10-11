@@ -124,7 +124,9 @@ frame = 7
 autoplay = "idle"
 anims/idle = SubResource( 1 )
 
-[node name="idletimer" type="Timer" parent="spriteanim/idle"]
+[node name="idletimer" type="Timer" parent="spriteanim/idle" groups=[
+"save",
+]]
 wait_time = 3.0
 one_shot = true
 

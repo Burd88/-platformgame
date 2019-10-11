@@ -126,7 +126,7 @@ anims/move = SubResource( 1 )
 visible = false
 texture = ExtResource( 3 )
 hframes = 9
-frame = 7
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spriteanim/idle"]
 autoplay = "idle"
@@ -178,7 +178,9 @@ position = Vector2( -12, 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 shape = SubResource( 8 )
 
-[node name="visible" type="Area2D" parent="."]
+[node name="visible" type="Area2D" parent="." groups=[
+"save",
+]]
 scale = Vector2( 1.2, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]

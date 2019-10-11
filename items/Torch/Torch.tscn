@@ -41,6 +41,7 @@ position = Vector2( 2.18928, -2.96524 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
+energy = 0.7
 shadow_enabled = true
 
 [node name="use_area" type="Area2D" parent="."]
