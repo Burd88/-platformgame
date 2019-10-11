@@ -36,9 +36,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
 		get_tree().paused = true
-		var save_nodes = get_tree().get_nodes_in_group("save")
-		for i in save_nodes:
-			print(i.filename)
+
 	
 		
 		#$Player/spr.stop()
@@ -71,8 +69,7 @@ func start_mechanism():
 		#$Chain/AnimatedSprite.stop()
 
 func _on_Area2D_body_entered(body):
-	if body.name == 'Player':
-		pause_menu._save_game_data()
+	if body.get("player_type"):
 		body.position = Vector2(296,844)
 	pass # Replace with function body.
 

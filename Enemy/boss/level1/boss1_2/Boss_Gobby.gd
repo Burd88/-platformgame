@@ -20,6 +20,6 @@ func save():
 #		"health" : health ,
 #		"health_now" : health_now,
 #		"php" : php,
-#		"name" : name,
+		"name" : name,
 	}
 	return save_dict

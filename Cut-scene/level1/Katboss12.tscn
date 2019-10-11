@@ -108,7 +108,6 @@ func change_back():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == \"kath_Scene\":
-		pause_menu._save_game_data()
 		queue_free()
 	pass # Replace with function body.
 "
@@ -251,7 +250,7 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Boss_Gobby"]
 frames = SubResource( 5 )
 animation = "стойка"
-frame = 7
+frame = 4
 playing = true
 flip_h = true
 

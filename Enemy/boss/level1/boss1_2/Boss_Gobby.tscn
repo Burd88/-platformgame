@@ -76,7 +76,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.40453, 10.3203 )
 
-[node name="Boss_Gobby" type="KinematicBody2D"]
+[node name="Boss_Gobby" type="KinematicBody2D" groups=[
+"save",
+]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
@@ -85,7 +87,6 @@ frames = SubResource( 5 )
 animation = "стойка"
 frame = 3
 playing = true
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

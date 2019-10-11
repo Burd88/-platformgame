@@ -297,6 +297,7 @@ func _on_spr_animation_finished():
 		equip_sword_anim = false
 	if $spr.animation == 'смерть':
 		#get_tree().change_scene("res://main/main.tscn")
+		GLOBAL.load_game = "loading_game"
 		pause_menu.preload_game()
 		
 	pass # Replace with function body.
@@ -384,8 +385,7 @@ func _on_use_area_entered(area):
 		#print(area.data_id)
 		area.queue_free()
 		pass
-		if area.get('data_id') == 2:
-			pause_menu._save_game_data()
+
 	elif area.get("item_type") == "sword":
 		equip_sword_anim = true
 		$spr.animation = "меч_взял"
