@@ -1,14 +1,25 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Global_gui/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/background/forest/sea.png" type="Texture" id=2]
 [ext_resource path="res://levels/Level1/map/background/forest/clouds.png" type="Texture" id=3]
 [ext_resource path="res://levels/Level1/map/background/forest/far-grounds.png" type="Texture" id=4]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=5]
-[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=5]
+[ext_resource path="res://player/Individual Sprites1/adventurer-slide-01.png" type="Texture" id=6]
+[ext_resource path="res://fonts/space_age_cyrillic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=9]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=10]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0823529, 0.329412, 0.203922, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -21,20 +32,22 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 draw_center = false
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 outline_color = Color( 0.705882, 0.105882, 0.105882, 1 )
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 36
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "loading"
+[sub_resource type="DynamicFont" id=5]
+size = 36
+outline_size = 2
+outline_color = Color( 0.815686, 0.819608, 0.113725, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=6]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
@@ -61,9 +74,13 @@ tracks/1/keys = {
 "values": [ 0.0, 100.0 ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 32
-font_data = ExtResource( 7 )
+outline_size = 3
+outline_color = Color( 0.466667, 0.0784314, 0.0784314, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
 
 [node name="pause_menu" type="CanvasLayer"]
 pause_mode = 2
@@ -76,45 +93,48 @@ position = Vector2( -75.7621, 5.64951 )
 
 [node name="Sprite" type="Sprite" parent="loading"]
 modulate = Color( 1, 0.25098, 0.25098, 1 )
-position = Vector2( 585.422, 294.149 )
-scale = Vector2( 9.29788, 6.2028 )
+position = Vector2( 713.582, 359.767 )
+scale = Vector2( 11.5864, 7.74071 )
 texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="loading"]
 modulate = Color( 0.815686, 0.521569, 0.521569, 1 )
-position = Vector2( 591.477, 447.523 )
-scale = Vector2( 1.94612, 1.33017 )
+position = Vector2( 719.637, 513.141 )
+scale = Vector2( 2.40976, 1.90363 )
 texture = ExtResource( 3 )
 
 [node name="Sprite3" type="Sprite" parent="loading"]
 self_modulate = Color( 0.517647, 0.337255, 0.337255, 1 )
-position = Vector2( 592.502, 533.646 )
-scale = Vector2( 1.74306, 1.33017 )
+position = Vector2( 721.687, 596.188 )
+scale = Vector2( 2.16249, 2.4673 )
 texture = ExtResource( 4 )
 
-[node name="Sprite4" type="Sprite" parent="loading"]
-position = Vector2( 626.186, 509.252 )
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 5 )
+[node name="Sprite4" type="AnimatedSprite" parent="loading"]
+position = Vector2( 726.274, 556.167 )
+rotation = -0.0174533
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
-margin_left = 487.683
-margin_top = 257.862
-margin_right = 687.683
-margin_bottom = 307.862
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+margin_left = 637.373
+margin_top = 331.682
+margin_right = 837.373
+margin_bottom = 381.682
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 value = 100.0
 
 [node name="Label" type="Label" parent="loading"]
-margin_left = 460.711
-margin_top = 215.369
-margin_right = 710.711
-margin_bottom = 261.369
-custom_fonts/font = SubResource( 4 )
+margin_left = 608.351
+margin_top = 276.886
+margin_right = 858.351
+margin_bottom = 322.886
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.0705882, 0.572549, 0.0666667, 1 )
-text = "Loading..."
+text = "Загрузка..."
 align = 1
 valign = 1
 max_lines_visible = 12
@@ -124,51 +144,77 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="loading"]
-anims/loading = SubResource( 5 )
+anims/loading = SubResource( 6 )
 
 [node name="Popup" type="Popup" parent="."]
 visible = true
-margin_top = -98.892
-margin_right = 40.0
-margin_bottom = -58.892
+margin_left = 137.387
+margin_top = -4.56651
+margin_right = 177.387
+margin_bottom = 35.4335
 
 [node name="Label" type="Label" parent="Popup"]
-margin_left = 450.0
-margin_top = 250.0
-margin_right = 597.0
-margin_bottom = 350.0
-custom_fonts/font = SubResource( 6 )
-text = "Paused"
+margin_left = 397.451
+margin_top = 231.927
+margin_right = 632.451
+margin_bottom = 331.927
+custom_fonts/font = SubResource( 7 )
+text = "Пауза
+Рекламная"
 align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="Popup"]
-margin_left = 490.0
-margin_top = 350.0
-margin_right = 551.0
-margin_bottom = 370.0
-text = "Contine"
+margin_left = 441.707
+margin_top = 315.425
+margin_right = 587.707
+margin_bottom = 358.425
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "Продолжить"
 
 [node name="Button2" type="Button" parent="Popup"]
-margin_left = 500.0
-margin_top = 400.0
-margin_right = 512.0
-margin_bottom = 420.0
-text = "Exit"
+margin_left = 423.99
+margin_top = 426.574
+margin_right = 610.99
+margin_bottom = 469.574
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "Выход из игры"
 
 [node name="Button3" type="Button" parent="Popup"]
-margin_left = 449.117
-margin_top = 374.483
-margin_right = 492.117
-margin_bottom = 394.483
-text = "Save"
+margin_left = 390.0
+margin_top = 370.0
+margin_right = 516.0
+margin_bottom = 413.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "Сохранить"
 
 [node name="Button4" type="Button" parent="Popup"]
-margin_left = 548.326
-margin_top = 375.399
-margin_right = 587.326
-margin_bottom = 395.399
-text = "Load"
+margin_left = 522.0
+margin_top = 370.0
+margin_right = 644.0
+margin_bottom = 413.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "Загрузить"
 [connection signal="timeout" from="loading/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="loading/AnimationPlayer" to="." method="_on_loading_animation_finished"]
 [connection signal="pressed" from="Popup/Button" to="." method="_on_pause_Button_pressed"]

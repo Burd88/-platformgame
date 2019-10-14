@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 var player_type = true
 ## жизни игрока
-var health = 1000
+var health = 500
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -31,7 +31,7 @@ var swim = false
 #var text_actual = null
 #var shield = false
 var open_door = false
-var kath_scene = false
+var cut_scene = false
 #var check_cell = false
 var floor_enable = false
 var distance = Vector2()
@@ -57,15 +57,28 @@ func _ready():
 
 
 func _physics_process(delta):
+	print(velocity.y)
 	
 #	bow_attack()
-	if kath_scene == false:
+	if cut_scene == false:
 		_move(delta)
 		_attack()
-	elif kath_scene == true:
+		$inventary/inventory.show()
+		$GUI/Healthbar.show()
+		$Light2D.show()
+	elif cut_scene == true:
 		velocity.x = 0
 		velocity.y += gravity*delta
 		collision_info = move_and_slide(velocity,Vector2(0,-1))
+		if weapon == 0:
+			$spr.animation = "стойка"
+		elif weapon == 1:
+			$spr.animation =  "стойка_меч_1"
+		$inventary/inventory.hide()
+		$GUI/Healthbar.hide()
+		$Light2D.hide()
+		$GUI/say_label.hide()
+		#hide()
 	
 	_gui()
 	_death()
@@ -181,6 +194,10 @@ func _move(delta):
 	
 	if is_on_floor() :
 		floor_enable = true
+		if velocity.y >= 250 and velocity.y <= 350:
+			health_now = health_now - (20*health)/100
+		elif velocity.y >= 400 :
+			health_now = health_now - (75*health)/100
 		velocity.y = 0
 		direction.y = 0
 		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :

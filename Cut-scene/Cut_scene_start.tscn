@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=41]
+script/source = "extends Area2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+
+func _on_Cut_scene_start_body_entered(body):
+	if body.get(\"player_type\") == true:
+	
+		body.cut_scene = true
+		print(\"CUt Scene\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 58.6908, 93.4556 )
+
+[node name="Cut_scene_start" type="Area2D"]
+pause_mode = 2
+position = Vector2( 988.89, 1014.25 )
+script = SubResource( 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 42 )
+[connection signal="body_entered" from="." to="." method="_on_Cut_scene_start_body_entered"]

@@ -22,8 +22,8 @@ func _ready():
 
 func _on_Sword_equip_area_entered(area):
 	if area.name == \"use\":
-		area.get_parent().get_node(\"$say_label\").text = \"Конечно не мой, но лучше чем кулоками махать\"
-		area.get_parent().get_node(\"$say_label\").show_label = true
+		get_parent().get_parent().get_node(\"Player\").get_node(\"GUI/say_label\").text = \"Конечно не мой, но лучше чем кулоками махать\"
+		get_parent().get_parent().get_node(\"Player\").get_node(\"GUI/say_label\").show_label = true
 		pass # Replace with function body.
 "
 

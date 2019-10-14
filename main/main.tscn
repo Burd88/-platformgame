@@ -1,19 +1,13 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Start.png" type="Texture" id=3]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/StartPressed.png" type="Texture" id=4]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Load.png" type="Texture" id=5]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/LoadPressed.png" type="Texture" id=6]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/LoadGray.png" type="Texture" id=7]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Exit.png" type="Texture" id=8]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/ExitPressed.png" type="Texture" id=9]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Ok.png" type="Texture" id=11]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Cancel_Smaller.png" type="Texture" id=12]
-[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=13]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=14]
+[ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Ok.png" type="Texture" id=5]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Buttons/64x64/Cancel_Smaller.png" type="Texture" id=6]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collapse"
@@ -38,16 +32,16 @@ draw_center = false
 [sub_resource type="DynamicFont" id=3]
 size = 30
 outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
-font_data = ExtResource( 10 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 10 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 10 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 10 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.803922, 0.0784314, 0.0784314, 1 )
@@ -66,7 +60,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 10 )
+font_data = ExtResource( 4 )
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -88,47 +82,31 @@ anims/collapse = SubResource( 1 )
 modulate = Color( 0.498039, 0.756863, 0.498039, 1 )
 position = Vector2( 150, 250 )
 
-[node name="Start_game" type="TextureButton" parent="inter/button"]
+[node name="Start_game" type="Button" parent="inter/button"]
 margin_left = 430.0
 margin_top = 170.0
-margin_right = 580.0
+margin_right = 590.0
 margin_bottom = 220.0
+custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
-stretch_mode = 3
-__meta__ = {
-"_edit_lock_": true
-}
+text = "Новая игра"
 
-[node name="Continue" type="TextureButton" parent="inter/button"]
-margin_left = 430.0
+[node name="Continue" type="Button" parent="inter/button"]
+margin_left = 395.0
 margin_top = 240.0
-margin_right = 580.0
+margin_right = 615.0
 margin_bottom = 290.0
+custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_disabled = ExtResource( 7 )
-expand = true
-stretch_mode = 3
-__meta__ = {
-"_edit_lock_": true
-}
+text = "Загрузить игру"
 
-[node name="Exit" type="TextureButton" parent="inter/button"]
+[node name="Exit" type="Button" parent="inter/button"]
 margin_left = 430.0
 margin_top = 310.0
 margin_right = 580.0
 margin_bottom = 360.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-expand = true
-stretch_mode = 3
-__meta__ = {
-"_edit_lock_": true
-}
+custom_fonts/font = ExtResource( 3 )
+text = "Выход"
 
 [node name="Game_name" type="Label" parent="inter"]
 margin_left = 846.066
@@ -193,7 +171,7 @@ margin_left = 40.0
 margin_top = 165.0
 margin_right = 110.0
 margin_bottom = 205.0
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
@@ -205,7 +183,7 @@ margin_left = 194.0
 margin_top = 165.0
 margin_right = 264.0
 margin_bottom = 205.0
-texture_normal = ExtResource( 12 )
+texture_normal = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
@@ -225,12 +203,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Intro" parent="." instance=ExtResource( 13 )]
+[node name="Intro" parent="." instance=ExtResource( 7 )]
 position = Vector2( -2.38394, 223.312 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Intro"]
 position = Vector2( 2.38394, -223.312 )
-stream = ExtResource( 14 )
+stream = ExtResource( 8 )
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]

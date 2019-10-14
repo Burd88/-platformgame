@@ -89,12 +89,12 @@ func _on_Gear6_area_entered(area):
 				yup = true
 				$"Player/E-key".hide()
 		if yup:
-			$"Player/$say_label".text = "Механизм заработал"
-			$"Player/$say_label".show_label = true
+			$"Player/GUI/say_label".text = "Механизм заработал"
+			$"Player/GUI/say_label".show_label = true
 			
 		else: 
-			$"Player/$say_label".text = "Похоже сюда нужна какая-то деталь"
-			$"Player/$say_label".show_label = true
+			$"Player/GUI/say_label".text = "Похоже сюда нужна какая-то деталь"
+			$"Player/GUI/say_label".show_label = true
 
 
 
@@ -102,7 +102,5 @@ func _on_Gear6_area_entered(area):
 
 
 
-func _on_Katboss12_tree_exited():
-	$Player/Camera2D.current = true
-	$Player.kath_scene = false
-	pass # Replace with function body.
+
+

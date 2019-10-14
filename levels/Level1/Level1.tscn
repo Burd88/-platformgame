@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -26,15 +26,15 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Enemy/mashroom/mushroom.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=26]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=27]
-[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=28]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=29]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=30]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=31]
-[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=32]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=27]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=28]
+[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=29]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=30]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=31]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=32]
+[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=35]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=37]
 [ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=38]
@@ -645,8 +645,8 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.get(\"player_type\"):
 		if play_text == false:
-			body.get_node(\"$say_label\").text = \"Похоже я нашел деталь, ее сожрала эта капля\"
-			body.get_node(\"$say_label\").show_label = true
+			body.get_node(\"GUI\").get_node(\"say_label\").text = \"Похоже я нашел деталь, ее сожрала эта капля\"
+			body.get_node(\"GUI\").get_node(\"say_label\").show_label = true
 			play_text = true
 		#$Boss_level1_1/phase1.start()
 		$Boss_level1_1.attack_now = true
@@ -764,58 +764,104 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 7.87292, 24.6017 )
 
-[sub_resource type="ConvexPolygonShape2D" id=21]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+[sub_resource type="GDScript" id=21]
+script/source = "extends Area2D
 
-[sub_resource type="ConvexPolygonShape2D" id=22]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+
+func _on_Cut_scene_start_body_entered(body):
+	if body.get(\"player_type\") == true:
+		$Timer.start()
+		
+		body.cut_scene = true
+		print(\"CUt Scene\")
+		
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$Katboss12/CanvasLayer/Label.show()
+	$Katboss12/CanvasLayer/Button.show()
+	$Katboss12.show()
+	$Katboss12/start_cut.start()
+	pass # Replace with function body.
+
+
+func _on_Cut_scene_start_area_exited(area):
+	if area.name == \"cut_scene\":
+		$CollisionShape2D.disabled = true
+		get_parent().get_node(\"Player\").cut_scene = false
+
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 58.6908, 93.4556 )
 
 [sub_resource type="ConvexPolygonShape2D" id=23]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 16, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=26]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 16, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=29]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=30]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 16, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=31]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=32]
-points = PoolVector2Array( 0, 0, 0, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=33]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=34]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+points = PoolVector2Array( 0, 0, 0, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=35]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=36]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 0, 0, 16 )
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=37]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
-[sub_resource type="TileSet" id=38]
+[sub_resource type="ConvexPolygonShape2D" id=38]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 0, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=39]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=40]
 2/name = "Для движения"
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
@@ -837,97 +883,97 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "autotile_coord": Vector2( 1, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 21 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 2, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 22 ),
+"shape": SubResource( 24 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 23 ),
+"shape": SubResource( 25 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 24 ),
+"shape": SubResource( 26 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 25 ),
+"shape": SubResource( 27 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 2 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 26 ),
+"shape": SubResource( 28 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 4, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 27 ),
+"shape": SubResource( 29 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 28 ),
+"shape": SubResource( 30 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 3, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 29 ),
+"shape": SubResource( 31 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 2, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 30 ),
+"shape": SubResource( 32 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 4 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 31 ),
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 32 ),
+"shape": SubResource( 34 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 33 ),
+"shape": SubResource( 35 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 2 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 34 ),
+"shape": SubResource( 36 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 35 ),
+"shape": SubResource( 37 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 36 ),
+"shape": SubResource( 38 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -953,7 +999,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 37 ),
+"shape": SubResource( 39 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
@@ -1356,7 +1402,6 @@ shape = SubResource( 8 )
 position = Vector2( 998.06, 314.793 )
 
 [node name="enemies-2" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Mushroom" parent="enemies-2" instance=ExtResource( 25 )]
 position = Vector2( 1398.34, 1501 )
@@ -1366,7 +1411,7 @@ position = Vector2( 378.722, 1139.87 )
 distance_max = 50
 
 [node name="Gobby3" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 1379.91, 1010.33 )
+position = Vector2( 1407.72, 1010.38 )
 distance_max = 50
 
 [node name="Rat_low" parent="enemies-2" instance=ExtResource( 23 )]
@@ -1413,13 +1458,16 @@ position = Vector2( 557.396, 1031.84 )
 [node name="Rat_low6" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 461.762, 857.37 )
 
+[node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 27 )]
+position = Vector2( 89.7222, 1395.33 )
+
 [node name="use_item" type="Node2D" parent="."]
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 27 )
+script = ExtResource( 28 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -1438,7 +1486,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 982.654, 987.856 )
+position = Vector2( 1312.02, 966.121 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1448,11 +1496,11 @@ script = SubResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
 shape = SubResource( 11 )
 
-[node name="Hook" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 872.471, 1078.92 )
 rotation = 4.71239
 
-[node name="Hook2" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook2" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 824.513, 1049.56 )
 rotation = 1.5708
 
@@ -1460,7 +1508,7 @@ rotation = 1.5708
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1502,7 +1550,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1551,72 +1599,108 @@ region_rect = Rect2( 352, 0, 16, 48 )
 position = Vector2( 10.7802, -5.13345 )
 shape = SubResource( 20 )
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 31 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 32 )]
 position = Vector2( 1228.68, 500.219 )
 
-[node name="Hook3" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook3" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 1607.69, 1240.18 )
 rotation = 1.5708
 
-[node name="Hook4" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook4" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 1607.65, 1355.08 )
 rotation = 1.5708
 
-[node name="Hook5" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook5" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 1640.77, 1506.9 )
 rotation = 4.71239
 
-[node name="Hook6" parent="use_item" instance=ExtResource( 28 )]
-position = Vector2( 1287.78, 1386.32 )
+[node name="Hook6" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 1288.18, 1402.21 )
 rotation = 4.71239
+scale = Vector2( 1, 1 )
 
-[node name="Hook7" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook7" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 1239.72, 1350.57 )
 rotation = 1.5708
 
-[node name="stone1" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone1" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1177, 1439.66 )
 rotation = 1.5708
 scale = Vector2( 3.92002, 1 )
 
-[node name="stone2" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone2" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1193.9, 1439.76 )
 rotation = 1.5708
 scale = Vector2( 3.99998, 1 )
 
-[node name="stone3" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone3" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1211.22, 1440.3 )
 rotation = 1.5708
 scale = Vector2( 3.91859, 1 )
 
-[node name="Hook8" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook8" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 583.698, 878.11 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook9" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook9" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 583.698, 920.751 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook10" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook10" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 584.076, 967.166 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook11" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook11" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 616.151, 898.11 )
 rotation = 4.71239
 scale = Vector2( 1, 1 )
 
-[node name="Hook12" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook12" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 616.151, 945.279 )
 rotation = 4.71239
 scale = Vector2( 1, 1 )
 
-[node name="Hook13" parent="use_item" instance=ExtResource( 28 )]
+[node name="Hook14" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 311.99, 441.098 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook15" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 312.02, 497.589 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook16" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 312.619, 568.839 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook13" parent="use_item" instance=ExtResource( 29 )]
 position = Vector2( 616.638, 989.658 )
 rotation = 4.71239
+scale = Vector2( 1, 1 )
+
+[node name="Hook19" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 471.89, 1092.99 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook18" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 824.502, 421.86 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook20" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 1465.94, 1098.83 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook17" parent="use_item" instance=ExtResource( 29 )]
+position = Vector2( 1095.63, 569.761 )
+rotation = 1.5708
 scale = Vector2( 1, 1 )
 
 [node name="platforms" type="Node2D" parent="."]
@@ -1627,68 +1711,79 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 33 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 33 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="Katboss12" parent="." instance=ExtResource( 34 )]
+[node name="Cut_scene_start" type="Area2D" parent="."]
+pause_mode = 2
 editor/display_folded = true
+position = Vector2( 988.89, 1014.25 )
+script = SubResource( 21 )
 
-[node name="Boss_Gobby2" parent="Katboss12" instance=ExtResource( 35 )]
-position = Vector2( -972.014, 140.357 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cut_scene_start"]
+shape = SubResource( 22 )
+
+[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 35 )]
+visible = false
+position = Vector2( 61.7502, -21.4907 )
+
+[node name="Timer" type="Timer" parent="Cut_scene_start"]
+wait_time = 1.5
+one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 36 )]
-position = Vector2( 948.76, 990.301 )
+position = Vector2( 1371.14, 996.79 )
 
 [node name="frontground" type="TileMap" parent="."]
-tile_set = SubResource( 38 )
+tile_set = SubResource( 40 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_mask = 31
@@ -1700,7 +1795,7 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color( 0.105882, 0.101961, 0.101961, 1 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1708,6 +1803,7 @@ __meta__ = {
 [node name="pause_menu" parent="." instance=ExtResource( 37 )]
 
 [node name="check_point" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="check_point" parent="check_point" instance=ExtResource( 38 )]
 position = Vector2( 879.004, 324.904 )
@@ -1739,4 +1835,6 @@ scale = Vector2( 0.666668, 2.43484 )
 [connection signal="area_entered" from="use_item/Gear6" to="." method="_on_Gear6_area_entered"]
 [connection signal="animation_finished" from="use_item/door/AnimationPlayer" to="use_item/door" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="use_item/door/door" to="use_item/door" method="_on_door_area_entered"]
-[connection signal="tree_exited" from="Katboss12" to="." method="_on_Katboss12_tree_exited"]
+[connection signal="area_exited" from="Cut_scene_start" to="Cut_scene_start" method="_on_Cut_scene_start_area_exited"]
+[connection signal="body_entered" from="Cut_scene_start" to="Cut_scene_start" method="_on_Cut_scene_start_body_entered"]
+[connection signal="timeout" from="Cut_scene_start/Timer" to="Cut_scene_start" method="_on_Timer_timeout"]

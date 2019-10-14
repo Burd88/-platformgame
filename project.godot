@@ -31,6 +31,7 @@ pause_menu="*res://Global_gui/pause_menu.tscn"
 Global_DataParser="*res://player/inventory/Global_DataParser.gd"
 Global_ItemDatabase="*res://player/inventory/Global_ItemDatabase.gd"
 Global_Player="*res://player/inventory/Global_Player.gd"
+say_lab="*res://Global_gui/say_lab.tscn"
 
 [debug]
 

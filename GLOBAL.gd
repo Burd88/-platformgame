@@ -1,6 +1,7 @@
 extends Node
 var load_game 
-
+var say_label = false
+var say_text = ""
 #var Player_health = 1000
 # Declare member variables here. Examples:
 # var a = 2

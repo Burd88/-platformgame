@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=1]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://player/portret.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=13]
+size = 8
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Label
+
+export var show_label = false
+export var text_say = \"\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+
+	if show_label:
+		visible = true
+		$Timer.start()
+		
+		
+		show_label = false
+#	pass
+
+
+func _on_Timer_timeout():
+	visible = false
+	text = \"\"
+	show_label = false
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	visible = false
+	text = \"\"
+	show_label = false
+	pass # Replace with function body.
+"
+
+[node name="$say_label" type="Label"]
+visible = false
+margin_left = 300.0
+margin_top = 575.0
+margin_right = 1020.0
+margin_bottom = 675.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = SubResource( 13 )
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 0
+script = SubResource( 14 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -57.4904, 48.7275 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
