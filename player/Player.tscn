@@ -470,6 +470,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "New Anim"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -629,6 +630,8 @@ shape = SubResource( 12 )
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
 [connection signal="timeout" from="GUI/say_label/Timer" to="GUI/say_label" method="_on_Timer_timeout"]
+[connection signal="focus_entered" from="GUI/say_label/Button" to="." method="_on_Button_focus_entered"]
+[connection signal="focus_exited" from="GUI/say_label/Button" to="." method="_on_Button_focus_exited"]
 [connection signal="pressed" from="GUI/say_label/Button" to="GUI/say_label" method="_on_Button_pressed"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="use" to="." method="_on_use_area_entered"]

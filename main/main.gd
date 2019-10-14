@@ -30,6 +30,7 @@ func _on_Start_game_pressed():
 	
 	elif save_game.file_exists("res://savegame.save"):
 		$inter/chack_save_game.show()
+		$inter/button.hide()
 		pass
 		
 
@@ -84,4 +85,5 @@ func _on_ok_pressed():
 
 func _on_cancel_pressed():
 	$inter/chack_save_game.hide()
+	$inter/button.show()
 	pass # Replace with function body.

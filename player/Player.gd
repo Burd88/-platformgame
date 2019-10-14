@@ -25,7 +25,7 @@ onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
 ##
 var health_potion = 0
-
+var button = false
 var swim = false
 #var cont = 0
 #var text_actual = null
@@ -57,7 +57,8 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(velocity.y)
+	if velocity.y >0:
+		print(velocity.y)
 	
 #	bow_attack()
 	if cut_scene == false:
@@ -194,10 +195,12 @@ func _move(delta):
 	
 	if is_on_floor() :
 		floor_enable = true
-		if velocity.y >= 250 and velocity.y <= 350:
+		if velocity.y >= 200 and velocity.y < 300:
 			health_now = health_now - (20*health)/100
-		elif velocity.y >= 400 :
+		elif velocity.y >= 300 :
 			health_now = health_now - (75*health)/100
+		elif velocity.y >500 :
+			health_now = 0
 		velocity.y = 0
 		direction.y = 0
 		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
@@ -255,7 +258,7 @@ func _light_mode():
 	pass
 
 func _attack():
-	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false: 
+	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		velocity.y = 0
 
 		if attack == false:
@@ -305,7 +308,7 @@ func _gui():		# Графический интерфейс игрока
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0:
-		health_now += 0.1
+		health_now += 0.03
 
 func _on_spr_animation_finished():
 	if $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3" or $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
@@ -512,4 +515,14 @@ func _on_hook_area_area_entered(area):
 func _on_hook_area_area_exited(area):
 	if area.get("type_hook"):
 		hook_enable = false
+	pass # Replace with function body.
+
+
+func _on_Button_focus_entered():
+	button = true
+	pass # Replace with function body.
+
+
+func _on_Button_focus_exited():
+	button = false
 	pass # Replace with function body.
