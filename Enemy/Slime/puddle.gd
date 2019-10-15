@@ -98,7 +98,7 @@ func _on_Timer2_timeout():
 	pass # Replace with function body.
 
 func _on_puddle_body_entered(body):
-	if body.name == "Player":
-		body.health_now -= 30
+	if body.get("player_type") == true:
+		body._damage(30)
 		#print("damage")
 	pass

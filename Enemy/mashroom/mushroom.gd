@@ -221,7 +221,7 @@ func _on_spr_animation_finished():
 
 func _on_damage_body_entered(body):
 	if body.get("player_type"):
-		body.health_now -= damage
+		body._damage(damage)
 
 		#print("attack")
 	pass # Replace with function body.

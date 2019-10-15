@@ -28,11 +28,11 @@
 [ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=27]
 [ext_resource path="res://levels/Level1/lever.gd" type="Script" id=28]
-[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=29]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=30]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=31]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=32]
-[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=29]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=30]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=31]
+[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=32]
+[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=33]
 [ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=35]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=36]
@@ -784,7 +784,6 @@ func _ready():
 func _on_Cut_scene_start_body_entered(body):
 	if body.get(\"player_type\") == true:
 		$Timer.start()
-		
 		body.cut_scene = true
 		print(\"CUt Scene\")
 		
@@ -1181,6 +1180,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
+frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -1486,7 +1486,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 1213.97, 481.164 )
+position = Vector2( 837.666, 1117.17 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1496,19 +1496,11 @@ script = SubResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/Torch/tourch_area"]
 shape = SubResource( 11 )
 
-[node name="Hook" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 872.471, 1078.92 )
-rotation = 4.71239
-
-[node name="Hook2" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 824.513, 1049.56 )
-rotation = 1.5708
-
 [node name="exit_level" type="Area2D" parent="use_item"]
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 30 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1550,7 +1542,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 31 )
+script = ExtResource( 30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1599,109 +1591,120 @@ region_rect = Rect2( 352, 0, 16, 48 )
 position = Vector2( 10.7802, -5.13345 )
 shape = SubResource( 20 )
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 32 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 31 )]
 position = Vector2( 1228.68, 500.219 )
 
-[node name="Hook3" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 1607.69, 1240.18 )
-rotation = 1.5708
-
-[node name="Hook4" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 1607.65, 1355.08 )
-rotation = 1.5708
-
-[node name="Hook5" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 1640.77, 1506.9 )
-rotation = 4.71239
-
-[node name="Hook6" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 1288.18, 1402.21 )
-rotation = 4.71239
-scale = Vector2( 1, 1 )
-
-[node name="Hook7" parent="use_item" instance=ExtResource( 29 )]
-position = Vector2( 1239.72, 1350.57 )
-rotation = 1.5708
-
-[node name="stone1" parent="use_item" instance=ExtResource( 33 )]
+[node name="stone1" parent="use_item" instance=ExtResource( 32 )]
 position = Vector2( 1177, 1439.66 )
 rotation = 1.5708
 scale = Vector2( 3.92002, 1 )
 
-[node name="stone2" parent="use_item" instance=ExtResource( 33 )]
+[node name="stone2" parent="use_item" instance=ExtResource( 32 )]
 position = Vector2( 1193.9, 1439.76 )
 rotation = 1.5708
 scale = Vector2( 3.99998, 1 )
 
-[node name="stone3" parent="use_item" instance=ExtResource( 33 )]
+[node name="stone3" parent="use_item" instance=ExtResource( 32 )]
 position = Vector2( 1211.22, 1440.3 )
 rotation = 1.5708
 scale = Vector2( 3.91859, 1 )
 
-[node name="Hook8" parent="use_item" instance=ExtResource( 29 )]
+[node name="hook_level" type="Node2D" parent="use_item"]
+editor/display_folded = true
+
+[node name="Hook8" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 583.698, 878.11 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook9" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook9" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 583.698, 920.751 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook10" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook10" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 584.076, 967.166 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook11" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook11" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 616.151, 898.11 )
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook12" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook12" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 616.151, 945.279 )
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook14" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook14" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 311.99, 441.098 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook15" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook15" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 312.02, 497.589 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook16" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook16" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 312.619, 568.839 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook13" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook13" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 616.638, 989.658 )
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook19" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook19" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 471.89, 1092.99 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook18" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook18" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 824.502, 421.86 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook20" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook20" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 1465.94, 1098.83 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook17" parent="use_item" instance=ExtResource( 29 )]
+[node name="Hook17" parent="use_item/hook_level" instance=ExtResource( 33 )]
 position = Vector2( 1095.63, 569.761 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
+
+[node name="Hook3" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 1607.69, 1240.18 )
+rotation = 1.5708
+
+[node name="Hook4" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 1607.65, 1355.08 )
+rotation = 1.5708
+
+[node name="Hook5" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 1640.77, 1506.9 )
+rotation = -1.5708
+
+[node name="Hook6" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 1288.18, 1402.21 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+
+[node name="Hook7" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 1239.72, 1350.57 )
+rotation = 1.5708
+
+[node name="Hook" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 872.471, 1078.92 )
+rotation = -1.5708
+
+[node name="Hook2" parent="use_item/hook_level" instance=ExtResource( 33 )]
+position = Vector2( 824.513, 1049.56 )
+rotation = 1.5708
 
 [node name="platforms" type="Node2D" parent="."]
 editor/display_folded = true
@@ -1780,7 +1783,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 36 )]
-position = Vector2( 1182.99, 487.982 )
+position = Vector2( 785.483, 1126.64 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 40 )

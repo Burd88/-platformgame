@@ -236,7 +236,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_damage_body_entered(body):
 	if body.get("player_type"):
-		body.health_now -= randi()%30+5
+		damage = randi()%30+5
+		body._damage(damage)
 		$damage/CollisionShape2D.set_deferred("disabled" , true)
 		#print("attack")
 	pass # Replace with function body.

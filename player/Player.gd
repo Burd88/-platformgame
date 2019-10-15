@@ -15,6 +15,7 @@ var attack_name = ['удар_ногой_1','удар_ногой_2','удар_р�
 var rand_attack_name = 1
 var equip_sword_anim = false
 var weapon = 0
+var parry = 3
 var damage
 var damage_sword = 0
 		# 0 = нет оружия
@@ -70,7 +71,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if velocity.y >0:
+	if velocity.y >200:
 		print(velocity.y)
 	
 #	bow_attack()
@@ -82,8 +83,11 @@ func _physics_process(delta):
 		$Light2D.show()
 	elif cut_scene == true:
 		velocity.x = 0
-		velocity.y += gravity*delta
-		collision_info = move_and_slide(velocity,Vector2(0,-1))
+		if is_on_floor():
+			pass
+		else: 
+			velocity.y += gravity*delta
+			collision_info = move_and_slide(velocity,Vector2(0,-1))
 		if weapon == 0:
 			$spr.animation = "стойка"
 		elif weapon == 1:
@@ -113,6 +117,7 @@ func save():
 		"torch" : torch,
 		"name" : name,
 		"damage_sword" : damage_sword,
+		"parry" : parry,
 	
 	}
 
@@ -211,10 +216,10 @@ func _move(delta):
 #			$move_sound.stream = move_stone1_sound
 #			$move_sound.play()
 		floor_enable = true
-		if velocity.y >= 200 and velocity.y < 300:
+		if velocity.y > 250 :
 			health_now = health_now - (20*health)/100
 		elif velocity.y >= 300 :
-			health_now = health_now - (75*health)/100
+			health_now = health_now - (50*health)/100
 		elif velocity.y >500 :
 			health_now = 0
 		velocity.y = 0
@@ -259,6 +264,12 @@ func _move(delta):
 			direction.y = -1
 	
 	
+func _damage(damage):
+	if randi()%6 == parry:
+		print("parry")
+		pass
+	else:
+		health_now -= damage
 
 func _use():
 	if Input.is_action_pressed('use_button'):

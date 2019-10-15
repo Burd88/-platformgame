@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Platformgame"
+config/name="Пропасть"
 run/main_scene="res://main/main.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
