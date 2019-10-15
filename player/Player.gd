@@ -62,14 +62,23 @@ var inventory
 ##зацеп за стену
 var hook_enable = false
 
+### expiriense 
+var experience = 0
+var level = 1
+var experience_next_level = 100
 func _ready():
 	#$inventary/inventory/bag1.clear()
 	set_physics_process(true)
 	set_process(true)
 	#$inventary/inventory/bag1.load_items()
 	#Global_Player.load_data()
-
-
+func _expirience():
+	$GUI/expirience.value = experience
+	$GUI/expirience/level.text = str(level)
+	if experience == experience_next_level:
+		level +=1
+		experience = 0
+		
 func _physics_process(delta):
 	if velocity.y >200:
 		print(velocity.y)
@@ -97,13 +106,15 @@ func _physics_process(delta):
 		$Light2D.hide()
 		$GUI/say_label.hide()
 		#hide()
-	
+	_expirience()
 	_gui()
 	_death()
 	_light_mode()
 	_open_inventory()
 	_use()
-
+	if Input.is_action_pressed("ui_page_down"):
+		experience +=1
+		
 func save():
 	
 	var save_dict = {

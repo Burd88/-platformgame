@@ -1490,7 +1490,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 837.666, 1117.17 )
+position = Vector2( 142.219, 356.818 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1787,7 +1787,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 36 )]
-position = Vector2( 785.483, 1126.64 )
+position = Vector2( 80.7632, 344.65 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 40 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=2]
+[gd_scene load_steps=192 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -173,9 +173,10 @@
 [ext_resource path="res://player/portret.png" type="Texture" id=171]
 [ext_resource path="res://resourse/button x.tres" type="StyleBox" id=172]
 [ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=173]
-[ext_resource path="res://player/light.png" type="Texture" id=174]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=175]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=176]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground.png" type="Texture" id=174]
+[ext_resource path="res://player/light.png" type="Texture" id=175]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=176]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=177]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -432,6 +433,18 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 "
 
+[sub_resource type="Theme" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.533333, 0.0980392, 0.576471, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8.69962, 9.70228 )
 
@@ -569,6 +582,28 @@ custom_styles/normal = ExtResource( 172 )
 custom_fonts/font = ExtResource( 173 )
 text = "X"
 
+[node name="expirience" type="ProgressBar" parent="GUI"]
+margin_left = 426.0
+margin_top = 12.0
+margin_right = 931.0
+margin_bottom = 26.0
+theme = SubResource( 12 )
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+value = 100.0
+
+[node name="Sprite" type="Sprite" parent="GUI/expirience"]
+position = Vector2( 251.883, 6.83738 )
+scale = Vector2( 2.41227, 0.406555 )
+z_index = -1
+texture = ExtResource( 174 )
+
+[node name="level" type="Label" parent="GUI/expirience"]
+margin_left = 537.511
+margin_top = -0.598724
+margin_right = 577.511
+margin_bottom = 13.4013
+
 [node name="attack_area" type="Area2D" parent="."]
 visible = false
 position = Vector2( 16, 5 )
@@ -599,7 +634,7 @@ shape = SubResource( 9 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -0.481295, 2.70181 )
 enabled = false
-texture = ExtResource( 174 )
+texture = ExtResource( 175 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
@@ -608,7 +643,7 @@ shadow_enabled = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 175 )
+texture = ExtResource( 176 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -617,7 +652,7 @@ playback_speed = 0.4
 anims/use = SubResource( 10 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 176 )
+stream = ExtResource( 177 )
 volume_db = 3.0
 pitch_scale = 1.5
 autoplay = true
