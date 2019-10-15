@@ -3,7 +3,10 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var health_now = 1000
+### sounds
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+####
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,3 +26,8 @@ func save():
 		"name" : name,
 	}
 	return save_dict
+	
+func _damage(damage):
+	health_now -= damage
+	$damage_sound.stream = damage_hurt2_sound
+	$damage_sound.play()

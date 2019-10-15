@@ -12,13 +12,18 @@ var php = (health_now*100)/health
 var anim = 'move'
 var target
 var damage
+### sounds
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
 
+####
+#### items drop
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
 onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_heal_potion.tscn")
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
+###
 ###движение
 export var distance_max = 100
 var visible_pl = false
@@ -97,8 +102,10 @@ func _drop_item():
 #		var item = arrow_item.instance()
 #		get_parent().add_child(item)
 #		item.position = position
-
-
+func _damage(damage):
+	health_now -= damage
+	$damage_sound.stream = damage_hurt2_sound
+	$damage_sound.play()
 func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0

@@ -21,6 +21,12 @@ var move_to_player = false
 var target
 var hit_pos
 var can_shoot = false
+### sounds
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+
+####
+
+
 onready var bullet = preload("res://Enemy/Slime/bullet.tscn")
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
@@ -51,11 +57,14 @@ func _process(delta):
 		aim()
 	_gui()
 	_move_enemy(delta)
-	_damage()
+	_death()
 	_check_place()
 	$sprite.animation = anim
 	pass
-
+func _damage(damage):
+	health_now -= damage
+	$damage_sound.stream = damage_hurt2_sound
+	$damage_sound.play()
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
@@ -94,7 +103,7 @@ func _gui():# Графический интерфейс
 	php = (health_now*100)/health
 	$healthbar.value = php
 
-func _damage():
+func _death():
 	if health_now <= 0:
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)

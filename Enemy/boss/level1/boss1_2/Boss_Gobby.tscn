@@ -31,16 +31,16 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=29]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=30]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=31]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=32]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=33]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=34]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=35]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=36]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=37]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=38]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=39]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=34]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=35]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=36]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=37]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=38]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=39]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -62,14 +62,14 @@ animations = [ {
 "name": "стойка",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "урон",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "прыжок",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "урон",
 "speed": 5.0
 } ]
 
@@ -83,12 +83,15 @@ scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 5 )
+frames = SubResource( 1 )
 animation = "стойка"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0.397217, 4.76658 )
 shape = SubResource( 2 )
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]

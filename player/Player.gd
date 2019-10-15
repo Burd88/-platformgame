@@ -20,15 +20,17 @@ var damage_sword = 0
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
-## sound load
+## sound load attack
 onready var figth_hand_sound = preload("res://sounds/figth sound/animal melee sound.wav")
 onready var figth_fit_sound = preload("res://sounds/figth sound/melee sound.wav")
 onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.wav")
 
-onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+
 onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.wav")
-
-
+onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big punch.wav")
+## sound move attack
+onready var move_stone1_sound = preload("res://sounds/jute-dh-steps/stepstone_1.wav")
+onready var move_stone2_sound = preload("res://sounds/jute-dh-steps/stepstone_2.wav")
 ##
 
 onready var arrow = preload("res://items/arrow/arrow.tscn")
@@ -204,6 +206,9 @@ func _move(delta):
 	
 	
 	if is_on_floor() :
+#		if velocity.x > 0:
+#			$move_sound.stream = move_stone1_sound
+#			$move_sound.play()
 		floor_enable = true
 		if velocity.y >= 200 and velocity.y < 300:
 			health_now = health_now - (20*health)/100
@@ -346,13 +351,16 @@ func _death():
 
 func _on_attack_area_body_entered(body):
 	if body.get("enemy_type"):
-		body.health_now -= damage
-		$damage_sound.stream = damage_hurt2_sound
-		$damage_sound.play()
+		body._damage(damage)
+
 		#print("body name: ", body.name)
 	elif body.name == "frontground":
-		$damage_sound.stream = damage_sword_sound
-		$damage_sound.play()
+		if weapon == 1:
+			$damage_sound.stream = damage_sword_sound
+			$damage_sound.play()
+		elif weapon == 0:
+			$damage_sound.stream = damage_hand_sound
+			$damage_sound.play()
 	else : pass
 
 	if !body:
@@ -360,6 +368,16 @@ func _on_attack_area_body_entered(body):
 
 
 func _on_spr_frame_changed():
+	if $spr.animation == "бег":
+		if $spr.frame == 1:
+			$move_sound.stream = move_stone1_sound
+			$move_sound.play()
+		elif $spr.frame == 3:
+			$move_sound.stream = move_stone2_sound
+			$move_sound.play()
+		elif $spr.frame == 5:
+			$move_sound.stream = move_stone1_sound
+			$move_sound.play()
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_sword_sound

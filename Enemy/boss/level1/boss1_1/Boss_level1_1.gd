@@ -14,6 +14,10 @@ var php = (health_now*100)/health
 var anim = 'move'
 onready var enemy_shoot = preload("res://Enemy/Slime/Slime.tscn")
 onready var bullet_shoot = preload("res://Enemy/Slime/bullet.tscn")
+### sounds
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+
+####
 
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
@@ -63,7 +67,10 @@ func save():
 		"name" : name,
 	}
 	return save_dict
-
+func _damage(damage):
+	health_now -= damage
+	$damage_sound.stream = damage_hurt2_sound
+	$damage_sound.play()
 
 func _flip_move():
 	if is_on_wall():
