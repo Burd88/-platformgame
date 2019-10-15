@@ -31,6 +31,7 @@ onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big
 ## sound move attack
 onready var move_stone1_sound = preload("res://sounds/jute-dh-steps/stepstone_1.wav")
 onready var move_stone2_sound = preload("res://sounds/jute-dh-steps/stepstone_2.wav")
+onready var move_stone3_sound = preload("res://sounds/jute-dh-steps/stepstone_3.wav")
 ##
 
 onready var arrow = preload("res://items/arrow/arrow.tscn")
@@ -376,7 +377,7 @@ func _on_spr_frame_changed():
 			$move_sound.stream = move_stone2_sound
 			$move_sound.play()
 		elif $spr.frame == 5:
-			$move_sound.stream = move_stone1_sound
+			$move_sound.stream = move_stone3_sound
 			$move_sound.play()
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:

@@ -95,7 +95,6 @@ shape = SubResource( 1 )
 position = Vector2( -0.19958, -8.18273 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="spr"]
