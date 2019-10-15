@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Socapex - new_hits_3.wav-0e12a120c571fc8db556e210e888dabc.sample"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - new_hits_3.wav"
+dest_files=[ "res://.import/Socapex - new_hits_3.wav-0e12a120c571fc8db556e210e888dabc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

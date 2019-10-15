@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Socapex - blub_hurt.wav-d114ca97ab25fa99a0d871a3941ced3d.sample"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - blub_hurt.wav"
+dest_files=[ "res://.import/Socapex - blub_hurt.wav-d114ca97ab25fa99a0d871a3941ced3d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

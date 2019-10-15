@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/melee sound.wav-3444060246a0246a83110644c31657cc.sample"
+
+[deps]
+
+source_file="res://sounds/figth sound/melee sound.wav"
+dest_files=[ "res://.import/melee sound.wav-3444060246a0246a83110644c31657cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

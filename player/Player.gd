@@ -20,7 +20,17 @@ var damage_sword = 0
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
+## sound load
+onready var figth_hand_sound = preload("res://sounds/figth sound/animal melee sound.wav")
+onready var figth_fit_sound = preload("res://sounds/figth sound/melee sound.wav")
+onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.wav")
+
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.wav")
+
+
 ##
+
 onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
 ##
@@ -270,6 +280,7 @@ func _attack():
 	if attack and weapon == 1:
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
+	
 		$spr.animation = str(attack_name[rand_attack_name])
 #	elif attack and weapon == 2 :
 #		for i in range(0,Global_Player.inventory_maxSlots):
@@ -336,7 +347,12 @@ func _death():
 func _on_attack_area_body_entered(body):
 	if body.get("enemy_type"):
 		body.health_now -= damage
+		$damage_sound.stream = damage_hurt2_sound
+		$damage_sound.play()
 		#print("body name: ", body.name)
+	elif body.name == "frontground":
+		$damage_sound.stream = damage_sword_sound
+		$damage_sound.play()
 	else : pass
 
 	if !body:
@@ -346,6 +362,8 @@ func _on_attack_area_body_entered(body):
 func _on_spr_frame_changed():
 	if $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		if $spr.frame == 1:
+			$fight_sound.stream = figth_sword_sound
+			$fight_sound.play()
 			damage = randi()%20+50+damage_sword
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
@@ -354,6 +372,8 @@ func _on_spr_frame_changed():
 	
 	elif $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2":
 		if $spr.frame == 1:
+			$fight_sound.stream = figth_hand_sound
+			$fight_sound.play()
 			damage = randi()%20+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
@@ -362,6 +382,8 @@ func _on_spr_frame_changed():
 	
 	elif $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2":
 		if $spr.frame == 1 :
+			$fight_sound.stream = figth_fit_sound
+			$fight_sound.play()
 			damage = randi()%20+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
@@ -525,4 +547,9 @@ func _on_Button_focus_entered():
 
 func _on_Button_focus_exited():
 	button = false
+	pass # Replace with function body.
+
+
+func _on_AudioStreamPlayer2D_finished():
+	$AudioStreamPlayer2D.play()
 	pass # Replace with function body.

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Socapex - small knock.wav-88eea32ce1466cc94578c547f9d1f2f3.sample"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - small knock.wav"
+dest_files=[ "res://.import/Socapex - small knock.wav-88eea32ce1466cc94578c547f9d1f2f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

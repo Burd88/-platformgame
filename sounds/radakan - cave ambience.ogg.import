@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/radakan - cave ambience.ogg-a3b06ccf818880d55bbac329c152c8ec.oggstr"
+
+[deps]
+
+source_file="res://sounds/radakan - cave ambience.ogg"
+dest_files=[ "res://.import/radakan - cave ambience.ogg-a3b06ccf818880d55bbac329c152c8ec.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

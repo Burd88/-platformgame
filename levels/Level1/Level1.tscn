@@ -1181,7 +1181,6 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -1402,6 +1401,7 @@ shape = SubResource( 8 )
 position = Vector2( 998.06, 314.793 )
 
 [node name="enemies-2" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Mushroom" parent="enemies-2" instance=ExtResource( 25 )]
 position = Vector2( 1398.34, 1501 )
@@ -1486,7 +1486,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 183.107, 346.012 )
+position = Vector2( 1213.97, 481.164 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1780,7 +1780,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 36 )]
-position = Vector2( 117.673, 350.18 )
+position = Vector2( 1182.99, 487.982 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 40 )
