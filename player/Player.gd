@@ -400,7 +400,7 @@ func _on_spr_frame_changed():
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
 	
-	elif $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2":
+	elif $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3":
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
