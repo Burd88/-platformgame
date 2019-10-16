@@ -252,6 +252,10 @@ autoplay = true
 
 [node name="Intro" parent="." instance=ExtResource( 9 )]
 position = Vector2( -2.38394, 223.312 )
+
+[node name="version" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]

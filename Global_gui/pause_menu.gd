@@ -61,7 +61,10 @@ func _on_Button4_pressed():
 func preload_game():
 	var save_game = File.new()
 	if not save_game.file_exists("res://savegame.save"):
-		return print("error")
+		get_tree().change_scene("res://main/main.tscn")
+		return 
+		
+		print("error")
 	save_game.open("res://savegame.save", File.READ)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:

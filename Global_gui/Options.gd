@@ -9,6 +9,10 @@ var sound_value = 0
 func _ready():
 	$Panel/music_slide.value = GLOBAL.music_value
 	$Panel/sound_slide.value = GLOBAL.sound_value
+	if OS.window_fullscreen == true:
+		$Panel/Fullscreen_check.pressed = true
+	elif OS.window_fullscreen == false:
+		$Panel/Fullscreen_check.pressed = false
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
