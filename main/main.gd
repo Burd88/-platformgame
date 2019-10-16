@@ -10,7 +10,8 @@ func _ready():
 		pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _physics_process(delta):
+	$music.volume_db = GLOBAL.music_value
 	#if translationt.language == 1 :
 #		$inter/button/Start_game.text = 'Начать игру'
 	#	$inter/button/Continue.text = 'Продолжить'
@@ -86,4 +87,18 @@ func _on_ok_pressed():
 func _on_cancel_pressed():
 	$inter/chack_save_game.hide()
 	$inter/button.show()
+	pass # Replace with function body.
+
+
+func _on_settings_pressed():
+	$inter/Options/Panel.show()
+	$inter/button.hide()
+	$inter/Options/Button.show()
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	$inter/Options/Panel.hide()
+	$inter/button.show()
+	$inter/Options/Button.hide()
 	pass # Replace with function body.

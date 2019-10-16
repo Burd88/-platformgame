@@ -9,6 +9,7 @@ var boss1_1_kill = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
+	$music.play()
 	if GLOBAL.load_game == "new_game":
 		#$pause_menu._on_save_pressed()
 		#print("save new game")
@@ -30,11 +31,14 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	$music.volume_db = GLOBAL.music_value
 	update()
 	start_mechanism()
 	if Input.is_action_just_pressed("ui_cancel"):
 		$pause_menu/Popup.show()
+		$pause_menu.pause_menu = true
+		$pause_menu/music.visible = true
 		get_tree().paused = true
 
 	

@@ -65,7 +65,9 @@ extents = Vector2( 5, 10 )
 
 [node name="Slime" type="KinematicBody2D" groups=[
 "save",
+"paused",
 ]]
+pause_mode = 1
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 9
@@ -76,7 +78,6 @@ position = Vector2( -6.24947, -14.4806 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "hurt"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -138,6 +139,10 @@ max_distance = 200.0
 stream = ExtResource( 26 )
 volume_db = 1.0
 max_distance = 200.0
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="move_sound" type="AudioStreamPlayer2D" parent="."]
 [connection signal="animation_finished" from="sprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

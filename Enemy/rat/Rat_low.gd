@@ -41,6 +41,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update()
+	_settings()
 	if target and health_now > 0:
 		aim()
 	_move_enemy(delta)
@@ -83,7 +84,11 @@ func aim():
 		$damage.position.x = 12
 		$check_place.position.x = 10
 		
-
+func _settings():
+	$music.volume_db = GLOBAL.music_value
+	$attack_sound.volume_db = GLOBAL.sound_value
+	$move_sound.volume_db = GLOBAL.sound_value
+	$damage_sound.volume_db = GLOBAL.sound_value
 func _drop_item():
 	var item_drop = randi()%2
 	if item_drop == 0:

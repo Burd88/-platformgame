@@ -1,6 +1,12 @@
 extends CanvasLayer
+var pause_menu = false
+func _physics_process(delta):
+	$music.volume_db = GLOBAL.music_value
+
 func _on_pause_Button_pressed():
 	get_parent().get_tree().paused = false
+	pause_menu = false
+	$music.visible = false
 	$Popup.hide()
 	
 	#get_parent().modulate = Color(1, 1, 1)
@@ -130,3 +136,27 @@ func _on_Timer_timeout():
 	#get_parent().get_node("Player/spr").playing = true
 	#$loading.hide()
 	pass
+
+
+func _on_Button5_pressed():
+	$Options/Panel.show()
+	$Options/Button.show()
+	$Popup.hide()
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	$Options/Panel.hide()
+	$Options/Button.hide()
+	$Popup.show()
+	pass # Replace with function body.
+
+
+
+
+func _on_music_visibility_changed():
+	if $music.visible == true:
+		$music.play()
+	elif $music.visible == false:
+		$music.stop()
+	pass # Replace with function body.

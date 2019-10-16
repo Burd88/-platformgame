@@ -36,9 +36,14 @@ var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+func _settings():
+	$music.volume_db = GLOBAL.music_value
+	$attack_sound.volume_db = GLOBAL.sound_value
+	$move_sound.volume_db = GLOBAL.sound_value
+	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_settings()
 	_gui()
 	_flip_move()
 	fight()

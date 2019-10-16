@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Global_gui/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/background/forest/sea.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://resourse/button x.tres" type="StyleBox" id=9]
 [ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Global_gui/Options.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/Options_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -114,6 +117,7 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
@@ -146,7 +150,6 @@ one_shot = true
 anims/loading = SubResource( 6 )
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 margin_left = 137.387
 margin_top = -4.56651
 margin_right = 177.387
@@ -164,10 +167,10 @@ align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="Popup"]
-margin_left = 441.707
-margin_top = 315.425
-margin_right = 587.707
-margin_bottom = 358.425
+margin_left = 351.076
+margin_top = 321.941
+margin_right = 497.076
+margin_bottom = 364.941
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/focus = ExtResource( 9 )
@@ -175,6 +178,19 @@ custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 10 )
 text = "Продолжить"
+
+[node name="Button5" type="Button" parent="Popup"]
+margin_left = 514.492
+margin_top = 320.312
+margin_right = 660.492
+margin_bottom = 363.312
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+text = "Настройки"
 
 [node name="Button2" type="Button" parent="Popup"]
 margin_left = 423.99
@@ -214,9 +230,28 @@ custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 10 )
 text = "Загрузить"
+
+[node name="Options" parent="." instance=ExtResource( 11 )]
+
+[node name="Button" type="Button" parent="Options"]
+visible = false
+margin_left = 73.15
+margin_top = 181.45
+margin_right = 204.15
+margin_bottom = 212.45
+custom_fonts/font = ExtResource( 12 )
+text = "Закрыть"
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource( 13 )
+volume_db = 8.0
 [connection signal="timeout" from="loading/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="loading/AnimationPlayer" to="." method="_on_loading_animation_finished"]
 [connection signal="pressed" from="Popup/Button" to="." method="_on_pause_Button_pressed"]
+[connection signal="pressed" from="Popup/Button5" to="." method="_on_Button5_pressed"]
 [connection signal="pressed" from="Popup/Button2" to="." method="_on_exitgame_pause_menu_pressed"]
 [connection signal="pressed" from="Popup/Button3" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Popup/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Options/Button" to="." method="_on_Button_pressed"]
+[connection signal="visibility_changed" from="music" to="." method="_on_music_visibility_changed"]

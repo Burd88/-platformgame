@@ -79,7 +79,9 @@ extents = Vector2( 16.0205, 4.27572 )
 
 [node name="Boss_level1_1" type="KinematicBody2D" groups=[
 "save",
+"paused",
 ]]
+pause_mode = 1
 scale = Vector2( 3, 3 )
 collision_layer = 4
 collision_mask = 9
@@ -141,6 +143,10 @@ one_shot = true
 [node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="move_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="timeout" from="shot" to="." method="_on_shot_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

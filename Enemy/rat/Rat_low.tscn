@@ -105,7 +105,9 @@ extents = Vector2( 101.805, 10 )
 
 [node name="Rat_low" type="KinematicBody2D" groups=[
 "save",
+"paused",
 ]]
+pause_mode = 1
 scale = Vector2( 0.6, 0.5 )
 collision_layer = 4
 collision_mask = 9
@@ -204,6 +206,10 @@ cast_to = Vector2( 0, 15 )
 [node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="move_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="spriteanim/idle/idletimer" to="." method="_on_idletimer_timeout"]
 [connection signal="animation_finished" from="spriteanim/attack/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="spriteanim/die/AnimationPlayer" to="." method="_on_die_animation_finished"]

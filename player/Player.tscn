@@ -472,7 +472,9 @@ extents = Vector2( 2.03743, 1.97269 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "save",
+"paused",
 ]]
+pause_mode = 1
 z_index = 1
 z_as_relative = false
 collision_layer = 2
@@ -651,10 +653,11 @@ autoplay = "use"
 playback_speed = 0.4
 anims/use = SubResource( 10 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 1
 stream = ExtResource( 177 )
-volume_db = 3.0
-pitch_scale = 1.5
+volume_db = 10.0
+pitch_scale = 2.0
 autoplay = true
 
 [node name="hook_area" type="Area2D" parent="."]
@@ -683,6 +686,6 @@ volume_db = -8.69
 [connection signal="area_exited" from="use_check" to="." method="_on_use_check_area_exited"]
 [connection signal="body_entered" from="use_check" to="." method="_on_use_check_body_entered"]
 [connection signal="body_exited" from="use_check" to="." method="_on_use_check_body_exited"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
+[connection signal="finished" from="music" to="." method="_on_AudioStreamPlayer2D_finished"]
 [connection signal="area_entered" from="hook_area" to="." method="_on_hook_area_area_entered"]
 [connection signal="area_exited" from="hook_area" to="." method="_on_hook_area_area_exited"]

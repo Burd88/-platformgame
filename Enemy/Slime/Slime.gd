@@ -48,9 +48,14 @@ func _ready():
 	$Visible/visible_col.shape = shape
 
 	pass # Replace with function body.
-
+func _settings():
+	$music.volume_db = GLOBAL.music_value
+	$attack_sound.volume_db = GLOBAL.sound_value
+	$move_sound.volume_db = GLOBAL.sound_value
+	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_settings()
 	update()
 	if target:
 		#print(target)

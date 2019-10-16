@@ -67,6 +67,7 @@ var experience = 0
 var level = 1
 var experience_next_level = 100
 func _ready():
+#	$music.play()
 	#$inventary/inventory/bag1.clear()
 	set_physics_process(true)
 	set_process(true)
@@ -78,19 +79,24 @@ func _expirience():
 	if experience == experience_next_level:
 		level +=1
 		experience = 0
-		
+func _settings():
+	$music.volume_db = GLOBAL.music_value
+	$fight_sound.volume_db = GLOBAL.sound_value
+	$move_sound.volume_db = GLOBAL.sound_value
+	$damage_sound.volume_db = GLOBAL.sound_value
 func _physics_process(delta):
 	if velocity.y >200:
 		print(velocity.y)
 	
 #	bow_attack()
-	if cut_scene == false:
+	_settings()
+	if cut_scene == false or GLOBAL.paused == false:
 		_move(delta)
 		_attack()
 		$inventary/inventory.show()
 		$GUI/Healthbar.show()
 		$Light2D.show()
-	elif cut_scene == true:
+	elif cut_scene == true or GLOBAL.paused == true:
 		velocity.x = 0
 		if is_on_floor():
 			pass
