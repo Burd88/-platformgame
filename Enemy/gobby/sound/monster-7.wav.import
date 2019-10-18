@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster-7.wav-9780f2c7d7a1afb3992907d477439013.sample"
+
+[deps]
+
+source_file="res://Enemy/gobby/sound/monster-7.wav"
+dest_files=[ "res://.import/monster-7.wav-9780f2c7d7a1afb3992907d477439013.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

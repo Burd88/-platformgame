@@ -35,8 +35,7 @@ var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_position = Vector2(position.x , position.y)
-	spawn_position_x = spawn_position.x
-	spawn_position_y = spawn_position.y
+
 	$spr.animation = "хотьба"
 	pass # Replace with function body.
 func _settings():
@@ -85,12 +84,12 @@ func _damage(damage):
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
-		$spr.flip_h = false
+		$spr.flip_h = true
 		$attack_area.position.x = -12
 		$damage.position.x = -15
 		$check_place.position.x = -9
 	elif direction.x > 0:
-		$spr.flip_h = true
+		$spr.flip_h = false
 		$attack_area.position.x = 12
 		$damage.position.x = 15
 		$check_place.position.x = 9
@@ -140,7 +139,7 @@ func _move_enemy(delta):
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
 	else: print("move to spawn")
-#	distance.x = speed
+	#distance.x = -speed
 	velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta
 	move_and_slide(velocity,Vector2(0,-1))

@@ -13,8 +13,15 @@ var anim = 'move'
 var target
 var damage
 ### sounds
-onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
+onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav")
+onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.wav")
+onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.wav")
+onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.wav")
 
+var die_anim = 3
+onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.wav")
+onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.wav")
 ####
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")
@@ -36,8 +43,7 @@ var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_position = Vector2(position.x , position.y)
-	spawn_position_x = spawn_position.x
-	spawn_position_y = spawn_position.y
+
 	pass # Replace with function body.
 func _settings():
 	$music.volume_db = GLOBAL.music_value
@@ -56,6 +62,11 @@ func _process(delta):
 	_check_place()
 	_die()
 	_gui()
+	if die_anim == 2:
+		$move_sound.stream = death_sound
+		$move_sound.play()
+		print("2")
+		die_anim = 1
 	pass
 	
 func save():
@@ -74,9 +85,12 @@ func save():
 	}
 	return save_dict
 func _damage(damage):
-	health_now -= damage
-	$damage_sound.stream = damage_hurt2_sound
-	$damage_sound.play()
+	
+	if health_now > 0:
+		health_now -= damage
+	
+	
+	else : print("Error")
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
@@ -132,6 +146,8 @@ func _move_enemy(delta):
 	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
 		if idle :
 			idle = false
+			$move_sound.stream = idle_sound
+			$move_sound.play()
 			$spriteanim/idle/idletimer.start()
 		distance.x = 0
 		$spriteanim/die.hide()
@@ -152,7 +168,7 @@ func _move_enemy(delta):
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
 		
-	else: print("Eror")
+	else: print("Error")
 #	distance.x = speed
 	velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta
@@ -177,6 +193,7 @@ func _gui():# Графический интерфейс
 	
 func _die():
 	if health_now <= 0:
+		
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
@@ -186,6 +203,7 @@ func _die():
 		$spriteanim/idle.hide()
 		$spriteanim/attack.hide()
 		$spriteanim/die/AnimationPlayer.play("die")
+
 		
 	pass
 func _check_place():
@@ -301,3 +319,12 @@ func _on_visible_body_exited(body):
 
 
 
+
+
+
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "die" and die_anim == 3:
+		die_anim = 2
+	pass # Replace with function body.

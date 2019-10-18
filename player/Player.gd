@@ -380,13 +380,8 @@ func _on_spr_animation_finished():
 		equip_sword_anim = false
 	if $spr.animation == 'смерть':
 		#get_tree().change_scene("res://main/main.tscn")
-		var save_game = File.new()
-		if not save_game.file_exists("res://savegame.save"):
-			get_tree().change_scene("res://main/main.tscn")
-			return # Error! We don't have a save to load.
-		else:
-			GLOBAL.load_game = "loading_game"
-			pause_menu._death_load_game()
+		get_tree().change_scene("res://main/main.tscn")
+		
 		
 	pass # Replace with function body.
 	

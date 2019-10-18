@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -26,19 +26,20 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Enemy/mashroom/mushroom.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=27]
-[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=28]
-[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=29]
-[ext_resource path="res://levels/Level1/door.gd" type="Script" id=30]
-[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=31]
-[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=32]
-[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=33]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=35]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=36]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=37]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=38]
-[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Enemy/gobby_range/Gobby_range.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=28]
+[ext_resource path="res://levels/Level1/lever.gd" type="Script" id=29]
+[ext_resource path="res://levels/Level1/exit_level.gd" type="Script" id=30]
+[ext_resource path="res://levels/Level1/door.gd" type="Script" id=31]
+[ext_resource path="res://items/Items/sword/Sword_equip.tscn" type="PackedScene" id=32]
+[ext_resource path="res://items/stone/1/stone1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://items/hook/Hook.tscn" type="PackedScene" id=34]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=36]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=37]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=38]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=39]
+[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=40]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1445,8 +1446,14 @@ position = Vector2( 461.762, 857.37 )
 [node name="Gobby2" parent="enemies-2" instance=ExtResource( 26 )]
 position = Vector2( 704.185, 1134.63 )
 
-[node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 27 )]
-position = Vector2( 89.7222, 1395.33 )
+[node name="Gobby6" parent="enemies-2" instance=ExtResource( 26 )]
+position = Vector2( 373.094, 1409.2 )
+
+[node name="Gobby_range" parent="enemies-2" instance=ExtResource( 27 )]
+position = Vector2( 274.048, 1406.88 )
+
+[node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 28 )]
+position = Vector2( 242.931, 1398.42 )
 
 [node name="Gobby3" parent="enemies-2" instance=ExtResource( 26 )]
 position = Vector2( 1333.85, 996.005 )
@@ -1459,13 +1466,12 @@ position = Vector2( 772.663, 1303.32 )
 position = Vector2( 1188.54, 1310 )
 
 [node name="use_item" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 28 )
+script = ExtResource( 29 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/lever"]
 position = Vector2( 0, 2.71124 )
@@ -1484,7 +1490,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 15 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 142.219, 356.818 )
+position = Vector2( 506.942, 1370.62 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1498,7 +1504,7 @@ shape = SubResource( 11 )
 position = Vector2( 492.631, 163.076 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1540,7 +1546,7 @@ __meta__ = {
 position = Vector2( 280, 360 )
 collision_layer = 8
 collision_mask = 3
-script = ExtResource( 30 )
+script = ExtResource( 31 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="use_item/door"]
 playback_speed = 0.7
@@ -1589,20 +1595,20 @@ region_rect = Rect2( 352, 0, 16, 48 )
 position = Vector2( 10.7802, -5.13345 )
 shape = SubResource( 20 )
 
-[node name="Sword_equip" parent="use_item" instance=ExtResource( 31 )]
+[node name="Sword_equip" parent="use_item" instance=ExtResource( 32 )]
 position = Vector2( 1228.68, 500.219 )
 
-[node name="stone1" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone1" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1177, 1439.66 )
 rotation = 1.5708
 scale = Vector2( 3.92002, 1 )
 
-[node name="stone2" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone2" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1193.9, 1439.76 )
 rotation = 1.5708
 scale = Vector2( 3.99998, 1 )
 
-[node name="stone3" parent="use_item" instance=ExtResource( 32 )]
+[node name="stone3" parent="use_item" instance=ExtResource( 33 )]
 position = Vector2( 1211.22, 1440.3 )
 rotation = 1.5708
 scale = Vector2( 3.91859, 1 )
@@ -1610,97 +1616,97 @@ scale = Vector2( 3.91859, 1 )
 [node name="hook_level" type="Node2D" parent="use_item"]
 editor/display_folded = true
 
-[node name="Hook8" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook8" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 583.698, 878.11 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook9" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook9" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 583.698, 920.751 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook10" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook10" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 584.076, 967.166 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook11" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook11" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 616.151, 898.11 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook12" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook12" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 616.151, 945.279 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook14" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook14" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 311.99, 441.098 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook15" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook15" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 312.02, 497.589 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook16" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook16" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 312.619, 568.839 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook13" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook13" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 616.638, 989.658 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook19" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook19" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 471.89, 1092.99 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook18" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook18" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 824.502, 421.86 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook20" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook20" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1465.94, 1098.83 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook17" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook17" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1095.63, 569.761 )
 rotation = 1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook3" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook3" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1607.69, 1240.18 )
 rotation = 1.5708
 
-[node name="Hook4" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook4" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1607.65, 1355.08 )
 rotation = 1.5708
 
-[node name="Hook5" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook5" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1640.77, 1506.9 )
 rotation = -1.5708
 
-[node name="Hook6" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook6" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1288.18, 1402.21 )
 rotation = -1.5708
 scale = Vector2( 1, 1 )
 
-[node name="Hook7" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook7" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 1239.72, 1350.57 )
 rotation = 1.5708
 
-[node name="Hook" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 872.471, 1078.92 )
 rotation = -1.5708
 
-[node name="Hook2" parent="use_item/hook_level" instance=ExtResource( 33 )]
+[node name="Hook2" parent="use_item/hook_level" instance=ExtResource( 34 )]
 position = Vector2( 824.513, 1049.56 )
 rotation = 1.5708
 
@@ -1712,53 +1718,53 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 34 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 35 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 35 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 35 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 35 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 35 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 34 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 35 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
@@ -1772,7 +1778,7 @@ script = SubResource( 21 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cut_scene_start"]
 shape = SubResource( 22 )
 
-[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 35 )]
+[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 36 )]
 visible = false
 position = Vector2( 61.7502, -21.4907 )
 
@@ -1780,13 +1786,13 @@ position = Vector2( 61.7502, -21.4907 )
 wait_time = 1.5
 one_shot = true
 
-[node name="Player" parent="." instance=ExtResource( 36 )]
-position = Vector2( 80.7632, 344.65 )
+[node name="Player" parent="." instance=ExtResource( 37 )]
+position = Vector2( 491.849, 1352.28 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
 position = Vector2( 80.7632, 344.65 )
-stream = ExtResource( 37 )
+stream = ExtResource( 38 )
 volume_db = 8.727
 pitch_scale = 2.0
 autoplay = true
@@ -1810,29 +1816,29 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_menu" parent="." instance=ExtResource( 38 )]
+[node name="pause_menu" parent="." instance=ExtResource( 39 )]
 
 [node name="check_point" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="check_point" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 879.004, 324.904 )
 
-[node name="check_point3" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point3" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 1102.9, 998.342 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point2" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point2" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 550.748, 156.879 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point4" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point4" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 1304.38, 247.818 )
 
-[node name="check_point5" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point5" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 1300.12, 1437.94 )
 
-[node name="check_point6" parent="check_point" instance=ExtResource( 39 )]
+[node name="check_point6" parent="check_point" instance=ExtResource( 40 )]
 position = Vector2( 479.904, 1353.76 )
 scale = Vector2( 0.666668, 2.43484 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]

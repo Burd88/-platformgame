@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Enemy/gobby/Gobby.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/gobby/sprite/gobby_idleL_strip8.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemy/gobby/sprite/gobby_jumpL_strip5.png" type="Texture" id=6]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=7]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=8]
+[ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -213,10 +214,13 @@ shape = SubResource( 9 )
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="move_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+max_distance = 300.0
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="spriteanim/idle/idletimer" to="." method="_on_idletimer_timeout"]
 [connection signal="animation_finished" from="spriteanim/die/AnimationPlayer" to="." method="_on_die_animation_finished"]
+[connection signal="animation_started" from="spriteanim/die/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="animation_finished" from="spriteanim/attack/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
