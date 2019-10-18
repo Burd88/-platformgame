@@ -88,7 +88,9 @@ func _damage(damage):
 	
 	if health_now > 0:
 		health_now -= damage
-	
+		var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
+		$damage_sound.stream = rand_damage_sound[randi()%2]
+		$damage_sound.play()
 	
 	else : print("Error")
 func aim():

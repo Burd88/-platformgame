@@ -4,8 +4,8 @@ var say_label = false
 var say_text = ""
 #var Player_health = 1000
 # настройки звука
-var music_value = 0
-var sound_value = 0
+var music_value = -5
+var sound_value = -5
 var sound_off = false
 var music_value_off
 var sound_value_off
