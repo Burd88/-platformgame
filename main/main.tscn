@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://main/img/main background.png" type="Texture" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://Global_gui/Options.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/Options_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=7]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=8]
-[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://main/chak_save_game.tres" type="StyleBox" id=7]
+[ext_resource path="res://main/Check_Save_game.tres" type="StyleBox" id=8]
+[ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=9]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=10]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collapse"
@@ -28,43 +30,36 @@ tracks/0/keys = {
 }
 
 [sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 draw_center = false
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 size = 30
 outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 6 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.803922, 0.0784314, 0.0784314, 1 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.0901961, 0.384314, 0.294118, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0.470588, 0.0392157, 0.0392157, 1 )
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxLine" id=9]
-
-[sub_resource type="StyleBoxLine" id=10]
-
-[sub_resource type="StyleBoxLine" id=11]
 
 [sub_resource type="StyleBoxLine" id=12]
 
@@ -80,7 +75,19 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxLine" id=18]
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="StyleBoxLine" id=19]
+
+[sub_resource type="StyleBoxLine" id=20]
+
+[sub_resource type="StyleBoxLine" id=21]
+
+[sub_resource type="DynamicFont" id=22]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=23]
+outline_size = 2
+outline_color = Color( 0.168627, 0.0196078, 0.0196078, 1 )
+use_filter = true
 font_data = ExtResource( 6 )
 
 [node name="main" type="Node2D"]
@@ -122,18 +129,18 @@ shortcut_in_tooltip = false
 text = "Загрузить игру"
 
 [node name="Exit" type="Button" parent="inter/button"]
-margin_left = 390.0
-margin_top = 260.0
-margin_right = 540.0
-margin_bottom = 310.0
+margin_left = 165.0
+margin_top = 345.0
+margin_right = 315.0
+margin_bottom = 395.0
 custom_fonts/font = ExtResource( 3 )
 text = "Выход"
 
 [node name="settings" type="Button" parent="inter/button"]
-margin_left = 163.105
-margin_top = 345.681
-margin_right = 313.105
-margin_bottom = 395.681
+margin_left = 390.0
+margin_top = 260.0
+margin_right = 540.0
+margin_bottom = 310.0
 custom_fonts/font = ExtResource( 3 )
 text = "Настройки"
 
@@ -145,6 +152,11 @@ margin_left = 103.104
 margin_top = 182.049
 margin_right = 173.104
 margin_bottom = 211.049
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 5 )
 text = "Закрыть"
 
@@ -153,8 +165,8 @@ margin_left = 846.066
 margin_top = 494.689
 margin_right = 1154.07
 margin_bottom = 593.689
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Пропасть
 и
 Испытания"
@@ -166,7 +178,7 @@ margin_left = 550.0
 margin_top = 670.0
 margin_right = 755.0
 margin_bottom = 694.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 9 )
 text = "(c) Darkil Corp. 2019"
 align = 1
 valign = 1
@@ -177,7 +189,7 @@ margin_left = 876.081
 margin_top = 21.766
 margin_right = 912.081
 margin_bottom = 43.766
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 10 )
 shortcut_in_tooltip = false
 text = "ru"
 
@@ -187,7 +199,7 @@ margin_left = 933.216
 margin_top = 23.1264
 margin_right = 971.216
 margin_bottom = 45.1264
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 11 )
 text = "en"
 
 [node name="chack_save_game" type="Panel" parent="inter"]
@@ -196,8 +208,8 @@ margin_left = 500.0
 margin_top = 336.0
 margin_right = 810.0
 margin_bottom = 562.0
-custom_styles/panelf = SubResource( 7 )
-custom_styles/panel = SubResource( 8 )
+custom_styles/panelf = ExtResource( 7 )
+custom_styles/panel = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -208,12 +220,12 @@ margin_left = 34.195
 margin_top = 162.0
 margin_right = 104.195
 margin_bottom = 202.0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/disabled = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.0666667, 0.0156863, 0.0156863, 1 )
 text = "ок"
 
@@ -223,12 +235,12 @@ margin_left = 191.783
 margin_top = 162.0
 margin_right = 268.783
 margin_bottom = 199.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 16 )
-custom_styles/disabled = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
-custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.0666667, 0.0156863, 0.0156863, 1 )
 text = "отмена"
 
@@ -237,7 +249,7 @@ margin_left = 28.0
 margin_top = 27.0
 margin_right = 290.0
 margin_bottom = 139.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 22 )
 text = "Есть сохраненная игра, если нажмете \"ОК\", сохранение будет удаленно"
 align = 1
 valign = 1
@@ -246,16 +258,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="version" type="Label" parent="inter"]
+margin_left = 25.8082
+margin_top = 687.878
+margin_right = 65.8082
+margin_bottom = 703.878
+custom_fonts/font = SubResource( 23 )
+align = 1
+valign = 1
+
 [node name="music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 autoplay = true
 
-[node name="Intro" parent="." instance=ExtResource( 9 )]
+[node name="Intro" parent="." instance=ExtResource( 11 )]
 position = Vector2( -2.38394, 223.312 )
-
-[node name="version" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]

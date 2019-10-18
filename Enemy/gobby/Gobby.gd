@@ -28,12 +28,16 @@ var visible_pl = false
 var idle = true
 var idle_timer = false
 var spawn_position = Vector2()
+var spawn_position_x
+var spawn_position_y
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_position = Vector2(position.x , position.y)
+	spawn_position_x = spawn_position.x
+	spawn_position_y = spawn_position.y
 	pass # Replace with function body.
 func _settings():
 	$music.volume_db = GLOBAL.music_value
@@ -42,6 +46,8 @@ func _settings():
 	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if GLOBAL.load_game == "loading_game":
+		spawn_position = Vector2(spawn_position_x , spawn_position_y)
 	_settings()
 	update()
 	if target and health_now > 0:
@@ -56,12 +62,15 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
+		"spawn_position_x" : spawn_position.x,
+		"spawn_position_y" : spawn_position.y,
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
 		"health" : health ,
 		"health_now" : health_now,
 		"php" : php,
 		"name" : name,
+		"distance_max" : distance_max,
 	}
 	return save_dict
 func _damage(damage):
@@ -119,6 +128,7 @@ func _move_enemy(delta):
 		distance.x = speed
 		idle_timer = false
 		idle = true
+		
 	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
 		if idle :
 			idle = false
@@ -129,17 +139,20 @@ func _move_enemy(delta):
 		$spriteanim/idle.show()
 		$spriteanim/attack.hide()
 		$spriteanim/jump.hide()
+		
 	elif visible_pl == false and idle_timer == true:
 		$spriteanim/die.hide()
 		$spriteanim/move.show()
 		$spriteanim/idle.hide()
 		$spriteanim/attack.hide()
 		$spriteanim/jump.hide()
+		
 	elif visible_pl == true:
 		distance.x = speed
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
-	else: print("move to spawn")
+		
+	else: print("Eror")
 #	distance.x = speed
 	velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta

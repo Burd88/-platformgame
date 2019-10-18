@@ -61,7 +61,7 @@ var inventory
 
 ##зацеп за стену
 var hook_enable = false
-
+var death_true = false
 ### expiriense 
 var experience = 0
 var level = 1
@@ -79,47 +79,56 @@ func _expirience():
 	if experience == experience_next_level:
 		level +=1
 		experience = 0
+		
+		
 func _settings():
 	$music.volume_db = GLOBAL.music_value
 	$fight_sound.volume_db = GLOBAL.sound_value
 	$move_sound.volume_db = GLOBAL.sound_value
 	$damage_sound.volume_db = GLOBAL.sound_value
-func _physics_process(delta):
-	if velocity.y >200:
-		print(velocity.y)
 	
-#	bow_attack()
-	_settings()
-	if cut_scene == false or GLOBAL.paused == false:
-		_move(delta)
-		_attack()
-		$inventary/inventory.show()
-		$GUI/Healthbar.show()
-		$Light2D.show()
-	elif cut_scene == true or GLOBAL.paused == true:
-		velocity.x = 0
-		if is_on_floor():
-			pass
-		else: 
-			velocity.y += gravity*delta
-			collision_info = move_and_slide(velocity,Vector2(0,-1))
-		if weapon == 0:
-			$spr.animation = "стойка"
-		elif weapon == 1:
-			$spr.animation =  "стойка_меч_1"
-		$inventary/inventory.hide()
-		$GUI/Healthbar.hide()
-		$Light2D.hide()
-		$GUI/say_label.hide()
-		#hide()
-	_expirience()
-	_gui()
-	_death()
-	_light_mode()
-	_open_inventory()
-	_use()
-	if Input.is_action_pressed("ui_page_down"):
-		experience +=1
+	
+func _physics_process(delta):
+	if $spr.animation == "смерть":
+		pass
+	else:
+#		if velocity.y >0 or velocity.y < 0:
+#			print(velocity.y)
+
+#		bow_attack()
+		_settings()
+		if cut_scene == false:
+			
+			_move(delta)
+			_attack()
+			$inventary/inventory.show()
+			$GUI/Healthbar.show()
+			$Light2D.show()
+		elif cut_scene == true:
+			
+			velocity.x = 0
+			if is_on_floor():
+				pass
+			else: 
+				velocity.y += gravity*delta
+				collision_info = move_and_slide(velocity,Vector2(0,-1))
+			if weapon == 0:
+				$spr.animation = "стойка"
+			elif weapon == 1:
+				$spr.animation =  "стойка_меч_1"
+			$inventary/inventory.hide()
+			$GUI/Healthbar.hide()
+			$Light2D.hide()
+			$GUI/say_label.hide()
+			#hide()
+		_expirience()
+		_gui()
+		_death()
+		_light_mode()
+		_open_inventory()
+		_use()
+		if Input.is_action_pressed("ui_page_down"):
+			experience +=1
 		
 func save():
 	
@@ -218,11 +227,16 @@ func _move(delta):
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
-	velocity.y += gravity*delta
+	if !is_on_floor():
+		velocity.y += gravity*delta
+	elif is_on_floor() and attack == true:
+		velocity.y = 3.84
+		pass
 	
 	if attack == false and hook_enable == false:
 		collision_info = move_and_slide(velocity,Vector2(0,-1))
-	else: pass
+	elif attack == true:
+		move_and_slide(Vector2(0, velocity.y))
 
 	if velocity.y > 3.84:
 		direction.y = 1
@@ -302,8 +316,9 @@ func _light_mode():
 	pass
 
 func _attack():
+	
 	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
-		velocity.y = 0
+		#velocity.y = 0
 
 		if attack == false:
 			attack = true
@@ -365,13 +380,19 @@ func _on_spr_animation_finished():
 		equip_sword_anim = false
 	if $spr.animation == 'смерть':
 		#get_tree().change_scene("res://main/main.tscn")
-		GLOBAL.load_game = "loading_game"
-		pause_menu.preload_game()
+		var save_game = File.new()
+		if not save_game.file_exists("res://savegame.save"):
+			get_tree().change_scene("res://main/main.tscn")
+			return # Error! We don't have a save to load.
+		else:
+			GLOBAL.load_game = "loading_game"
+			pause_menu._death_load_game()
 		
 	pass # Replace with function body.
 	
 func _death():
 	if health_now <= 0:
+		death_true = true
 		velocity = Vector2(0,150)
 		health_now = 0
 		$spr.animation = 'смерть'

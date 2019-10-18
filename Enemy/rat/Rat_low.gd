@@ -30,6 +30,8 @@ var visible_pl = false
 var idle = true
 var idle_timer = false
 var spawn_position = Vector2()
+var spawn_position_x
+var spawn_position_y
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
@@ -40,6 +42,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if GLOBAL.load_game == "loading_game":
+		spawn_position = Vector2(spawn_position_x , spawn_position_y)
+
 	update()
 	_settings()
 	if target and health_now > 0:
@@ -54,12 +59,15 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
+		"spawn_position_x" : spawn_position.x,
+		"spawn_position_y" : spawn_position.y,
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
 		"health" : health ,
 		"health_now" : health_now,
 		"php" : php,
 		"name" : name,
+		"distance_max" : distance_max,
 	}
 	return save_dict
 

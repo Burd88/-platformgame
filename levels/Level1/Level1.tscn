@@ -786,6 +786,7 @@ func _on_Cut_scene_start_body_entered(body):
 	if body.get(\"player_type\") == true:
 		$Timer.start()
 		body.cut_scene = true
+		
 		print(\"CUt Scene\")
 		
 	pass # Replace with function body.
@@ -802,7 +803,7 @@ func _on_Cut_scene_start_area_exited(area):
 	if area.name == \"cut_scene\":
 		$CollisionShape2D.disabled = true
 		get_parent().get_node(\"Player\").cut_scene = false
-
+		
 	pass # Replace with function body.
 "
 
@@ -1119,6 +1120,7 @@ position = Vector2( 1295.99, 978.59 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="trap" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( -0.418152, -0.418121 )
 __meta__ = {
 "_edit_lock_": true
@@ -1186,7 +1188,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 1
+frame = 4
 speed_scale = 0.8
 playing = true
 
@@ -1407,17 +1409,12 @@ shape = SubResource( 8 )
 position = Vector2( 998.06, 314.793 )
 
 [node name="enemies-2" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Mushroom" parent="enemies-2" instance=ExtResource( 25 )]
 position = Vector2( 1398.34, 1501 )
 
 [node name="Gobby" parent="enemies-2" instance=ExtResource( 26 )]
 position = Vector2( 378.722, 1139.87 )
-distance_max = 50
-
-[node name="Gobby3" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 1407.72, 1010.38 )
 distance_max = 50
 
 [node name="Rat_low" parent="enemies-2" instance=ExtResource( 23 )]
@@ -1427,25 +1424,6 @@ scale = Vector2( 0.48, 0.4 )
 [node name="Rat_low2" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 593.44, 1350.55 )
 scale = Vector2( 0.48, 0.4 )
-
-[node name="Gobby6" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 808.427, 1312.43 )
-distance_max = 50
-
-[node name="Gobby2" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 577.745, 1139.14 )
-scale = Vector2( 0.64, 0.64 )
-distance_max = 150
-
-[node name="Gobby4" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 1521.82, 1134.11 )
-scale = Vector2( 0.64, 0.64 )
-distance_max = 150
-
-[node name="Gobby5" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 1131.6, 1310.33 )
-scale = Vector2( 0.64, 0.64 )
-distance_max = 150
 
 [node name="Rat_low3" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 772.185, 1013.2 )
@@ -1464,10 +1442,24 @@ position = Vector2( 557.396, 1031.84 )
 [node name="Rat_low6" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 461.762, 857.37 )
 
+[node name="Gobby2" parent="enemies-2" instance=ExtResource( 26 )]
+position = Vector2( 704.185, 1134.63 )
+
 [node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 27 )]
 position = Vector2( 89.7222, 1395.33 )
 
+[node name="Gobby3" parent="enemies-2" instance=ExtResource( 26 )]
+position = Vector2( 1333.85, 996.005 )
+distance_max = 60
+
+[node name="Gobby4" parent="enemies-2" instance=ExtResource( 26 )]
+position = Vector2( 772.663, 1303.32 )
+
+[node name="Gobby5" parent="enemies-2" instance=ExtResource( 26 )]
+position = Vector2( 1188.54, 1310 )
+
 [node name="use_item" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )

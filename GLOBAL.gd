@@ -6,6 +6,9 @@ var say_text = ""
 # настройки звука
 var music_value = 0
 var sound_value = 0
+var sound_off = false
+var music_value_off
+var sound_value_off
 var paused = false
 # var b = "text"
 #onready var dead_scene = preload("res://Enemy/Dead_enemy.tscn")

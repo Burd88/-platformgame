@@ -6,13 +6,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	$version.text = str("Версия : ", OS.config_version.value)
+	$inter/version.text = str("Версия : ", ProjectSettings.get("application/config/version"))
+
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	$music.volume_db = GLOBAL.music_value
+	
 	#if translationt.language == 1 :
 #		$inter/button/Start_game.text = 'Начать игру'
 	#	$inter/button/Continue.text = 'Продолжить'
@@ -80,6 +81,8 @@ func _on_Continue_pressed():
 
 func _on_ok_pressed():
 	get_tree().change_scene("res://levels/Level1/Level1.tscn")
+	var dir = Directory.new()
+	dir.remove("res://savegame.save")
 	GLOBAL.load_game = "new_game"
 	pass # Replace with function body.
 	

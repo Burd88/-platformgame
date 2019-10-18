@@ -86,7 +86,7 @@ script = ExtResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "стойка"
-frame = 9
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

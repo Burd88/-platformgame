@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Global_gui/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/background/forest/sea.png" type="Texture" id=2]
@@ -85,6 +85,16 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
 
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
 [node name="pause_menu" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
@@ -117,7 +127,7 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
@@ -239,6 +249,11 @@ margin_left = 73.15
 margin_top = 181.45
 margin_right = 204.15
 margin_bottom = 212.45
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 12 )
 text = "Закрыть"
 

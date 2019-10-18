@@ -21,7 +21,7 @@ boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.36"
+config/version="0.0.39"
 
 [autoload]
 
@@ -31,7 +31,6 @@ pause_menu="*res://Global_gui/pause_menu.tscn"
 Global_DataParser="*res://player/inventory/Global_DataParser.gd"
 Global_ItemDatabase="*res://player/inventory/Global_ItemDatabase.gd"
 Global_Player="*res://player/inventory/Global_Player.gd"
-say_lab="*res://Global_gui/say_lab.tscn"
 
 [debug]
 
