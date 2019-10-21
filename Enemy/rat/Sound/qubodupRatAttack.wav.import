@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/qubodupRatAttack.wav-ef8d1ba8fefba7c21dd80bd1e36483a8.sample"
+
+[deps]
+
+source_file="res://Enemy/rat/Sound/qubodupRatAttack.wav"
+dest_files=[ "res://.import/qubodupRatAttack.wav-ef8d1ba8fefba7c21dd80bd1e36483a8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

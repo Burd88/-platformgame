@@ -18,21 +18,21 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=16]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=17]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-3.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-4.png" type="Texture" id=22]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-5.png" type="Texture" id=23]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-6.png" type="Texture" id=24]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-7.png" type="Texture" id=25]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=26]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=27]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=28]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=29]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=30]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=31]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=32]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=24]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=25]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=26]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=27]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=28]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-3.png" type="Texture" id=29]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-4.png" type="Texture" id=30]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-5.png" type="Texture" id=31]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-6.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-7.png" type="Texture" id=33]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-1.png" type="Texture" id=34]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-2.png" type="Texture" id=35]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/move-3.png" type="Texture" id=36]
@@ -54,20 +54,20 @@ animations = [ {
 "name": "стойка",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
-"name": "атака",
-"speed": 7.0
+"name": "прыжок",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "урон",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
-"name": "прыжок",
-"speed": 5.0
+"name": "атака",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
@@ -91,7 +91,7 @@ script = ExtResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "атака"
-frame = 4
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

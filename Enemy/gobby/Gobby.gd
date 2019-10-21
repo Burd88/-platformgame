@@ -19,7 +19,7 @@ onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.wav"
 onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.wav")
 onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.wav")
 
-var die_anim = 3
+
 onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.wav")
 onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.wav")
 ####
@@ -62,11 +62,6 @@ func _process(delta):
 	_check_place()
 	_die()
 	_gui()
-	if die_anim == 2:
-		$move_sound.stream = death_sound
-		$move_sound.play()
-		print("2")
-		die_anim = 1
 	pass
 	
 func save():
@@ -96,20 +91,12 @@ func _damage(damage):
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
-		$spriteanim/attack.flip_h = false
-		$spriteanim/idle.flip_h = false
-		$spriteanim/move.flip_h = false
-		$spriteanim/die.flip_h = false
-		$spriteanim/jump.flip_h = false
+		$spr.flip_h = false
 		$attack_area.position.x = -12
 		$damage.position.x = -15
 		$check_place.position.x = -9
 	elif direction.x > 0:
-		$spriteanim/attack.flip_h = true
-		$spriteanim/idle.flip_h = true
-		$spriteanim/move.flip_h = true
-		$spriteanim/die.flip_h = true
-		$spriteanim/jump.flip_h = true
+		$spr.flip_h = true
 		$attack_area.position.x = 12
 		$damage.position.x = 15
 		$check_place.position.x = 9
@@ -150,20 +137,12 @@ func _move_enemy(delta):
 			idle = false
 			$move_sound.stream = idle_sound
 			$move_sound.play()
-			$spriteanim/idle/idletimer.start()
+			$spr/idletimer.start()
 		distance.x = 0
-		$spriteanim/die.hide()
-		$spriteanim/move.hide()
-		$spriteanim/idle.show()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
+		$spr.animation = "стойка"
 		
 	elif visible_pl == false and idle_timer == true:
-		$spriteanim/die.hide()
-		$spriteanim/move.show()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
+		$spr.animation = "хотьба"
 		
 	elif visible_pl == true:
 		distance.x = speed
@@ -200,11 +179,10 @@ func _die():
 		direction = Vector2(0,0)
 		gravity = 0
 		$CollisionShape2D.disabled = true
-		$spriteanim/die.show()
-		$spriteanim/move.hide()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/die/AnimationPlayer.play("die")
+		$visible/CollisionShape2D.disabled = true
+		$damage/CollisionShape2D.disabled = true
+		$attack_area/CollisionShape2D.disabled = true
+		$spr.animation = "смерть"
 
 		
 	pass
@@ -218,18 +196,10 @@ func _check_place():
 func _change_position():
 	direction.x =direction.x*(-1)
 	$check_place.position.x = $check_place.position.x*(-1)
-	if $spriteanim/attack.flip_h == false:
-		$spriteanim/attack.flip_h = true
-		$spriteanim/idle.flip_h = true
-		$spriteanim/move.flip_h = true
-		$spriteanim/die.flip_h = true
-		$spriteanim/jump.flip_h = true
+	if $spr.flip_h == false:
+		$spr.flip_h = true
 	else:
-		$spriteanim/attack.flip_h = false
-		$spriteanim/idle.flip_h = false
-		$spriteanim/move.flip_h = false
-		$spriteanim/die.flip_h = false
-		$spriteanim/jump.flip_h = false
+		$spr.flip_h = false
 		pass
 	if $attack_area.position.x == -12:
 		$attack_area.position.x = 12
@@ -243,12 +213,7 @@ func _change_position():
 func _on_attack_area_body_entered(body):
 	if body.get("player_type"):
 		speed = 0
-		$spriteanim/die.hide()
-		$spriteanim/move.hide()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.show()
-		$spriteanim/jump.hide()
-		$spriteanim/attack/AnimationPlayer.play("attack")
+		$spr.animation = "атака"
 	pass # Replace with function body.
 
 
@@ -256,25 +221,14 @@ func _on_attack_area_body_exited(body):
 	if body.get("player_type"):
 		target = body
 		speed = 50
-		$spriteanim/die.hide()
-		$spriteanim/move.show()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
-		$spriteanim/attack/AnimationPlayer.stop()
+		$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "attack" and health_now > 0:
-		$damage/CollisionShape2D.disabled = false
-		$spriteanim/attack/AnimationPlayer.play("attack")
-	pass # Replace with function body.
 
 
 func _on_damage_body_entered(body):
 	if body.get("player_type"):
-		damage = randi()%30+5
 		body._damage(damage)
 		$damage/CollisionShape2D.set_deferred("disabled" , true)
 		#print("attack")
@@ -298,12 +252,7 @@ func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		visible_pl = true
 		target = body
-		$spriteanim/die.hide()
-		$spriteanim/move.hide()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.show()
-		$spriteanim/jump/AnimationPlayer.play("jump")
+		$spr.animation = "прыжок"
 	pass # Replace with function body.
 
 
@@ -311,22 +260,33 @@ func _on_visible_body_exited(body):
 	if body == target:
 		visible_pl = false
 		target = null
-		$spriteanim/die.hide()
-		$spriteanim/move.show()
-		$spriteanim/idle.hide()
-		$spriteanim/attack.hide()
-		$spriteanim/jump.hide()
-		$spriteanim/jump/AnimationPlayer.stop()
+		$spr.animation = "хотьба"
+	pass # Replace with function body.
+
+
+func _on_spr_animation_finished():
+	if $spr.animation == "смерть":
+		var item_rand = randi()%5
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
+		queue_free()
+	pass # Replace with function body.
+
+func _on_spr_frame_changed():
+	if $spr.animation == "атака":
+		if $spr.frame == 3:
+			damage = randi()%20+5
+			#print(damage)
+			$damage/CollisionShape2D.disabled = false
+		elif $spr.frame == 7:
+			$damage/CollisionShape2D.disabled = true
+	if $spr.animation == "смерть":
+		if $spr.frame == 1 : 
+			$move_sound.stream = death_sound
+			$move_sound.play()
 	pass # Replace with function body.
 
 
 
 
-
-
-
-
-func _on_AnimationPlayer_animation_started(anim_name):
-	if anim_name == "die" and die_anim == 3:
-		die_anim = 2
-	pass # Replace with function body.

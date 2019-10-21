@@ -1189,7 +1189,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 4
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -1381,7 +1381,6 @@ rotation = 1.5708
 move_to = Vector2( 0, -15 )
 
 [node name="enemies-1" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Rat_low2" parent="enemies-1" instance=ExtResource( 23 )]
 position = Vector2( 334.421, 616.638 )
@@ -1420,22 +1419,16 @@ distance_max = 50
 
 [node name="Rat_low" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 973.588, 1320.34 )
-scale = Vector2( 0.48, 0.4 )
 
 [node name="Rat_low2" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 593.44, 1350.55 )
-scale = Vector2( 0.48, 0.4 )
 
 [node name="Rat_low3" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 772.185, 1013.2 )
 
-[node name="Mushroom2" parent="enemies-2" instance=ExtResource( 25 )]
-position = Vector2( 350.179, 1409.8 )
-
 [node name="Rat_low4" parent="enemies-2" instance=ExtResource( 23 )]
 modulate = Color( 0.407843, 0.156863, 0.219608, 1 )
 position = Vector2( 905.615, 1622.45 )
-scale = Vector2( 1, 1 )
 
 [node name="Rat_low5" parent="enemies-2" instance=ExtResource( 23 )]
 position = Vector2( 557.396, 1031.84 )
@@ -1446,14 +1439,11 @@ position = Vector2( 461.762, 857.37 )
 [node name="Gobby2" parent="enemies-2" instance=ExtResource( 26 )]
 position = Vector2( 704.185, 1134.63 )
 
-[node name="Gobby6" parent="enemies-2" instance=ExtResource( 26 )]
-position = Vector2( 373.094, 1409.2 )
-
 [node name="Gobby_range" parent="enemies-2" instance=ExtResource( 27 )]
 position = Vector2( 274.048, 1406.88 )
 
 [node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 28 )]
-position = Vector2( 242.931, 1398.42 )
+position = Vector2( 344.479, 1077.91 )
 
 [node name="Gobby3" parent="enemies-2" instance=ExtResource( 26 )]
 position = Vector2( 1333.85, 996.005 )

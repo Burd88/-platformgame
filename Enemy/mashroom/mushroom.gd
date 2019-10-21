@@ -84,12 +84,12 @@ func _damage(damage):
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
-		$spr.flip_h = true
+		$spr.flip_h = false
 		$attack_area.position.x = -12
 		$damage.position.x = -15
 		$check_place.position.x = -9
 	elif direction.x > 0:
-		$spr.flip_h = false
+		$spr.flip_h = true
 		$attack_area.position.x = 12
 		$damage.position.x = 15
 		$check_place.position.x = 9

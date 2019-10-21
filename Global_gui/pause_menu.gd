@@ -32,7 +32,7 @@ func _save_game_data():
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	var save_data = {"savedata" : {}}
 	for i in save_nodes:
-		print(i)
+		#print(i)
 		var node_data = i.call("save")
 		save_data["savedata"] = node_data
 		save_game.store_line(to_json(save_data))

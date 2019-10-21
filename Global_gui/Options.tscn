@@ -124,6 +124,7 @@ margin_left = 149.684
 margin_top = 40.1154
 margin_right = 173.684
 margin_bottom = 64.1154
+pressed = true
 [connection signal="value_changed" from="Panel/music_slide" to="." method="_on_music_slide_value_changed"]
 [connection signal="value_changed" from="Panel/sound_slide" to="." method="_on_sound_slide_value_changed"]
 [connection signal="toggled" from="Panel/Fullscreen_check" to="." method="_on_Fullscreen_check_toggled"]

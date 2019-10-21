@@ -13,6 +13,10 @@ var php = (health_now*100)/health
 var anim = 'move'
 var target
 var damage
+var range_distance = false
+var range_attack = false
+var melle_attack = false
+onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
 ### sounds
 onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
 onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav")
@@ -61,9 +65,11 @@ func _process(delta):
 		spawn_position = Vector2(spawn_position_x , spawn_position_y)
 	_settings()
 	update()
+	print(idle_timer)
 	if target and health_now > 0:
 		aim()
-	if health_now > 0:
+		range_attack()
+	if health_now > 0 and range_attack == false:
 		_move_enemy(delta)
 		_check_place()
 	else:pass
@@ -92,6 +98,17 @@ func _damage(damage):
 	var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
 	$damage_sound.stream = rand_damage_sound[randi()%2]
 	$damage_sound.play()
+	
+func range_attack():
+	if position.distance_to(target.position) > 70:
+		$spr.animation = "атака"
+		speed = 0
+		range_attack = true
+	elif position.distance_to(target.position) <= 70 and melle_attack == false:
+		$spr.animation = "хотьба"
+		speed = 50
+		range_attack = false
+
 
 func aim():
 	direction = (target.position - position).normalized()
@@ -130,17 +147,17 @@ func _move_enemy(delta):
 	if is_on_floor():
 		velocity.y = 0
 		direction.y = 0
-	#print($spriteanim/idle/idletimer.time_left)
-	#print(position.distance_to(spawn_position))
+	
+		
 
-	print(idle_timer)
+	#print(idle_timer)
 	if position.distance_to(spawn_position) < distance_max and visible_pl == false :
 		distance.x = speed
 		idle_timer = false
 		idle = true
-		#print("1")
+		print("1")
 	elif position.distance_to(spawn_position) > distance_max and visible_pl == false and idle_timer == false:
-		#print("2")
+		
 		if idle :
 			idle = false
 			$idletimer.start()
@@ -148,13 +165,17 @@ func _move_enemy(delta):
 		$spr.animation = "стойка"
 	elif position.distance_to(spawn_position) > distance_max and visible_pl == false and idle_timer == true:
 		$spr.animation = "хотьба"
-
-		#print("3")
-	elif visible_pl == true:
+		speed = 50
+		print("2")
+	elif visible_pl == true :
+		print("3")
 		distance.x = speed
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
-		print("4")
+		
+		
+		
+
 	else: print("move to spawn")
 #	distance.x = speed
 	velocity.x = (direction.x*distance.x)
@@ -220,6 +241,7 @@ func _change_position():
 
 func _on_attack_area_body_entered(body):
 	if body.get("player_type"):
+		melle_attack = true
 		speed = 0
 		$spr.animation = "атака"
 	pass # Replace with function body.
@@ -227,6 +249,7 @@ func _on_attack_area_body_entered(body):
 
 func _on_attack_area_body_exited(body):
 	if body.get("player_type"):
+		melle_attack = false
 		target = body
 		speed = 50
 		$spr.animation = "хотьба"
@@ -271,10 +294,13 @@ func _on_damage_body_entered(body):
 
 
 func _on_visible_body_entered(body):
+	
 	if body.get("player_type"):
+		
 		visible_pl = true
 		target = body
-		$spr.animation = "хотьба"
+
+		
 	pass # Replace with function body.
 
 
@@ -282,6 +308,9 @@ func _on_visible_body_exited(body):
 	if body == target:
 		visible_pl = false
 		target = null
+		range_attack = false
+		print("@#")
+		speed = 50
 		$spr.animation = "хотьба"
 	pass # Replace with function body.
 
@@ -292,15 +321,35 @@ func _on_visible_body_exited(body):
 
 
 func _on_spr_frame_changed():
-	if $spr.animation == "атака":
+	if $spr.animation == "атака" and melle_attack == true:
 		if $spr.frame == 3:
+			print("1")
 			damage = randi()%20+5
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
-		elif $spr.frame == 7:
+		elif $spr.frame == 6:
 			$damage/CollisionShape2D.disabled = true
+
+	elif $spr.animation == "атака" and range_attack == true:
+		if $spr.frame == 3:
+			var b = bullet_shoot.instance()
+			var flip
+			if $spr.flip_h == true:
+				flip = false
+			elif $spr.flip_h == false:
+				flip = true
+			get_parent().add_child(b)
+			if $spr.flip_h == false:
+				b.start(position - Vector2(20,0), flip)
+			elif $spr.flip_h == true:
+				b.start(position + Vector2(20,0), flip)
+
+			range_attack = false
+	else : pass#print("Error Gobby Range")
+
 	if $spr.animation == "смерть":
 		if $spr.frame == 1 : 
 			$move_sound.stream = death_sound
 			$move_sound.play()
-	pass # Replace with function body.
+
+

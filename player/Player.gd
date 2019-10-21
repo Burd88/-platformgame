@@ -37,6 +37,8 @@ onready var move_stone3_sound = preload("res://sounds/jute-dh-steps/stepstone_3.
 
 onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
+
+var regen_hp = true
 ##
 var health_potion = 0
 var button = false
@@ -89,6 +91,7 @@ func _settings():
 	
 	
 func _physics_process(delta):
+	
 	if $spr.animation == "смерть":
 		pass
 	else:
@@ -296,6 +299,8 @@ func _move(delta):
 	
 	
 func _damage(damage):
+	regen_hp = false
+	$Regen_timer.start()
 	if randi()%6 == parry:
 		print("parry")
 		pass
@@ -321,6 +326,8 @@ func _attack():
 		#velocity.y = 0
 
 		if attack == false:
+			regen_hp = false
+			$Regen_timer.start()
 			attack = true
 	else:
 		#print("attack")
@@ -367,8 +374,11 @@ func _gui():		# Графический интерфейс игрока
 	$GUI/Healthbar.value = php
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
-	if health_now < health and health_now > 0:
-		health_now += 0.03
+	if health_now < health and health_now > 0 and regen_hp == true:
+		health_now += 0.1
+func _on_Regen_timer_timeout():
+	regen_hp = true
+	pass # Replace with function body.
 
 func _on_spr_animation_finished():
 	if $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3" or $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
@@ -616,3 +626,6 @@ func _on_Button_focus_exited():
 func _on_AudioStreamPlayer2D_finished():
 	$AudioStreamPlayer2D.play()
 	pass # Replace with function body.
+
+
+
