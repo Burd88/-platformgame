@@ -114,7 +114,14 @@ func _drop_item():
 #		get_parent().add_child(item)
 #		item.position = position
 func _damage(damage):
-	if health_now > 0:
+	if randi()%6 == 0:
+		print("parry")
+		pass
+	else:
+		if randi()%4 == 0:
+			$spr.animation = "урон" 
+			$ouch_timer.start()
+		
 		health_now -= damage
 		$damage_sound.stream = damage_hurt1_sound
 		$damage_sound.play()
@@ -170,6 +177,7 @@ func _die():
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
+		$healthbar.hide()
 		$CollisionShape2D.disabled = true
 		$visible/CollisionShape2D.disabled = true
 		$damage/CollisionShape2D.disabled = true
@@ -269,4 +277,9 @@ func _on_spr_frame_changed():
 
 func _on_damage_sound_finished():
 	$damage_sound.stop()
+	pass # Replace with function body.
+
+
+func _on_ouch_timer_timeout():
+	$spr.animation = "атака"
 	pass # Replace with function body.

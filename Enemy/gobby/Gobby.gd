@@ -83,14 +83,19 @@ func save():
 	}
 	return save_dict
 func _damage(damage):
-	
-	if health_now > 0:
+	if randi()%8 == 0:
+		print("parry")
+		pass
+	else:
+		if randi()%4 == 0:
+			$spr.animation = "урон" 
+			$ouch_timer.start()
+		
 		health_now -= damage
 		var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
 		$damage_sound.stream = rand_damage_sound[randi()%2]
 		$damage_sound.play()
-	
-	else : print("Error")
+		
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
@@ -181,6 +186,7 @@ func _die():
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
+		$healthbar.hide()
 		$CollisionShape2D.disabled = true
 		$visible/CollisionShape2D.disabled = true
 		$damage/CollisionShape2D.disabled = true
@@ -293,3 +299,8 @@ func _on_spr_frame_changed():
 
 
 
+
+
+func _on_ouch_timer_timeout():
+	$spr.animation = "атака"
+	pass # Replace with function body.

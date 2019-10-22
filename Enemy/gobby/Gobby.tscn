@@ -101,7 +101,7 @@ script = ExtResource( 1 )
 scale = Vector2( 1, 1 )
 frames = SubResource( 1 )
 animation = "хотьба"
-frame = 2
+frame = 1
 playing = true
 
 [node name="idletimer" type="Timer" parent="spr"]
@@ -158,6 +158,9 @@ stream = ExtResource( 40 )
 max_distance = 300.0
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ouch_timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="timeout" from="spr/idletimer" to="." method="_on_idletimer_timeout"]
@@ -166,3 +169,4 @@ max_distance = 300.0
 [connection signal="body_entered" from="damage" to="." method="_on_damage_body_entered"]
 [connection signal="body_entered" from="visible" to="." method="_on_visible_body_entered"]
 [connection signal="body_exited" from="visible" to="." method="_on_visible_body_exited"]
+[connection signal="timeout" from="ouch_timer" to="." method="_on_ouch_timer_timeout"]

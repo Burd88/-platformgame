@@ -313,7 +313,7 @@ func _move(delta):
 func _damage(damage):
 	regen_hp = false
 	$Regen_timer.start()
-	print(damage)
+
 	if randi()%6 == parry:
 		print("parry")
 		pass

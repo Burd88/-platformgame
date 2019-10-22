@@ -16,7 +16,7 @@ var damage
 var range_distance = false
 var range_attack = false
 var melle_attack = false
-
+var parry = 0
 onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
 ### sounds
 onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
@@ -96,10 +96,18 @@ func save():
 	return save_dict
 
 func _damage(damage):
-	health_now -= damage
-	var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
-	$damage_sound.stream = rand_damage_sound[randi()%2]
-	$damage_sound.play()
+	if randi()%8 == parry:
+		print("parry")
+		pass
+	else:
+		if randi()%4 == 0:
+			$spr.animation = "урон" 
+			$ouch_timer.start()
+		
+		health_now -= damage
+		var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
+		$damage_sound.stream = rand_damage_sound[randi()%2]
+		$damage_sound.play()
 	
 	
 func range_attack():
@@ -208,12 +216,14 @@ func _die():
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
+		$healthbar.hide()
 		$damage/CollisionShape2D.disabled = true
 		$attack_area/CollisionShape2D.disabled = true
 		$visible/CollisionShape2D.disabled = true
 		$check_place
 		$CollisionShape2D.disabled = true
 		$spr.animation = "смерть"
+		
 
 		###нужна анимация смерти
 		
@@ -355,3 +365,8 @@ func _on_spr_frame_changed():
 
 
 
+
+
+func _on_ouch_timer_timeout():
+	$spr.animation = "атака"
+	pass # Когда оглуше противник
