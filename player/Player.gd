@@ -18,6 +18,7 @@ var weapon = 0
 var parry = 3
 var damage
 var damage_sword = 0
+var last_position_y = 0
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
@@ -34,6 +35,10 @@ onready var move_stone1_sound = preload("res://sounds/jute-dh-steps/stepstone_1.
 onready var move_stone2_sound = preload("res://sounds/jute-dh-steps/stepstone_2.wav")
 onready var move_stone3_sound = preload("res://sounds/jute-dh-steps/stepstone_3.wav")
 ##
+export var shake_power = 1
+export var shake_time = 0.1
+var isShake = false
+var elapsedtime = 0
 
 onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
@@ -95,8 +100,9 @@ func _physics_process(delta):
 	if $spr.animation == "смерть":
 		pass
 	else:
-#		if velocity.y >0 or velocity.y < 0:
-#			print(velocity.y)
+		
+		#print(position.y)
+			
 
 #		bow_attack()
 		_settings()
@@ -130,6 +136,9 @@ func _physics_process(delta):
 		_light_mode()
 		_open_inventory()
 		_use()
+		if isShake:
+			_shake_camera(delta)
+ 
 		if Input.is_action_pressed("ui_page_down"):
 			experience +=1
 		
@@ -232,32 +241,35 @@ func _move(delta):
 	velocity.x = (direction.x*distance.x)/delta
 	if !is_on_floor():
 		velocity.y += gravity*delta
-	elif is_on_floor() and attack == true:
-		velocity.y = 3.84
-		pass
+
 	
 	if attack == false and hook_enable == false:
 		collision_info = move_and_slide(velocity,Vector2(0,-1))
 	elif attack == true:
 		move_and_slide(Vector2(0, velocity.y))
+		
 
 	if velocity.y > 3.84:
 		direction.y = 1
 	
 	
 	if is_on_floor() :
+		
 #		if velocity.x > 0:
 #			$move_sound.stream = move_stone1_sound
 #			$move_sound.play()
 		floor_enable = true
-		if velocity.y > 250 :
+		if last_position_y < (position.y-100):
 			health_now = health_now - (20*health)/100
-		elif velocity.y >= 300 :
+			print("wow 20%")
+		elif last_position_y < (position.y-200):
 			health_now = health_now - (50*health)/100
-		elif velocity.y >500 :
+			print("2")
+		elif last_position_y < (position.y-300): 
 			health_now = 0
 		velocity.y = 0
 		direction.y = 0
+		last_position_y = position.y
 		if Input.is_action_pressed("ui_down") and velocity.y >=0 and velocity.y <= 4 :
 
 			direction.y = -1
@@ -301,6 +313,7 @@ func _move(delta):
 func _damage(damage):
 	regen_hp = false
 	$Regen_timer.start()
+	print(damage)
 	if randi()%6 == parry:
 		print("parry")
 		pass
@@ -322,7 +335,7 @@ func _light_mode():
 
 func _attack():
 	
-	if Input.is_action_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
+	if Input.is_action_just_pressed("ui_attack1") and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		#velocity.y = 0
 
 		if attack == false:
@@ -403,11 +416,24 @@ func _death():
 		$spr.animation = 'смерть'
 		hook_enable = false
 	pass
+	
+func _shake_camera(delta):
+	if elapsedtime<shake_time:
+		$Camera2D.offset =  Vector2(randf(), randf()) * shake_power
+		elapsedtime += delta
+	else:
+		isShake = false
+		elapsedtime = 0
+		$Camera2D.offset = Vector2()   
 
 func _on_attack_area_body_entered(body):
 	if body.get("enemy_type"):
 		body._damage(damage)
+		elapsedtime = 0
+		isShake = true
+		
 
+		
 		#print("body name: ", body.name)
 	elif body.name == "frontground":
 		if weapon == 1:

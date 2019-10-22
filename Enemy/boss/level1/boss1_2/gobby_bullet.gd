@@ -33,8 +33,7 @@ func _on_gobby_bullet_body_entered(body):
 		body._damage(randi()%45+20)
 		queue_free()
 	
-	else:
-	
+	elif body.name == "frontground":
 		queue_free()
 
 	pass # Replace with function body.

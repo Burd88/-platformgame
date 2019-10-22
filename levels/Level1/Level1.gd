@@ -9,14 +9,15 @@ var boss1_1_kill = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
-	$music.play()
+	#$music.play()
 	if GLOBAL.load_game == "new_game":
 		#$pause_menu._on_save_pressed()
 		#print("save new game")
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
-	$CanvasModulate.show()
+	$CanvasModulate.hide()
+	
 	#$Text_field/text.show()
 	$decor/Chain/AnimatedSprite.stop()
 	$use_item/Gear6.visible = false
@@ -32,7 +33,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	$music.volume_db = GLOBAL.music_value
+	#$music.volume_db = GLOBAL.music_value
 	update()
 	start_mechanism()
 	if Input.is_action_just_pressed("ui_cancel"):

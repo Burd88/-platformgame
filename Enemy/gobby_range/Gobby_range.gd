@@ -16,6 +16,7 @@ var damage
 var range_distance = false
 var range_attack = false
 var melle_attack = false
+
 onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
 ### sounds
 onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
@@ -64,17 +65,18 @@ func _process(delta):
 	if GLOBAL.load_game == "loading_game":
 		spawn_position = Vector2(spawn_position_x , spawn_position_y)
 	_settings()
-	update()
-	print(idle_timer)
-	if target and health_now > 0:
-		aim()
-		range_attack()
-	if health_now > 0 and range_attack == false:
-		_move_enemy(delta)
-		_check_place()
-	else:pass
-	_die()
-	_gui()
+	if health_now <=0:
+		_die()
+	elif health_now >0:
+		update()
+		if target and health_now > 0:
+			aim()
+			range_attack()
+		if health_now > 0 and range_attack == false:
+			_move_enemy(delta)
+			_check_place()
+		else:pass
+		_gui()
 	pass
 	
 func save():
@@ -98,6 +100,7 @@ func _damage(damage):
 	var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
 	$damage_sound.stream = rand_damage_sound[randi()%2]
 	$damage_sound.play()
+	
 	
 func range_attack():
 	if position.distance_to(target.position) > 70:
@@ -155,7 +158,7 @@ func _move_enemy(delta):
 		distance.x = speed
 		idle_timer = false
 		idle = true
-		print("1")
+		
 	elif position.distance_to(spawn_position) > distance_max and visible_pl == false and idle_timer == false:
 		
 		if idle :
@@ -166,9 +169,9 @@ func _move_enemy(delta):
 	elif position.distance_to(spawn_position) > distance_max and visible_pl == false and idle_timer == true:
 		$spr.animation = "хотьба"
 		speed = 50
-		print("2")
+		
 	elif visible_pl == true :
-		print("3")
+		
 		distance.x = speed
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
@@ -242,6 +245,7 @@ func _change_position():
 func _on_attack_area_body_entered(body):
 	if body.get("player_type"):
 		melle_attack = true
+		
 		speed = 0
 		$spr.animation = "атака"
 	pass # Replace with function body.
@@ -309,21 +313,16 @@ func _on_visible_body_exited(body):
 		visible_pl = false
 		target = null
 		range_attack = false
-		print("@#")
+		
 		speed = 50
 		$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 
-
-
-
-
-
 func _on_spr_frame_changed():
 	if $spr.animation == "атака" and melle_attack == true:
 		if $spr.frame == 3:
-			print("1")
+			
 			damage = randi()%20+5
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
@@ -351,5 +350,8 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1 : 
 			$move_sound.stream = death_sound
 			$move_sound.play()
+
+
+
 
 

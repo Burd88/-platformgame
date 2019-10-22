@@ -240,6 +240,7 @@ valign = 1
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
+volume_db = -10.0
 autoplay = true
 
 [node name="Intro" parent="." instance=ExtResource( 10 )]

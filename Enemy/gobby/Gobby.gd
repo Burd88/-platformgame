@@ -55,13 +55,16 @@ func _process(delta):
 	if GLOBAL.load_game == "loading_game":
 		spawn_position = Vector2(spawn_position_x , spawn_position_y)
 	_settings()
-	update()
-	if target and health_now > 0:
-		aim()
-	_move_enemy(delta)
-	_check_place()
-	_die()
-	_gui()
+	if health_now <=0:
+		_die()
+	elif health_now >0:
+		update()
+		if target and health_now > 0:
+			aim()
+		_move_enemy(delta)
+		_check_place()
+		
+		_gui()
 	pass
 	
 func save():
