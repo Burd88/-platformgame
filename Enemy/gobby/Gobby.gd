@@ -228,9 +228,10 @@ func _on_attack_area_body_entered(body):
 
 func _on_attack_area_body_exited(body):
 	if body.get("player_type"):
-		target = body
-		speed = 50
-		$spr.animation = "хотьба"
+		if $spr.animation != "урон":
+			target = body
+			speed = 50
+			$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 
@@ -267,6 +268,7 @@ func _on_visible_body_entered(body):
 
 func _on_visible_body_exited(body):
 	if body == target:
+		speed = 50
 		visible_pl = false
 		target = null
 		$spr.animation = "хотьба"
@@ -302,5 +304,14 @@ func _on_spr_frame_changed():
 
 
 func _on_ouch_timer_timeout():
-	$spr.animation = "атака"
+	if target:
+		
+		if position.distance_to(target.position) <20 :
+			$spr.animation = "атака"
+		elif position.distance_to(target.position) >= 20 :
+			$spr.animation = "хотьба"
+			speed = 50
+		else: 
+			print("no target")
+			
 	pass # Replace with function body.

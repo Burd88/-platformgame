@@ -84,7 +84,7 @@ extents = Vector2( 4, 7 )
 extents = Vector2( 4, 7 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 100, 10 )
+extents = Vector2( 150, 10 )
 
 [node name="Gobby" type="KinematicBody2D" groups=[
 "save",

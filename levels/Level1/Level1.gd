@@ -16,7 +16,7 @@ func _ready():
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
-	$CanvasModulate.hide()
+	$CanvasModulate.show()
 	
 	#$Text_field/text.show()
 	$decor/Chain/AnimatedSprite.stop()

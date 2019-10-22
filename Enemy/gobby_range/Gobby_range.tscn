@@ -97,6 +97,7 @@ script = ExtResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "урон"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -155,7 +156,7 @@ one_shot = true
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="ouch_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]

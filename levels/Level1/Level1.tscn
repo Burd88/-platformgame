@@ -1153,7 +1153,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 3
+frame = 4
 speed_scale = 0.8
 playing = true
 
@@ -1746,7 +1746,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 37 )]
-position = Vector2( 251.95, 1131.91 )
+position = Vector2( 108.411, 352.697 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 40 )
@@ -1760,6 +1760,7 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.137255, 0.129412, 0.129412, 1 )
 __meta__ = {
 "_edit_lock_": true

@@ -67,7 +67,7 @@ func _process(delta):
 	_settings()
 	if health_now <=0:
 		_die()
-	elif health_now >0:
+	elif health_now >0 :
 		update()
 		if target and health_now > 0:
 			aim()
@@ -115,7 +115,7 @@ func range_attack():
 		$spr.animation = "атака"
 		speed = 0
 		range_attack = true
-	elif position.distance_to(target.position) <= 70 and melle_attack == false:
+	elif position.distance_to(target.position) <= 70 and melle_attack == false and $spr.animation != "урон":
 		$spr.animation = "хотьба"
 		speed = 50
 		range_attack = false
@@ -263,10 +263,11 @@ func _on_attack_area_body_entered(body):
 
 func _on_attack_area_body_exited(body):
 	if body.get("player_type"):
-		melle_attack = false
-		target = body
-		speed = 50
-		$spr.animation = "хотьба"
+		if $spr.animation != "урон":
+			melle_attack = false
+			target = body
+			speed = 50
+			$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 func _on_spr_animation_finished():
@@ -368,5 +369,13 @@ func _on_spr_frame_changed():
 
 
 func _on_ouch_timer_timeout():
-	$spr.animation = "атака"
+	if target:
+		
+		if position.distance_to(target.position) <20 :
+			$spr.animation = "атака"
+		elif position.distance_to(target.position) >= 20 :
+			$spr.animation = "хотьба"
+			speed = 50
+		else: 
+			print("no target")
 	pass # Когда оглуше противник
