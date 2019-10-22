@@ -160,6 +160,7 @@ max_distance = 300.0
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="ouch_timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
