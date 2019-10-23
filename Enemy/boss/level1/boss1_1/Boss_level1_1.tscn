@@ -10,18 +10,18 @@
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=9]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=14]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=15]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=16]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=17]
 [ext_resource path="res://Enemy/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=22]
 [ext_resource path="res://items/gear/gear.png" type="Texture" id=23]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=24]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=25]
@@ -43,7 +43,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "die",
+"name": "move",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
@@ -53,7 +53,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "move",
+"name": "die",
 "speed": 5.0
 } ]
 
@@ -97,7 +97,6 @@ shape = SubResource( 1 )
 position = Vector2( -0.19958, -8.18273 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="spr"]

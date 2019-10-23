@@ -3,7 +3,7 @@ var speed = 50
 var jump_speed = 150
 var gravity = 200
 var enemy_type = true
-var phase1 = true
+var phase1 = false
 var floor_in
 ## жизни игрока
 var health = 2000
@@ -16,10 +16,22 @@ var shot_var = true
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
+var jump = false
 onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
 ### sounds
-onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
-####
+onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
+onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav")
+onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.wav")
+onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.wav")
+onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.wav")
+
+var die_anim = 3
+onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.wav")
+onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.wav")####
+var start = false
+var target
+var visible_player = false
+var melle_attack = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -31,8 +43,71 @@ func _settings():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_gui()
-	_range_attack()
+	_move(delta)
+	if start == true:
+		
+		phase1()
+		_animation()
+		if target :
+			aim()
+		if jump == false and is_on_floor():
+			if visible_player == true and melle_attack == false and target.direction.y == 0:
+				_range_attack()
 
+			elif visible_player == true and melle_attack == true and target.direction.y == 0 :
+				range_attack = false
+			elif visible_player == true and range_attack == false and melle_attack == false and target.direction.y == 1 :
+				$spr.animation = "стойка"
+				$damage_area/CollisionShape2D.disabled = true
+			print(target.direction.y)
+		if jump == true:
+			if is_on_floor():
+				target.elapsedtime = 0
+				target.isShake = true
+				target.shake_power = 5
+				target.shake_time = 0.1
+	else :
+		 $spr.animation = "стойка"
+
+
+func _animation():
+	if direction.y > 0:
+		if velocity.y < 0 :
+			$spr.animation = "прыжок"
+		if velocity.y > 0 :
+			$spr.animation = "падение"
+			
+func phase1():
+	if php <= 90 and phase1 == false:
+		jump = true
+		target.departure = true
+		target.finish_departure = false
+		$phase1.start()
+		phase1 = true
+func aim():
+	direction = (target.position - position).normalized()
+	if direction.x < 0 :
+		$spr.flip_h = true
+		$check_melle_attack_area.position.x = -8
+		$damage_area.position.x = -8
+		
+	elif direction.x > 0:
+		$spr.flip_h = false
+		$check_melle_attack_area.position.x = 8
+		$damage_area.position.x = 8
+
+	
+func _move(delta):
+	
+	if !is_on_floor():
+		velocity.y += gravity*delta
+	if is_on_floor() :
+		velocity.y = 0
+		if jump:
+			velocity.y  = -jump_speed
+			direction.y = 1
+	
+	move_and_slide(velocity, Vector2(0,-1))
 	pass
 func save():
 	var save_dict = {
@@ -49,9 +124,14 @@ func save():
 	return save_dict
 	
 func _damage(damage):
-	health_now -= damage
-	$damage_sound.stream = damage_hurt2_sound
-	$damage_sound.play()
+	if randi()%8 == 0:
+		print("parry")
+		pass
+	else:
+		health_now -= damage
+		var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
+		$damage_sound.stream = rand_damage_sound[randi()%2]
+		$damage_sound.play()
 	
 func _gui():# Графический интерфейс
 	if health_now > 0 :
@@ -71,7 +151,7 @@ func _range_attack():
 	
 
 func _on_AnimatedSprite_frame_changed():
-	if $spr.animation == "атака" and range_attack == true:
+	if $spr.animation == "атака" and range_attack == true and melle_attack == false:
 		if $spr.frame == 3:
 			var b = bullet_shoot.instance()
 			var flip
@@ -86,5 +166,62 @@ func _on_AnimatedSprite_frame_changed():
 				b.start(position + Vector2(30,0), flip)
 
 			range_attack = false
+	if $spr.animation == "атака" and melle_attack == true and range_attack == false:
+		if $spr.frame == 3:
+			$damage_area/CollisionShape2D.disabled = false
+		elif $spr.frame == 6:
+			$damage_area/CollisionShape2D.disabled = true
 		
+	pass # Replace with function body.
+
+
+
+
+func _on_check_melle_attack_area_body_entered(body):
+	if body.get("player_type") == true:
+		melle_attack = true
+		$spr.animation = "атака"
+		speed = 0
+
+	pass # Replace with function body.
+
+
+func _on_check_melle_attack_area_body_exited(body):
+	if body.get("player_type") == true:
+		melle_attack = false
+		speed = 0
+		
+	pass # Replace with function body.
+
+
+func _on_damage_area_body_entered(body):
+	if body.get("player_type") == true:
+		body._damage(randi()%20+10)
+	
+	pass # Replace with function body.
+
+
+func _on_Visible_body_entered(body):
+	if body.get("player_type") == true:
+		target = body
+		start = true
+		visible_player = true
+	pass # Replace with function body.
+
+
+func _on_phase1_timeout():
+	jump = false
+	target.isShake = false
+	target.shake_power = 1
+	target.shake_time = 0.1
+	pass # Replace with function body.
+
+
+
+
+func _on_Visible_body_exited(body):
+	if body.get("player_type") == true:
+		
+		visible_player = false
+		start = false
 	pass # Replace with function body.

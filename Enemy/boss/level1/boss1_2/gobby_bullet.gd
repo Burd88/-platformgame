@@ -30,7 +30,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_gobby_bullet_body_entered(body):
 	if body.get("player_type") == true:
-		body._damage(randi()%45+20)
+		body._damage(randi()%15+20)
 		queue_free()
 	
 	elif body.name == "frontground":

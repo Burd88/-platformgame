@@ -44,6 +44,10 @@ onready var arrow = preload("res://items/arrow/arrow.tscn")
 var arrow_count = 5
 
 var regen_hp = true
+
+
+var departure = false
+var finish_departure = true
 ##
 var health_potion = 0
 var button = false
@@ -107,14 +111,14 @@ func _physics_process(delta):
 
 #		bow_attack()
 		_settings()
-		if cut_scene == false:
+		if cut_scene == false and departure == false:
 			
 			_move(delta)
 			_attack()
 			$inventary/inventory.show()
 			$GUI/Healthbar.show()
 			$Light2D.show()
-		elif cut_scene == true:
+		elif cut_scene == true and departure == false:
 			
 			velocity.x = 0
 			if is_on_floor():
@@ -130,6 +134,17 @@ func _physics_process(delta):
 			$GUI/Healthbar.hide()
 			$Light2D.hide()
 			$GUI/say_label.hide()
+		elif departure == true:
+			if finish_departure == false:
+				$spr.animation = "departure"
+				var departure_speed = 150
+				velocity.x = +departure_speed
+			else : $spr.animation = "подъем"
+			
+			
+			
+			velocity.y += gravity*delta
+			move_and_slide(velocity,Vector2(0,-1))
 			#hide()
 		_expirience()
 		_gui()
@@ -161,6 +176,12 @@ func save():
 	}
 
 	return save_dict
+func _departure():
+	$spr.animation = "departure"
+	move_and_slide(Vector2(150,100))
+	
+	pass
+
 	
 func _move(delta):
 	if health_now > 0 and attack == false and hook_enable == false: 
@@ -293,6 +314,7 @@ func _move(delta):
 		$spr.animation = "зацеп"
 		velocity.y = 0
 		velocity.x = 0
+		last_position_y = position.y
 
 		if Input.is_action_just_pressed("ui_up"):
 			hook_enable = false
@@ -405,7 +427,8 @@ func _on_spr_animation_finished():
 	if $spr.animation == 'смерть':
 		#get_tree().change_scene("res://main/main.tscn")
 		get_tree().change_scene("res://main/main.tscn")
-		
+	if $spr.animation == 'подъем':
+		departure = false
 		
 	pass # Replace with function body.
 	
@@ -462,7 +485,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_sword_sound
 			$fight_sound.play()
-			damage = randi()%20+50+damage_sword
+			damage = randi()%40+50+damage_sword
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
@@ -472,7 +495,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
-			damage = randi()%20+50
+			damage = randi()%40+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
@@ -482,11 +505,17 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1 :
 			$fight_sound.stream = figth_fit_sound
 			$fight_sound.play()
-			damage = randi()%20+50
+			damage = randi()%40+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
+	if  $spr.animation == "departure":
+		if $spr.frame == 0:
+			velocity.y = -jump_speed
+		elif $spr.frame == 8:
+			finish_departure = true
+			
 
 #	elif $spr.animation == "удар_лук" :
 #		for i in range(0,Global_Player.inventory_maxSlots):

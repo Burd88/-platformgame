@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Enemy/boss/level1/boss1_2/Stalactite.gd" type="Script" id=1]
+[ext_resource path="res://assets/Dungeon1/Details/stalactite1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_7.png" type="Texture" id=3]
+[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_8.png" type="Texture" id=4]
+[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_9.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "norm",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "defeat",
+"speed": 5.0
+} ]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( -1, 10, 3, 0, -5, 0 )
+
+[node name="Stalactite" type="Area2D"]
+position = Vector2( -0.857422, 0.857361 )
+space_override = 3
+gravity_point = true
+gravity = 150.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "norm"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Stalactite_body_entered"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

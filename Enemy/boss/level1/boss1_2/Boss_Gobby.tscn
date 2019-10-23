@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-1.png" type="Texture" id=2]
@@ -18,11 +18,11 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=16]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=17]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=22]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=23]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=24]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=25]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=26]
@@ -54,7 +54,12 @@ animations = [ {
 "name": "стойка",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "падение",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "прыжок",
 "speed": 5.0
@@ -75,8 +80,17 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.40453, 10.3203 )
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 180, 200 )
 
 [node name="Boss_Gobby" type="KinematicBody2D" groups=[
 "save",
@@ -93,11 +107,15 @@ frames = SubResource( 1 )
 animation = "атака"
 frame = 2
 playing = true
+flip_h = true
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0.397217, 4.76658 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
 
@@ -115,6 +133,34 @@ margin_bottom = -0.673622
 rect_scale = Vector2( 0.3, 0.3 )
 custom_styles/fg = ExtResource( 40 )
 custom_styles/bg = ExtResource( 41 )
-value = 60.0
+value = 100.0
 percent_visible = false
+
+[node name="check_melle_attack_area" type="Area2D" parent="."]
+position = Vector2( 8, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="check_melle_attack_area"]
+shape = SubResource( 3 )
+
+[node name="damage_area" type="Area2D" parent="."]
+position = Vector2( 8, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+shape = SubResource( 4 )
+
+[node name="Visible" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visible"]
+position = Vector2( 0, -80 )
+shape = SubResource( 5 )
+
+[node name="phase1" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="frame_changed" from="spr" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="check_melle_attack_area" to="." method="_on_check_melle_attack_area_body_entered"]
+[connection signal="body_exited" from="check_melle_attack_area" to="." method="_on_check_melle_attack_area_body_exited"]
+[connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_entered" from="Visible" to="." method="_on_Visible_body_entered"]
+[connection signal="body_exited" from="Visible" to="." method="_on_Visible_body_exited"]
+[connection signal="timeout" from="phase1" to="." method="_on_phase1_timeout"]
