@@ -6,14 +6,26 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$inter/version.text = str("Версия : ", ProjectSettings.get("application/config/version"))
+	$inter/button/Start_game.text = tr("M_BT_NEW_GAME")
+	$inter/button/Exit.text = tr("M_BT_EXIT")
+	$inter/button/settings.text = tr("M_BT_SETTINGS")
+	$inter/button/Continue.text = tr("M_BT_LOAD_GAME")
+	$inter/Game_name.text = tr("GAME_NAME")
 
+	$inter/version.text = tr("M_BT_VERSION") + " : " + str(ProjectSettings.get("application/config/version"))
+	
+#### save game chek text
+	$inter/chack_save_game/ok.text = tr("M_BT_SGC_OK")
+	$inter/chack_save_game/cancel.text = tr("M_BT_SGC_CANCEL")
+	$inter/chack_save_game/Label.text = tr("M_BT_SGC_LABEL")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$music.volume_db = GLOBAL.music_value
-	
+	if $inter/Options/Panel.visible == false:
+		$inter/button.show()
+
 	#if translationt.language == 1 :
 #		$inter/button/Start_game.text = 'Начать игру'
 	#	$inter/button/Continue.text = 'Продолжить'
@@ -97,12 +109,10 @@ func _on_cancel_pressed():
 func _on_settings_pressed():
 	$inter/Options/Panel.show()
 	$inter/button.hide()
-	$inter/Options/Button.show()
+#	$inter/Options/Button.show()
 	pass # Replace with function body.
 
 
-func _on_Button_pressed():
-	$inter/Options/Panel.hide()
-	$inter/button.show()
-	$inter/Options/Button.hide()
+
+
 	pass # Replace with function body.

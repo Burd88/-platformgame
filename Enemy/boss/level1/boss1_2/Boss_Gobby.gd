@@ -16,8 +16,10 @@ var shot_var = true
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
+var phase_value = 90
 var jump = false
 onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
+onready var stalactite = preload("res://Enemy/boss/level1/boss1_2/Stalactite.tscn")
 ### sounds
 onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
 onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav")
@@ -46,7 +48,7 @@ func _process(delta):
 	_move(delta)
 	if start == true:
 		
-		phase1()
+		phase()
 		_animation()
 		if target :
 			aim()
@@ -59,13 +61,37 @@ func _process(delta):
 			elif visible_player == true and range_attack == false and melle_attack == false and target.direction.y == 1 :
 				$spr.animation = "стойка"
 				$damage_area/CollisionShape2D.disabled = true
-			print(target.direction.y)
-		if jump == true:
-			if is_on_floor():
+			
+		elif jump == true:
+			if is_on_floor() and target.departure_down == true:
 				target.elapsedtime = 0
 				target.isShake = true
 				target.shake_power = 5
 				target.shake_time = 0.1
+				var stal = stalactite.instance()
+				stal.start(Vector2(rand_range(80,200),1250),150)
+				get_parent().add_child(stal)
+				var stal1 = stalactite.instance()
+				stal1.start(Vector2(rand_range(80,200),1250),110)
+				get_parent().add_child(stal1)
+				var stal2 = stalactite.instance()
+				stal2.start(Vector2(rand_range(80,200),1250),150)
+				get_parent().add_child(stal2)
+				var stal3 = stalactite.instance()
+				stal3.start(Vector2(rand_range(80,200),1250),140)
+				get_parent().add_child(stal3)
+				var stal4 = stalactite.instance()
+				stal4.start(Vector2(rand_range(200,400),1250),110)
+				get_parent().add_child(stal4)
+				var stal5 = stalactite.instance()
+				stal5.start(Vector2(rand_range(200,400),1250),100)
+				get_parent().add_child(stal5)
+				var stal6 = stalactite.instance()
+				stal6.start(Vector2(rand_range(200,400),1250),130)
+				get_parent().add_child(stal6)
+				var stal7 = stalactite.instance()
+				stal7.start(Vector2(rand_range(200,400),1250),150)
+				get_parent().add_child(stal7)
 	else :
 		 $spr.animation = "стойка"
 
@@ -77,13 +103,15 @@ func _animation():
 		if velocity.y > 0 :
 			$spr.animation = "падение"
 			
-func phase1():
-	if php <= 90 and phase1 == false:
+func phase():
+	if php <= phase_value:
 		jump = true
+		target._damage(70)
 		target.departure = true
+		target.departure_down = false
 		target.finish_departure = false
 		$phase1.start()
-		phase1 = true
+		phase_value = phase_value - 15
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
@@ -179,9 +207,14 @@ func _on_AnimatedSprite_frame_changed():
 
 func _on_check_melle_attack_area_body_entered(body):
 	if body.get("player_type") == true:
-		melle_attack = true
-		$spr.animation = "атака"
-		speed = 0
+		if jump == false:
+			melle_attack = true
+			$spr.animation = "атака"
+			speed = 0
+		elif jump == true:
+			target.departure = true
+			target.finish_departure = false
+			target._damage(70)
 
 	pass # Replace with function body.
 
@@ -196,7 +229,7 @@ func _on_check_melle_attack_area_body_exited(body):
 
 func _on_damage_area_body_entered(body):
 	if body.get("player_type") == true:
-		body._damage(randi()%20+10)
+		body._damage(randi()%20+20)
 	
 	pass # Replace with function body.
 
@@ -225,3 +258,6 @@ func _on_Visible_body_exited(body):
 		visible_player = false
 		start = false
 	pass # Replace with function body.
+
+
+

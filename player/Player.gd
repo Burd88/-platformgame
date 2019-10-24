@@ -47,6 +47,7 @@ var regen_hp = true
 
 
 var departure = false
+var departure_down = false
 var finish_departure = true
 ##
 var health_potion = 0
@@ -103,6 +104,8 @@ func _settings():
 func _physics_process(delta):
 	
 	if $spr.animation == "смерть":
+		velocity.y += gravity*delta
+		move_and_slide(velocity,Vector2(0,-1))
 		pass
 	else:
 		
@@ -172,6 +175,7 @@ func save():
 		"name" : name,
 		"damage_sword" : damage_sword,
 		"parry" : parry,
+		"last_position_y" : last_position_y
 	
 	}
 
@@ -411,7 +415,7 @@ func _gui():		# Графический интерфейс игрока
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0 and regen_hp == true:
-		health_now += 0.1
+		health_now += 0.01
 func _on_Regen_timer_timeout():
 	regen_hp = true
 	pass # Replace with function body.
@@ -514,6 +518,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 0:
 			velocity.y = -jump_speed
 		elif $spr.frame == 8:
+			departure_down = true
 			finish_departure = true
 			
 

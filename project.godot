@@ -15,18 +15,18 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Пропасть"
-run/main_scene="res://main/main.tscn"
+run/main_scene="res://main/Chosse_translate.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.44"
+config/version="0.0.46"
+config/name_en="This the hard way - the mercenary"
+config/name_ru="Этот нелегкий путь - наёмник"
 
 [autoload]
 
 GLOBAL="*res://GLOBAL.gd"
-translationt="*res://translation/translationt.gd"
 pause_menu="*res://Global_gui/pause_menu.tscn"
 Global_DataParser="*res://player/inventory/Global_DataParser.gd"
 Global_ItemDatabase="*res://player/inventory/Global_ItemDatabase.gd"
@@ -47,6 +47,10 @@ window/size/height=720
 mouse_cursor/custom_image="res://logo/New Piskel.png"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gui]
+
+theme/custom_font="res://fonts/new_dynamicfont.tres"
 
 [importer_defaults]
 
@@ -129,6 +133,12 @@ test_camera={
 2d_physics/layer_4="items"
 2d_render/layer_5="bullets"
 2d_physics/layer_5="bullets"
+
+[locale]
+
+fallback="ru"
+translations=PoolStringArray( "res://Local/Localization.en.translation", "res://Local/Localization.ru.translation" )
+locale_filter=[ 0, [ "en", "ru" ] ]
 
 [memory]
 

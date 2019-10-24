@@ -8,6 +8,13 @@ var music_value = 0
 var sound_value = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Panel/Name.text = tr("OPTION_NAME_LABEL")
+	$Panel/Music.text = tr("OPTION_MUSIC_LABEL")
+	$Panel/Sound.text = tr("OPTION_SOUND_ALL_LABEL")
+	
+	$Panel/Sounds.text = tr("OPTION_SOUND_FX_LABEL")
+	$Panel/Fullwiscreen.text = tr("OPTION_FULLSCREEN_LABEL")
+	$Panel/cancel.text = tr("OPTION_CANCEL_BUTTON")
 	$Panel/music_slide.value = GLOBAL.music_value
 	$Panel/sound_slide.value = GLOBAL.sound_value
 	if OS.window_fullscreen == true:
@@ -76,3 +83,10 @@ func _on_Soundall_toggled(button_pressed):
 		
 	pass # Replace with function body.
 
+
+
+func _on_cancel_pressed():
+	$Panel.visible = false
+	if get_parent().get("name") == "pause_menu":
+		get_parent().set("pause_visble",true)
+	pass # Replace with function body.

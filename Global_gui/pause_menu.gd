@@ -1,6 +1,19 @@
 extends CanvasLayer
 var pause_menu = false
+var pause_visble = false
+
+func _ready():
+	$Popup/name.text = tr("PAUSE_MENU_NAME")
+	$Popup/Continue.text = tr("PAUSE_MENU_CONTINUE")
+	$Popup/Save.text = tr("PAUSE_MENU_SAVE")
+	$Popup/Settings.text = tr("PAUSE_MENU_SETTINGS")
+	$Popup/Load.text = tr("PAUSE_MENU_LOAD")
+	$Popup/ExitGame.text = tr("PAUSE_MENU_EXIT_GAME")
+	$loading/Label.text = tr("PAUSE_MENU_LOADING_TEXT")
 func _physics_process(delta):
+	if $Options/Panel.visible == false and pause_visble == true:
+		$Popup.show()
+		pause_visble = false
 	$music.volume_db = GLOBAL.music_value
 
 func _on_pause_Button_pressed():
@@ -179,16 +192,13 @@ func _on_Timer_timeout():
 
 func _on_Button5_pressed():
 	$Options/Panel.show()
-	$Options/Button.show()
 	$Popup.hide()
 	pass # Replace with function body.
 
 
-func _on_Button_pressed():
-	$Options/Panel.hide()
-	$Options/Button.hide()
-	$Popup.show()
-	pass # Replace with function body.
+
+
+
 
 
 
@@ -199,3 +209,9 @@ func _on_music_visibility_changed():
 	elif $music.visible == false:
 		$music.stop()
 	pass # Replace with function body.
+
+
+
+
+
+
