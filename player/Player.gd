@@ -115,7 +115,7 @@ func _physics_process(delta):
 #		bow_attack()
 		_settings()
 		if cut_scene == false and departure == false:
-			
+			inventory_use_button()
 			_move(delta)
 			_attack()
 			$inventary/inventory.show()
@@ -572,7 +572,94 @@ func _on_use_area_entered(area):
 		area.queue_free()
 
 	else: pass #print("no item")
-
+func inventory_use_button():
+	if Input.is_action_just_pressed("1"):
+		inventory_check(0)
+		pass
+	elif Input.is_action_just_pressed("2"):
+		inventory_check(1)
+		pass
+	elif Input.is_action_just_pressed("3"):
+		inventory_check(2)
+		pass
+	elif Input.is_action_just_pressed("4"):
+		inventory_check(3)
+		pass
+	elif Input.is_action_just_pressed("5"):
+		inventory_check(4)
+		pass
+	elif Input.is_action_just_pressed("6"):
+		inventory_check(5)
+		pass
+	elif Input.is_action_just_pressed("7"):
+		inventory_check(6)
+		pass
+	elif Input.is_action_just_pressed("8"):
+		inventory_check(7)
+		pass
+	elif Input.is_action_just_pressed("9"):
+		inventory_check(8)
+		pass
+	elif Input.is_action_just_pressed("0"):
+		inventory_check(9)
+		pass
+	pass
+func inventory_check(index):
+	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
+		arrow_count += $inventary/inventory/bag1.arrow_count_random
+		Global_Player.inventory_removeItem(index)
+		$inventary/inventory/bag1.update_slot(index)
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "leser_heal_potion":
+		if  health_now < health:
+			health_now += randi()%100+100
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "minor_heal_potion":
+		if  health_now < health:
+			health_now += randi()%200+100
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "heal_potion":
+		if  health_now < health:
+			health_now += randi()%300+100
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "big_heal_potion":
+		if  health_now < health:
+			health_now += randi()%400+100
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
+	elif $inventary/inventory/bag1.get_item_metadata(index) == "major_heal_potion":
+		if  health_now < health:
+			health_now += randi()%500+100
+			Global_Player.inventory_removeItem(index)
+			$inventary/inventory/bag1.update_slot(index)
+		elif health_now > health:
+			health_now = health
+		elif  health_now == health:
+			print("full hp")
+			pass
+	pass
 func _on_bag1_item_rmb_selected(index, at_position):
 	if $inventary/inventory/bag1.get_item_metadata(index) == "arrow":
 		arrow_count += $inventary/inventory/bag1.arrow_count_random

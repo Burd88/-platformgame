@@ -269,6 +269,7 @@ position = Vector2( 1.3269, 1.99026 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 4 )
 animation = "стойка"
+frame = 7
 playing = true
 flip_h = true
 

@@ -42,8 +42,9 @@ func _on_Timer_timeout():
 func _on_Cut_scene_boss_gobby_area_exited(area):
 	if area.name == "cut_scene":
 		$CollisionShape2D.disabled = true
-		target.cut_scene = false
-		target.get_node("Camera2D").current = true
+		if target != null:
+			target.cut_scene = false
+			target.get_node("Camera2D").current = true
 		
 	pass # Replace with function body.
 	pass # Replace with function body.

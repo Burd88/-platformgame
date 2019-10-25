@@ -490,14 +490,14 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "подъем"
-frame = 3
+frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
 scale = Vector2( -0.0828136, 0.873131 )
 current = true
-zoom = Vector2( 0.35, 0.35 )
+zoom = Vector2( 0.4, 0.4 )
 smoothing_enabled = true
 smoothing_speed = 3.0
 editor_draw_drag_margin = true
@@ -511,22 +511,143 @@ offset = Vector2( 300, 150 )
 transform = Transform2D( 1, 0, 0, 1, 300, 150 )
 
 [node name="inventory" type="Panel" parent="inventary"]
-margin_left = -292.274
-margin_top = -92.565
-margin_right = -77.2742
-margin_bottom = 59.435
+margin_left = -241.0
+margin_top = 438.0
+margin_right = 157.0
+margin_bottom = 557.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="bag1" type="ItemList" parent="inventary/inventory"]
-margin_left = 9.44351
-margin_top = 13.258
-margin_right = 207.444
-margin_bottom = 135.258
+margin_left = 13.0
+margin_top = 30.0
+margin_right = 391.0
+margin_bottom = 110.0
 custom_styles/bg = SubResource( 4 )
 allow_reselect = true
 allow_rmb_select = true
 icon_mode = 0
 script = ExtResource( 167 )
+
+[node name="1" type="Label" parent="inventary/inventory"]
+margin_left = 23.0
+margin_top = 5.0
+margin_right = 45.0
+margin_bottom = 28.0
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="2" type="Label" parent="inventary/inventory"]
+margin_left = 58.0
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 28.0
+text = "2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="3" type="Label" parent="inventary/inventory"]
+margin_left = 94.0
+margin_top = 5.0
+margin_right = 116.0
+margin_bottom = 28.0
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="4" type="Label" parent="inventary/inventory"]
+margin_left = 130.0
+margin_top = 5.0
+margin_right = 152.0
+margin_bottom = 28.0
+text = "4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="5" type="Label" parent="inventary/inventory"]
+margin_left = 166.0
+margin_top = 5.0
+margin_right = 188.0
+margin_bottom = 28.0
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="6" type="Label" parent="inventary/inventory"]
+margin_left = 202.0
+margin_top = 5.0
+margin_right = 224.0
+margin_bottom = 28.0
+text = "6"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="7" type="Label" parent="inventary/inventory"]
+margin_left = 238.0
+margin_top = 5.0
+margin_right = 260.0
+margin_bottom = 28.0
+text = "7"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="8" type="Label" parent="inventary/inventory"]
+margin_left = 274.0
+margin_top = 5.0
+margin_right = 296.0
+margin_bottom = 28.0
+text = "8"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="9" type="Label" parent="inventary/inventory"]
+margin_left = 310.0
+margin_top = 5.0
+margin_right = 332.0
+margin_bottom = 28.0
+text = "9"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="0" type="Label" parent="inventary/inventory"]
+margin_left = 346.0
+margin_top = 5.0
+margin_right = 368.0
+margin_bottom = 28.0
+text = "0
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
