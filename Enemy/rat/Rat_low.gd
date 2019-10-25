@@ -114,7 +114,7 @@ func _drop_item():
 #		get_parent().add_child(item)
 #		item.position = position
 func _damage(damage):
-	if randi()%6 == 0:
+	if randi()%15 == 0:
 		print("parry")
 		pass
 	else:

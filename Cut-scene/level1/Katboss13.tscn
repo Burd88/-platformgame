@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=2]
@@ -43,9 +43,8 @@
 [ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=41]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/portret.png" type="Texture" id=42]
 [ext_resource path="res://player/portret.png" type="Texture" id=43]
-[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=44]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=9]
 script/source = "extends Node2D
 
 # Declare member variables here. Examples:
@@ -53,14 +52,14 @@ script/source = "extends Node2D
 # var b = \"text\"
 var button = false
 export var end_kath = false
-var text1 = tr(\"FIRST_CUT_SCENE_TEXT_1\")
-var text2 = tr(\"FIRST_CUT_SCENE_TEXT_2\")
-var text3 = tr(\"FIRST_CUT_SCENE_TEXT_3\")
-var text4 = tr(\"FIRST_CUT_SCENE_TEXT_4\")
-var text5 = tr(\"FIRST_CUT_SCENE_TEXT_5\")
-var text6 = tr(\"FIRST_CUT_SCENE_TEXT_6\")
-var text7 = tr(\"FIRST_CUT_SCENE_TEXT_7\")
-var text8 = tr(\"FIRST_CUT_SCENE_TEXT_8\")
+var text1 = tr(\"SECOND_CUT_SCENE_TEXT_1\")
+var text2 = tr(\"SECOND_CUT_SCENE_TEXT_2\")
+var text3 = tr(\"SECOND_CUT_SCENE_TEXT_3\")
+var text4 = tr(\"SECOND_CUT_SCENE_TEXT_4\")
+var text5 = tr(\"SECOND_CUT_SCENE_TEXT_5\")
+var text6 = tr(\"SECOND_CUT_SCENE_TEXT_6\")
+var text7 = tr(\"SECOND_CUT_SCENE_TEXT_7\")
+var text8 = tr(\"SECOND_CUT_SCENE_TEXT_8\")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -75,27 +74,29 @@ func _process(delta):
 			$CanvasLayer/gobby.show()
 			$change_text.start()
 			$CanvasLayer/Label.text = text2
-		elif $CanvasLayer/Label.text == \"\":
-			print(\"0\")
-			$start_cut.stop()
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/Label.text = text1
-			$change_text.start()
 		elif $CanvasLayer/Label.text == text2:
 			print(\"2\")
+			$CanvasLayer/gobby.hide()
+			$CanvasLayer/player.show()
 			$CanvasLayer/Label.text = text3
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text3:
 			print(\"3\")
+			$CanvasLayer/gobby.show()
+			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text4
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text4:
 			print(\"4\")
+			$CanvasLayer/gobby.hide()
+			$CanvasLayer/player.show()
 			$CanvasLayer/Label.text = text5
 			$change_text.start()
 			$Gobby.animation = \"прыжок\"
 		elif $CanvasLayer/Label.text == text5:
 			print(\"5\")
+			$CanvasLayer/gobby.show()
+			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text6
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text6:
@@ -108,11 +109,10 @@ func _process(delta):
 			$CanvasLayer/Label.text = text8
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text8:
-			$Gobby.flip_h = false
-			$Gobby.animation = \"хотьба\"
 			$CanvasLayer/Label.hide()
 			$CanvasLayer/gobby.hide()
-			$AnimationPlayer.play(\"exit\")
+			end_kath = true
+			queue_free()
 	elif Input.is_action_just_pressed(\"ui_attack1\") and button == true and visible == true:
 		pass
 
@@ -128,6 +128,7 @@ func _process(delta):
 
 func _on_start_cut_timeout():
 	print(\"start\")
+	
 	$CanvasLayer/Label.text = text1
 	$CanvasLayer/gobby.show()
 	$change_text.start()
@@ -142,19 +143,27 @@ func _on_change_text_timeout():
 		$CanvasLayer/Label.text = text2
 	elif $CanvasLayer/Label.text == text2:
 		print(\"2\")
+		$CanvasLayer/gobby.hide()
+		$CanvasLayer/player.show()
 		$CanvasLayer/Label.text = text3
 		$change_text.start()
 	elif $CanvasLayer/Label.text == text3:
 		print(\"3\")
+		$CanvasLayer/gobby.show()
+		$CanvasLayer/player.hide()
 		$CanvasLayer/Label.text = text4
 		$change_text.start()
 	elif $CanvasLayer/Label.text == text4:
 		print(\"4\")
+		$CanvasLayer/gobby.hide()
+		$CanvasLayer/player.show()
 		$CanvasLayer/Label.text = text5
 		$change_text.start()
 		$Gobby.animation = \"прыжок\"
 	elif $CanvasLayer/Label.text == text5:
 		print(\"5\")
+		$CanvasLayer/gobby.show()
+		$CanvasLayer/player.hide()
 		$CanvasLayer/Label.text = text6
 		$change_text.start()
 	elif $CanvasLayer/Label.text == text6:
@@ -167,35 +176,22 @@ func _on_change_text_timeout():
 		$CanvasLayer/Label.text = text8
 		$change_text.start()
 	elif $CanvasLayer/Label.text == text8:
-		$Gobby.flip_h = false
-		$Gobby.animation = \"хотьба\"
 		$CanvasLayer/Label.hide()
 		$CanvasLayer/gobby.hide()
-		$AnimationPlayer.play(\"exit\")
+		end_kath = true
+		queue_free()
 	pass # Replace with function body.
 
 
-func _on_Button_focus_entered():
-	button = true
-	pass # Replace with function body.
 
 
-func _on_Button_focus_exited():
-	button = false
-	pass # Replace with function body.
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	queue_free()
-	pass # Replace with function body.
 
 
-func _on_Button_pressed():
-	queue_free()
-	pass # Replace with function body.
 "
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -228,19 +224,7 @@ animations = [ {
 "speed": 7.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.396078, 0.0509804, 0.0509804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.270588, 0.0117647, 0.0117647, 1 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.470588, 0.101961, 0.101961, 1 )
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 44 )
-
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "exit"
 length = 3.0
 tracks/0/type = "value"
@@ -256,21 +240,20 @@ tracks/0/keys = {
 "values": [ Vector2( 1.3269, 1.99026 ), Vector2( 300, 1.99 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=8]
 
-[node name="Katboss12" type="Node2D"]
+[node name="Katboss13" type="Node2D"]
 pause_mode = 2
-position = Vector2( 735.304, 361.145 )
-script = SubResource( 1 )
-end_kath = true
+position = Vector2( 713.091, 362.732 )
+script = SubResource( 9 )
 
 [node name="Gobby" type="AnimatedSprite" parent="."]
-position = Vector2( 1.3269, 1.99026 )
+position = Vector2( -209.2, 8.63852 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 animation = "стойка"
+frame = 3
 playing = true
-flip_h = true
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -88.122, -16.872 )
@@ -285,7 +268,6 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 margin_left = 300.0
 margin_top = 575.0
 margin_right = 1020.0
@@ -313,18 +295,6 @@ position = Vector2( 231.566, 628.924 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 43 )
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-visible = false
-margin_left = 1169.6
-margin_top = 684.511
-margin_right = 1261.6
-margin_bottom = 707.511
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
-text = "Пропустить"
-
 [node name="change_text" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
@@ -334,16 +304,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/exit = SubResource( 10 )
+anims/exit = SubResource( 7 )
 
 [node name="cut_scene" type="Area2D" parent="."]
 position = Vector2( -59.5812, 3.86893 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cut_scene"]
-shape = SubResource( 11 )
-[connection signal="focus_entered" from="CanvasLayer/Button" to="." method="_on_Button_focus_entered"]
-[connection signal="focus_exited" from="CanvasLayer/Button" to="." method="_on_Button_focus_exited"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
+shape = SubResource( 8 )
 [connection signal="timeout" from="change_text" to="." method="_on_change_text_timeout"]
 [connection signal="timeout" from="start_cut" to="." method="_on_start_cut_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

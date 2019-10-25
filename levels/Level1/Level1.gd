@@ -6,6 +6,7 @@ var mexanism = false
 var door_delete = false
 var torch_delete = false
 var boss1_1_kill = false
+var play_text_boss_1 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
@@ -93,12 +94,15 @@ func _on_Gear6_area_entered(area):
 				yup = true
 				$"Player/E-key".hide()
 		if yup:
-			$"Player/GUI/say_label".text = "Механизм заработал"
+			$"Player/GUI/say_label".text = tr("FIRST_LEVEL_GEAR_NO_TEXT")
 			$"Player/GUI/say_label".show_label = true
 			
 		else: 
-			$"Player/GUI/say_label".text = "Похоже сюда нужна какая-то деталь"
+			$"Player/GUI/say_label".text = tr("FIRST_LEVEL_GEAR_YES_TEXT")
 			$"Player/GUI/say_label".show_label = true
+
+
+
 
 
 

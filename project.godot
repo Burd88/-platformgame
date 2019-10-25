@@ -15,12 +15,13 @@ _global_script_class_icons={
 
 [application]
 
+config/name="Этот нелегкий путь - наёмник"
 run/main_scene="res://main/Chosse_translate.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.46"
+config/version="0.0.47"
 config/name_en="This the hard way - the mercenary"
 config/name_ru="Этот нелегкий путь - наёмник"
 
@@ -136,8 +137,8 @@ test_camera={
 
 [locale]
 
-fallback="ru"
-translations=PoolStringArray( "res://Local/Localization.en.translation", "res://Local/Localization.ru.translation" )
+test="en"
+translations=PoolStringArray( "res://Local/Localization.en.translation", "res://Local/Localization.ru.translation", "res://Local/Player.en.translation", "res://Local/Player.ru.translation", "res://Local/Cut_scene_text.en.translation", "res://Local/Cut_scene_text.ru.translation" )
 locale_filter=[ 0, [ "en", "ru" ] ]
 
 [memory]

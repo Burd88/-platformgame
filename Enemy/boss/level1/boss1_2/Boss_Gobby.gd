@@ -68,30 +68,36 @@ func _process(delta):
 				target.isShake = true
 				target.shake_power = 5
 				target.shake_time = 0.1
-				var stal = stalactite.instance()
-				stal.start(Vector2(rand_range(80,200),1250),150)
-				get_parent().add_child(stal)
-				var stal1 = stalactite.instance()
-				stal1.start(Vector2(rand_range(80,200),1250),110)
-				get_parent().add_child(stal1)
-				var stal2 = stalactite.instance()
-				stal2.start(Vector2(rand_range(80,200),1250),150)
-				get_parent().add_child(stal2)
-				var stal3 = stalactite.instance()
-				stal3.start(Vector2(rand_range(80,200),1250),140)
-				get_parent().add_child(stal3)
-				var stal4 = stalactite.instance()
-				stal4.start(Vector2(rand_range(200,400),1250),110)
-				get_parent().add_child(stal4)
-				var stal5 = stalactite.instance()
-				stal5.start(Vector2(rand_range(200,400),1250),100)
-				get_parent().add_child(stal5)
-				var stal6 = stalactite.instance()
-				stal6.start(Vector2(rand_range(200,400),1250),130)
-				get_parent().add_child(stal6)
-				var stal7 = stalactite.instance()
-				stal7.start(Vector2(rand_range(200,400),1250),150)
-				get_parent().add_child(stal7)
+				for i in range(25,35):
+					print(i)
+					var stal = stalactite.instance()
+					stal.start(Vector2(rand_range(70,440),1250),rand_range(100,180))
+					get_parent().add_child(stal)
+					pass
+#				var stal = stalactite.instance()
+#				stal.start(Vector2(rand_range(70,200),1250),150)
+#				get_parent().add_child(stal)
+#				var stal1 = stalactite.instance()
+#				stal1.start(Vector2(rand_range(70,200),1250),110)
+#				get_parent().add_child(stal1)
+#				var stal2 = stalactite.instance()
+#				stal2.start(Vector2(rand_range(70,200),1250),150)
+#				get_parent().add_child(stal2)
+#				var stal3 = stalactite.instance()
+#				stal3.start(Vector2(rand_range(70,200),1250),140)
+#				get_parent().add_child(stal3)
+#				var stal4 = stalactite.instance()
+#				stal4.start(Vector2(rand_range(200,440),1250),110)
+#				get_parent().add_child(stal4)
+#				var stal5 = stalactite.instance()
+#				stal5.start(Vector2(rand_range(200,440),1250),100)
+#				get_parent().add_child(stal5)
+#				var stal6 = stalactite.instance()
+#				stal6.start(Vector2(rand_range(200,440),1250),130)
+#				get_parent().add_child(stal6)
+#				var stal7 = stalactite.instance()
+#				stal7.start(Vector2(rand_range(200,440),1250),150)
+#				get_parent().add_child(stal7)
 	else :
 		 $spr.animation = "стойка"
 
@@ -237,7 +243,6 @@ func _on_damage_area_body_entered(body):
 func _on_Visible_body_entered(body):
 	if body.get("player_type") == true:
 		target = body
-		start = true
 		visible_player = true
 	pass # Replace with function body.
 
@@ -254,10 +259,16 @@ func _on_phase1_timeout():
 
 func _on_Visible_body_exited(body):
 	if body.get("player_type") == true:
-		
 		visible_player = false
 		start = false
+	
 	pass # Replace with function body.
 
 
 
+
+
+func _on_Visible_area_exited(area):
+	if area.name == "cut_scene":
+		start = true
+		visible = true

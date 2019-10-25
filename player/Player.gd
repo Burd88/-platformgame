@@ -5,7 +5,7 @@ var jump_speed = 150
 var gravity = 230
 var player_type = true
 ## жизни игрока
-var health = 500
+var health = 600
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
