@@ -116,7 +116,7 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]

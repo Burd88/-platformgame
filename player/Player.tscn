@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=2]
+[gd_scene load_steps=198 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -391,6 +391,35 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0, 0.895161, 1 )
+colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.313726, 0.0784314, 0.0784314, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.0156863, 0.129412, 0.670588, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.568627, 0.0745098, 0.168627, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.133333, 0.0156863, 0.0156863, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.0588235, 0.733333, 0.12549, 1 )
 border_width_right = 3
@@ -492,7 +521,6 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "подъем"
-frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -512,17 +540,17 @@ shape = SubResource( 2 )
 script = ExtResource( 167 )
 
 [node name="inventory" type="Panel" parent="inventary"]
-margin_left = 30.624
-margin_top = 573.812
-margin_right = 428.624
-margin_bottom = 692.812
+margin_left = 31.0
+margin_top = 574.0
+margin_right = 429.0
+margin_bottom = 695.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="bag1" type="ItemList" parent="inventary/inventory"]
 margin_left = 13.0
 margin_top = 30.0
 margin_right = 391.0
-margin_bottom = 110.0
+margin_bottom = 105.0
 custom_styles/bg = SubResource( 4 )
 auto_height = true
 max_columns = 0
@@ -660,6 +688,8 @@ margin_left = 467.0
 margin_top = 141.0
 margin_right = 920.0
 margin_bottom = 423.0
+custom_icons/close_highlight = SubResource( 16 )
+custom_styles/panel = SubResource( 17 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
 margin_left = 188.0
@@ -681,6 +711,7 @@ margin_left = 176.936
 margin_top = 230.807
 margin_right = 268.936
 margin_bottom = 259.807
+custom_styles/normal = SubResource( 18 )
 text = "Кнопка"
 
 [node name="GUI" type="CanvasLayer" parent="."]
