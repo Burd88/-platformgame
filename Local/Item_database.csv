@@ -1,10 +1,11 @@
 ﻿id;ru;en
 NAME_ITEM;Название;Name
+DROP_BUTTON;Выкинуть;Drop
 LESSER_HEAL_POTION;Слабое лечебное зелье;Lesser heal potion
 LESSER_HEAL_POTION_TEXT;Слабое лечебное зелье восполняет 100-200 здоровья;Lesser healing potion replenishes 100-200 of health
 MINOR_HEAL_POTION;Незначительно лечебное зелье;Minor heal potion
 MINOR_HEAL_POTION_TEXT;Незначительное лечебное зелье восполняет 200-300 здоровья;Minor healing potion replenishes 200-300 of health
-HEAL_POTION;Незначительно лечебное зелье;Minor heal potion
+HEAL_POTION;Лечебное зелье;Minor heal potion
 HEAL_POTION_TEXT;Лечебное зелье восполняет 300-400 здоровья;Healing potion replenishes 300-400 of health
 BIG_HEAL_POTION;Большое лечебное зелье;Big heal potion
 BIG_HEAL_POTION_TEXT;Большое лечебное зелье восполняет 400-500 здоровья;Big healing potion replenishes 400-500 of health
