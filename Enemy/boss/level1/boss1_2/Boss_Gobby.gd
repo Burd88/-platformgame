@@ -153,6 +153,7 @@ func save():
 #		"health_now" : health_now,
 #		"php" : php,
 		"name" : name,
+		"visible" : visible
 		
 	}
 	return save_dict

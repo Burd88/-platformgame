@@ -86,7 +86,7 @@ func _on_Gear6_area_entered(area):
 		var yup = false
 
 		for i in range(0,Global_Player.inventory_maxSlots):
-			if $Player/inventary/inventory/bag1.get_item_metadata(i) == "Gear":
+			if $Player/inventary/inventory/bag1.get_item_metadata(i)["type"] == "Gear":
 				$use_item/Gear6.visible = true
 				Global_Player.inventory_removeItem(i)
 				$Player/inventary/inventory/bag1.update_slot(i)

@@ -1477,7 +1477,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 29 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 918.234, 1003.14 )
+position = Vector2( 393.805, 1446.67 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
