@@ -647,7 +647,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.get(\"player_type\"):
-		if get_parent().get_parent().play_text_boss_1play_text == false:
+		if get_parent().get_parent().play_text_boss_1  == false:
 			body.get_node(\"GUI\").get_node(\"say_label\").text = tr(\"LEVEL_ONE_BOSS_VISIBLE\")
 			body.get_node(\"GUI\").get_node(\"say_label\").show_label = true
 			get_parent().get_parent().play_text_boss_1play_text == true
@@ -1159,6 +1159,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
+frame = 2
 speed_scale = 0.8
 playing = true
 
@@ -1452,7 +1453,6 @@ wait_time = 1.5
 one_shot = true
 
 [node name="use_item" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )
@@ -1477,7 +1477,7 @@ __meta__ = {
 
 [node name="Torch" parent="use_item" instance=ExtResource( 29 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 393.805, 1446.67 )
+position = Vector2( 166.117, 336.198 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1774,7 +1774,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 39 )]
-position = Vector2( 363.058, 1452.43 )
+position = Vector2( 87.4366, 345.949 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 41 )

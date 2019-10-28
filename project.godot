@@ -203,7 +203,7 @@ ui_jump={
 [locale]
 
 test="en"
-translations=PoolStringArray( "res://Local/Localization.en.translation", "res://Local/Localization.ru.translation", "res://Local/Player.en.translation", "res://Local/Player.ru.translation", "res://Local/Cut_scene_text.en.translation", "res://Local/Cut_scene_text.ru.translation" )
+translations=PoolStringArray( "res://Local/Localization.en.translation", "res://Local/Localization.ru.translation", "res://Local/Player.en.translation", "res://Local/Player.ru.translation", "res://Local/Cut_scene_text.en.translation", "res://Local/Cut_scene_text.ru.translation", "res://Local/Item_database.en.translation", "res://Local/Item_database.ru.translation" )
 locale_filter=[ 0, [ "en", "ru" ] ]
 
 [memory]

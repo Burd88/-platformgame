@@ -1,0 +1,16 @@
+﻿id;ru;en
+NAME_ITEM;Название;Name
+LESSER_HEAL_POTION;Слабое лечебное зелье;Lesser heal potion
+LESSER_HEAL_POTION_TEXT;Слабое лечебное зелье восполняет 100-200 здоровья;Lesser healing potion replenishes 100-200 of health
+MINOR_HEAL_POTION;Незначительно лечебное зелье;Minor heal potion
+MINOR_HEAL_POTION_TEXT;Незначительное лечебное зелье восполняет 200-300 здоровья;Minor healing potion replenishes 200-300 of health
+HEAL_POTION;Незначительно лечебное зелье;Minor heal potion
+HEAL_POTION_TEXT;Лечебное зелье восполняет 300-400 здоровья;Healing potion replenishes 300-400 of health
+BIG_HEAL_POTION;Большое лечебное зелье;Big heal potion
+BIG_HEAL_POTION_TEXT;Большое лечебное зелье восполняет 400-500 здоровья;Big healing potion replenishes 400-500 of health
+MAJOR_HEAL_POTION;Великое лечебное зелье;Major heal potion
+MAJOR_HEAL_POTION_TEXT;Великое лечебное зелье восполняет 500-600 здоровья;Major healing potion replenishes 500-600 of health
+ARROW;Стрела;ARROW
+ARROW_TEXT;Стрела для лука;Arrow for bow
+DEATAIL_1LEVEL_GEAR;Шестеренка;Gear
+DEATAIL_1LEVEL_GEAR_TEXT;Похоже эта деталь нужна для того механизма;It seems this detail is needed for that mechanism

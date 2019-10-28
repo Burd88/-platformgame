@@ -168,7 +168,6 @@ func move_merge_item() -> void:
 		return
 	if (activeItemSlot < 0):
 		print("2")
-		Global_Player.inventory_removeItem(draggedItemSlot)
 		update_slot(draggedItemSlot)
 		return
 

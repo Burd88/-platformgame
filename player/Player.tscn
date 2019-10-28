@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=2]
+[gd_scene load_steps=194 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -166,17 +166,19 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=164]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=165]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=166]
-[ext_resource path="res://player/bag1.gd" type="Script" id=167]
-[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=168]
-[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=169]
-[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=170]
-[ext_resource path="res://player/portret.png" type="Texture" id=171]
-[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=172]
-[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=173]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground.png" type="Texture" id=174]
-[ext_resource path="res://player/light.png" type="Texture" id=175]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=176]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=177]
+[ext_resource path="res://player/inventary.gd" type="Script" id=167]
+[ext_resource path="res://player/bag1.gd" type="Script" id=168]
+[ext_resource path="res://icon1.png" type="Texture" id=169]
+[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=170]
+[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=171]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=172]
+[ext_resource path="res://player/portret.png" type="Texture" id=173]
+[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=174]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=175]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground.png" type="Texture" id=176]
+[ext_resource path="res://player/light.png" type="Texture" id=177]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=178]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=179]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -490,7 +492,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "подъем"
-frame = 6
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -507,6 +509,7 @@ position = Vector2( 0.135504, 4.58188 )
 shape = SubResource( 2 )
 
 [node name="inventary" type="CanvasLayer" parent="."]
+script = ExtResource( 167 )
 
 [node name="inventory" type="Panel" parent="inventary"]
 margin_left = 30.624
@@ -526,7 +529,7 @@ max_columns = 0
 same_column_width = true
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 167 )
+script = ExtResource( 168 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag1"]
 
@@ -651,6 +654,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="WindowDialog_ItemMenu" type="WindowDialog" parent="inventary"]
+visible = true
+margin_left = 467.0
+margin_top = 141.0
+margin_right = 920.0
+margin_bottom = 423.0
+
+[node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
+margin_left = 188.0
+margin_top = 16.0
+margin_right = 252.0
+margin_bottom = 80.0
+texture = ExtResource( 169 )
+stretch_mode = 1
+
+[node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="inventary/WindowDialog_ItemMenu"]
+margin_left = 31.0
+margin_top = 84.0
+margin_right = 423.0
+margin_bottom = 224.0
+bbcode_enabled = true
+
+[node name="ItemMenu_Button_DropItem" type="Button" parent="inventary/WindowDialog_ItemMenu"]
+margin_left = 176.936
+margin_top = 230.807
+margin_right = 268.936
+margin_bottom = 259.807
+text = "Кнопка"
+
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" type="ProgressBar" parent="GUI"]
@@ -665,7 +697,7 @@ percent_visible = false
 
 [node name="Sprite" type="Sprite" parent="GUI/Healthbar"]
 position = Vector2( 37, 8 )
-texture = ExtResource( 168 )
+texture = ExtResource( 170 )
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 335.0
@@ -684,8 +716,8 @@ margin_right = 1020.0
 margin_bottom = 675.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/normal = ExtResource( 169 )
-custom_fonts/font = ExtResource( 170 )
+custom_styles/normal = ExtResource( 171 )
+custom_fonts/font = ExtResource( 172 )
 align = 1
 valign = 1
 autowrap = true
@@ -699,19 +731,19 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="GUI/say_label"]
 position = Vector2( -57.4904, 48.7275 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 171 )
+texture = ExtResource( 173 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
 margin_left = 686.311
 margin_top = -9.47351
 margin_right = 724.311
 margin_bottom = 26.5265
-custom_styles/hover = ExtResource( 172 )
-custom_styles/pressed = ExtResource( 172 )
-custom_styles/focus = ExtResource( 172 )
-custom_styles/disabled = ExtResource( 172 )
-custom_styles/normal = ExtResource( 172 )
-custom_fonts/font = ExtResource( 173 )
+custom_styles/hover = ExtResource( 174 )
+custom_styles/pressed = ExtResource( 174 )
+custom_styles/focus = ExtResource( 174 )
+custom_styles/disabled = ExtResource( 174 )
+custom_styles/normal = ExtResource( 174 )
+custom_fonts/font = ExtResource( 175 )
 text = "X"
 
 [node name="expirience" type="ProgressBar" parent="GUI"]
@@ -728,7 +760,7 @@ value = 100.0
 position = Vector2( 251.883, 6.83738 )
 scale = Vector2( 2.41227, 0.406555 )
 z_index = -1
-texture = ExtResource( 174 )
+texture = ExtResource( 176 )
 
 [node name="level" type="Label" parent="GUI/expirience"]
 margin_left = 537.511
@@ -766,7 +798,7 @@ shape = SubResource( 12 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -0.481295, 2.70181 )
 enabled = false
-texture = ExtResource( 175 )
+texture = ExtResource( 177 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
@@ -775,7 +807,7 @@ shadow_enabled = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 176 )
+texture = ExtResource( 178 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -785,7 +817,7 @@ anims/use = SubResource( 13 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
-stream = ExtResource( 177 )
+stream = ExtResource( 179 )
 volume_db = 10.0
 pitch_scale = 2.0
 autoplay = true
@@ -810,9 +842,10 @@ wait_time = 3.0
 one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
-[connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="." method="_on_bag1_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="inventary" method="_on_bag1_item_rmb_selected"]
 [connection signal="mouse_entered" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_entered"]
 [connection signal="mouse_exited" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_exited"]
+[connection signal="pressed" from="inventary/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="inventary" method="_on_ItemMenu_Button_DropItem_pressed"]
 [connection signal="timeout" from="GUI/say_label/Timer" to="GUI/say_label" method="_on_Timer_timeout"]
 [connection signal="focus_entered" from="GUI/say_label/Button" to="." method="_on_Button_focus_entered"]
 [connection signal="focus_exited" from="GUI/say_label/Button" to="." method="_on_Button_focus_exited"]
