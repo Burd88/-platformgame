@@ -517,7 +517,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "подъем"
-frame = 4
+frame = 6
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -714,10 +714,10 @@ text = "Кнопка"
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" type="ProgressBar" parent="GUI"]
-margin_left = 27.0
-margin_top = 15.0
-margin_right = 102.0
-margin_bottom = 30.0
+margin_left = 50.3268
+margin_top = 37.0991
+margin_right = 125.327
+margin_bottom = 52.0991
 rect_scale = Vector2( 2, 1.5 )
 custom_styles/fg = SubResource( 5 )
 custom_styles/bg = SubResource( 6 )
@@ -776,6 +776,7 @@ custom_fonts/font = ExtResource( 175 )
 text = "X"
 
 [node name="expirience" type="ProgressBar" parent="GUI"]
+visible = false
 margin_left = 418.975
 margin_top = 15.9873
 margin_right = 919.975

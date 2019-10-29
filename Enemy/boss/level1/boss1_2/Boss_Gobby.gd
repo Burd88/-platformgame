@@ -26,7 +26,7 @@ onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav"
 onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.wav")
 onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.wav")
 onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.wav")
-
+var cut_end = false
 var die_anim = 3
 onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.wav")
 onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.wav")####
@@ -36,6 +36,8 @@ var visible_player = false
 var melle_attack = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_parent().get_parent().end_cut_14 == true:
+		queue_free()
 	pass # Replace with function body.
 func _settings():
 	$music.volume_db = GLOBAL.music_value
@@ -44,61 +46,42 @@ func _settings():
 	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_gui()
-	_move(delta)
-	if start == true:
+	if php>0 and cut_end == false:
+		_gui()
+		_move(delta)
 		
-		phase()
-		_animation()
-		if target :
-			aim()
-		if jump == false and is_on_floor():
-			if visible_player == true and melle_attack == false and target.direction.y == 0:
-				_range_attack()
-
-			elif visible_player == true and melle_attack == true and target.direction.y == 0 :
-				range_attack = false
-			elif visible_player == true and range_attack == false and melle_attack == false and target.direction.y == 1 :
-				$spr.animation = "стойка"
-				$damage_area/CollisionShape2D.disabled = true
+		if start == true:
 			
-		elif jump == true:
-			if is_on_floor() and target.departure_down == true:
-				target.elapsedtime = 0
-				target.isShake = true
-				target.shake_power = 5
-				target.shake_time = 0.1
-				for i in range(25,35):
-					print(i)
-					var stal = stalactite.instance()
-					stal.start(Vector2(rand_range(70,440),1250),rand_range(100,180))
-					get_parent().add_child(stal)
+			phase()
+			_animation()
+			if target :
+				aim()
+			if jump == false and is_on_floor():
+				if visible_player == true and melle_attack == false and target.direction.y == 0:
+					_range_attack()
+
+				elif visible_player == true and melle_attack == true and target.direction.y == 0 :
+					range_attack = false
+				elif visible_player == true and range_attack == false and melle_attack == false and target.direction.y == 1 :
+					$spr.animation = "стойка"
+					$damage_area/CollisionShape2D.disabled = true
+			
+			elif jump == true:
+				if is_on_floor() and target.departure_down == true:
+					target.elapsedtime = 0
+					target.isShake = true
+					target.shake_power = 5
+					target.shake_time = 0.1
+					for i in range(25,35):
+						
+						var stal = stalactite.instance()
+						stal.start(Vector2(rand_range(70,440),1250),rand_range(100,180))
+						get_parent().add_child(stal)
 					pass
-#				var stal = stalactite.instance()
-#				stal.start(Vector2(rand_range(70,200),1250),150)
-#				get_parent().add_child(stal)
-#				var stal1 = stalactite.instance()
-#				stal1.start(Vector2(rand_range(70,200),1250),110)
-#				get_parent().add_child(stal1)
-#				var stal2 = stalactite.instance()
-#				stal2.start(Vector2(rand_range(70,200),1250),150)
-#				get_parent().add_child(stal2)
-#				var stal3 = stalactite.instance()
-#				stal3.start(Vector2(rand_range(70,200),1250),140)
-#				get_parent().add_child(stal3)
-#				var stal4 = stalactite.instance()
-#				stal4.start(Vector2(rand_range(200,440),1250),110)
-#				get_parent().add_child(stal4)
-#				var stal5 = stalactite.instance()
-#				stal5.start(Vector2(rand_range(200,440),1250),100)
-#				get_parent().add_child(stal5)
-#				var stal6 = stalactite.instance()
-#				stal6.start(Vector2(rand_range(200,440),1250),130)
-#				get_parent().add_child(stal6)
-#				var stal7 = stalactite.instance()
-#				stal7.start(Vector2(rand_range(200,440),1250),150)
-#				get_parent().add_child(stal7)
-	else :
+	elif php<=0:
+		_death()
+		
+	elif php > 0 and cut_end == true :
 		 $spr.animation = "стойка"
 
 
@@ -110,7 +93,7 @@ func _animation():
 			$spr.animation = "падение"
 			
 func phase():
-	if php <= phase_value:
+	if php <= phase_value and php > 5:
 		jump = true
 		target._damage(70)
 		target.departure = true
@@ -149,12 +132,12 @@ func save():
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
-#		"health" : health ,
-#		"health_now" : health_now,
-#		"php" : php,
+		"health" : health ,
+		"health_now" : health_now,
+		"php" : php,
 		"name" : name,
-		"visible" : visible
-		
+		"visible" : visible,
+		"cut_end" : cut_end
 	}
 	return save_dict
 	
@@ -178,7 +161,13 @@ func _gui():# Графический интерфейс
 	#$HPlable.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
 	$healthbar.value = php
-
+func _death():
+	if php <= 0 and cut_end == false:
+		start = false
+		$spr.animation = "смерть"
+		$damage_area/CollisionShape2D.disabled = true
+		$check_melle_attack_area/CollisionShape2D.disabled = true
+		
 func _range_attack():
 	$spr.animation = "атака"
 	range_attack = true
@@ -206,7 +195,18 @@ func _on_AnimatedSprite_frame_changed():
 			$damage_area/CollisionShape2D.disabled = false
 		elif $spr.frame == 6:
 			$damage_area/CollisionShape2D.disabled = true
-		
+	if $spr.animation == "смерть" :
+		if $spr.frame == 10 and cut_end == false:
+			hide()
+			$spr.stop()
+			target.cut_scene = true
+				
+			get_parent().get_node("Katboss14").show()
+			get_parent().get_node("Katboss14").get_node("start_cut").start()
+			get_parent().get_node("Katboss14").get_node("Camera2D").current = true
+			$spr.animation = "стойка"
+			health_now = 200
+			cut_end = true
 	pass # Replace with function body.
 
 

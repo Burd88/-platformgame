@@ -1,14 +1,37 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Global_gui/Options.tscn" type="PackedScene" id=3]
-[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://main/chak_save_game.tres" type="StyleBox" id=5]
-[ext_resource path="res://main/Check_Save_game.tres" type="StyleBox" id=6]
-[ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=7]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=8]
-[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Global_gui/Options.gd" type="Script" id=3]
+[ext_resource path="res://Global_gui/settings.tres" type="StyleBox" id=4]
+[ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/Options_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://main/chak_save_game.tres" type="StyleBox" id=8]
+[ext_resource path="res://main/Check_Save_game.tres" type="StyleBox" id=9]
+[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://Global_gui/Keys/W-Key.png" type="Texture" id=11]
+[ext_resource path="res://Global_gui/Keys/A-Key.png" type="Texture" id=12]
+[ext_resource path="res://Global_gui/Keys/S-Key.png" type="Texture" id=13]
+[ext_resource path="res://Global_gui/Keys/D-Key.png" type="Texture" id=14]
+[ext_resource path="res://Global_gui/Keys/0.png" type="Texture" id=15]
+[ext_resource path="res://Global_gui/Keys/9-Key.png" type="Texture" id=16]
+[ext_resource path="res://Global_gui/Keys/E-Key.png" type="Texture" id=17]
+[ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Left.png" type="Texture" id=18]
+[ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Right.png" type="Texture" id=19]
+[ext_resource path="res://Global_gui/Keys/Space-Key.png" type="Texture" id=20]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=21]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
 
 [sub_resource type="StyleBoxFlat" id=1]
 draw_center = false
@@ -16,10 +39,10 @@ draw_center = false
 [sub_resource type="DynamicFont" id=2]
 size = 30
 outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxLine" id=4]
 
@@ -42,13 +65,78 @@ font_data = ExtResource( 4 )
 [sub_resource type="StyleBoxLine" id=13]
 
 [sub_resource type="DynamicFont" id=14]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=15]
 outline_size = 2
 outline_color = Color( 0.168627, 0.0196078, 0.0196078, 1 )
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="GDScript" id=16]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Panel/Name.text = tr(\"CONTROLS_NAME_TEXT\")
+	$Panel/move_text.text = \"- \" + tr(\"CONTROLS_MOVE_TEXT\")
+	$Panel/mouse_l_text.text = \"- \" + tr(\"CONTROLS_MAUSER_TEXT\")
+	$Panel/mouse_r_text.text = \"- \" + tr(\"CONTROLS_MOUSEL_TEXT\")
+	$Panel/use_item_text.text = \"- \" + tr(\"CONTROLS_USEITEM_TEXT\")
+	$Panel/space_text.text = \"- \" + tr(\"CONTROLS_SPACE_TEXT\")
+	$Panel/use_text.text = \"- \" + tr(\"CONTROLS_USE_TEXT\")
+	$close.text = tr(\"CONTROLS_CLOSE_BUTTON_TEXT\")
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+"
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.14902, 0.0509804, 0.0509804, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.180392, 0.439216, 0.713726, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=18]
+size = 45
+outline_size = 2
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 27
+outline_size = 1
+outline_color = Color( 0.407843, 0.0352941, 0.0352941, 1 )
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.184314, 0.137255, 0.137255, 1 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 33
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.109804, 0.0705882, 0.301961, 1 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 34
+outline_size = 4
+outline_color = Color( 0.2, 0.0196078, 0.0196078, 1 )
+use_filter = true
+font_data = ExtResource( 10 )
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -57,7 +145,7 @@ script = ExtResource( 1 )
 
 [node name="button" type="Node2D" parent="inter"]
 modulate = Color( 0.498039, 0.756863, 0.498039, 1 )
-position = Vector2( 150, 250 )
+position = Vector2( 141.21, 165.611 )
 
 [node name="Start_game" type="Button" parent="inter/button"]
 margin_left = -70.0
@@ -89,7 +177,144 @@ margin_right = 540.0
 margin_bottom = 310.0
 custom_fonts/font = ExtResource( 2 )
 
-[node name="Options" parent="inter" instance=ExtResource( 3 )]
+[node name="controls" type="Button" parent="inter/button"]
+margin_left = 580.0
+margin_top = 260.0
+margin_right = 693.0
+margin_bottom = 310.0
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Options" type="CanvasLayer" parent="inter"]
+offset = Vector2( 500, 250 )
+transform = Transform2D( 1, 0, 0, 1, 500, 250 )
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="inter/Options"]
+visible = false
+margin_right = 280.0
+margin_bottom = 220.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="Name" type="Label" parent="inter/Options/Panel"]
+margin_left = 79.2649
+margin_top = 0.443787
+margin_right = 199.265
+margin_bottom = 35.4438
+custom_fonts/font = ExtResource( 5 )
+text = "Настройки"
+align = 1
+valign = 1
+
+[node name="music_slide" type="HSlider" parent="inter/Options/Panel"]
+margin_left = 134.5
+margin_top = 65.0
+margin_right = 234.5
+margin_bottom = 81.0
+min_value = -80.0
+max_value = 19.0
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sound_slide" type="HSlider" parent="inter/Options/Panel"]
+margin_left = 134.963
+margin_top = 92.0626
+margin_right = 234.963
+margin_bottom = 108.063
+min_value = -80.0
+max_value = 19.0
+value = -10.0
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Music" type="Label" parent="inter/Options/Panel"]
+margin_left = 43.8897
+margin_top = 59.0685
+margin_right = 137.5
+margin_bottom = 82.0685
+custom_fonts/font = ExtResource( 6 )
+text = "Музыка : "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sound" type="Label" parent="inter/Options/Panel"]
+margin_left = 79.2152
+margin_top = 38.7115
+margin_right = 172.825
+margin_bottom = 61.7115
+custom_fonts/font = ExtResource( 6 )
+text = "Звук : "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fullwiscreen" type="Label" parent="inter/Options/Panel"]
+margin_left = 52.0
+margin_top = 131.41
+margin_right = 159.0
+margin_bottom = 168.41
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = -9
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 0
+text = "Полноэкранный
+ режим : "
+align = 1
+valign = 1
+
+[node name="Sounds" type="Label" parent="inter/Options/Panel"]
+margin_left = 14.602
+margin_top = 85.3026
+margin_right = 121.602
+margin_bottom = 108.303
+custom_fonts/font = ExtResource( 6 )
+text = "Прочие звуки :"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fullscreen_check" type="CheckBox" parent="inter/Options/Panel"]
+margin_left = 181.147
+margin_top = 140.841
+margin_right = 205.147
+margin_bottom = 164.841
+flat = true
+align = 1
+
+[node name="Soundall" type="CheckBox" parent="inter/Options/Panel"]
+margin_left = 149.684
+margin_top = 40.1154
+margin_right = 173.684
+margin_bottom = 64.1154
+pressed = true
+
+[node name="cancel" type="Button" parent="inter/Options/Panel"]
+margin_left = 102.178
+margin_top = 177.893
+margin_right = 179.178
+margin_bottom = 206.893
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/focus = SubResource( 26 )
+custom_styles/disabled = SubResource( 27 )
+custom_styles/normal = SubResource( 28 )
+custom_fonts/font = ExtResource( 6 )
+text = "Закрыть"
 
 [node name="Game_name" type="Label" parent="inter"]
 margin_left = 821.013
@@ -119,8 +344,8 @@ margin_left = 500.0
 margin_top = 336.0
 margin_right = 810.0
 margin_bottom = 562.0
-custom_styles/panelf = ExtResource( 5 )
-custom_styles/panel = ExtResource( 6 )
+custom_styles/panelf = ExtResource( 8 )
+custom_styles/panel = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,7 +361,7 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.0666667, 0.0156863, 0.0156863, 1 )
 text = "ок"
 
@@ -151,7 +376,7 @@ custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/disabled = SubResource( 12 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.0666667, 0.0156863, 0.0156863, 1 )
 text = "отмена"
 
@@ -178,16 +403,223 @@ custom_fonts/font = SubResource( 15 )
 align = 1
 valign = 1
 
+[node name="Controls" type="Node2D" parent="inter"]
+visible = false
+script = SubResource( 16 )
+
+[node name="Panel" type="Panel" parent="inter/Controls"]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.592157 )
+show_behind_parent = true
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 17 )
+
+[node name="Name" type="Label" parent="inter/Controls/Panel"]
+margin_left = 525.939
+margin_top = 13.5717
+margin_right = 751.939
+margin_bottom = 75.5717
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 0.52549, 0.360784, 0.0980392, 1 )
+custom_colors/font_outline_modulate = Color( 0.411765, 0.0823529, 0.0823529, 1 )
+custom_colors/font_color_shadow = Color( 0.639216, 0.0705882, 0.0705882, 1 )
+text = "Управление"
+align = 1
+valign = 1
+
+[node name="move_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 255.0
+margin_top = 135.159
+margin_right = 465.0
+margin_bottom = 173.159
+custom_fonts/font = SubResource( 19 )
+text = "- движение"
+valign = 1
+
+[node name="mouse_r_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 800.0
+margin_top = 115.0
+margin_right = 1010.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 19 )
+text = "- атака"
+valign = 1
+
+[node name="mouse_l_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 800.0
+margin_top = 215.0
+margin_right = 1066.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 19 )
+text = "- информация о вещи"
+valign = 1
+
+[node name="use_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 255.0
+margin_top = 269.632
+margin_right = 465.0
+margin_bottom = 307.632
+custom_fonts/font = SubResource( 19 )
+text = "- использовать"
+valign = 1
+
+[node name="space_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 255.0
+margin_top = 373.789
+margin_right = 465.0
+margin_bottom = 411.789
+custom_fonts/font = SubResource( 19 )
+text = "- прыжок"
+valign = 1
+
+[node name="use_item_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 255.0
+margin_top = 490.0
+margin_right = 544.0
+margin_bottom = 528.0
+custom_fonts/font = SubResource( 19 )
+text = "- использовать предмет"
+valign = 1
+
+[node name="move" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 55.0
+margin_top = 104.0
+margin_right = 206.0
+margin_bottom = 222.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="w" type="Sprite" parent="inter/Controls/Panel/move"]
+position = Vector2( 75, 36 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="a" type="Sprite" parent="inter/Controls/Panel/move"]
+position = Vector2( 35, 71 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="s" type="Sprite" parent="inter/Controls/Panel/move"]
+position = Vector2( 75, 71 )
+texture = ExtResource( 13 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="d" type="Sprite" parent="inter/Controls/Panel/move"]
+position = Vector2( 115, 71 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="0-9" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 55.0
+margin_top = 476.0
+margin_right = 206.0
+margin_bottom = 552.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="0" type="Sprite" parent="inter/Controls/Panel/0-9"]
+position = Vector2( 33.8624, 38.0095 )
+texture = ExtResource( 15 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="s" type="Label" parent="inter/Controls/Panel/0-9"]
+margin_left = 62.371
+margin_top = 12.7823
+margin_right = 82.371
+margin_bottom = 58.7823
+custom_fonts/font = SubResource( 21 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="9" type="Sprite" parent="inter/Controls/Panel/0-9"]
+position = Vector2( 113.862, 38.0095 )
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="use" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 55.0
+margin_top = 260.0
+margin_right = 206.0
+margin_bottom = 337.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="e" type="Sprite" parent="inter/Controls/Panel/use"]
+position = Vector2( 75, 36 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="mouse_r" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 620.0
+margin_top = 104.0
+margin_right = 771.0
+margin_bottom = 181.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="m-r" type="Sprite" parent="inter/Controls/Panel/mouse_r"]
+position = Vector2( 75, 36 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="mouse_l" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 620.0
+margin_top = 204.0
+margin_right = 771.0
+margin_bottom = 281.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="m-l" type="Sprite" parent="inter/Controls/Panel/mouse_l"]
+position = Vector2( 75, 36 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="jump" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 55.0
+margin_top = 360.0
+margin_right = 206.0
+margin_bottom = 437.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="space" type="Sprite" parent="inter/Controls/Panel/jump"]
+position = Vector2( 75, 36 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[node name="close" type="Button" parent="inter/Controls"]
+margin_left = 572.632
+margin_top = 612.0
+margin_right = 719.632
+margin_bottom = 659.0
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
+text = "close"
+
 [node name="music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 21 )
 volume_db = -15.0
 autoplay = true
 
-[node name="Intro" parent="." instance=ExtResource( 9 )]
+[node name="Intro" parent="." instance=ExtResource( 22 )]
 position = Vector2( -2.38394, 223.312 )
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="inter/button/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="inter/button/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="inter/button/controls" to="." method="_on_controls_pressed"]
+[connection signal="value_changed" from="inter/Options/Panel/music_slide" to="inter/Options" method="_on_music_slide_value_changed"]
+[connection signal="value_changed" from="inter/Options/Panel/sound_slide" to="inter/Options" method="_on_sound_slide_value_changed"]
+[connection signal="toggled" from="inter/Options/Panel/Fullscreen_check" to="inter/Options" method="_on_Fullscreen_check_toggled"]
+[connection signal="toggled" from="inter/Options/Panel/Soundall" to="inter/Options" method="_on_Soundall_toggled"]
+[connection signal="pressed" from="inter/Options/Panel/cancel" to="." method="_on_option_cancel_pressed"]
 [connection signal="pressed" from="inter/chack_save_game/ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="inter/chack_save_game/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="inter/Controls/close" to="." method="_on_controle_close_pressed"]

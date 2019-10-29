@@ -10,6 +10,7 @@ func _ready():
 	$Popup/Load.text = tr("PAUSE_MENU_LOAD")
 	$Popup/ExitGame.text = tr("PAUSE_MENU_EXIT_GAME")
 	$loading/Label.text = tr("PAUSE_MENU_LOADING_TEXT")
+	$Popup/main_menu.text = tr("PAUSE_MENU_MAIN_MENU_TEXT")
 func _physics_process(delta):
 	if $Options/Panel.visible == false and pause_visble == true:
 		$Popup.show()
@@ -41,7 +42,7 @@ func _save_game_data():
 	#Global_Player.save_data()
 	print("Auto save")
 	var save_game = File.new()
-	save_game.open("res://savegame.save", File.WRITE)
+	save_game.open("user://savegame.save", File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	var save_data = {"savedata" : {}}
 	for i in save_nodes:
@@ -70,7 +71,7 @@ func _save_game_data():
 
 func _on_Button4_pressed():
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		get_tree().change_scene("res://main/main.tscn")
 		.get_tree().paused = false
 	else:
@@ -79,12 +80,12 @@ func _on_Button4_pressed():
 
 func preload_game():
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		get_tree().change_scene("res://main/main.tscn")
 		return 
 		
 		print("error")
-	save_game.open("res://savegame.save", File.READ)
+	save_game.open("user://savegame.save", File.READ)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:
 		i.queue_free()
@@ -114,9 +115,9 @@ func preload_game():
 func load_game():
 	var save_game = File.new()
 	
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		return print("error")
-	save_game.open("res://savegame.save", File.READ)
+	save_game.open("user://savegame.save", File.READ)
 	while save_game.eof_reached() == false:
 		var try_current_line = parse_json(save_game.get_line())
 		if try_current_line != null:
@@ -143,10 +144,10 @@ func _death_load_game():
 	GLOBAL.load_game = "loading_game"
 	print("должно быть загружено сохранение")
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 
-	save_game.open("res://savegame.save", File.READ)
+	save_game.open("user://savegame.save", File.READ)
 	
 	while save_game.eof_reached() == false:
 		var try_current_line = parse_json(save_game.get_line())
@@ -215,3 +216,9 @@ func _on_music_visibility_changed():
 
 
 
+
+
+func _on_main_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://main/main.tscn")
+	pass # Replace with function body.

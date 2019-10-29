@@ -21,3 +21,12 @@ PAUSE_MENU_LOAD;Загрузить;Load
 PAUSE_MENU_EXIT_GAME;Выход из игры;Exit game
 PAUSE_MENU_NAME;Пауза;Paused
 PAUSE_MENU_LOADING_TEXT;Загрузка...;Loading...
+PAUSE_MENU_MAIN_MENU_TEXT;Главное меню;Main menu
+CONTROLS_NAME_TEXT;Управление;Controls
+CONTROLS_MOVE_TEXT;Движение;Moving
+CONTROLS_MOUSEL_TEXT;Атака;Attack
+CONTROLS_MAUSER_TEXT;информация о вещи;Item info
+CONTROLS_USEITEM_TEXT;Использовать предмет;Use item
+CONTROLS_SPACE_TEXT;Прыжок;Jump
+CONTROLS_USE_TEXT;Взаимодействие;Interaction
+CONTROLS_CLOSE_BUTTON_TEXT;Закрыть;Close

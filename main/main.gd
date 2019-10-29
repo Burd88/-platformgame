@@ -10,6 +10,7 @@ func _ready():
 	$inter/button/Exit.text = tr("M_BT_EXIT")
 	$inter/button/settings.text = tr("M_BT_SETTINGS")
 	$inter/button/Continue.text = tr("M_BT_LOAD_GAME")
+	$inter/button/controls.text = tr("CONTROLS_NAME_TEXT")
 	$inter/Game_name.text = tr("GAME_NAME")
 
 	$inter/version.text = tr("M_BT_VERSION") + " : " + str(ProjectSettings.get("application/config/version"))
@@ -18,13 +19,13 @@ func _ready():
 	$inter/chack_save_game/ok.text = tr("M_BT_SGC_OK")
 	$inter/chack_save_game/cancel.text = tr("M_BT_SGC_CANCEL")
 	$inter/chack_save_game/Label.text = tr("M_BT_SGC_LABEL")
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$music.volume_db = GLOBAL.music_value
-	if $inter/Options/Panel.visible == false:
-		$inter/button.show()
+
 
 	#if translationt.language == 1 :
 #		$inter/button/Start_game.text = 'Начать игру'
@@ -39,11 +40,11 @@ func _process(delta):
 
 func _on_Start_game_pressed():
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		get_tree().change_scene("res://levels/Level1/Level1.tscn")
 		GLOBAL.load_game = "new_game"
 	
-	elif save_game.file_exists("res://savegame.save"):
+	elif save_game.file_exists("user://savegame.save"):
 		$inter/chack_save_game.show()
 		$inter/button.hide()
 		pass
@@ -62,10 +63,10 @@ func _on_Continue_pressed():
 	GLOBAL.load_game = "loading_game"
 	print("должно быть загружено сохранение")
 	var save_game = File.new()
-	if not save_game.file_exists("res://savegame.save"):
+	if not save_game.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 
-	save_game.open("res://savegame.save", File.READ)
+	save_game.open("user://savegame.save", File.READ)
 	
 	while save_game.eof_reached() == false:
 		var try_current_line = parse_json(save_game.get_line())
@@ -94,7 +95,7 @@ func _on_Continue_pressed():
 func _on_ok_pressed():
 	get_tree().change_scene("res://levels/Level1/Level1.tscn")
 	var dir = Directory.new()
-	dir.remove("res://savegame.save")
+	dir.remove("user://savegame.save")
 	GLOBAL.load_game = "new_game"
 	pass # Replace with function body.
 	
@@ -115,4 +116,22 @@ func _on_settings_pressed():
 
 
 
+	pass # Replace with function body.
+
+
+func _on_controls_pressed():
+	$inter/Controls.show()
+	$inter/button.hide()
+	pass # Replace with function body.
+
+
+func _on_controle_close_pressed():
+	$inter/Controls.hide()
+	$inter/button.show()
+	pass # Replace with function body.
+
+
+func _on_option_cancel_pressed():
+	$inter/Options/Panel.hide()
+	$inter/button.show()
 	pass # Replace with function body.

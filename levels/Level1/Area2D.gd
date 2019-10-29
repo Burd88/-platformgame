@@ -12,8 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-		
+	if get_parent().get_parent().end_cut_14 == true :
+		$CollisionShape2D.disabled = true
+	else: pass
 	pass
 
 
@@ -25,6 +26,7 @@ func _on_Area2D_body_entered(body):
 		$Timer.start()
 		body.get_node("Camera2D").current = false
 		body.cut_scene = true
+		get_parent().get_node("Boss_Gobby2").hide()
 		
 		print("CUt Scene")
 	pass # Replace with function body.
@@ -41,10 +43,10 @@ func _on_Timer_timeout():
 
 func _on_Cut_scene_boss_gobby_area_exited(area):
 	if area.name == "cut_scene":
-		$CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)
 		if target != null:
 			target.cut_scene = false
-			target.get_node("Camera2D").current = true
+			
 		
 	pass # Replace with function body.
 	pass # Replace with function body.

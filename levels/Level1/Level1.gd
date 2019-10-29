@@ -7,6 +7,7 @@ var door_delete = false
 var torch_delete = false
 var boss1_1_kill = false
 var play_text_boss_1 = false
+var end_cut_14 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(GLOBAL.load_game)
@@ -41,6 +42,12 @@ func _physics_process(delta):
 		$pause_menu.pause_menu = true
 		$pause_menu/music.visible = true
 		get_tree().paused = true
+		
+#	if get_node("enemies-2/Boss_Gobby2"):
+#		if end_cut_14 == true:
+#			get_node("enemies-2/Boss_Gobby2").hide()
+#
+#	else: pass
 
 	
 		
@@ -60,6 +67,8 @@ func save_levels():
 		"door_delete" : door_delete,
 		"torch_delete" : torch_delete,
 		"boss1_1_kill" : boss1_1_kill,
+		"play_text_boss_1" : play_text_boss_1,
+		"end_cut_14" : end_cut_14,
 		}
 	return save_level
 #	pass

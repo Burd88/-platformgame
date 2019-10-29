@@ -121,6 +121,7 @@ func _physics_process(delta):
 			$inventary/inventory.show()
 			$GUI/Healthbar.show()
 			$Light2D.show()
+			$Camera2D.current = true
 		elif cut_scene == true and departure == false:
 			
 			velocity.x = 0
@@ -416,7 +417,7 @@ func _gui():		# Графический интерфейс игрока
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0 and regen_hp == true:
-		health_now += 0.01
+		health_now += 0.07
 func _on_Regen_timer_timeout():
 	regen_hp = true
 	pass # Replace with function body.

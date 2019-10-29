@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="GDScript" id=41]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 # Declare member variables here. Examples:
@@ -25,14 +25,14 @@ func _on_Cut_scene_start_body_entered(body):
 	pass # Replace with function body.
 "
 
-[sub_resource type="RectangleShape2D" id=42]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 58.6908, 93.4556 )
 
 [node name="Cut_scene_start" type="Area2D"]
 pause_mode = 2
 position = Vector2( 988.89, 1014.25 )
-script = SubResource( 41 )
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 42 )
+shape = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Cut_scene_start_body_entered"]
