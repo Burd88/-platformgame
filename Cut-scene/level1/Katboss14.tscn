@@ -66,38 +66,38 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed(\"ui_attack1\") and button == false and visible == true:
 		if $CanvasLayer/Label.text == text1:
-			print(\"1\")
+			
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
 			$change_text.start()
 			$CanvasLayer/Label.text = text2
 		elif $CanvasLayer/Label.text == text2:
-			print(\"2\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text3
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text3:
-			print(\"3\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text4
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text4:
-			print(\"4\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text5
 			$change_text.start()
 			
 		elif $CanvasLayer/Label.text == text5:
-			print(\"5\")
+		
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text6
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text6:
-			print(\"5\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$Gobby.animation = \"стойка\"
@@ -106,7 +106,7 @@ func _process(delta):
 		elif $CanvasLayer/Label.text == text7:
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
-			print(\"5\")
+			
 			$CanvasLayer/Label.text = text8
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text8:
@@ -137,7 +137,7 @@ func _process(delta):
 
 
 func _on_start_cut_timeout():
-	print(\"start\")
+	print(\"Начало кат-сцены победы над Гобби\")
 	$CanvasLayer/Label.show()
 	$CanvasLayer/Label.text = text1
 	$CanvasLayer/gobby.show()
@@ -147,38 +147,38 @@ func _on_start_cut_timeout():
 
 func _on_change_text_timeout():
 		if $CanvasLayer/Label.text == text1:
-			print(\"1\")
+			
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
 			$change_text.start()
 			$CanvasLayer/Label.text = text2
 		elif $CanvasLayer/Label.text == text2:
-			print(\"2\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text3
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text3:
-			print(\"3\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text4
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text4:
-			print(\"4\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text5
 			$change_text.start()
 			
 		elif $CanvasLayer/Label.text == text5:
-			print(\"5\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text6
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text6:
-			print(\"5\")
+			
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$Gobby.animation = \"стойка\"
@@ -187,7 +187,7 @@ func _on_change_text_timeout():
 		elif $CanvasLayer/Label.text == text7:
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
-			print(\"5\")
+			
 			$CanvasLayer/Label.text = text8
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text8:
@@ -277,7 +277,6 @@ position = Vector2( -209.2, 8.63852 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "лежа"
-frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]

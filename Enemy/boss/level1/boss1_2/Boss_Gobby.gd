@@ -6,7 +6,7 @@ var enemy_type = true
 var phase1 = false
 var floor_in
 ## жизни игрока
-var health = 2000
+var health = 20
 var health_now = health
 var php = (health_now*100)/health
 var range_attack = false
@@ -46,7 +46,7 @@ func _settings():
 	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if php>0 and cut_end == false:
+	if php>5 and cut_end == false:
 		_gui()
 		_move(delta)
 		
@@ -72,13 +72,19 @@ func _process(delta):
 					target.isShake = true
 					target.shake_power = 5
 					target.shake_time = 0.1
-					for i in range(25,35):
+					for i in range(25,45):
+
+						var stal = stalactite.instance()
+						stal.start(Vector2(rand_range(70,440),1250),rand_range(100,220))
+						get_parent().add_child(stal)
+					for i in range(10,20):
 						
 						var stal = stalactite.instance()
-						stal.start(Vector2(rand_range(70,440),1250),rand_range(100,180))
+						stal.start(Vector2(rand_range(400,440),1250),rand_range(100,180))
 						get_parent().add_child(stal)
 					pass
-	elif php<=0:
+					pass
+	elif php<=5:
 		_death()
 		
 	elif php > 0 and cut_end == true :
@@ -162,11 +168,12 @@ func _gui():# Графический интерфейс
 	php = (health_now*100)/health
 	$healthbar.value = php
 func _death():
-	if php <= 0 and cut_end == false:
+	if php <= 5 and cut_end == false:
 		start = false
 		$spr.animation = "смерть"
 		$damage_area/CollisionShape2D.disabled = true
 		$check_melle_attack_area/CollisionShape2D.disabled = true
+		get_parent().get_node("Cut_scene_boss_gobby/Door_gobby_exit").door_close = 2
 		
 func _range_attack():
 	$spr.animation = "атака"

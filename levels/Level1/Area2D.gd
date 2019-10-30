@@ -23,12 +23,13 @@ func _on_Area2D_body_entered(body):
 		$Torch/Light2D.enabled = true
 		$Torch2/Light2D.enabled = true
 		target = body
+		$Door_gobby_exit.show()
 		$Timer.start()
 		body.get_node("Camera2D").current = false
 		body.cut_scene = true
 		get_parent().get_node("Boss_Gobby2").hide()
 		
-		print("CUt Scene")
+		
 	pass # Replace with function body.
 
 
@@ -44,6 +45,8 @@ func _on_Timer_timeout():
 func _on_Cut_scene_boss_gobby_area_exited(area):
 	if area.name == "cut_scene":
 		$CollisionShape2D.set_deferred("disabled", true)
+		$Door_gobby_exit.door_close = 1
+		
 		if target != null:
 			target.cut_scene = false
 			

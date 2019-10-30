@@ -190,7 +190,7 @@ custom_styles/focus = ExtResource( 9 )
 custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 10 )
-text = "Продолжить"
+text = "Главное меню"
 
 [node name="Settings" type="Button" parent="Popup"]
 margin_left = 630.0

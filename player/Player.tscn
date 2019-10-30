@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=2]
+[gd_scene load_steps=199 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -166,17 +166,17 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=164]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=165]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=166]
-[ext_resource path="res://player/inventary.gd" type="Script" id=167]
-[ext_resource path="res://player/bag1.gd" type="Script" id=168]
-[ext_resource path="res://icon1.png" type="Texture" id=169]
-[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=170]
-[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=171]
-[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=172]
-[ext_resource path="res://player/portret.png" type="Texture" id=173]
-[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=174]
-[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=175]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground1.png" type="Texture" id=176]
-[ext_resource path="res://player/light.png" type="Texture" id=177]
+[ext_resource path="res://player/light.png" type="Texture" id=167]
+[ext_resource path="res://player/inventary.gd" type="Script" id=168]
+[ext_resource path="res://player/bag1.gd" type="Script" id=169]
+[ext_resource path="res://icon1.png" type="Texture" id=170]
+[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=171]
+[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=172]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=173]
+[ext_resource path="res://player/portret.png" type="Texture" id=174]
+[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=175]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=176]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground1.png" type="Texture" id=177]
 [ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=178]
 [ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=179]
 
@@ -361,6 +361,15 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 14 )
 
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.254902, 0.0392157, 0.0392157, 1 )
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.447059, 0.0784314, 0.0784314, 1 )
 border_width_left = 5
@@ -517,7 +526,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "подъем"
-frame = 6
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -529,40 +538,63 @@ smoothing_enabled = true
 smoothing_speed = 3.0
 editor_draw_drag_margin = true
 
+[node name="time_move" type="Timer" parent="Camera2D"]
+wait_time = 3.0
+one_shot = true
+
+[node name="camera_light" type="Light2D" parent="Camera2D"]
+position = Vector2( 5.81179, 3.09439 )
+rotation = -3.14159
+scale = Vector2( 12.0753, -1.1453 )
+enabled = false
+texture = ExtResource( 167 )
+texture_scale = 0.4
+color = Color( 0.945098, 0.941176, 0.631373, 1 )
+shadow_enabled = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.135504, 4.58188 )
 shape = SubResource( 2 )
 
+[node name="UI_paneli" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI_paneli"]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 21 )
+
 [node name="inventary" type="CanvasLayer" parent="."]
-script = ExtResource( 167 )
+script = ExtResource( 168 )
 
 [node name="inventory" type="Panel" parent="inventary"]
-margin_left = 31.0
-margin_top = 574.0
-margin_right = 429.0
-margin_bottom = 695.0
+margin_left = 0.921878
+margin_top = 656.004
+margin_right = 398.922
+margin_bottom = 746.004
+rect_scale = Vector2( 0.7, 0.7 )
 custom_styles/panel = SubResource( 3 )
 
 [node name="bag1" type="ItemList" parent="inventary/inventory"]
-margin_left = 13.0
-margin_top = 30.0
-margin_right = 391.0
-margin_bottom = 105.0
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 388.0
+margin_bottom = 83.0
 custom_styles/bg = SubResource( 4 )
 auto_height = true
 max_columns = 0
 same_column_width = true
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 168 )
+script = ExtResource( 169 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag1"]
 
 [node name="1" type="Label" parent="inventary/inventory"]
-margin_left = 23.0
-margin_top = 5.0
-margin_right = 45.0
-margin_bottom = 28.0
+margin_left = 30.0
+margin_top = 8.0
+margin_right = 52.0
+margin_bottom = 31.0
 text = "1"
 align = 1
 valign = 1
@@ -571,10 +603,10 @@ __meta__ = {
 }
 
 [node name="2" type="Label" parent="inventary/inventory"]
-margin_left = 58.0
-margin_top = 5.0
-margin_right = 80.0
-margin_bottom = 28.0
+margin_left = 65.0
+margin_top = 8.0
+margin_right = 87.0
+margin_bottom = 31.0
 text = "2"
 align = 1
 valign = 1
@@ -583,10 +615,10 @@ __meta__ = {
 }
 
 [node name="3" type="Label" parent="inventary/inventory"]
-margin_left = 94.0
-margin_top = 5.0
-margin_right = 116.0
-margin_bottom = 28.0
+margin_left = 101.0
+margin_top = 8.0
+margin_right = 123.0
+margin_bottom = 31.0
 text = "3"
 align = 1
 valign = 1
@@ -595,10 +627,10 @@ __meta__ = {
 }
 
 [node name="4" type="Label" parent="inventary/inventory"]
-margin_left = 130.0
-margin_top = 5.0
-margin_right = 152.0
-margin_bottom = 28.0
+margin_left = 137.0
+margin_top = 8.0
+margin_right = 159.0
+margin_bottom = 31.0
 text = "4"
 align = 1
 valign = 1
@@ -607,10 +639,10 @@ __meta__ = {
 }
 
 [node name="5" type="Label" parent="inventary/inventory"]
-margin_left = 166.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 28.0
+margin_left = 173.0
+margin_top = 8.0
+margin_right = 195.0
+margin_bottom = 31.0
 text = "5"
 align = 1
 valign = 1
@@ -619,10 +651,10 @@ __meta__ = {
 }
 
 [node name="6" type="Label" parent="inventary/inventory"]
-margin_left = 202.0
-margin_top = 5.0
-margin_right = 224.0
-margin_bottom = 28.0
+margin_left = 209.0
+margin_top = 8.0
+margin_right = 231.0
+margin_bottom = 31.0
 text = "6"
 align = 1
 valign = 1
@@ -631,10 +663,10 @@ __meta__ = {
 }
 
 [node name="7" type="Label" parent="inventary/inventory"]
-margin_left = 238.0
-margin_top = 5.0
-margin_right = 260.0
-margin_bottom = 28.0
+margin_left = 245.0
+margin_top = 8.0
+margin_right = 267.0
+margin_bottom = 31.0
 text = "7"
 align = 1
 valign = 1
@@ -643,10 +675,10 @@ __meta__ = {
 }
 
 [node name="8" type="Label" parent="inventary/inventory"]
-margin_left = 274.0
-margin_top = 5.0
-margin_right = 296.0
-margin_bottom = 28.0
+margin_left = 281.0
+margin_top = 8.0
+margin_right = 303.0
+margin_bottom = 31.0
 text = "8"
 align = 1
 valign = 1
@@ -655,10 +687,10 @@ __meta__ = {
 }
 
 [node name="9" type="Label" parent="inventary/inventory"]
-margin_left = 310.0
-margin_top = 5.0
-margin_right = 332.0
-margin_bottom = 28.0
+margin_left = 317.0
+margin_top = 8.0
+margin_right = 339.0
+margin_bottom = 31.0
 text = "9"
 align = 1
 valign = 1
@@ -667,10 +699,10 @@ __meta__ = {
 }
 
 [node name="0" type="Label" parent="inventary/inventory"]
-margin_left = 346.0
-margin_top = 5.0
-margin_right = 368.0
-margin_bottom = 28.0
+margin_left = 353.0
+margin_top = 8.0
+margin_right = 375.0
+margin_bottom = 57.0
 text = "0
 "
 align = 1
@@ -680,7 +712,6 @@ __meta__ = {
 }
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="inventary"]
-visible = true
 margin_left = 428.375
 margin_top = 154.632
 margin_right = 881.375
@@ -693,7 +724,7 @@ margin_left = 188.0
 margin_top = 16.0
 margin_right = 252.0
 margin_bottom = 80.0
-texture = ExtResource( 169 )
+texture = ExtResource( 170 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="inventary/WindowDialog_ItemMenu"]
@@ -726,7 +757,7 @@ percent_visible = false
 
 [node name="Sprite" type="Sprite" parent="GUI/Healthbar"]
 position = Vector2( 37, 8 )
-texture = ExtResource( 170 )
+texture = ExtResource( 171 )
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 229.299
@@ -745,8 +776,8 @@ margin_right = 1020.0
 margin_bottom = 675.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/normal = ExtResource( 171 )
-custom_fonts/font = ExtResource( 172 )
+custom_styles/normal = ExtResource( 172 )
+custom_fonts/font = ExtResource( 173 )
 align = 1
 valign = 1
 autowrap = true
@@ -760,19 +791,19 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="GUI/say_label"]
 position = Vector2( -57.4904, 48.7275 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 173 )
+texture = ExtResource( 174 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
 margin_left = 686.311
 margin_top = -9.47351
 margin_right = 724.311
 margin_bottom = 26.5265
-custom_styles/hover = ExtResource( 174 )
-custom_styles/pressed = ExtResource( 174 )
-custom_styles/focus = ExtResource( 174 )
-custom_styles/disabled = ExtResource( 174 )
-custom_styles/normal = ExtResource( 174 )
-custom_fonts/font = ExtResource( 175 )
+custom_styles/hover = ExtResource( 175 )
+custom_styles/pressed = ExtResource( 175 )
+custom_styles/focus = ExtResource( 175 )
+custom_styles/disabled = ExtResource( 175 )
+custom_styles/normal = ExtResource( 175 )
+custom_fonts/font = ExtResource( 176 )
 text = "X"
 
 [node name="expirience" type="ProgressBar" parent="GUI"]
@@ -789,7 +820,7 @@ value = 50.0
 [node name="Sprite" type="Sprite" parent="GUI/expirience"]
 position = Vector2( 250.756, 18.0747 )
 scale = Vector2( 2.41551, 0.847294 )
-texture = ExtResource( 176 )
+texture = ExtResource( 177 )
 
 [node name="level" type="Label" parent="GUI/expirience"]
 margin_left = 537.511
@@ -798,6 +829,7 @@ margin_right = 577.511
 margin_bottom = 13.4013
 
 [node name="attack_area" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 16, 5 )
 
@@ -806,6 +838,7 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="use" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
@@ -816,6 +849,7 @@ shape = SubResource( 12 )
 disabled = true
 
 [node name="use_check" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
@@ -827,12 +861,13 @@ shape = SubResource( 12 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -0.481295, 2.70181 )
 enabled = false
-texture = ExtResource( 177 )
+texture = ExtResource( 167 )
 texture_scale = 0.4
 color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
 
 [node name="E-key" type="Sprite" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
@@ -871,6 +906,7 @@ wait_time = 3.0
 one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
+[connection signal="timeout" from="Camera2D/time_move" to="." method="_on_time_move_timeout"]
 [connection signal="item_rmb_selected" from="inventary/inventory/bag1" to="inventary" method="_on_bag1_item_rmb_selected"]
 [connection signal="mouse_entered" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_entered"]
 [connection signal="mouse_exited" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_exited"]

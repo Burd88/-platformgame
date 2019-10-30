@@ -289,10 +289,10 @@ func _move(delta):
 		floor_enable = true
 		if last_position_y < (position.y-100):
 			health_now = health_now - (20*health)/100
-			print("wow 20%")
+			
 		elif last_position_y < (position.y-200):
 			health_now = health_now - (50*health)/100
-			print("2")
+			
 		elif last_position_y < (position.y-300): 
 			health_now = 0
 		velocity.y = 0
@@ -361,6 +361,19 @@ func _light_mode():
 	else:
 		$Light2D.enabled = false
 	pass
+	
+func move_camera(pos):
+	$Camera2D.global_position = pos
+	$Camera2D/camera_light.enabled = true
+	cut_scene = true
+	$Camera2D/time_move.start()
+	
+func _on_time_move_timeout():
+	$Camera2D.position = Vector2(0,0)
+	$Camera2D/camera_light.enabled = false
+	cut_scene = false
+	pass # Replace with function body.
+
 
 func _attack():
 	
@@ -401,7 +414,8 @@ func _attack():
 #			$spr.animation = 'удар_лук'
 #	else : $spr.animation = "стойка"
 func _gui():		# Графический интерфейс игрока
-	
+	if Input.is_action_just_released("open_inventory"):
+		$inventary/inventory/bag1.visible_inventory()
 	php = (health_now*100)/health
 	if php > 75 and php <=100:
 		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar.png")
@@ -774,6 +788,8 @@ func _on_Button_focus_exited():
 func _on_AudioStreamPlayer2D_finished():
 	$AudioStreamPlayer2D.play()
 	pass # Replace with function body.
+
+
 
 
 

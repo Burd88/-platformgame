@@ -57,7 +57,8 @@ func _physics_process(delta):
 		#$Player/GUI.layer = -1
 		#$Player/inventary.layer = -1
 	if lever1:
-		$use_item/exit_level.open_door = true
+		$use_item/lever/Sprite.flip_h = true
+		$use_item/lever/CollisionShape2D.disabled = true
 func save_levels():
 	var save_level = {
 		"name" : name,

@@ -1,18 +1,96 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=1]
+[ext_resource path="res://items/stone/1/stone0000.png" type="Texture" id=1]
+[ext_resource path="res://items/stone/1/stone0004.png" type="Texture" id=2]
+[ext_resource path="res://items/stone/1/stone0005.png" type="Texture" id=3]
+[ext_resource path="res://items/stone/1/stone0006.png" type="Texture" id=4]
+[ext_resource path="res://items/stone/1/stone0007.png" type="Texture" id=5]
+[ext_resource path="res://items/stone/1/stone0008.png" type="Texture" id=6]
+[ext_resource path="res://items/stone/1/stone0009.png" type="Texture" id=7]
+[ext_resource path="res://items/stone/1/stone0010.png" type="Texture" id=8]
+[ext_resource path="res://items/stone/1/stone0003.png" type="Texture" id=9]
+[ext_resource path="res://items/stone/1/stone0002.png" type="Texture" id=10]
+[ext_resource path="res://items/stone/1/stone0001.png" type="Texture" id=11]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends StaticBody2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if get_parent().get_parent().end_cut_14 == true:
+		queue_free()
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == \"destroy\":
+		queue_free()
+	pass # Replace with function body.
+
+
+func _on_Sprite_frame_changed():
+	if $Sprite.animation == \"destroy\":
+		if $Sprite.frame == 5:
+			$CollisionShape2D.disabled = true
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Full",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "destroy",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "25",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "50",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "75",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.27415, 7.31625 )
 
-[node name="stone1" type="StaticBody2D"]
+[node name="stone" type="StaticBody2D"]
+position = Vector2( 0.225937, 0.225937 )
 collision_mask = 9
+script = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 192, 0, 16, 16 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Full"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0588531, -0.584782 )
 shape = SubResource( 1 )
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="frame_changed" from="Sprite" to="." method="_on_Sprite_frame_changed"]

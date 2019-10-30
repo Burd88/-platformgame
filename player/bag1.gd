@@ -164,19 +164,19 @@ func end_drag_item() -> void:
 	
 func move_merge_item() -> void:
 	if (draggedItemSlot < 0):
-		print("1")
+		
 		return
 	if (activeItemSlot < 0):
-		print("2")
+		
 		update_slot(draggedItemSlot)
 		return
 
 	if (activeItemSlot == draggedItemSlot):
-		print("3")
+		
 		update_slot(draggedItemSlot)
 	else:
 		if (get_item_metadata(activeItemSlot)["id"] == get_item_metadata(draggedItemSlot)["id"]):
-			print("4")
+			
 			var itemData =get_item_metadata(activeItemSlot)
 			if (int(itemData["stack_limit"]) >= 2):
 				Global_Player.inventory_mergeItem(draggedItemSlot, activeItemSlot)
@@ -187,12 +187,16 @@ func move_merge_item() -> void:
 				update_slot(draggedItemSlot)
 				return
 		else:
-			print("5")
+			
 			Global_Player.inventory_moveItem(draggedItemSlot, activeItemSlot)
 			update_slot(draggedItemSlot)
 			update_slot(activeItemSlot)
 
-
+func visible_inventory():
+	if get_parent().visible == true:
+		get_parent().visible = false
+	elif get_parent().visible == false:
+		get_parent().visible = true
 func _on_bag1_mouse_entered():
 	cursor_insideItemList = true;
 	pass # Replace with function body.
