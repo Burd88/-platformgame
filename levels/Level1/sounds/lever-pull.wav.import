@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lever-pull.wav-d25022169809356f3035c65f5c530c33.sample"
+
+[deps]
+
+source_file="res://levels/Level1/sounds/lever-pull.wav"
+dest_files=[ "res://.import/lever-pull.wav-d25022169809356f3035c65f5c530c33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mechanism.wav-28db27831dfefab32bf42d4c3bb3da3c.sample"
+
+[deps]
+
+source_file="res://levels/Level1/sounds/mechanism.wav"
+dest_files=[ "res://.import/mechanism.wav-28db27831dfefab32bf42d4c3bb3da3c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

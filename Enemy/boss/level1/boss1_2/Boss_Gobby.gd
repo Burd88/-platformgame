@@ -6,7 +6,7 @@ var enemy_type = true
 var phase1 = false
 var floor_in
 ## жизни игрока
-var health = 20
+var health = 2000
 var health_now = health
 var php = (health_now*100)/health
 var range_attack = false

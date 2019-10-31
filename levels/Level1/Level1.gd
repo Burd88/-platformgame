@@ -10,6 +10,7 @@ var play_text_boss_1 = false
 var end_cut_14 = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$decor/waterdow/waterfall.volume_db = GLOBAL.sound_value
 	#print(GLOBAL.load_game)
 	#$music.play()
 	if GLOBAL.load_game == "new_game":
@@ -100,6 +101,7 @@ func _on_Gear6_area_entered(area):
 				$use_item/Gear6.visible = true
 				Global_Player.inventory_removeItem(i)
 				$Player/inventary/inventory/bag1.update_slot(i)
+				$use_item/Gear6/AudioStreamPlayer2D.play()
 				mexanism = true
 				yup = true
 				$"Player/E-key".hide()
@@ -110,6 +112,8 @@ func _on_Gear6_area_entered(area):
 		else: 
 			$"Player/GUI/say_label".text = tr("FIRST_LEVEL_GEAR_YES_TEXT")
 			$"Player/GUI/say_label".show_label = true
+
+
 
 
 

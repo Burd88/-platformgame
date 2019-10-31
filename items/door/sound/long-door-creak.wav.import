@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/long-door-creak.wav-4f65e620c5508b2abd389686820e4293.sample"
+
+[deps]
+
+source_file="res://items/door/sound/long-door-creak.wav"
+dest_files=[ "res://.import/long-door-creak.wav-4f65e620c5508b2abd389686820e4293.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

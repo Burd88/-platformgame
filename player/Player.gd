@@ -30,10 +30,20 @@ onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.wa
 
 onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.wav")
 onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big punch.wav")
-## sound move attack
+## sound move 
 onready var move_stone1_sound = preload("res://player/sound/sfx_step_grass_l.wav")
 onready var move_stone2_sound = preload("res://player/sound/sfx_step_grass_r.wav")
-
+## jump 
+onready var jump1_sound = preload("res://player/sound/jump 1.wav")
+onready var jump2_sound = preload("res://player/sound/jump 2.wav")
+##damage self
+onready var damage1_sound = preload("res://player/sound/damage-1.wav")
+onready var damage2_sound = preload("res://player/sound/damage-2.wav")
+##pick up items
+onready var pick_up_item1_sound = preload("res://player/sound/pick-up-item-1.wav")
+onready var pick_up_item2_sound = preload("res://player/sound/pick-up-item-2.wav")
+##bottle drink
+onready var bottle_drink_sound = preload("res://player/sound/bottle-drink.wav")
 ##
 export var shake_power = 1
 export var shake_time = 0.1
@@ -288,13 +298,17 @@ func _move(delta):
 #			$move_sound.play()
 		floor_enable = true
 		if last_position_y < (position.y-100):
+			$fight_sound.stream = damage2_sound
+			$fight_sound.play()
 			health_now = health_now - (20*health)/100
 			
 		elif last_position_y < (position.y-200):
 			health_now = health_now - (50*health)/100
-			
+			$fight_sound.stream = damage2_sound
+			$fight_sound.play()
 		elif last_position_y < (position.y-300): 
 			health_now = 0
+			
 		velocity.y = 0
 		direction.y = 0
 		last_position_y = position.y
@@ -313,7 +327,13 @@ func _move(delta):
 		floor_enable = false
 
 	if Input.is_action_just_pressed("ui_jump") and velocity.y >=0 and velocity.y <= 4 :
-		
+#		var jump_sound_rndm = randi()%2
+#		if jump_sound_rndm == 0:
+		$move_sound.stream = jump1_sound
+		$move_sound.play()
+#		elif jump_sound_rndm == 1:
+#			$move_sound.stream = jump2_sound
+#			$move_sound.play()
 		velocity.y = -jump_speed
 		direction.y = 1
 	if hook_enable :
@@ -342,12 +362,19 @@ func _move(delta):
 func _damage(damage):
 	regen_hp = false
 	$Regen_timer.start()
-
-	if randi()%6 == parry:
-		print("parry")
-		pass
-	else:
-		health_now -= damage
+	if health_now >0 :
+		if randi()%6 == parry:
+			print("parry")
+			pass
+		else:
+			if damage > 30 :
+				$fight_sound.stream = damage2_sound
+				$fight_sound.play()
+			else :
+				$fight_sound.stream = damage1_sound
+				$fight_sound.play()
+			health_now -= damage
+	else: pass
 
 func _use():
 	if Input.is_action_pressed('use_button'):
@@ -573,6 +600,12 @@ func _on_spr_frame_changed():
 
 func _on_use_area_entered(area):
 	if area.get('data_id') != null:
+		if randi()%2 == 0:
+			$move_sound.stream = pick_up_item1_sound
+			$move_sound.play()
+		else: 
+			$move_sound.stream = pick_up_item2_sound
+			$move_sound.play()
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
 		#print(area.data_id)
 		area.queue_free()
@@ -626,6 +659,8 @@ func inventory_check(index):
 		$inventary/inventory/bag1.update_slot(index)
 	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "leser_heal_potion":
 		if  health_now < health:
+			$move_sound.stream = bottle_drink_sound
+			$move_sound.play()
 			health_now += randi()%100+100
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -636,6 +671,8 @@ func inventory_check(index):
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "minor_heal_potion":
 		if  health_now < health:
+			$move_sound.stream = bottle_drink_sound
+			$move_sound.play()
 			health_now += randi()%200+100
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -646,6 +683,8 @@ func inventory_check(index):
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "heal_potion":
 		if  health_now < health:
+			$move_sound.stream = bottle_drink_sound
+			$move_sound.play()
 			health_now += randi()%300+100
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -656,6 +695,8 @@ func inventory_check(index):
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "big_heal_potion":
 		if  health_now < health:
+			$move_sound.stream = bottle_drink_sound
+			$move_sound.play()
 			health_now += randi()%400+100
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -666,6 +707,8 @@ func inventory_check(index):
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "major_heal_potion":
 		if  health_now < health:
+			$move_sound.stream = bottle_drink_sound
+			$move_sound.play()
 			health_now += randi()%500+100
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)

@@ -2,9 +2,11 @@ extends StaticBody2D
 
 var open = false
 var useable = true
-
+func _ready():
+	$AudioStreamPlayer2D.volume_db = GLOBAL.sound_value
 func _process(delta):
 	if open:
+		
 		$AnimationPlayer.play("opendoor")
 		
 	else:
@@ -35,6 +37,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_door_area_entered(area):
 	if area.name == "use":
+		$AudioStreamPlayer2D.play()
 		open = true
 	else : pass
 	pass # Replace with function body.

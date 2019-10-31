@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wall-door-opening.wav-4d23e8b9a5535cd0fab2b20e939ddbbb.sample"
+
+[deps]
+
+source_file="res://levels/Level1/sounds/wall-door-opening.wav"
+dest_files=[ "res://.import/wall-door-opening.wav-4d23e8b9a5535cd0fab2b20e939ddbbb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

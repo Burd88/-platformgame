@@ -1,0 +1,262 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://items/portal/portal10000.png" type="Texture" id=1]
+[ext_resource path="res://items/portal/portal10001.png" type="Texture" id=2]
+[ext_resource path="res://items/portal/portal10002.png" type="Texture" id=3]
+[ext_resource path="res://items/portal/portal10003.png" type="Texture" id=4]
+[ext_resource path="res://items/portal/portal10004.png" type="Texture" id=5]
+[ext_resource path="res://items/portal/portal10005.png" type="Texture" id=6]
+[ext_resource path="res://items/portal/portal10006.png" type="Texture" id=7]
+[ext_resource path="res://items/portal/portal10007.png" type="Texture" id=8]
+[ext_resource path="res://items/portal/portal10008.png" type="Texture" id=9]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-00.png" type="Texture" id=10]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-01.png" type="Texture" id=11]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-02.png" type="Texture" id=12]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-03.png" type="Texture" id=13]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-04.png" type="Texture" id=14]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=15]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=16]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-01.png" type="Texture" id=17]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-02.png" type="Texture" id=18]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-03.png" type="Texture" id=19]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=20]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=21]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=22]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=23]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=24]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=25]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=26]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=27]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=28]
+[ext_resource path="res://items/portal/sounds/portal-open.wav" type="AudioStream" id=29]
+[ext_resource path="res://player/sound/damage-1.wav" type="AudioStream" id=30]
+[ext_resource path="res://player/sound/sfx_step_grass_l.wav" type="AudioStream" id=31]
+
+[sub_resource type="GDScript" id=46]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+
+export var cut_end = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$audio.volume_db = GLOBAL.sound_value
+	$Timer.start()
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if cut_end == true:
+		get_parent().get_node(\"Player\").show()
+		
+	else:
+		get_parent().get_node(\"Player\").hide()
+		get_parent().get_node(\"Player\").cut_scene = true
+	pass
+
+
+func _on_Timer_timeout():
+	
+	$AnimationPlayer.play(\"cut\")
+	pass # Replace with function body.
+
+
+func show_palyer():
+	get_parent().get_node(\"Player\").show()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == \"cut\":
+		get_parent().get_node(\"Player\").cut_scene = false
+		queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=47]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=49]
+resource_name = "cut"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9, 1.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.833317 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1, 1.56, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 76.3322, 179.771 ), Vector2( 145.157, 246.89 ), Vector2( 117.384, 219.805 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.58, 2.63, 3.15, 4.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "1", "2", "3", "4", "5" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Portal:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.001, 3.07, 4.621 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.589963, 0.589963 ), Vector2( 0.8, 0.8 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:cut_end")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( -0.34, 4.64 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("audio:stream")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( -0.21, 0, 1.48, 4.27 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("audio:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.01, 1.45, 2.06, 4.26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+
+[node name="New_game_cut_scene" type="Node2D"]
+visible = false
+script = SubResource( 46 )
+cut_end = true
+
+[node name="Portal" type="Node2D" parent="."]
+position = Vector2( 78.2888, 179.886 )
+scale = Vector2( 1e-005, 1e-005 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Portal"]
+position = Vector2( -1.1376, -1.1376 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 47 )
+frame = 8
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0.833317 )
+position = Vector2( 145.157, 246.89 )
+frames = SubResource( 48 )
+animation = "5"
+frame = 1
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "cut"
+playback_process_mode = 0
+anims/cut = SubResource( 49 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 31 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
