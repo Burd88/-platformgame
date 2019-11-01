@@ -1916,7 +1916,8 @@ one_shot = true
 position = Vector2( -0.64946, 117.845 )
 
 [node name="Player" parent="." instance=ExtResource( 52 )]
-position = Vector2( 412.127, 2314.65 )
+visible = false
+position = Vector2( 144.581, 363.921 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 45 )
