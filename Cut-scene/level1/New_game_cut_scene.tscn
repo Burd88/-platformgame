@@ -32,7 +32,7 @@
 [ext_resource path="res://player/sound/damage-1.wav" type="AudioStream" id=30]
 [ext_resource path="res://player/sound/sfx_step_grass_l.wav" type="AudioStream" id=31]
 
-[sub_resource type="GDScript" id=46]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 # Declare member variables here. Examples:
@@ -74,7 +74,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	pass # Replace with function body.
 "
 
-[sub_resource type="SpriteFrames" id=47]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
@@ -82,7 +82,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="SpriteFrames" id=48]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
@@ -110,7 +110,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=49]
+[sub_resource type="Animation" id=4]
 resource_name = "cut"
 length = 5.0
 tracks/0/type = "value"
@@ -224,7 +224,7 @@ tracks/8/keys = {
 
 [node name="New_game_cut_scene" type="Node2D"]
 visible = false
-script = SubResource( 46 )
+script = SubResource( 1 )
 cut_end = true
 
 [node name="Portal" type="Node2D" parent="."]
@@ -234,22 +234,22 @@ scale = Vector2( 1e-005, 1e-005 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Portal"]
 position = Vector2( -1.1376, -1.1376 )
 scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 47 )
+frames = SubResource( 2 )
 playing = true
 flip_h = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1, 1, 0.833317 )
 position = Vector2( 145.157, 246.89 )
-frames = SubResource( 48 )
+frames = SubResource( 3 )
 animation = "5"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "cut"
 playback_process_mode = 0
-anims/cut = SubResource( 49 )
+anims/cut = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -296,12 +296,15 @@ visible = false
 margin_left = 300.0
 margin_top = 575.0
 margin_right = 1020.0
-margin_bottom = 681.0
+margin_bottom = 675.0
+grow_horizontal = 0
+grow_vertical = 0
 custom_styles/normal = ExtResource( 17 )
 custom_fonts/font = ExtResource( 18 )
-text = "dd as dasd asd asd asd "
 align = 1
-autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="gobby" type="Sprite" parent="CanvasLayer"]
 visible = false

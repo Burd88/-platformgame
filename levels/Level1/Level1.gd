@@ -14,6 +14,7 @@ func _ready():
 	#print(GLOBAL.load_game)
 	#$music.play()
 	if GLOBAL.load_game == "new_game":
+		
 		#$pause_menu._on_save_pressed()
 		#print("save new game")
 		pass

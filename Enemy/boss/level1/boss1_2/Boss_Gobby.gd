@@ -106,7 +106,7 @@ func phase():
 		target.departure_down = false
 		target.finish_departure = false
 		$phase1.start()
-		phase_value = phase_value - 15
+		phase_value = phase_value - 25
 func aim():
 	direction = (target.position - position).normalized()
 	if direction.x < 0 :
