@@ -528,7 +528,6 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка"
-frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -799,6 +798,7 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 176 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
+visible = false
 margin_left = 686.311
 margin_top = -9.47351
 margin_right = 724.311

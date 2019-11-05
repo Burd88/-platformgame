@@ -192,7 +192,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( -0.34, 4.64 ),
+"times": PoolRealArray( -0.34, 4.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -235,6 +235,7 @@ scale = Vector2( 1e-005, 1e-005 )
 position = Vector2( -1.1376, -1.1376 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
+frame = 2
 playing = true
 flip_h = true
 
@@ -243,7 +244,7 @@ modulate = Color( 1, 1, 1, 0.833317 )
 position = Vector2( 145.157, 246.89 )
 frames = SubResource( 3 )
 animation = "5"
-frame = 2
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
