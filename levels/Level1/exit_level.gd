@@ -4,6 +4,10 @@ var open_door = false
 
 
 func _ready():
+	if get_parent().get_parent().lever1 == true:
+		$Sprite.animation = "full_open"
+#			$Sprite.playing = false
+		$CollisionShape2D.disabled = false
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

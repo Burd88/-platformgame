@@ -61,6 +61,8 @@ func _physics_process(delta):
 	if lever1:
 		$use_item/lever/Sprite.flip_h = true
 		$use_item/lever/CollisionShape2D.disabled = true
+		$use_item/exit_level/CollisionShape2D.disabled = false
+		$use_item/exit_level/Sprite.animation = "full_open"
 func save_levels():
 	var save_level = {
 		"name" : name,
@@ -87,6 +89,7 @@ func start_mechanism():
 
 func _on_Area2D_body_entered(body):
 	if body.get("player_type"):
+		body.last_position_y = 844
 		body.position = Vector2(296,844)
 	pass # Replace with function body.
 

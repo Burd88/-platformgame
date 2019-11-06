@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -46,14 +46,15 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=44]
 [ext_resource path="res://levels/Level1/Area2D.gd" type="Script" id=45]
 [ext_resource path="res://Cut-scene/level1/Katboss13.tscn" type="PackedScene" id=46]
-[ext_resource path="res://Cut-scene/level1/Katboss14.tscn" type="PackedScene" id=47]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=48]
-[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=49]
-[ext_resource path="res://Cut-scene/level1/New_game_cut_scene.tscn" type="PackedScene" id=50]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=51]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=52]
-[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=53]
-[ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Enemy/sceleton_alebard/Sceleton_alebard.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Cut-scene/level1/Katboss14.tscn" type="PackedScene" id=48]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=49]
+[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=50]
+[ext_resource path="res://Cut-scene/level1/New_game_cut_scene.tscn" type="PackedScene" id=51]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=52]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=53]
+[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=54]
+[ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=55]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1008,7 +1009,6 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 6 )
 animation = "New Anim"
-frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -1484,7 +1484,6 @@ shape = SubResource( 22 )
 position = Vector2( 998.06, 314.793 )
 
 [node name="enemies-2" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Mushroom" parent="enemies-2" instance=ExtResource( 41 )]
 position = Vector2( 1398.34, 1501 )
@@ -1554,6 +1553,9 @@ shape = SubResource( 23 )
 [node name="Katboss13" parent="enemies-2/Cut_scene_boss_gobby" instance=ExtResource( 46 )]
 position = Vector2( 135.771, 115.031 )
 
+[node name="Sceleton_alebard" parent="enemies-2/Cut_scene_boss_gobby/Katboss13" instance=ExtResource( 47 )]
+position = Vector2( 490.549, -802.88 )
+
 [node name="Timer" type="Timer" parent="enemies-2/Cut_scene_boss_gobby"]
 wait_time = 1.5
 one_shot = true
@@ -1609,7 +1611,7 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 160, 80, 16, 32 )
 
-[node name="Katboss14" parent="enemies-2" instance=ExtResource( 47 )]
+[node name="Katboss14" parent="enemies-2" instance=ExtResource( 48 )]
 visible = false
 position = Vector2( 310.227, 1432.96 )
 
@@ -1621,53 +1623,53 @@ position = Vector2( 0.598754, -2.39496 )
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 48 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 49 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 48 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 49 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 48 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 49 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 48 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 49 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 48 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 49 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 48 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 49 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
@@ -1680,7 +1682,7 @@ script = SubResource( 26 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cut_scene_start"]
 shape = SubResource( 27 )
 
-[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 49 )]
+[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 50 )]
 visible = false
 position = Vector2( 61.7502, -21.4907 )
 
@@ -1688,11 +1690,11 @@ position = Vector2( 61.7502, -21.4907 )
 wait_time = 1.5
 one_shot = true
 
-[node name="New_game_cut_scene" parent="." instance=ExtResource( 50 )]
+[node name="New_game_cut_scene" parent="." instance=ExtResource( 51 )]
 visible = true
 position = Vector2( -0.64946, 117.845 )
 
-[node name="Player" parent="." instance=ExtResource( 51 )]
+[node name="Player" parent="." instance=ExtResource( 52 )]
 position = Vector2( 144.044, 363.349 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -1713,33 +1715,33 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_menu" parent="." instance=ExtResource( 52 )]
+[node name="pause_menu" parent="." instance=ExtResource( 53 )]
 
 [node name="check_point" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="check_point" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 879.004, 324.904 )
 
-[node name="check_point3" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point3" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 1102.9, 998.342 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point2" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point2" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 550.748, 156.879 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point4" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point4" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 1337.62, 247.818 )
 
-[node name="check_point5" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point5" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 1300.12, 1437.94 )
 
-[node name="check_point6" parent="check_point" instance=ExtResource( 53 )]
+[node name="check_point6" parent="check_point" instance=ExtResource( 54 )]
 position = Vector2( 479.904, 1353.76 )
 scale = Vector2( 0.666668, 2.43484 )
 
-[node name="Prototype_end" parent="." instance=ExtResource( 54 )]
+[node name="Prototype_end" parent="." instance=ExtResource( 55 )]
 position = Vector2( 765.909, 1713.77 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="trap/trap_bullet/AnimatedSprite" to="trap/trap_bullet" method="_on_AnimatedSprite_animation_finished"]

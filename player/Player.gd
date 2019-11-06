@@ -124,6 +124,8 @@ func _physics_process(delta):
 
 #		bow_attack()
 		_settings()
+#		for i in range(0,Global_Player.inventory_maxSlots):
+#		health_potion_visible()
 		if cut_scene == false and departure == false:
 			inventory_use_button()
 			_move(delta)
@@ -652,6 +654,45 @@ func inventory_use_button():
 		inventory_check(9)
 		pass
 	pass
+	
+#func health_potion_visible():
+#	for i in Global_Player.inventory_maxSlots:
+#		print(i)
+#		if $inventary/inventory/bag1.get_item_metadata(i)["type"] == "leser_heal_potion":
+#			var itemData:Dictionary = $inventary/inventory/bag1.get_item_metadata(i)
+#			$UI_paneli/Health_potion/Icon.set_texture($inventary/inventory/bag1.get_item_icon(i))
+#			$UI_paneli/Health_potion/Label.text = String(itemData["amount"])
+#			if Input.is_action_just_pressed("use_health_potion"):
+#				inventory_check(i)
+#		elif $inventary/inventory/bag1.get_item_metadata(i)["type"] == "minor_heal_potion":
+#			var itemData:Dictionary = $inventary/inventory/bag1.get_item_metadata(i)
+#			$UI_paneli/Health_potion/Icon.set_texture($inventary/inventory/bag1.get_item_icon(i))
+#			$UI_paneli/Health_potion/Label.text = String(itemData["amount"])
+#			if Input.is_action_just_pressed("use_health_potion"):
+#				inventory_check(i)
+#		elif $inventary/inventory/bag1.get_item_metadata(i)["type"] == "heal_potion":
+#			var itemData:Dictionary = $inventary/inventory/bag1.get_item_metadata(i)
+#			$UI_paneli/Health_potion/Icon.set_texture($inventary/inventory/bag1.get_item_icon(i))
+#			$UI_paneli/Health_potion/Label.text = String(itemData["amount"])
+#			if Input.is_action_just_pressed("use_health_potion"):
+#				inventory_check(i)
+#		elif $inventary/inventory/bag1.get_item_metadata(i)["type"] == "big_heal_potion":
+#			var itemData:Dictionary = $inventary/inventory/bag1.get_item_metadata(i)
+#			$UI_paneli/Health_potion/Icon.set_texture($inventary/inventory/bag1.get_item_icon(i))
+#			$UI_paneli/Health_potion/Label.text = String(itemData["amount"])
+#			if Input.is_action_just_pressed("use_health_potion"):
+#				inventory_check(i)
+#		elif $inventary/inventory/bag1.get_item_metadata(i)["type"] == "major_heal_potion":
+#			var itemData:Dictionary = $inventary/inventory/bag1.get_item_metadata(i)
+#			$UI_paneli/Health_potion/Icon.set_texture($inventary/inventory/bag1.get_item_icon(i))
+#			$UI_paneli/Health_potion/Label.text = String(itemData["amount"])
+#			if Input.is_action_just_pressed("use_health_potion"):
+#				inventory_check(i)
+##		elif $inventary/inventory/bag1.get_item_metadata(i)["type"] == "misc": 
+##			$UI_paneli/Health_potion/Icon.set_texture(null)
+##			$UI_paneli/Health_potion/Label.text = ""
+
+	
 func inventory_check(index):
 	if $inventary/inventory/bag1.get_item_metadata(index)["type"] == "arrow":
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
@@ -776,7 +817,7 @@ func inventory_check(index):
 #			pass
 #
 #	pass # Replace with function body.
-
+#
 
 func _on_use_check_area_entered(area):
 	#print(area.name)
