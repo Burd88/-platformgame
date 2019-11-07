@@ -19,7 +19,11 @@ func _ready():
 	$inter/chack_save_game/ok.text = tr("M_BT_SGC_OK")
 	$inter/chack_save_game/cancel.text = tr("M_BT_SGC_CANCEL")
 	$inter/chack_save_game/Label.text = tr("M_BT_SGC_LABEL")
-	
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		$inter/button/Continue.disabled = true
+	elif save_game.file_exists("user://savegame.save"):
+		$inter/button/Continue.disabled = false
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

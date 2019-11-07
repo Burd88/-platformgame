@@ -61,8 +61,7 @@ func _physics_process(delta):
 	if lever1:
 		$use_item/lever/Sprite.flip_h = true
 		$use_item/lever/CollisionShape2D.disabled = true
-		$use_item/exit_level/CollisionShape2D.disabled = false
-		$use_item/exit_level/Sprite.animation = "full_open"
+
 func save_levels():
 	var save_level = {
 		"name" : name,

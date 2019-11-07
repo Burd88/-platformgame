@@ -41,8 +41,11 @@ var spawn_position_y
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2(-1,0)
+var player_step = false
+var attack_start = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	spawn_position = Vector2(position.x , position.y)
 
 	pass # Replace with function body.
@@ -58,14 +61,20 @@ func _process(delta):
 	_settings()
 	if health_now <=0:
 		_die()
+		$healthbar.hide()
 	elif health_now >0:
-		update()
-		if target and health_now > 0:
-			aim()
-		_move_enemy(delta)
-		_check_place()
+		if player_step == true and attack_start == false:
+			$spr.animation = "подъем"
+			$healthbar.hide()
+		elif player_step == true and attack_start == true:
+			$healthbar.show()
+			update()
+			if target and health_now > 0:
+				aim()
+			_move_enemy(delta)
+			_check_place()
 		
-		_gui()
+			_gui()
 	pass
 	
 func save():
@@ -171,11 +180,11 @@ func _on_idletimer_timeout():
 	pass # Replace with function body.
 
 func _gui():# Графический интерфейс
-	if health_now > 0 :
-		$healthbar.show()
-		#$HPlable.show()
-	else:
-		$healthbar.hide()
+#	if health_now > 0 :
+#		$healthbar.show()
+#		#$HPlable.show()
+#	else:
+#		$healthbar.hide()
 		#$HPlable.hide()
 	#$HPlable.text = str(health, " / ", health_now )
 	php = (health_now*100)/health
@@ -262,6 +271,7 @@ func _on_die_animation_finished(anim_name):
 func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		visible_pl = true
+		player_step = true
 		target = body
 		$spr.animation = "хотьба"
 	pass # Replace with function body.
@@ -287,16 +297,20 @@ func _on_spr_animation_finished():
 
 func _on_spr_frame_changed():
 	if $spr.animation == "атака":
-		if $spr.frame == 3:
+		if $spr.frame == 7:
 			damage = randi()%20+5
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
-		elif $spr.frame == 7:
+		elif $spr.frame == 8:
 			$damage/CollisionShape2D.disabled = true
 	if $spr.animation == "смерть":
 		if $spr.frame == 1 : 
 			$move_sound.stream = death_sound
 			$move_sound.play()
+	if $spr.animation == "подъем":
+		if $spr.frame == 14 :
+			$spr.animation = "хотьба"
+			attack_start = true
 	pass # Replace with function body.
 
 

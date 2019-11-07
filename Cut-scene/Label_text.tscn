@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=1]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/portret.png" type="Texture" id=3]
+[ext_resource path="res://player/portret.png" type="Texture" id=4]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 300.0
+margin_top = 575.0
+margin_right = 1020.0
+margin_bottom = 681.0
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "dd as dasd asd asd asd "
+align = 1
+autowrap = true
+
+[node name="gobby" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1100, 630 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="player" type="Sprite" parent="."]
+visible = false
+position = Vector2( 231.566, 628.924 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )

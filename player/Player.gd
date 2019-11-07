@@ -131,7 +131,7 @@ func _physics_process(delta):
 			_move(delta)
 			_attack()
 			$inventary/inventory.show()
-			$GUI/Healthbar.show()
+			$GUI/HPbar1.show()
 			$Light2D.show()
 			$Camera2D.current = true
 		elif cut_scene == true and departure == false:
@@ -148,7 +148,7 @@ func _physics_process(delta):
 				$spr.animation =  "стойка_меч_1"
 			$inventary/inventory/bag1.cursor_insideItemList = false
 			$inventary/inventory.hide()
-			$GUI/Healthbar.hide()
+			$GUI/HPbar1.hide()
 			$Light2D.hide()
 			$GUI/say_label.hide()
 		elif departure == true:
@@ -457,6 +457,11 @@ func _gui():		# Графический интерфейс игрока
 	elif php == 0:
 		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar0.png")
 	$GUI/Healthbar.value = php
+	$GUI/HPbar1/healthbar_pr.value = php
+	$GUI/HPbar2/healthbar_pr.value = php
+	$GUI/HPbar3/healthbar_pr.value = php
+	$GUI/HPbar4/healthbar_pr.value = php
+	
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
 	if health_now < health and health_now > 0 and regen_hp == true:
