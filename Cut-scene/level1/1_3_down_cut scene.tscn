@@ -500,10 +500,10 @@ position = Vector2( 783.411, 1522.56 )
 script = SubResource( 1 )
 
 [node name="spr" parent="." instance=ExtResource( 1 )]
+visible = false
 position = Vector2( -4.27202, 708.481 )
 frames = SubResource( 2 )
 animation = "зацеп"
-frame = 1
 flip_h = true
 
 [node name="Light2D" parent="spr" instance=ExtResource( 169 )]

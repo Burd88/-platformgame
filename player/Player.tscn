@@ -370,7 +370,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 14 )
+extents = Vector2( 8.17682, 14 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -542,6 +542,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -568,7 +569,7 @@ color = Color( 0.945098, 0.941176, 0.631373, 1 )
 shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.135504, 4.58188 )
+position = Vector2( 0, 3.8 )
 shape = SubResource( 2 )
 
 [node name="UI_paneli" type="CanvasLayer" parent="."]
@@ -1031,7 +1032,7 @@ volume_db = 10.0
 autoplay = true
 
 [node name="hook_area" type="Area2D" parent="."]
-position = Vector2( 9, -13 )
+position = Vector2( 8.23269, -12.0622 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hook_area"]
 shape = SubResource( 20 )

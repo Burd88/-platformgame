@@ -43,6 +43,9 @@ var velocity = Vector2()
 var direction = Vector2(-1,0)
 var player_step = false
 var attack_start = false
+var attack = false
+var player_exit_attack = false
+var hit_true = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -67,12 +70,14 @@ func _process(delta):
 			$spr.animation = "подъем"
 			$healthbar.hide()
 		elif player_step == true and attack_start == true:
+			
 			$healthbar.show()
 			update()
 			if target and health_now > 0:
 				aim()
 			_move_enemy(delta)
 			_check_place()
+			
 		
 			_gui()
 	pass
@@ -107,7 +112,10 @@ func _damage(damage):
 		$damage_sound.play()
 		
 func aim():
-	direction = (target.position - position).normalized()
+	if attack == false:
+		direction = (target.position - position).normalized()
+	elif attack == true:
+		pass
 	if direction.x < 0 :
 		$spr.flip_h = false
 		$attack_area.position.x = -12
@@ -145,12 +153,12 @@ func _move_enemy(delta):
 		direction.y = 0
 	#print($spriteanim/idle/idletimer.time_left)
 	#print(position.distance_to(spawn_position))
-	if position.distance_to(spawn_position) < distance_max and visible_pl == false:
+	if position.distance_to(spawn_position) < distance_max and visible_pl == false and attack == false:
 		distance.x = speed
 		idle_timer = false
 		idle = true
 		
-	elif position.distance_to(spawn_position) >= distance_max and visible_pl == false and idle_timer == false:
+	elif position.distance_to(spawn_position) >= distance_max and attack == false and visible_pl == false and idle_timer == false:
 		if idle :
 			idle = false
 			$move_sound.stream = idle_sound
@@ -159,15 +167,15 @@ func _move_enemy(delta):
 		distance.x = 0
 		$spr.animation = "стойка"
 		
-	elif visible_pl == false and idle_timer == true:
+	elif visible_pl == false and idle_timer == true and attack == false:
 		$spr.animation = "хотьба"
 		
-	elif visible_pl == true:
+	elif visible_pl == true and attack == false:
 		distance.x = speed
 		velocity.x = (direction.x*distance.x)
 		velocity.y += gravity*delta
 		
-	else: print("Error")
+#	else: print("Error")
 #	distance.x = speed
 	velocity.x = (direction.x*distance.x)
 	velocity.y += gravity*delta
@@ -238,10 +246,17 @@ func _on_attack_area_body_entered(body):
 
 func _on_attack_area_body_exited(body):
 	if body.get("player_type"):
-		if $spr.animation != "урон":
+		if $spr.animation == "атака":
+			player_exit_attack = true
+		elif $spr.animation == "урон":
+			print(hit_true)
+			print("Hit")
+			hit_true = true
+		else: 
 			target = body
 			speed = 50
 			$spr.animation = "хотьба"
+		
 	pass # Replace with function body.
 
 
@@ -297,12 +312,35 @@ func _on_spr_animation_finished():
 
 func _on_spr_frame_changed():
 	if $spr.animation == "атака":
-		if $spr.frame == 7:
+		if $spr.frame == 1:
+			attack = true
+		elif $spr.frame == 7:
 			damage = randi()%20+5
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
 		elif $spr.frame == 8:
 			$damage/CollisionShape2D.disabled = true
+		elif $spr.frame == 16:
+			print("16")
+			print(player_exit_attack)
+			if player_exit_attack == true:
+				
+				print("!")
+				speed = 50
+				$spr.animation = "хотьба"
+				player_exit_attack = false
+			attack = false
+	if $spr.animation == "урон":
+		print(hit_true)
+		print("Hit - 1")
+		if $spr.frame == 7: 
+			print(hit_true)
+			print("Hit - 2")
+			speed = 50
+			$spr.animation = "хотьба"
+			hit_true = false
+			attack = false
+			player_exit_attack = false
 	if $spr.animation == "смерть":
 		if $spr.frame == 1 : 
 			$move_sound.stream = death_sound
