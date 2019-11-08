@@ -1,0 +1,628 @@
+[gd_scene load_steps=117 format=2]
+
+[ext_resource path="res://Enemy/gobby/sprite/jump-1.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/gobby/sprite/jump-2.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/gobby/sprite/jump-3.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/gobby/sprite/jump-4.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/gobby/sprite/jump-5.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0000.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0001.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0002.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0003.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0004.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0005.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0006.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0007.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0008.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0009.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0010.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0011.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0012.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0000.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0001.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0002.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0003.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0004.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0005.png" type="Texture" id=24]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0006.png" type="Texture" id=25]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0007.png" type="Texture" id=26]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0008.png" type="Texture" id=27]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0009.png" type="Texture" id=28]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0010.png" type="Texture" id=29]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0011.png" type="Texture" id=30]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0012.png" type="Texture" id=31]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0013.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0014.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0015.png" type="Texture" id=34]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0016.png" type="Texture" id=35]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0017.png" type="Texture" id=36]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0014.png" type="Texture" id=37]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0013.png" type="Texture" id=38]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0012.png" type="Texture" id=39]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0011.png" type="Texture" id=40]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0010.png" type="Texture" id=41]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0009.png" type="Texture" id=42]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0008.png" type="Texture" id=43]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0007.png" type="Texture" id=44]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0006.png" type="Texture" id=45]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0005.png" type="Texture" id=46]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0004.png" type="Texture" id=47]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0003.png" type="Texture" id=48]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0002.png" type="Texture" id=49]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0001.png" type="Texture" id=50]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0000.png" type="Texture" id=51]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0000.png" type="Texture" id=52]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0001.png" type="Texture" id=53]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0002.png" type="Texture" id=54]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0003.png" type="Texture" id=55]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0004.png" type="Texture" id=56]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0005.png" type="Texture" id=57]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0006.png" type="Texture" id=58]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0007.png" type="Texture" id=59]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0008.png" type="Texture" id=60]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0009.png" type="Texture" id=61]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0010.png" type="Texture" id=62]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0011.png" type="Texture" id=63]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0012.png" type="Texture" id=64]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0013.png" type="Texture" id=65]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0014.png" type="Texture" id=66]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0015.png" type="Texture" id=67]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0016.png" type="Texture" id=68]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0017.png" type="Texture" id=69]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0018.png" type="Texture" id=70]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0019.png" type="Texture" id=71]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0000.png" type="Texture" id=72]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0001.png" type="Texture" id=73]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0002.png" type="Texture" id=74]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0003.png" type="Texture" id=75]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0004.png" type="Texture" id=76]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0005.png" type="Texture" id=77]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0006.png" type="Texture" id=78]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0007.png" type="Texture" id=79]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0008.png" type="Texture" id=80]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0009.png" type="Texture" id=81]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0010.png" type="Texture" id=82]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0011.png" type="Texture" id=83]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0012.png" type="Texture" id=84]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0013.png" type="Texture" id=85]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0014.png" type="Texture" id=86]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0015.png" type="Texture" id=87]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0000.png" type="Texture" id=88]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0001.png" type="Texture" id=89]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0002.png" type="Texture" id=90]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0003.png" type="Texture" id=91]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0004.png" type="Texture" id=92]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0005.png" type="Texture" id=93]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0006.png" type="Texture" id=94]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0007.png" type="Texture" id=95]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0008.png" type="Texture" id=96]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0009.png" type="Texture" id=97]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0010.png" type="Texture" id=98]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0011.png" type="Texture" id=99]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0012.png" type="Texture" id=100]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0013.png" type="Texture" id=101]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0014.png" type="Texture" id=102]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0015.png" type="Texture" id=103]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0016.png" type="Texture" id=104]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0017.png" type="Texture" id=105]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0018.png" type="Texture" id=106]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0019.png" type="Texture" id=107]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=108]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=109]
+[ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=110]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+var speed = 15
+
+var jump_speed = 150
+var gravity = 200
+var enemy_type = true
+## жизни игрока
+export var health = 500
+var health_now = health
+var php = (health_now*100)/health
+##----------------------- 
+var anim = 'move'
+var target
+var damage
+### sounds
+onready var damage_hurt1_sound = preload(\"res://Enemy/gobby/sound/monster-1.wav\")
+onready var damage_hurt2_sound = preload(\"res://Enemy/gobby/sound/monster-2.wav\")
+onready var damage_hurt3_sound = preload(\"res://Enemy/gobby/sound/monster-3.wav\")
+onready var damage_hurt4_sound = preload(\"res://Enemy/gobby/sound/monster-4.wav\")
+onready var damage_hurt5_sound = preload(\"res://Enemy/gobby/sound/monster-5.wav\")
+
+
+onready var death_sound = preload(\"res://Enemy/gobby/sound/monster-6.wav\")
+onready var idle_sound = preload(\"res://Enemy/gobby/sound/monster-8.wav\")
+####
+onready var big_heal_potion = preload(\"res://items/Items/health_potion/big_heal_potion.tscn\")
+onready var heal_potion = preload(\"res://items/Items/health_potion/heal_potion.tscn\")
+onready var lesser_heal_potion = preload(\"res://items/Items/health_potion/leser_heal_potion.tscn\")
+onready var major_heal_potion = preload(\"res://items/Items/health_potion/major_heal_potion.tscn\")
+onready var minor_heal_potion = preload(\"res://items/Items/health_potion/minor_heal_potion.tscn\")
+onready var arrow_item = preload(\"res://items/Items/Arrow.tscn\")
+###движение
+export var distance_max = 100
+var visible_pl = false
+var idle = true
+var idle_timer = false
+var spawn_position = Vector2()
+var spawn_position_x
+var spawn_position_y
+var distance = Vector2()
+var velocity = Vector2()
+var direction = Vector2(-1,0)
+var player_step = false
+var attack_start = false
+var attack = false
+var player_exit_attack = false
+var hit_true = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	spawn_position = Vector2(position.x , position.y)
+
+	pass # Replace with function body.
+func _settings():
+	$music.volume_db = GLOBAL.music_value
+	$attack_sound.volume_db = GLOBAL.sound_value
+	$move_sound.volume_db = GLOBAL.sound_value
+	$damage_sound.volume_db = GLOBAL.sound_value
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if GLOBAL.load_game == \"loading_game\":
+		spawn_position = Vector2(spawn_position_x , spawn_position_y)
+	_settings()
+	if health_now <=0:
+		_die()
+		$healthbar.hide()
+	elif health_now >0:
+#		if player_step == true and attack_start == false:
+#			$spr.animation = \"подъем\"
+#			$healthbar.hide()
+#		elif player_step == true and attack_start == true:
+		$healthbar.show()
+		update()
+		if target and health_now > 0:
+			aim()
+		_move_enemy(delta)
+		_check_place()
+			
+		
+		_gui()
+	pass
+	
+func save():
+	var save_dict = {
+		\"filename\" : get_filename(),
+		\"parent\" : get_parent().get_path(),
+		\"spawn_position_x\" : spawn_position.x,
+		\"spawn_position_y\" : spawn_position.y,
+		\"pos_x\" : position.x, # Vector2 is not supported by JSON
+		\"pos_y\" : position.y,
+		\"health\" : health ,
+		\"health_now\" : health_now,
+		\"php\" : php,
+		\"name\" : name,
+		\"distance_max\" : distance_max,
+	}
+	return save_dict
+func _damage(damage):
+	if randi()%8 == 0:
+		print(\"parry\")
+		pass
+	else:
+		if randi()%4 == 0:
+			$spr.animation = \"урон\" 
+			$ouch_timer.start()
+		
+		health_now -= damage
+		var rand_damage_sound = [damage_hurt1_sound,damage_hurt2_sound]
+		$damage_sound.stream = rand_damage_sound[randi()%2]
+		$damage_sound.play()
+		
+func aim():
+	if attack == false:
+		direction = (target.position - position).normalized()
+	elif attack == true:
+		pass
+	if direction.x < 0 :
+		$spr.flip_h = false
+		$attack_area.position.x = -12
+		$damage.position.x = -15
+		$check_place.position.x = -9
+	elif direction.x > 0:
+		$spr.flip_h = true
+		$attack_area.position.x = 12
+		$damage.position.x = 15
+		$check_place.position.x = 9
+
+func _drop_item():
+	var item_drop = randi()%2
+	if item_drop == 0:
+		var item = lesser_heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+	elif item_drop == 1:
+		var item = minor_heal_potion.instance()
+		get_parent().add_child(item)
+		item.position = position
+#	elif item_drop == 2:
+#		var item = heal_potion.instance()
+#		get_parent().add_child(item)
+#		item.position = position
+#	elif item_drop == 1:
+#		var item = arrow_item.instance()
+#		get_parent().add_child(item)
+#		item.position = position
+
+
+func _move_enemy(delta):
+	if is_on_floor():
+		velocity.y = 0
+		direction.y = 0
+	#print($spriteanim/idle/idletimer.time_left)
+	#print(position.distance_to(spawn_position))
+	if position.distance_to(spawn_position) < distance_max and visible_pl == false and attack == false:
+		distance.x = speed
+		idle_timer = false
+		idle = true
+		
+	elif position.distance_to(spawn_position) >= distance_max and attack == false and visible_pl == false and idle_timer == false:
+		if idle :
+			idle = false
+			$move_sound.stream = idle_sound
+			$move_sound.play()
+			$spr/idletimer.start()
+		distance.x = 0
+		$spr.animation = \"стойка\"
+		
+	elif visible_pl == false and idle_timer == true and attack == false:
+		$spr.animation = \"хотьба\"
+		
+	elif visible_pl == true and attack == false:
+		distance.x = speed
+		velocity.x = (direction.x*distance.x)
+		velocity.y += gravity*delta
+		
+#	else: print(\"Error\")
+#	distance.x = speed
+	velocity.x = (direction.x*distance.x)
+	velocity.y += gravity*delta
+	move_and_slide(velocity,Vector2(0,-1))
+	pass
+func _on_idletimer_timeout():
+	idle_timer = true
+	_change_position()
+	distance.x = speed
+	pass # Replace with function body.
+
+func _gui():# Графический интерфейс
+#	if health_now > 0 :
+#		$healthbar.show()
+#		#$HPlable.show()
+#	else:
+#		$healthbar.hide()
+		#$HPlable.hide()
+	#$HPlable.text = str(health, \" / \", health_now )
+	php = (health_now*100)/health
+	$healthbar.value = php
+	
+func _die():
+	if health_now <= 0:
+		
+		velocity = Vector2(0,0)
+		direction = Vector2(0,0)
+		gravity = 0
+		$healthbar.hide()
+		$CollisionShape2D.disabled = true
+		$visible/CollisionShape2D.disabled = true
+		$damage/CollisionShape2D.disabled = true
+		$attack_area/CollisionShape2D.disabled = true
+		$spr.animation = \"смерть\"
+
+		
+	pass
+func _check_place():
+	if $check_place.is_colliding() == false :
+		if is_on_floor():
+			_change_position()
+	if is_on_wall():
+		_change_position()
+	
+func _change_position():
+	direction.x =direction.x*(-1)
+	$check_place.position.x = $check_place.position.x*(-1)
+	if $spr.flip_h == false:
+		$spr.flip_h = true
+	else:
+		$spr.flip_h = false
+		pass
+	if $attack_area.position.x == -12:
+		$attack_area.position.x = 12
+		$damage.position.x = 15
+	else:
+		$attack_area.position.x  = -12
+		$damage.position.x = -15
+			
+			
+
+func _on_attack_area_body_entered(body):
+	if body.get(\"player_type\"):
+		speed = 0
+		$spr.animation = \"атака\"
+	pass # Replace with function body.
+
+
+func _on_attack_area_body_exited(body):
+	if body.get(\"player_type\"):
+		if $spr.animation == \"атака\":
+			player_exit_attack = true
+		elif $spr.animation == \"урон\":
+			print(hit_true)
+			print(\"Hit\")
+			hit_true = true
+		else: 
+			target = body
+			speed = 15
+			$spr.animation = \"хотьба\"
+		
+	pass # Replace with function body.
+
+
+
+
+func _on_damage_body_entered(body):
+	if body.get(\"player_type\"):
+		body._damage(damage)
+		$damage/CollisionShape2D.set_deferred(\"disabled\" , true)
+		#print(\"attack\")
+	pass # Replace with function body.
+
+
+func _on_die_animation_finished(anim_name):
+	if anim_name == \"die\":
+		var item_rand = randi()%5
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
+		queue_free()
+	pass # Replace with function body.
+
+
+
+
+
+func _on_visible_body_entered(body):
+	if body.get(\"player_type\"):
+		visible_pl = true
+		player_step = true
+		target = body
+		$spr.animation = \"хотьба\"
+	pass # Replace with function body.
+
+
+func _on_visible_body_exited(body):
+	if body == target:
+		speed = 15
+		visible_pl = false
+		target = null
+		$spr.animation = \"хотьба\"
+		player_exit_attack = false
+		attack = false
+		hit_true = false
+	pass # Replace with function body.
+
+
+func _on_spr_animation_finished():
+	if $spr.animation == \"смерть\":
+		var item_rand = randi()%5
+	#	print(item_rand)
+		if item_rand == 0 :
+			_drop_item()
+		queue_free()
+	pass # Replace with function body.
+
+func _on_spr_frame_changed():
+	if $spr.animation == \"атака\":
+		if $spr.frame == 1:
+			attack = true
+		elif $spr.frame == 7:
+			damage = randi()%20+5
+			#print(damage)
+			$damage/CollisionShape2D.disabled = false
+		elif $spr.frame == 8:
+			$damage/CollisionShape2D.disabled = true
+		elif $spr.frame == 16:
+			print(\"16\")
+			print(player_exit_attack)
+			if player_exit_attack == true:
+				
+				print(\"!\")
+				speed = 15
+				$spr.animation = \"хотьба\"
+				player_exit_attack = false
+			attack = false
+	if $spr.animation == \"урон\":
+		print(hit_true)
+		print(\"Hit - 1\")
+		if $spr.frame == 7: 
+			print(hit_true)
+			print(\"Hit - 2\")
+			speed = 15
+			$spr.animation = \"хотьба\"
+			hit_true = false
+			attack = false
+			player_exit_attack = false
+	if $spr.animation == \"смерть\":
+		if $spr.frame == 1 : 
+			$move_sound.stream = death_sound
+			$move_sound.play()
+	if $spr.animation == \"подъем\":
+		if $spr.frame == 14 :
+			$spr.animation = \"хотьба\"
+			attack_start = true
+	pass # Replace with function body.
+
+
+
+
+
+
+func _on_ouch_timer_timeout():
+	if target:
+		
+		if position.distance_to(target.position) <20 :
+			$spr.animation = \"атака\"
+		elif position.distance_to(target.position) >= 20 :
+			$spr.animation = \"хотьба\"
+			speed = 15
+		else: 
+			print(\"no target\")
+			
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "прыжок",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "смерть",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "стойка",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "подъем",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
+"loop": true,
+"name": "атака",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ) ],
+"loop": true,
+"name": "урон",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
+"loop": true,
+"name": "хотьба",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 37 ) ],
+"loop": true,
+"name": "спокойствие",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4.09056, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 7 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 7 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 150, 10 )
+
+[node name="Undead_sword" type="KinematicBody2D" groups=[
+"save",
+"paused",
+]]
+pause_mode = 1
+collision_layer = 4
+collision_mask = 9
+script = SubResource( 1 )
+
+[node name="spr" type="AnimatedSprite" parent="."]
+position = Vector2( 2.0179, -1.13757 )
+frames = SubResource( 2 )
+animation = "стойка"
+frame = 15
+playing = true
+
+[node name="idletimer" type="Timer" parent="spr"]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0527625, 4.98001 )
+shape = SubResource( 3 )
+
+[node name="attack_area" type="Area2D" parent="."]
+position = Vector2( -12, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+shape = SubResource( 4 )
+
+[node name="damage" type="Area2D" parent="."]
+position = Vector2( -15, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+shape = SubResource( 5 )
+disabled = true
+
+[node name="healthbar" type="ProgressBar" parent="."]
+visible = false
+margin_left = -12.0
+margin_top = -18.0
+margin_right = 23.0
+margin_bottom = -3.99997
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/fg = ExtResource( 108 )
+custom_styles/bg = ExtResource( 109 )
+value = 100.0
+percent_visible = false
+
+[node name="check_place" type="RayCast2D" parent="."]
+position = Vector2( -9, 4 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+
+[node name="visible" type="Area2D" parent="."]
+visible = false
+position = Vector2( 0, -15 )
+scale = Vector2( 1.1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]
+position = Vector2( -0.242138, 20.3398 )
+shape = SubResource( 6 )
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="move_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 110 )
+max_distance = 300.0
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ouch_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
+[connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
+[connection signal="timeout" from="spr/idletimer" to="." method="_on_idletimer_timeout"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="damage" to="." method="_on_damage_body_entered"]
+[connection signal="body_entered" from="visible" to="." method="_on_visible_body_entered"]
+[connection signal="body_exited" from="visible" to="." method="_on_visible_body_exited"]
+[connection signal="timeout" from="ouch_timer" to="." method="_on_ouch_timer_timeout"]

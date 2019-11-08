@@ -135,7 +135,6 @@ extents = Vector2( 150, 10 )
 "paused",
 ]]
 pause_mode = 1
-modulate = Color( 0.909804, 0.682353, 0.682353, 1 )
 collision_layer = 4
 collision_mask = 9
 script = ExtResource( 1 )

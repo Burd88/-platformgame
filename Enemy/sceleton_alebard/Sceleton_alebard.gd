@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 50
+var speed = 40
 
 var jump_speed = 150
 var gravity = 200
@@ -254,7 +254,7 @@ func _on_attack_area_body_exited(body):
 			hit_true = true
 		else: 
 			target = body
-			speed = 50
+			speed = 40
 			$spr.animation = "хотьба"
 		
 	pass # Replace with function body.
@@ -294,10 +294,14 @@ func _on_visible_body_entered(body):
 
 func _on_visible_body_exited(body):
 	if body == target:
-		speed = 50
+		speed = 40
 		visible_pl = false
 		target = null
 		$spr.animation = "хотьба"
+		player_exit_attack = false
+		attack = false
+		hit_true = false
+		
 	pass # Replace with function body.
 
 
@@ -326,7 +330,7 @@ func _on_spr_frame_changed():
 			if player_exit_attack == true:
 				
 				print("!")
-				speed = 50
+				speed = 40
 				$spr.animation = "хотьба"
 				player_exit_attack = false
 			attack = false
@@ -336,7 +340,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 7: 
 			print(hit_true)
 			print("Hit - 2")
-			speed = 50
+			speed = 40
 			$spr.animation = "хотьба"
 			hit_true = false
 			attack = false
@@ -363,7 +367,7 @@ func _on_ouch_timer_timeout():
 			$spr.animation = "атака"
 		elif position.distance_to(target.position) >= 20 :
 			$spr.animation = "хотьба"
-			speed = 50
+			speed = 40
 		else: 
 			print("no target")
 			
