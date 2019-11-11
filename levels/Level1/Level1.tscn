@@ -1481,7 +1481,6 @@ rotation = 1.5708
 move_to = Vector2( 0, -15 )
 
 [node name="use_item" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="lever" type="Area2D" parent="use_item"]
 position = Vector2( 581.241, 504.372 )
@@ -1517,7 +1516,7 @@ volume_db = -10.0
 
 [node name="Torch" parent="use_item" instance=ExtResource( 32 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
-position = Vector2( 983.41, 1570.46 )
+position = Vector2( 206.342, 320.626 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
@@ -1878,6 +1877,7 @@ visible = false
 position = Vector2( 327.956, 1447.36 )
 
 [node name="enemies-3" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Sceleton_alebard" parent="enemies-3" instance=ExtResource( 56 )]
 position = Vector2( 1187.03, 2353.19 )
@@ -1982,6 +1982,7 @@ timer_time = 3
 
 [node name="Cut_scene_start" type="Area2D" parent="."]
 pause_mode = 2
+editor/display_folded = true
 position = Vector2( 988.89, 1014.25 )
 script = SubResource( 29 )
 
@@ -2015,7 +2016,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 62 )]
-position = Vector2( 1039.83, 1508.49 )
+position = Vector2( 144.793, 342.123 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 51 )

@@ -495,6 +495,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ "4_CUT_SCENE_TEXT_1", "", "4_CUT_SCENE_TEXT_2" ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/Label:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.1, 1.3, 5, 6.8, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0, 1.0 ]
+}
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 171 )
@@ -509,7 +521,7 @@ visible = false
 position = Vector2( -4.27202, 708.481 )
 frames = SubResource( 2 )
 animation = "зацеп"
-frame = 1
+frame = 0
 flip_h = true
 
 [node name="Light2D" parent="spr" instance=ExtResource( 169 )]

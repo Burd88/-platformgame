@@ -552,7 +552,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
-			damage = randi()%40+50
+			damage = randi()%1540+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:

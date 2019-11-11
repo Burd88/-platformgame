@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=2]
@@ -67,53 +67,81 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed(\"ui_attack1\") and button == false and visible == true:
 		if $CanvasLayer/Label.text == text1:
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.hide()
+				$CanvasLayer/player.show()
 			
-			$CanvasLayer/gobby.hide()
-			$CanvasLayer/player.show()
+				$CanvasLayer/Label.text = text2
 			$change_text.start()
-			$CanvasLayer/Label.text = text2
 		elif $CanvasLayer/Label.text == text2:
-			
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
-			$CanvasLayer/Label.text = text3
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text3
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text3:
-			
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
-			$CanvasLayer/Label.text = text4
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text4
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text4:
-			
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
-			$CanvasLayer/Label.text = text5
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text5
 			$change_text.start()
 			
 		elif $CanvasLayer/Label.text == text5:
-		
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
-			$CanvasLayer/Label.text = text6
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text6
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text6:
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
 			
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text7
 			$Gobby.animation = \"стойка\"
-			$CanvasLayer/Label.text = text7
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text7:
-			$CanvasLayer/gobby.hide()
-			$CanvasLayer/player.show()
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.hide()
+				$CanvasLayer/player.show()
 			
-			$CanvasLayer/Label.text = text8
+				$CanvasLayer/Label.text = text8
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text8:
-			$CanvasLayer/gobby.show()
-			$CanvasLayer/player.hide()
-			$CanvasLayer/Label.text = text9
+			if $CanvasLayer/Label.percent_visible != 1:
+				$text_full.stop()
+				$CanvasLayer/Label.percent_visible = 1
+			elif $CanvasLayer/Label.percent_visible == 1:
+				$CanvasLayer/gobby.show()
+				$CanvasLayer/player.hide()
+				$CanvasLayer/Label.text = text9
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text9:
 			$CanvasLayer/Label.hide()
@@ -139,6 +167,8 @@ func _process(delta):
 
 func _on_start_cut_timeout():
 	print(\"Начало кат-сцены победы над Гобби\")
+	$CanvasLayer/Label.percent_visible = 0
+	$text_full.play(\"full\")
 	$CanvasLayer/Label.show()
 	$CanvasLayer/Label.text = text1
 	$CanvasLayer/gobby.show()
@@ -148,38 +178,44 @@ func _on_start_cut_timeout():
 
 func _on_change_text_timeout():
 		if $CanvasLayer/Label.text == text1:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
 			$change_text.start()
 			$CanvasLayer/Label.text = text2
 		elif $CanvasLayer/Label.text == text2:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text3
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text3:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text4
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text4:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text5
 			$change_text.start()
 			
 		elif $CanvasLayer/Label.text == text5:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text6
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text6:
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$Gobby.animation = \"стойка\"
@@ -188,10 +224,13 @@ func _on_change_text_timeout():
 		elif $CanvasLayer/Label.text == text7:
 			$CanvasLayer/gobby.hide()
 			$CanvasLayer/player.show()
-			
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/Label.text = text8
 			$change_text.start()
 		elif $CanvasLayer/Label.text == text8:
+			$CanvasLayer/Label.percent_visible = 0
+			$text_full.play(\"full\")
 			$CanvasLayer/gobby.show()
 			$CanvasLayer/player.hide()
 			$CanvasLayer/Label.text = text9
@@ -273,6 +312,22 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=5]
 
+[sub_resource type="Animation" id=6]
+resource_name = "full"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Katboss14" type="Node2D"]
 pause_mode = 2
 position = Vector2( 713.091, 362.732 )
@@ -283,7 +338,7 @@ position = Vector2( -227.773, -6.36082 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "лежа"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -355,6 +410,9 @@ position = Vector2( -59.5812, 3.86893 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cut_scene"]
 shape = SubResource( 5 )
+
+[node name="text_full" type="AnimationPlayer" parent="."]
+anims/full = SubResource( 6 )
 [connection signal="timeout" from="change_text" to="." method="_on_change_text_timeout"]
 [connection signal="timeout" from="start_cut" to="." method="_on_start_cut_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

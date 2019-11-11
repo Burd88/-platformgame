@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=2]
+[gd_scene load_steps=214 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -477,6 +477,7 @@ func _ready():
 func _process(delta):
 
 	if show_label:
+		$text_full.play(\"full\")
 		visible = true
 		$Timer.start()
 		
@@ -498,6 +499,22 @@ func _on_Button_pressed():
 	show_label = false
 	pass # Replace with function body.
 "
+
+[sub_resource type="Animation" id=22]
+resource_name = "full"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="Theme" id=15]
 
@@ -547,6 +564,7 @@ script = ExtResource( 1 )
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "стойка"
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -814,7 +832,6 @@ align = 1
 valign = 1
 
 [node name="say_label" type="Label" parent="GUI"]
-visible = false
 margin_left = 302.395
 margin_top = 539.401
 margin_right = 1022.39
@@ -827,6 +844,7 @@ text = "dfsfsdfsssdfsdfsdfsdfsf sd sdf sd fsdfsdf"
 align = 1
 valign = 1
 autowrap = true
+percent_visible = 0.0
 script = SubResource( 14 )
 
 [node name="Timer" type="Timer" parent="GUI/say_label"]
@@ -857,6 +875,9 @@ custom_styles/disabled = ExtResource( 179 )
 custom_styles/normal = ExtResource( 179 )
 custom_fonts/font = ExtResource( 180 )
 text = "X"
+
+[node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
+anims/full = SubResource( 22 )
 
 [node name="expirience" type="ProgressBar" parent="GUI"]
 visible = false
