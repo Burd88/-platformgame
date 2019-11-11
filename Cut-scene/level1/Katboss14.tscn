@@ -1,25 +1,25 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=1]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=2]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=4]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-1.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-2.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-3.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-4.png" type="Texture" id=9]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-5.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=14]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=15]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-3.png" type="Texture" id=16]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-4.png" type="Texture" id=17]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-5.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-6.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-7.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-1.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-2.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-3.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-4.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-5.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-6.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/attack-7.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-1.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-2.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-3.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-4.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-5.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-6.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-7.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/idle-8.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-1.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-2.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-3.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-4.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/jump-5.png" type="Texture" id=20]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-1.png" type="Texture" id=21]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-2.png" type="Texture" id=22]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/auch-3.png" type="Texture" id=23]
@@ -33,10 +33,11 @@
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-8.png" type="Texture" id=31]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/die-9.png" type="Texture" id=32]
 [ext_resource path="res://player/2DLight.png" type="Texture" id=33]
-[ext_resource path="res://resourse/say_labelr.tres" type="StyleBox" id=34]
+[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=34]
 [ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=35]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/assets/portret.png" type="Texture" id=36]
-[ext_resource path="res://player/portret.png" type="Texture" id=37]
+[ext_resource path="res://resourse/portret_box_2.png" type="Texture" id=37]
+[ext_resource path="res://player/portret.png" type="Texture" id=38]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -215,25 +216,25 @@ func _on_change_text_timeout():
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "прыжок",
-"speed": 7.0
+"name": "атака",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "стойка",
+"speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "смерть",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "стойка",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "атака",
-"speed": 5.0
+"name": "прыжок",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
@@ -251,8 +252,11 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="Animation" id=3]
-resource_name = "exit"
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 0, 669, 165 )
+
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Gobby:position")
@@ -267,7 +271,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.3269, 1.99026 ), Vector2( 300, 1.99 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="Katboss14" type="Node2D"]
 pause_mode = 2
@@ -297,26 +301,42 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
 margin_left = 300.0
-margin_top = 575.0
+margin_top = 566.0
 margin_right = 1020.0
-margin_bottom = 681.0
-custom_styles/normal = ExtResource( 34 )
+margin_bottom = 666.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 35 )
-text = "dd as dasd asd asd asd "
+text = "
+"
 align = 1
-autowrap = true
+valign = 1
 
 [node name="gobby" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 1100, 630 )
+position = Vector2( 1065, 614.837 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 36 )
 flip_h = true
 
+[node name="Sprite" type="Sprite" parent="CanvasLayer/gobby"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 0.244014, 0.179712 )
+z_index = -1
+texture = ExtResource( 37 )
+flip_h = true
+
 [node name="player" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 231.566, 628.924 )
+position = Vector2( 254, 614 )
 scale = Vector2( 3, 3 )
+texture = ExtResource( 38 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/player"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 0.244, 0.18 )
+z_index = -1
 texture = ExtResource( 37 )
 
 [node name="change_text" type="Timer" parent="."]
@@ -328,13 +348,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/exit = SubResource( 3 )
+anims/exit = SubResource( 4 )
 
 [node name="cut_scene" type="Area2D" parent="."]
 position = Vector2( -59.5812, 3.86893 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cut_scene"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="timeout" from="change_text" to="." method="_on_change_text_timeout"]
 [connection signal="timeout" from="start_cut" to="." method="_on_start_cut_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

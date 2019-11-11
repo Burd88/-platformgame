@@ -8,6 +8,7 @@ var torch_delete = false
 var boss1_1_kill = false
 var play_text_boss_1 = false
 var end_cut_14 = false
+var exit1level_open = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$decor/waterdow/waterfall.volume_db = GLOBAL.sound_value
@@ -73,6 +74,7 @@ func save_levels():
 		"boss1_1_kill" : boss1_1_kill,
 		"play_text_boss_1" : play_text_boss_1,
 		"end_cut_14" : end_cut_14,
+		"exit1level_open" : exit1level_open,
 		}
 	return save_level
 #	pass

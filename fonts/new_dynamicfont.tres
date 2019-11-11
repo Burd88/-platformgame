@@ -3,4 +3,6 @@
 [ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=1]
 
 [resource]
+outline_size = 2
+outline_color = Color( 0.313726, 0.0666667, 0.0666667, 1 )
 font_data = ExtResource( 1 )

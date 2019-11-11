@@ -6,7 +6,7 @@ var jump_speed = 150
 var gravity = 200
 var enemy_type = true
 ## жизни игрока
-export var health = 500
+export var health = 700
 var health_now = health
 var php = (health_now*100)/health
 ##----------------------- 
@@ -249,8 +249,6 @@ func _on_attack_area_body_exited(body):
 		if $spr.animation == "атака":
 			player_exit_attack = true
 		elif $spr.animation == "урон":
-			print(hit_true)
-			print("Hit")
 			hit_true = true
 		else: 
 			target = body
@@ -319,27 +317,19 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1:
 			attack = true
 		elif $spr.frame == 7:
-			damage = randi()%20+5
+			damage = randi()%60+10
 			#print(damage)
 			$damage/CollisionShape2D.disabled = false
 		elif $spr.frame == 8:
 			$damage/CollisionShape2D.disabled = true
 		elif $spr.frame == 16:
-			print("16")
-			print(player_exit_attack)
 			if player_exit_attack == true:
-				
-				print("!")
 				speed = 40
 				$spr.animation = "хотьба"
 				player_exit_attack = false
 			attack = false
 	if $spr.animation == "урон":
-		print(hit_true)
-		print("Hit - 1")
 		if $spr.frame == 7: 
-			print(hit_true)
-			print("Hit - 2")
 			speed = 40
 			$spr.animation = "хотьба"
 			hit_true = false
