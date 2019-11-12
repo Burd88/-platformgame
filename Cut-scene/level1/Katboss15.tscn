@@ -279,9 +279,11 @@ position = Vector2( 713.091, 362.732 )
 script = SubResource( 1 )
 
 [node name="Gobby" type="AnimatedSprite" parent="."]
-position = Vector2( -209.2, 8.63852 )
+position = Vector2( -176.674, -5.00974 )
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "атака"
+frame = 5
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -88.122, -16.872 )

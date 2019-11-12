@@ -1,5 +1,5 @@
 ﻿id;ru;en
-GAME_NAME;Этот нелегкий путь \n - наёмник;This the hard way \n - the mercenary
+GAME_NAME;Этот нелегкий путь.\nНаёмник;This the hard way.\nMercenary
 M_BT_NEW_GAME;Новая игра;New game
 M_BT_LOAD_GAME;Загрузить игру;Loading game
 M_BT_SETTINGS;Настройки;Settings
@@ -8,7 +8,7 @@ M_BT_VERSION;Версия;Version
 M_BT_SGC_OK;ОК;OK
 M_BT_SGC_CANCEL;ОТМЕНА;CANCEL
 M_BT_SGC_LABEL;Есть сохраненная игра, если нажмете "ОК", сохранение будет удалено;There is a saved game, if you click "OK", the save will be deleted
-OPTION_FULLSCREEN_LABEL;Полноэкранный \n режим :;Fullscreen \n mode :
+OPTION_FULLSCREEN_LABEL;Полноэкранный\nрежим :;Fullscreen\nmode :
 OPTION_NAME_LABEL;Настройки;Settings
 OPTION_MUSIC_LABEL;Музыка :;Music :
 OPTION_SOUND_FX_LABEL;Прочие звуки :;Sounds FX :

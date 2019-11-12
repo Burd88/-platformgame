@@ -15,14 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="This the hard way - the mercenary"
+config/name="This the hard way. Mercenary"
 run/main_scene="res://main/Chosse_translate.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.61"
-config/name_en="This the hard way - the mercenary"
-config/name_ru="Этот нелегкий путь - наёмник"
+config/version="0.0.62"
+config/name_en="This the hard way. Mercenary"
+config/name_ru="Этот нелегкий путь. Наёмник"
 
 [audio]
 

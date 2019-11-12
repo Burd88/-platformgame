@@ -158,7 +158,7 @@ func fight():
 func _on_shot_timeout():
 	if !floor_in:
 		var b = enemy_shoot.instance()
-		get_parent().add_child(b)
+		get_parent().get_parent().get_parent().add_child(b)
 		b.position = position + Vector2(0 , 30)
 		b.get_node("sprite").speed_scale = 0.7
 		b.health = 120

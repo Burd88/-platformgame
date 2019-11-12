@@ -154,9 +154,12 @@ func _physics_process(delta):
 		elif departure == true:
 			if finish_departure == false:
 				$spr.animation = "departure"
+				attack = false
 				var departure_speed = 150
 				velocity.x = +departure_speed
-			else : $spr.animation = "подъем"
+			elif finish_departure == true: 
+				$spr.animation = "подъем"
+				attack = false
 			
 			
 			
@@ -482,6 +485,7 @@ func _on_spr_animation_finished():
 		#get_tree().change_scene("res://main/main.tscn")
 		get_tree().change_scene("res://main/main.tscn")
 	if $spr.animation == 'подъем':
+		departure_down = true
 		departure = false
 		
 	pass # Replace with function body.
@@ -552,7 +556,7 @@ func _on_spr_frame_changed():
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
-			damage = randi()%1540+50
+			damage = randi()%40+50
 			#print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
@@ -570,9 +574,11 @@ func _on_spr_frame_changed():
 	if  $spr.animation == "departure":
 		if $spr.frame == 0:
 			velocity.y = -jump_speed
+
 		elif $spr.frame == 8:
 			departure_down = true
 			finish_departure = true
+			
 			
 
 #	elif $spr.animation == "удар_лук" :
