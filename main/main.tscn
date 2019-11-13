@@ -29,7 +29,8 @@ draw_center = false
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
-outline_color = Color( 0.658824, 0.0352941, 0.0352941, 1 )
+outline_size = 4
+outline_color = Color( 0.25098, 0.0745098, 0.0745098, 1 )
 font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=3]

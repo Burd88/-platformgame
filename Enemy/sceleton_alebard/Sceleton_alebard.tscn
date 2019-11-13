@@ -122,10 +122,10 @@ animations = [ {
 extents = Vector2( 4.09056, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4, 7 )
+extents = Vector2( 11.3634, 7 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 7 )
+extents = Vector2( 12.1766, 7 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 150, 10 )
@@ -140,7 +140,7 @@ collision_mask = 9
 script = ExtResource( 1 )
 
 [node name="spr" type="AnimatedSprite" parent="."]
-position = Vector2( -1.58816, -1.13757 )
+position = Vector2( -7.17681, -0.408618 )
 frames = SubResource( 1 )
 animation = "спокойствие"
 playing = true
@@ -158,11 +158,13 @@ position = Vector2( -12, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 shape = SubResource( 3 )
+disabled = true
 
 [node name="damage" type="Area2D" parent="."]
 position = Vector2( -15, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+position = Vector2( 2.18686, -0.0809956 )
 shape = SubResource( 4 )
 disabled = true
 
@@ -179,7 +181,7 @@ value = 100.0
 percent_visible = false
 
 [node name="check_place" type="RayCast2D" parent="."]
-position = Vector2( -9, 4 )
+position = Vector2( -9.72895, 4.24298 )
 enabled = true
 cast_to = Vector2( 0, 15 )
 

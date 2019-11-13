@@ -46,6 +46,7 @@ var attack_start = false
 var attack = false
 var player_exit_attack = false
 var hit_true = false
+var test = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -66,10 +67,11 @@ func _process(delta):
 		_die()
 		$healthbar.hide()
 	elif health_now >0:
-		if player_step == true and attack_start == false:
+		if player_step == true and attack_start == false :
 			$spr.animation = "подъем"
 			$healthbar.hide()
-		elif player_step == true and attack_start == true:
+			test = true
+		elif player_step == true and attack_start == true :
 			
 			$healthbar.show()
 			update()
@@ -284,9 +286,10 @@ func _on_die_animation_finished(anim_name):
 func _on_visible_body_entered(body):
 	if body.get("player_type"):
 		visible_pl = true
+		
 		player_step = true
 		target = body
-		$spr.animation = "хотьба"
+#		$spr.animation = "хотьба"
 	pass # Replace with function body.
 
 
@@ -340,9 +343,13 @@ func _on_spr_frame_changed():
 			$move_sound.stream = death_sound
 			$move_sound.play()
 	if $spr.animation == "подъем":
-		if $spr.frame == 14 :
+		if $spr.frame == 1:
+			$visible/CollisionShape2D.disabled = true
+		elif $spr.frame == 14 :
 			$spr.animation = "хотьба"
 			attack_start = true
+			$attack_area/CollisionShape2D.disabled = false
+			$visible/CollisionShape2D.disabled = false
 	pass # Replace with function body.
 
 

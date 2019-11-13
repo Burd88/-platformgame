@@ -523,10 +523,10 @@ animations = [ {
 extents = Vector2( 4.09056, 10 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 7 )
+extents = Vector2( 10.7033, 7 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4, 7 )
+extents = Vector2( 12.0545, 7 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 150, 10 )
@@ -543,8 +543,8 @@ script = SubResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 position = Vector2( 2.0179, -1.13757 )
 frames = SubResource( 2 )
-animation = "стойка"
-frame = 14
+animation = "хотьба"
+frame = 8
 playing = true
 
 [node name="idletimer" type="Timer" parent="spr"]
@@ -559,12 +559,14 @@ shape = SubResource( 3 )
 position = Vector2( -12, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+position = Vector2( 1.04923, 0.299782 )
 shape = SubResource( 4 )
 
 [node name="damage" type="Area2D" parent="."]
 position = Vector2( -15, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+position = Vector2( 3.29758, 0.449669 )
 shape = SubResource( 5 )
 disabled = true
 

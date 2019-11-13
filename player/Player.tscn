@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=2]
+[gd_scene load_steps=206 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -173,24 +173,19 @@
 [ext_resource path="res://player/inventary.gd" type="Script" id=171]
 [ext_resource path="res://player/bag1.gd" type="Script" id=172]
 [ext_resource path="res://icon1.png" type="Texture" id=173]
-[ext_resource path="res://player/UI sprite/healthbar.png" type="Texture" id=174]
-[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=175]
-[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=176]
-[ext_resource path="res://player/portret.png" type="Texture" id=177]
-[ext_resource path="res://resourse/portret_box.png" type="Texture" id=178]
-[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=179]
-[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=180]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground1.png" type="Texture" id=181]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=182]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=183]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar1_bg.png" type="Texture" id=184]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar1_pr.png" type="Texture" id=185]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar4_bg.png" type="Texture" id=186]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar4_pr.png" type="Texture" id=187]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar5_br.png" type="Texture" id=188]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar5_pr.png" type="Texture" id=189]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=190]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=191]
+[ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=174]
+[ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=175]
+[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=176]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=177]
+[ext_resource path="res://player/portret.png" type="Texture" id=178]
+[ext_resource path="res://resourse/portret_box.png" type="Texture" id=179]
+[ext_resource path="res://resourse/button x.tres" type="StyleBox" id=180]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=181]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground1.png" type="Texture" id=182]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=183]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=184]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=185]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=186]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -433,33 +428,8 @@ border_width_bottom = 6
 border_color = Color( 0.0156863, 0.129412, 0.670588, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.568627, 0.0745098, 0.168627, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.133333, 0.0156863, 0.0156863, 1 )
-border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.0588235, 0.733333, 0.12549, 1 )
-border_width_right = 3
-border_color = Color( 0.6, 0.0509804, 0.0509804, 1 )
-border_blend = true
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-shadow_color = Color( 0.6, 0.372549, 0.372549, 0.6 )
-anti_aliasing_size = 2
-
-[sub_resource type="StyleBoxLine" id=12]
-
 [sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 175 )
+texture = ExtResource( 176 )
 region_rect = Rect2( 0, 0, 669, 165 )
 
 [sub_resource type="GDScript" id=14]
@@ -525,7 +495,7 @@ bg_color = Color( 0, 1, 0.956863, 1 )
 bg_color = Color( 0.0392157, 0.286275, 0.305882, 1 )
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 8.69962, 9.70228 )
+extents = Vector2( 12.0972, 9.70228 )
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 6.52091, 16.2632 )
@@ -773,6 +743,7 @@ __meta__ = {
 }
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="inventary"]
+visible = true
 margin_left = 428.375
 margin_top = 154.632
 margin_right = 881.375
@@ -798,28 +769,17 @@ bbcode_enabled = true
 [node name="ItemMenu_Button_DropItem" type="Button" parent="inventary/WindowDialog_ItemMenu"]
 margin_left = 176.936
 margin_top = 230.807
-margin_right = 268.936
-margin_bottom = 259.807
-custom_styles/normal = SubResource( 10 )
+margin_right = 276.936
+margin_bottom = 270.807
+custom_styles/hover = ExtResource( 174 )
+custom_styles/pressed = ExtResource( 174 )
+custom_styles/focus = ExtResource( 174 )
+custom_styles/disabled = ExtResource( 174 )
+custom_styles/normal = ExtResource( 174 )
+custom_fonts/font = ExtResource( 175 )
 text = "Кнопка"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Healthbar" type="ProgressBar" parent="GUI"]
-visible = false
-margin_left = 50.3268
-margin_top = 37.0991
-margin_right = 125.327
-margin_bottom = 52.0991
-rect_scale = Vector2( 2, 1.5 )
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
-value = 67.0
-percent_visible = false
-
-[node name="Sprite" type="Sprite" parent="GUI/Healthbar"]
-position = Vector2( 37, 8 )
-texture = ExtResource( 174 )
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 25.733
@@ -839,7 +799,7 @@ margin_bottom = 667.646
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 176 )
+custom_fonts/font = ExtResource( 177 )
 text = "dfsfsdfsssdfsdfsdfsdfsf sd sdf sd fsdfsdf"
 align = 1
 valign = 1
@@ -854,13 +814,13 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="GUI/say_label"]
 position = Vector2( -40, 50 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 
 [node name="Sprite" type="Sprite" parent="GUI/say_label/Sprite"]
 position = Vector2( 0.319275, 0.0852988 )
 scale = Vector2( 0.22057, 0.203741 )
 z_index = -1
-texture = ExtResource( 178 )
+texture = ExtResource( 179 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
 visible = false
@@ -868,12 +828,12 @@ margin_left = 686.311
 margin_top = -9.47351
 margin_right = 724.311
 margin_bottom = 26.5265
-custom_styles/hover = ExtResource( 179 )
-custom_styles/pressed = ExtResource( 179 )
-custom_styles/focus = ExtResource( 179 )
-custom_styles/disabled = ExtResource( 179 )
-custom_styles/normal = ExtResource( 179 )
-custom_fonts/font = ExtResource( 180 )
+custom_styles/hover = ExtResource( 180 )
+custom_styles/pressed = ExtResource( 180 )
+custom_styles/focus = ExtResource( 180 )
+custom_styles/disabled = ExtResource( 180 )
+custom_styles/normal = ExtResource( 180 )
+custom_fonts/font = ExtResource( 181 )
 text = "X"
 
 [node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
@@ -893,7 +853,7 @@ value = 50.0
 [node name="Sprite" type="Sprite" parent="GUI/expirience"]
 position = Vector2( 250.756, 18.0747 )
 scale = Vector2( 2.41551, 0.847294 )
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 
 [node name="level" type="Label" parent="GUI/expirience"]
 margin_left = 537.511
@@ -915,7 +875,7 @@ margin_right = 382.0
 margin_bottom = 165.0
 step = 0.1
 value = 100.0
-texture_under = ExtResource( 182 )
+texture_under = ExtResource( 183 )
 
 [node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar1"]
 margin_left = 117.657
@@ -924,98 +884,18 @@ margin_right = 363.657
 margin_bottom = 149.53
 step = 0.1
 value = 100.0
-texture_progress = ExtResource( 183 )
-
-[node name="HPbar2" type="Control" parent="GUI"]
-visible = false
-margin_left = 325.847
-margin_top = -67.4494
-margin_right = 365.847
-margin_bottom = -27.4494
-rect_scale = Vector2( 0.8, 0.8 )
-
-[node name="healthbar_bg" type="TextureProgress" parent="GUI/HPbar2"]
-margin_left = 19.0
-margin_top = 114.0
-margin_right = 382.0
-margin_bottom = 165.0
-step = 0.1
-value = 100.0
-texture_under = ExtResource( 184 )
-
-[node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar2"]
-margin_left = 39.7457
-margin_top = 119.58
-margin_right = 285.746
-margin_bottom = 152.58
-step = 0.1
-value = 100.0
-texture_progress = ExtResource( 185 )
-
-[node name="HPbar3" type="Control" parent="GUI"]
-visible = false
-margin_left = 529.548
-margin_top = -73.3746
-margin_right = 569.548
-margin_bottom = -33.3746
-rect_scale = Vector2( 0.8, 0.8 )
-
-[node name="healthbar_bg" type="TextureProgress" parent="GUI/HPbar3"]
-margin_left = 19.0
-margin_top = 114.0
-margin_right = 382.0
-margin_bottom = 165.0
-step = 0.1
-value = 100.0
-texture_under = ExtResource( 186 )
-
-[node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar3"]
-margin_left = 53.9784
-margin_top = 122.548
-margin_right = 299.978
-margin_bottom = 161.548
-step = 0.1
-value = 100.0
-texture_progress = ExtResource( 187 )
-
-[node name="HPbar4" type="Control" parent="GUI"]
-visible = false
-margin_left = 776.638
-margin_top = -70.0505
-margin_right = 816.638
-margin_bottom = -30.0505
-rect_scale = Vector2( 0.8, 0.8 )
-
-[node name="healthbar_bg" type="TextureProgress" parent="GUI/HPbar4"]
-margin_left = 14.845
-margin_top = 89.0695
-margin_right = 377.845
-margin_bottom = 164.069
-step = 0.1
-value = 100.0
-texture_under = ExtResource( 188 )
-
-[node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar4"]
-margin_left = 27.2007
-margin_top = 124.204
-margin_right = 285.201
-margin_bottom = 163.204
-step = 0.1
-value = 100.0
-texture_progress = ExtResource( 189 )
+texture_progress = ExtResource( 184 )
 
 [node name="attack_area" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
 position = Vector2( 16, 5 )
 
 [node name="col_Atack" type="CollisionShape2D" parent="attack_area"]
+position = Vector2( -4.36932, 0 )
 shape = SubResource( 18 )
 disabled = true
 
 [node name="use" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
 
@@ -1026,7 +906,6 @@ disabled = true
 
 [node name="use_check" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 position = Vector2( 6, 4.5 )
 scale = Vector2( 1.56179, 1.19754 )
 
@@ -1047,7 +926,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 190 )
+texture = ExtResource( 185 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -1057,7 +936,7 @@ anims/use = SubResource( 20 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
-stream = ExtResource( 191 )
+stream = ExtResource( 186 )
 volume_db = 10.0
 autoplay = true
 

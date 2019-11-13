@@ -1,12 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 20
+size = 14
 outline_size = 2
 outline_color = Color( 0.168627, 0.137255, 0.368627, 1 )
-use_mipmaps = true
-use_filter = true
-extra_spacing_top = -3
+extra_spacing_top = 3
 font_data = ExtResource( 1 )

@@ -449,21 +449,9 @@ func _gui():		# Графический интерфейс игрока
 	if Input.is_action_just_released("open_inventory"):
 		$inventary/inventory/bag1.visible_inventory()
 	php = (health_now*100)/health
-	if php > 75 and php <=100:
-		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar.png")
-	elif php > 50 and php <=75:
-		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar75.png")
-	elif php > 25 and php <=50:
-		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar50.png")
-	elif php > 0 and php <=25:
-		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar25.png")
-	elif php == 0:
-		$GUI/Healthbar/Sprite.texture = load("res://player/UI sprite/healthbar0.png")
-	$GUI/Healthbar.value = php
+
 	$GUI/HPbar1/healthbar_pr.value = php
-	$GUI/HPbar2/healthbar_pr.value = php
-	$GUI/HPbar3/healthbar_pr.value = php
-	$GUI/HPbar4/healthbar_pr.value = php
+
 	
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
