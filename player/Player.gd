@@ -890,3 +890,10 @@ func _on_AudioStreamPlayer2D_finished():
 
 
 
+
+
+func _on_chake_hook_line_area_entered(area):
+	if area.get("hook_line") == true:
+		print(area.position)
+		print(position.distance_to(area.position))
+	pass # Replace with function body.

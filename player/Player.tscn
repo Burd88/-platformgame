@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=2]
+[gd_scene load_steps=207 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=2]
@@ -519,6 +519,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 2.03743, 1.97269 )
 
+[sub_resource type="CircleShape2D" id=23]
+radius = 150.0
+
 [node name="Player" type="KinematicBody2D" groups=[
 "save",
 "paused",
@@ -539,6 +542,7 @@ playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
+editor/display_folded = true
 scale = Vector2( -0.0828136, 0.873131 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
@@ -597,6 +601,7 @@ align = 1
 valign = 1
 
 [node name="inventary" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 171 )
 
 [node name="inventory" type="Panel" parent="inventary"]
@@ -780,6 +785,7 @@ custom_fonts/font = ExtResource( 175 )
 text = "Кнопка"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 25.733
@@ -887,6 +893,7 @@ value = 100.0
 texture_progress = ExtResource( 184 )
 
 [node name="attack_area" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 16, 5 )
 
 [node name="col_Atack" type="CollisionShape2D" parent="attack_area"]
@@ -958,6 +965,11 @@ volume_db = -8.69
 [node name="Regen_timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="chake_hook_line" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chake_hook_line"]
+shape = SubResource( 23 )
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="timeout" from="Camera2D/time_move" to="." method="_on_time_move_timeout"]
@@ -979,3 +991,4 @@ one_shot = true
 [connection signal="area_entered" from="hook_area" to="." method="_on_hook_area_area_entered"]
 [connection signal="area_exited" from="hook_area" to="." method="_on_hook_area_area_exited"]
 [connection signal="timeout" from="Regen_timer" to="." method="_on_Regen_timer_timeout"]
+[connection signal="area_entered" from="chake_hook_line" to="." method="_on_chake_hook_line_area_entered"]
