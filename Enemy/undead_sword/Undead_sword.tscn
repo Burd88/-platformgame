@@ -544,7 +544,7 @@ script = SubResource( 1 )
 position = Vector2( 2.0179, -1.13757 )
 frames = SubResource( 2 )
 animation = "хотьба"
-frame = 8
+frame = 14
 playing = true
 
 [node name="idletimer" type="Timer" parent="spr"]

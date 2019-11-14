@@ -743,7 +743,6 @@ __meta__ = {
 }
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="inventary"]
-visible = true
 margin_left = 428.375
 margin_top = 154.632
 margin_right = 881.375
