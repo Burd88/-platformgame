@@ -89,6 +89,13 @@ var experience = 0
 var level = 1
 var experience_next_level = 100
 func _ready():
+#	if GLOBAL.load_game == "new_game":
+#		position = Vector2(144,366)
+#		#$pause_menu._on_save_pressed()
+#		#print("save new game")
+#		pass
+#	elif GLOBAL.load_game == "loading_game":
+#		pass
 #	$music.play()
 	#$inventary/inventory/bag1.clear()
 	last_position_y = position.y
