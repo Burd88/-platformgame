@@ -1720,7 +1720,6 @@ script = SubResource( 22 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 23 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -2139,7 +2138,7 @@ position = Vector2( 0.540375, 14.0496 )
 shape = SubResource( 35 )
 
 [node name="hook_line" parent="." instance=ExtResource( 72 )]
-position = Vector2( 433.909, 2233.47 )
+position = Vector2( 536.794, 2208.2 )
 
 [node name="Player" parent="." instance=ExtResource( 73 )]
 position = Vector2( 271.239, 2348.13 )

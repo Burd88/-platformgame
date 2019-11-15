@@ -184,7 +184,7 @@ func _physics_process(delta):
 				var move_dist = (hook_vector - global_position).normalized()
 				print(move_dist)
 				gravity = 0
-				velocity +=speed*move_dist*delta
+				velocity +=75*move_dist*delta
 				move_and_slide(velocity)
 			elif position.distance_to(hook_vector) < 30:
 				$spr.animation = "прыжок"
@@ -192,7 +192,7 @@ func _physics_process(delta):
 				hook_line_pos = null
 				hook_vector = null
 				gravity = 230
-				velocity.x = 0
+				velocity.x = direction.x*30
 				velocity.y -=100
 			#hide()
 		if Input.is_action_pressed("use_health_potion"):
