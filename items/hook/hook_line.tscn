@@ -1,25 +1,51 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="GDScript" id=2]
+[ext_resource path="res://items/hook/hook_line0000.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
 var hook_line = true
+var view = false
+var sprite_no = preload(\"res://items/hook/hook_line0000.png\")
+var sprite_yes = preload(\"res://items/hook/hook_line0001.png\")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	
+	pass
+
+
+func _on_hook_line_area_entered(area):
+	if area.name == \"hook_line\":
+		$Sprite.texture = sprite_yes
+	pass # Replace with function body.
+
+
+func _on_hook_line_area_exited(area):
+	if area.name == \"hook_line\":
+		$Sprite.texture = sprite_no
+		
+	pass # Replace with function body.
 "
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.10096
 
 [node name="hook_line" type="Area2D"]
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -5.82522 )
+texture = ExtResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_hook_line_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_hook_line_area_exited"]

@@ -162,12 +162,12 @@ func aim():
 				move_to_player = false
 				anim = "move"
 
-#func _draw():
-#	if target:
-#		for hit in hit_pos:
-#			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
-#			draw_line(Vector2(), ((hit - position)*2).rotated(-rotation), laser_color)
-#	pass
+func _draw():
+	if target:
+		for hit in hit_pos:
+			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
+			draw_line(Vector2(), ((hit - position)*2).rotated(-rotation), laser_color)
+	pass
 		
 func shoot(pos):
 	var b = bullet.instance()
