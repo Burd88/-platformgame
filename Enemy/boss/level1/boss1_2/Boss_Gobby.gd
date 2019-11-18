@@ -46,10 +46,11 @@ func _settings():
 	$damage_sound.volume_db = GLOBAL.sound_value
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_settings()
 	if php>5 and cut_end == false:
 		_gui()
 		_move(delta)
-		
+
 		if start == true:
 			
 			phase()

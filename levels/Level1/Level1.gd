@@ -12,32 +12,36 @@ var exit1level_open = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$decor/waterdow/waterfall.volume_db = GLOBAL.sound_value
-	#print(GLOBAL.load_game)
-	#$music.play()
 	if GLOBAL.load_game == "new_game":
-		
-		#$pause_menu._on_save_pressed()
-		#print("save new game")
 		pass
 	elif GLOBAL.load_game == "loading_game":
 		$pause_menu.preload_game()
 	$CanvasModulate.show()
-	#$Text_field/text.show()
 	$decor/Chain/AnimatedSprite.stop()
 	$use_item/Gear6.visible = false
 	$decor/Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
 	$decor/Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$use_item/Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
-#	$use_item/Gear7/Gear7/Sprite/AnimationPlayer.stop()
+
 	if torch_delete == true:
 		$use_item/Torch.queue_free()
 	if door_delete == true:
 		$use_item/door.queue_free()
 	pass # Replace with function body.
 
+func setting():
+	$decor/waterdow/waterfall.volume_db = GLOBAL.sound_value
+	$use_item/lever/audio.volume_db = GLOBAL.sound_value
+	$use_item/exit_level/AudioStreamPlayer2D.volume_db = GLOBAL.sound_value
+	$use_item/Gear6/AudioStreamPlayer2D.volume_db = GLOBAL.sound_value
+	if get("use_item/door"):
+		$use_item/door/AudioStreamPlayer2D.volume_db = GLOBAL.sound_value
+	else: pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#$music.volume_db = GLOBAL.music_value
+
+	setting()
 	update()
 	start_mechanism()
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -45,20 +49,8 @@ func _physics_process(delta):
 		$pause_menu.pause_menu = true
 		$pause_menu/music.visible = true
 		get_tree().paused = true
-		
-#	if get_node("enemies-2/Boss_Gobby2"):
-#		if end_cut_14 == true:
-#			get_node("enemies-2/Boss_Gobby2").hide()
-#
-#	else: pass
 
-	
-		
-		#$Player/spr.stop()
-		#modulate = Color(0.470588, 0.192157, 0.192157)
-		#$Text_field.layer = -1
-		#$Player/GUI.layer = -1
-		#$Player/inventary.layer = -1
+
 	if lever1:
 		$use_item/lever/Sprite.flip_h = true
 		$use_item/lever/CollisionShape2D.disabled = true

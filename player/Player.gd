@@ -92,51 +92,38 @@ var experience_next_level = 100
 var hook_line_pos 
 var hook_line_use = false
 var hook_vector
-func _ready():
+func _ready(): # стартовые переменные персонажа
 #	if GLOBAL.load_game == "new_game":
 #		position = Vector2(144,366)
-#		#$pause_menu._on_save_pressed()
-#		#print("save new game")
 #		pass
 #	elif GLOBAL.load_game == "loading_game":
 #		pass
-#	$music.play()
-	#$inventary/inventory/bag1.clear()
+
 	last_position_y = position.y
 	set_physics_process(true)
 	set_process(true)
-	#$inventary/inventory/bag1.load_items()
-	#Global_Player.load_data()
-func _expirience():
+
+func _expirience(): # получение опыта
 	$GUI/expirience.value = experience
 	$GUI/expirience/level.text = str(level)
 	if experience == experience_next_level:
 		level +=1
 		experience = 0
-		
-		
-func _settings():
+
+func _settings():# настройки пока звук
 	$music.volume_db = GLOBAL.music_value
 	$fight_sound.volume_db = GLOBAL.sound_value
 	$move_sound.volume_db = GLOBAL.sound_value
 	$damage_sound.volume_db = GLOBAL.sound_value
-	
-	
-func _physics_process(delta):
+
+func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
+	_settings()
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))
 		pass
 	else:
-		
-		#print(position.y)
-			
-
-#		bow_attack()
-		_settings()
-#		for i in range(0,Global_Player.inventory_maxSlots):
-#		health_potion_visible()
 		if cut_scene == false and departure == false and hook_line_use == false:
 			inventory_use_button()
 			_move(delta)
@@ -177,12 +164,9 @@ func _physics_process(delta):
 			move_and_slide(velocity,Vector2(0,-1))
 			
 		elif hook_line_use:
-			
-			print(position.distance_to(hook_vector))
 			if position.distance_to(hook_vector) > 30:
-				$spr.animation = "бег_постенам"
+				$spr.animation = "зацеп"
 				var move_dist = (hook_vector - global_position).normalized()
-				print(move_dist)
 				gravity = 0
 				velocity +=75*move_dist*delta
 				move_and_slide(velocity)
@@ -194,14 +178,12 @@ func _physics_process(delta):
 				gravity = 230
 				velocity.x = direction.x*30
 				velocity.y -=100
-			#hide()
 		if Input.is_action_pressed("use_health_potion"):
 			if hook_line_pos:
+				velocity.x = 0
 				$hook_line/CollisionShape2D.disabled = true
 				hook_vector = hook_line_pos
 				hook_line_use = true
-
-#			hook_line_pos = null
 		_expirience()
 		_gui()
 		_death()
@@ -213,9 +195,9 @@ func _physics_process(delta):
  
 		if Input.is_action_pressed("ui_page_down"):
 			experience +=1
-		
-func save():
-	
+
+func save(): # сохранение игры
+
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
@@ -233,14 +215,14 @@ func save():
 	}
 
 	return save_dict
-func _departure():
+
+func _departure():# функция отбрасывающая игрока
 	$spr.animation = "departure"
 	move_and_slide(Vector2(150,100))
 	
 	pass
 
-	
-func _move(delta):
+func _move(delta):# движение игрока
 	if health_now > 0 and attack == false and hook_enable == false: 
 		direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
 	elif health_now <=0:
@@ -405,9 +387,8 @@ func _move(delta):
 		if is_on_floor():
 			$spr.animation = "присяд"
 			direction.y = -1
-	
-	
-func _damage(damage):
+
+func _damage(damage):# получение урона
 	regen_hp = false
 	$Regen_timer.start()
 	if health_now >0 :
@@ -424,33 +405,32 @@ func _damage(damage):
 			health_now -= damage
 	else: pass
 
-func _use():
+func _use():# использование предмета
 	if Input.is_action_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
 	else:
 		$use/CollisionShape2D.disabled = true
 
-func _light_mode():
+func _light_mode():# включение света вокруг игрока
 	if torch == true:
 		$Light2D.enabled = true
 	else:
 		$Light2D.enabled = false
 	pass
-	
-func move_camera(pos):
+
+func move_camera(pos):# перемещение камеры для кат сцены 
 	$Camera2D.global_position = pos
 	$Camera2D/camera_light.enabled = true
 	cut_scene = true
 	$Camera2D/time_move.start()
-	
-func _on_time_move_timeout():
+
+func _on_time_move_timeout():# таймер перемещения камеры дял кат сцены
 	$Camera2D.position = Vector2(0,0)
 	$Camera2D/camera_light.enabled = false
 	cut_scene = false
 	pass # Replace with function body.
 
-
-func _attack():
+func _attack():# атака игрока
 	
 	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		#velocity.y = 0
@@ -488,7 +468,9 @@ func _attack():
 #		if direction.x == 0 and Input.is_action_pressed("ui_bow_attack") and arrow_true:
 #			$spr.animation = 'удар_лук'
 #	else : $spr.animation = "стойка"
-func _gui():		# Графический интерфейс игрока
+	pass
+
+func _gui():# Графический интерфейс игрока
 	if Input.is_action_just_released("open_inventory"):
 		$inventary/inventory/bag1.visible_inventory()
 	php = (health_now*100)/health
@@ -500,11 +482,12 @@ func _gui():		# Графический интерфейс игрока
 
 	if health_now < health and health_now > 0 and regen_hp == true:
 		health_now += 0.07
-func _on_Regen_timer_timeout():
+
+func _on_Regen_timer_timeout():# таймер начала регенерации здоровья
 	regen_hp = true
 	pass # Replace with function body.
 
-func _on_spr_animation_finished():
+func _on_spr_animation_finished():# окончание анимации персонажа
 	if $spr.animation == "удар_рукой_1" or $spr.animation == "удар_рукой_2" or $spr.animation == "удар_рукой_3" or $spr.animation == "удар_ногой_1" or $spr.animation == "удар_ногой_2" or $spr.animation == "удар_мечом_1" or $spr.animation == "удар_мечом_2" or $spr.animation == "удар_мечом_3":
 		rand_attack_name_sword = randi()%3
 		rand_attack_name = randi()%5
@@ -520,8 +503,8 @@ func _on_spr_animation_finished():
 		departure = false
 		
 	pass # Replace with function body.
-	
-func _death():
+
+func _death():# функция смерти игрока
 	if health_now <= 0:
 		death_true = true
 		velocity = Vector2(0,150)
@@ -529,8 +512,8 @@ func _death():
 		$spr.animation = 'смерть'
 		hook_enable = false
 	pass
-	
-func _shake_camera(delta):
+
+func _shake_camera(delta):# дрожаие камеры 
 	if elapsedtime<shake_time:
 		$Camera2D.offset =  Vector2(randf(), randf()) * shake_power
 		elapsedtime += delta
@@ -539,15 +522,12 @@ func _shake_camera(delta):
 		elapsedtime = 0
 		$Camera2D.offset = Vector2()   
 
-func _on_attack_area_body_entered(body):
+func _on_attack_area_body_entered(body):# урон по цели 
 	if body.get("enemy_type"):
 		body._damage(damage)
 		elapsedtime = 0
 		isShake = true
 		
-
-		
-		#print("body name: ", body.name)
 	elif body.name == "frontground":
 		if weapon == 1:
 			$damage_sound.stream = damage_sword_sound
@@ -560,8 +540,7 @@ func _on_attack_area_body_entered(body):
 	if !body:
 		$attack_area/col_Atack.disabled = true
 
-
-func _on_spr_frame_changed():
+func _on_spr_frame_changed():# изменение кадров анимации персонажа
 	if $spr.animation == "бег" or $spr.animation == "бег_меч" or $spr.animation == "бег_меч_2" :
 		if $spr.frame == 0:
 			$move_sound.stream = move_stone1_sound
@@ -640,9 +619,7 @@ func _on_spr_frame_changed():
 	
 	pass # Replace with function body.
 
-
-
-func _on_use_area_entered(area):
+func _on_use_area_entered(area):# определение используемого предмета
 	if area.get('data_id') != null:
 		if randi()%2 == 0:
 			$move_sound.stream = pick_up_item1_sound
@@ -664,7 +641,8 @@ func _on_use_area_entered(area):
 		area.queue_free()
 
 	else: pass #print("no item")
-func inventory_use_button():
+
+func inventory_use_button():# использование определенной ячейки инвенторя
 	if Input.is_action_just_pressed("1"):
 		inventory_check(0)
 		pass
@@ -696,10 +674,8 @@ func inventory_use_button():
 		inventory_check(9)
 		pass
 	pass
-	
 
-	
-func inventory_check(index):
+func inventory_check(index):# использование предмета инвенторе
 	if $inventary/inventory/bag1.get_item_metadata(index)["type"] == "arrow":
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
 		Global_Player.inventory_removeItem(index)
@@ -766,69 +742,56 @@ func inventory_check(index):
 			pass
 	pass
 
-
-func _on_use_check_area_entered(area):
+func _on_use_check_area_entered(area):# предмет в зоне использования
 	#print(area.name)
 	if area.get("useable") :
 		
 		$"E-key".show()
 	else : pass
 
-
-func _on_use_check_area_exited(area):
+func _on_use_check_area_exited(area):# предмет вышел из зоны использования
 	if area.get("useable") :
 		$"E-key".hide()
 	else : pass
 
-
-
-func _on_use_check_body_entered(body):
+func _on_use_check_body_entered(body):# тело в зоне использования
 	#print(body.name)
 	if body.get("useable") :
 		$"E-key".show()
 	else : pass
 
-
-func _on_use_check_body_exited(body):
+func _on_use_check_body_exited(body):# тело вышело из зоны использования
 	if body.get("useable") :
 		$"E-key".hide()
 	else : pass
 
-
-func _on_hook_area_area_entered(area):
+func _on_hook_area_area_entered(area):# предмет зацепа в зоне
 	if area.get("type_hook"):
 		hook_enable = true
 	pass # Replace with function body.
 
-
-func _on_hook_area_area_exited(area):
+func _on_hook_area_area_exited(area):# предмет зацепа вышел из зоны
 	if area.get("type_hook"):
 		hook_enable = false
 	pass # Replace with function body.
 
-
-func _on_Button_focus_entered():
+func _on_Button_focus_entered():# фокус курсора на кнопке выключения диалога
 	button = true
 	pass # Replace with function body.
 
-
-func _on_Button_focus_exited():
+func _on_Button_focus_exited():# фокус курсора на кнопке выключения диалога
 	button = false
 	pass # Replace with function body.
-
 
 func _on_AudioStreamPlayer2D_finished():
 	$AudioStreamPlayer2D.play()
 	pass # Replace with function body.
-
-
 
 func _on_hook_line_area_entered(area):
 	if area.get("hook_line"):
 		print(area.position)
 		hook_line_pos = area.global_position
 	pass # Replace with function body.
-
 
 func _on_hook_line_area_exited(area):
 	if area.get("hook_line"):
