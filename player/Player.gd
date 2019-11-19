@@ -93,11 +93,11 @@ var hook_line_pos
 var hook_line_use = false
 var hook_vector
 func _ready(): # стартовые переменные персонажа
-#	if GLOBAL.load_game == "new_game":
-#		position = Vector2(144,366)
-#		pass
-#	elif GLOBAL.load_game == "loading_game":
-#		pass
+	if GLOBAL.load_game == "new_game":
+		position = Vector2(144,366)
+		pass
+	elif GLOBAL.load_game == "loading_game":
+		pass
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -125,13 +125,13 @@ func _physics_process(delta):# функция выполнения во врем
 		pass
 	else:
 		if cut_scene == false and departure == false and hook_line_use == false:
-			inventory_use_button()
+#			inventory_use_button()
 			_move(delta)
 			_attack()
-
-			$inventary/inventory.show()
+			visible_health_potion()
 			$GUI/HPbar1.show()
 			$Light2D.show()
+			
 			$Camera2D.current = true
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
@@ -150,6 +150,7 @@ func _physics_process(delta):# функция выполнения во врем
 			$GUI/HPbar1.hide()
 			$Light2D.hide()
 			$GUI/say_label.hide()
+			$UI_paneli/Health_potion.hide()
 
 		elif departure == true and hook_line_use == false :
 			if finish_departure == false:
@@ -164,13 +165,14 @@ func _physics_process(delta):# функция выполнения во врем
 			move_and_slide(velocity,Vector2(0,-1))
 			
 		elif hook_line_use:
-			if position.distance_to(hook_vector) > 30:
-				$spr.animation = "зацеп"
+			print(int(position.distance_to(hook_vector)))
+			if position.distance_to(hook_vector) > 15:
+				$spr.animation = "веревка_подъем"
 				var move_dist = (hook_vector - global_position).normalized()
 				gravity = 0
-				velocity +=75*move_dist*delta
+				velocity +=35*move_dist*delta
 				move_and_slide(velocity)
-			elif position.distance_to(hook_vector) < 30:
+			elif position.distance_to(hook_vector) < 15:
 				$spr.animation = "прыжок"
 				hook_line_use = false
 				hook_line_pos = null
@@ -188,7 +190,7 @@ func _physics_process(delta):# функция выполнения во врем
 		_gui()
 		_death()
 		_light_mode()
-
+		
 		_use()
 		if isShake:
 			_shake_camera(delta)
@@ -471,12 +473,16 @@ func _attack():# атака игрока
 	pass
 
 func _gui():# Графический интерфейс игрока
-	if Input.is_action_just_released("open_inventory"):
-		$inventary/inventory/bag1.visible_inventory()
+	if Input.is_action_just_pressed("open_inventory"):
+		if $inventary/inventory.visible == true:
+			$inventary/inventory.visible = false
+		elif $inventary/inventory.visible == false:
+			$inventary/inventory.visible = true
 	php = (health_now*100)/health
 
 	$GUI/HPbar1/healthbar_pr.value = php
-
+	if health_now > health:
+		health_now = health
 	
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
@@ -642,7 +648,7 @@ func _on_use_area_entered(area):# определение используемо�
 
 	else: pass #print("no item")
 
-func inventory_use_button():# использование определенной ячейки инвенторя
+#func inventory_use_button():# использование определенной ячейки инвенторя
 	if Input.is_action_just_pressed("1"):
 		inventory_check(0)
 		pass
@@ -675,16 +681,44 @@ func inventory_use_button():# использование определенно�
 		pass
 	pass
 
+func visible_health_potion():
+	var icon
+	var text
+	var use_index
+	
+	for index in range(0, Global_Player.inventory_maxSlots):
+		if $inventary/inventory/bag1.get_item_metadata(index)["type"] ==  "heal_potion" :
+			icon = $inventary/inventory/bag1.get_item_metadata(index)["icon"]
+			text = $inventary/inventory/bag1.get_item_text(index)
+			use_index = index
+	
+
+			
+	if icon :
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load(icon)
+		$UI_paneli/Health_potion/Label.text = text
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(use_index)
+			print(use_index)
+	else : 
+		$UI_paneli/Health_potion.hide()
+		
+			
 func inventory_check(index):# использование предмета инвенторе
 	if $inventary/inventory/bag1.get_item_metadata(index)["type"] == "arrow":
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
 		Global_Player.inventory_removeItem(index)
 		$inventary/inventory/bag1.update_slot(index)
-	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "leser_heal_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "LESSER_HEAL_POTION":
 		if  health_now < health:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
-			health_now += randi()%100+100
+			var restore = randi()%100+100
+			health_now += restore
+			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			print(restore)
+			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:
@@ -692,11 +726,15 @@ func inventory_check(index):# использование предмета инв
 		elif  health_now == health:
 			print("full hp")
 			pass
-	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "minor_heal_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MINOR_HEAL_POTION":
 		if  health_now < health:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
-			health_now += randi()%200+100
+			var restore = randi()%100+200
+			health_now += restore
+			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			print(restore)
+			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:
@@ -704,11 +742,14 @@ func inventory_check(index):# использование предмета инв
 		elif  health_now == health:
 			print("full hp")
 			pass
-	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "heal_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "HEAL_POTION":
 		if  health_now < health:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
-			health_now += randi()%300+100
+			var restore = randi()%100+300
+			health_now += restore
+			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:
@@ -716,11 +757,14 @@ func inventory_check(index):# использование предмета инв
 		elif  health_now == health:
 			print("full hp")
 			pass
-	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "big_heal_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "BIG_HEAL_POTION":
 		if  health_now < health:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
-			health_now += randi()%400+100
+			var restore = randi()%100+400
+			health_now += restore
+			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:
@@ -728,11 +772,14 @@ func inventory_check(index):# использование предмета инв
 		elif  health_now == health:
 			print("full hp")
 			pass
-	elif $inventary/inventory/bag1.get_item_metadata(index)["type"] == "major_heal_potion":
+	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MAJOR_HEAL_POTION":
 		if  health_now < health:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
-			health_now += randi()%500+100
+			var restore = randi()%100+500
+			health_now += restore
+			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 		elif health_now > health:
@@ -766,12 +813,13 @@ func _on_use_check_body_exited(body):# тело вышело из зоны ис�
 	else : pass
 
 func _on_hook_area_area_entered(area):# предмет зацепа в зоне
-	if area.get("type_hook"):
+	if area.get("type_hook") or area.get("hook_line"):
 		hook_enable = true
+		
 	pass # Replace with function body.
 
 func _on_hook_area_area_exited(area):# предмет зацепа вышел из зоны
-	if area.get("type_hook"):
+	if area.get("type_hook") or area.get("hook_line"):
 		hook_enable = false
 	pass # Replace with function body.
 
@@ -798,4 +846,8 @@ func _on_hook_line_area_exited(area):
 		hook_line_pos = null
 		pass
 
+	pass # Replace with function body.
+
+
+func _on_Player_input_event(viewport, event, shape_idx):
 	pass # Replace with function body.

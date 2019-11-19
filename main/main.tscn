@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=2]
@@ -15,8 +15,8 @@
 [ext_resource path="res://Global_gui/Keys/A-Key.png" type="Texture" id=13]
 [ext_resource path="res://Global_gui/Keys/S-Key.png" type="Texture" id=14]
 [ext_resource path="res://Global_gui/Keys/D-Key.png" type="Texture" id=15]
-[ext_resource path="res://Global_gui/Keys/0.png" type="Texture" id=16]
-[ext_resource path="res://Global_gui/Keys/9-Key.png" type="Texture" id=17]
+[ext_resource path="res://Global_gui/Keys/Q-Key.png" type="Texture" id=16]
+[ext_resource path="res://Global_gui/Keys/I-Key.png" type="Texture" id=17]
 [ext_resource path="res://Global_gui/Keys/E-Key.png" type="Texture" id=18]
 [ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Left.png" type="Texture" id=19]
 [ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Right.png" type="Texture" id=20]
@@ -61,6 +61,7 @@ func _ready():
 	$Panel/use_item_text.text = \"- \" + tr(\"CONTROLS_USEITEM_TEXT\")
 	$Panel/space_text.text = \"- \" + tr(\"CONTROLS_SPACE_TEXT\")
 	$Panel/use_text.text = \"- \" + tr(\"CONTROLS_USE_TEXT\")
+	$Panel/open_inventory.text = \"- \" + tr(\"CONTROLS_OPEN_INVENTORY_TEXT\")
 	$close.text = tr(\"CONTROLS_CLOSE_BUTTON_TEXT\")
 	pass # Replace with function body.
 
@@ -95,10 +96,6 @@ font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.184314, 0.137255, 0.137255, 1 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 33
-font_data = ExtResource( 11 )
 
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
@@ -466,6 +463,15 @@ custom_fonts/font = SubResource( 9 )
 text = "- использовать предмет"
 valign = 1
 
+[node name="open_inventory" type="Label" parent="inter/Controls/Panel"]
+margin_left = 256.432
+margin_top = 585.943
+margin_right = 545.432
+margin_bottom = 623.943
+custom_fonts/font = SubResource( 9 )
+text = "- использовать предмет"
+valign = 1
+
 [node name="move" type="Panel" parent="inter/Controls/Panel"]
 margin_left = 55.0
 margin_top = 104.0
@@ -504,24 +510,21 @@ margin_right = 206.0
 margin_bottom = 552.0
 custom_styles/panel = SubResource( 10 )
 
-[node name="0" type="Sprite" parent="inter/Controls/Panel/0-9"]
-position = Vector2( 33.8624, 38.0095 )
+[node name="9" type="Sprite" parent="inter/Controls/Panel/0-9"]
+position = Vector2( 76.6305, 36.5775 )
 texture = ExtResource( 16 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
-[node name="s" type="Label" parent="inter/Controls/Panel/0-9"]
-margin_left = 62.371
-margin_top = 12.7823
-margin_right = 82.371
-margin_bottom = 58.7823
-custom_fonts/font = SubResource( 11 )
-text = "-"
-align = 1
-valign = 1
+[node name="open_inventory2" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 56.432
+margin_top = 571.943
+margin_right = 207.432
+margin_bottom = 647.943
+custom_styles/panel = SubResource( 10 )
 
-[node name="9" type="Sprite" parent="inter/Controls/Panel/0-9"]
-position = Vector2( 113.862, 38.0095 )
+[node name="9" type="Sprite" parent="inter/Controls/Panel/open_inventory2"]
+position = Vector2( 76.6305, 36.5775 )
 texture = ExtResource( 17 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )

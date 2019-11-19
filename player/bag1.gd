@@ -192,11 +192,8 @@ func move_merge_item() -> void:
 			update_slot(draggedItemSlot)
 			update_slot(activeItemSlot)
 
-func visible_inventory():
-	if get_parent().visible == true:
-		get_parent().visible = false
-	elif get_parent().visible == false:
-		get_parent().visible = true
+
+		
 func _on_bag1_mouse_entered():
 	cursor_insideItemList = true;
 	pass # Replace with function body.

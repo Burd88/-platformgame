@@ -26,7 +26,9 @@ CONTROLS_NAME_TEXT;Управление;Controls
 CONTROLS_MOVE_TEXT;Движение;Moving
 CONTROLS_MOUSEL_TEXT;Атака;Attack
 CONTROLS_MAUSER_TEXT;информация о вещи;Item info
-CONTROLS_USEITEM_TEXT;Использовать предмет;Use item
+CONTROLS_USEITEM_TEXT;Использовать Лечебное Зелье;Use Health Potion
 CONTROLS_SPACE_TEXT;Прыжок;Jump
 CONTROLS_USE_TEXT;Взаимодействие;Interaction
 CONTROLS_CLOSE_BUTTON_TEXT;Закрыть;Close
+CONTROLS_OPEN_INVENTORY_TEXT;Открыть инвентарь;Open Inventory
+GUI_INVENTORY_TEXT;Инвентарь;Inventory
