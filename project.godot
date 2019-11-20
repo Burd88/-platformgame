@@ -20,7 +20,7 @@ run/main_scene="res://main/Chosse_translate.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.65"
+config/version="0.0.66"
 config/name_en="This the hard way. Mercenary"
 config/name_ru="Этот нелегкий путь. Наёмник"
 
@@ -187,6 +187,11 @@ mouse_rightbtn={
 ui_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+use_rope={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

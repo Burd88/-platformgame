@@ -173,7 +173,7 @@
 [ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-02.png" type="Texture" id=171]
 [ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-03.png" type="Texture" id=172]
 [ext_resource path="res://player/light.png" type="Texture" id=173]
-[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=174]
+[ext_resource path="res://player/inventory/empty_slot.png" type="Texture" id=174]
 [ext_resource path="res://player/inventary.gd" type="Script" id=175]
 [ext_resource path="res://resourse/inventory_panel.png" type="Texture" id=176]
 [ext_resource path="res://player/bag2.gd" type="Script" id=177]
@@ -388,10 +388,7 @@ border_width_bottom = 20
 border_color = Color( 0.254902, 0.0392157, 0.0392157, 1 )
 border_blend = true
 
-[sub_resource type="DynamicFont" id=4]
-size = 20
-use_filter = true
-font_data = ExtResource( 174 )
+[sub_resource type="StyleBoxEmpty" id=23]
 
 [sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 176 )
@@ -525,11 +522,23 @@ collision_layer = 2
 collision_mask = 27
 script = ExtResource( 1 )
 
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 7.5, -13 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 2.0
+default_color = Color( 0.470588, 0.243137, 0, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 0.0
+round_precision = 3
+
 [node name="spr" type="AnimatedSprite" parent="."]
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -561,6 +570,7 @@ position = Vector2( 0, 3.8 )
 shape = SubResource( 2 )
 
 [node name="UI_paneli" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Panel" type="Panel" parent="UI_paneli"]
 visible = false
@@ -569,29 +579,48 @@ margin_bottom = 720.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="Health_potion" type="Panel" parent="UI_paneli"]
-visible = false
 margin_left = 32.0
 margin_top = 125.0
 margin_right = 107.0
 margin_bottom = 210.0
+custom_styles/panel = SubResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="UI_paneli/Health_potion"]
+position = Vector2( 43.8261, 72.9558 )
+scale = Vector2( 1.65857, 1.04408 )
+texture = ExtResource( 174 )
+
+[node name="Sprite" type="Sprite" parent="UI_paneli/Health_potion"]
+position = Vector2( 43.1626, 33.4824 )
+scale = Vector2( 1.86588, 1.81116 )
+texture = ExtResource( 174 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Icon" type="TextureRect" parent="UI_paneli/Health_potion"]
-margin_left = 17.7091
-margin_top = 5.44894
-margin_right = 57.7091
-margin_bottom = 45.4489
+margin_left = 18.8491
+margin_top = 12.5129
+margin_right = 63.8491
+margin_bottom = 52.5128
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="UI_paneli/Health_potion"]
-margin_left = 18.3406
-margin_top = 50.6161
-margin_right = 58.3406
-margin_bottom = 78.6161
-custom_fonts/font = SubResource( 4 )
+margin_left = 24.0
+margin_top = 60.9805
+margin_right = 63.0
+margin_bottom = 88.9805
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="inventary" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 175 )
 
 [node name="inventory" type="Panel" parent="inventary"]
@@ -608,6 +637,7 @@ margin_right = 217.805
 margin_bottom = 107.848
 custom_styles/bg = SubResource( 22 )
 custom_constants/icon_margin = -28
+allow_rmb_select = true
 auto_height = true
 max_columns = 0
 icon_mode = 0
@@ -809,6 +839,7 @@ custom_fonts/font = ExtResource( 179 )
 text = "Кнопка"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="fps" type="Label" parent="GUI"]
 margin_left = 25.733

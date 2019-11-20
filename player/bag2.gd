@@ -32,7 +32,7 @@ func _ready():
 		dict["inventory"][str(slot)] = {"id": "0", "amount": 0}
 	#Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
-		print("empty inventory")
+		
 	load_items()
 	pass # Replace with function body.
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=135 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -77,10 +77,6 @@
 [ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=75]
 [ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=76]
 [ext_resource path="res://items/Items/health_potion/leser_heal_potion.tscn" type="PackedScene" id=77]
-[ext_resource path="res://items/Items/health_potion/heal_potion.tscn" type="PackedScene" id=78]
-[ext_resource path="res://items/Items/health_potion/major_heal_potion.tscn" type="PackedScene" id=79]
-[ext_resource path="res://items/Items/health_potion/minor_heal_potion.tscn" type="PackedScene" id=80]
-[ext_resource path="res://items/Items/health_potion/big_heal_potion.tscn" type="PackedScene" id=81]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1740,7 +1736,7 @@ script = SubResource( 22 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 23 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -2172,7 +2168,7 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color( 0.705882, 0.705882, 0.705882, 1 )
+color = Color( 0.129412, 0.12549, 0.12549, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2209,17 +2205,11 @@ position = Vector2( 765.909, 1713.77 )
 [node name="leser_heal_potion" parent="." instance=ExtResource( 77 )]
 position = Vector2( 170.699, 375.586 )
 
-[node name="heal_potion" parent="." instance=ExtResource( 78 )]
-position = Vector2( 200.546, 374.123 )
+[node name="leser_heal_potion2" parent="." instance=ExtResource( 77 )]
+position = Vector2( 170.699, 375.586 )
 
-[node name="major_heal_potion" parent="." instance=ExtResource( 79 )]
-position = Vector2( 239.264, 375.352 )
-
-[node name="minor_heal_potion" parent="." instance=ExtResource( 80 )]
-position = Vector2( 186.651, 375.175 )
-
-[node name="big_heal_potion" parent="." instance=ExtResource( 81 )]
-position = Vector2( 219.613, 374.123 )
+[node name="leser_heal_potion3" parent="." instance=ExtResource( 77 )]
+position = Vector2( 170.699, 375.586 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="trap/trap_bullet/AnimatedSprite" to="trap/trap_bullet" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="use_item/lever" to="use_item/lever" method="_on_lever_area_entered"]

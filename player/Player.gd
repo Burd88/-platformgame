@@ -92,6 +92,23 @@ var experience_next_level = 100
 var hook_line_pos 
 var hook_line_use = false
 var hook_vector
+
+
+var icon
+var text
+var use_index
+var visible_potion = false
+
+var lesser = false
+var li
+var minor = false
+var mii
+var norm = false
+var ni
+var big = false
+var bi
+var major = false
+var mai
 func _ready(): # стартовые переменные персонажа
 	if GLOBAL.load_game == "new_game":
 		position = Vector2(144,366)
@@ -168,21 +185,26 @@ func _physics_process(delta):# функция выполнения во врем
 			print(int(position.distance_to(hook_vector)))
 			if position.distance_to(hook_vector) > 15:
 				$spr.animation = "веревка_подъем"
+				$Line2D.set_point_position(1 , hook_vector - $Line2D.global_position)
 				var move_dist = (hook_vector - global_position).normalized()
 				gravity = 0
 				velocity +=35*move_dist*delta
 				move_and_slide(velocity)
 			elif position.distance_to(hook_vector) < 15:
 				$spr.animation = "прыжок"
-				hook_line_use = false
+				$Line2D.set_point_position(1 ,   Vector2(0,0))
 				hook_line_pos = null
 				hook_vector = null
 				gravity = 230
-				velocity.x = direction.x*30
+#				velocity.x = direction.x*30
 				velocity.y -=100
-		if Input.is_action_pressed("use_health_potion"):
-			if hook_line_pos:
+				hook_line_use = false
+		if hook_line_pos:
+			if Input.is_action_pressed("use_button"):
+				
+				$Line2D.set_point_position(1 ,   hook_line_pos - $Line2D.global_position)
 				velocity.x = 0
+				velocity.y = 0
 				$hook_line/CollisionShape2D.disabled = true
 				hook_vector = hook_line_pos
 				hook_line_use = true
@@ -293,6 +315,7 @@ func _move(delta):# движение игрока
 		$hook_area.position.x = 9
 		$hook_line.position.x = 9
 		$hook_line.position.y = -77
+		$Line2D.position.x = 7.5
 		
 
 	elif direction.x < 0:
@@ -304,7 +327,7 @@ func _move(delta):# движение игрока
 		$hook_area.position.x = -9
 		$hook_line.position.x = -9
 		$hook_line.position.y = -77
-
+		$Line2D.position.x = -7.5
 
 	
 	distance.x = speed*delta
@@ -626,6 +649,7 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 	pass # Replace with function body.
 
 func _on_use_area_entered(area):# определение используемого предмета
+
 	if area.get('data_id') != null:
 		if randi()%2 == 0:
 			$move_sound.stream = pick_up_item1_sound
@@ -633,10 +657,11 @@ func _on_use_area_entered(area):# определение используемо�
 		else: 
 			$move_sound.stream = pick_up_item2_sound
 			$move_sound.play()
+	
 		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(area.data_id))
 		#print(area.data_id)
 		area.queue_free()
-		pass
+
 
 	elif area.get("item_type") == "sword":
 		equip_sword_anim = true
@@ -649,62 +674,93 @@ func _on_use_area_entered(area):# определение используемо�
 	else: pass #print("no item")
 
 #func inventory_use_button():# использование определенной ячейки инвенторя
-	if Input.is_action_just_pressed("1"):
-		inventory_check(0)
-		pass
-	elif Input.is_action_just_pressed("2"):
-		inventory_check(1)
-		pass
-	elif Input.is_action_just_pressed("3"):
-		inventory_check(2)
-		pass
-	elif Input.is_action_just_pressed("4"):
-		inventory_check(3)
-		pass
-	elif Input.is_action_just_pressed("5"):
-		inventory_check(4)
-		pass
-	elif Input.is_action_just_pressed("6"):
-		inventory_check(5)
-		pass
-	elif Input.is_action_just_pressed("7"):
-		inventory_check(6)
-		pass
-	elif Input.is_action_just_pressed("8"):
-		inventory_check(7)
-		pass
-	elif Input.is_action_just_pressed("9"):
-		inventory_check(8)
-		pass
-	elif Input.is_action_just_pressed("0"):
-		inventory_check(9)
-		pass
+#	if Input.is_action_just_pressed("1"):
+#		inventory_check(0)
+#		pass
+#	elif Input.is_action_just_pressed("2"):
+#		inventory_check(1)
+#		pass
+#	elif Input.is_action_just_pressed("3"):
+#		inventory_check(2)
+#		pass
+#	elif Input.is_action_just_pressed("4"):
+#		inventory_check(3)
+#		pass
+#	elif Input.is_action_just_pressed("5"):
+#		inventory_check(4)
+#		pass
+#	elif Input.is_action_just_pressed("6"):
+#		inventory_check(5)
+#		pass
+#	elif Input.is_action_just_pressed("7"):
+#		inventory_check(6)
+#		pass
+#	elif Input.is_action_just_pressed("8"):
+#		inventory_check(7)
+#		pass
+#	elif Input.is_action_just_pressed("9"):
+#		inventory_check(8)
+#		pass
+#	elif Input.is_action_just_pressed("0"):
+#		inventory_check(9)
+#		pass
 	pass
 
-func visible_health_potion():
-	var icon
-	var text
-	var use_index
-	
+func visible_health_potion():#функци отображения используемой фласки
 	for index in range(0, Global_Player.inventory_maxSlots):
 		if $inventary/inventory/bag1.get_item_metadata(index)["type"] ==  "heal_potion" :
-			icon = $inventary/inventory/bag1.get_item_metadata(index)["icon"]
-			text = $inventary/inventory/bag1.get_item_text(index)
-			use_index = index
-	
-
+			if $inventary/inventory/bag1.get_item_metadata(index)["name"] ==  "LESSER_HEAL_POTION" :
+				lesser = true
+				li = index
 			
-	if icon :
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load(icon)
-		$UI_paneli/Health_potion/Label.text = text
-		if Input.is_action_just_pressed("use_health_potion"):
-			inventory_check(use_index)
-			print(use_index)
-	else : 
-		$UI_paneli/Health_potion.hide()
+			if $inventary/inventory/bag1.get_item_metadata(index)["name"] ==  "MINOR_HEAL_POTION" :
+				minor = true
+				mii = index
+			
+			if $inventary/inventory/bag1.get_item_metadata(index)["name"] ==  "HEAL_POTION" :
+				norm = true
+				ni = index
+			
+			if $inventary/inventory/bag1.get_item_metadata(index)["name"] ==  "BIG_HEAL_POTION" :
+				big = true
+				bi = index
 		
-			
+			if $inventary/inventory/bag1.get_item_metadata(index)["name"] ==  "MAJOR_HEAL_POTION" :
+				major = true
+				mai = index
+	if lesser == true:
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(li)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(li)
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(li)
+	elif lesser == false and minor == true:
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(mii)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(mii)
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(mii)
+	elif lesser == false and minor == false and norm == true:
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(ni)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(ni)
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(ni)
+	elif lesser == false and minor == false and norm == false and big == true:
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(bi)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(bi)
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(bi)
+	elif lesser == false and minor == false and norm == false and big == false and major == true:
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(mai)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(mai)
+		if Input.is_action_just_pressed("use_health_potion"):
+			inventory_check(mai)
+	elif lesser == false and minor == false and norm == false and big == false and major == false: 
+		$UI_paneli/Health_potion.hide()
+
 func inventory_check(index):# использование предмета инвенторе
 	if $inventary/inventory/bag1.get_item_metadata(index)["type"] == "arrow":
 		arrow_count += $inventary/inventory/bag1.arrow_count_random
@@ -721,6 +777,7 @@ func inventory_check(index):# использование предмета инв
 			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
+			lesser = false
 		elif health_now > health:
 			health_now = health
 		elif  health_now == health:
@@ -737,6 +794,7 @@ func inventory_check(index):# использование предмета инв
 			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
+			minor = false
 		elif health_now > health:
 			health_now = health
 		elif  health_now == health:
@@ -752,6 +810,7 @@ func inventory_check(index):# использование предмета инв
 			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
+			norm = false
 		elif health_now > health:
 			health_now = health
 		elif  health_now == health:
@@ -767,6 +826,7 @@ func inventory_check(index):# использование предмета инв
 			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
+			big = false
 		elif health_now > health:
 			health_now = health
 		elif  health_now == health:
@@ -782,6 +842,7 @@ func inventory_check(index):# использование предмета инв
 			print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
+			major = false
 		elif health_now > health:
 			health_now = health
 		elif  health_now == health:
@@ -848,6 +909,3 @@ func _on_hook_line_area_exited(area):
 
 	pass # Replace with function body.
 
-
-func _on_Player_input_event(viewport, event, shape_idx):
-	pass # Replace with function body.

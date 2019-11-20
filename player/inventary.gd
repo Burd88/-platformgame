@@ -36,7 +36,18 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu.popup()
 
 func _on_ItemMenu_Button_DropItem_pressed():
+	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "LESSER_HEAL_POTION":
+		get_parent().lesser = false
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "MINOR_HEAL_POTION":
+		get_parent().minor = false
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "HEAL_POTION":
+		get_parent().norm = false
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "BIG_HEAL_POTION":
+		get_parent().big = false
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "MAJOR_HEAL_POTION":
+		get_parent().major = false
 	var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+
 	if (newAmount < 1):
 		$WindowDialog_ItemMenu.hide()
 	else:
