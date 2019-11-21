@@ -97,5 +97,16 @@
 		"description": "MAJOR_HEAL_POTION_TEXT",
 		"sell_price": 0
 	},
+		
+	"9": {
+		"name": "KNIGHT_DOOR_KEY",
+		"icon": "res://items/Items/keys/key.png",
+		"type": "key",
+		"weight": 0.0,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "KNIGHT_DOOR_KEY_TEXT",
+		"sell_price": 0
+	},
 
 }

@@ -136,6 +136,7 @@ func _settings():# настройки пока звук
 func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
 	_settings()
+	
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))
@@ -908,4 +909,5 @@ func _on_hook_line_area_exited(area):
 		pass
 
 	pass # Replace with function body.
+
 

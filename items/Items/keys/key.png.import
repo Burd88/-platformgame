@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope.png-5a4d7818b16dc405d6edd54c11cb2354.stex"
+path="res://.import/key.png-e983a9cac854b10b0c21d97786f7094d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resourse/rope.png"
-dest_files=[ "res://.import/rope.png-5a4d7818b16dc405d6edd54c11cb2354.stex" ]
+source_file="res://items/Items/keys/key.png"
+dest_files=[ "res://.import/key.png-e983a9cac854b10b0c21d97786f7094d.stex" ]
 
 [params]
 
@@ -19,10 +19,10 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
-flags/anisotropic=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

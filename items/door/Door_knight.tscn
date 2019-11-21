@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=1]
+[ext_resource path="res://items/door/sound/old-door-open-1.wav" type="AudioStream" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends StaticBody2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+var useable = true
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$open.volume_db = GLOBAL.sound_value
+	pass
+
+
+
+
+func _on_use_Area_area_entered(area):
+	if area.name == 'use':
+		var yes_key = false
+		for i in range(0,Global_Player.inventory_maxSlots):
+			if area.get_parent().get_node(\"inventary/inventory/bag1\").get_item_metadata(i)[\"name\"] == \"KNIGHT_DOOR_KEY\":
+				Global_Player.inventory_removeItem(i)
+				area.get_parent().get_node(\"inventary/inventory/bag1\").update_slot(i)
+				area.get_parent().get_node(\"E-key\").hide()
+				yes_key = true
+
+				$AnimationPlayer.play(\"open\")
+		
+		if yes_key:
+			area.get_parent().get_node(\"GUI/say_label\").text = tr(\"KNIGHT_DOOR_YES_KEY_TEXT\")
+			area.get_parent().get_node(\"GUI/say_label\").show_label = true
+		else: 
+			area.get_parent().get_node(\"GUI/say_label\").text = tr(\"KNIGHT_DOOR_NO_KEY_TEXT\")
+			area.get_parent().get_node(\"GUI/say_label\").show_label = true
+
+
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == \"open\":
+		queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.77353, 23.8362 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.19165, 24.2543 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("open:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 0, 16, 48 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="use_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="use_Area"]
+visible = false
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 4 )
+
+[node name="open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+[connection signal="area_entered" from="use_Area" to="." method="_on_use_Area_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

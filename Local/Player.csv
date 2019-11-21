@@ -4,3 +4,5 @@ FIRST_LEVEL_GEAR_NO_TEXT;Механизм заработал;The mechanism worke
 FIRST_LEVEL_GEAR_YES_TEXT;Похоже сюда нужна какая-то деталь;Looks like we need some detail here
 LEVEL_ONE_SWORD_EQUIP;Конечно не мой, но лучше чем кулоками махать;Of course not my, but better than fists waving
 LEVEL_ONE_BOSS_VISIBLE;Похоже я нашел деталь, ее сожрала эта капля;It seems I found detail, its devoured this a drop
+KNIGHT_DOOR_NO_KEY_TEXT;Дверь заперта, нужно найти ключ;The door is locked, need to find the key
+KNIGHT_DOOR_YES_KEY_TEXT;О, этот ключ от этой двери;Oh, that key to that door
