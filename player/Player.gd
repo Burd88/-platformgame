@@ -121,8 +121,8 @@ func _ready(): # стартовые переменные персонажа
 	set_process(true)
 
 func _expirience(): # получение опыта
-	$GUI/expirience.value = experience
-	$GUI/expirience/level.text = str(level)
+	$GUI/Exp_bar/fg.value = experience
+	$GUI/level_bar/level.text = str(level)
 	if experience == experience_next_level:
 		level +=1
 		experience = 0
@@ -149,7 +149,8 @@ func _physics_process(delta):# функция выполнения во врем
 			visible_health_potion()
 			$GUI/HPbar1.show()
 			$Light2D.show()
-			
+			$GUI/Exp_bar.show()
+			$GUI/level_bar.show()
 			$Camera2D.current = true
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
@@ -169,7 +170,8 @@ func _physics_process(delta):# функция выполнения во врем
 			$Light2D.hide()
 			$GUI/say_label.hide()
 			$UI_paneli/Health_potion.hide()
-
+			$GUI/Exp_bar.hide()
+			$GUI/level_bar.hide()
 		elif departure == true and hook_line_use == false :
 			if finish_departure == false:
 				$spr.animation = "departure"

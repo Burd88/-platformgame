@@ -188,11 +188,13 @@
 [ext_resource path="res://resourse/portret_box.png" type="Texture" id=186]
 [ext_resource path="res://resourse/close_button.tres" type="StyleBox" id=187]
 [ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=188]
-[ext_resource path="res://player/UI sprite/Simple UI Pack/HUD/64x64/HealthBackground1.png" type="Texture" id=189]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=190]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=191]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=192]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=193]
+[ext_resource path="res://player/UI sprite/exp bar/Level_bar.png" type="Texture" id=189]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_bg.png" type="Texture" id=190]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_fg.png" type="Texture" id=191]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=192]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=193]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=194]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=195]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -475,13 +477,9 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Theme" id=13]
-
-[sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 0, 1, 0.956863, 1 )
-
-[sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0.0392157, 0.286275, 0.305882, 1 )
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 189 )
+region_rect = Rect2( 0, 0, 113, 75 )
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 12.0972, 9.70228 )
@@ -551,7 +549,6 @@ texture_mode = 1
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -854,10 +851,10 @@ text = "Кнопка"
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="fps" type="Label" parent="GUI"]
-margin_left = 25.733
-margin_top = 80.3223
-margin_right = 113.733
-margin_bottom = 115.322
+margin_left = 331.732
+margin_top = 22.3225
+margin_right = 419.732
+margin_bottom = 57.3222
 text = "60"
 align = 1
 valign = 1
@@ -909,33 +906,49 @@ custom_fonts/font = ExtResource( 188 )
 [node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
 anims/full = SubResource( 12 )
 
-[node name="expirience" type="ProgressBar" parent="GUI"]
-visible = false
-margin_left = 418.975
-margin_top = 15.9873
-margin_right = 919.975
-margin_bottom = 50.9873
-theme = SubResource( 13 )
-custom_styles/fg = SubResource( 14 )
-custom_styles/bg = SubResource( 15 )
-value = 50.0
+[node name="level_bar" type="Control" parent="GUI"]
+margin_left = 1041.58
+margin_top = -0.0491943
+margin_right = 1081.58
+margin_bottom = 39.9508
 
-[node name="Sprite" type="Sprite" parent="GUI/expirience"]
-position = Vector2( 250.756, 18.0747 )
-scale = Vector2( 2.41551, 0.847294 )
-texture = ExtResource( 189 )
+[node name="Panel" type="Panel" parent="GUI/level_bar"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 25 )
 
-[node name="level" type="Label" parent="GUI/expirience"]
-margin_left = 537.511
-margin_top = -0.598724
-margin_right = 577.511
-margin_bottom = 13.4013
+[node name="level" type="Label" parent="GUI/level_bar"]
+margin_left = -0.513336
+margin_top = 14.1168
+margin_right = 39.4867
+margin_bottom = 37.1168
+text = "1"
+align = 1
+valign = 1
+
+[node name="Exp_bar" type="Control" parent="GUI"]
+margin_left = 1015.75
+margin_top = -0.75042
+margin_right = 1055.75
+margin_bottom = 39.2496
+
+[node name="bg" type="TextureProgress" parent="GUI/Exp_bar"]
+margin_right = 258.0
+margin_bottom = 99.0
+texture_over = ExtResource( 190 )
+
+[node name="fg" type="TextureProgress" parent="GUI/Exp_bar"]
+margin_left = 9.12244
+margin_top = 50.8137
+margin_right = 249.122
+margin_bottom = 90.8137
+texture_progress = ExtResource( 191 )
 
 [node name="HPbar1" type="Control" parent="GUI"]
-margin_left = 3.70123
-margin_top = -74.024
-margin_right = 43.7012
-margin_bottom = -34.024
+margin_left = -5.62952
+margin_top = -75.1903
+margin_right = 34.3705
+margin_bottom = -35.1903
 rect_scale = Vector2( 0.8, 0.8 )
 
 [node name="healthbar_bg" type="TextureProgress" parent="GUI/HPbar1"]
@@ -945,7 +958,7 @@ margin_right = 382.0
 margin_bottom = 165.0
 step = 0.1
 value = 100.0
-texture_under = ExtResource( 190 )
+texture_under = ExtResource( 192 )
 
 [node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar1"]
 margin_left = 117.657
@@ -954,7 +967,7 @@ margin_right = 363.657
 margin_bottom = 149.53
 step = 0.1
 value = 100.0
-texture_progress = ExtResource( 191 )
+texture_progress = ExtResource( 193 )
 
 [node name="attack_area" type="Area2D" parent="."]
 editor/display_folded = true
@@ -997,7 +1010,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 192 )
+texture = ExtResource( 194 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -1007,7 +1020,7 @@ anims/use = SubResource( 18 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
-stream = ExtResource( 193 )
+stream = ExtResource( 195 )
 volume_db = 10.0
 autoplay = true
 
