@@ -81,6 +81,7 @@ func start_mechanism():
 		#$Chain/AnimatedSprite.stop()
 
 func _on_Area2D_body_entered(body):
+	
 	if body.get("player_type"):
 		body.last_position_y = 844
 		body.position = Vector2(296,844)

@@ -31,7 +31,11 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	strItemInfo = strItemInfo + "\n [color=#b3cde0]" + tr(str(itemData["description"])) + "[/color]"
 
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)
-	$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
+	if itemData["quest"] == true:
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
+	elif itemData["quest"] == false:
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
 	$inventory/bag1.activeItemSlot = index
 	$WindowDialog_ItemMenu.popup()
 

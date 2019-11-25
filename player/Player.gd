@@ -16,6 +16,12 @@ var rand_attack_name = 1
 var equip_sword_anim = false
 var weapon = 0
 var parry = 3
+var strength = 10
+var agility = 10
+var skill_point = 0
+var def_damage
+var min_damage
+var max_damage
 var damage
 var damage_sword = 0
 var last_position_y = 0
@@ -109,6 +115,8 @@ var big = false
 var bi
 var major = false
 var mai
+
+
 func _ready(): # стартовые переменные персонажа
 	if GLOBAL.load_game == "new_game":
 		position = Vector2(144,366)
@@ -122,10 +130,13 @@ func _ready(): # стартовые переменные персонажа
 
 func _expirience(): # получение опыта
 	$GUI/Exp_bar/fg.value = experience
+	$GUI/Exp_bar/fg.max_value = experience_next_level
 	$GUI/level_bar/level.text = str(level)
 	if experience == experience_next_level:
 		level +=1
+		skill_point += 5
 		experience = 0
+		experience_next_level += level*5
 
 func _settings():# настройки пока звук
 	$music.volume_db = GLOBAL.music_value
@@ -215,7 +226,7 @@ func _physics_process(delta):# функция выполнения во врем
 		_gui()
 		_death()
 		_light_mode()
-		
+		formula()
 		_use()
 		if isShake:
 			_shake_camera(delta)
@@ -237,6 +248,12 @@ func save(): # сохранение игры
 		"name" : name,
 		"damage_sword" : damage_sword,
 		"parry" : parry,
+		"strength" : strength,
+		"agility" : agility,
+		"skill_point" : skill_point,
+		"level" : level,
+		"experience" : experience,
+		"experience_next_level" : experience_next_level,
 		"last_position_y" : last_position_y
 	
 	}
@@ -504,6 +521,12 @@ func _gui():# Графический интерфейс игрока
 			$inventary/inventory.visible = false
 		elif $inventary/inventory.visible == false:
 			$inventary/inventory.visible = true
+			
+	if Input.is_action_just_pressed("player_info"):
+		if $Player_info/Panel.visible == true:
+			$Player_info/Panel.visible = false
+		elif $Player_info/Panel.visible == false:
+			$Player_info/Panel.visible = true
 	php = (health_now*100)/health
 
 	$GUI/HPbar1/healthbar_pr.value = php
@@ -572,6 +595,11 @@ func _on_attack_area_body_entered(body):# урон по цели
 	if !body:
 		$attack_area/col_Atack.disabled = true
 
+func formula():
+	min_damage = 40+strength*0.635+damage_sword
+	max_damage = 90+strength*0.63+damage_sword
+
+
 func _on_spr_frame_changed():# изменение кадров анимации персонажа
 	if $spr.animation == "бег" or $spr.animation == "бег_меч" or $spr.animation == "бег_меч_2" :
 		if $spr.frame == 0:
@@ -588,8 +616,8 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_sword_sound
 			$fight_sound.play()
-			damage = randi()%40+50+damage_sword
-			#print(damage)
+			damage = rand_range(min_damage,max_damage)
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
@@ -598,8 +626,8 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 		if $spr.frame == 1:
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
-			damage = randi()%40+50
-			#print(damage)
+			damage = rand_range(min_damage,max_damage)
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
@@ -608,8 +636,9 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 		if $spr.frame == 1 :
 			$fight_sound.stream = figth_fit_sound
 			$fight_sound.play()
-			damage = randi()%40+50
-			#print(damage)
+
+			damage = rand_range(min_damage,max_damage)
+			print(damage)
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
@@ -913,3 +942,26 @@ func _on_hook_line_area_exited(area):
 	pass # Replace with function body.
 
 
+
+
+func _on_PInfo_mouse_entered():
+	button = true
+	pass # Replace with function body.
+
+
+func _on_PInfo_mouse_exited():
+	button = false
+	pass # Replace with function body.
+
+
+
+
+
+func _on_Panel_focus_entered():
+	button = true
+	pass # Replace with function body.
+
+
+func _on_Panel_focus_exited():
+	button = false
+	pass # Replace with function body.
