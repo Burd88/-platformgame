@@ -93,7 +93,7 @@ var death_true = false
 ### expiriense 
 var experience = 0
 var level = 1
-var experience_next_level = 100
+var experience_next_level = 30
 
 var hook_line_pos 
 var hook_line_use = false
@@ -136,7 +136,7 @@ func _expirience(): # получение опыта
 		level +=1
 		skill_point += 5
 		experience = 0
-		experience_next_level += level*5
+		experience_next_level += level*3
 
 func _settings():# настройки пока звук
 	$music.volume_db = GLOBAL.music_value
@@ -944,24 +944,10 @@ func _on_hook_line_area_exited(area):
 
 
 
-func _on_PInfo_mouse_entered():
-	button = true
-	pass # Replace with function body.
-
-
-func _on_PInfo_mouse_exited():
-	button = false
-	pass # Replace with function body.
 
 
 
 
 
-func _on_Panel_focus_entered():
-	button = true
-	pass # Replace with function body.
 
 
-func _on_Panel_focus_exited():
-	button = false
-	pass # Replace with function body.
