@@ -1,112 +1,112 @@
 [gd_scene load_steps=117 format=2]
 
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0000.png" type="Texture" id=1]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0001.png" type="Texture" id=2]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0002.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0003.png" type="Texture" id=4]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0004.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0005.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0006.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0007.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0008.png" type="Texture" id=9]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0009.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0010.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0011.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0012.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0013.png" type="Texture" id=14]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0014.png" type="Texture" id=15]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0015.png" type="Texture" id=16]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0016.png" type="Texture" id=17]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0017.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0018.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0019.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0000.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0001.png" type="Texture" id=22]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0002.png" type="Texture" id=23]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0003.png" type="Texture" id=24]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0004.png" type="Texture" id=25]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0005.png" type="Texture" id=26]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0006.png" type="Texture" id=27]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0007.png" type="Texture" id=28]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0008.png" type="Texture" id=29]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0009.png" type="Texture" id=30]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0010.png" type="Texture" id=31]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0011.png" type="Texture" id=32]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0012.png" type="Texture" id=33]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0013.png" type="Texture" id=34]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0014.png" type="Texture" id=35]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0015.png" type="Texture" id=36]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0016.png" type="Texture" id=37]
-[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0017.png" type="Texture" id=38]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0014.png" type="Texture" id=39]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0013.png" type="Texture" id=40]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0012.png" type="Texture" id=41]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0011.png" type="Texture" id=42]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0010.png" type="Texture" id=43]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0009.png" type="Texture" id=44]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0008.png" type="Texture" id=45]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0007.png" type="Texture" id=46]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0006.png" type="Texture" id=47]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0005.png" type="Texture" id=48]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0004.png" type="Texture" id=49]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0003.png" type="Texture" id=50]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0002.png" type="Texture" id=51]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0001.png" type="Texture" id=52]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0000.png" type="Texture" id=53]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0000.png" type="Texture" id=54]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0001.png" type="Texture" id=55]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0002.png" type="Texture" id=56]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0003.png" type="Texture" id=57]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0004.png" type="Texture" id=58]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0005.png" type="Texture" id=59]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0006.png" type="Texture" id=60]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0007.png" type="Texture" id=61]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0008.png" type="Texture" id=62]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0009.png" type="Texture" id=63]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0010.png" type="Texture" id=64]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0011.png" type="Texture" id=65]
-[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0012.png" type="Texture" id=66]
-[ext_resource path="res://Enemy/gobby/sprite/jump-1.png" type="Texture" id=67]
-[ext_resource path="res://Enemy/gobby/sprite/jump-2.png" type="Texture" id=68]
-[ext_resource path="res://Enemy/gobby/sprite/jump-3.png" type="Texture" id=69]
-[ext_resource path="res://Enemy/gobby/sprite/jump-4.png" type="Texture" id=70]
-[ext_resource path="res://Enemy/gobby/sprite/jump-5.png" type="Texture" id=71]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0000.png" type="Texture" id=72]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0001.png" type="Texture" id=73]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0002.png" type="Texture" id=74]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0003.png" type="Texture" id=75]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0004.png" type="Texture" id=76]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0005.png" type="Texture" id=77]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0006.png" type="Texture" id=78]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0007.png" type="Texture" id=79]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0008.png" type="Texture" id=80]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0009.png" type="Texture" id=81]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0010.png" type="Texture" id=82]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0011.png" type="Texture" id=83]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0012.png" type="Texture" id=84]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0013.png" type="Texture" id=85]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0014.png" type="Texture" id=86]
-[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0015.png" type="Texture" id=87]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0000.png" type="Texture" id=88]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0001.png" type="Texture" id=89]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0002.png" type="Texture" id=90]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0003.png" type="Texture" id=91]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0004.png" type="Texture" id=92]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0005.png" type="Texture" id=93]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0006.png" type="Texture" id=94]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0007.png" type="Texture" id=95]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0008.png" type="Texture" id=96]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0009.png" type="Texture" id=97]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0010.png" type="Texture" id=98]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0011.png" type="Texture" id=99]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0012.png" type="Texture" id=100]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0013.png" type="Texture" id=101]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0014.png" type="Texture" id=102]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0015.png" type="Texture" id=103]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0016.png" type="Texture" id=104]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0017.png" type="Texture" id=105]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0018.png" type="Texture" id=106]
-[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0019.png" type="Texture" id=107]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0014.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0000.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0001.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0002.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0003.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0004.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0005.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0006.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0007.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0008.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0009.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0010.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0011.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0012.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0013.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0014.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0015.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0016.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0017.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0018.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/undead_sword/sprite/attack/undead_attack0019.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0000.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0001.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0002.png" type="Texture" id=24]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0003.png" type="Texture" id=25]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0004.png" type="Texture" id=26]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0005.png" type="Texture" id=27]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0006.png" type="Texture" id=28]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0007.png" type="Texture" id=29]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0008.png" type="Texture" id=30]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0009.png" type="Texture" id=31]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0010.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0011.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0012.png" type="Texture" id=34]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0013.png" type="Texture" id=35]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0014.png" type="Texture" id=36]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0015.png" type="Texture" id=37]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0016.png" type="Texture" id=38]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0017.png" type="Texture" id=39]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0018.png" type="Texture" id=40]
+[ext_resource path="res://Enemy/undead_sword/sprite/walk/undead_walk0019.png" type="Texture" id=41]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0000.png" type="Texture" id=42]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0001.png" type="Texture" id=43]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0002.png" type="Texture" id=44]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0003.png" type="Texture" id=45]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0004.png" type="Texture" id=46]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0005.png" type="Texture" id=47]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0006.png" type="Texture" id=48]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0007.png" type="Texture" id=49]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0008.png" type="Texture" id=50]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0009.png" type="Texture" id=51]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0010.png" type="Texture" id=52]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0011.png" type="Texture" id=53]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0012.png" type="Texture" id=54]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0013.png" type="Texture" id=55]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0014.png" type="Texture" id=56]
+[ext_resource path="res://Enemy/undead_sword/sprite/hurt/undead_hurt0015.png" type="Texture" id=57]
+[ext_resource path="res://Enemy/gobby/sprite/jump-1.png" type="Texture" id=58]
+[ext_resource path="res://Enemy/gobby/sprite/jump-2.png" type="Texture" id=59]
+[ext_resource path="res://Enemy/gobby/sprite/jump-3.png" type="Texture" id=60]
+[ext_resource path="res://Enemy/gobby/sprite/jump-4.png" type="Texture" id=61]
+[ext_resource path="res://Enemy/gobby/sprite/jump-5.png" type="Texture" id=62]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0013.png" type="Texture" id=63]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0012.png" type="Texture" id=64]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0011.png" type="Texture" id=65]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0010.png" type="Texture" id=66]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0009.png" type="Texture" id=67]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0008.png" type="Texture" id=68]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0007.png" type="Texture" id=69]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0006.png" type="Texture" id=70]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0005.png" type="Texture" id=71]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0004.png" type="Texture" id=72]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0003.png" type="Texture" id=73]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0002.png" type="Texture" id=74]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0001.png" type="Texture" id=75]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0000.png" type="Texture" id=76]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0000.png" type="Texture" id=77]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0001.png" type="Texture" id=78]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0002.png" type="Texture" id=79]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0003.png" type="Texture" id=80]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0004.png" type="Texture" id=81]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0005.png" type="Texture" id=82]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0006.png" type="Texture" id=83]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0007.png" type="Texture" id=84]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0008.png" type="Texture" id=85]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0009.png" type="Texture" id=86]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0010.png" type="Texture" id=87]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0011.png" type="Texture" id=88]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0012.png" type="Texture" id=89]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0013.png" type="Texture" id=90]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0014.png" type="Texture" id=91]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0015.png" type="Texture" id=92]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0016.png" type="Texture" id=93]
+[ext_resource path="res://Enemy/undead_sword/sprite/idle/undead_idle0017.png" type="Texture" id=94]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0000.png" type="Texture" id=95]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0001.png" type="Texture" id=96]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0002.png" type="Texture" id=97]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0003.png" type="Texture" id=98]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0004.png" type="Texture" id=99]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0005.png" type="Texture" id=100]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0006.png" type="Texture" id=101]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0007.png" type="Texture" id=102]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0008.png" type="Texture" id=103]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0009.png" type="Texture" id=104]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0010.png" type="Texture" id=105]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0011.png" type="Texture" id=106]
+[ext_resource path="res://Enemy/undead_sword/sprite/death/undead_death0012.png" type="Texture" id=107]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=108]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=109]
 [ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=110]
@@ -144,6 +144,7 @@ onready var lesser_heal_potion = preload(\"res://items/Items/health_potion/leser
 onready var major_heal_potion = preload(\"res://items/Items/health_potion/major_heal_potion.tscn\")
 onready var minor_heal_potion = preload(\"res://items/Items/health_potion/minor_heal_potion.tscn\")
 onready var arrow_item = preload(\"res://items/Items/Arrow.tscn\")
+onready var exp_point = preload(\"res://items/exp_point/Exp_point.tscn\")
 ###движение
 export var distance_max = 100
 var visible_pl = false
@@ -313,7 +314,7 @@ func _gui():# Графический интерфейс
 	
 func _die():
 	if health_now <= 0:
-		
+
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
@@ -385,6 +386,11 @@ func _on_die_animation_finished(anim_name):
 	if anim_name == \"die\":
 		var item_rand = randi()%5
 	#	print(item_rand)
+		for i in randi()%3+6:
+			var item = exp_point.instance()
+			get_parent().add_child(item)
+			item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+			item.position = position
 		if item_rand == 0 :
 			_drop_item()
 		queue_free()
@@ -478,45 +484,45 @@ func _on_ouch_timer_timeout():
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "атака",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "стойка",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 39 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "спокойствие",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
-"name": "подъем",
+"name": "атака",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
-"name": "смерть",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
-"loop": true,
-"name": "прыжок",
+"name": "хотьба",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": true,
 "name": "урон",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
+"frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ) ],
 "loop": true,
-"name": "хотьба",
+"name": "прыжок",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ) ],
+"loop": true,
+"name": "подъем",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ) ],
+"loop": true,
+"name": "стойка",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
+"loop": true,
+"name": "смерть",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -544,7 +550,6 @@ script = SubResource( 1 )
 position = Vector2( 2.0179, -1.13757 )
 frames = SubResource( 2 )
 animation = "хотьба"
-frame = 14
 playing = true
 
 [node name="idletimer" type="Timer" parent="spr"]

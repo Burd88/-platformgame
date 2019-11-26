@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://items/exp_point/point0000.png" type="Texture" id=1]
+[ext_resource path="res://items/exp_point/point0001.png" type="Texture" id=2]
+[ext_resource path="res://items/exp_point/point0002.png" type="Texture" id=3]
+[ext_resource path="res://items/exp_point/point0003.png" type="Texture" id=4]
+[ext_resource path="res://items/exp_point/point0004.png" type="Texture" id=5]
+[ext_resource path="res://items/exp_point/point0005.png" type="Texture" id=6]
+[ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/64x64/Vectors/Icon_Star.png" type="Texture" id=7]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Area2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+var target
+var go_position
+var anim = false
+var position_start =  Vector2(rand_range(-70,70),rand_range(-30,-70))
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Timer.start()
+
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if !target:
+		position += (position_start - position).normalized()*1.5
+	if target:
+#		if anim == false:
+#			$AnimationPlayer.play(\"move\")
+#		elif anim == true:
+		go_position = ((target.position +Vector2(10,20)) - global_position).normalized()
+		global_position += go_position*1.5
+	pass
+
+
+func _on_Area2D_body_entered(body):
+	if body.get(\"player_type\") == true:
+		target = body
+	pass # Replace with function body.
+
+
+func _on_Exp_point_body_entered(body):
+	if body.get(\"player_type\") == true:
+		print(\"fuck\")
+		body.experience += randi()%3+3
+		queue_free()
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == \"move\":
+		$Area2D/CollisionShape2D.disabled = false
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$Area2D/CollisionShape2D.disabled = false
+	$CollisionShape2D.disabled = false
+	pass # Replace with function body.
+"
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.72917
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 145.715
+
+[sub_resource type="Animation" id=5]
+resource_name = "move"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10.1229, -45.333 ), Vector2( 64.0109, -49.2667 ), Vector2( 47.0936, -34.3299 ) ]
+}
+
+[node name="Exp_point" type="Area2D"]
+script = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -4.76837e-007, -4.76837e-007 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 4 )
+frame = 4
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.029418, 0.464579 )
+scale = Vector2( 0.46875, 0.491248 )
+texture = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/move = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_Exp_point_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

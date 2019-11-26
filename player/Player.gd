@@ -137,7 +137,12 @@ func _expirience(): # получение опыта
 		skill_point += 5
 		experience = 0
 		experience_next_level += level*3
-
+	elif experience > experience_next_level:
+		level +=1
+		skill_point += 5
+		var miss_exp = experience - experience_next_level
+		experience = experience - experience_next_level
+		experience_next_level += level*3
 func _settings():# настройки пока звук
 	$music.volume_db = GLOBAL.music_value
 	$fight_sound.volume_db = GLOBAL.sound_value
@@ -163,6 +168,7 @@ func _physics_process(delta):# функция выполнения во врем
 			$GUI/Exp_bar.show()
 			$GUI/level_bar.show()
 			$Camera2D.current = true
+			$UI_paneli/Button_UI.show()
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
 			velocity.x = 0
@@ -183,6 +189,8 @@ func _physics_process(delta):# функция выполнения во врем
 			$UI_paneli/Health_potion.hide()
 			$GUI/Exp_bar.hide()
 			$GUI/level_bar.hide()
+			$UI_paneli/Button_UI.hide()
+			$Player_info/Panel.hide()
 		elif departure == true and hook_line_use == false :
 			if finish_departure == false:
 				$spr.animation = "departure"

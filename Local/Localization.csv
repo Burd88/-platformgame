@@ -31,6 +31,7 @@ CONTROLS_SPACE_TEXT;Прыжок;Jump
 CONTROLS_USE_TEXT;Взаимодействие;Interaction
 CONTROLS_CLOSE_BUTTON_TEXT;Закрыть;Close
 CONTROLS_OPEN_INVENTORY_TEXT;Открыть инвентарь;Open Inventory
+CONTROLS_PLAYER_INFO_TEXT;Информации о персонаже;Player Info
 GUI_INVENTORY_TEXT;Инвентарь;Inventory
 PLAYER_INFO_HEALTH;Здоровье: ;Health: 
 PLAYER_INFO_STRANGTH;Сила: ;Strangth: 
@@ -39,3 +40,4 @@ PLAYER_INFO_DAMAGE;Урон: ;Damage:
 PLAYER_INFO_LEVEL;Уровень: ;Level: 
 PLAYER_INFO_EXPIRIENCE;Опыт: ;Expirience: 
 PLAYER_INFO_SKILL_POINTS;Очки навыков: ;Skill points: 
+PLAYER_INFO_TEXT;Информация;Info

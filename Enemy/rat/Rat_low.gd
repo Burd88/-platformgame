@@ -25,6 +25,7 @@ onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
+onready var exp_point = preload("res://items/exp_point/Exp_point.tscn")
 ###
 ###движение
 export var distance_max = 100
@@ -96,6 +97,10 @@ func _settings():
 	$move_sound.volume_db = GLOBAL.sound_value
 	$damage_sound.volume_db = GLOBAL.sound_value
 func _drop_item():
+	for i in randi()%3+1:
+		var item = exp_point.instance()
+		get_parent().add_child(item)
+		item.position = position #+ Vector2(randi()%10+5,-randi()%15+5)
 	var item_drop = randi()%2
 	if item_drop == 0:
 		var item = lesser_heal_potion.instance()
@@ -174,6 +179,7 @@ func _gui():# Графический интерфейс
 	
 func _die():
 	if health_now <= 0:
+
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
@@ -255,6 +261,11 @@ func _on_spr_animation_finished():
 	if $spr.animation == "смерть":
 		var item_rand = randi()%3
 	#	print(item_rand)
+		for i in randi()%3+2:
+			var item = exp_point.instance()
+			get_parent().add_child(item)
+			item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+			item.position = position
 		if item_rand == 0 :
 			_drop_item()
 		queue_free()

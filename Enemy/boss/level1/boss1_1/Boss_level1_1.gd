@@ -26,6 +26,7 @@ onready var major_heal_potion = preload("res://items/Items/health_potion/major_h
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 onready var gear_item = preload("res://items/Items/Gear/Gear.tscn")
+onready var exp_point = preload("res://items/exp_point/Exp_point.tscn")
 var enemy_shoot_count = 6
 var damage
 var attack_now = false
@@ -104,6 +105,11 @@ func _gui():# Графический интерфейс
 
 func _drop_item():
 	var item_drop = randi()%2
+	for i in randi()%3+7:
+		var item = exp_point.instance()
+		get_parent().add_child(item)
+		item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+		item.position = position
 	print(item_drop)
 	var gear_loot = gear_item.instance()
 	get_parent().add_child(gear_loot)
@@ -162,6 +168,7 @@ func _on_shot_timeout():
 		b.position = position + Vector2(0 , 30)
 		b.get_node("sprite").speed_scale = 0.7
 		b.health = 120
+		b.health_now = 120
 		b.damage = 30
 		if enemy_shoot_count >= 0:
 			enemy_shoot_count -=1

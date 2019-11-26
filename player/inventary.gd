@@ -62,3 +62,18 @@ func _on_ItemMenu_Button_DropItem_pressed():
 	pass # Replace with function body.
 
 
+
+
+func _on_Button_pressed():
+	$inventory.hide()
+	pass # Replace with function body.
+
+
+func _on_inventory_mouse_entered():
+	get_parent().button = true
+	pass # Replace with function body.
+
+
+func _on_inventory_mouse_exited():
+	get_parent().button = false
+	pass # Replace with function body.

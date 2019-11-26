@@ -29,6 +29,7 @@ onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
+onready var exp_point = preload("res://items/exp_point/Exp_point.tscn")
 ###движение
 export var distance_max = 100
 var visible_pl = false
@@ -182,7 +183,7 @@ func _gui():# Графический интерфейс
 	
 func _die():
 	if health_now <= 0:
-		
+
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
@@ -278,6 +279,11 @@ func _on_visible_body_exited(body):
 func _on_spr_animation_finished():
 	if $spr.animation == "смерть":
 		var item_rand = randi()%5
+		for i in randi()%3+4:
+			var item = exp_point.instance()
+			get_parent().add_child(item)
+			item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+			item.position = position
 	#	print(item_rand)
 		if item_rand == 0 :
 			_drop_item()

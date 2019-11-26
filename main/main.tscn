@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=2]
@@ -20,9 +20,10 @@
 [ext_resource path="res://Global_gui/Keys/E-Key.png" type="Texture" id=18]
 [ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Left.png" type="Texture" id=19]
 [ext_resource path="res://Global_gui/Keys/Keyboard_White_Mouse_Right.png" type="Texture" id=20]
-[ext_resource path="res://Global_gui/Keys/Space-Key.png" type="Texture" id=21]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=22]
-[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Global_gui/Keys/P-Key.png" type="Texture" id=21]
+[ext_resource path="res://Global_gui/Keys/Space-Key.png" type="Texture" id=22]
+[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=23]
+[ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 draw_center = false
@@ -62,7 +63,9 @@ func _ready():
 	$Panel/space_text.text = \"- \" + tr(\"CONTROLS_SPACE_TEXT\")
 	$Panel/use_text.text = \"- \" + tr(\"CONTROLS_USE_TEXT\")
 	$Panel/open_inventory.text = \"- \" + tr(\"CONTROLS_OPEN_INVENTORY_TEXT\")
+	$Panel/player_info_text.text = \"- \" + tr(\"CONTROLS_PLAYER_INFO_TEXT\")
 	$close.text = tr(\"CONTROLS_CLOSE_BUTTON_TEXT\")
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -389,8 +392,7 @@ visible = false
 script = SubResource( 6 )
 
 [node name="Panel" type="Panel" parent="inter/Controls"]
-editor/display_folded = true
-modulate = Color( 1, 1, 1, 0.592157 )
+modulate = Color( 1, 1, 1, 0.866667 )
 show_behind_parent = true
 margin_right = 1280.0
 margin_bottom = 720.0
@@ -432,6 +434,15 @@ margin_left = 800.0
 margin_top = 215.0
 margin_right = 1066.0
 margin_bottom = 253.0
+custom_fonts/font = SubResource( 9 )
+text = "- информация о вещи"
+valign = 1
+
+[node name="player_info_text" type="Label" parent="inter/Controls/Panel"]
+margin_left = 801.758
+margin_top = 324.002
+margin_right = 1067.76
+margin_bottom = 362.002
 custom_fonts/font = SubResource( 9 )
 text = "- информация о вещи"
 valign = 1
@@ -568,6 +579,19 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 20 )
 region_rect = Rect2( 0, 0, 32, 32 )
 
+[node name="Player_info" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 621.758
+margin_top = 313.002
+margin_right = 772.758
+margin_bottom = 390.002
+custom_styles/panel = SubResource( 10 )
+
+[node name="player_info" type="Sprite" parent="inter/Controls/Panel/Player_info"]
+position = Vector2( 75, 36 )
+texture = ExtResource( 21 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
 [node name="jump" type="Panel" parent="inter/Controls/Panel"]
 margin_left = 55.0
 margin_top = 360.0
@@ -577,7 +601,7 @@ custom_styles/panel = SubResource( 10 )
 
 [node name="space" type="Sprite" parent="inter/Controls/Panel/jump"]
 position = Vector2( 75, 36 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 32 )
 
@@ -595,11 +619,11 @@ custom_fonts/font = ExtResource( 3 )
 text = "close"
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 22 )
+stream = ExtResource( 23 )
 volume_db = -15.0
 autoplay = true
 
-[node name="Intro" parent="." instance=ExtResource( 23 )]
+[node name="Intro" parent="." instance=ExtResource( 24 )]
 position = Vector2( -2.38394, 223.312 )
 [connection signal="pressed" from="inter/button/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="inter/button/Continue" to="." method="_on_Continue_pressed"]

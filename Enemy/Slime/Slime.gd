@@ -34,6 +34,7 @@ onready var lesser_heal_potion = preload("res://items/Items/health_potion/leser_
 onready var major_heal_potion = preload("res://items/Items/health_potion/major_heal_potion.tscn")
 onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_heal_potion.tscn")
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
+onready var exp_point = preload("res://items/exp_point/Exp_point.tscn")
 
 export (int) var detect_radius = 250
 var shape_ext = Vector2(60,250)
@@ -111,6 +112,7 @@ func _gui():# Графический интерфейс
 
 func _death():
 	if health_now <= 0:
+
 		velocity = Vector2(0,0)
 		direction = Vector2(0,0)
 		gravity = 0
@@ -162,12 +164,12 @@ func aim():
 				move_to_player = false
 				anim = "move"
 
-func _draw():
-	if target:
-		for hit in hit_pos:
-			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
-			draw_line(Vector2(), ((hit - position)*2).rotated(-rotation), laser_color)
-	pass
+#func _draw():
+#	if target:
+#		for hit in hit_pos:
+#			draw_circle(((hit - position)*2).rotated(-rotation), 5, laser_color)
+#			draw_line(Vector2(), ((hit - position)*2).rotated(-rotation), laser_color)
+#	pass
 		
 func shoot(pos):
 	var b = bullet.instance()
@@ -180,6 +182,11 @@ func _on_AnimatedSprite_animation_finished():
 	if $sprite.animation == 'die':
 		queue_free()
 		var item_rand = randi()%5
+		for i in randi()%3+3:
+			var item = exp_point.instance()
+			get_parent().add_child(item)
+			item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+			item.position = position
 	#	print(item_rand)
 		if item_rand == 0 :
 			_drop_item()
