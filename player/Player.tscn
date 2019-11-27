@@ -447,13 +447,15 @@ func _on_up_hp_pressed():
 
 
 func _on_up_str_pressed():
-	get_parent().strength +=5
+	get_parent().strength +=2
+	get_parent().health +=5
+	get_parent().health_now +=5
 	get_parent().skill_point -=1
 	pass # Replace with function body.
 
 
 func _on_up_agi_pressed():
-	get_parent().agility +=5
+	get_parent().agility +=2
 	get_parent().skill_point -=1
 	pass # Replace with function body.
 
@@ -755,14 +757,14 @@ region_rect = Rect2( 0, 0, 36, 36 )
 texture = ExtResource( 178 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="Gradient" id=48]
+[sub_resource type="Gradient" id=61]
 offsets = PoolRealArray( 0, 0.895161, 1 )
 colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=49]
-gradient = SubResource( 48 )
+[sub_resource type="GradientTexture" id=62]
+gradient = SubResource( 61 )
 
-[sub_resource type="StyleBoxTexture" id=50]
+[sub_resource type="StyleBoxTexture" id=63]
 texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 400, 120 )
 
@@ -895,7 +897,7 @@ texture_mode = 1
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -930,6 +932,7 @@ shape = SubResource( 2 )
 script = SubResource( 3 )
 
 [node name="Panel" type="Panel" parent="Player_info"]
+visible = false
 margin_left = 1005.16
 margin_top = 145.0
 margin_right = 1259.16
@@ -955,9 +958,9 @@ text = "PLAYER_INFO_HEALTH"
 valign = 1
 
 [node name="strength_value" type="Label" parent="Player_info/Panel"]
-margin_left = 104.028
+margin_left = 127.649
 margin_top = 112.294
-margin_right = 204.028
+margin_right = 227.649
 margin_bottom = 150.294
 text = "1"
 align = 1
@@ -973,9 +976,9 @@ text = "PLAYER_INFO_STRANGTH"
 valign = 1
 
 [node name="agility_value" type="Label" parent="Player_info/Panel"]
-margin_left = 104.028
+margin_left = 127.649
 margin_top = 161.294
-margin_right = 204.028
+margin_right = 227.649
 margin_bottom = 199.294
 text = "1"
 align = 1
@@ -1045,9 +1048,9 @@ text = "PLAYER_INFO_DAMAGE"
 valign = 1
 
 [node name="speed_value" type="Label" parent="Player_info/Panel"]
-margin_left = 94.4478
+margin_left = 127.649
 margin_top = 185.499
-margin_right = 194.448
+margin_right = 227.649
 margin_bottom = 223.499
 text = "1"
 align = 1
@@ -1223,6 +1226,7 @@ custom_styles/normal = SubResource( 40 )
 script = ExtResource( 186 )
 
 [node name="inventory" type="Panel" parent="inventary"]
+visible = false
 margin_left = 27.2278
 margin_top = 223.0
 margin_right = 247.228
@@ -1418,8 +1422,8 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 880.0
 margin_bottom = 438.0
-custom_icons/close_highlight = SubResource( 49 )
-custom_styles/panel = SubResource( 50 )
+custom_icons/close_highlight = SubResource( 62 )
+custom_styles/panel = SubResource( 63 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
 margin_left = 185.784

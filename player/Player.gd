@@ -488,15 +488,13 @@ func _attack():# атака игрока
 	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		#velocity.y = 0
 
-		print($spr.speed_scale)
+		
 		if attack == false:
 			regen_hp = false
 			$Regen_timer.start()
 			attack = true
 			
 	else:
-
-		print($spr.speed_scale)
 		#attack = false
 		pass
 	if attack and weapon == 1:
