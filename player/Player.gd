@@ -134,12 +134,12 @@ func _expirience(): # получение опыта
 	$GUI/level_bar/level.text = str(level)
 	if experience == experience_next_level:
 		level +=1
-		skill_point += 5
+		skill_point += 3
 		experience = 0
 		experience_next_level += level*3
 	elif experience > experience_next_level:
 		level +=1
-		skill_point += 5
+		skill_point += 3
 		var miss_exp = experience - experience_next_level
 		experience = experience - experience_next_level
 		experience_next_level += level*3
@@ -240,7 +240,7 @@ func _physics_process(delta):# функция выполнения во врем
 			_shake_camera(delta)
  
 		if Input.is_action_pressed("ui_page_down"):
-			experience +=1
+			experience +=20
 
 func save(): # сохранение игры
 
@@ -488,19 +488,25 @@ func _attack():# атака игрока
 	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		#velocity.y = 0
 
+		print($spr.speed_scale)
 		if attack == false:
 			regen_hp = false
 			$Regen_timer.start()
 			attack = true
+			
 	else:
-		#print("attack")
+
+		print($spr.speed_scale)
 		#attack = false
 		pass
 	if attack and weapon == 1:
+		$spr.speed_scale = 1 + agility*0.01/3
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
-	
+		$spr.speed_scale = 1 + agility*0.01/3
 		$spr.animation = str(attack_name[rand_attack_name])
+	elif !attack:
+		$spr.speed_scale = 1
 #	elif attack and weapon == 2 :
 #		for i in range(0,Global_Player.inventory_maxSlots):
 #			print($inventary/inventory/bag1.get_item_metadata(i))
@@ -625,7 +631,7 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 			$fight_sound.stream = figth_sword_sound
 			$fight_sound.play()
 			damage = rand_range(min_damage,max_damage)
-			print(damage)
+
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 4:
 			$attack_area/col_Atack.disabled = true
@@ -635,7 +641,7 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 			$fight_sound.stream = figth_hand_sound
 			$fight_sound.play()
 			damage = rand_range(min_damage,max_damage)
-			print(damage)
+
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
@@ -646,7 +652,7 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 			$fight_sound.play()
 
 			damage = rand_range(min_damage,max_damage)
-			print(damage)
+
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -59,27 +59,28 @@
 [ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=58]
 [ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=59]
-[ext_resource path="res://Enemy/mashroom/mushroom.tscn" type="PackedScene" id=60]
-[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=61]
-[ext_resource path="res://Enemy/gobby_range/Gobby_range.tscn" type="PackedScene" id=62]
-[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=63]
-[ext_resource path="res://levels/Level1/Area2D.gd" type="Script" id=64]
-[ext_resource path="res://Cut-scene/level1/Katboss13.tscn" type="PackedScene" id=65]
-[ext_resource path="res://Cut-scene/level1/Katboss14.tscn" type="PackedScene" id=66]
-[ext_resource path="res://Enemy/sceleton_alebard/Sceleton_alebard.tscn" type="PackedScene" id=67]
-[ext_resource path="res://Enemy/undead_sword/Undead_sword.tscn" type="PackedScene" id=68]
-[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=69]
-[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=70]
-[ext_resource path="res://Cut-scene/level1/New_game_cut_scene.tscn" type="PackedScene" id=71]
-[ext_resource path="res://Cut-scene/level1/1_3_down_cut scene.tscn" type="PackedScene" id=72]
-[ext_resource path="res://Cut-scene/level1/Knight_3.tscn" type="PackedScene" id=73]
-[ext_resource path="res://items/hook/hook_line.tscn" type="PackedScene" id=74]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=75]
-[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=76]
-[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=77]
-[ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=78]
-[ext_resource path="res://items/Items/health_potion/leser_heal_potion.tscn" type="PackedScene" id=79]
-[ext_resource path="res://items/Items/keys/Knight_key.tscn" type="PackedScene" id=80]
+[ext_resource path="res://items/chest/Chest_black.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Enemy/mashroom/mushroom.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Enemy/gobby_range/Gobby_range.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.tscn" type="PackedScene" id=64]
+[ext_resource path="res://levels/Level1/Area2D.gd" type="Script" id=65]
+[ext_resource path="res://Cut-scene/level1/Katboss13.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Cut-scene/level1/Katboss14.tscn" type="PackedScene" id=67]
+[ext_resource path="res://Enemy/sceleton_alebard/Sceleton_alebard.tscn" type="PackedScene" id=68]
+[ext_resource path="res://Enemy/undead_sword/Undead_sword.tscn" type="PackedScene" id=69]
+[ext_resource path="res://items/platform/platform.tscn" type="PackedScene" id=70]
+[ext_resource path="res://Cut-scene/level1/Katboss12.tscn" type="PackedScene" id=71]
+[ext_resource path="res://Cut-scene/level1/New_game_cut_scene.tscn" type="PackedScene" id=72]
+[ext_resource path="res://Cut-scene/level1/1_3_down_cut scene.tscn" type="PackedScene" id=73]
+[ext_resource path="res://Cut-scene/level1/Knight_3.tscn" type="PackedScene" id=74]
+[ext_resource path="res://items/hook/hook_line.tscn" type="PackedScene" id=75]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=76]
+[ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=77]
+[ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=78]
+[ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=79]
+[ext_resource path="res://items/Items/health_potion/leser_heal_potion.tscn" type="PackedScene" id=80]
+[ext_resource path="res://items/Items/keys/Knight_key.tscn" type="PackedScene" id=81]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -1409,6 +1410,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 11 )
 animation = "New Anim"
+frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -1740,7 +1742,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -1894,15 +1896,18 @@ position = Vector2( 450.382, 1137.39 )
 [node name="Rat_low11" parent="enemies-1" instance=ExtResource( 57 )]
 position = Vector2( 1514.03, 1133.87 )
 
+[node name="Chest_black" parent="." instance=ExtResource( 60 )]
+position = Vector2( 199.752, 375.862 )
+
 [node name="enemies-2" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Mushroom" parent="enemies-2" instance=ExtResource( 60 )]
+[node name="Mushroom" parent="enemies-2" instance=ExtResource( 61 )]
 position = Vector2( 1398.34, 1501 )
 
-[node name="Gobby" parent="enemies-2" instance=ExtResource( 61 )]
+[node name="Gobby" parent="enemies-2" instance=ExtResource( 62 )]
 position = Vector2( 378.722, 1139.87 )
 distance_max = 50
 
@@ -1925,32 +1930,32 @@ position = Vector2( 557.396, 1031.84 )
 [node name="Rat_low6" parent="enemies-2" instance=ExtResource( 57 )]
 position = Vector2( 461.762, 857.37 )
 
-[node name="Gobby2" parent="enemies-2" instance=ExtResource( 61 )]
+[node name="Gobby2" parent="enemies-2" instance=ExtResource( 62 )]
 position = Vector2( 704.185, 1134.63 )
 
-[node name="Gobby_range" parent="enemies-2" instance=ExtResource( 62 )]
+[node name="Gobby_range" parent="enemies-2" instance=ExtResource( 63 )]
 position = Vector2( 536.403, 1131.28 )
 
-[node name="Gobby3" parent="enemies-2" instance=ExtResource( 61 )]
+[node name="Gobby3" parent="enemies-2" instance=ExtResource( 62 )]
 position = Vector2( 1333.85, 996.005 )
 distance_max = 60
 
-[node name="Gobby4" parent="enemies-2" instance=ExtResource( 61 )]
+[node name="Gobby4" parent="enemies-2" instance=ExtResource( 62 )]
 position = Vector2( 772.663, 1303.32 )
 
-[node name="Gobby5" parent="enemies-2" instance=ExtResource( 61 )]
+[node name="Gobby5" parent="enemies-2" instance=ExtResource( 62 )]
 position = Vector2( 1188.54, 1310 )
 
-[node name="Gobby_range2" parent="enemies-2" instance=ExtResource( 62 )]
+[node name="Gobby_range2" parent="enemies-2" instance=ExtResource( 63 )]
 position = Vector2( 1044.69, 1307.61 )
 
-[node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 63 )]
+[node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 64 )]
 visible = false
 position = Vector2( 91.2744, 1442.62 )
 
 [node name="Cut_scene_boss_gobby" type="Area2D" parent="enemies-2"]
 position = Vector2( 181.415, 1316.59 )
-script = ExtResource( 64 )
+script = ExtResource( 65 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1967,7 +1972,7 @@ scale = Vector2( 0.3, 0.3 )
 position = Vector2( 55.0959, 74.7131 )
 shape = SubResource( 29 )
 
-[node name="Katboss13" parent="enemies-2/Cut_scene_boss_gobby" instance=ExtResource( 65 )]
+[node name="Katboss13" parent="enemies-2/Cut_scene_boss_gobby" instance=ExtResource( 66 )]
 position = Vector2( 135.771, 115.031 )
 
 [node name="Timer" type="Timer" parent="enemies-2/Cut_scene_boss_gobby"]
@@ -2025,7 +2030,7 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 160, 80, 16, 32 )
 
-[node name="Katboss14" parent="enemies-2" instance=ExtResource( 66 )]
+[node name="Katboss14" parent="enemies-2" instance=ExtResource( 67 )]
 visible = false
 position = Vector2( 327.956, 1447.36 )
 
@@ -2035,46 +2040,46 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sceleton_alebard" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1187.03, 2353.19 )
 
-[node name="Sceleton_alebard2" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard2" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 884.712, 2352.44 )
 
-[node name="Sceleton_alebard3" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard3" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 546.496, 2353.35 )
 
-[node name="Sceleton_alebard4" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard4" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 691.052, 2353.35 )
 
-[node name="Sceleton_alebard5" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard5" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 948.04, 2209.49 )
 
-[node name="Sceleton_alebard6" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard6" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 597.474, 2209.49 )
 
-[node name="Sceleton_alebard7" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard7" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1559.63, 2352.11 )
 
-[node name="Sceleton_alebard8" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard8" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1742.78, 2352.68 )
 
-[node name="Sceleton_alebard9" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard9" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1671.12, 2208.21 )
 
-[node name="Sceleton_alebard10" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Sceleton_alebard10" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1432.22, 2209.35 )
 
-[node name="Undead_sword2" parent="enemies-3" instance=ExtResource( 68 )]
+[node name="Undead_sword2" parent="enemies-3" instance=ExtResource( 69 )]
 position = Vector2( 608.509, 2352.91 )
 
-[node name="Undead_sword3" parent="enemies-3" instance=ExtResource( 68 )]
+[node name="Undead_sword3" parent="enemies-3" instance=ExtResource( 69 )]
 position = Vector2( 2209.84, 2347.48 )
 
-[node name="Undead_sword" parent="enemies-3" instance=ExtResource( 68 )]
+[node name="Undead_sword" parent="enemies-3" instance=ExtResource( 69 )]
 position = Vector2( 1007.19, 2352.98 )
 
-[node name="Knight" parent="enemies-3" instance=ExtResource( 67 )]
+[node name="Knight" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( -129.467, 2307.88 )
 speed = 0
 health = 900
@@ -2090,53 +2095,53 @@ __meta__ = {
 
 [node name="left" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1399.1, 616.402 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform3" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1399.1, 543.356 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform5" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1398.5, 472.705 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform7" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1397.14, 409.537 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform9" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1399.24, 339.011 )
 move_to = Vector2( -32, 0 )
 
-[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 69 )]
+[node name="platform11" parent="platforms/platform 1/left" instance=ExtResource( 70 )]
 position = Vector2( 1397.39, 283.221 )
 move_to = Vector2( -32, 0 )
 
 [node name="right" type="Node2D" parent="platforms/platform 1"]
 
-[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 69 )]
+[node name="platform2" parent="platforms/platform 1/right" instance=ExtResource( 70 )]
 position = Vector2( 1464.96, 581.077 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 69 )]
+[node name="platform4" parent="platforms/platform 1/right" instance=ExtResource( 70 )]
 position = Vector2( 1464.36, 508.629 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 69 )]
+[node name="platform6" parent="platforms/platform 1/right" instance=ExtResource( 70 )]
 position = Vector2( 1465.56, 442.169 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 69 )]
+[node name="platform8" parent="platforms/platform 1/right" instance=ExtResource( 70 )]
 position = Vector2( 1463.46, 373.748 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
 
-[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 69 )]
+[node name="platform10" parent="platforms/platform 1/right" instance=ExtResource( 70 )]
 position = Vector2( 1463.46, 308.484 )
 move_to = Vector2( 32, 0 )
 timer_time = 3
@@ -2149,14 +2154,14 @@ script = SubResource( 32 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cut_scene_start"]
 shape = SubResource( 33 )
 
-[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 70 )]
+[node name="Katboss12" parent="Cut_scene_start" instance=ExtResource( 71 )]
 position = Vector2( 74.6121, -18.3343 )
 
 [node name="Timer" type="Timer" parent="Cut_scene_start"]
 wait_time = 0.01
 one_shot = true
 
-[node name="New_game_cut_scene" parent="." instance=ExtResource( 71 )]
+[node name="New_game_cut_scene" parent="." instance=ExtResource( 72 )]
 visible = true
 position = Vector2( 0.144958, 119.831 )
 
@@ -2164,7 +2169,7 @@ position = Vector2( 0.144958, 119.831 )
 position = Vector2( 783.411, 1522.56 )
 script = SubResource( 34 )
 
-[node name="1_3_down_cut_scene" parent="Start_1_3" instance=ExtResource( 72 )]
+[node name="1_3_down_cut_scene" parent="Start_1_3" instance=ExtResource( 73 )]
 position = Vector2( 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start_1_3"]
@@ -2179,7 +2184,7 @@ one_shot = true
 position = Vector2( -6.59481, 2264.82 )
 script = SubResource( 36 )
 
-[node name="Knight_3" parent="knight_cut_Start" instance=ExtResource( 73 )]
+[node name="Knight_3" parent="knight_cut_Start" instance=ExtResource( 74 )]
 position = Vector2( 7.54877, 43.8418 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -2187,10 +2192,10 @@ scale = Vector2( 0.5, 0.5 )
 position = Vector2( 0.540375, 14.0496 )
 shape = SubResource( 37 )
 
-[node name="hook_line" parent="." instance=ExtResource( 74 )]
+[node name="hook_line" parent="." instance=ExtResource( 75 )]
 position = Vector2( 606.434, 2244.57 )
 
-[node name="Player" parent="." instance=ExtResource( 75 )]
+[node name="Player" parent="." instance=ExtResource( 76 )]
 position = Vector2( 771.042, 2310.05 )
 
 [node name="frontground" type="TileMap" parent="."]
@@ -2211,44 +2216,44 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pause_menu" parent="." instance=ExtResource( 76 )]
+[node name="pause_menu" parent="." instance=ExtResource( 77 )]
 
 [node name="check_point" type="Node2D" parent="."]
 
-[node name="check_point" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 879.004, 324.904 )
 
-[node name="check_point3" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point3" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 1102.9, 998.342 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point2" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point2" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 550.748, 156.879 )
 scale = Vector2( 1, 3.81224 )
 
-[node name="check_point4" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point4" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 1337.62, 247.818 )
 
-[node name="check_point5" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point5" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 1300.12, 1437.94 )
 
-[node name="check_point6" parent="check_point" instance=ExtResource( 77 )]
+[node name="check_point6" parent="check_point" instance=ExtResource( 78 )]
 position = Vector2( 479.904, 1353.76 )
 scale = Vector2( 0.666668, 2.43484 )
 
-[node name="Prototype_end" parent="." instance=ExtResource( 78 )]
+[node name="Prototype_end" parent="." instance=ExtResource( 79 )]
 position = Vector2( 765.909, 1713.77 )
 
-[node name="leser_heal_potion" parent="." instance=ExtResource( 79 )]
+[node name="leser_heal_potion" parent="." instance=ExtResource( 80 )]
 position = Vector2( 170.699, 375.586 )
 
-[node name="leser_heal_potion2" parent="." instance=ExtResource( 79 )]
+[node name="leser_heal_potion2" parent="." instance=ExtResource( 80 )]
 position = Vector2( 170.699, 375.586 )
 
-[node name="leser_heal_potion3" parent="." instance=ExtResource( 79 )]
+[node name="leser_heal_potion3" parent="." instance=ExtResource( 80 )]
 position = Vector2( 170.699, 375.586 )
 
-[node name="Knight_key" parent="." instance=ExtResource( 80 )]
+[node name="Knight_key" parent="." instance=ExtResource( 81 )]
 position = Vector2( 2066.37, 2367.38 )
 scale = Vector2( 0.5, 0.5 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]

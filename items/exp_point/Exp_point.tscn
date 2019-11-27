@@ -8,7 +8,7 @@
 [ext_resource path="res://items/exp_point/point0005.png" type="Texture" id=6]
 [ext_resource path="res://player/UI sprite/Simple UI Pack/Icons and Vectors/64x64/Vectors/Icon_Star.png" type="Texture" id=7]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 # Declare member variables here. Examples:
@@ -46,7 +46,7 @@ func _on_Area2D_body_entered(body):
 func _on_Exp_point_body_entered(body):
 	if body.get(\"player_type\") == true:
 		print(\"fuck\")
-		body.experience += randi()%3+3
+		body.experience += 1
 		queue_free()
 	pass # Replace with function body.
 
@@ -63,7 +63,7 @@ func _on_Timer_timeout():
 	pass # Replace with function body.
 "
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
@@ -71,10 +71,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 3.72917
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 radius = 145.715
 
 [sub_resource type="Animation" id=5]
@@ -94,17 +94,17 @@ tracks/0/keys = {
 }
 
 [node name="Exp_point" type="Area2D"]
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -4.76837e-007, -4.76837e-007 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 4 )
-frame = 4
+frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -116,7 +116,7 @@ texture = ExtResource( 7 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
