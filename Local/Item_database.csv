@@ -1,6 +1,8 @@
 ﻿id;ru;en
 NAME_ITEM;Название;Name
+DAMAGE_ITEM_TEXT;Урон;Damage
 DROP_BUTTON;Выкинуть;Drop
+COLLECT_BUTTON;Собрать;Collect
 LESSER_HEAL_POTION;Слабое лечебное зелье;Lesser heal potion
 LESSER_HEAL_POTION_TEXT;Слабое лечебное зелье восполняет 100-200 здоровья;Lesser healing potion replenishes 100-200 of health
 MINOR_HEAL_POTION;Незначительно лечебное зелье;Minor heal potion
@@ -17,4 +19,6 @@ DEATAIL_1LEVEL_GEAR;Шестеренка;Gear
 DEATAIL_1LEVEL_GEAR_TEXT;Похоже эта деталь нужна для того механизма;It seems this detail is needed for that mechanism
 KNIGHT_DOOR_KEY;Ржавый ключ;Rusty key
 KNIGHT_DOOR_KEY_TEXT;Ключ очень ржавый, с какими-то надписями\n.т .ала ..а.но.о с..ажа;The key is very rusty, with some inscriptions\nf..m the h..l of the m... ..ard
+SWORD;Меч;Sword
+SWORD_NORMAL_TEXT;Обычный потасканный меч;The usual shabby sword
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=138 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level1/map/tileset.png" type="Texture" id=2]
@@ -58,8 +58,8 @@
 [ext_resource path="res://items/door/Door_knight.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Enemy/rat/Rat_low.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/Boss_level1_1.tscn" type="PackedScene" id=58]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=59]
-[ext_resource path="res://items/chest/Chest_black.tscn" type="PackedScene" id=60]
+[ext_resource path="res://items/chest/Chest_black.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Enemy/mashroom/mushroom.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Enemy/gobby/Gobby.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Enemy/gobby_range/Gobby_range.tscn" type="PackedScene" id=63]
@@ -79,8 +79,7 @@
 [ext_resource path="res://Global_gui/pause_menu.tscn" type="PackedScene" id=77]
 [ext_resource path="res://resourse/check_point.tscn" type="PackedScene" id=78]
 [ext_resource path="res://end_proto/Prototype_end.tscn" type="PackedScene" id=79]
-[ext_resource path="res://items/Items/health_potion/leser_heal_potion.tscn" type="PackedScene" id=80]
-[ext_resource path="res://items/Items/keys/Knight_key.tscn" type="PackedScene" id=81]
+[ext_resource path="res://items/Items/keys/Knight_key.tscn" type="PackedScene" id=80]
 
 [sub_resource type="TileSet" id=1]
 0/name = "автозалив"
@@ -815,6 +814,7 @@ func _on_Area2D_body_entered(body):
 		#$Boss_level1_1/phase1.start()
 			$Boss_level1_1.attack_now = true
 		elif get_parent().get_parent().play_text_boss_1  == true:
+			
 			$CollisionShape2D.set_deferred(\"disabled\", true)
 	else : pass
 	pass # Replace with function body.
@@ -1410,7 +1410,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 11 )
 animation = "New Anim"
-frame = 3
+frame = 2
 speed_scale = 0.8
 playing = true
 
@@ -1639,7 +1639,7 @@ volume_db = -10.0
 [node name="Torch" parent="use_item" instance=ExtResource( 32 )]
 modulate = Color( 0.741176, 0.458824, 0.458824, 1 )
 position = Vector2( 105.727, 341.673 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="tourch_area" type="Area2D" parent="use_item/Torch"]
 scale = Vector2( 1.81587, 2.00413 )
@@ -1742,7 +1742,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -1864,18 +1864,34 @@ position = Vector2( 1104.22, 252.633 )
 shape = SubResource( 28 )
 
 [node name="Boss_level1_1" parent="enemies-1/Area2D" instance=ExtResource( 58 )]
-position = Vector2( 998.06, 314.793 )
+position = Vector2( 998.298, 315.269 )
 
-[node name="Slime" parent="enemies-1" instance=ExtResource( 59 )]
+[node name="Chest" parent="enemies-1/Area2D" instance=ExtResource( 59 )]
+visible = false
+position = Vector2( 886.311, 345.163 )
+item_ids = {
+0: 5,
+1: 0,
+2: 7,
+3: 0
+}
+item_amount = {
+0: 4,
+1: 0,
+2: 2,
+3: 0
+}
+
+[node name="Slime" parent="enemies-1" instance=ExtResource( 60 )]
 position = Vector2( 806.144, 648.824 )
 
-[node name="Slime2" parent="enemies-1" instance=ExtResource( 59 )]
+[node name="Slime2" parent="enemies-1" instance=ExtResource( 60 )]
 position = Vector2( 510.705, 377.501 )
 
-[node name="Slime3" parent="enemies-1" instance=ExtResource( 59 )]
+[node name="Slime3" parent="enemies-1" instance=ExtResource( 60 )]
 position = Vector2( 1192.03, 502.611 )
 
-[node name="Slime4" parent="enemies-1" instance=ExtResource( 59 )]
+[node name="Slime4" parent="enemies-1" instance=ExtResource( 60 )]
 position = Vector2( 1261.36, 651.838 )
 
 [node name="Rat_low6" parent="enemies-1" instance=ExtResource( 57 )]
@@ -1896,8 +1912,20 @@ position = Vector2( 450.382, 1137.39 )
 [node name="Rat_low11" parent="enemies-1" instance=ExtResource( 57 )]
 position = Vector2( 1514.03, 1133.87 )
 
-[node name="Chest_black" parent="." instance=ExtResource( 60 )]
-position = Vector2( 199.752, 375.862 )
+[node name="Chest_black" parent="enemies-1" instance=ExtResource( 59 )]
+position = Vector2( 63.1492, 376.617 )
+item_ids = {
+0: 4,
+1: 1,
+2: 0,
+3: 0
+}
+item_amount = {
+0: 5,
+1: 1,
+2: 0,
+3: 0
+}
 
 [node name="enemies-2" type="Node2D" parent="."]
 __meta__ = {
@@ -1952,6 +1980,22 @@ position = Vector2( 1044.69, 1307.61 )
 [node name="Boss_Gobby2" parent="enemies-2" instance=ExtResource( 64 )]
 visible = false
 position = Vector2( 91.2744, 1442.62 )
+
+[node name="Gobby_chest" parent="enemies-2" instance=ExtResource( 59 )]
+visible = false
+position = Vector2( 142.026, 1465.14 )
+item_ids = {
+0: 6,
+1: 5,
+2: 0,
+3: 0
+}
+item_amount = {
+0: 2,
+1: 1,
+2: 0,
+3: 0
+}
 
 [node name="Cut_scene_boss_gobby" type="Area2D" parent="enemies-2"]
 position = Vector2( 181.415, 1316.59 )
@@ -2244,16 +2288,7 @@ scale = Vector2( 0.666668, 2.43484 )
 [node name="Prototype_end" parent="." instance=ExtResource( 79 )]
 position = Vector2( 765.909, 1713.77 )
 
-[node name="leser_heal_potion" parent="." instance=ExtResource( 80 )]
-position = Vector2( 170.699, 375.586 )
-
-[node name="leser_heal_potion2" parent="." instance=ExtResource( 80 )]
-position = Vector2( 170.699, 375.586 )
-
-[node name="leser_heal_potion3" parent="." instance=ExtResource( 80 )]
-position = Vector2( 170.699, 375.586 )
-
-[node name="Knight_key" parent="." instance=ExtResource( 81 )]
+[node name="Knight_key" parent="." instance=ExtResource( 80 )]
 position = Vector2( 2066.37, 2367.38 )
 scale = Vector2( 0.5, 0.5 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]

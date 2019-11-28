@@ -9,8 +9,6 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	
@@ -29,26 +27,15 @@ func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu/ItemMenu_TextureFrame_Icon.set_texture($ItemList.get_item_icon(index))
 
 	strItemInfo = tr("NAME_ITEM") +": [color=#00aedb] " + tr(str(itemData["name"])) + "[/color]\n"
+	if itemData["type"] == "Sword":
+		strItemInfo = strItemInfo + "\n" + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
 	strItemInfo = strItemInfo + "\n [color=#b3cde0]" + tr(str(itemData["description"])) + "[/color]"
 
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)
-	if itemData["quest"] == true:
-		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
-	elif itemData["quest"] == false:
-		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
-		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
+	$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
+	$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("COLLECT_BUTTON"))
 	$ItemList.activeItemSlot = index
 	$WindowDialog_ItemMenu.popup()
-
-func _on_ItemMenu_Button_DropItem_pressed():
-	var newAmount = Global_Player.inventory_removeItem($ItemList.dropItemSlot)
-
-	if (newAmount < 1):
-		$WindowDialog_ItemMenu.hide()
-	else:
-		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(newAmount) + ") " +tr("DROP_BUTTON"))
-	$ItemList.update_slot($ItemList.dropItemSlot)
-
 
 	pass # Replace with function body.
 

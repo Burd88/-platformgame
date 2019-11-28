@@ -17,8 +17,23 @@ script/source = "extends Area2D
 # var b = \"text\"
 var useable = true
 var target
+var no_use = false
+export var item_ids ={0:0,1:0,2:0,3:0}
+export var item_amount = {0:0,1:0,2:0,3:0}
+onready var blue = load(\"res://items/chest/S_ItemHeavyOutline_ChestBlue_00.png\")
+onready var gold = load(\"res://items/chest/S_ItemHeavyOutline_ChestGold_00.png\")
+onready var green = load(\"res://items/chest/S_ItemHeavyOutline_ChestGreen_00.png\")
+onready var purple = load(\"res://items/chest/S_ItemHeavyOutline_ChestPurple_00.png\")
+onready var red = load(\"res://items/chest/S_ItemHeavyOutline_ChestRed_00.png\")
+var texture_array = [\"res://items/chest/S_ItemHeavyOutline_ChestBlue_00.png\"
+,\"res://items/chest/S_ItemHeavyOutline_ChestGold_00.png\"
+,\"res://items/chest/S_ItemHeavyOutline_ChestGreen_00.png\"
+,\"res://items/chest/S_ItemHeavyOutline_ChestPurple_00.png\"
+,\"res://items/chest/S_ItemHeavyOutline_ChestRed_00.png\"]
 # Called when the node enters the scene tree for the first time.
+var inventory_save
 func _ready():
+	$Sprite.texture = load(texture_array[randi()%5])
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +41,7 @@ func _process(delta):
 	if target:
 		if global_position.distance_to(target.global_position) > 50:
 			$CanvasLayer/Panel.hide()
+	
 	pass
 
 
@@ -34,20 +50,79 @@ func _process(delta):
 func _on_Chest_black_area_entered(area):
 	if area.name == \"use\":
 		$CanvasLayer/Panel.show()
+		
+		if no_use == false:
+			$CanvasLayer/Panel/ItemList.add_item_chest(item_ids,item_amount)
+			no_use = true
+			inventory_save = $CanvasLayer/Panel/ItemList.inventory
+		elif no_use == true:
+			$CanvasLayer/Panel/ItemList.load_item_chest(inventory_save)
 		target = area
+		
 	pass # Replace with function body.
 
+func save(): # сохранение игры
+
+	var save_dict = {
+		\"filename\" : get_filename(),
+		\"parent\" : get_parent().get_path(),
+		\"pos_x\" : position.x, # Vector2 is not supported by JSON
+		\"pos_y\" : position.y,
+		\"name\" : name,
+		\"item_ids\" : item_ids,
+		\"no_use\" : no_use,
+		\"inventory_save\" : inventory_save,
+		\"item_amount\" : item_amount
+		
+	
+	}
+
+	return save_dict
+
+	pass
 
 
+#func _on_ItemList_item_selected(index):
+#	var id_item = $CanvasLayer/Panel/ItemList.get_item_metadata(index)[\"id\"]
+#
+#	if get_parent().get_node(\"Player/inventary/inventory/bag1\"):
+#		get_parent().get_node(\"Player/inventary/inventory/bag1\").update_slot(Global_Player.inventory_addItem(int(id_item)))
+#		$CanvasLayer/Panel/ItemList.remove_item(index)
+#	pass # Replace with function body.
 
-func _on_ItemList_item_selected(index):
-	var id_item = $CanvasLayer/Panel/ItemList.get_item_metadata(index)[\"id\"]
 
-	if get_parent().get_node(\"Player/inventary/inventory/bag1\"):
-		get_parent().get_node(\"Player/inventary/inventory/bag1\").update_slot(Global_Player.inventory_addItem(int(id_item)))
-		$CanvasLayer/Panel/ItemList.remove_item(index)
+func _on_ItemMenu_Button_DropItem_pressed():
+	var newAmount = inventory_removeItem($CanvasLayer/Panel/ItemList.dropItemSlot)
+	
+	var player = get_tree().get_nodes_in_group(\"player\")
+	if (newAmount < 1):
+		$CanvasLayer/Panel/WindowDialog_ItemMenu.hide()
+	else:
+		$CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text(\"(\" + String(newAmount) + \") \" +tr(\"COLLECT_BUTTON\"))
+	
+
+	if player[0].get_node(\"inventary/inventory/bag1\"):
+		player[0].get_node(\"inventary/inventory/bag1\").update_slot(Global_Player.inventory_addItem(int($CanvasLayer/Panel/ItemList.get_item_metadata($CanvasLayer/Panel/ItemList.dropItemSlot)[\"id\"])))
+	$CanvasLayer/Panel/ItemList.update_slot($CanvasLayer/Panel/ItemList.dropItemSlot)
 	pass # Replace with function body.
-"
+	
+func inventory_removeItem(slot) -> int:
+	var newAmount = $CanvasLayer/Panel/ItemList.inventory[String(slot)][\"amount\"] - 1
+	if (newAmount < 1):
+		inventory_updateItem(slot, 0, 0)
+
+		return 0
+	$CanvasLayer/Panel/ItemList.inventory[String(slot)][\"amount\"] = newAmount
+	return newAmount
+
+func inventory_updateItem(slot:int, new_id:int, new_amount:int) -> void:
+	if (slot < 0):
+		return
+	if (new_amount < 0):
+		return
+	if (Global_ItemDatabase.get_item(str(new_id)).empty()):
+		return
+	$CanvasLayer/Panel/ItemList.inventory[str(slot)] = {\"id\": str(new_id), \"amount\": int(new_amount)}"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 6.04535 )
@@ -69,7 +144,9 @@ gradient = SubResource( 61 )
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 400, 120 )
 
-[node name="Chest_black" type="Area2D"]
+[node name="Chest" type="Area2D" groups=[
+"save",
+]]
 script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -81,10 +158,11 @@ texture = ExtResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-margin_left = 530.0
-margin_top = 277.0
-margin_right = 750.0
-margin_bottom = 497.0
+visible = false
+margin_left = 809.923
+margin_top = 178.781
+margin_right = 1029.92
+margin_bottom = 398.781
 custom_styles/panel = SubResource( 4 )
 script = ExtResource( 3 )
 
@@ -134,5 +212,4 @@ custom_fonts/font = ExtResource( 8 )
 text = "Кнопка"
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
-[connection signal="item_selected" from="CanvasLayer/Panel/ItemList" to="." method="_on_ItemList_item_selected"]
-[connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="CanvasLayer/Panel" method="_on_ItemMenu_Button_DropItem_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="." method="_on_ItemMenu_Button_DropItem_pressed"]

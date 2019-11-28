@@ -45,7 +45,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Exp_point_body_entered(body):
 	if body.get(\"player_type\") == true:
-		print(\"fuck\")
 		body.experience += 1
 		queue_free()
 	pass # Replace with function body.
@@ -100,7 +99,6 @@ script = SubResource( 1 )
 position = Vector2( -4.76837e-007, -4.76837e-007 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

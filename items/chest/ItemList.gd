@@ -25,21 +25,28 @@ func _ready():
 	set_allow_rmb_select(true)
 	set_process(false)
 	set_process_input(true)
+
 	
-	
+func add_item_chest(id,amount):
 	var dict:Dictionary = {"inventory":{}}
 	for slot in range (0, 4):
-		var id_item = randi()%9+1
-	
-		dict["inventory"][str(slot)] = {"id": str(id_item), "amount": 1}
+		dict["inventory"][str(slot)] = {"id": id[slot], "amount": amount[slot]}
 	#Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
 		
 	load_items()
 	pass # Replace with function body.
+	
+func load_item_chest(inven):
+	inventory = inven
+	load_items()
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
+func _process(delta):
+	update()
+	
 
 func _input(event) -> void:
 #	if (!isDraggingItem):

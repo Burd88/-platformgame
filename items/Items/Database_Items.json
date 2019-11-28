@@ -11,13 +11,15 @@
 	},
 	
 	"1": {
-		"name": "Health Potion",
-		"icon": "res://items/Health Potion/Health Potion 1.png",
-		"type": "Health_potion",
+		"name": "SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_00.png",
+		"type": "Sword",
+		"damage": 50,
 		"weight": 0.0,
-		"stackable": true,
-		"stack_limit": 10,
-		"description": "",
+		"quest": false,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_NORMAL_TEXT",
 		"sell_price": 0
 	},
 	

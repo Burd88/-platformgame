@@ -28,6 +28,8 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu/ItemMenu_TextureFrame_Icon.set_texture($inventory/bag1.get_item_icon(index))
 
 	strItemInfo = tr("NAME_ITEM") +": [color=#00aedb] " + tr(str(itemData["name"])) + "[/color]\n"
+	if itemData["type"] == "Sword":
+		strItemInfo = strItemInfo + "\n" + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
 	strItemInfo = strItemInfo + "\n [color=#b3cde0]" + tr(str(itemData["description"])) + "[/color]"
 
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)

@@ -27,6 +27,7 @@ onready var minor_heal_potion = preload("res://items/Items/health_potion/minor_h
 onready var arrow_item = preload("res://items/Items/Arrow.tscn")
 onready var gear_item = preload("res://items/Items/Gear/Gear.tscn")
 onready var exp_point = preload("res://items/exp_point/Exp_point.tscn")
+onready var chest_loot = preload("res://items/chest/Chest_black.tscn")
 var enemy_shoot_count = 6
 var damage
 var attack_now = false
@@ -114,26 +115,9 @@ func _drop_item():
 	var gear_loot = gear_item.instance()
 	get_parent().add_child(gear_loot)
 	gear_loot.position = position+Vector2(-16,0)
-#	if item_drop == 0:
-#		var item = lesser_heal_potion.instance()
-#		get_parent().add_child(item)
-#		item.position = position
-#	if item_drop == 1:
-#		var item = minor_heal_potion.instance()
-#		get_parent().add_child(item)
-#		item.position = position
-	if item_drop == 0:
-		var item = heal_potion.instance()
-		get_parent().add_child(item)
-		item.position = position+Vector2(16,0)
-	elif item_drop == 1:
-		var item = big_heal_potion.instance()
-		get_parent().add_child(item)
-		item.position = position
-#	elif item_drop == 1:
-#		var item = arrow_item.instance()
-#		get_parent().add_child(item)
-#		item.position = position
+
+
+	
 
 	
 func fight():
@@ -226,7 +210,7 @@ func _on_spr_animation_finished():
 	if $spr.animation == "die" : 
 		_drop_item()
 		get_parent().get_parent().get_parent().boss1_1_kill = true
-		
+		get_parent().get_node("Chest").show()
 		queue_free()
 		
 		

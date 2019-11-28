@@ -22,7 +22,7 @@ func load_data() -> void:
 			dict["inventory"][str(slot)] = {"id": "0", "amount": 0}
 		#Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
-		print("empty inventory")
+
 	else:
 		#playerData = Global_DataParser.load_data(url_PlayerData)
 		inventory = load_inventory#playerData["inventory"]
