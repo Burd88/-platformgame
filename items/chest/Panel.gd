@@ -27,8 +27,14 @@ func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu/ItemMenu_TextureFrame_Icon.set_texture($ItemList.get_item_icon(index))
 
 	strItemInfo = tr("NAME_ITEM") +": [color=#00aedb] " + tr(str(itemData["name"])) + "[/color]\n"
-	if itemData["type"] == "Sword":
-		strItemInfo = strItemInfo + "\n" + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
+	if itemData["type"] == "weapon":
+		strItemInfo = strItemInfo + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
+	if itemData["str"] > 0:
+		strItemInfo = strItemInfo + tr("STR_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["str"])) + "[/color]\n"
+	if itemData["agi"] > 0:
+		strItemInfo = strItemInfo + tr("AGI_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["agi"])) + "[/color]\n"
+	if itemData["hp"] > 0:
+		strItemInfo = strItemInfo + tr("HP_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["hp"])) + "[/color]\n"
 	strItemInfo = strItemInfo + "\n [color=#b3cde0]" + tr(str(itemData["description"])) + "[/color]"
 
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)

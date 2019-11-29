@@ -42,3 +42,5 @@ PLAYER_INFO_LEVEL;Уровень: ;Level:
 PLAYER_INFO_EXPIRIENCE;Опыт: ;Expirience: 
 PLAYER_INFO_SKILL_POINTS;Очки навыков: ;Skill points: 
 PLAYER_INFO_TEXT;Информация;Info
+UNEQUIP_BUTTON;Снять;Take off
+EQUIP_BUTTON;Одеть;Equip

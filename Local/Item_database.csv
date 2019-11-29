@@ -1,6 +1,9 @@
 ﻿id;ru;en
 NAME_ITEM;Название;Name
 DAMAGE_ITEM_TEXT;Урон;Damage
+STR_ITEM_TEXT;Сила;Strangth
+AGI_ITEM_TEXT;Ловкость;Agility
+HP_ITEM_TEXT;Здоровье;Health
 DROP_BUTTON;Выкинуть;Drop
 COLLECT_BUTTON;Собрать;Collect
 LESSER_HEAL_POTION;Слабое лечебное зелье;Lesser heal potion

@@ -117,7 +117,7 @@ func load_items():
 
 func update_slot(slot:int) -> void:
 	if (slot < 0):
-		return
+		return 
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = Global_Player.inventory[str(slot)]
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem["id"])).duplicate()

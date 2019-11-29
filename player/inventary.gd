@@ -28,8 +28,14 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu/ItemMenu_TextureFrame_Icon.set_texture($inventory/bag1.get_item_icon(index))
 
 	strItemInfo = tr("NAME_ITEM") +": [color=#00aedb] " + tr(str(itemData["name"])) + "[/color]\n"
-	if itemData["type"] == "Sword":
-		strItemInfo = strItemInfo + "\n" + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
+	if itemData["type"] == "weapon":
+		strItemInfo = strItemInfo + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
+	if itemData["str"] > 0:
+		strItemInfo = strItemInfo + tr("STR_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["str"])) + "[/color]\n"
+	if itemData["agi"] > 0:
+		strItemInfo = strItemInfo + tr("AGI_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["agi"])) + "[/color]\n"
+	if itemData["hp"] > 0:
+		strItemInfo = strItemInfo + tr("HP_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["hp"])) + "[/color]\n"
 	strItemInfo = strItemInfo + "\n [color=#b3cde0]" + tr(str(itemData["description"])) + "[/color]"
 
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)
@@ -40,6 +46,10 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
 	$inventory/bag1.activeItemSlot = index
 	$WindowDialog_ItemMenu.popup()
+	if itemData["equip"] == true:
+		$WindowDialog_ItemMenu/equip_button.show()
+	elif itemData["equip"] != false:
+		$WindowDialog_ItemMenu/equip_button.hide()
 
 func _on_ItemMenu_Button_DropItem_pressed():
 	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "LESSER_HEAL_POTION":
@@ -78,4 +88,160 @@ func _on_inventory_mouse_entered():
 
 func _on_inventory_mouse_exited():
 	get_parent().button = false
+	pass # Replace with function body.
+
+
+func _on_equip_pressed():
+
+#
+#	if (newAmount < 1):
+#		$WindowDialog_ItemMenu.hide()
+#	else:
+##		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(newAmount) + ") " +tr("DROP_BUTTON"))
+	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "weapon":
+		print(get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory)
+		if get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory["id"] == "0":
+
+			get_parent().get_node("Player_info/equip_panel/weapon/weapon").update_slot(get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().weapon_inventory = get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/weapon")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/weapon/weapon").update_slot(get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().weapon_inventory = get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+
+			$WindowDialog_ItemMenu.hide()
+	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "chest":
+		print(get_parent().get_node("Player_info/equip_panel/chest/chest").inventory)
+		if get_parent().get_node("Player_info/equip_panel/chest/chest").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/chest/chest").update_slot(get_parent().get_node("Player_info/equip_panel/chest/chest").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().chest_inventory = get_parent().get_node("Player_info/equip_panel/chest/chest").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/chest")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/chest/chest").update_slot(get_parent().get_node("Player_info/equip_panel/chest/chest").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().chest_inventory = get_parent().get_node("Player_info/equip_panel/chest/chest").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "gloves":
+		print(get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory)
+		if get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/gloves/gloves").update_slot(get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().gloves_inventory = get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/gloves")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/gloves/gloves").update_slot(get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().gloves_inventory = get_parent().get_node("Player_info/equip_panel/gloves/gloves").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "foot":
+		print(get_parent().get_node("Player_info/equip_panel/foot/foot").inventory)
+		if get_parent().get_node("Player_info/equip_panel/foot/foot").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/foot/foot").update_slot(get_parent().get_node("Player_info/equip_panel/foot/foot").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().foot_inventory = get_parent().get_node("Player_info/equip_panel/foot/foot").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/foot")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/foot/foot").update_slot(get_parent().get_node("Player_info/equip_panel/foot/foot").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().foot_inventory = get_parent().get_node("Player_info/equip_panel/foot/foot").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "feet":
+		print(get_parent().get_node("Player_info/equip_panel/feet/feet").inventory)
+		if get_parent().get_node("Player_info/equip_panel/feet/feet").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/feet/feet").update_slot(get_parent().get_node("Player_info/equip_panel/feet/feet").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().feet_inventory = get_parent().get_node("Player_info/equip_panel/feet/feet").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/feet")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/feet/feet").update_slot(get_parent().get_node("Player_info/equip_panel/feet/feet").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().feet_inventory = get_parent().get_node("Player_info/equip_panel/feet/feet").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "ring":
+		print(get_parent().get_node("Player_info/equip_panel/ring/ring").inventory)
+		if get_parent().get_node("Player_info/equip_panel/ring/ring").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/ring/ring").update_slot(get_parent().get_node("Player_info/equip_panel/ring/ring").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().ring_inventory = get_parent().get_node("Player_info/equip_panel/ring/ring").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		elif get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/ring2/ring2").update_slot(get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().ring2_inventory = get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/ring")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/ring/ring").update_slot(get_parent().get_node("Player_info/equip_panel/ring/ring").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().ring_inventory = get_parent().get_node("Player_info/equip_panel/ring/ring").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	
 	pass # Replace with function body.
