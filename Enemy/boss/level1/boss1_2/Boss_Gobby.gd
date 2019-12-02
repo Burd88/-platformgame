@@ -76,12 +76,12 @@ func _process(delta):
 					for i in range(25,45):
 
 						var stal = stalactite.instance()
-						stal.start(Vector2(rand_range(70,440),1250),rand_range(100,220))
+						stal.start(Vector2(rand_range(70,440),1250),rand_range(100,200))
 						get_parent().add_child(stal)
-					for i in range(10,20):
+					for i in range(10,10):
 						
 						var stal = stalactite.instance()
-						stal.start(Vector2(rand_range(400,440),1250),rand_range(100,180))
+						stal.start(Vector2(rand_range(400,440),1250),rand_range(100,200))
 						get_parent().add_child(stal)
 					pass
 					pass

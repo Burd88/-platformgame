@@ -30,7 +30,7 @@ func _ready():
 func add_item_chest(id,amount):
 	var dict:Dictionary = {"inventory":{}}
 	for slot in range (0, 4):
-		dict["inventory"][str(slot)] = {"id": id[slot], "amount": amount[slot]}
+		dict["inventory"][str(slot)] = {"amount": amount[slot],"id": id[slot]}
 	#Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
 		

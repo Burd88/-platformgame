@@ -164,11 +164,13 @@ func _expirience(): # получение опыта
 	$GUI/Exp_bar/fg.max_value = experience_next_level
 	$GUI/level_bar/level.text = str(level)
 	if experience == experience_next_level:
+		$UI_paneli/Button_UI/Pinfo_button/AnimationPlayer.play("level_up")
 		level +=1
 		skill_point += 3
 		experience = 0
 		experience_next_level += level*3
 	elif experience > experience_next_level:
+		$UI_paneli/Button_UI/Pinfo_button/AnimationPlayer.play("level_up")
 		level +=1
 		skill_point += 3
 		var miss_exp = experience - experience_next_level
@@ -593,7 +595,7 @@ func _gui():# Графический интерфейс игрока
 	
 	$GUI/fps.text = str("FPS: ", Engine.get_frames_per_second())
 
-	if health_now < health and health_now > 0 and regen_hp == true:
+	if health_now < full_hp and health_now > 0 and regen_hp == true:
 		health_now += 0.07
 
 func _on_Regen_timer_timeout():# таймер начала регенерации здоровья
@@ -857,7 +859,7 @@ func inventory_check(index):# использование предмета инв
 		Global_Player.inventory_removeItem(index)
 		$inventary/inventory/bag1.update_slot(index)
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "LESSER_HEAL_POTION":
-		if  health_now < health:
+		if  health_now < full_hp:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
 			var restore = randi()%100+100
@@ -868,13 +870,13 @@ func inventory_check(index):# использование предмета инв
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			lesser = false
-		elif health_now > health:
-			health_now = health
-		elif  health_now == health:
+		elif health_now > full_hp:
+			health_now = full_hp
+		elif  health_now == full_hp:
 			print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MINOR_HEAL_POTION":
-		if  health_now < health:
+		if  health_now < full_hp:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
 			var restore = randi()%100+200
@@ -885,13 +887,13 @@ func inventory_check(index):# использование предмета инв
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			minor = false
-		elif health_now > health:
-			health_now = health
-		elif  health_now == health:
+		elif health_now > full_hp:
+			health_now = full_hp
+		elif  health_now == full_hp:
 			print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "HEAL_POTION":
-		if  health_now < health:
+		if  health_now < full_hp:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
 			var restore = randi()%100+300
@@ -901,13 +903,13 @@ func inventory_check(index):# использование предмета инв
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			norm = false
-		elif health_now > health:
-			health_now = health
-		elif  health_now == health:
+		elif health_now > full_hp:
+			health_now = full_hp
+		elif  health_now == full_hp:
 			print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "BIG_HEAL_POTION":
-		if  health_now < health:
+		if  health_now < full_hp:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
 			var restore = randi()%100+400
@@ -917,13 +919,13 @@ func inventory_check(index):# использование предмета инв
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			big = false
-		elif health_now > health:
-			health_now = health
-		elif  health_now == health:
+		elif health_now > full_hp:
+			health_now = full_hp
+		elif  health_now == full_hp:
 			print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MAJOR_HEAL_POTION":
-		if  health_now < health:
+		if  health_now < full_hp:
 			$move_sound.stream = bottle_drink_sound
 			$move_sound.play()
 			var restore = randi()%100+500
@@ -933,9 +935,9 @@ func inventory_check(index):# использование предмета инв
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			major = false
-		elif health_now > health:
-			health_now = health
-		elif  health_now == health:
+		elif health_now > full_hp:
+			health_now = full_hp
+		elif  health_now == full_hp:
 			print("full hp")
 			pass
 	pass

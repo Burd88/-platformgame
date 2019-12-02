@@ -29,7 +29,7 @@ func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	strItemInfo = tr("NAME_ITEM") +": [color=#00aedb] " + tr(str(itemData["name"])) + "[/color]\n"
 	if itemData["type"] == "weapon":
 		strItemInfo = strItemInfo + tr("DAMAGE_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["damage"])) + "[/color]\n"
-	if itemData["str"] > 0:
+	if int(itemData["str"]) > 0:
 		strItemInfo = strItemInfo + tr("STR_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["str"])) + "[/color]\n"
 	if itemData["agi"] > 0:
 		strItemInfo = strItemInfo + tr("AGI_ITEM_TEXT") + ": [color=#b3cde0]" + tr(str(itemData["agi"])) + "[/color]\n"

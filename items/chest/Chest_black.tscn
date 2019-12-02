@@ -33,6 +33,9 @@ var texture_array = [\"res://items/chest/S_ItemHeavyOutline_ChestBlue_00.png\"
 # Called when the node enters the scene tree for the first time.
 var inventory_save
 func _ready():
+	$CanvasLayer/Panel/ItemList.add_item_chest(item_ids,item_amount)
+	no_use = true
+	inventory_save = $CanvasLayer/Panel/ItemList.inventory
 	$Sprite.texture = load(texture_array[randi()%5])
 	pass # Replace with function body.
 

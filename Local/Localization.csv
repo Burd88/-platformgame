@@ -42,5 +42,8 @@ PLAYER_INFO_LEVEL;Уровень: ;Level:
 PLAYER_INFO_EXPIRIENCE;Опыт: ;Expirience: 
 PLAYER_INFO_SKILL_POINTS;Очки навыков: ;Skill points: 
 PLAYER_INFO_TEXT;Информация;Info
+TOOL_AGI_TEXT;Повышает скорость атаки персонажа;Increases your character's attack speed
+TOOL_STR_TEXT;Повышает урон и немного здоровье персонажа;Increases damage and a little health of the character
+TOOL_HP_TEXT;Повышает здоровье персонажа;Increases health of character
 UNEQUIP_BUTTON;Снять;Take off
 EQUIP_BUTTON;Одеть;Equip
