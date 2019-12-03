@@ -270,9 +270,9 @@
 	},
 	
 	"16": {
-		"name": "RING",
-		"icon": "res://items/128x128/item_20.png",
-		"type": "ring",
+		"name": "NECK",
+		"icon": "res://items/more_items/Ac_Necklace04.png",
+		"type": "neck",
 		"weight": 0.0,		
 		"str": 2,
 		"agi": 5,
@@ -281,7 +281,7 @@
 		"equip": true,
 		"stackable": false,
 		"stack_limit": 1,
-		"description": "RING_NORMAL_TEXT",
+		"description": "NECK_NORMAL_TEXT",
 		"sell_price": 0
 	},
 

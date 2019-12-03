@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://items/chest/S_ItemHeavyOutline_ChestPurple_00.png" type="Texture" id=1]
 [ext_resource path="res://items/chest/Image12.png" type="Texture" id=2]
@@ -148,14 +148,78 @@ region_rect = Rect2( 0, 0, 220, 220 )
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="GDScript" id=5]
+script/source = "extends ItemList
+var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var max_slots = 4
+var arrow_count_random
+var inventory 
+
+var activeItemSlot:int = -1
+var dropItemSlot:int = -1
+
+onready var isDraggingItem:bool = false
+onready var mouseButtonReleased:bool = true
+var draggedItemSlot:int = -1
+onready var initial_mousePos:Vector2 = Vector2()
+onready var cursor_insideItemList:bool = false
+
+var isAwaitingSplit:bool = false
+var splitItemSlot:int = -1
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_max_columns(4)
+	set_fixed_icon_size(Vector2(32,32))
+	set_icon_mode(ICON_MODE_TOP)
+	set_select_mode(SELECT_SINGLE)
+	set_same_column_width(true)
+	set_allow_rmb_select(true)
+	set_process(false)
+	set_process_input(true)
+	var dict:Dictionary = {\"inventory\":{}}
+	for slot in range (0, 4):
+		dict[\"inventory\"][str(slot)] = {\"amount\": 0,\"id\": 0}
+	#Global_DataParser.write_data(url_PlayerData, dict)
+		inventory = dict[\"inventory\"]
+		
+	load_items()
+
+
+func load_items():
+	clear()
+	for slot in range(0, 4):
+		add_item(\"\", null, false)
+		update_slot(slot)
+#func _on_ItemList_item_selected(index):
+func update_slot(slot:int) -> void:
+	if (slot < 0):
+		return
+	#print(Global_Player.inventory)
+	var inventoryItem:Dictionary = inventory[str(slot)]
+	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
+	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var amount = int(inventoryItem[\"amount\"])
+
+	itemMetaData[\"amount\"] = amount
+	if (!itemMetaData[\"stackable\"]):
+		amount = \" \"
+	set_item_text(slot, String(amount))
+	set_item_icon(slot, icon)
+	set_item_selectable(slot, int(inventoryItem[\"id\"]) > 0)
+	set_item_metadata(slot, itemMetaData)
+	set_item_tooltip(slot, itemMetaData[\"name\"])
+	set_item_tooltip_enabled(slot, int(inventoryItem[\"id\"]) > 0)
+#func _on_ItemList_item_selected(index):
+#	pass # Replace with function body."
+
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.895161, 1 )
 colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 400, 120 )
 
@@ -181,6 +245,16 @@ margin_bottom = 227.0
 custom_styles/panel = SubResource( 3 )
 script = ExtResource( 3 )
 
+[node name="ItemList2" type="ItemList" parent="CanvasLayer/Panel"]
+margin_left = 68.0
+margin_top = 77.0
+margin_right = 154.0
+margin_bottom = 164.0
+custom_styles/bg = SubResource( 4 )
+custom_constants/icon_margin = -30
+custom_constants/hseparation = 0
+script = SubResource( 5 )
+
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Panel"]
 margin_left = 68.0
 margin_top = 77.0
@@ -196,8 +270,8 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 438.0
-custom_icons/close_highlight = SubResource( 6 )
-custom_styles/panel = SubResource( 7 )
+custom_icons/close_highlight = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
 margin_left = 125.784
@@ -237,6 +311,7 @@ text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
+[connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList2" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="popup_hide" from="CanvasLayer/Panel/WindowDialog_ItemMenu" to="." method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="." method="_on_ItemMenu_Button_DropItem_pressed"]
