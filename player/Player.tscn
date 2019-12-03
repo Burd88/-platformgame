@@ -3407,7 +3407,6 @@ texture_mode = 1
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -3456,7 +3455,7 @@ margin_bottom = 74.9996
 custom_styles/panel = SubResource( 5 )
 script = SubResource( 6 )
 
-[node name="weapon2" type="ItemList" parent="Player_info/equip_panel/weapon"]
+[node name="weapon_bg" type="ItemList" parent="Player_info/equip_panel/weapon"]
 margin_left = 19.4589
 margin_top = 15.8503
 margin_right = 51.4589
@@ -3530,7 +3529,7 @@ margin_bottom = 125.0
 custom_styles/panel = SubResource( 12 )
 script = SubResource( 13 )
 
-[node name="chest2" type="ItemList" parent="Player_info/equip_panel/chest"]
+[node name="chest_bg" type="ItemList" parent="Player_info/equip_panel/chest"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -3604,7 +3603,7 @@ margin_bottom = 175.0
 custom_styles/panel = SubResource( 19 )
 script = SubResource( 20 )
 
-[node name="gloves2" type="ItemList" parent="Player_info/equip_panel/gloves"]
+[node name="gloves_bg" type="ItemList" parent="Player_info/equip_panel/gloves"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -3678,7 +3677,7 @@ margin_bottom = 224.999
 custom_styles/panel = SubResource( 26 )
 script = SubResource( 27 )
 
-[node name="foot2" type="ItemList" parent="Player_info/equip_panel/foot"]
+[node name="foot_bg" type="ItemList" parent="Player_info/equip_panel/foot"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -3752,7 +3751,7 @@ margin_bottom = 275.0
 custom_styles/panel = SubResource( 33 )
 script = SubResource( 34 )
 
-[node name="feet2" type="ItemList" parent="Player_info/equip_panel/feet"]
+[node name="feet_bg" type="ItemList" parent="Player_info/equip_panel/feet"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -3826,7 +3825,7 @@ margin_bottom = 325.0
 custom_styles/panel = SubResource( 40 )
 script = SubResource( 41 )
 
-[node name="ring2" type="ItemList" parent="Player_info/equip_panel/ring"]
+[node name="ring_bg" type="ItemList" parent="Player_info/equip_panel/ring"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -3900,7 +3899,7 @@ margin_bottom = 375.0
 custom_styles/panel = SubResource( 47 )
 script = SubResource( 48 )
 
-[node name="neck2" type="ItemList" parent="Player_info/equip_panel/neck"]
+[node name="neck_bg" type="ItemList" parent="Player_info/equip_panel/neck"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
@@ -4588,31 +4587,31 @@ shape = SubResource( 114 )
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="timeout" from="Camera2D/time_move" to="." method="_on_time_move_timeout"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/weapon/weapon2" to="Player_info/equip_panel/weapon" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/weapon/weapon_bg" to="Player_info/equip_panel/weapon" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/weapon/weapon" to="Player_info/equip_panel/weapon" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/weapon/WindowDialog_ItemMenu" to="Player_info/equip_panel/weapon" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/weapon/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/weapon" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/chest/chest2" to="Player_info/equip_panel/chest" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/chest/chest_bg" to="Player_info/equip_panel/chest" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/chest/chest" to="Player_info/equip_panel/chest" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/chest/WindowDialog_ItemMenu" to="Player_info/equip_panel/chest" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/chest/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/chest" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/gloves/gloves2" to="Player_info/equip_panel/gloves" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/gloves/gloves_bg" to="Player_info/equip_panel/gloves" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/gloves/gloves" to="Player_info/equip_panel/gloves" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/gloves/WindowDialog_ItemMenu" to="Player_info/equip_panel/gloves" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/gloves/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/gloves" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/foot/foot2" to="Player_info/equip_panel/foot" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/foot/foot_bg" to="Player_info/equip_panel/foot" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/foot/foot" to="Player_info/equip_panel/foot" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/foot/WindowDialog_ItemMenu" to="Player_info/equip_panel/foot" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/foot/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/foot" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/feet/feet2" to="Player_info/equip_panel/feet" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/feet/feet_bg" to="Player_info/equip_panel/feet" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/feet/feet" to="Player_info/equip_panel/feet" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/feet/WindowDialog_ItemMenu" to="Player_info/equip_panel/feet" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/feet/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/feet" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/ring/ring2" to="Player_info/equip_panel/ring" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/ring/ring_bg" to="Player_info/equip_panel/ring" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/ring/ring" to="Player_info/equip_panel/ring" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/ring/WindowDialog_ItemMenu" to="Player_info/equip_panel/ring" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/ring/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/ring" method="_on_ItemMenu_Button_DropItem_pressed"]
-[connection signal="item_rmb_selected" from="Player_info/equip_panel/neck/neck2" to="Player_info/equip_panel/neck" method="_on_weapon_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="Player_info/equip_panel/neck/neck_bg" to="Player_info/equip_panel/neck" method="_on_weapon_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="Player_info/equip_panel/neck/neck" to="Player_info/equip_panel/neck" method="_on_weapon_item_rmb_selected"]
 [connection signal="popup_hide" from="Player_info/equip_panel/neck/WindowDialog_ItemMenu" to="Player_info/equip_panel/neck" method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="Player_info/equip_panel/neck/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="Player_info/equip_panel/neck" method="_on_ItemMenu_Button_DropItem_pressed"]
