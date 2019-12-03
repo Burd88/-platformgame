@@ -1749,6 +1749,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -1766,6 +1767,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit2"]
@@ -1951,6 +1953,36 @@ item_amount = {
 
 [node name="Chest_black2" parent="enemies-1" instance=ExtResource( 59 )]
 position = Vector2( 97.1495, 376.617 )
+item_ids = {
+0: 104,
+1: 105,
+2: 106,
+3: 107
+}
+item_amount = {
+0: 1,
+1: 1,
+2: 1,
+3: 1
+}
+
+[node name="Chest_black3" parent="enemies-1" instance=ExtResource( 59 )]
+position = Vector2( 119.15, 378.617 )
+item_ids = {
+0: 104,
+1: 105,
+2: 106,
+3: 107
+}
+item_amount = {
+0: 1,
+1: 1,
+2: 1,
+3: 1
+}
+
+[node name="Chest_black4" parent="enemies-1" instance=ExtResource( 59 )]
+position = Vector2( 159.15, 377.617 )
 item_ids = {
 0: 104,
 1: 105,

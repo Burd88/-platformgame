@@ -95,18 +95,25 @@ func save(): # сохранение игры
 
 
 func _on_ItemMenu_Button_DropItem_pressed():
-	var newAmount = inventory_removeItem($CanvasLayer/Panel/ItemList.dropItemSlot)
+	
 	
 	var player = get_tree().get_nodes_in_group(\"player\")
-	if (newAmount < 1):
-		$CanvasLayer/Panel/WindowDialog_ItemMenu.hide()
-	else:
-		$CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text(\"(\" + String(newAmount) + \") \" +tr(\"COLLECT_BUTTON\"))
-	
 
 	if player[0].get_node(\"inventary/inventory/bag1\"):
 		player[0].get_node(\"inventary/inventory/bag1\").update_slot(Global_Player.inventory_addItem(int($CanvasLayer/Panel/ItemList.get_item_metadata($CanvasLayer/Panel/ItemList.dropItemSlot)[\"id\"])))
-	$CanvasLayer/Panel/ItemList.update_slot($CanvasLayer/Panel/ItemList.dropItemSlot)
+		if player[0].get_node(\"inventary/inventory/bag1\").full__inventory == false:
+			var newAmount = inventory_removeItem($CanvasLayer/Panel/ItemList.dropItemSlot)
+			if (newAmount < 1):
+				$CanvasLayer/Panel/WindowDialog_ItemMenu.hide()
+			else:
+				$CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text(\"(\" + String(newAmount) + \") \" +tr(\"COLLECT_BUTTON\"))
+			
+			$CanvasLayer/Panel/ItemList.update_slot($CanvasLayer/Panel/ItemList.dropItemSlot)
+			$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.hide()
+		else:
+			print(\"Full Inventory\")
+			$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.show()
+			return
 	pass # Replace with function body.
 	
 func inventory_removeItem(slot) -> int:
@@ -125,7 +132,12 @@ func inventory_updateItem(slot:int, new_id:int, new_amount:int) -> void:
 		return
 	if (Global_ItemDatabase.get_item(str(new_id)).empty()):
 		return
-	$CanvasLayer/Panel/ItemList.inventory[str(slot)] = {\"id\": str(new_id), \"amount\": int(new_amount)}"
+	$CanvasLayer/Panel/ItemList.inventory[str(slot)] = {\"id\": str(new_id), \"amount\": int(new_amount)}
+
+func _on_WindowDialog_ItemMenu_popup_hide():
+	$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.hide()
+	pass # Replace with function body.
+"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 6.04535 )
@@ -175,7 +187,8 @@ margin_top = 77.0
 margin_right = 154.0
 margin_bottom = 164.0
 custom_styles/bg = SubResource( 4 )
-custom_constants/icon_margin = -20
+custom_constants/icon_margin = -30
+custom_constants/hseparation = 0
 script = ExtResource( 4 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="CanvasLayer/Panel"]
@@ -213,6 +226,17 @@ custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 8 )
 text = "Кнопка"
+
+[node name="Full" type="Label" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
+visible = false
+margin_left = 94.0
+margin_top = 282.0
+margin_right = 234.0
+margin_bottom = 305.0
+text = "INVENTORY_FULL_TEXT"
+align = 1
+valign = 1
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
+[connection signal="popup_hide" from="CanvasLayer/Panel/WindowDialog_ItemMenu" to="." method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="." method="_on_ItemMenu_Button_DropItem_pressed"]

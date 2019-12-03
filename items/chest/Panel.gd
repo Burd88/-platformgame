@@ -19,7 +19,7 @@ func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 
 	$ItemList.dropItemSlot = index
 	var itemData:Dictionary = $ItemList.get_item_metadata(index)
-	if (int(itemData["id"])) < 1: return
+	if (int(itemData["id"])) < 1  or (int(itemData["id"])) == 1001: return
 	var strItemInfo:String = ""
 
 	#$WindowDialog_ItemMenu.set_position(get_viewport().get_mouse_position())

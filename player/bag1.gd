@@ -13,7 +13,7 @@ onready var mouseButtonReleased:bool = true
 var draggedItemSlot:int = -1
 onready var initial_mousePos:Vector2 = Vector2()
 onready var cursor_insideItemList:bool = false
-
+var full__inventory = false
 var isAwaitingSplit:bool = false
 var splitItemSlot:int = -1
 # Called when the node enters the scene tree for the first time.
@@ -117,7 +117,10 @@ func load_items():
 
 func update_slot(slot:int) -> void:
 	if (slot < 0):
-		return 
+		full__inventory = true
+		return
+		
+	full__inventory = false
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = Global_Player.inventory[str(slot)]
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem["id"])).duplicate()

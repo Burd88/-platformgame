@@ -13,7 +13,20 @@
 		"description": "",
 		"sell_price": 0
 	},
-	
+		"1001": {
+		"name": "",
+		"icon": "res://player/UI sprite/Player_info/empty_sword_equip_slot.png",
+		"type": "null",
+		"weight": 0.0,
+		"str": 0,
+		"agi": 0,
+		"hp": 0,
+		"equip": false,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "",
+		"sell_price": 0
+	},
 	"1": {
 		"name": "SWORD",
 		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_00.png",

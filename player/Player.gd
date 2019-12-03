@@ -140,10 +140,10 @@ var ring_inventory
 var str_ring= 0
 var agi_ring= 0
 var hp_ring= 0
-var ring2_inventory
-var str_ring2= 0
-var agi_ring2= 0
-var hp_ring2= 0
+var neck_inventory
+var str_neck= 0
+var agi_neck= 0
+var hp_neck= 0
 
 var full_hp= 0
 
@@ -304,7 +304,7 @@ func save(): # сохранение игры
 		"foot_inventory" : foot_inventory,
 		"feet_inventory" : feet_inventory,
 		"ring_inventory" : ring_inventory,
-		"ring2_inventory" : ring2_inventory,
+		"neck_inventory" : neck_inventory,
 	
 	}
 	
@@ -540,10 +540,10 @@ func _attack():# атака игрока
 		#attack = false
 		pass
 	if attack and weapon == 1:
-		$spr.speed_scale = 1 + (agility+agi_chest+agi_foot+agi_feet+agi_gloves+agi_ring2+agi_ring+agi_weapon)*0.01/3
+		$spr.speed_scale = 1 + (agility+agi_chest+agi_foot+agi_feet+agi_gloves+agi_neck+agi_ring+agi_weapon)*0.01/3
 		$spr.animation = str(attack_name_sword[rand_attack_name_sword])
 	elif attack and weapon == 0:
-		$spr.speed_scale = 1 + (agility+agi_chest+agi_foot+agi_feet+agi_gloves+agi_ring2+agi_ring+agi_weapon)*0.01/3
+		$spr.speed_scale = 1 + (agility+agi_chest+agi_foot+agi_feet+agi_gloves+agi_neck+agi_ring+agi_weapon)*0.01/3
 		$spr.animation = str(attack_name[rand_attack_name])
 	elif !attack:
 		$spr.speed_scale = 1
@@ -585,7 +585,7 @@ func _gui():# Графический интерфейс игрока
 			$Player_info/equip_panel.visible = false
 		elif $Player_info/equip_panel.visible == false:
 			$Player_info/equip_panel.visible = true
-	full_hp =health+hp_chest+hp_feet+hp_feet+hp_foot+hp_gloves+hp_ring+hp_ring+hp_ring2+hp_weapon
+	full_hp =health+hp_chest+hp_feet+hp_feet+hp_foot+hp_gloves+hp_ring+hp_ring+hp_neck+hp_weapon
 	php = (health_now*100)/full_hp
 
 	$GUI/HPbar1/healthbar_pr.value = php
@@ -656,8 +656,8 @@ func _on_attack_area_body_entered(body):# урон по цели
 		$attack_area/col_Atack.disabled = true
 
 func formula():
-	min_damage = 40+(strength+str_chest+str_feet+str_foot+str_gloves+str_ring+str_ring2+str_weapon)*0.635+damage_sword
-	max_damage = 90+(strength+str_chest+str_feet+str_foot+str_gloves+str_ring+str_ring2+str_weapon)*0.63+damage_sword
+	min_damage = 40+(strength+str_chest+str_feet+str_foot+str_gloves+str_ring+str_neck+str_weapon)*0.635+damage_sword
+	max_damage = 90+(strength+str_chest+str_feet+str_foot+str_gloves+str_ring+str_neck+str_weapon)*0.63+damage_sword
 
 
 func _on_spr_frame_changed():# изменение кадров анимации персонажа

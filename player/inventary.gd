@@ -20,7 +20,7 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 
 	$inventory/bag1.dropItemSlot = index
 	var itemData:Dictionary = $inventory/bag1.get_item_metadata(index)
-	if (int(itemData["id"])) < 1: return
+	if (int(itemData["id"])) < 1  or (int(itemData["id"])) == 1001: return
 	var strItemInfo:String = ""
 
 	#$WindowDialog_ItemMenu.set_position(get_viewport().get_mouse_position())
@@ -100,7 +100,7 @@ func _on_equip_pressed():
 ##		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(newAmount) + ") " +tr("DROP_BUTTON"))
 	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "weapon":
 		print(get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory)
-		if get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory["id"] == "0":
+		if get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory["id"] == "1001":
 
 			get_parent().get_node("Player_info/equip_panel/weapon/weapon").update_slot(get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
 			get_parent().weapon_inventory = get_parent().get_node("Player_info/equip_panel/weapon/weapon").inventory
@@ -222,13 +222,6 @@ func _on_equip_pressed():
 			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
 			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
 			$WindowDialog_ItemMenu.hide()
-		elif get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory["id"] == "0":
-		
-			get_parent().get_node("Player_info/equip_panel/ring2/ring2").update_slot(get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
-			get_parent().ring2_inventory = get_parent().get_node("Player_info/equip_panel/ring2/ring2").inventory
-			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
-			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
-			$WindowDialog_ItemMenu.hide()
 		else:
 			get_parent().get_node("Player_info/equip_panel/ring")._on_ItemMenu_Button_DropItem_pressed()
 	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
@@ -243,5 +236,29 @@ func _on_equip_pressed():
 			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
 			
 			$WindowDialog_ItemMenu.hide()
+	elif $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["type"] == "neck":
+		print(get_parent().get_node("Player_info/equip_panel/neck/neck").inventory)
+		if get_parent().get_node("Player_info/equip_panel/neck/neck").inventory["id"] == "0":
+		
+			get_parent().get_node("Player_info/equip_panel/neck/neck").update_slot(get_parent().get_node("Player_info/equip_panel/neck/neck").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().neck_inventory = get_parent().get_node("Player_info/equip_panel/neck/neck").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			$WindowDialog_ItemMenu.hide()
+		else:
+			get_parent().get_node("Player_info/equip_panel/neck")._on_ItemMenu_Button_DropItem_pressed()
+	#		var newAmountt = get_parent().get_node("Player_info/equip_items").inventory_removeItem(0)
+	#
+	#		var player = get_tree().get_nodes_in_group("player")
+	#		if player[0].get_node("inventary/inventory/bag1"):
+	#			player[0].get_node("inventary/inventory/bag1").update_slot(Global_Player.inventory_addItem(int($weapon.get_item_metadata(0)["id"])))
+	#		$weapon.update_slot(0)
+			get_parent().get_node("Player_info/equip_panel/neck/neck").update_slot(get_parent().get_node("Player_info/equip_panel/neck/neck").inventory_addItem(int($inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["id"])))
+			get_parent().neck_inventory = get_parent().get_node("Player_info/equip_panel/neck/neck").inventory
+			var newAmount = Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+			$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+			$WindowDialog_ItemMenu.hide()
+	
 	
 	pass # Replace with function body.
