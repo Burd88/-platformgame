@@ -32,6 +32,7 @@ var texture_array = [\"res://items/chest/S_ItemHeavyOutline_ChestBlue_00.png\"
 ,\"res://items/chest/S_ItemHeavyOutline_ChestRed_00.png\"]
 # Called when the node enters the scene tree for the first time.
 var inventory_save
+var count_null = false
 func _ready():
 	$CanvasLayer/Panel/ItemList.add_item_chest(item_ids,item_amount)
 	no_use = true
@@ -41,16 +42,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	if $CanvasLayer/Panel/ItemList.inventory != null:
-#		if $CanvasLayer/Panel/ItemList.get_item_count() != 0:
-#			var four = 4
-#			for slot in range (0, 4):
-#				if $CanvasLayer/Panel/ItemList.inventory[str(slot)][\"id\"] == 0:
-#					$CanvasLayer/Panel/ItemList.remove_item(slot)
-#					four -=1
-#
-#		elif $CanvasLayer/Panel/ItemList.get_item_count() == 0:
-#			queue_free()
+	
+	if count_null == false and  $CanvasLayer/Panel/ItemList.get_item_metadata(0)[\"id\"] == \"0\" and $CanvasLayer/Panel/ItemList.get_item_metadata(1)[\"id\"] == \"0\"  and $CanvasLayer/Panel/ItemList.get_item_metadata(2)[\"id\"] == \"0\" and  $CanvasLayer/Panel/ItemList.get_item_metadata(3)[\"id\"] == \"0\":
+		$delete_timer.start()
+		count_null = true
+
 		
 	if target:
 		if global_position.distance_to(target.global_position) > 50:
@@ -147,6 +143,11 @@ func inventory_updateItem(slot:int, new_id:int, new_amount:int) -> void:
 
 func _on_WindowDialog_ItemMenu_popup_hide():
 	$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.hide()
+	pass # Replace with function body.
+
+
+func _on_delete_timer_timeout():
+	queue_free()
 	pass # Replace with function body.
 "
 
@@ -313,8 +314,13 @@ margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
+
+[node name="delete_timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList2" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="popup_hide" from="CanvasLayer/Panel/WindowDialog_ItemMenu" to="." method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="." method="_on_ItemMenu_Button_DropItem_pressed"]
+[connection signal="timeout" from="delete_timer" to="." method="_on_delete_timer_timeout"]
