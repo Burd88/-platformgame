@@ -1,4 +1,4 @@
-[gd_scene load_steps=328 format=2]
+[gd_scene load_steps=305 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://resourse/rope.png" type="Texture" id=2]
@@ -175,7 +175,7 @@
 [ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=173]
 [ext_resource path="res://player/light.png" type="Texture" id=174]
 [ext_resource path="res://player/UI sprite/Player_info/equip_panel.png" type="Texture" id=175]
-[ext_resource path="res://resourse/inventory_panel.png" type="Texture" id=176]
+[ext_resource path="res://resourse/Item_ifo_panel.png" type="Texture" id=176]
 [ext_resource path="res://icon1.png" type="Texture" id=177]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=178]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=179]
@@ -702,7 +702,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=8]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_sword_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -750,24 +750,28 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().weapon_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"id\"] != \"0\":
-			get_parent().get_parent().get_parent().get_parent().damage_sword = damage[\"damage\"]
-			get_parent().get_parent().get_parent().get_parent().weapon = 1
-		elif damage[\"id\"] == \"0\":
-			set_item_icon(0,ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_sword_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().damage_sword = 0
-			get_parent().get_parent().get_parent().get_parent().weapon = 0
-		if damage[\"type\"] == \"weapon\":
-			get_parent().get_parent().get_parent().get_parent().str_weapon = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_weapon = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_weapon = damage[\"hp\"]
-
-		elif damage[\"type\"] != \"weapon\":
-			get_parent().get_parent().get_parent().get_parent().str_weapon = 0
-			get_parent().get_parent().get_parent().get_parent().agi_weapon = 0
-			get_parent().get_parent().get_parent().get_parent().hp_weapon = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"id\"] != \"0\":
+#			get_parent().get_parent().get_parent().get_parent().damage_sword = damage[\"damage\"]
+#			get_parent().get_parent().get_parent().get_parent().weapon = 1
+#		elif damage[\"id\"] == \"0\":
+#
+#			get_parent().get_parent().get_parent().get_parent().damage_sword = 0
+#			get_parent().get_parent().get_parent().get_parent().weapon = 0
+#		if damage[\"type\"] == \"weapon\":
+#			get_parent().get_parent().get_parent().get_parent().damage_sword = damage[\"damage\"]
+#			get_parent().get_parent().get_parent().get_parent().weapon = 1
+#			get_parent().get_parent().get_parent().get_parent().str_weapon = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_weapon = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_weapon = damage[\"hp\"]
+#
+#		elif damage[\"type\"] != \"weapon\":
+#			get_parent().get_parent().get_parent().get_parent().str_weapon = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_weapon = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_weapon = 0
+#			get_parent().get_parent().get_parent().get_parent().damage_sword = 0
+#			get_parent().get_parent().get_parent().get_parent().weapon = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -831,7 +835,23 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"weapon\":
+		get_parent().get_parent().get_parent().get_parent().damage_sword = itemMetaData[\"damage\"]
+		get_parent().get_parent().get_parent().get_parent().weapon = 1
+		get_parent().get_parent().get_parent().get_parent().str_weapon = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_weapon = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_weapon = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] != \"weapon\":
+		get_parent().get_parent().get_parent().get_parent().str_weapon = 0
+		get_parent().get_parent().get_parent().get_parent().agi_weapon = 0
+		get_parent().get_parent().get_parent().get_parent().hp_weapon = 0
+		get_parent().get_parent().get_parent().get_parent().damage_sword = 0
+		get_parent().get_parent().get_parent().get_parent().weapon = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -877,16 +897,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
-
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=122]
 texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
+region_rect = Rect2( 0, 0, 330, 360 )
 
 [sub_resource type="StyleBoxEmpty" id=12]
 
@@ -1055,8 +1068,7 @@ func update_slot(slot:int) -> void:
 
 [sub_resource type="GDScript" id=15]
 script/source = "extends ItemList
-
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot =ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_chest_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -1105,17 +1117,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().chest_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"chest\":
-			get_parent().get_parent().get_parent().get_parent().str_chest = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_chest = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_chest = damage[\"hp\"]
-		elif damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_chest_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_chest = 0
-			get_parent().get_parent().get_parent().get_parent().agi_chest = 0
-			get_parent().get_parent().get_parent().get_parent().hp_chest = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"chest\":
+#			get_parent().get_parent().get_parent().get_parent().str_chest = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_chest = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_chest = damage[\"hp\"]
+#		elif damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_chest = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_chest = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_chest = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -1179,7 +1191,19 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"chest\":
+		get_parent().get_parent().get_parent().get_parent().str_chest = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_chest = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_chest = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_chest = 0
+		get_parent().get_parent().get_parent().get_parent().agi_chest = 0
+		get_parent().get_parent().get_parent().get_parent().hp_chest = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -1224,17 +1248,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
-
-[sub_resource type="StyleBoxTexture" id=18]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -1404,7 +1417,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=22]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_gloves_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -1453,17 +1466,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().gloves_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"gloves\":
-			get_parent().get_parent().get_parent().get_parent().str_gloves = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_gloves = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_gloves = damage[\"hp\"]
-		elif damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_gloves_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_gloves = 0
-			get_parent().get_parent().get_parent().get_parent().agi_gloves = 0
-			get_parent().get_parent().get_parent().get_parent().hp_gloves = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"gloves\":
+#			get_parent().get_parent().get_parent().get_parent().str_gloves = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_gloves = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_gloves = damage[\"hp\"]
+#		elif damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_gloves = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_gloves = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_gloves = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -1527,7 +1540,19 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"gloves\":
+		get_parent().get_parent().get_parent().get_parent().str_gloves = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_gloves = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_gloves = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_gloves = 0
+		get_parent().get_parent().get_parent().get_parent().agi_gloves = 0
+		get_parent().get_parent().get_parent().get_parent().hp_gloves = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -1572,17 +1597,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=23]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=24]
-gradient = SubResource( 23 )
-
-[sub_resource type="StyleBoxTexture" id=25]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=26]
 
@@ -1751,7 +1765,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=29]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_foot_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -1800,17 +1814,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().foot_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"foot\":
-			get_parent().get_parent().get_parent().get_parent().str_foot = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_foot = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_foot = damage[\"hp\"]
-		if damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_foot_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_foot = 0
-			get_parent().get_parent().get_parent().get_parent().agi_foot = 0
-			get_parent().get_parent().get_parent().get_parent().hp_foot = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"foot\":
+#			get_parent().get_parent().get_parent().get_parent().str_foot = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_foot = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_foot = damage[\"hp\"]
+#		if damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_foot = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_foot = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_foot = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -1874,7 +1888,19 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"foot\":
+		get_parent().get_parent().get_parent().get_parent().str_foot = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_foot = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_foot = itemMetaData[\"hp\"]
+	if itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_foot = 0
+		get_parent().get_parent().get_parent().get_parent().agi_foot = 0
+		get_parent().get_parent().get_parent().get_parent().hp_foot = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -1919,17 +1945,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=30]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=31]
-gradient = SubResource( 30 )
-
-[sub_resource type="StyleBoxTexture" id=32]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=33]
 
@@ -2099,7 +2114,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=36]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_feet_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -2148,17 +2163,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().feet_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"feet\":
-			get_parent().get_parent().get_parent().get_parent().str_feet = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_feet = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_feet = damage[\"hp\"]
-		elif damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_feet_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_feet = 0
-			get_parent().get_parent().get_parent().get_parent().agi_feet = 0
-			get_parent().get_parent().get_parent().get_parent().hp_feet = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"feet\":
+#			get_parent().get_parent().get_parent().get_parent().str_feet = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_feet = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_feet = damage[\"hp\"]
+#		elif damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_feet = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_feet = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_feet = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -2222,7 +2237,19 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"feet\":
+		get_parent().get_parent().get_parent().get_parent().str_feet = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_feet = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_feet = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_feet = 0
+		get_parent().get_parent().get_parent().get_parent().agi_feet = 0
+		get_parent().get_parent().get_parent().get_parent().hp_feet = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -2267,17 +2294,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=37]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=38]
-gradient = SubResource( 37 )
-
-[sub_resource type="StyleBoxTexture" id=39]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=40]
 
@@ -2447,7 +2463,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=43]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_ring_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -2496,17 +2512,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().ring_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"ring\":
-			get_parent().get_parent().get_parent().get_parent().str_ring = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_ring = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_ring = damage[\"hp\"]
-		elif damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_ring_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_ring = 0
-			get_parent().get_parent().get_parent().get_parent().agi_ring = 0
-			get_parent().get_parent().get_parent().get_parent().hp_ring = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"ring\":
+#			get_parent().get_parent().get_parent().get_parent().str_ring = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_ring = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_ring = damage[\"hp\"]
+#		elif damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_ring = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_ring = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_ring = 0
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
 	inventory = {\"id\": id, \"amount\": amount}
@@ -2570,7 +2586,20 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+		
+	if itemMetaData[\"type\"] == \"ring\":
+		get_parent().get_parent().get_parent().get_parent().str_ring = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_ring = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_ring = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_ring = 0
+		get_parent().get_parent().get_parent().get_parent().agi_ring = 0
+		get_parent().get_parent().get_parent().get_parent().hp_ring = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -2615,17 +2644,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=44]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=45]
-gradient = SubResource( 44 )
-
-[sub_resource type="StyleBoxTexture" id=46]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=47]
 
@@ -2795,7 +2813,7 @@ func update_slot(slot:int) -> void:
 [sub_resource type="GDScript" id=50]
 script/source = "extends ItemList
 
-var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
+var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_neck_equip_slot.png\")
 var max_slots = 1
 var arrow_count_random
 var inventory 
@@ -2844,17 +2862,17 @@ func _physics_process(delta):
 		inventory = get_parent().get_parent().get_parent().get_parent().neck_inventory
 		load_items()
 		load_slot = true
-	if inventory != null:
-		var damage = (get_item_metadata(0))
-		if damage[\"type\"] == \"neck\":
-			get_parent().get_parent().get_parent().get_parent().str_neck = damage[\"str\"]
-			get_parent().get_parent().get_parent().get_parent().agi_neck = damage[\"agi\"]
-			get_parent().get_parent().get_parent().get_parent().hp_neck = damage[\"hp\"]
-		elif damage[\"type\"] == \"null\":
-			set_item_icon(0, ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_neck_equip_slot.png\"))
-			get_parent().get_parent().get_parent().get_parent().str_neck = 0
-			get_parent().get_parent().get_parent().get_parent().agi_neck = 0
-			get_parent().get_parent().get_parent().get_parent().hp_neck = 0
+#	if inventory != null:
+#		var damage = (get_item_metadata(0))
+#		if damage[\"type\"] == \"neck\":
+#			get_parent().get_parent().get_parent().get_parent().str_neck = damage[\"str\"]
+#			get_parent().get_parent().get_parent().get_parent().agi_neck = damage[\"agi\"]
+#			get_parent().get_parent().get_parent().get_parent().hp_neck = damage[\"hp\"]
+#		elif damage[\"type\"] == \"null\":
+#
+#			get_parent().get_parent().get_parent().get_parent().str_neck = 0
+#			get_parent().get_parent().get_parent().get_parent().agi_neck = 0
+#			get_parent().get_parent().get_parent().get_parent().hp_neck = 0
 
 func add_item_chest(id,amount):
 	var dict:Dictionary = {\"inventory\":{}}
@@ -2919,7 +2937,19 @@ func update_slot(slot:int) -> void:
 	#print(Global_Player.inventory)
 	var inventoryItem:Dictionary = inventory
 	var itemMetaData = Global_ItemDatabase.get_item(str(inventoryItem[\"id\"])).duplicate()
-	var icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	var icon
+	if itemMetaData[\"id\"] == \"0\":
+		icon = empty_slot
+	else:
+		icon = ResourceLoader.load(itemMetaData[\"icon\"])
+	if itemMetaData[\"type\"] == \"neck\":
+		get_parent().get_parent().get_parent().get_parent().str_neck = itemMetaData[\"str\"]
+		get_parent().get_parent().get_parent().get_parent().agi_neck = itemMetaData[\"agi\"]
+		get_parent().get_parent().get_parent().get_parent().hp_neck = itemMetaData[\"hp\"]
+	elif itemMetaData[\"type\"] == \"null\":
+		get_parent().get_parent().get_parent().get_parent().str_neck = 0
+		get_parent().get_parent().get_parent().get_parent().agi_neck = 0
+		get_parent().get_parent().get_parent().get_parent().hp_neck = 0
 	var amount = int(inventoryItem[\"amount\"])
 
 	itemMetaData[\"amount\"] = amount
@@ -2964,17 +2994,6 @@ func inventory_addItem(itemId:int) -> int:
 		return -1
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
-
-[sub_resource type="Gradient" id=51]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=52]
-gradient = SubResource( 51 )
-
-[sub_resource type="StyleBoxTexture" id=53]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
 
 [sub_resource type="StyleBoxTexture" id=54]
 texture = ExtResource( 180 )
@@ -3266,17 +3285,6 @@ region_rect = Rect2( 0, 0, 36, 36 )
 texture = ExtResource( 183 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="Gradient" id=102]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=103]
-gradient = SubResource( 102 )
-
-[sub_resource type="StyleBoxTexture" id=104]
-texture = ExtResource( 176 )
-region_rect = Rect2( 0, 0, 400, 120 )
-
 [sub_resource type="StyleBoxTexture" id=105]
 texture = ExtResource( 194 )
 region_rect = Rect2( 0, 0, 669, 165 )
@@ -3407,6 +3415,7 @@ texture_mode = 1
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -3476,33 +3485,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 8 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/weapon"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 10 )
-custom_styles/panel = SubResource( 11 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3513,10 +3521,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 87.6927
-margin_top = 283.054
-margin_right = 249.693
-margin_bottom = 306.054
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3550,33 +3558,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 15 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/chest"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 17 )
-custom_styles/panel = SubResource( 18 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3587,10 +3594,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 87.9188
-margin_top = 279.279
-margin_right = 249.919
-margin_bottom = 302.279
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3624,33 +3631,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 22 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/gloves"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 24 )
-custom_styles/panel = SubResource( 25 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3661,10 +3667,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 87.6927
-margin_top = 281.729
-margin_right = 249.693
-margin_bottom = 304.729
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3698,33 +3704,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 29 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/foot"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 31 )
-custom_styles/panel = SubResource( 32 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3735,10 +3740,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 82.9825
-margin_top = 281.729
-margin_right = 244.983
-margin_bottom = 304.729
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3772,33 +3777,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 36 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/feet"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 38 )
-custom_styles/panel = SubResource( 39 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3809,10 +3813,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 82.9825
-margin_top = 281.729
-margin_right = 244.983
-margin_bottom = 304.729
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3846,33 +3850,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 43 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/ring"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 45 )
-custom_styles/panel = SubResource( 46 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3883,10 +3886,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 82.7565
-margin_top = 281.729
-margin_right = 244.756
-margin_bottom = 304.729
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -3920,33 +3923,32 @@ fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 50 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/neck"]
-margin_left = 439.183
-margin_top = 105.538
-margin_right = 769.183
-margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 52 )
-custom_styles/panel = SubResource( 53 )
+margin_left = 427.0
+margin_top = 108.0
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
-margin_left = 130.013
-margin_top = 41.1753
-margin_right = 194.013
-margin_bottom = 105.176
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
-margin_left = 108.393
-margin_top = 246.729
-margin_right = 218.393
-margin_bottom = 281.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -3957,10 +3959,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 82.9825
-margin_top = 281.597
-margin_right = 244.983
-margin_bottom = 304.597
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1
@@ -4270,7 +4272,6 @@ custom_styles/normal = SubResource( 94 )
 script = ExtResource( 190 )
 
 [node name="inventory" type="Panel" parent="inventary"]
-visible = false
 margin_left = 27.2278
 margin_top = 223.0
 margin_right = 247.228
@@ -4334,30 +4335,29 @@ custom_styles/normal = SubResource( 101 )
 margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
-margin_bottom = 438.0
-custom_icons/close_highlight = SubResource( 103 )
-custom_styles/panel = SubResource( 104 )
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
-margin_left = 125.956
-margin_top = 40.0147
-margin_right = 189.956
-margin_bottom = 104.015
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 177 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="inventary/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 303.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="inventary/WindowDialog_ItemMenu"]
-margin_left = 185.784
-margin_top = 255.0
-margin_right = 295.784
-margin_bottom = 290.0
+margin_left = 179.456
+margin_top = 308.0
+margin_right = 289.456
+margin_bottom = 343.0
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -4366,11 +4366,21 @@ custom_styles/normal = ExtResource( 178 )
 custom_fonts/font = ExtResource( 179 )
 text = "Кнопка"
 
+[node name="Full" type="Label" parent="inventary/WindowDialog_ItemMenu"]
+visible = false
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
+text = "INVENTORY_FULL_TEXT"
+align = 1
+valign = 1
+
 [node name="equip_button" type="Button" parent="inventary/WindowDialog_ItemMenu"]
 margin_left = 34.044
-margin_top = 255.0
-margin_right = 144.044
-margin_bottom = 290.0
+margin_top = 306.046
+margin_right = 152.044
+margin_bottom = 341.046
 custom_styles/hover = ExtResource( 178 )
 custom_styles/pressed = ExtResource( 178 )
 custom_styles/focus = ExtResource( 178 )
@@ -4647,6 +4657,7 @@ shape = SubResource( 114 )
 [connection signal="mouse_entered" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_entered"]
 [connection signal="mouse_exited" from="inventary/inventory/bag1" to="inventary/inventory/bag1" method="_on_bag1_mouse_exited"]
 [connection signal="pressed" from="inventary/inventory/Button" to="inventary" method="_on_Button_pressed"]
+[connection signal="popup_hide" from="inventary/WindowDialog_ItemMenu" to="inventary" method="_on_WindowDialog_ItemMenu2_popup_hide"]
 [connection signal="pressed" from="inventary/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="inventary" method="_on_ItemMenu_Button_DropItem_pressed"]
 [connection signal="pressed" from="inventary/WindowDialog_ItemMenu/equip_button" to="inventary" method="_on_equip_pressed"]
 [connection signal="timeout" from="GUI/say_label/Timer" to="GUI/say_label" method="_on_Timer_timeout"]

@@ -174,6 +174,7 @@ func _on_Button_focus_exited():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	get_parent().get_parent().get_node("Player").cut_scene = false
+	get_parent().get_parent().first_cut_scene = true
 	queue_free()
 	pass # Replace with function body.
 

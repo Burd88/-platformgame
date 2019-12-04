@@ -315,6 +315,11 @@ func _on_visible_body_exited(body):
 func _on_spr_animation_finished():
 	if $spr.animation == "смерть":
 		var item_rand = randi()%5
+		for i in randi()%3+4:
+			var item = exp_point.instance()
+			get_parent().add_child(item)
+			item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
+			item.position = position
 	#	print(item_rand)
 		if item_rand == 0 :
 			_drop_item()

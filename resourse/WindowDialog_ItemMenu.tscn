@@ -1,49 +1,41 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://resourse/inventory_panel.png" type="Texture" id=1]
+[ext_resource path="res://resourse/Item_ifo_panel.png" type="Texture" id=1]
 [ext_resource path="res://icon1.png" type="Texture" id=2]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=3]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=4]
 
-[sub_resource type="Gradient" id=48]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=49]
-gradient = SubResource( 48 )
-
-[sub_resource type="StyleBoxTexture" id=50]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 400, 120 )
+region_rect = Rect2( 0, 0, 330, 360 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog"]
 margin_left = 427.0
 margin_top = 108.0
-margin_right = 880.0
-margin_bottom = 438.0
-custom_icons/close_highlight = SubResource( 49 )
-custom_styles/panel = SubResource( 50 )
+margin_right = 757.0
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 6 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="."]
-margin_left = 185.784
-margin_top = 38.1606
-margin_right = 249.784
-margin_bottom = 102.161
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 2 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="."]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 423.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="."]
-margin_left = 138.54
-margin_top = 246.729
-margin_right = 302.54
-margin_bottom = 286.729
+margin_left = 110.119
+margin_top = 305.0
+margin_right = 220.119
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 3 )
@@ -51,3 +43,12 @@ custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
 text = "Кнопка"
+
+[node name="Full" type="Label" parent="."]
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
+text = "INVENTORY_FULL_TEXT"
+align = 1
+valign = 1

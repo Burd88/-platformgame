@@ -48,7 +48,7 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu.popup()
 	if itemData["equip"] == true:
 		$WindowDialog_ItemMenu/equip_button.show()
-	elif itemData["equip"] != false:
+	elif itemData["equip"] == false:
 		$WindowDialog_ItemMenu/equip_button.hide()
 
 func _on_ItemMenu_Button_DropItem_pressed():
@@ -261,4 +261,8 @@ func _on_equip_pressed():
 			$WindowDialog_ItemMenu.hide()
 	
 	
+	pass # Replace with function body.
+
+
+func _on_WindowDialog_ItemMenu2_popup_hide():
 	pass # Replace with function body.

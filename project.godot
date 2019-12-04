@@ -20,7 +20,7 @@ run/main_scene="res://main/Chosse_translate.tscn"
 boot_splash/image="res://logo/logo.png"
 boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.71"
+config/version="0.0.72"
 config/name_en="This the hard way. Mercenary"
 config/name_ru="Этот нелегкий путь. Наёмник"
 

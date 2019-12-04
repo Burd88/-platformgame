@@ -876,6 +876,8 @@ script/source = "extends Area2D
 var target
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_parent().first_cut_scene == true:
+		$Katboss12.queue_free()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -1750,6 +1752,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -1767,6 +1770,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit2"]
@@ -1935,36 +1939,6 @@ position = Vector2( 450.382, 1137.39 )
 [node name="Rat_low11" parent="enemies-1" instance=ExtResource( 57 )]
 position = Vector2( 1514.03, 1133.87 )
 
-[node name="Chest_black" parent="enemies-1" instance=ExtResource( 59 )]
-position = Vector2( 63.1492, 376.617 )
-item_ids = {
-0: 4,
-1: 15,
-2: 16,
-3: 0
-}
-item_amount = {
-0: 5,
-1: 1,
-2: 1,
-3: 0
-}
-
-[node name="Chest_black2" parent="enemies-1" instance=ExtResource( 59 )]
-position = Vector2( 251.32, 378.636 )
-item_ids = {
-0: 11,
-1: 12,
-2: 13,
-3: 14
-}
-item_amount = {
-0: 1,
-1: 1,
-2: 1,
-3: 1
-}
-
 [node name="enemies-2" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -2019,24 +1993,7 @@ position = Vector2( 1044.69, 1307.61 )
 visible = false
 position = Vector2( 91.2744, 1442.62 )
 
-[node name="Gobby_chest" parent="enemies-2" instance=ExtResource( 59 )]
-visible = false
-position = Vector2( 142.026, 1465.14 )
-item_ids = {
-0: 6,
-1: 5,
-2: 10,
-3: 0
-}
-item_amount = {
-0: 3,
-1: 2,
-2: 1,
-3: 0
-}
-
 [node name="Cut_scene_boss_gobby" type="Area2D" parent="enemies-2"]
-editor/display_folded = true
 position = Vector2( 181.415, 1316.59 )
 script = ExtResource( 65 )
 __meta__ = {
@@ -2114,12 +2071,26 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 160, 80, 16, 32 )
 
+[node name="Gobby_chest" parent="enemies-2/Cut_scene_boss_gobby" instance=ExtResource( 59 )]
+position = Vector2( -39.389, 148.55 )
+item_ids = {
+0: 6,
+1: 5,
+2: 10,
+3: 0
+}
+item_amount = {
+0: 3,
+1: 2,
+2: 1,
+3: 0
+}
+
 [node name="Katboss14" parent="enemies-2" instance=ExtResource( 67 )]
 visible = false
 position = Vector2( 327.956, 1447.36 )
 
 [node name="enemies-3" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 11.0416, -1.29297 )
 __meta__ = {
 "_edit_lock_": true
@@ -2138,10 +2109,10 @@ position = Vector2( 546.496, 2353.35 )
 position = Vector2( 691.052, 2353.35 )
 
 [node name="Sceleton_alebard5" parent="enemies-3" instance=ExtResource( 68 )]
-position = Vector2( 948.04, 2209.49 )
+position = Vector2( 945.861, 2240.98 )
 
 [node name="Sceleton_alebard6" parent="enemies-3" instance=ExtResource( 68 )]
-position = Vector2( 597.474, 2209.49 )
+position = Vector2( 648.794, 2242.15 )
 
 [node name="Sceleton_alebard7" parent="enemies-3" instance=ExtResource( 68 )]
 position = Vector2( 1559.63, 2352.11 )
@@ -2150,10 +2121,10 @@ position = Vector2( 1559.63, 2352.11 )
 position = Vector2( 1742.78, 2352.68 )
 
 [node name="Sceleton_alebard9" parent="enemies-3" instance=ExtResource( 68 )]
-position = Vector2( 1671.12, 2208.21 )
+position = Vector2( 1818.56, 2241.22 )
 
 [node name="Sceleton_alebard10" parent="enemies-3" instance=ExtResource( 68 )]
-position = Vector2( 1432.22, 2209.35 )
+position = Vector2( 1521.13, 2241.92 )
 
 [node name="Undead_sword2" parent="enemies-3" instance=ExtResource( 69 )]
 position = Vector2( 608.509, 2352.91 )
@@ -2233,7 +2204,7 @@ timer_time = 3
 
 [node name="Cut_scene_start" type="Area2D" parent="."]
 pause_mode = 2
-position = Vector2( 988.89, 1014.25 )
+position = Vector2( 1000.05, 1086.78 )
 script = SubResource( 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cut_scene_start"]
@@ -2331,7 +2302,7 @@ scale = Vector2( 0.666668, 2.43484 )
 position = Vector2( 765.909, 1713.77 )
 
 [node name="Knight_key" parent="." instance=ExtResource( 80 )]
-position = Vector2( 2066.37, 2367.38 )
+position = Vector2( 1963.38, 2364.3 )
 scale = Vector2( 0.5, 0.5 )
 [connection signal="area_entered" from="trap/trap_bullet/Area2D" to="trap/trap_bullet/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="trap/trap_bullet/AnimatedSprite" to="trap/trap_bullet" method="_on_AnimatedSprite_animation_finished"]

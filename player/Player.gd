@@ -967,6 +967,7 @@ func _on_use_check_body_exited(body):# тело вышело из зоны ис�
 
 func _on_hook_area_area_entered(area):# предмет зацепа в зоне
 	if area.get("type_hook") or area.get("hook_line"):
+		attack = false
 		hook_enable = true
 		
 	pass # Replace with function body.

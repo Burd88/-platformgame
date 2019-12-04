@@ -9,14 +9,20 @@ func _ready():
 	$Torch/Light2D.enabled = false
 	$Torch2/Light2D.enabled = false
 	if get_parent().get_parent().end_cut_14 == true:
+		
 		queue_free()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if get_parent().get_parent().end_cut_14 == true :
+		$Gobby_chest.show()
+		$Gobby_chest/CollisionShape2D.disabled = false
 		$CollisionShape2D.disabled = true
-	else: pass
+	else:
+		$Gobby_chest.hide()
+		$Gobby_chest/CollisionShape2D.disabled = true
+		pass
 	pass
 
 

@@ -26,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !target:
+	if !target and  position.distance_to(position_start) > 3:
 		position += (position_start - position).normalized()*1.5
 	if target:
 #		if anim == false:
@@ -93,12 +93,14 @@ tracks/0/keys = {
 }
 
 [node name="Exp_point" type="Area2D"]
+z_index = 3
 script = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -4.76837e-007, -4.76837e-007 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

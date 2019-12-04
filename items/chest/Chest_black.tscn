@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://items/chest/S_ItemHeavyOutline_ChestPurple_00.png" type="Texture" id=1]
 [ext_resource path="res://items/chest/Image12.png" type="Texture" id=2]
 [ext_resource path="res://items/chest/Panel.gd" type="Script" id=3]
 [ext_resource path="res://items/chest/ItemList.gd" type="Script" id=4]
-[ext_resource path="res://resourse/inventory_panel.png" type="Texture" id=5]
+[ext_resource path="res://resourse/Item_ifo_panel.png" type="Texture" id=5]
 [ext_resource path="res://icon1.png" type="Texture" id=6]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=7]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=8]
@@ -41,6 +41,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	if $CanvasLayer/Panel/ItemList.inventory != null:
+#		if $CanvasLayer/Panel/ItemList.get_item_count() != 0:
+#			var four = 4
+#			for slot in range (0, 4):
+#				if $CanvasLayer/Panel/ItemList.inventory[str(slot)][\"id\"] == 0:
+#					$CanvasLayer/Panel/ItemList.remove_item(slot)
+#					four -=1
+#
+#		elif $CanvasLayer/Panel/ItemList.get_item_count() == 0:
+#			queue_free()
+		
 	if target:
 		if global_position.distance_to(target.global_position) > 50:
 			$CanvasLayer/Panel.hide()
@@ -212,16 +223,9 @@ func update_slot(slot:int) -> void:
 #func _on_ItemList_item_selected(index):
 #	pass # Replace with function body."
 
-[sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0, 0.895161, 1 )
-colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=122]
 texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 400, 120 )
+region_rect = Rect2( 0, 0, 330, 360 )
 
 [node name="Chest" type="Area2D" groups=[
 "save",
@@ -246,22 +250,22 @@ custom_styles/panel = SubResource( 3 )
 script = ExtResource( 3 )
 
 [node name="ItemList2" type="ItemList" parent="CanvasLayer/Panel"]
-margin_left = 68.0
-margin_top = 77.0
-margin_right = 154.0
-margin_bottom = 164.0
+margin_left = 77.5226
+margin_top = 83.1982
+margin_right = 163.523
+margin_bottom = 170.198
 custom_styles/bg = SubResource( 4 )
-custom_constants/icon_margin = -30
+custom_constants/icon_margin = -29
 custom_constants/hseparation = 0
 script = SubResource( 5 )
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Panel"]
-margin_left = 68.0
-margin_top = 77.0
-margin_right = 154.0
-margin_bottom = 164.0
+margin_left = 77.0811
+margin_top = 83.1982
+margin_right = 156.081
+margin_bottom = 149.198
 custom_styles/bg = SubResource( 4 )
-custom_constants/icon_margin = -30
+custom_constants/icon_margin = -29
 custom_constants/hseparation = 0
 script = ExtResource( 4 )
 
@@ -269,30 +273,29 @@ script = ExtResource( 4 )
 margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
-margin_bottom = 438.0
-custom_icons/close_highlight = SubResource( 7 )
-custom_styles/panel = SubResource( 8 )
+margin_bottom = 468.0
+custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
-margin_left = 125.784
-margin_top = 38.1606
-margin_right = 189.784
-margin_bottom = 102.161
+margin_left = 132.683
+margin_top = 32.0455
+margin_right = 196.683
+margin_bottom = 96.0455
 texture = ExtResource( 6 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
-margin_left = 31.0
-margin_top = 111.0
-margin_right = 297.0
-margin_bottom = 237.0
+margin_left = 37.0
+margin_top = 139.0
+margin_right = 292.0
+margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
 margin_left = 110.119
-margin_top = 246.729
+margin_top = 305.0
 margin_right = 220.119
-margin_bottom = 281.729
+margin_bottom = 340.0
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
@@ -303,10 +306,10 @@ text = "Кнопка"
 
 [node name="Full" type="Label" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
 visible = false
-margin_left = 94.0
-margin_top = 282.0
-margin_right = 234.0
-margin_bottom = 305.0
+margin_left = 83.5502
+margin_top = 273.0
+margin_right = 245.55
+margin_bottom = 296.0
 text = "INVENTORY_FULL_TEXT"
 align = 1
 valign = 1

@@ -47,3 +47,4 @@ func _on_ItemList_item_rmb_selected(index:int, atpos:Vector2) -> void:
 
 
 	pass # Replace with function body.
+
