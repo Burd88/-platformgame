@@ -8,7 +8,7 @@ M_BT_VERSION;Версия;Version
 M_BT_SGC_OK;ОК;OK
 M_BT_SGC_CANCEL;ОТМЕНА;CANCEL
 M_BT_SGC_LABEL;Есть сохраненная игра, если нажмете "ОК", сохранение будет удалено;There is a saved game, if you click "OK", the save will be deleted
-OPTION_FULLSCREEN_LABEL;Полноэкранный\nрежим :;Fullscreen\nmode :
+OPTION_FULLSCREEN_LABEL;Полноэкранный режим :;Fullscreen mode :
 OPTION_NAME_LABEL;Настройки;Settings
 OPTION_MUSIC_LABEL;Музыка :;Music :
 OPTION_SOUND_FX_LABEL;Прочие звуки :;Sounds FX :

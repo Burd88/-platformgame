@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main/Chosse_translate.gd" type="Script" id=1]
 [ext_resource path="res://levels/level4/Assets/Nuvens.png" type="Texture" id=2]
@@ -6,12 +6,7 @@
 [ext_resource path="res://levels/level4/Assets/Backgroud1.png" type="Texture" id=4]
 [ext_resource path="res://levels/level4/Assets/Backgroud3.png" type="Texture" id=5]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=6]
-[ext_resource path="res://resourse/button.png" type="Texture" id=7]
-[ext_resource path="res://fonts/new_dynamicfont.tres" type="DynamicFont" id=8]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 105, 54 )
+[ext_resource path="res://fonts/new_dynamicfont.tres" type="DynamicFont" id=7]
 
 [node name="Chosse_translate" type="Node2D"]
 script = ExtResource( 1 )
@@ -45,8 +40,8 @@ custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 6 )
 custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Русский"
 
 [node name="english" type="Button" parent="."]

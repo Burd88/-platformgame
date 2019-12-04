@@ -292,9 +292,9 @@ margin_bottom = 273.0
 bbcode_enabled = true
 
 [node name="ItemMenu_Button_DropItem" type="Button" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
-margin_left = 110.119
-margin_top = 305.0
-margin_right = 220.119
+margin_left = 90.0
+margin_top = 300.0
+margin_right = 240.0
 margin_bottom = 340.0
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )

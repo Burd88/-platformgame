@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=2]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Global_gui/Options.gd" type="Script" id=4]
-[ext_resource path="res://Global_gui/settings.tres" type="StyleBox" id=5]
+[ext_resource path="res://resourse/settings_panel.png" type="Texture" id=5]
 [ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=6]
 [ext_resource path="res://fonts/Options_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=8]
@@ -24,6 +24,10 @@
 [ext_resource path="res://Global_gui/Keys/Space-Key.png" type="Texture" id=22]
 [ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=23]
 [ext_resource path="res://levels/intro/Intro.tscn" type="PackedScene" id=24]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 400, 400 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 draw_center = false
@@ -171,84 +175,72 @@ custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 
 [node name="Options" type="CanvasLayer" parent="inter"]
-offset = Vector2( 500, 250 )
-transform = Transform2D( 1, 0, 0, 1, 500, 250 )
+offset = Vector2( 440, 160 )
+transform = Transform2D( 1, 0, 0, 1, 440, 160 )
 script = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="inter/Options"]
 visible = false
-margin_right = 270.0
-margin_bottom = 250.0
-custom_styles/panel = ExtResource( 5 )
+margin_right = 400.0
+margin_bottom = 400.0
+custom_styles/panel = SubResource( 11 )
 
 [node name="Name" type="Label" parent="inter/Options/Panel"]
-margin_left = 79.2649
-margin_top = 0.443787
-margin_right = 199.265
-margin_bottom = 35.4438
+margin_left = 140.0
+margin_top = 15.0
+margin_right = 260.0
+margin_bottom = 50.0
 custom_fonts/font = ExtResource( 6 )
 text = "Настройки"
 align = 1
 valign = 1
 
 [node name="music_slide" type="HSlider" parent="inter/Options/Panel"]
-margin_left = 134.5
-margin_top = 65.0
-margin_right = 234.5
-margin_bottom = 81.0
+margin_left = 160.276
+margin_top = 193.878
+margin_right = 260.276
+margin_bottom = 209.878
 min_value = -80.0
 max_value = 19.0
 tick_count = 10
 ticks_on_borders = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="sound_slide" type="HSlider" parent="inter/Options/Panel"]
-margin_left = 134.963
-margin_top = 92.0626
-margin_right = 234.963
-margin_bottom = 108.063
+margin_left = 162.171
+margin_top = 238.124
+margin_right = 262.171
+margin_bottom = 254.125
 min_value = -80.0
 max_value = 19.0
 value = -10.0
 tick_count = 10
 ticks_on_borders = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Music" type="Label" parent="inter/Options/Panel"]
-margin_left = 43.8897
-margin_top = 59.0685
-margin_right = 137.5
-margin_bottom = 82.0685
+margin_left = 69.6654
+margin_top = 187.947
+margin_right = 163.276
+margin_bottom = 210.947
 custom_fonts/font = ExtResource( 7 )
 text = "Музыка : "
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sound" type="Label" parent="inter/Options/Panel"]
-margin_left = 79.2152
-margin_top = 38.7115
-margin_right = 172.825
-margin_bottom = 61.7115
+margin_left = 100.0
+margin_top = 140.0
+margin_right = 193.61
+margin_bottom = 163.0
 custom_fonts/font = ExtResource( 7 )
 text = "Звук : "
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Fullwiscreen" type="Label" parent="inter/Options/Panel"]
-margin_left = 52.0
-margin_top = 131.41
-margin_right = 159.0
-margin_bottom = 168.41
+margin_left = 100.0
+margin_top = 270.0
+margin_right = 207.0
+margin_bottom = 307.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_fonts/font = ExtResource( 7 )
@@ -262,38 +254,35 @@ align = 1
 valign = 1
 
 [node name="Sounds" type="Label" parent="inter/Options/Panel"]
-margin_left = 14.602
-margin_top = 85.3026
-margin_right = 121.602
-margin_bottom = 108.303
+margin_left = 41.8096
+margin_top = 231.365
+margin_right = 148.81
+margin_bottom = 254.365
 custom_fonts/font = ExtResource( 7 )
 text = "Прочие звуки :"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Fullscreen_check" type="CheckBox" parent="inter/Options/Panel"]
-margin_left = 181.147
-margin_top = 140.841
-margin_right = 205.147
-margin_bottom = 164.841
+margin_left = 270.0
+margin_top = 275.0
+margin_right = 294.0
+margin_bottom = 306.0
 flat = true
 align = 1
 
 [node name="Soundall" type="CheckBox" parent="inter/Options/Panel"]
-margin_left = 149.684
-margin_top = 40.1154
-margin_right = 173.684
-margin_bottom = 64.1154
+margin_left = 200.0
+margin_top = 136.0
+margin_right = 224.0
+margin_bottom = 167.0
 pressed = true
 
 [node name="cancel" type="Button" parent="inter/Options/Panel"]
-margin_left = 82.0
-margin_top = 179.0
-margin_right = 194.0
-margin_bottom = 229.0
+margin_left = 125.0
+margin_top = 320.0
+margin_right = 275.0
+margin_bottom = 370.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )

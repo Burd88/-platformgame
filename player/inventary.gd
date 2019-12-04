@@ -44,12 +44,17 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	elif itemData["quest"] == false:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
 	$inventory/bag1.activeItemSlot = index
 	$WindowDialog_ItemMenu.popup()
 	if itemData["equip"] == true:
 		$WindowDialog_ItemMenu/equip_button.show()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
 	elif itemData["equip"] == false:
 		$WindowDialog_ItemMenu/equip_button.hide()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.show()
 
 func _on_ItemMenu_Button_DropItem_pressed():
 	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "LESSER_HEAL_POTION":
@@ -68,6 +73,7 @@ func _on_ItemMenu_Button_DropItem_pressed():
 		$WindowDialog_ItemMenu.hide()
 	else:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(newAmount) + ") " +tr("DROP_BUTTON"))
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.set_text("(" + String(newAmount) + ") " +tr("DROP_BUTTON"))
 	$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
 
 

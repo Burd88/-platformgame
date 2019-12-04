@@ -118,7 +118,7 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
@@ -208,6 +208,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "Настройки"
 
 [node name="Save" type="Button" parent="Popup"]
+visible = false
 margin_left = 260.0
 margin_top = 400.0
 margin_right = 386.0
@@ -221,6 +222,7 @@ custom_fonts/font = ExtResource( 12 )
 text = "Сохранить"
 
 [node name="Load" type="Button" parent="Popup"]
+visible = false
 margin_left = 630.0
 margin_top = 400.0
 margin_right = 752.0
