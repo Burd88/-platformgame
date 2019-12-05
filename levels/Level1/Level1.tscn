@@ -1420,7 +1420,7 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 11 )
 animation = "New Anim"
-frame = 4
+frame = 2
 speed_scale = 0.8
 playing = true
 
@@ -1752,7 +1752,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -1770,7 +1770,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit2"]
@@ -2252,52 +2252,7 @@ shape = SubResource( 37 )
 position = Vector2( 606.434, 2244.57 )
 
 [node name="Player" parent="." instance=ExtResource( 76 )]
-position = Vector2( 388.905, 1405.18 )
-
-[node name="Chest2" parent="." instance=ExtResource( 59 )]
-position = Vector2( 191.288, 375.959 )
-item_ids = {
-0: 14,
-1: 15,
-2: 16,
-3: 1
-}
-item_amount = {
-0: 1,
-1: 1,
-2: 1,
-3: 1
-}
-
-[node name="Chest3" parent="." instance=ExtResource( 59 )]
-position = Vector2( 244.163, 377.499 )
-item_ids = {
-0: 5,
-1: 6,
-2: 0,
-3: 8
-}
-item_amount = {
-0: 8,
-1: 8,
-2: 0,
-3: 8
-}
-
-[node name="Chest" parent="." instance=ExtResource( 59 )]
-position = Vector2( 218.591, 374.845 )
-item_ids = {
-0: 10,
-1: 11,
-2: 12,
-3: 13
-}
-item_amount = {
-0: 1,
-1: 1,
-2: 1,
-3: 1
-}
+position = Vector2( 763.855, 2187.69 )
 
 [node name="frontground" type="TileMap" parent="."]
 tile_set = SubResource( 57 )
@@ -2344,7 +2299,7 @@ position = Vector2( 479.904, 1353.76 )
 scale = Vector2( 0.666668, 2.43484 )
 
 [node name="Prototype_end" parent="." instance=ExtResource( 79 )]
-position = Vector2( 765.909, 1713.77 )
+position = Vector2( 2104.08, 2213.09 )
 
 [node name="Knight_key" parent="." instance=ExtResource( 80 )]
 position = Vector2( 1963.38, 2364.3 )

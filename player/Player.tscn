@@ -1,4 +1,4 @@
-[gd_scene load_steps=305 format=2]
+[gd_scene load_steps=306 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://resourse/rope.png" type="Texture" id=2]
@@ -175,37 +175,38 @@
 [ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=173]
 [ext_resource path="res://player/light.png" type="Texture" id=174]
 [ext_resource path="res://player/UI sprite/Player_info/equip_panel.png" type="Texture" id=175]
-[ext_resource path="res://resourse/Item_ifo_panel.png" type="Texture" id=176]
-[ext_resource path="res://icon1.png" type="Texture" id=177]
-[ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=178]
-[ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=179]
-[ext_resource path="res://player/UI sprite/Player_info/Player_info_panel.png" type="Texture" id=180]
-[ext_resource path="res://player/UI sprite/Player_info/button_up.png" type="Texture" id=181]
-[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=182]
-[ext_resource path="res://resourse/close_button.png" type="Texture" id=183]
-[ext_resource path="res://player/inventory/empty_slot.png" type="Texture" id=184]
-[ext_resource path="res://player/inventory/empty_slot2.png" type="Texture" id=185]
-[ext_resource path="res://player/UI sprite/UI_button/Panel_Buuton.png" type="Texture" id=186]
-[ext_resource path="res://player/UI sprite/UI_button/invent_button.png" type="Texture" id=187]
-[ext_resource path="res://player/UI sprite/UI_button/Player_info_button.png" type="Texture" id=188]
-[ext_resource path="res://player/UI sprite/UI_button/settings_button.png" type="Texture" id=189]
-[ext_resource path="res://player/inventary.gd" type="Script" id=190]
-[ext_resource path="res://player/inventory/Inventory_panel.png" type="Texture" id=191]
-[ext_resource path="res://player/bag2.gd" type="Script" id=192]
-[ext_resource path="res://player/bag1.gd" type="Script" id=193]
-[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=194]
-[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=195]
-[ext_resource path="res://player/portret.png" type="Texture" id=196]
-[ext_resource path="res://resourse/portret_box.png" type="Texture" id=197]
-[ext_resource path="res://resourse/close_button.tres" type="StyleBox" id=198]
-[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=199]
-[ext_resource path="res://player/UI sprite/exp bar/Level_bar.png" type="Texture" id=200]
-[ext_resource path="res://player/UI sprite/exp bar/exp_bar_bg.png" type="Texture" id=201]
-[ext_resource path="res://player/UI sprite/exp bar/exp_bar_fg.png" type="Texture" id=202]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=203]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=204]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=205]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=206]
+[ext_resource path="res://resourse/DIALOG_tHEME.tres" type="Theme" id=176]
+[ext_resource path="res://resourse/Item_ifo_panel.png" type="Texture" id=177]
+[ext_resource path="res://icon1.png" type="Texture" id=178]
+[ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=179]
+[ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=180]
+[ext_resource path="res://player/UI sprite/Player_info/Player_info_panel.png" type="Texture" id=181]
+[ext_resource path="res://player/UI sprite/Player_info/button_up.png" type="Texture" id=182]
+[ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=183]
+[ext_resource path="res://resourse/close_button.png" type="Texture" id=184]
+[ext_resource path="res://player/inventory/empty_slot.png" type="Texture" id=185]
+[ext_resource path="res://player/inventory/empty_slot2.png" type="Texture" id=186]
+[ext_resource path="res://player/UI sprite/UI_button/Panel_Buuton.png" type="Texture" id=187]
+[ext_resource path="res://player/UI sprite/UI_button/invent_button.png" type="Texture" id=188]
+[ext_resource path="res://player/UI sprite/UI_button/Player_info_button.png" type="Texture" id=189]
+[ext_resource path="res://player/UI sprite/UI_button/settings_button.png" type="Texture" id=190]
+[ext_resource path="res://player/inventary.gd" type="Script" id=191]
+[ext_resource path="res://player/inventory/Inventory_panel.png" type="Texture" id=192]
+[ext_resource path="res://player/bag2.gd" type="Script" id=193]
+[ext_resource path="res://player/bag1.gd" type="Script" id=194]
+[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=195]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=196]
+[ext_resource path="res://player/portret.png" type="Texture" id=197]
+[ext_resource path="res://resourse/portret_box.png" type="Texture" id=198]
+[ext_resource path="res://resourse/close_button.tres" type="StyleBox" id=199]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=200]
+[ext_resource path="res://player/UI sprite/exp bar/Level_bar.png" type="Texture" id=201]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_bg.png" type="Texture" id=202]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_fg.png" type="Texture" id=203]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=204]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=205]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=206]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=207]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -898,7 +899,7 @@ func inventory_addItem(itemId:int) -> int:
 	return slot"
 
 [sub_resource type="StyleBoxTexture" id=122]
-texture = ExtResource( 176 )
+texture = ExtResource( 177 )
 region_rect = Rect2( 0, 0, 330, 360 )
 
 [sub_resource type="StyleBoxEmpty" id=12]
@@ -2996,7 +2997,7 @@ func inventory_addItem(itemId:int) -> int:
 	return slot"
 
 [sub_resource type="StyleBoxTexture" id=54]
-texture = ExtResource( 180 )
+texture = ExtResource( 181 )
 region_rect = Rect2( 0, 0, 220, 400 )
 
 [sub_resource type="Theme" id=55]
@@ -3021,80 +3022,80 @@ TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
 
 [sub_resource type="StyleBoxTexture" id=58]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=59]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=60]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=61]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=62]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="DynamicFont" id=63]
 size = 14
 use_filter = true
-font_data = ExtResource( 182 )
+font_data = ExtResource( 183 )
 
 [sub_resource type="StyleBoxTexture" id=64]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=65]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=66]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=67]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=68]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=69]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=70]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=71]
-texture = ExtResource( 181 )
+texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=72]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=73]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=74]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=75]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=76]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="GDScript" id=77]
@@ -3180,45 +3181,45 @@ func _on_settings_button_mouse_exited():
 [sub_resource type="StyleBoxEmpty" id=78]
 
 [sub_resource type="StyleBoxTexture" id=79]
-texture = ExtResource( 186 )
+texture = ExtResource( 187 )
 region_rect = Rect2( 0, 0, 220, 200 )
 
 [sub_resource type="StyleBoxTexture" id=80]
-texture = ExtResource( 187 )
+texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
 [sub_resource type="StyleBoxTexture" id=81]
-texture = ExtResource( 187 )
+texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=82]
-texture = ExtResource( 187 )
+texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=83]
 
 [sub_resource type="StyleBoxTexture" id=84]
-texture = ExtResource( 187 )
+texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=85]
-texture = ExtResource( 188 )
+texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
 [sub_resource type="StyleBoxTexture" id=86]
-texture = ExtResource( 188 )
+texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=87]
-texture = ExtResource( 188 )
+texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=88]
 
 [sub_resource type="StyleBoxTexture" id=89]
-texture = ExtResource( 188 )
+texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="Animation" id=90]
@@ -3238,24 +3239,24 @@ tracks/0/keys = {
 }
 
 [sub_resource type="StyleBoxTexture" id=91]
-texture = ExtResource( 189 )
+texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
 [sub_resource type="StyleBoxTexture" id=92]
-texture = ExtResource( 189 )
+texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=93]
-texture = ExtResource( 189 )
+texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=94]
-texture = ExtResource( 189 )
+texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
 [sub_resource type="StyleBoxTexture" id=95]
-texture = ExtResource( 191 )
+texture = ExtResource( 192 )
 region_rect = Rect2( 0, 0, 220, 200 )
 
 [sub_resource type="StyleBoxEmpty" id=96]
@@ -3265,28 +3266,28 @@ content_margin_top = 0.0
 content_margin_bottom = 0.0
 
 [sub_resource type="StyleBoxTexture" id=97]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=98]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 modulate_color = Color( 0.419608, 0.388235, 0.388235, 1 )
 
 [sub_resource type="StyleBoxTexture" id=99]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=100]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=101]
-texture = ExtResource( 183 )
+texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=105]
-texture = ExtResource( 194 )
+texture = ExtResource( 195 )
 region_rect = Rect2( 0, 0, 669, 165 )
 
 [sub_resource type="GDScript" id=106]
@@ -3343,7 +3344,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="StyleBoxTexture" id=108]
-texture = ExtResource( 200 )
+texture = ExtResource( 201 )
 region_rect = Rect2( 0, 0, 113, 75 )
 
 [sub_resource type="RectangleShape2D" id=109]
@@ -3410,6 +3411,8 @@ points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
 texture = ExtResource( 2 )
 texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="spr" type="AnimatedSprite" parent="."]
 pause_mode = 2
@@ -3447,6 +3450,7 @@ position = Vector2( 0, 3.8 )
 shape = SubResource( 2 )
 
 [node name="Player_info" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = SubResource( 3 )
 
 [node name="equip_panel" type="Panel" parent="Player_info"]
@@ -3489,6 +3493,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
@@ -3496,7 +3501,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
@@ -3511,12 +3516,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
@@ -3562,6 +3567,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
@@ -3569,7 +3575,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
@@ -3584,12 +3590,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
@@ -3635,6 +3641,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
@@ -3642,7 +3649,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
@@ -3657,12 +3664,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
@@ -3708,6 +3715,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
@@ -3715,7 +3723,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
@@ -3730,12 +3738,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
@@ -3781,6 +3789,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
@@ -3788,7 +3797,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
@@ -3803,12 +3812,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
@@ -3854,6 +3863,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
@@ -3861,7 +3871,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
@@ -3876,12 +3886,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
@@ -3927,6 +3937,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
@@ -3934,7 +3945,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
@@ -3949,12 +3960,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
@@ -4176,12 +4187,13 @@ margin_left = 53.4681
 margin_top = 6.19284
 margin_right = 202.468
 margin_bottom = 29.1928
-custom_fonts/font = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "PLAYER_INFO_TEXT"
 align = 1
 valign = 1
 
 [node name="UI_paneli" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = SubResource( 77 )
 
 [node name="Health_potion" type="Panel" parent="UI_paneli"]
@@ -4195,12 +4207,12 @@ custom_styles/panel = SubResource( 78 )
 visible = false
 position = Vector2( 43.8261, 72.9558 )
 scale = Vector2( 1.65857, 1.04408 )
-texture = ExtResource( 184 )
+texture = ExtResource( 185 )
 
 [node name="Sprite" type="Sprite" parent="UI_paneli/Health_potion"]
 position = Vector2( 43.1626, 33.4824 )
 scale = Vector2( 1.86588, 1.81116 )
-texture = ExtResource( 185 )
+texture = ExtResource( 186 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -4269,7 +4281,7 @@ custom_styles/focus = SubResource( 93 )
 custom_styles/normal = SubResource( 94 )
 
 [node name="inventary" type="CanvasLayer" parent="."]
-script = ExtResource( 190 )
+script = ExtResource( 191 )
 
 [node name="inventory" type="Panel" parent="inventary"]
 margin_left = 27.2278
@@ -4290,7 +4302,7 @@ auto_height = true
 max_columns = 0
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 192 )
+script = ExtResource( 193 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag2"]
 
@@ -4305,7 +4317,7 @@ auto_height = true
 max_columns = 0
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 193 )
+script = ExtResource( 194 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag1"]
 
@@ -4314,7 +4326,7 @@ margin_left = 24.0062
 margin_top = -1.16585
 margin_right = 196.006
 margin_bottom = 21.8342
-custom_fonts/font = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "GUI_INVENTORY_TEXT"
 align = 1
 valign = 1
@@ -4336,6 +4348,7 @@ margin_left = 427.0
 margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
+theme = ExtResource( 176 )
 custom_styles/panel = SubResource( 122 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
@@ -4343,7 +4356,7 @@ margin_left = 132.683
 margin_top = 32.0455
 margin_right = 196.683
 margin_bottom = 96.0455
-texture = ExtResource( 177 )
+texture = ExtResource( 178 )
 stretch_mode = 1
 
 [node name="ItemMenu_RichTextLabel_ItemInfo" type="RichTextLabel" parent="inventary/WindowDialog_ItemMenu"]
@@ -4358,12 +4371,12 @@ margin_left = 165.0
 margin_top = 300.0
 margin_right = 315.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="ItemMenu_Button_DropItem2" type="Button" parent="inventary/WindowDialog_ItemMenu"]
@@ -4371,12 +4384,12 @@ margin_left = 90.0
 margin_top = 300.0
 margin_right = 240.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "Кнопка"
 
 [node name="Full" type="Label" parent="inventary/WindowDialog_ItemMenu"]
@@ -4395,12 +4408,12 @@ margin_left = 15.0
 margin_top = 300.0
 margin_right = 165.0
 margin_bottom = 340.0
-custom_styles/hover = ExtResource( 178 )
-custom_styles/pressed = ExtResource( 178 )
-custom_styles/focus = ExtResource( 178 )
-custom_styles/disabled = ExtResource( 178 )
-custom_styles/normal = ExtResource( 178 )
-custom_fonts/font = ExtResource( 179 )
+custom_styles/hover = ExtResource( 179 )
+custom_styles/pressed = ExtResource( 179 )
+custom_styles/focus = ExtResource( 179 )
+custom_styles/disabled = ExtResource( 179 )
+custom_styles/normal = ExtResource( 179 )
+custom_fonts/font = ExtResource( 180 )
 text = "EQUIP_BUTTON"
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -4424,7 +4437,7 @@ margin_bottom = 667.646
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/normal = SubResource( 105 )
-custom_fonts/font = ExtResource( 195 )
+custom_fonts/font = ExtResource( 196 )
 align = 1
 valign = 1
 autowrap = true
@@ -4438,25 +4451,25 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="GUI/say_label"]
 position = Vector2( -40, 50 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 196 )
+texture = ExtResource( 197 )
 
 [node name="Sprite" type="Sprite" parent="GUI/say_label/Sprite"]
 position = Vector2( 0.319275, 0.0852988 )
 scale = Vector2( 0.22057, 0.203741 )
 z_index = -1
-texture = ExtResource( 197 )
+texture = ExtResource( 198 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
 margin_left = 660.746
 margin_top = -9.2843
 margin_right = 698.746
 margin_bottom = 27.7157
-custom_styles/hover = ExtResource( 198 )
-custom_styles/pressed = ExtResource( 198 )
-custom_styles/focus = ExtResource( 198 )
-custom_styles/disabled = ExtResource( 198 )
-custom_styles/normal = ExtResource( 198 )
-custom_fonts/font = ExtResource( 199 )
+custom_styles/hover = ExtResource( 199 )
+custom_styles/pressed = ExtResource( 199 )
+custom_styles/focus = ExtResource( 199 )
+custom_styles/disabled = ExtResource( 199 )
+custom_styles/normal = ExtResource( 199 )
+custom_fonts/font = ExtResource( 200 )
 
 [node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
 anims/full = SubResource( 107 )
@@ -4493,7 +4506,7 @@ margin_left = 5.26306
 margin_top = 12.6315
 margin_right = 263.263
 margin_bottom = 111.632
-texture_over = ExtResource( 201 )
+texture_over = ExtResource( 202 )
 
 [node name="fg" type="TextureProgress" parent="GUI/Exp_bar"]
 margin_left = 13.9296
@@ -4501,7 +4514,7 @@ margin_top = 65.1701
 margin_right = 253.93
 margin_bottom = 105.17
 value = 50.0
-texture_progress = ExtResource( 202 )
+texture_progress = ExtResource( 203 )
 
 [node name="HPbar1" type="Control" parent="GUI"]
 margin_left = -5.62952
@@ -4517,7 +4530,7 @@ margin_right = 382.0
 margin_bottom = 165.0
 step = 0.1
 value = 100.0
-texture_under = ExtResource( 203 )
+texture_under = ExtResource( 204 )
 
 [node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar1"]
 margin_left = 117.657
@@ -4526,7 +4539,7 @@ margin_right = 363.657
 margin_bottom = 149.53
 step = 0.1
 value = 100.0
-texture_progress = ExtResource( 204 )
+texture_progress = ExtResource( 205 )
 
 [node name="attack_area" type="Area2D" parent="."]
 editor/display_folded = true
@@ -4569,7 +4582,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 205 )
+texture = ExtResource( 206 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -4579,7 +4592,7 @@ anims/use = SubResource( 111 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
-stream = ExtResource( 206 )
+stream = ExtResource( 207 )
 volume_db = 10.0
 autoplay = true
 

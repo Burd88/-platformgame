@@ -92,7 +92,6 @@ script = ExtResource( 1 )
 
 [node name="loading" type="Node2D" parent="."]
 pause_mode = 2
-visible = false
 position = Vector2( -75.7621, 5.64951 )
 
 [node name="Sprite" type="Sprite" parent="loading"]
@@ -118,10 +117,10 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
+visible = false
 margin_left = 637.373
 margin_top = 331.682
 margin_right = 837.373
@@ -132,6 +131,7 @@ custom_fonts/font = SubResource( 4 )
 value = 100.0
 
 [node name="Label" type="Label" parent="loading"]
+visible = false
 margin_left = 608.351
 margin_top = 276.886
 margin_right = 858.351
@@ -151,7 +151,6 @@ one_shot = true
 anims/loading = SubResource( 6 )
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 margin_left = 137.387
 margin_top = -4.56651
 margin_right = 177.387

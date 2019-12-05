@@ -41,6 +41,7 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	$WindowDialog_ItemMenu/ItemMenu_RichTextLabel_ItemInfo.set_bbcode(strItemInfo)
 	if itemData["quest"] == true:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
 	elif itemData["quest"] == false:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
@@ -51,7 +52,7 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 		$WindowDialog_ItemMenu/equip_button.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
-	elif itemData["equip"] == false:
+	elif itemData["equip"] == false and itemData["quest"] == false:
 		$WindowDialog_ItemMenu/equip_button.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.show()
