@@ -501,7 +501,7 @@ func _damage(damage):# получение урона
 	else: pass
 
 func _use():# использование предмета
-	if Input.is_action_pressed('use_button'):
+	if Input.is_action_just_pressed('use_button'):
 		$use/CollisionShape2D.disabled = false
 	else:
 		$use/CollisionShape2D.disabled = true
@@ -585,7 +585,7 @@ func _gui():# Графический интерфейс игрока
 			$Player_info/equip_panel.visible = false
 		elif $Player_info/equip_panel.visible == false:
 			$Player_info/equip_panel.visible = true
-	full_hp =health+hp_chest+hp_feet+hp_feet+hp_foot+hp_gloves+hp_ring+hp_ring+hp_neck+hp_weapon
+	full_hp =health+hp_chest+hp_feet+hp_feet+hp_foot+hp_gloves+hp_ring+hp_ring+hp_neck+hp_weapon +((strength+str_chest+str_feet+str_foot+str_gloves+str_ring+str_neck+str_weapon)*5)
 	php = (health_now*100)/full_hp
 
 	$GUI/HPbar1/healthbar_pr.value = php

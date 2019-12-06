@@ -33,7 +33,8 @@ var texture_array = [\"res://items/chest/S_ItemHeavyOutline_ChestBlue_00.png\"
 ,\"res://items/chest/S_ItemHeavyOutline_ChestRed_00.png\"]
 # Called when the node enters the scene tree for the first time.
 var inventory_save
-var count_null = false
+var count_null = true
+export var use_ok = true
 func _ready():
 	$CanvasLayer/Panel/ItemList.add_item_chest(item_ids,item_amount)
 	no_use = true
@@ -50,7 +51,10 @@ func _process(delta):
 		$CollisionShape2D.disabled = true
 		count_null = true
 
-		
+	if use_ok == true:
+		$CollisionShape2D.disabled = false
+	elif use_ok == false:
+		$CollisionShape2D.disabled = true
 	if target:
 		if global_position.distance_to(target.global_position) > 50:
 			$CanvasLayer/Panel.hide()
@@ -64,7 +68,7 @@ func _process(delta):
 func _on_Chest_black_area_entered(area):
 	if area.name == \"use\":
 		$CanvasLayer/Panel.show()
-		
+		count_null = false
 		if no_use == false:
 			$CanvasLayer/Panel/ItemList.add_item_chest(item_ids,item_amount)
 			no_use = true
@@ -86,8 +90,9 @@ func save(): # сохранение игры
 		\"item_ids\" : item_ids,
 		\"no_use\" : no_use,
 		\"inventory_save\" : inventory_save,
-		\"item_amount\" : item_amount
-		
+		\"item_amount\" : item_amount,
+		\"visible\" : visible,
+		\"use_ok\" : use_ok
 	
 	}
 
@@ -239,6 +244,7 @@ script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -322,7 +328,6 @@ valign = 1
 
 [node name="delete_timer" type="Timer" parent="."]
 wait_time = 30.0
-one_shot = true
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList2" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]

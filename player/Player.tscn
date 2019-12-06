@@ -3418,7 +3418,7 @@ end_cap_mode = 2
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -3450,10 +3450,11 @@ position = Vector2( 0, 3.8 )
 shape = SubResource( 2 )
 
 [node name="Player_info" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = SubResource( 3 )
 
 [node name="equip_panel" type="Panel" parent="Player_info"]
+editor/display_folded = true
+visible = false
 margin_left = 935.0
 margin_top = 145.0
 margin_right = 1005.0
@@ -3979,7 +3980,7 @@ align = 1
 valign = 1
 
 [node name="Statistics" type="Panel" parent="Player_info"]
-editor/display_folded = true
+visible = false
 margin_left = 1000.0
 margin_top = 145.0
 margin_right = 1254.0

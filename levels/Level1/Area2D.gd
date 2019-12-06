@@ -16,13 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if get_parent().get_parent().end_cut_14 == true :
-		$Gobby_chest.show()
-		$Gobby_chest/CollisionShape2D.disabled = false
 		$CollisionShape2D.disabled = true
-	else:
-		$Gobby_chest.hide()
-		$Gobby_chest/CollisionShape2D.disabled = true
-		pass
 	pass
 
 

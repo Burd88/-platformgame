@@ -175,7 +175,8 @@ func _death():
 		$damage_area/CollisionShape2D.disabled = true
 		$check_melle_attack_area/CollisionShape2D.disabled = true
 		get_parent().get_node("Cut_scene_boss_gobby/Door_gobby_exit").door_close = 2
-		
+		get_parent().get_parent().get_node("chest/Gobby_chest").visible = true
+		get_parent().get_parent().get_node("chest/Gobby_chest").use_ok = true
 func _range_attack():
 	$spr.animation = "атака"
 	range_attack = true

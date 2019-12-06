@@ -256,6 +256,7 @@ func _on_change_text_timeout():
 				get_parent().add_child(item)
 				item.position_start = position + Vector2(rand_range(-70,70),rand_range(-30,-70))
 				item.position = position
+
 			end_kath = true
 			queue_free()
 
