@@ -24,4 +24,15 @@ KNIGHT_DOOR_KEY;Ржавый ключ;Rusty key
 KNIGHT_DOOR_KEY_TEXT;Ключ очень ржавый, с какими-то надписями\n.т .ала ..а.но.о с..ажа;The key is very rusty, with some inscriptions\nf..m the h..l of the m... ..ard
 SWORD;Меч;Sword
 SWORD_NORMAL_TEXT;Обычный потасканный меч;The usual shabby sword
-
+SWORD_SHARP;Заточенный меч;
+SWORD_SHARP_TEXT;Заточенный меч;
+EMERALD_SWORD;Изумрудный меч;
+EMERALD_SWORD_TEXT;Меч изумрудного цвета выглядит потрясающе;
+RUBY_SWORD;Рубиновый меч;
+RUBY_SWORD_TEXT;Багровый клинок мастерской работы;
+SAPPHRE_SWORD;Сапфирный меч;
+SAPPHRE_SWORD_TEXT;Этот меч ковал проффесиионал, сталь синего цвета придает уверенности;
+GOLDEN_SWORD;Золотой меч;
+GOLDEN_SWORD_TEXT;Меч выкован из сплавов с использованием золота, очень красивый и сверкающий;
+ROPE;Веревка;
+ROPE_TEXT;Веревка будет очень полезна в моем путешествии;

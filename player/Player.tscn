@@ -2,177 +2,177 @@
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://resourse/rope.png" type="Texture" id=2]
-[ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=3]
-[ext_resource path="res://player/Individual Sprites1/adventurer-slide-01.png" type="Texture" id=4]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-00.png" type="Texture" id=5]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-01.png" type="Texture" id=6]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-02.png" type="Texture" id=7]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-03.png" type="Texture" id=8]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=9]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=10]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=11]
-[ext_resource path="res://player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=12]
-[ext_resource path="res://player/Individual Sprites/adventurer-fall-01.png" type="Texture" id=13]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=14]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=15]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=16]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=17]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-00.png" type="Texture" id=18]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-01.png" type="Texture" id=19]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-02.png" type="Texture" id=20]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-03.png" type="Texture" id=21]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-04.png" type="Texture" id=22]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run3-05.png" type="Texture" id=23]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-00.png" type="Texture" id=24]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-01.png" type="Texture" id=25]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-02.png" type="Texture" id=26]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-03.png" type="Texture" id=27]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-04.png" type="Texture" id=28]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-05.png" type="Texture" id=29]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-00.png" type="Texture" id=30]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-01.png" type="Texture" id=31]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-02.png" type="Texture" id=32]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-03.png" type="Texture" id=33]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack1-04.png" type="Texture" id=34]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-00.png" type="Texture" id=35]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-01.png" type="Texture" id=36]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-02.png" type="Texture" id=37]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-03.png" type="Texture" id=38]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-04.png" type="Texture" id=39]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=40]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=41]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-08.png" type="Texture" id=42]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-09.png" type="Texture" id=43]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-10.png" type="Texture" id=44]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-11.png" type="Texture" id=45]
-[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-00.png" type="Texture" id=46]
-[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-01.png" type="Texture" id=47]
-[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-02.png" type="Texture" id=48]
-[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-03.png" type="Texture" id=49]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-00.png" type="Texture" id=50]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=51]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=52]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=53]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-00.png" type="Texture" id=54]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-01.png" type="Texture" id=55]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-02.png" type="Texture" id=56]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-03.png" type="Texture" id=57]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-04.png" type="Texture" id=58]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-05.png" type="Texture" id=59]
-[ext_resource path="res://player/Individual Sprites/adventurer-die-06.png" type="Texture" id=60]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-00.png" type="Texture" id=61]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-01.png" type="Texture" id=62]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-02.png" type="Texture" id=63]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-03.png" type="Texture" id=64]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-04.png" type="Texture" id=65]
-[ext_resource path="res://player/Individual Sprites/adventurer-run-05.png" type="Texture" id=66]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-00.png" type="Texture" id=67]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-01.png" type="Texture" id=68]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-02.png" type="Texture" id=69]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-03.png" type="Texture" id=70]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-00.png" type="Texture" id=71]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-01.png" type="Texture" id=72]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-02.png" type="Texture" id=73]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-03.png" type="Texture" id=74]
-[ext_resource path="res://player/Individual Sprites1/adventurer-jump-00.png" type="Texture" id=75]
-[ext_resource path="res://player/Individual Sprites1/adventurer-jump-01.png" type="Texture" id=76]
-[ext_resource path="res://player/Individual Sprites1/adventurer-jump-02.png" type="Texture" id=77]
-[ext_resource path="res://player/Individual Sprites1/adventurer-jump-03.png" type="Texture" id=78]
-[ext_resource path="res://player/Individual Sprites1/adventurer-fall-00.png" type="Texture" id=79]
-[ext_resource path="res://player/Individual Sprites1/adventurer-fall-01.png" type="Texture" id=80]
-[ext_resource path="res://player/Individual Sprites/adventurer--grb-00.png" type="Texture" id=81]
-[ext_resource path="res://player/Individual Sprites/adventurer--grb-01.png" type="Texture" id=82]
-[ext_resource path="res://player/Individual Sprites/adventurer--grb-02.png" type="Texture" id=83]
-[ext_resource path="res://player/Individual Sprites/adventurer--grb-03.png" type="Texture" id=84]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-00.png" type="Texture" id=85]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-01.png" type="Texture" id=86]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-02.png" type="Texture" id=87]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-03.png" type="Texture" id=88]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-04.png" type="Texture" id=89]
-[ext_resource path="res://player/Individual Sprites1/adventurer-run-05.png" type="Texture" id=90]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=91]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=92]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=93]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-03.png" type="Texture" id=94]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-00.png" type="Texture" id=95]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-01.png" type="Texture" id=96]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-02.png" type="Texture" id=97]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-03.png" type="Texture" id=98]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-04.png" type="Texture" id=99]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-05.png" type="Texture" id=100]
-[ext_resource path="res://player/Individual Sprites1/adventurer-idle-00.png" type="Texture" id=101]
-[ext_resource path="res://player/Individual Sprites1/adventurer-idle-01.png" type="Texture" id=102]
-[ext_resource path="res://player/Individual Sprites1/adventurer-idle-02.png" type="Texture" id=103]
-[ext_resource path="res://player/Individual Sprites1/adventurer-idle-03.png" type="Texture" id=104]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-00.png" type="Texture" id=105]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-01.png" type="Texture" id=106]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-02.png" type="Texture" id=107]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-03.png" type="Texture" id=108]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-04.png" type="Texture" id=109]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-05.png" type="Texture" id=110]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-06.png" type="Texture" id=111]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-07.png" type="Texture" id=112]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-08.png" type="Texture" id=113]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-00.png" type="Texture" id=114]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-01.png" type="Texture" id=115]
-[ext_resource path="res://player/Individual Sprites/adventurer-stand-02.png" type="Texture" id=116]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-00.png" type="Texture" id=117]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-01.png" type="Texture" id=118]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-02.png" type="Texture" id=119]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-03.png" type="Texture" id=120]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-04.png" type="Texture" id=121]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack3-05.png" type="Texture" id=122]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-00.png" type="Texture" id=123]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-01.png" type="Texture" id=124]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-02.png" type="Texture" id=125]
-[ext_resource path="res://player/Individual Sprites/adventurer-jump-03.png" type="Texture" id=126]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-04.png" type="Texture" id=127]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-05.png" type="Texture" id=128]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-06.png" type="Texture" id=129]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-07.png" type="Texture" id=130]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-00.png" type="Texture" id=131]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-01.png" type="Texture" id=132]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-02.png" type="Texture" id=133]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-03.png" type="Texture" id=134]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-04.png" type="Texture" id=135]
-[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-05.png" type="Texture" id=136]
-[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-drw-03.png" type="Texture" id=137]
-[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-00.png" type="Texture" id=138]
-[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-01.png" type="Texture" id=139]
-[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-02.png" type="Texture" id=140]
-[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-03.png" type="Texture" id=141]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-00.png" type="Texture" id=142]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-01.png" type="Texture" id=143]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-02.png" type="Texture" id=144]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-03.png" type="Texture" id=145]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-04.png" type="Texture" id=146]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-05.png" type="Texture" id=147]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-04.png" type="Texture" id=148]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=149]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=150]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=151]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-00.png" type="Texture" id=152]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-01.png" type="Texture" id=153]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-02.png" type="Texture" id=154]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-03.png" type="Texture" id=155]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=156]
-[ext_resource path="res://player/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=157]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-00.png" type="Texture" id=158]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-01.png" type="Texture" id=159]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-02.png" type="Texture" id=160]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-03.png" type="Texture" id=161]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-04.png" type="Texture" id=162]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-05.png" type="Texture" id=163]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-01.png" type="Texture" id=164]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-02.png" type="Texture" id=165]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-03.png" type="Texture" id=166]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-04.png" type="Texture" id=167]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-05.png" type="Texture" id=168]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-06.png" type="Texture" id=169]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-00.png" type="Texture" id=170]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-01.png" type="Texture" id=171]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-02.png" type="Texture" id=172]
-[ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=173]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-00.png" type="Texture" id=3]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-01.png" type="Texture" id=4]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-02.png" type="Texture" id=5]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-03.png" type="Texture" id=6]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=7]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=8]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=9]
+[ext_resource path="res://player/Individual Sprites1/adventurer-slide-00.png" type="Texture" id=10]
+[ext_resource path="res://player/Individual Sprites1/adventurer-slide-01.png" type="Texture" id=11]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-00.png" type="Texture" id=12]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-01.png" type="Texture" id=13]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-02.png" type="Texture" id=14]
+[ext_resource path="res://player/Individual Sprites/adventurer-jump-03.png" type="Texture" id=15]
+[ext_resource path="res://player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=16]
+[ext_resource path="res://player/Individual Sprites/adventurer-fall-01.png" type="Texture" id=17]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=18]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=19]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=20]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=21]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-00.png" type="Texture" id=22]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-01.png" type="Texture" id=23]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-02.png" type="Texture" id=24]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-03.png" type="Texture" id=25]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=26]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack2-05.png" type="Texture" id=27]
+[ext_resource path="res://player/Individual Sprites/adventurer--grb-00.png" type="Texture" id=28]
+[ext_resource path="res://player/Individual Sprites/adventurer--grb-01.png" type="Texture" id=29]
+[ext_resource path="res://player/Individual Sprites/adventurer--grb-02.png" type="Texture" id=30]
+[ext_resource path="res://player/Individual Sprites/adventurer--grb-03.png" type="Texture" id=31]
+[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-drw-03.png" type="Texture" id=32]
+[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-00.png" type="Texture" id=33]
+[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-01.png" type="Texture" id=34]
+[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-02.png" type="Texture" id=35]
+[ext_resource path="res://player/Individual Sprites1/adventurer-swrd-shte-03.png" type="Texture" id=36]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-00.png" type="Texture" id=37]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-01.png" type="Texture" id=38]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-02.png" type="Texture" id=39]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-03.png" type="Texture" id=40]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-04.png" type="Texture" id=41]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-wall-run-05.png" type="Texture" id=42]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-00.png" type="Texture" id=43]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-01.png" type="Texture" id=44]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-02.png" type="Texture" id=45]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-03.png" type="Texture" id=46]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-04.png" type="Texture" id=47]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-jump-05.png" type="Texture" id=48]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-00.png" type="Texture" id=49]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-01.png" type="Texture" id=50]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-02.png" type="Texture" id=51]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-03.png" type="Texture" id=52]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-04.png" type="Texture" id=53]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack3-05.png" type="Texture" id=54]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-00.png" type="Texture" id=55]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-01.png" type="Texture" id=56]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-02.png" type="Texture" id=57]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-03.png" type="Texture" id=58]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-04.png" type="Texture" id=59]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-05.png" type="Texture" id=60]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-06.png" type="Texture" id=61]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-07.png" type="Texture" id=62]
+[ext_resource path="res://player/Individual Sprites bow/adventurer-bow-08.png" type="Texture" id=63]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-00.png" type="Texture" id=64]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-01.png" type="Texture" id=65]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-02.png" type="Texture" id=66]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-03.png" type="Texture" id=67]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-04.png" type="Texture" id=68]
+[ext_resource path="res://player/Individual Sprites/adventurer-run-05.png" type="Texture" id=69]
+[ext_resource path="res://player/Individual Sprites1/adventurer-idle-00.png" type="Texture" id=70]
+[ext_resource path="res://player/Individual Sprites1/adventurer-idle-01.png" type="Texture" id=71]
+[ext_resource path="res://player/Individual Sprites1/adventurer-idle-02.png" type="Texture" id=72]
+[ext_resource path="res://player/Individual Sprites1/adventurer-idle-03.png" type="Texture" id=73]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-04.png" type="Texture" id=74]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-05.png" type="Texture" id=75]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-06.png" type="Texture" id=76]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-07.png" type="Texture" id=77]
+[ext_resource path="res://player/Individual Sprites1/adventurer-fall-00.png" type="Texture" id=78]
+[ext_resource path="res://player/Individual Sprites1/adventurer-fall-01.png" type="Texture" id=79]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-00.png" type="Texture" id=80]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-01.png" type="Texture" id=81]
+[ext_resource path="res://player/Individual Sprites/adventurer-stand-02.png" type="Texture" id=82]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-00.png" type="Texture" id=83]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-01.png" type="Texture" id=84]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-02.png" type="Texture" id=85]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-03.png" type="Texture" id=86]
+[ext_resource path="res://player/Individual Sprites/adventurer-attack1-04.png" type="Texture" id=87]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-00.png" type="Texture" id=88]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-01.png" type="Texture" id=89]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-02.png" type="Texture" id=90]
+[ext_resource path="res://player/Individual Sprites/adventurer-crnr-grb-03.png" type="Texture" id=91]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-00.png" type="Texture" id=92]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-01.png" type="Texture" id=93]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-02.png" type="Texture" id=94]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-03.png" type="Texture" id=95]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-04.png" type="Texture" id=96]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run2-05.png" type="Texture" id=97]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-00.png" type="Texture" id=98]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-01.png" type="Texture" id=99]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-02.png" type="Texture" id=100]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-03.png" type="Texture" id=101]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-04.png" type="Texture" id=102]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run3-05.png" type="Texture" id=103]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-00.png" type="Texture" id=104]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-01.png" type="Texture" id=105]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-02.png" type="Texture" id=106]
+[ext_resource path="res://player/Individual Sprites/adventurer-crouch-03.png" type="Texture" id=107]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=108]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=109]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=110]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-2-03.png" type="Texture" id=111]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-01.png" type="Texture" id=112]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-02.png" type="Texture" id=113]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-03.png" type="Texture" id=114]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-04.png" type="Texture" id=115]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-05.png" type="Texture" id=116]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-run-punch-06.png" type="Texture" id=117]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-00.png" type="Texture" id=118]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-01.png" type="Texture" id=119]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=120]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=121]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-08.png" type="Texture" id=122]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-09.png" type="Texture" id=123]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-10.png" type="Texture" id=124]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-11.png" type="Texture" id=125]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-00.png" type="Texture" id=126]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-01.png" type="Texture" id=127]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-02.png" type="Texture" id=128]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-03.png" type="Texture" id=129]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-04.png" type="Texture" id=130]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-crouch-walk-05.png" type="Texture" id=131]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-00.png" type="Texture" id=132]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-01.png" type="Texture" id=133]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-02.png" type="Texture" id=134]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-03.png" type="Texture" id=135]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-04.png" type="Texture" id=136]
+[ext_resource path="res://player/Individual Sprites1/adventurer-run-05.png" type="Texture" id=137]
+[ext_resource path="res://player/Individual Sprites1/adventurer-jump-00.png" type="Texture" id=138]
+[ext_resource path="res://player/Individual Sprites1/adventurer-jump-01.png" type="Texture" id=139]
+[ext_resource path="res://player/Individual Sprites1/adventurer-jump-02.png" type="Texture" id=140]
+[ext_resource path="res://player/Individual Sprites1/adventurer-jump-03.png" type="Texture" id=141]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-00.png" type="Texture" id=142]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-01.png" type="Texture" id=143]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-02.png" type="Texture" id=144]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-03.png" type="Texture" id=145]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-04.png" type="Texture" id=146]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-05.png" type="Texture" id=147]
+[ext_resource path="res://player/Individual Sprites/adventurer-die-06.png" type="Texture" id=148]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-00.png" type="Texture" id=149]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-01.png" type="Texture" id=150]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-02.png" type="Texture" id=151]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-03.png" type="Texture" id=152]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-00.png" type="Texture" id=153]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-01.png" type="Texture" id=154]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-02.png" type="Texture" id=155]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-punch-03.png" type="Texture" id=156]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-04.png" type="Texture" id=157]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-05.png" type="Texture" id=158]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-06.png" type="Texture" id=159]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-kick-07.png" type="Texture" id=160]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-00.png" type="Texture" id=161]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-01.png" type="Texture" id=162]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-02.png" type="Texture" id=163]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-03.png" type="Texture" id=164]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-04.png" type="Texture" id=165]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-walk-05.png" type="Texture" id=166]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-00.png" type="Texture" id=167]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-01.png" type="Texture" id=168]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-02.png" type="Texture" id=169]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-03.png" type="Texture" id=170]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-04.png" type="Texture" id=171]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=172]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=173]
 [ext_resource path="res://player/light.png" type="Texture" id=174]
 [ext_resource path="res://player/UI sprite/Player_info/equip_panel.png" type="Texture" id=175]
 [ext_resource path="res://resourse/DIALOG_tHEME.tres" type="Theme" id=176]
@@ -210,184 +210,184 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "New Anim",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "departure",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "падение",
+"name": "New Anim",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "стойка",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "бег_меч_2",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "шаг",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "удар_мечом_3",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "подъем",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ) ],
-"loop": true,
-"name": "удар_рукой_3",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
-"loop": true,
-"name": "зацеп",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
-"loop": true,
-"name": "удар_ногой_сверху",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ) ],
-"loop": true,
-"name": "смерть_меч",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "смерть",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ) ],
-"loop": true,
-"name": "бег",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ) ],
-"loop": true,
-"name": "удар_рукой_1",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ) ],
-"loop": true,
-"name": "удар_ногой_1",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ) ],
-"loop": true,
-"name": "прыжок_меч",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ) ],
-"loop": true,
-"name": "веревка_подъем",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ) ],
-"loop": true,
-"name": "бег_меч",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 91 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ) ],
-"loop": true,
-"name": "стойка_меч",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ) ],
-"loop": true,
-"name": "бег_постенам",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ) ],
-"loop": true,
-"name": "стойка_меч_1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ), ExtResource( 108 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 113 ) ],
-"loop": true,
-"name": "удар_лук",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ) ],
-"loop": true,
-"name": "подкат",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 117 ), ExtResource( 118 ), ExtResource( 119 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 122 ) ],
-"loop": true,
-"name": "удар_мечом_2",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 123 ), ExtResource( 124 ), ExtResource( 125 ), ExtResource( 126 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "прыжок",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 127 ), ExtResource( 128 ), ExtResource( 129 ), ExtResource( 130 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "удар_ногой_2",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 131 ), ExtResource( 132 ), ExtResource( 133 ), ExtResource( 134 ), ExtResource( 135 ), ExtResource( 136 ) ],
-"loop": true,
-"name": "удар_лук_прыжок",
+"name": "смерть",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 137 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 140 ), ExtResource( 141 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
-"name": "меч_взял",
+"name": "стойка",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 142 ), ExtResource( 143 ), ExtResource( 144 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ) ],
-"loop": true,
-"name": "ускоренный_бег",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 79 ), ExtResource( 80 ) ],
-"loop": true,
-"name": "падение_меч",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 148 ), ExtResource( 149 ), ExtResource( 150 ), ExtResource( 151 ) ],
-"loop": true,
-"name": "удар_рукой_2",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 152 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 156 ), ExtResource( 157 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "удар_мечом_1",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 158 ), ExtResource( 159 ), ExtResource( 160 ), ExtResource( 161 ), ExtResource( 162 ), ExtResource( 163 ) ],
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "шаг_присяд",
+"name": "веревка_подъем",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 164 ), ExtResource( 165 ), ExtResource( 166 ), ExtResource( 167 ), ExtResource( 168 ), ExtResource( 169 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "меч_взял",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "бег_постенам",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "удар_лук_прыжок",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": true,
+"name": "удар_мечом_2",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ) ],
+"loop": true,
+"name": "удар_лук",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ) ],
+"loop": true,
+"name": "бег",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ) ],
+"loop": true,
+"name": "стойка_меч_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "удар_рукой_2",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 78 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "падение_меч",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 80 ), ExtResource( 81 ), ExtResource( 82 ) ],
+"loop": true,
+"name": "подкат",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ) ],
+"loop": true,
+"name": "удар_мечом_3",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ) ],
+"loop": true,
+"name": "зацеп",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ) ],
+"loop": true,
+"name": "ускоренный_бег",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ) ],
+"loop": true,
+"name": "бег_меч_2",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 107 ) ],
+"loop": true,
+"name": "присяд",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 108 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 111 ) ],
+"loop": true,
+"name": "стойка_меч",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 112 ), ExtResource( 113 ), ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 117 ) ],
 "loop": true,
 "name": "удар_рукой_бег",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 170 ), ExtResource( 171 ), ExtResource( 172 ), ExtResource( 173 ) ],
+"frames": [ ExtResource( 118 ), ExtResource( 119 ), ExtResource( 120 ), ExtResource( 121 ) ],
 "loop": true,
-"name": "присяд",
+"name": "удар_ногой_сверху",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 122 ), ExtResource( 123 ), ExtResource( 124 ), ExtResource( 125 ) ],
+"loop": true,
+"name": "удар_рукой_3",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 126 ), ExtResource( 127 ), ExtResource( 128 ), ExtResource( 129 ), ExtResource( 130 ), ExtResource( 131 ) ],
+"loop": true,
+"name": "шаг_присяд",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 132 ), ExtResource( 133 ), ExtResource( 134 ), ExtResource( 135 ), ExtResource( 136 ), ExtResource( 137 ) ],
+"loop": true,
+"name": "бег_меч",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 138 ), ExtResource( 139 ), ExtResource( 140 ), ExtResource( 141 ), ExtResource( 78 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "прыжок_меч",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 142 ), ExtResource( 143 ), ExtResource( 144 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 147 ), ExtResource( 148 ) ],
+"loop": true,
+"name": "смерть_меч",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 149 ), ExtResource( 150 ), ExtResource( 151 ), ExtResource( 152 ) ],
+"loop": true,
+"name": "удар_ногой_1",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 156 ) ],
+"loop": true,
+"name": "удар_рукой_1",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 157 ), ExtResource( 158 ), ExtResource( 159 ), ExtResource( 160 ) ],
+"loop": true,
+"name": "удар_ногой_2",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 161 ), ExtResource( 162 ), ExtResource( 163 ), ExtResource( 164 ), ExtResource( 165 ), ExtResource( 166 ) ],
+"loop": true,
+"name": "шаг",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "падение",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 167 ), ExtResource( 168 ), ExtResource( 169 ), ExtResource( 170 ), ExtResource( 171 ), ExtResource( 172 ), ExtResource( 173 ) ],
+"loop": true,
+"name": "подъем",
 "speed": 5.0
 } ]
 
@@ -639,7 +639,7 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="GDScript" id=115]
+[sub_resource type="GDScript" id=8]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -700,7 +700,7 @@ func update_slot(slot:int) -> void:
 
 "
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=9]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_sword_equip_slot.png\")
@@ -898,13 +898,13 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxTexture" id=122]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 177 )
 region_rect = Rect2( 0, 0, 330, 360 )
 
-[sub_resource type="StyleBoxEmpty" id=12]
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=12]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -1004,9 +1004,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=14]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="GDScript" id=116]
+[sub_resource type="GDScript" id=14]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -1250,9 +1250,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxEmpty" id=19]
+[sub_resource type="StyleBoxEmpty" id=16]
 
-[sub_resource type="GDScript" id=20]
+[sub_resource type="GDScript" id=17]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -1352,9 +1352,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=21]
+[sub_resource type="StyleBoxEmpty" id=18]
 
-[sub_resource type="GDScript" id=117]
+[sub_resource type="GDScript" id=19]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -1415,7 +1415,7 @@ func update_slot(slot:int) -> void:
 
 "
 
-[sub_resource type="GDScript" id=22]
+[sub_resource type="GDScript" id=20]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_gloves_equip_slot.png\")
@@ -1599,9 +1599,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxEmpty" id=26]
+[sub_resource type="StyleBoxEmpty" id=21]
 
-[sub_resource type="GDScript" id=27]
+[sub_resource type="GDScript" id=22]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -1701,9 +1701,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=28]
+[sub_resource type="StyleBoxEmpty" id=23]
 
-[sub_resource type="GDScript" id=118]
+[sub_resource type="GDScript" id=24]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -1763,7 +1763,7 @@ func update_slot(slot:int) -> void:
 	set_item_tooltip_enabled(slot, int(inventoryItem[\"id\"]) > 0)
 "
 
-[sub_resource type="GDScript" id=29]
+[sub_resource type="GDScript" id=25]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_foot_equip_slot.png\")
@@ -1947,9 +1947,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxEmpty" id=33]
+[sub_resource type="StyleBoxEmpty" id=26]
 
-[sub_resource type="GDScript" id=34]
+[sub_resource type="GDScript" id=27]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -2049,9 +2049,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=35]
+[sub_resource type="StyleBoxEmpty" id=28]
 
-[sub_resource type="GDScript" id=119]
+[sub_resource type="GDScript" id=29]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -2112,7 +2112,7 @@ func update_slot(slot:int) -> void:
 
 "
 
-[sub_resource type="GDScript" id=36]
+[sub_resource type="GDScript" id=30]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_feet_equip_slot.png\")
@@ -2296,9 +2296,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxEmpty" id=40]
+[sub_resource type="StyleBoxEmpty" id=31]
 
-[sub_resource type="GDScript" id=41]
+[sub_resource type="GDScript" id=32]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -2398,9 +2398,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=42]
+[sub_resource type="StyleBoxEmpty" id=33]
 
-[sub_resource type="GDScript" id=120]
+[sub_resource type="GDScript" id=34]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -2461,7 +2461,7 @@ func update_slot(slot:int) -> void:
 
 "
 
-[sub_resource type="GDScript" id=43]
+[sub_resource type="GDScript" id=35]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_ring_equip_slot.png\")
@@ -2646,9 +2646,9 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxEmpty" id=47]
+[sub_resource type="StyleBoxEmpty" id=36]
 
-[sub_resource type="GDScript" id=48]
+[sub_resource type="GDScript" id=37]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -2748,9 +2748,9 @@ func _on_WindowDialog_ItemMenu_popup_hide():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=49]
+[sub_resource type="StyleBoxEmpty" id=38]
 
-[sub_resource type="GDScript" id=121]
+[sub_resource type="GDScript" id=39]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -2811,7 +2811,7 @@ func update_slot(slot:int) -> void:
 
 "
 
-[sub_resource type="GDScript" id=50]
+[sub_resource type="GDScript" id=40]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/UI sprite/Player_info/empty_neck_equip_slot.png\")
@@ -2996,109 +2996,109 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="StyleBoxTexture" id=54]
+[sub_resource type="StyleBoxTexture" id=41]
 texture = ExtResource( 181 )
 region_rect = Rect2( 0, 0, 220, 400 )
 
-[sub_resource type="Theme" id=55]
+[sub_resource type="Theme" id=42]
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
 
-[sub_resource type="Theme" id=56]
+[sub_resource type="Theme" id=43]
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
 
-[sub_resource type="Theme" id=57]
+[sub_resource type="Theme" id=44]
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
+
+[sub_resource type="StyleBoxTexture" id=45]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=46]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=47]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=48]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=49]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="DynamicFont" id=50]
+size = 14
+use_filter = true
+font_data = ExtResource( 183 )
+
+[sub_resource type="StyleBoxTexture" id=51]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=52]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=53]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=54]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=55]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=56]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=57]
+texture = ExtResource( 182 )
+region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=58]
 texture = ExtResource( 182 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=59]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
+texture = ExtResource( 184 )
+region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=60]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
+texture = ExtResource( 184 )
+region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=61]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
+texture = ExtResource( 184 )
+region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=62]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="DynamicFont" id=63]
-size = 14
-use_filter = true
-font_data = ExtResource( 183 )
-
-[sub_resource type="StyleBoxTexture" id=64]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=65]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=66]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=67]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=68]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=69]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=70]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=71]
-texture = ExtResource( 182 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=72]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=73]
+[sub_resource type="StyleBoxTexture" id=63]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=74]
-texture = ExtResource( 184 )
-region_rect = Rect2( 0, 0, 36, 36 )
-
-[sub_resource type="StyleBoxTexture" id=75]
-texture = ExtResource( 184 )
-region_rect = Rect2( 0, 0, 36, 36 )
-
-[sub_resource type="StyleBoxTexture" id=76]
-texture = ExtResource( 184 )
-region_rect = Rect2( 0, 0, 36, 36 )
-
-[sub_resource type="GDScript" id=77]
+[sub_resource type="GDScript" id=64]
 script/source = "extends CanvasLayer
 
 # Declare member variables here. Examples:
@@ -3178,51 +3178,51 @@ func _on_settings_button_mouse_exited():
 	pass # Replace with function body.
 "
 
-[sub_resource type="StyleBoxEmpty" id=78]
+[sub_resource type="StyleBoxEmpty" id=65]
 
-[sub_resource type="StyleBoxTexture" id=79]
+[sub_resource type="StyleBoxTexture" id=66]
 texture = ExtResource( 187 )
 region_rect = Rect2( 0, 0, 220, 200 )
 
-[sub_resource type="StyleBoxTexture" id=80]
+[sub_resource type="StyleBoxTexture" id=67]
 texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
-[sub_resource type="StyleBoxTexture" id=81]
+[sub_resource type="StyleBoxTexture" id=68]
 texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=82]
+[sub_resource type="StyleBoxTexture" id=69]
 texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=83]
+[sub_resource type="StyleBoxTexture" id=70]
 
-[sub_resource type="StyleBoxTexture" id=84]
+[sub_resource type="StyleBoxTexture" id=71]
 texture = ExtResource( 188 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=85]
+[sub_resource type="StyleBoxTexture" id=72]
 texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
-[sub_resource type="StyleBoxTexture" id=86]
+[sub_resource type="StyleBoxTexture" id=73]
 texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=87]
+[sub_resource type="StyleBoxTexture" id=74]
 texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=88]
+[sub_resource type="StyleBoxTexture" id=75]
 
-[sub_resource type="StyleBoxTexture" id=89]
+[sub_resource type="StyleBoxTexture" id=76]
 texture = ExtResource( 189 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="Animation" id=90]
+[sub_resource type="Animation" id=77]
 resource_name = "level_up"
 loop = true
 tracks/0/type = "value"
@@ -3238,59 +3238,59 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.0705882, 0.0627451, 0.0627451, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxTexture" id=91]
+[sub_resource type="StyleBoxTexture" id=78]
 texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 modulate_color = Color( 0.780392, 0.784314, 0.521569, 1 )
 
-[sub_resource type="StyleBoxTexture" id=92]
+[sub_resource type="StyleBoxTexture" id=79]
 texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=93]
+[sub_resource type="StyleBoxTexture" id=80]
 texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=94]
+[sub_resource type="StyleBoxTexture" id=81]
 texture = ExtResource( 190 )
 region_rect = Rect2( 0, 0, 28, 28 )
 
-[sub_resource type="StyleBoxTexture" id=95]
+[sub_resource type="StyleBoxTexture" id=82]
 texture = ExtResource( 192 )
 region_rect = Rect2( 0, 0, 220, 200 )
 
-[sub_resource type="StyleBoxEmpty" id=96]
+[sub_resource type="StyleBoxEmpty" id=83]
 content_margin_left = 0.0
 content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 
-[sub_resource type="StyleBoxTexture" id=97]
+[sub_resource type="StyleBoxTexture" id=84]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=98]
+[sub_resource type="StyleBoxTexture" id=85]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 modulate_color = Color( 0.419608, 0.388235, 0.388235, 1 )
 
-[sub_resource type="StyleBoxTexture" id=99]
+[sub_resource type="StyleBoxTexture" id=86]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=100]
+[sub_resource type="StyleBoxTexture" id=87]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=101]
+[sub_resource type="StyleBoxTexture" id=88]
 texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
-[sub_resource type="StyleBoxTexture" id=105]
+[sub_resource type="StyleBoxTexture" id=89]
 texture = ExtResource( 195 )
 region_rect = Rect2( 0, 0, 669, 165 )
 
-[sub_resource type="GDScript" id=106]
+[sub_resource type="GDScript" id=90]
 script/source = "extends Label
 
 export var show_label = false
@@ -3328,7 +3328,7 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 "
 
-[sub_resource type="Animation" id=107]
+[sub_resource type="Animation" id=91]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -3343,17 +3343,17 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="StyleBoxTexture" id=108]
+[sub_resource type="StyleBoxTexture" id=92]
 texture = ExtResource( 201 )
 region_rect = Rect2( 0, 0, 113, 75 )
 
-[sub_resource type="RectangleShape2D" id=109]
+[sub_resource type="RectangleShape2D" id=93]
 extents = Vector2( 12.0972, 9.70228 )
 
-[sub_resource type="RectangleShape2D" id=110]
+[sub_resource type="RectangleShape2D" id=94]
 extents = Vector2( 6.52091, 16.2632 )
 
-[sub_resource type="Animation" id=111]
+[sub_resource type="Animation" id=95]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -3369,10 +3369,10 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=112]
+[sub_resource type="RectangleShape2D" id=96]
 extents = Vector2( 2.03743, 1.97269 )
 
-[sub_resource type="GDScript" id=113]
+[sub_resource type="GDScript" id=97]
 script/source = "extends Area2D
 
 # Declare member variables here. Examples:
@@ -3384,14 +3384,15 @@ func _ready():
 	pass # Replace with function body.
 
 
-#func _process(delta):
-#	print(get_angle_to(get_local_mouse_position()))
-#	rotation += get_local_mouse_position().angle()
+func _physics_process(delta):
+	
+	look_at(get_global_mouse_position())
+#	print(get_parent().get_local_mouse_position().angle())
+#	rotate(get_parent().get_local_mouse_position().angle())
 "
 
-[sub_resource type="CapsuleShape2D" id=114]
-radius = 7.7236
-height = 131.091
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 87.1345, 4.73892 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "save",
@@ -3410,7 +3411,6 @@ position = Vector2( 7.5, -13 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
 texture = ExtResource( 2 )
-texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 
@@ -3418,7 +3418,6 @@ end_cap_mode = 2
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
-frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -3450,6 +3449,7 @@ position = Vector2( 0, 3.8 )
 shape = SubResource( 2 )
 
 [node name="Player_info" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = SubResource( 3 )
 
 [node name="equip_panel" type="Panel" parent="Player_info"]
@@ -3477,7 +3477,7 @@ margin_bottom = 49.8503
 custom_styles/bg = SubResource( 7 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 115 )
+script = SubResource( 8 )
 
 [node name="weapon" type="ItemList" parent="Player_info/equip_panel/weapon"]
 margin_left = 19.4589
@@ -3487,7 +3487,7 @@ margin_bottom = 49.8503
 custom_styles/bg = SubResource( 7 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 8 )
+script = SubResource( 9 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/weapon"]
 margin_left = 427.0
@@ -3495,7 +3495,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/weapon/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3540,25 +3540,25 @@ margin_left = -5.0
 margin_top = 65.0
 margin_right = 57.0004
 margin_bottom = 125.0
-custom_styles/panel = SubResource( 12 )
-script = SubResource( 13 )
+custom_styles/panel = SubResource( 11 )
+script = SubResource( 12 )
 
 [node name="chest_bg" type="ItemList" parent="Player_info/equip_panel/chest"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 14 )
+custom_styles/bg = SubResource( 13 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 116 )
+script = SubResource( 14 )
 
 [node name="chest" type="ItemList" parent="Player_info/equip_panel/chest"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 14 )
+custom_styles/bg = SubResource( 13 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
 script = SubResource( 15 )
@@ -3569,7 +3569,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/chest/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3614,28 +3614,28 @@ margin_left = -5.0
 margin_top = 115.0
 margin_right = 57.0
 margin_bottom = 175.0
-custom_styles/panel = SubResource( 19 )
-script = SubResource( 20 )
+custom_styles/panel = SubResource( 16 )
+script = SubResource( 17 )
 
 [node name="gloves_bg" type="ItemList" parent="Player_info/equip_panel/gloves"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 21 )
+custom_styles/bg = SubResource( 18 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 117 )
+script = SubResource( 19 )
 
 [node name="gloves" type="ItemList" parent="Player_info/equip_panel/gloves"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 21 )
+custom_styles/bg = SubResource( 18 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 22 )
+script = SubResource( 20 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/gloves"]
 margin_left = 427.0
@@ -3643,7 +3643,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/gloves/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3688,28 +3688,28 @@ margin_left = -5.0
 margin_top = 165.0
 margin_right = 57.0003
 margin_bottom = 224.999
-custom_styles/panel = SubResource( 26 )
-script = SubResource( 27 )
+custom_styles/panel = SubResource( 21 )
+script = SubResource( 22 )
 
 [node name="foot_bg" type="ItemList" parent="Player_info/equip_panel/foot"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 28 )
+custom_styles/bg = SubResource( 23 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 118 )
+script = SubResource( 24 )
 
 [node name="foot" type="ItemList" parent="Player_info/equip_panel/foot"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 28 )
+custom_styles/bg = SubResource( 23 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 29 )
+script = SubResource( 25 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/foot"]
 margin_left = 427.0
@@ -3717,7 +3717,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/foot/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3762,28 +3762,28 @@ margin_left = -5.0
 margin_top = 215.0
 margin_right = 57.0003
 margin_bottom = 275.0
-custom_styles/panel = SubResource( 33 )
-script = SubResource( 34 )
+custom_styles/panel = SubResource( 26 )
+script = SubResource( 27 )
 
 [node name="feet_bg" type="ItemList" parent="Player_info/equip_panel/feet"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 35 )
+custom_styles/bg = SubResource( 28 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 119 )
+script = SubResource( 29 )
 
 [node name="feet" type="ItemList" parent="Player_info/equip_panel/feet"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 35 )
+custom_styles/bg = SubResource( 28 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 36 )
+script = SubResource( 30 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/feet"]
 margin_left = 427.0
@@ -3791,7 +3791,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/feet/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3836,28 +3836,28 @@ margin_left = -5.0
 margin_top = 265.0
 margin_right = 57.0
 margin_bottom = 325.0
-custom_styles/panel = SubResource( 40 )
-script = SubResource( 41 )
+custom_styles/panel = SubResource( 31 )
+script = SubResource( 32 )
 
 [node name="ring_bg" type="ItemList" parent="Player_info/equip_panel/ring"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 42 )
+custom_styles/bg = SubResource( 33 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 120 )
+script = SubResource( 34 )
 
 [node name="ring" type="ItemList" parent="Player_info/equip_panel/ring"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 42 )
+custom_styles/bg = SubResource( 33 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 43 )
+script = SubResource( 35 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/ring"]
 margin_left = 427.0
@@ -3865,7 +3865,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/ring/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3910,28 +3910,28 @@ margin_left = -5.0
 margin_top = 315.0
 margin_right = 57.0
 margin_bottom = 375.0
-custom_styles/panel = SubResource( 47 )
-script = SubResource( 48 )
+custom_styles/panel = SubResource( 36 )
+script = SubResource( 37 )
 
 [node name="neck_bg" type="ItemList" parent="Player_info/equip_panel/neck"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 49 )
+custom_styles/bg = SubResource( 38 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 121 )
+script = SubResource( 39 )
 
 [node name="neck" type="ItemList" parent="Player_info/equip_panel/neck"]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 52.9203
-custom_styles/bg = SubResource( 49 )
+custom_styles/bg = SubResource( 38 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 50 )
+script = SubResource( 40 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Player_info/equip_panel/neck"]
 margin_left = 427.0
@@ -3939,7 +3939,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="Player_info/equip_panel/neck/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -3985,7 +3985,7 @@ margin_left = 1000.0
 margin_top = 145.0
 margin_right = 1254.0
 margin_bottom = 545.0
-custom_styles/panel = SubResource( 54 )
+custom_styles/panel = SubResource( 41 )
 
 [node name="HP_value" type="Label" parent="Player_info/Statistics"]
 margin_left = 104.028
@@ -4003,7 +4003,7 @@ margin_right = 177.715
 margin_bottom = 126.796
 hint_tooltip = "TOOL_HP_TEXT"
 mouse_filter = 0
-theme = SubResource( 55 )
+theme = SubResource( 42 )
 text = "PLAYER_INFO_HEALTH"
 valign = 1
 
@@ -4023,7 +4023,7 @@ margin_right = 197.715
 margin_bottom = 150.294
 hint_tooltip = "TOOL_STR_TEXT"
 mouse_filter = 0
-theme = SubResource( 56 )
+theme = SubResource( 43 )
 text = "PLAYER_INFO_STRANGTH"
 valign = 1
 
@@ -4043,7 +4043,7 @@ margin_right = 176.715
 margin_bottom = 199.294
 hint_tooltip = "TOOL_AGI_TEXT"
 mouse_filter = 0
-theme = SubResource( 57 )
+theme = SubResource( 44 )
 text = "PLAYER_INFO_AGILITY"
 valign = 1
 
@@ -4052,36 +4052,36 @@ margin_left = 211.715
 margin_top = 120.879
 margin_right = 231.715
 margin_bottom = 140.879
-custom_styles/hover = SubResource( 58 )
-custom_styles/pressed = SubResource( 59 )
-custom_styles/focus = SubResource( 60 )
-custom_styles/disabled = SubResource( 61 )
-custom_styles/normal = SubResource( 62 )
-custom_fonts/font = SubResource( 63 )
+custom_styles/hover = SubResource( 45 )
+custom_styles/pressed = SubResource( 46 )
+custom_styles/focus = SubResource( 47 )
+custom_styles/disabled = SubResource( 48 )
+custom_styles/normal = SubResource( 49 )
+custom_fonts/font = SubResource( 50 )
 
 [node name="up_hp" type="Button" parent="Player_info/Statistics"]
 margin_left = 211.715
 margin_top = 97.5777
 margin_right = 231.715
 margin_bottom = 117.578
-custom_styles/hover = SubResource( 64 )
-custom_styles/pressed = SubResource( 65 )
-custom_styles/focus = SubResource( 66 )
-custom_styles/disabled = SubResource( 67 )
-custom_styles/normal = SubResource( 62 )
-custom_fonts/font = SubResource( 63 )
+custom_styles/hover = SubResource( 51 )
+custom_styles/pressed = SubResource( 52 )
+custom_styles/focus = SubResource( 53 )
+custom_styles/disabled = SubResource( 54 )
+custom_styles/normal = SubResource( 49 )
+custom_fonts/font = SubResource( 50 )
 
 [node name="up_agi" type="Button" parent="Player_info/Statistics"]
 margin_left = 212.432
 margin_top = 169.521
 margin_right = 232.432
 margin_bottom = 189.521
-custom_styles/hover = SubResource( 68 )
-custom_styles/pressed = SubResource( 69 )
-custom_styles/focus = SubResource( 70 )
-custom_styles/disabled = SubResource( 71 )
-custom_styles/normal = SubResource( 62 )
-custom_fonts/font = SubResource( 63 )
+custom_styles/hover = SubResource( 55 )
+custom_styles/pressed = SubResource( 56 )
+custom_styles/focus = SubResource( 57 )
+custom_styles/disabled = SubResource( 58 )
+custom_styles/normal = SubResource( 49 )
+custom_fonts/font = SubResource( 50 )
 
 [node name="damage_value" type="Label" parent="Player_info/Statistics"]
 margin_left = 94.4478
@@ -4177,11 +4177,11 @@ valign = 1
 margin_left = 212.432
 margin_right = 242.432
 margin_bottom = 30.0
-custom_styles/hover = SubResource( 72 )
-custom_styles/pressed = SubResource( 73 )
-custom_styles/focus = SubResource( 74 )
-custom_styles/disabled = SubResource( 75 )
-custom_styles/normal = SubResource( 76 )
+custom_styles/hover = SubResource( 59 )
+custom_styles/pressed = SubResource( 60 )
+custom_styles/focus = SubResource( 61 )
+custom_styles/disabled = SubResource( 62 )
+custom_styles/normal = SubResource( 63 )
 
 [node name="Label" type="Label" parent="Player_info/Statistics"]
 margin_left = 53.4681
@@ -4195,14 +4195,14 @@ valign = 1
 
 [node name="UI_paneli" type="CanvasLayer" parent="."]
 editor/display_folded = true
-script = SubResource( 77 )
+script = SubResource( 64 )
 
 [node name="Health_potion" type="Panel" parent="UI_paneli"]
 margin_left = 9.56044
 margin_top = 66.1928
 margin_right = 84.5604
 margin_bottom = 151.193
-custom_styles/panel = SubResource( 78 )
+custom_styles/panel = SubResource( 65 )
 
 [node name="Sprite2" type="Sprite" parent="UI_paneli/Health_potion"]
 visible = false
@@ -4238,7 +4238,7 @@ margin_top = 416.0
 margin_right = 47.0
 margin_bottom = 455.0
 rect_scale = Vector2( 6, 6 )
-custom_styles/panel = SubResource( 79 )
+custom_styles/panel = SubResource( 66 )
 
 [node name="Inv_button" type="Button" parent="UI_paneli/Button_UI"]
 margin_left = 0.551729
@@ -4247,11 +4247,11 @@ margin_right = 23.5517
 margin_bottom = 30.5846
 rect_scale = Vector2( 0.24, 0.23 )
 rect_pivot_offset = Vector2( 0.5, 0.5 )
-custom_styles/hover = SubResource( 80 )
-custom_styles/pressed = SubResource( 81 )
-custom_styles/focus = SubResource( 82 )
-custom_styles/disabled = SubResource( 83 )
-custom_styles/normal = SubResource( 84 )
+custom_styles/hover = SubResource( 67 )
+custom_styles/pressed = SubResource( 68 )
+custom_styles/focus = SubResource( 69 )
+custom_styles/disabled = SubResource( 70 )
+custom_styles/normal = SubResource( 71 )
 
 [node name="Pinfo_button" type="Button" parent="UI_paneli/Button_UI"]
 margin_left = 1.375
@@ -4259,14 +4259,14 @@ margin_top = 15.1259
 margin_right = 24.375
 margin_bottom = 38.1259
 rect_scale = Vector2( 0.24, 0.24 )
-custom_styles/hover = SubResource( 85 )
-custom_styles/pressed = SubResource( 86 )
-custom_styles/focus = SubResource( 87 )
-custom_styles/disabled = SubResource( 88 )
-custom_styles/normal = SubResource( 89 )
+custom_styles/hover = SubResource( 72 )
+custom_styles/pressed = SubResource( 73 )
+custom_styles/focus = SubResource( 74 )
+custom_styles/disabled = SubResource( 75 )
+custom_styles/normal = SubResource( 76 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI_paneli/Button_UI/Pinfo_button"]
-anims/level_up = SubResource( 90 )
+anims/level_up = SubResource( 77 )
 
 [node name="Sprite" type="Sprite" parent="UI_paneli/Button_UI/Pinfo_button"]
 
@@ -4276,12 +4276,13 @@ margin_top = 22.0805
 margin_right = 23.2517
 margin_bottom = 45.0805
 rect_scale = Vector2( 0.24, 0.24 )
-custom_styles/hover = SubResource( 91 )
-custom_styles/pressed = SubResource( 92 )
-custom_styles/focus = SubResource( 93 )
-custom_styles/normal = SubResource( 94 )
+custom_styles/hover = SubResource( 78 )
+custom_styles/pressed = SubResource( 79 )
+custom_styles/focus = SubResource( 80 )
+custom_styles/normal = SubResource( 81 )
 
 [node name="inventary" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 191 )
 
 [node name="inventory" type="Panel" parent="inventary"]
@@ -4289,14 +4290,14 @@ margin_left = 27.2278
 margin_top = 223.0
 margin_right = 247.228
 margin_bottom = 363.0
-custom_styles/panel = SubResource( 95 )
+custom_styles/panel = SubResource( 82 )
 
 [node name="bag2" type="ItemList" parent="inventary/inventory"]
 margin_left = 22.1069
 margin_top = 52.2284
 margin_right = 217.107
 margin_bottom = 116.228
-custom_styles/bg = SubResource( 96 )
+custom_styles/bg = SubResource( 83 )
 custom_constants/icon_margin = -28
 allow_rmb_select = true
 auto_height = true
@@ -4312,7 +4313,7 @@ margin_left = 22.1069
 margin_top = 52.2284
 margin_right = 217.107
 margin_bottom = 116.228
-custom_styles/bg = SubResource( 96 )
+custom_styles/bg = SubResource( 83 )
 custom_constants/icon_margin = -28
 auto_height = true
 max_columns = 0
@@ -4338,11 +4339,11 @@ margin_top = 0.0754547
 margin_right = 216.97
 margin_bottom = 30.0755
 rect_scale = Vector2( 0.7, 0.7 )
-custom_styles/hover = SubResource( 97 )
-custom_styles/pressed = SubResource( 98 )
-custom_styles/focus = SubResource( 99 )
-custom_styles/disabled = SubResource( 100 )
-custom_styles/normal = SubResource( 101 )
+custom_styles/hover = SubResource( 84 )
+custom_styles/pressed = SubResource( 85 )
+custom_styles/focus = SubResource( 86 )
+custom_styles/disabled = SubResource( 87 )
+custom_styles/normal = SubResource( 88 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="inventary"]
 margin_left = 427.0
@@ -4350,7 +4351,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 176 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="inventary/WindowDialog_ItemMenu"]
 margin_left = 132.683
@@ -4437,13 +4438,13 @@ margin_right = 1026.41
 margin_bottom = 667.646
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/normal = SubResource( 105 )
+custom_styles/normal = SubResource( 89 )
 custom_fonts/font = ExtResource( 196 )
 align = 1
 valign = 1
 autowrap = true
 percent_visible = 0.0625
-script = SubResource( 106 )
+script = SubResource( 90 )
 
 [node name="Timer" type="Timer" parent="GUI/say_label"]
 wait_time = 5.0
@@ -4473,7 +4474,7 @@ custom_styles/normal = ExtResource( 199 )
 custom_fonts/font = ExtResource( 200 )
 
 [node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
-anims/full = SubResource( 107 )
+anims/full = SubResource( 91 )
 
 [node name="level_bar" type="Control" parent="GUI"]
 margin_left = 1236.06
@@ -4484,7 +4485,7 @@ margin_bottom = 83.8948
 [node name="Panel" type="Panel" parent="GUI/level_bar"]
 margin_right = 40.0
 margin_bottom = 40.0
-custom_styles/panel = SubResource( 108 )
+custom_styles/panel = SubResource( 92 )
 
 [node name="level" type="Label" parent="GUI/level_bar"]
 margin_left = -0.513336
@@ -4548,7 +4549,7 @@ position = Vector2( 16, 5 )
 
 [node name="col_Atack" type="CollisionShape2D" parent="attack_area"]
 position = Vector2( -4.36932, 0 )
-shape = SubResource( 109 )
+shape = SubResource( 93 )
 disabled = true
 
 [node name="use" type="Area2D" parent="."]
@@ -4558,7 +4559,7 @@ scale = Vector2( 1.56179, 1.19754 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use"]
 scale = Vector2( 0.902065, 0.733844 )
-shape = SubResource( 110 )
+shape = SubResource( 94 )
 disabled = true
 
 [node name="use_check" type="Area2D" parent="."]
@@ -4568,7 +4569,7 @@ scale = Vector2( 1.56179, 1.19754 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_check"]
 scale = Vector2( 0.902065, 0.733844 )
-shape = SubResource( 110 )
+shape = SubResource( 94 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -0.481295, 2.70181 )
@@ -4589,7 +4590,7 @@ hframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
 autoplay = "use"
 playback_speed = 0.4
-anims/use = SubResource( 111 )
+anims/use = SubResource( 95 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
@@ -4601,7 +4602,7 @@ autoplay = true
 position = Vector2( 8.23269, -12.0622 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hook_area"]
-shape = SubResource( 112 )
+shape = SubResource( 96 )
 
 [node name="fight_sound" type="AudioStreamPlayer2D" parent="."]
 volume_db = -6.71
@@ -4617,11 +4618,11 @@ wait_time = 3.0
 one_shot = true
 
 [node name="hook_line" type="Area2D" parent="."]
-position = Vector2( 0, -77 )
-script = SubResource( 113 )
+script = SubResource( 97 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hook_line"]
-shape = SubResource( 114 )
+position = Vector2( 88.4961, 0 )
+shape = SubResource( 98 )
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="timeout" from="Camera2D/time_move" to="." method="_on_time_move_timeout"]

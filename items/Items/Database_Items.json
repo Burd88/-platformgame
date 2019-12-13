@@ -13,6 +13,24 @@
 		"description": "",
 		"sell_price": 0
 	},
+	
+	"1000001": {
+		"name": "ROPE",
+		"icon": "res://items/rope/rope.png",
+		"type": "rope",
+		"damage": 0,
+		"weight": 0.0,
+		"str": 0,
+		"agi": 0,
+		"hp": 0,
+		"quest": false,
+		"equip": false,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "ROPE_TEXT",
+		"sell_price": 0
+	},
+	
 	"1": {
 		"name": "SWORD",
 		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_00.png",
@@ -160,11 +178,11 @@
 	
 	"10": {
 		"name": "SWORD",
-		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_03.png",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_00.png",
 		"type": "weapon",
 		"damage": 35,
-		"str": 5,
-		"agi": 2,
+		"str": 2,
+		"agi": 1,
 		"hp": 0,
 		"weight": 0.0,
 		"quest": false,
@@ -270,6 +288,343 @@
 		"description": "NECK_NORMAL_TEXT",
 		"sell_price": 0
 	},
+		
+	"20": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_01.png",
+		"type": "weapon",
+		"damage": 35,
+		"str": 4,
+		"agi": 3,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+		
+	"21": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_02.png",
+		"type": "weapon",
+		"damage": 40,
+		"str": 1,
+		"agi": 5,
+		"hp": 10,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+		
+	"22": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_05.png",
+		"type": "weapon",
+		"damage": 35,
+		"str": 5,
+		"agi": 4,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+		
+	"23": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_06.png",
+		"type": "weapon",
+		"damage": 45,
+		"str": 0,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+		
+	"24": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_07.png",
+		"type": "weapon",
+		"damage": 40,
+		"str": 5,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"25": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_10.png",
+		"type": "weapon",
+		"damage": 40,
+		"str": 2,
+		"agi": 5,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"26": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_11.png",
+		"type": "weapon",
+		"damage": 45,
+		"str": 2,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"27": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_15.png",
+		"type": "weapon",
+		"damage": 40,
+		"str": 2,
+		"agi": 4,
+		"hp": 10,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"28": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_16.png",
+		"type": "weapon",
+		"damage": 45,
+		"str": 5,
+		"agi": 4,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"29": {
+		"name": "SWORD_SHARP",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_17.png",
+		"type": "weapon",
+		"damage": 35,
+		"str": 5,
+		"agi": 5,
+		"hp": 15,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_SHARP_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"30": {
+		"name": "EMERALD_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_03.png",
+		"type": "weapon",
+		"damage": 50,
+		"str": 3,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "EMERALD_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"31": {
+		"name": "EMERALD_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_04.png",
+		"type": "weapon",
+		"damage": 55,
+		"str": 0,
+		"agi": 4,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "EMERALD_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"32": {
+		"name": "SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_12.png",
+		"type": "weapon",
+		"damage": 50,
+		"str": 2,
+		"agi": 2,
+		"hp": 15,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SWORD_NORMAL_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"33": {
+		"name": "RUBY_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_08.png",
+		"type": "weapon",
+		"damage": 55,
+		"str": 2,
+		"agi": 5,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "RUBY_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"34": {
+		"name": "RUBY_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_09.png",
+		"type": "weapon",
+		"damage": 60,
+		"str": 3,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "RUBY_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"35": {
+		"name": "SAPPHRE_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_13.png",
+		"type": "weapon",
+		"damage": 65,
+		"str": 3,
+		"agi": 3,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SAPPHRE_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+	"36": {
+		"name": "SAPPHRE_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_14.png",
+		"type": "weapon",
+		"damage": 65,
+		"str": 5,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "SAPPHRE_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"37": {
+		"name": "GOLDEN_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_18.png",
+		"type": "weapon",
+		"damage": 70,
+		"str": 5,
+		"agi": 2,
+		"hp": 0,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "GOLDEN_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
+		
+	"38": {
+		"name": "GOLDEN_SWORD",
+		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_19.png",
+		"type": "weapon",
+		"damage": 70,
+		"str": 3,
+		"agi": 2,
+		"hp": 40,
+		"weight": 0.0,
+		"quest": false,
+		"equip": true,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "GOLDEN_SWORD_TEXT",
+		"sell_price": 0
+	},
+	
 
 	"192": {
 		"name": "HOLY_SWORD",

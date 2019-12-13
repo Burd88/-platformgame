@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://levels/Level1/map/tile_tables.png" type="Texture" id=1]
+[ext_resource path="res://levels/Level1/map/tile_tables_broken.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends RigidBody2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+export var broken = true
+var vel = Vector2()
+var health = 4 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if health == 0 and broken == true: 
+		$norm.hide()
+		$broken.show()
+		broken = false
+	pass
+
+func _damage_move(move):
+	
+	position.x +=move
+	position.y -=1
+	pass"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40.2058, 7.93413 )
+
+[node name="Stol_static" type="RigidBody2D"]
+collision_layer = 32
+mode = 2
+mass = 5000.0
+script = SubResource( 1 )
+
+[node name="norm" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 96, 16 )
+
+[node name="broken" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 80, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -6.75928, 0 )
+shape = SubResource( 2 )

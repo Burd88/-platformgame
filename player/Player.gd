@@ -36,6 +36,7 @@ onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.wa
 
 onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.wav")
 onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big punch.wav")
+onready var damage_wood_sound = preload("res://sounds/sound effect/wood_damage.wav")
 ## sound move 
 onready var move_stone1_sound = preload("res://player/sound/sfx_step_grass_l.wav")
 onready var move_stone2_sound = preload("res://player/sound/sfx_step_grass_r.wav")
@@ -116,6 +117,8 @@ var bi
 var major = false
 var mai
 
+var rope_in_inventory = false
+
 var weapon_inventory
 var str_weapon = 0
 var agi_weapon= 0
@@ -149,11 +152,11 @@ var full_hp= 0
 
 
 func _ready(): # стартовые переменные персонажа
-	if GLOBAL.load_game == "new_game":
-		position = Vector2(144,366)
-		pass
-	elif GLOBAL.load_game == "loading_game":
-		pass
+#	if GLOBAL.load_game == "new_game":
+#		position = Vector2(144,366)
+#		pass
+#	elif GLOBAL.load_game == "loading_game":
+#		pass
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -202,6 +205,7 @@ func _physics_process(delta):# функция выполнения во врем
 			$GUI/level_bar.show()
 			$Camera2D.current = true
 			$UI_paneli/Button_UI.show()
+			check_rope_inventory()
 
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
@@ -240,14 +244,14 @@ func _physics_process(delta):# функция выполнения во врем
 			
 		elif hook_line_use:
 			print(int(position.distance_to(hook_vector)))
-			if position.distance_to(hook_vector) > 15:
+			if position.distance_to(hook_vector) > 30:
 				$spr.animation = "веревка_подъем"
 				$Line2D.set_point_position(1 , hook_vector - $Line2D.global_position)
 				var move_dist = (hook_vector - global_position).normalized()
 				gravity = 0
 				velocity +=35*move_dist*delta
 				move_and_slide(velocity)
-			elif position.distance_to(hook_vector) < 15:
+			elif position.distance_to(hook_vector) < 30:
 				$spr.animation = "прыжок"
 				$Line2D.set_point_position(1 ,   Vector2(0,0))
 				hook_line_pos = null
@@ -383,8 +387,8 @@ func _move(delta):# движение игрока
 		$"E-key".position.x = 14
 		$use_check.position.x = 14
 		$hook_area.position.x = 9
-		$hook_line.position.x = 9
-		$hook_line.position.y = -77
+#		$hook_line.position.x = 9
+#		$hook_line.position.y = -77
 		$Line2D.position.x = 7.5
 		
 
@@ -395,8 +399,8 @@ func _move(delta):# движение игрока
 		$"E-key".position.x = - 14
 		$use_check.position.x = -14
 		$hook_area.position.x = -9
-		$hook_line.position.x = -9
-		$hook_line.position.y = -77
+#		$hook_line.position.x = -9
+#		$hook_line.position.y = -77
 		$Line2D.position.x = -7.5
 
 	
@@ -529,8 +533,6 @@ func _attack():# атака игрока
 	
 	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
 		#velocity.y = 0
-
-		
 		if attack == false:
 			regen_hp = false
 			$Regen_timer.start()
@@ -640,8 +642,8 @@ func _shake_camera(delta):# дрожаие камеры
 func _on_attack_area_body_entered(body):# урон по цели 
 	if body.get("enemy_type"):
 		body._damage(damage)
-		elapsedtime = 0
-		isShake = true
+#		elapsedtime = 0
+#		isShake = true
 		
 	elif body.name == "frontground":
 		if weapon == 1:
@@ -650,6 +652,14 @@ func _on_attack_area_body_entered(body):# урон по цели
 		elif weapon == 0:
 			$damage_sound.stream = damage_hand_sound
 			$damage_sound.play()
+	elif body.get("broken") == true:
+		$damage_sound.stream = damage_wood_sound
+		$damage_sound.play()
+		if $spr.flip_h == true:
+			body._damage_move(-2)
+		elif  $spr.flip_h == false:
+			body._damage_move(2)
+		body.health -=1
 	else : pass
 
 	if !body:
@@ -941,7 +951,14 @@ func inventory_check(index):# использование предмета инв
 			print("full hp")
 			pass
 	pass
-
+	
+func check_rope_inventory():
+	
+	for index in range(0, Global_Player.inventory_maxSlots):
+		if $inventary/inventory/bag1.get_item_metadata(index)["type"] ==  "rope" :
+			
+			rope_in_inventory = true
+		
 func _on_use_check_area_entered(area):# предмет в зоне использования
 	#print(area.name)
 	if area.get("useable") :
@@ -991,8 +1008,9 @@ func _on_AudioStreamPlayer2D_finished():
 
 func _on_hook_line_area_entered(area):
 	if area.get("hook_line"):
-		print(area.position)
-		hook_line_pos = area.global_position
+		if rope_in_inventory == true:
+			print(area.position)
+			hook_line_pos = area.global_position
 	pass # Replace with function body.
 
 func _on_hook_line_area_exited(area):

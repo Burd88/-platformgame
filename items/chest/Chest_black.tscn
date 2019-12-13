@@ -233,7 +233,7 @@ func update_slot(slot:int) -> void:
 #func _on_ItemList_item_selected(index):
 #	pass # Replace with function body."
 
-[sub_resource type="StyleBoxTexture" id=122]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 330, 360 )
 
@@ -286,7 +286,7 @@ margin_top = 108.0
 margin_right = 757.0
 margin_bottom = 468.0
 theme = ExtResource( 5 )
-custom_styles/panel = SubResource( 122 )
+custom_styles/panel = SubResource( 6 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="CanvasLayer/Panel/WindowDialog_ItemMenu"]
 margin_left = 132.683
