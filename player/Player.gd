@@ -656,9 +656,9 @@ func _on_attack_area_body_entered(body):# урон по цели
 		$damage_sound.stream = damage_wood_sound
 		$damage_sound.play()
 		if $spr.flip_h == true:
-			body._damage_move(-2)
+			body._damage_move(-1)
 		elif  $spr.flip_h == false:
-			body._damage_move(2)
+			body._damage_move(1)
 		body.health -=1
 	else : pass
 

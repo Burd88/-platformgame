@@ -3418,6 +3418,7 @@ end_cap_mode = 2
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "веревка_подъем"
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
