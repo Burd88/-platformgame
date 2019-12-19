@@ -33,7 +33,7 @@
 	
 	"1000002": {
 		"name": "TORCH",
-		"icon": "res://items/Torch/Image0.png",
+		"icon": "res://items/Torch/Image01.png",
 		"type": "torch",
 		"damage": 0,
 		"weight": 0.0,
