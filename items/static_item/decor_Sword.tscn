@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/Level1/map/tile_unlittorches.png" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=4]
+rough = true
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends RigidBody2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+export var broken = true
+var vel = Vector2()
+var health = 4 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+#	if health == 0 and broken == true: 
+
+#		broken = false
+	pass
+
+func _damage_move(move):
+	linear_velocity = Vector2(30*move, -20)
+	angular_velocity = 2*move
+	applied_torque = 50*move
+	position.x +=2*move
+	position.y -=1
+	gravity_scale = 1
+	pass"
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.65826
+height = 14.8381
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.4983, 1.39943 )
+
+[node name="Sword" type="RigidBody2D"]
+collision_layer = 32
+collision_mask = 9
+mass = 10.0
+physics_material_override = SubResource( 4 )
+gravity_scale = 0.0
+script = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.47116 )
+shape = SubResource( 2 )

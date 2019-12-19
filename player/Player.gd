@@ -152,11 +152,11 @@ var full_hp= 0
 
 
 func _ready(): # стартовые переменные персонажа
-#	if GLOBAL.load_game == "new_game":
-#		position = Vector2(144,366)
-#		pass
-#	elif GLOBAL.load_game == "loading_game":
-#		pass
+	if GLOBAL.load_game == "new_game":
+		position = Vector2(144,366)
+		pass
+	elif GLOBAL.load_game == "loading_game":
+		pass
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -512,9 +512,15 @@ func _use():# использование предмета
 
 func _light_mode():# включение света вокруг игрока
 	if torch == true:
+		$Light2D.texture_scale = 0.3
+		$Light2D.energy = 1
 		$Light2D.enabled = true
+#		if Input.is_action_just_pressed("torch_throw"):
+#
 	else:
-		$Light2D.enabled = false
+		$Light2D.texture_scale = 0.1
+		$Light2D.enabled = true
+		$Light2D.energy = 0.7
 	pass
 
 func move_camera(pos):# перемещение камеры для кат сцены 
@@ -1030,3 +1036,19 @@ func _on_hook_line_area_exited(area):
 
 
 
+
+
+func _on_use_body_entered(body):
+	if body.get('data_id') != null and body.get("useable") == true:
+		if randi()%2 == 0:
+			$move_sound.stream = pick_up_item1_sound
+			$move_sound.play()
+		else: 
+			$move_sound.stream = pick_up_item2_sound
+			$move_sound.play()
+	
+		$inventary/inventory/bag1.update_slot(Global_Player.inventory_addItem(body.data_id))
+		#print(area.data_id)
+		body.queue_free()
+	else: pass #print("no item")
+	pass # Replace with function body.

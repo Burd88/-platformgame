@@ -12,8 +12,10 @@ var useable = true
 func _on_tourch_area_area_entered(area):
 	if area.name == "use":
 		#say_label.show()
-		get_parent().get_parent().get_node("Player").get_node("GUI/say_label").text = tr("TOURCH_EQUIP")
-		get_parent().get_parent().get_node("Player").get_node("GUI/say_label").show_label = true
+		var player = get_tree().get_nodes_in_group("player")
+
+		player[0].get_node("GUI/say_label").text = tr("TOURCH_EQUIP")
+		player[0].get_node("GUI/say_label").show_label = true
 		area.get_parent().torch = true
 		queue_free()
 	pass # Replace with function body.

@@ -9,25 +9,25 @@
 [ext_resource path="res://items/portal/portal10006.png" type="Texture" id=7]
 [ext_resource path="res://items/portal/portal10007.png" type="Texture" id=8]
 [ext_resource path="res://items/portal/portal10008.png" type="Texture" id=9]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=10]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=11]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=12]
-[ext_resource path="res://player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=13]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=14]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=15]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-00.png" type="Texture" id=16]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-01.png" type="Texture" id=17]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-02.png" type="Texture" id=18]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-03.png" type="Texture" id=19]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-04.png" type="Texture" id=20]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=21]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=22]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=23]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-01.png" type="Texture" id=24]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-02.png" type="Texture" id=25]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-03.png" type="Texture" id=26]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=27]
-[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=28]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-01.png" type="Texture" id=10]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-02.png" type="Texture" id=11]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-03.png" type="Texture" id=12]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-04.png" type="Texture" id=13]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-05.png" type="Texture" id=14]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-knock-dwn-06.png" type="Texture" id=15]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-00.png" type="Texture" id=16]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-01.png" type="Texture" id=17]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=18]
+[ext_resource path="res://player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=19]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-02.png" type="Texture" id=20]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-drop-kick-03.png" type="Texture" id=21]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-00.png" type="Texture" id=22]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-01.png" type="Texture" id=23]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-02.png" type="Texture" id=24]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-03.png" type="Texture" id=25]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-04.png" type="Texture" id=26]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=27]
+[ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=28]
 [ext_resource path="res://items/portal/sounds/portal-open.wav" type="AudioStream" id=29]
 [ext_resource path="res://player/sound/damage-1.wav" type="AudioStream" id=30]
 [ext_resource path="res://player/sound/sfx_step_grass_l.wav" type="AudioStream" id=31]
@@ -70,7 +70,11 @@ func show_palyer():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == \"cut\":
-		get_parent().get_node(\"Player\").cut_scene = false
+		var player = get_tree().get_nodes_in_group(\"player\")
+
+		player[0].get_node(\"GUI/say_label\").text = tr(\"TOURCH_EQUIP\")
+		player[0].get_node(\"GUI/say_label\").show_label = true
+		player[0].cut_scene = false
 		queue_free()
 	pass # Replace with function body.
 "
@@ -85,29 +89,29 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "1",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "4",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "3",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
-"name": "2",
+"name": "4",
 "speed": 5.0
 } ]
 
@@ -238,7 +242,7 @@ scale = Vector2( 1e-005, 1e-005 )
 position = Vector2( -1.1376, -1.1376 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-frame = 5
+frame = 2
 playing = true
 flip_h = true
 
@@ -247,6 +251,7 @@ modulate = Color( 1, 1, 1, 0.833317 )
 position = Vector2( 145.157, 246.89 )
 frames = SubResource( 3 )
 animation = "5"
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

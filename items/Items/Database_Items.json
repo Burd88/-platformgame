@@ -31,6 +31,23 @@
 		"sell_price": 0
 	},
 	
+	"1000002": {
+		"name": "TORCH",
+		"icon": "res://items/Torch/Image0.png",
+		"type": "torch",
+		"damage": 0,
+		"weight": 0.0,
+		"str": 0,
+		"agi": 0,
+		"hp": 0,
+		"quest": false,
+		"equip": false,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "TORCH_TEXT",
+		"sell_price": 0
+	},
+	
 	"1": {
 		"name": "SWORD",
 		"icon": "res://items/Items/sword/Unicorn's Evolving Swords_00.png",

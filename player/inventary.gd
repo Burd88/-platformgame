@@ -56,7 +56,12 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 		$WindowDialog_ItemMenu/equip_button.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.show()
-
+	if itemData["type"] == "torch":
+		$WindowDialog_ItemMenu/equip_button.hide()
+		$WindowDialog_ItemMenu/torch_light.show()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
+		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
+		
 func _on_ItemMenu_Button_DropItem_pressed():
 	if $inventory/bag1.get_item_metadata($inventory/bag1.dropItemSlot)["name"] == "LESSER_HEAL_POTION":
 		get_parent().lesser = false
@@ -272,4 +277,15 @@ func _on_equip_pressed():
 
 
 func _on_WindowDialog_ItemMenu2_popup_hide():
+	pass # Replace with function body.
+
+
+func _on_torcch_light_pressed():
+	get_parent().torch = true
+	Global_Player.inventory_removeItem($inventory/bag1.dropItemSlot)
+	$inventory/bag1.update_slot($inventory/bag1.dropItemSlot)
+			
+	$WindowDialog_ItemMenu.hide()
+	get_parent().get_node("UI_paneli/Torch_light").show()
+	get_parent().get_node("UI_paneli/Torch_light/Timer").start()
 	pass # Replace with function body.
