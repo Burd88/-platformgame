@@ -152,11 +152,11 @@ var full_hp= 0
 
 
 func _ready(): # стартовые переменные персонажа
-	if GLOBAL.load_game == "new_game":
-		position = Vector2(144,366)
-		pass
-	elif GLOBAL.load_game == "loading_game":
-		pass
+#	if GLOBAL.load_game == "new_game":
+#		position = Vector2(144,366)
+#		pass
+#	elif GLOBAL.load_game == "loading_game":
+#		pass
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -206,6 +206,9 @@ func _physics_process(delta):# функция выполнения во врем
 			$Camera2D.current = true
 			$UI_paneli/Button_UI.show()
 			check_rope_inventory()
+			if torch:
+				$UI_paneli/Torch_light.show()
+				
 
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
@@ -230,6 +233,7 @@ func _physics_process(delta):# функция выполнения во врем
 			$UI_paneli/Button_UI.hide()
 			$Player_info/Statistics.hide()
 			$Player_info/equip_panel.hide()
+			$UI_paneli/Torch_light.hide()
 		elif departure == true and hook_line_use == false :
 			if finish_departure == false:
 				$spr.animation = "departure"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=321 format=2]
+[gd_scene load_steps=322 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://resourse/rope.png" type="Texture" id=2]
@@ -184,8 +184,8 @@
 [ext_resource path="res://player/UI sprite/Player_info/button_up.png" type="Texture" id=182]
 [ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=183]
 [ext_resource path="res://resourse/close_button.png" type="Texture" id=184]
-[ext_resource path="res://player/inventory/empty_slot.png" type="Texture" id=185]
-[ext_resource path="res://player/inventory/empty_slot2.png" type="Texture" id=186]
+[ext_resource path="res://player/inventory/empty_slot2.png" type="Texture" id=185]
+[ext_resource path="res://Global_gui/Keys/Q-Key.png" type="Texture" id=186]
 [ext_resource path="res://player/UI sprite/UI_button/Panel_Buuton.png" type="Texture" id=187]
 [ext_resource path="res://player/UI sprite/UI_button/invent_button.png" type="Texture" id=188]
 [ext_resource path="res://player/UI sprite/UI_button/Player_info_button.png" type="Texture" id=189]
@@ -200,23 +200,24 @@
 [ext_resource path="res://items/Torch/Image7.png" type="Texture" id=198]
 [ext_resource path="res://items/Torch/Image8.png" type="Texture" id=199]
 [ext_resource path="res://items/Torch/Image9.png" type="Texture" id=200]
-[ext_resource path="res://player/inventary.gd" type="Script" id=201]
-[ext_resource path="res://player/inventory/Inventory_panel.png" type="Texture" id=202]
-[ext_resource path="res://player/bag2.gd" type="Script" id=203]
-[ext_resource path="res://player/bag1.gd" type="Script" id=204]
-[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=205]
-[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=206]
-[ext_resource path="res://player/portret.png" type="Texture" id=207]
-[ext_resource path="res://resourse/portret_box.png" type="Texture" id=208]
-[ext_resource path="res://resourse/close_button.tres" type="StyleBox" id=209]
-[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=210]
-[ext_resource path="res://player/UI sprite/exp bar/Level_bar.png" type="Texture" id=211]
-[ext_resource path="res://player/UI sprite/exp bar/exp_bar_bg.png" type="Texture" id=212]
-[ext_resource path="res://player/UI sprite/exp bar/exp_bar_fg.png" type="Texture" id=213]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=214]
-[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=215]
-[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=216]
-[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=217]
+[ext_resource path="res://Global_gui/Keys/T-Key.png" type="Texture" id=201]
+[ext_resource path="res://player/inventary.gd" type="Script" id=202]
+[ext_resource path="res://player/inventory/Inventory_panel.png" type="Texture" id=203]
+[ext_resource path="res://player/bag2.gd" type="Script" id=204]
+[ext_resource path="res://player/bag1.gd" type="Script" id=205]
+[ext_resource path="res://resourse/dialog_box.png" type="Texture" id=206]
+[ext_resource path="res://fonts/say_label.tres" type="DynamicFont" id=207]
+[ext_resource path="res://player/portret.png" type="Texture" id=208]
+[ext_resource path="res://resourse/portret_box.png" type="Texture" id=209]
+[ext_resource path="res://resourse/close_button.tres" type="StyleBox" id=210]
+[ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=211]
+[ext_resource path="res://player/UI sprite/exp bar/Level_bar.png" type="Texture" id=212]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_bg.png" type="Texture" id=213]
+[ext_resource path="res://player/UI sprite/exp bar/exp_bar_fg.png" type="Texture" id=214]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_bg.png" type="Texture" id=215]
+[ext_resource path="res://player/UI sprite/healthbar/hp_bar3_pr.png" type="Texture" id=216]
+[ext_resource path="res://player/UI sprite/E-Key.png" type="Texture" id=217]
+[ext_resource path="res://sounds/radakan - cave ambience.ogg" type="AudioStream" id=218]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -3304,7 +3305,7 @@ bg_color = Color( 0.0509804, 0.0156863, 0.0156863, 0.333333 )
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxTexture" id=82]
-texture = ExtResource( 202 )
+texture = ExtResource( 203 )
 region_rect = Rect2( 0, 0, 220, 200 )
 
 [sub_resource type="StyleBoxEmpty" id=83]
@@ -3335,7 +3336,7 @@ texture = ExtResource( 184 )
 region_rect = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="StyleBoxTexture" id=89]
-texture = ExtResource( 205 )
+texture = ExtResource( 206 )
 region_rect = Rect2( 0, 0, 669, 165 )
 
 [sub_resource type="GDScript" id=90]
@@ -3392,7 +3393,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="StyleBoxTexture" id=92]
-texture = ExtResource( 211 )
+texture = ExtResource( 212 )
 region_rect = Rect2( 0, 0, 113, 75 )
 
 [sub_resource type="RectangleShape2D" id=93]
@@ -3487,7 +3488,7 @@ end_cap_mode = 2
 pause_mode = 2
 frames = SubResource( 1 )
 animation = "удар_ногой_1"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -4267,23 +4268,16 @@ valign = 1
 script = SubResource( 64 )
 
 [node name="Health_potion" type="Panel" parent="UI_paneli"]
-visible = false
 margin_left = 10.0
 margin_top = 66.0
 margin_right = 85.0
 margin_bottom = 151.0
 custom_styles/panel = SubResource( 65 )
 
-[node name="Sprite2" type="Sprite" parent="UI_paneli/Health_potion"]
-visible = false
-position = Vector2( 43.8261, 72.9558 )
-scale = Vector2( 1.65857, 1.04408 )
-texture = ExtResource( 185 )
-
 [node name="Sprite" type="Sprite" parent="UI_paneli/Health_potion"]
 position = Vector2( 43, 33 )
 scale = Vector2( 1.8, 1.8 )
-texture = ExtResource( 186 )
+texture = ExtResource( 185 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -4302,6 +4296,14 @@ margin_right = 49.072
 margin_bottom = 58.0294
 align = 1
 valign = 1
+
+[node name="use_key" type="Sprite" parent="UI_paneli/Health_potion"]
+position = Vector2( 60.393, 50.976 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 186 )
+hframes = 2
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 32 )
 
 [node name="Button_UI" type="Panel" parent="UI_paneli"]
 editor/display_folded = true
@@ -4353,7 +4355,6 @@ custom_styles/focus = SubResource( 80 )
 custom_styles/normal = SubResource( 81 )
 
 [node name="Torch_light" type="Panel" parent="UI_paneli"]
-visible = false
 margin_left = 24.2
 margin_top = 145.0
 margin_right = 82.2
@@ -4362,7 +4363,7 @@ script = SubResource( 99 )
 
 [node name="Sprite" type="Sprite" parent="UI_paneli/Torch_light"]
 scale = Vector2( 1.8, 1.8 )
-texture = ExtResource( 186 )
+texture = ExtResource( 185 )
 centered = false
 
 [node name="icon" type="TextureRect" parent="UI_paneli/Torch_light"]
@@ -4379,7 +4380,7 @@ stretch_mode = 1
 position = Vector2( 29, 29 )
 scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 103 )
-frame = 7
+frame = 8
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="UI_paneli/Torch_light"]
@@ -4395,8 +4396,14 @@ percent_visible = false
 wait_time = 180.0
 one_shot = true
 
+[node name="use_key" type="Sprite" parent="UI_paneli/Torch_light"]
+position = Vector2( 47.1151, 46.4552 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 201 )
+hframes = 2
+
 [node name="inventary" type="CanvasLayer" parent="."]
-script = ExtResource( 201 )
+script = ExtResource( 202 )
 
 [node name="inventory" type="Panel" parent="inventary"]
 visible = false
@@ -4418,7 +4425,7 @@ auto_height = true
 max_columns = 0
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 203 )
+script = ExtResource( 204 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag2"]
 
@@ -4433,7 +4440,7 @@ auto_height = true
 max_columns = 0
 icon_mode = 0
 fixed_icon_size = Vector2( 32, 32 )
-script = ExtResource( 204 )
+script = ExtResource( 205 )
 
 [node name="Sprite_DraggedItem" type="Sprite" parent="inventary/inventory/bag1"]
 
@@ -4567,7 +4574,7 @@ margin_bottom = 667.646
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/normal = SubResource( 89 )
-custom_fonts/font = ExtResource( 206 )
+custom_fonts/font = ExtResource( 207 )
 align = 1
 valign = 1
 autowrap = true
@@ -4581,25 +4588,25 @@ one_shot = true
 [node name="Sprite" type="Sprite" parent="GUI/say_label"]
 position = Vector2( -40, 50 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 207 )
+texture = ExtResource( 208 )
 
 [node name="Sprite" type="Sprite" parent="GUI/say_label/Sprite"]
 position = Vector2( 0.319275, 0.0852988 )
 scale = Vector2( 0.22057, 0.203741 )
 z_index = -1
-texture = ExtResource( 208 )
+texture = ExtResource( 209 )
 
 [node name="Button" type="Button" parent="GUI/say_label"]
 margin_left = 660.746
 margin_top = -9.2843
 margin_right = 698.746
 margin_bottom = 27.7157
-custom_styles/hover = ExtResource( 209 )
-custom_styles/pressed = ExtResource( 209 )
-custom_styles/focus = ExtResource( 209 )
-custom_styles/disabled = ExtResource( 209 )
-custom_styles/normal = ExtResource( 209 )
-custom_fonts/font = ExtResource( 210 )
+custom_styles/hover = ExtResource( 210 )
+custom_styles/pressed = ExtResource( 210 )
+custom_styles/focus = ExtResource( 210 )
+custom_styles/disabled = ExtResource( 210 )
+custom_styles/normal = ExtResource( 210 )
+custom_fonts/font = ExtResource( 211 )
 
 [node name="text_full" type="AnimationPlayer" parent="GUI/say_label"]
 anims/full = SubResource( 91 )
@@ -4636,7 +4643,7 @@ margin_left = 5.26306
 margin_top = 12.6315
 margin_right = 263.263
 margin_bottom = 111.632
-texture_over = ExtResource( 212 )
+texture_over = ExtResource( 213 )
 
 [node name="fg" type="TextureProgress" parent="GUI/Exp_bar"]
 margin_left = 13.9296
@@ -4644,7 +4651,7 @@ margin_top = 65.1701
 margin_right = 253.93
 margin_bottom = 105.17
 value = 50.0
-texture_progress = ExtResource( 213 )
+texture_progress = ExtResource( 214 )
 
 [node name="HPbar1" type="Control" parent="GUI"]
 margin_left = -5.62952
@@ -4660,7 +4667,7 @@ margin_right = 382.0
 margin_bottom = 165.0
 step = 0.1
 value = 100.0
-texture_under = ExtResource( 214 )
+texture_under = ExtResource( 215 )
 
 [node name="healthbar_pr" type="TextureProgress" parent="GUI/HPbar1"]
 margin_left = 117.657
@@ -4669,7 +4676,7 @@ margin_right = 363.657
 margin_bottom = 149.53
 step = 0.1
 value = 100.0
-texture_progress = ExtResource( 215 )
+texture_progress = ExtResource( 216 )
 
 [node name="attack_area" type="Area2D" parent="."]
 position = Vector2( 16, 5 )
@@ -4709,7 +4716,7 @@ editor/display_folded = true
 visible = false
 position = Vector2( 14, -13 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 216 )
+texture = ExtResource( 217 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="E-key"]
@@ -4719,7 +4726,7 @@ anims/use = SubResource( 95 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 1
-stream = ExtResource( 217 )
+stream = ExtResource( 218 )
 volume_db = 10.0
 autoplay = true
 

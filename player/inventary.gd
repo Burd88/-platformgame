@@ -42,8 +42,10 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 	if itemData["quest"] == true:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
+		$WindowDialog_ItemMenu/torch_light.hide()
 	elif itemData["quest"] == false:
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
+		$WindowDialog_ItemMenu/torch_light.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.set_text("(" + String(itemData["amount"]) + ") " +tr("DROP_BUTTON"))
 	$inventory/bag1.activeItemSlot = index
@@ -52,10 +54,12 @@ func _on_bag1_item_rmb_selected(index:int, atpos:Vector2) -> void:
 		$WindowDialog_ItemMenu/equip_button.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.show()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.hide()
+		$WindowDialog_ItemMenu/torch_light.hide()
 	elif itemData["equip"] == false and itemData["quest"] == false:
 		$WindowDialog_ItemMenu/equip_button.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem.hide()
 		$WindowDialog_ItemMenu/ItemMenu_Button_DropItem2.show()
+		$WindowDialog_ItemMenu/torch_light.hide()
 	if itemData["type"] == "torch":
 		$WindowDialog_ItemMenu/equip_button.hide()
 		$WindowDialog_ItemMenu/torch_light.show()
