@@ -18,11 +18,12 @@ script/source = "extends RigidBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
-var useable = false
+var useable = true
 export var flame = true
 export var broken = true
 var vel = Vector2()
 var health = 4 
+
 var data_id = 1000002
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,7 +52,7 @@ func _damage_move(move):
 	position.x +=2*move
 	position.y -=1
 	gravity_scale = 1
-	useable = true
+
 	pass"
 
 [sub_resource type="SpriteFrames" id=2]
@@ -81,7 +82,7 @@ script = SubResource( 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "fire"
-frame = 4
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

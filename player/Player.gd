@@ -25,6 +25,7 @@ var max_damage
 var damage
 var damage_sword = 0
 var last_position_y = 0
+var torch_time = 0
 		# 0 = нет оружия
 		# 1 = меч
 		# 2 = лук
@@ -52,6 +53,10 @@ onready var pick_up_item2_sound = preload("res://player/sound/pick-up-item-2.wav
 ##bottle drink
 onready var bottle_drink_sound = preload("res://player/sound/bottle-drink.wav")
 ##
+
+
+onready var torch_item = preload("res://items/static_item/fire.tscn")
+
 export var shake_power = 1
 export var shake_time = 0.1
 var isShake = false
@@ -152,11 +157,12 @@ var full_hp= 0
 
 
 func _ready(): # стартовые переменные персонажа
-#	if GLOBAL.load_game == "new_game":
-#		position = Vector2(144,366)
-#		pass
-#	elif GLOBAL.load_game == "loading_game":
-#		pass
+	if GLOBAL.load_game == "new_game":
+		position = Vector2(144,366)
+		pass
+	elif GLOBAL.load_game == "loading_game":
+
+		pass
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -188,7 +194,7 @@ func _settings():# настройки пока звук
 func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
 	_settings()
-	
+	print(torch_time)
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))
@@ -296,6 +302,7 @@ func save(): # сохранение игры
 		"health_now" : health_now,
 		"weapon" : weapon,
 		"torch" : torch,
+		"Torch_time" : torch_time,
 		"name" : name,
 		"damage_sword" : damage_sword,
 		"parry" : parry,
@@ -514,11 +521,31 @@ func _use():# использование предмета
 	else:
 		$use/CollisionShape2D.disabled = true
 
+func _torch_fall():
+	if Input.is_action_just_pressed("torch_throw"):
+		if torch == true:
+			var item = torch_item.instance()
+			
+			get_parent().add_child(item)
+			item.global_position = global_position
+			item.data_id = null
+			item.useable = false
+			torch = false
+			$UI_paneli/Torch_light.visible = false
+			if $spr.flip_h == true:
+				item._damage_move(-3)
+			elif  $spr.flip_h == false:
+				item._damage_move(3)
+
+
 func _light_mode():# включение света вокруг игрока
 	if torch == true:
+		_torch_fall()
 		$Light2D.texture_scale = 0.3
 		$Light2D.energy = 1
 		$Light2D.enabled = true
+		
+		
 #		if Input.is_action_just_pressed("torch_throw"):
 #
 	else:
@@ -971,24 +998,24 @@ func check_rope_inventory():
 		
 func _on_use_check_area_entered(area):# предмет в зоне использования
 	#print(area.name)
-	if area.get("useable") :
+	if area.get("useable") == true:
 		
 		$"E-key".show()
 	else : pass
 
 func _on_use_check_area_exited(area):# предмет вышел из зоны использования
-	if area.get("useable") :
+	if area.get("useable") == true:
 		$"E-key".hide()
 	else : pass
 
 func _on_use_check_body_entered(body):# тело в зоне использования
 	#print(body.name)
-	if body.get("useable") :
+	if body.get("useable") == true :
 		$"E-key".show()
 	else : pass
 
 func _on_use_check_body_exited(body):# тело вышело из зоны использования
-	if body.get("useable") :
+	if body.get("useable")  == true:
 		$"E-key".hide()
 	else : pass
 
