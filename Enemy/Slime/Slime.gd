@@ -97,7 +97,10 @@ func _move_enemy(delta):
 	velocity.y += gravity*delta
 	move_and_slide(velocity,Vector2(0,-1))
 	pass
-	
+
+func flame_show():
+	pass
+
 	
 func _gui():# Графический интерфейс
 	if health_now > 0 :

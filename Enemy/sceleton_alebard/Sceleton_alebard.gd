@@ -64,17 +64,31 @@ func _process(delta):
 	if GLOBAL.load_game == "loading_game":
 		spawn_position = Vector2(spawn_position_x , spawn_position_y)
 	_settings()
-	if health_now <=0:
+	if health_now <=0 and $flame.visible == true:
 		_die()
 		$healthbar.hide()
+	elif health_now <=0 and $flame.visible == false:
+		
+			$healthbar.show()
+			body_collision_position()
+			update()
+			if target and health_now <=0 and $flame.visible == false:
+				aim()
+			_move_enemy(delta)
+			_check_place()
+			
+		
+			_gui()
 	elif health_now >0:
 		if player_step == true and attack_start == false :
 			$spr.animation = "подъем"
 			$healthbar.hide()
+			body_collision_position()
 			test = true
 		elif player_step == true and attack_start == true :
 			
 			$healthbar.show()
+			body_collision_position()
 			update()
 			if target and health_now > 0:
 				aim()
@@ -190,6 +204,50 @@ func _on_idletimer_timeout():
 	distance.x = speed
 	pass # Replace with function body.
 
+func body_collision_position():
+	if $spr.animation == "атака" and $spr.flip_h == false:
+		$CollisionShape2D.position = Vector2(10,6)
+		$flame.position = Vector2(10,12)
+	elif $spr.animation == "стойка" and $spr.flip_h == false:
+		$CollisionShape2D.position = Vector2(4,6)
+		$flame.position = Vector2(4,12)
+	elif $spr.animation == "урон" and $spr.flip_h == false:
+		$CollisionShape2D.position = Vector2(4,6)
+		$flame.position = Vector2(4,12)
+	elif $spr.animation == "хотьба" and $spr.flip_h == false:
+		$CollisionShape2D.position = Vector2(4,6)
+		$flame.position = Vector2(4,12)
+	elif $spr.animation == "атака" and $spr.flip_h == true:
+		$CollisionShape2D.position = Vector2(-10,6)
+		$flame.position = Vector2(-10,12)
+	elif $spr.animation == "стойка" and $spr.flip_h == true:
+		$CollisionShape2D.position = Vector2(-4,6)
+		$flame.position = Vector2(-4,12)
+	elif $spr.animation == "урон" and $spr.flip_h == true:
+		$CollisionShape2D.position = Vector2(-4,6)
+		$flame.position = Vector2(-4,12)
+	elif $spr.animation == "хотьба" and $spr.flip_h == true:
+		$CollisionShape2D.position = Vector2(-4,6)
+		$flame.position = Vector2(-4,12)
+		pass
+
+func flame_show():
+	$flame.show()
+	$flame/flame_area/CollisionShape2D.set_deferred("disabled", false)
+	$flame/flame_damage.start()
+
+func _on_flame_area_body_entered(body):
+	if body.get("enemy_type"):
+		print(body.name)
+		if body.get_node("flame").visible == false:
+			body.flame_show()
+	elif body.get("player_type"):
+		body._damage(30)
+	pass # Replace with function body.
+
+func _on_flame_damage_timeout():
+	_damage(30)
+	pass # Replace with function body.
 func _gui():# Графический интерфейс
 #	if health_now > 0 :
 #		$healthbar.show()
@@ -202,17 +260,15 @@ func _gui():# Графический интерфейс
 	$healthbar.value = php
 	
 func _die():
-	if health_now <= 0:
-
-		velocity = Vector2(0,0)
-		direction = Vector2(0,0)
-		gravity = 0
-		$healthbar.hide()
-		$CollisionShape2D.disabled = true
-		$visible/CollisionShape2D.disabled = true
-		$damage/CollisionShape2D.disabled = true
-		$attack_area/CollisionShape2D.disabled = true
-		$spr.animation = "смерть"
+	velocity = Vector2(0,0)
+	direction = Vector2(0,0)
+	gravity = 0
+	$healthbar.hide()
+	$CollisionShape2D.disabled = true
+	$visible/CollisionShape2D.disabled = true
+	$damage/CollisionShape2D.disabled = true
+	$attack_area/CollisionShape2D.disabled = true
+	$spr.animation = "смерть"
 
 		
 	pass
@@ -380,3 +436,9 @@ func _on_ouch_timer_timeout():
 			print("no target")
 			
 	pass # Replace with function body.
+
+
+
+
+
+

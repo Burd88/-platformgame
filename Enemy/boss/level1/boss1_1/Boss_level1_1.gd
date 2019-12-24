@@ -116,7 +116,8 @@ func _drop_item():
 	get_parent().add_child(gear_loot)
 	gear_loot.position = position+Vector2(-16,0)
 
-
+func flame_show():
+	pass
 	
 
 	

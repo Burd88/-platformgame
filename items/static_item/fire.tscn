@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://items/Torch/Image0.png" type="Texture" id=1]
 [ext_resource path="res://items/Torch/Image1.png" type="Texture" id=2]
@@ -53,7 +53,27 @@ func _damage_move(move):
 	position.y -=1
 	gravity_scale = 1
 
-	pass"
+	pass
+func _damage_enemy():
+	$Area2D/CollisionShape2D.set_deferred(\"disabled\" , false)
+	pass
+	
+
+func _on_Area2D_body_entered(body):
+	if body.get(\"enemy_type\"):
+		print(body.name)
+		body.flame_show()
+		if flame == true:
+			body._damage(50)
+		linear_velocity = Vector2(0, 0)
+		$Area2D/CollisionShape2D.set_deferred(\"disabled\" , true)
+		flame = false
+	pass # Replace with function body.
+
+
+
+
+"
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -71,6 +91,9 @@ animations = [ {
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 10, 2, -3, -2, -3 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 1.65744, 5.0893 )
+
 [node name="Torch" type="RigidBody2D"]
 collision_layer = 32
 collision_mask = 9
@@ -82,7 +105,7 @@ script = SubResource( 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "fire"
-frame = 7
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -92,3 +115,11 @@ shape = SubResource( 3 )
 texture = ExtResource( 11 )
 texture_scale = 0.3
 mode = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 9.53674e-007, -0.644805 )
+shape = SubResource( 4 )
+disabled = true
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

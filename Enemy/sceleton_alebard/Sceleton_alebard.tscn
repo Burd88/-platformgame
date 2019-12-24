@@ -1,133 +1,149 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Enemy/sceleton_alebard/Sceleton_alebard.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0014.png" type="Texture" id=2]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0000.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0001.png" type="Texture" id=4]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0002.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0003.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0004.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0005.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0006.png" type="Texture" id=9]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0007.png" type="Texture" id=10]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0000.png" type="Texture" id=11]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0001.png" type="Texture" id=12]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0002.png" type="Texture" id=13]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0003.png" type="Texture" id=14]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0004.png" type="Texture" id=15]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0005.png" type="Texture" id=16]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0006.png" type="Texture" id=17]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0007.png" type="Texture" id=18]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0008.png" type="Texture" id=19]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0009.png" type="Texture" id=20]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0010.png" type="Texture" id=21]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0011.png" type="Texture" id=22]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0012.png" type="Texture" id=23]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0000.png" type="Texture" id=24]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0001.png" type="Texture" id=25]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0002.png" type="Texture" id=26]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0003.png" type="Texture" id=27]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0004.png" type="Texture" id=28]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0005.png" type="Texture" id=29]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0006.png" type="Texture" id=30]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0007.png" type="Texture" id=31]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0008.png" type="Texture" id=32]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0009.png" type="Texture" id=33]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0010.png" type="Texture" id=34]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0013.png" type="Texture" id=35]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0012.png" type="Texture" id=36]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0011.png" type="Texture" id=37]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0010.png" type="Texture" id=38]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0009.png" type="Texture" id=39]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0008.png" type="Texture" id=40]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0007.png" type="Texture" id=41]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0006.png" type="Texture" id=42]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0005.png" type="Texture" id=43]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0004.png" type="Texture" id=44]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0003.png" type="Texture" id=45]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0002.png" type="Texture" id=46]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0001.png" type="Texture" id=47]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0000.png" type="Texture" id=48]
-[ext_resource path="res://Enemy/gobby/sprite/jump-1.png" type="Texture" id=49]
-[ext_resource path="res://Enemy/gobby/sprite/jump-2.png" type="Texture" id=50]
-[ext_resource path="res://Enemy/gobby/sprite/jump-3.png" type="Texture" id=51]
-[ext_resource path="res://Enemy/gobby/sprite/jump-4.png" type="Texture" id=52]
-[ext_resource path="res://Enemy/gobby/sprite/jump-5.png" type="Texture" id=53]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0000.png" type="Texture" id=54]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0001.png" type="Texture" id=55]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0002.png" type="Texture" id=56]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0003.png" type="Texture" id=57]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0004.png" type="Texture" id=58]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0005.png" type="Texture" id=59]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0006.png" type="Texture" id=60]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0007.png" type="Texture" id=61]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0008.png" type="Texture" id=62]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0009.png" type="Texture" id=63]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0010.png" type="Texture" id=64]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0011.png" type="Texture" id=65]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0012.png" type="Texture" id=66]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0013.png" type="Texture" id=67]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0014.png" type="Texture" id=68]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0015.png" type="Texture" id=69]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0016.png" type="Texture" id=70]
-[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0017.png" type="Texture" id=71]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=72]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=73]
-[ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=74]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0000.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0001.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0002.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0003.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0004.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0005.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0006.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0007.png" type="Texture" id=9]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0008.png" type="Texture" id=10]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0009.png" type="Texture" id=11]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/idle/Skeleton Idle0010.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/gobby/sprite/jump-1.png" type="Texture" id=13]
+[ext_resource path="res://Enemy/gobby/sprite/jump-2.png" type="Texture" id=14]
+[ext_resource path="res://Enemy/gobby/sprite/jump-3.png" type="Texture" id=15]
+[ext_resource path="res://Enemy/gobby/sprite/jump-4.png" type="Texture" id=16]
+[ext_resource path="res://Enemy/gobby/sprite/jump-5.png" type="Texture" id=17]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0000.png" type="Texture" id=18]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0001.png" type="Texture" id=19]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0002.png" type="Texture" id=20]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0003.png" type="Texture" id=21]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0004.png" type="Texture" id=22]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0005.png" type="Texture" id=23]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0006.png" type="Texture" id=24]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0007.png" type="Texture" id=25]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0008.png" type="Texture" id=26]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0009.png" type="Texture" id=27]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0010.png" type="Texture" id=28]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0011.png" type="Texture" id=29]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0012.png" type="Texture" id=30]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0013.png" type="Texture" id=31]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/dead/Skeleton Dead0014.png" type="Texture" id=32]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0000.png" type="Texture" id=33]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0001.png" type="Texture" id=34]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0002.png" type="Texture" id=35]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0003.png" type="Texture" id=36]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0004.png" type="Texture" id=37]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0005.png" type="Texture" id=38]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0006.png" type="Texture" id=39]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0007.png" type="Texture" id=40]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0008.png" type="Texture" id=41]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0009.png" type="Texture" id=42]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0010.png" type="Texture" id=43]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0011.png" type="Texture" id=44]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0012.png" type="Texture" id=45]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0013.png" type="Texture" id=46]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0014.png" type="Texture" id=47]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0015.png" type="Texture" id=48]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0016.png" type="Texture" id=49]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/attack/Skeleton Attack0017.png" type="Texture" id=50]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0000.png" type="Texture" id=51]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0001.png" type="Texture" id=52]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0002.png" type="Texture" id=53]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0003.png" type="Texture" id=54]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0004.png" type="Texture" id=55]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0005.png" type="Texture" id=56]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0006.png" type="Texture" id=57]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0007.png" type="Texture" id=58]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0008.png" type="Texture" id=59]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0009.png" type="Texture" id=60]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0010.png" type="Texture" id=61]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0011.png" type="Texture" id=62]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/walk/Skeleton Walk0012.png" type="Texture" id=63]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0000.png" type="Texture" id=64]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0001.png" type="Texture" id=65]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0002.png" type="Texture" id=66]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0003.png" type="Texture" id=67]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0004.png" type="Texture" id=68]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0005.png" type="Texture" id=69]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0006.png" type="Texture" id=70]
+[ext_resource path="res://Enemy/sceleton_alebard/sprite/hit/Skeleton Hit0007.png" type="Texture" id=71]
+[ext_resource path="res://items/flame/Fogo_1.png" type="Texture" id=72]
+[ext_resource path="res://items/flame/Fogo_2.png" type="Texture" id=73]
+[ext_resource path="res://items/flame/Fogo_3.png" type="Texture" id=74]
+[ext_resource path="res://items/flame/Fogo_4.png" type="Texture" id=75]
+[ext_resource path="res://player/light.png" type="Texture" id=76]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=77]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=78]
+[ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=79]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "спокойствие",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "урон",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "хотьба",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "стойка",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
-"loop": true,
-"name": "подъем",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 48 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "смерть",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "прыжок",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "смерть",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "подъем",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ) ],
 "loop": true,
 "name": "атака",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ) ],
+"loop": true,
+"name": "хотьба",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
+"loop": true,
+"name": "урон",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "спокойствие",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4.09056, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 11.3634, 7 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 12.1766, 7 )
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 40.9807, 52.8453 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.18616, 7 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 12.1766, 7 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 150, 10 )
 
 [node name="Sceleton_alebard" type="KinematicBody2D" groups=[
@@ -138,9 +154,11 @@ pause_mode = 1
 collision_layer = 4
 collision_mask = 9
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="spr" type="AnimatedSprite" parent="."]
-position = Vector2( -7.17681, -0.408618 )
 frames = SubResource( 1 )
 animation = "спокойствие"
 playing = true
@@ -150,11 +168,32 @@ wait_time = 3.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0527625, 4.98001 )
+position = Vector2( -10, 6 )
 shape = SubResource( 2 )
 
-[node name="attack_area" type="Area2D" parent="."]
+[node name="flame" type="AnimatedSprite" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0.701961 )
+position = Vector2( -4, 12 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="Light2D" type="Light2D" parent="flame"]
+texture = ExtResource( 76 )
+texture_scale = 0.8
+mode = 2
+
+[node name="flame_damage" type="Timer" parent="flame"]
+wait_time = 2.5
+
+[node name="flame_area" type="Area2D" parent="flame"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flame/flame_area"]
+shape = SubResource( 5 )
+disabled = true
+
+[node name="attack_area" type="Area2D" parent="."]
 position = Vector2( -12, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
@@ -162,12 +201,11 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="damage" type="Area2D" parent="."]
-visible = false
 position = Vector2( -15, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 position = Vector2( 2.18686, -0.0809956 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="healthbar" type="ProgressBar" parent="."]
@@ -177,12 +215,13 @@ margin_top = -18.0
 margin_right = 23.0
 margin_bottom = -3.99997
 rect_scale = Vector2( 0.5, 0.5 )
-custom_styles/fg = ExtResource( 72 )
-custom_styles/bg = ExtResource( 73 )
+custom_styles/fg = ExtResource( 77 )
+custom_styles/bg = ExtResource( 78 )
 value = 100.0
 percent_visible = false
 
 [node name="check_place" type="RayCast2D" parent="."]
+visible = false
 position = Vector2( -9.72895, 4.24298 )
 enabled = true
 cast_to = Vector2( 0, 15 )
@@ -194,14 +233,14 @@ scale = Vector2( 1.1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="visible"]
 position = Vector2( -0.242138, 20.3398 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="move_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 74 )
+stream = ExtResource( 79 )
 max_distance = 300.0
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
@@ -212,6 +251,8 @@ one_shot = true
 [connection signal="animation_finished" from="spr" to="." method="_on_spr_animation_finished"]
 [connection signal="frame_changed" from="spr" to="." method="_on_spr_frame_changed"]
 [connection signal="timeout" from="spr/idletimer" to="." method="_on_idletimer_timeout"]
+[connection signal="timeout" from="flame/flame_damage" to="." method="_on_flame_damage_timeout"]
+[connection signal="body_entered" from="flame/flame_area" to="." method="_on_flame_area_body_entered"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="damage" to="." method="_on_damage_body_entered"]

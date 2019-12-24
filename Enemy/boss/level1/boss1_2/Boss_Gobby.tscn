@@ -1,20 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Boss_Gobby_spr.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=3]
-[ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=4]
+[ext_resource path="res://items/flame/Fogo_1.png" type="Texture" id=3]
+[ext_resource path="res://items/flame/Fogo_2.png" type="Texture" id=4]
+[ext_resource path="res://items/flame/Fogo_3.png" type="Texture" id=5]
+[ext_resource path="res://items/flame/Fogo_4.png" type="Texture" id=6]
+[ext_resource path="res://player/light.png" type="Texture" id=7]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=8]
+[ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 5, 10 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 10 )
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40.9807, 52.8453 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 180, 200 )
 
 [node name="Boss_Gobby" type="KinematicBody2D" groups=[
@@ -30,9 +46,8 @@ script = ExtResource( 1 )
 [node name="spr" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "атака"
-frame = 1
+frame = 6
 playing = true
-flip_h = true
 __meta__ = {
 "_edit_bone_": true,
 "_edit_ik_": true
@@ -40,7 +55,30 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.397217, 4.76658 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
+
+[node name="flame" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.701961 )
+position = Vector2( 0.401218, 11.0865 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 3 )
+frame = 2
+playing = true
+
+[node name="Light2D" type="Light2D" parent="flame"]
+texture = ExtResource( 7 )
+texture_scale = 0.8
+mode = 2
+
+[node name="flame_damage" type="Timer" parent="flame"]
+wait_time = 2.5
+
+[node name="flame_area" type="Area2D" parent="flame"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flame/flame_area"]
+shape = SubResource( 4 )
+disabled = true
 
 [node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
 
@@ -56,32 +94,34 @@ margin_top = -14.6736
 margin_right = 41.2718
 margin_bottom = -0.673622
 rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/fg = ExtResource( 3 )
-custom_styles/bg = ExtResource( 4 )
+custom_styles/fg = ExtResource( 8 )
+custom_styles/bg = ExtResource( 9 )
 value = 100.0
 
 [node name="check_melle_attack_area" type="Area2D" parent="."]
 position = Vector2( 8, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="check_melle_attack_area"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="damage_area" type="Area2D" parent="."]
 position = Vector2( 8, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="Visible" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visible"]
 position = Vector2( 0, -80 )
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 
 [node name="phase1" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 [connection signal="frame_changed" from="spr" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="timeout" from="flame/flame_damage" to="." method="_on_flame_damage_timeout"]
+[connection signal="body_entered" from="flame/flame_area" to="." method="_on_flame_area_body_entered"]
 [connection signal="body_entered" from="check_melle_attack_area" to="." method="_on_check_melle_attack_area_body_entered"]
 [connection signal="body_exited" from="check_melle_attack_area" to="." method="_on_check_melle_attack_area_body_exited"]
 [connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]

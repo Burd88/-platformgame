@@ -1781,7 +1781,6 @@ rotation = 4.71239
 scale = Vector2( 0.272254, 0.446719 )
 frames = SubResource( 11 )
 animation = "New Anim"
-frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -2114,7 +2113,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit"]
@@ -2132,7 +2131,7 @@ script = SubResource( 24 )
 position = Vector2( 8.94863, -5.02792 )
 scale = Vector2( 0.804586, 0.724124 )
 frames = SubResource( 25 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="use_item/door_boss1_exit2"]
@@ -2636,7 +2635,7 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.427451, 0.356863, 0.356863, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2645,6 +2644,7 @@ __meta__ = {
 
 [node name="check_point" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="check_point" parent="check_point" instance=ExtResource( 83 )]
 position = Vector2( 879.004, 324.904 )

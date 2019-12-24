@@ -166,6 +166,25 @@ func _on_idletimer_timeout():
 	distance.x = speed
 	pass # Replace with function body.
 	
+
+func flame_show():
+	$flame.show()
+	$flame/flame_area/CollisionShape2D.set_deferred("disabled", false)
+	$flame/flame_damage.start()
+
+func _on_flame_area_body_entered(body):
+	if body.get("enemy_type"):
+		print(body.name)
+		if body.get_node("flame").visible == false:
+			body.flame_show()
+	elif body.get("player_type"):
+		body._damage(30)
+	pass # Replace with function body.
+
+func _on_flame_damage_timeout():
+	_damage(20)
+	pass # Replace with function body.
+	
 func _gui():# Графический интерфейс
 	if health_now > 0 :
 		$healthbar.show()

@@ -194,7 +194,7 @@ func _settings():# настройки пока звук
 func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
 	_settings()
-	print(torch_time)
+
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))
@@ -534,8 +534,10 @@ func _torch_fall():
 			$UI_paneli/Torch_light.visible = false
 			if $spr.flip_h == true:
 				item._damage_move(-3)
+				item._damage_enemy()
 			elif  $spr.flip_h == false:
 				item._damage_move(3)
+				item._damage_enemy()
 
 
 func _light_mode():# включение света вокруг игрока
