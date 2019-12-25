@@ -132,7 +132,7 @@ modulate = Color( 1, 1, 1, 0.701961 )
 position = Vector2( -0.0406742, 11.5758 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="flame"]

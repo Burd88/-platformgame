@@ -238,9 +238,10 @@ func flame_show():
 
 func _on_flame_area_body_entered(body):
 	if body.get("enemy_type"):
-		print(body.name)
-		if body.get_node("flame").visible == false:
-			body.flame_show()
+		if body.find_node("flame"):
+			if body.get_node("flame").visible == false:
+				body.flame_show()
+		else: print("No flame")
 	elif body.get("player_type"):
 		body._damage(30)
 	pass # Replace with function body.
