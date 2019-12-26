@@ -528,8 +528,6 @@ func _torch_fall():
 			
 			get_parent().add_child(item)
 			item.global_position = global_position
-			item.data_id = null
-			item.useable = false
 			torch = false
 			$UI_paneli/Torch_light.visible = false
 			if $spr.flip_h == true:

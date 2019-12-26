@@ -1,10 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://items/waterdown/waterfull1.png" type="Texture" id=1]
 [ext_resource path="res://items/waterdown/waterfull2.png" type="Texture" id=2]
 [ext_resource path="res://items/waterdown/waterfull3.png" type="Texture" id=3]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+var water = true
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -12,10 +28,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="waterfull" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32.3575, 20.1836 )
+
+[node name="waterfull" type="Area2D"]
+script = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "New Anim"
+frame = 1
 speed_scale = 0.7
 playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 13.6513 )
+shape = SubResource( 3 )
