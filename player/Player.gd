@@ -194,7 +194,8 @@ func _settings():# настройки пока звук
 func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
 	_settings()
-
+	torch_time = $UI_paneli/Torch_light/Timer.time_left
+#	print(torch_time)
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))

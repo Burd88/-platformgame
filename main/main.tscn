@@ -8,7 +8,7 @@
 [ext_resource path="res://fonts/main_menu_button2.tres" type="DynamicFont" id=6]
 [ext_resource path="res://fonts/Options_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://main/chak_save_game.tres" type="StyleBox" id=9]
+[ext_resource path="res://Global_gui/Keys/T-Key.png" type="Texture" id=9]
 [ext_resource path="res://main/Check_Save_game.tres" type="StyleBox" id=10]
 [ext_resource path="res://fonts/Russian Road Sign.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Global_gui/Keys/W-Key.png" type="Texture" id=12]
@@ -68,7 +68,9 @@ func _ready():
 	$Panel/use_text.text = \"- \" + tr(\"CONTROLS_USE_TEXT\")
 	$Panel/open_inventory.text = \"- \" + tr(\"CONTROLS_OPEN_INVENTORY_TEXT\")
 	$Panel/player_info_text.text = \"- \" + tr(\"CONTROLS_PLAYER_INFO_TEXT\")
+	$Panel/throw_torch.text = \"- \" + tr(\"CONTROLS_TORCH_THROW\")
 	$close.text = tr(\"CONTROLS_CLOSE_BUTTON_TEXT\")
+	
 	
 	pass # Replace with function body.
 
@@ -319,7 +321,6 @@ margin_left = 500.0
 margin_top = 336.0
 margin_right = 810.0
 margin_bottom = 562.0
-custom_styles/panelf = ExtResource( 9 )
 custom_styles/panel = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
@@ -386,6 +387,9 @@ show_behind_parent = true
 margin_right = 1280.0
 margin_bottom = 720.0
 custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Name" type="Label" parent="inter/Controls/Panel"]
 margin_left = 525.939
@@ -432,6 +436,15 @@ margin_left = 801.758
 margin_top = 324.002
 margin_right = 1067.76
 margin_bottom = 362.002
+custom_fonts/font = SubResource( 10 )
+text = "- информация о вещи"
+valign = 1
+
+[node name="throw_torch" type="Label" parent="inter/Controls/Panel"]
+margin_left = 801.758
+margin_top = 438.002
+margin_right = 1067.76
+margin_bottom = 476.002
 custom_fonts/font = SubResource( 10 )
 text = "- информация о вещи"
 valign = 1
@@ -569,15 +582,34 @@ texture = ExtResource( 20 )
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Player_info" type="Panel" parent="inter/Controls/Panel"]
-margin_left = 621.758
+margin_left = 623.265
 margin_top = 313.002
-margin_right = 772.758
+margin_right = 774.265
 margin_bottom = 390.002
 custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="player_info" type="Sprite" parent="inter/Controls/Panel/Player_info"]
 position = Vector2( 75, 36 )
 texture = ExtResource( 21 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Throw_Torch" type="Panel" parent="inter/Controls/Panel"]
+margin_left = 623.265
+margin_top = 420.002
+margin_right = 774.265
+margin_bottom = 497.002
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Throw_Torch" type="Sprite" parent="inter/Controls/Panel/Throw_Torch"]
+position = Vector2( 75, 36 )
+texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 

@@ -32,6 +32,7 @@ CONTROLS_USE_TEXT;Взаимодействие;Interaction
 CONTROLS_CLOSE_BUTTON_TEXT;Закрыть;Close
 CONTROLS_OPEN_INVENTORY_TEXT;Открыть инвентарь;Open Inventory
 CONTROLS_PLAYER_INFO_TEXT;Информации о персонаже;Player Info
+CONTROLS_TORCH_THROW;Бросить факел;Throw torch
 GUI_INVENTORY_TEXT;Инвентарь;Inventory
 PLAYER_INFO_HEALTH;Здоровье: ;Health: 
 PLAYER_INFO_STRANGTH;Сила: ;Strangth: 
@@ -46,5 +47,5 @@ TOOL_AGI_TEXT;Повышает скорость атаки персонажа;In
 TOOL_STR_TEXT;Повышает урон и немного здоровье персонажа;Increases damage and a little health of the character
 TOOL_HP_TEXT;Повышает здоровье персонажа;Increases health of character
 UNEQUIP_BUTTON;Снять;Take off
-EQUIP_BUTTON;Одеть;Equip
+EQUIP_BUTTON;Надеть;Put on
 INVENTORY_FULL_TEXT;Инвентарь заполнен;Inventory is full
