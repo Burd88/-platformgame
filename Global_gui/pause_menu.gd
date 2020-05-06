@@ -156,12 +156,12 @@ func _death_load_game():
 				var current_line = try_current_line["savelevel"]
 				get_tree().change_scene(current_line["level"])
 				print("change scene : " ,current_line["level"])
-        # Firstly, we need to create the object and add it to the tree and set its position.
+		# Firstly, we need to create the object and add it to the tree and set its position.
 			#var new_object = load(current_line["filename"]).instance()
 		
 			#get_node(current_line["parent"]).add_child(new_object)
 			#new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
-        # Now we set the remaining variables.
+		# Now we set the remaining variables.
 				for i in current_line.keys():
 					if i == "level" or i == "name":
 						continue
