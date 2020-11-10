@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Socapex - Swordsmall_1.ogg-53b0ebf579145941a06174606d4b3060.oggstr"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - Swordsmall_1.ogg"
+dest_files=[ "res://.import/Socapex - Swordsmall_1.ogg-53b0ebf579145941a06174606d4b3060.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

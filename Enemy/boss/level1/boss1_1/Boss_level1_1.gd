@@ -15,7 +15,7 @@ var anim = 'move'
 onready var enemy_shoot = preload("res://Enemy/Slime/Slime.tscn")
 onready var bullet_shoot = preload("res://Enemy/Slime/bullet.tscn")
 ### sounds
-onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.ogg")
 
 ####
 

@@ -19,15 +19,15 @@ var melle_attack = false
 var parry = 0
 onready var bullet_shoot = preload("res://Enemy/boss/level1/boss1_2/gobby_bullet.tscn")
 ### sounds
-onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.wav")
-onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.wav")
-onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.wav")
-onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.wav")
-onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.wav")
+onready var damage_hurt1_sound = preload("res://Enemy/gobby/sound/monster-1.ogg")
+onready var damage_hurt2_sound = preload("res://Enemy/gobby/sound/monster-2.ogg")
+onready var damage_hurt3_sound = preload("res://Enemy/gobby/sound/monster-3.ogg")
+onready var damage_hurt4_sound = preload("res://Enemy/gobby/sound/monster-4.ogg")
+onready var damage_hurt5_sound = preload("res://Enemy/gobby/sound/monster-5.ogg")
 
 var die_anim = 3
-onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.wav")
-onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.wav")
+onready var death_sound = preload("res://Enemy/gobby/sound/monster-6.ogg")
+onready var idle_sound = preload("res://Enemy/gobby/sound/monster-8.ogg")
 
 
 

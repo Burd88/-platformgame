@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Socapex - Evol Online all.ogg-91b10a524bb70f97622fb3fc65e1b9e4.oggstr"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - Evol Online all.ogg"
+dest_files=[ "res://.import/Socapex - Evol Online all.ogg-91b10a524bb70f97622fb3fc65e1b9e4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

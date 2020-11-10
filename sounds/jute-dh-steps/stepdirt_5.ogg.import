@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stepdirt_5.ogg-55df70f38788ca3ae8e36423329053c1.oggstr"
+
+[deps]
+
+source_file="res://sounds/jute-dh-steps/stepdirt_5.ogg"
+dest_files=[ "res://.import/stepdirt_5.ogg-55df70f38788ca3ae8e36423329053c1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

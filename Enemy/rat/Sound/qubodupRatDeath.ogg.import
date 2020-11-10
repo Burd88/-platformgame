@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/qubodupRatDeath.ogg-f5cc09b0ef49228b047ffc5890f31582.oggstr"
+
+[deps]
+
+source_file="res://Enemy/rat/Sound/qubodupRatDeath.ogg"
+dest_files=[ "res://.import/qubodupRatDeath.ogg-f5cc09b0ef49228b047ffc5890f31582.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

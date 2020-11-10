@@ -10,6 +10,8 @@ var sound_off = false
 var music_value_off
 var sound_value_off
 var paused = false
+var platform = "MOBILE"# PC or MOBILE
+var save_path = "user://savegame.save"
 # var b = "text"
 #onready var dead_scene = preload("res://Enemy/Dead_enemy.tscn")
 #var position_enemy

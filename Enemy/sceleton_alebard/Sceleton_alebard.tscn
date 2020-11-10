@@ -78,7 +78,8 @@
 [ext_resource path="res://player/light.png" type="Texture" id=76]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/new_styleboxflat.tres" type="StyleBox" id=77]
 [ext_resource path="res://Enemy/boss/level1/boss1_1/bge.tres" type="StyleBox" id=78]
-[ext_resource path="res://Enemy/gobby/sound/monster-6.wav" type="AudioStream" id=79]
+[ext_resource path="res://Enemy/gobby/sound/monster-6.ogg" type="AudioStream" id=79]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

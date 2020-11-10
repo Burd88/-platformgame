@@ -127,7 +127,7 @@ func _on_ItemMenu_Button_DropItem_pressed():
 			$CanvasLayer/Panel/ItemList.update_slot($CanvasLayer/Panel/ItemList.dropItemSlot)
 			$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.hide()
 		else:
-			print(\"Full Inventory\")
+			#print(\"Full Inventory\")
 			$CanvasLayer/Panel/WindowDialog_ItemMenu/Full.show()
 			return
 	pass # Replace with function body.
@@ -231,7 +231,8 @@ func update_slot(slot:int) -> void:
 	set_item_tooltip(slot, itemMetaData[\"name\"])
 	set_item_tooltip_enabled(slot, int(inventoryItem[\"id\"]) > 0)
 #func _on_ItemList_item_selected(index):
-#	pass # Replace with function body."
+#	pass # Replace with function body.
+"
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 6 )
@@ -253,12 +254,17 @@ texture = ExtResource( 1 )
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 visible = false
-margin_left = 499.87
-margin_top = 7.0
-margin_right = 719.87
-margin_bottom = 227.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -110.0
+margin_right = 110.0
+margin_bottom = 220.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_styles/panel = SubResource( 3 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemList2" type="ItemList" parent="CanvasLayer/Panel"]
 margin_left = 77.5226
@@ -278,6 +284,7 @@ margin_bottom = 149.198
 custom_styles/bg = SubResource( 4 )
 custom_constants/icon_margin = -29
 custom_constants/hseparation = 0
+allow_reselect = true
 script = ExtResource( 4 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="CanvasLayer/Panel"]
@@ -331,6 +338,9 @@ wait_time = 30.0
 [connection signal="area_entered" from="." to="." method="_on_Chest_black_area_entered"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList2" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
 [connection signal="item_rmb_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_rmb_selected"]
+[connection signal="item_selected" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_item_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/ItemList" to="CanvasLayer/Panel" method="_on_ItemList_mouse_exited"]
 [connection signal="popup_hide" from="CanvasLayer/Panel/WindowDialog_ItemMenu" to="." method="_on_WindowDialog_ItemMenu_popup_hide"]
 [connection signal="pressed" from="CanvasLayer/Panel/WindowDialog_ItemMenu/ItemMenu_Button_DropItem" to="." method="_on_ItemMenu_Button_DropItem_pressed"]
 [connection signal="timeout" from="delete_timer" to="." method="_on_delete_timer_timeout"]

@@ -62,14 +62,10 @@ var text6 = tr(\"SECOND_CUT_SCENE_TEXT_6\")
 var text7 = tr(\"SECOND_CUT_SCENE_TEXT_7\")
 var text8 = tr(\"SECOND_CUT_SCENE_TEXT_8\")
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	pass # Replace with function body.
+var skip = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	if Input.is_action_just_pressed(\"ui_attack1\") and button == false and visible == true:
+func _input(event):
+	if ((event is InputEventScreenTouch and event.is_pressed()) or Input.is_action_just_pressed(\"ui_attack1\")) and button == false and visible == true:
 		if $CanvasLayer/Label.text == text1:
 			if $CanvasLayer/Label.percent_visible != 1:
 				$text_full.stop()
@@ -225,15 +221,10 @@ func _on_change_text_timeout():
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "урон",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "хотьба",
-"speed": 10.0
+"name": "прыжок",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
@@ -245,14 +236,19 @@ animations = [ {
 "name": "смерть",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "прыжок",
-"speed": 7.0
+"name": "хотьба",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "атака",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "урон",
 "speed": 5.0
 } ]
 
@@ -303,7 +299,7 @@ position = Vector2( -209.2, 8.63852 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "стойка"
-frame = 7
+frame = 5
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]

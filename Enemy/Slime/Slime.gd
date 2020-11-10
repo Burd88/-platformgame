@@ -22,7 +22,7 @@ var target
 var hit_pos
 var can_shoot = false
 ### sounds
-onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.wav")
+onready var damage_hurt2_sound = preload("res://sounds/sound effect/Socapex - blub_hurt2.ogg")
 
 ####
 

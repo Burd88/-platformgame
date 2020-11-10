@@ -3,11 +3,21 @@ extends CanvasLayer
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var pressed_sound = false
+var pressed_sound = true
 var music_value = 0
 var sound_value = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GLOBAL.platform == "PC":
+		$Panel/Fullscreen_check.show()
+		$Panel/Fullwiscreen.show()
+		$Panel.rect_scale =Vector2(1,1)
+		$Panel.rect_position =Vector2(0,0)
+	elif GLOBAL.platform == "MOBILE":
+		$Panel/Fullscreen_check.hide()
+		$Panel/Fullwiscreen.hide()
+		$Panel.rect_scale =Vector2(1.5, 1.5)
+		$Panel.rect_position =Vector2(-90,-100)
 	$Panel/Name.text = tr("OPTION_NAME_LABEL")
 	$Panel/Music.text = tr("OPTION_MUSIC_LABEL")
 	$Panel/Sound.text = tr("OPTION_SOUND_ALL_LABEL")
@@ -32,15 +42,20 @@ func _process(delta):
 	if GLOBAL.sound_off == true:
 		$Panel/music_slide.editable = false
 		$Panel/sound_slide.editable = false
-		$Panel/Soundall.pressed = true
+		$Panel/Soundall.pressed = false
 		GLOBAL.music_value = -80
 		GLOBAL.sound_value = -80
-		$Panel/music_slide.value = GLOBAL.music_value_off
-		$Panel/sound_slide.value = GLOBAL.sound_value_off
+		##GLOBAL.music_value_off = $Panel/music_slide.value 
+		#GLOBAL.sound_value_off = $Panel/sound_slide.value 
+		
+		
 	elif GLOBAL.sound_off == false:
-		$Panel/Soundall.pressed = false
+		$Panel/Soundall.pressed = true
 		$Panel/music_slide.editable = true
 		$Panel/sound_slide.editable = true
+		#print(GLOBAL.music_value_off)
+		#GLOBAL.music_value = $Panel/music_slide.value
+		#GLOBAL.sound_value = $Panel/sound_slide.value 
 	pass
 
 
@@ -66,7 +81,7 @@ func _on_sound_slide_value_changed(value):
 
 
 func _on_Soundall_toggled(button_pressed):
-	if button_pressed:
+	if !button_pressed:
 		GLOBAL.sound_off = true
 		GLOBAL.music_value_off = $Panel/music_slide.value
 		GLOBAL.sound_value_off = $Panel/sound_slide.value

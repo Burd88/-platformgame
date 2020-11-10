@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tree of Life.ogg-2f0061c6422212ca511ea4ff66f93a6e.oggstr"
+
+[deps]
+
+source_file="res://main/sounds/Tree of Life.ogg"
+dest_files=[ "res://.import/Tree of Life.ogg-2f0061c6422212ca511ea4ff66f93a6e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

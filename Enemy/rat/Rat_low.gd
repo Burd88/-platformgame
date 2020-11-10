@@ -14,10 +14,10 @@ var anim = 'move'
 var target
 var damage
 ### sounds
-onready var damage_hurt1_sound = preload("res://Enemy/rat/Sound/qubodupRatPain.wav")
+onready var damage_hurt1_sound = preload("res://Enemy/rat/Sound/qubodupRatPain.ogg")
 
-onready var death_sound = preload("res://Enemy/rat/Sound/qubodupRatDeath.wav")
-onready var idle_sound = preload("res://Enemy/rat/Sound/qubodupRatAttack.wav")
+onready var death_sound = preload("res://Enemy/rat/Sound/qubodupRatDeath.ogg")
+onready var idle_sound = preload("res://Enemy/rat/Sound/qubodupRatAttack.ogg")
 #### items drop
 onready var big_heal_potion = preload("res://items/Items/health_potion/big_heal_potion.tscn")
 onready var heal_potion = preload("res://items/Items/health_potion/heal_potion.tscn")

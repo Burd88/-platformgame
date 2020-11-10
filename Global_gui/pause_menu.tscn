@@ -13,7 +13,7 @@
 [ext_resource path="res://resourse/button x.tres" type="StyleBox" id=11]
 [ext_resource path="res://fonts/Font1.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Global_gui/Options.tscn" type="PackedScene" id=13]
-[ext_resource path="res://main/sounds/Pixel River.ogg" type="AudioStream" id=14]
+[ext_resource path="res://main/sounds/Tree of Life.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -118,7 +118,7 @@ position = Vector2( 726.274, 556.167 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="loading"]
@@ -129,7 +129,6 @@ margin_bottom = 381.682
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
-value = 100.0
 
 [node name="Label" type="Label" parent="loading"]
 margin_left = 608.351
@@ -141,6 +140,7 @@ custom_colors/font_color = Color( 0.0705882, 0.572549, 0.0666667, 1 )
 text = "Загрузка..."
 align = 1
 valign = 1
+percent_visible = 0.0
 max_lines_visible = 12
 
 [node name="Timer" type="Timer" parent="loading"]
@@ -151,10 +151,14 @@ one_shot = true
 anims/loading = SubResource( 6 )
 
 [node name="Popup" type="Popup" parent="."]
-margin_left = 137.387
-margin_top = -4.56651
-margin_right = 177.387
-margin_bottom = 35.4335
+margin_left = -100.0
+margin_top = -250.0
+margin_right = -60.0
+margin_bottom = -210.0
+rect_scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="name" type="Label" parent="Popup"]
 margin_left = 391.0
@@ -192,6 +196,9 @@ custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 10 )
 text = "Главное меню"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Settings" type="Button" parent="Popup"]
 margin_left = 400.0
@@ -219,6 +226,9 @@ custom_styles/disabled = ExtResource( 11 )
 custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 12 )
 text = "Сохранить"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Load" type="Button" parent="Popup"]
 visible = false
@@ -246,6 +256,9 @@ custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 10 )
 text = "Выход из игры"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Options" parent="." instance=ExtResource( 13 )]
 
@@ -255,6 +268,7 @@ stream = ExtResource( 14 )
 volume_db = 8.0
 [connection signal="timeout" from="loading/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="loading/AnimationPlayer" to="." method="_on_loading_animation_finished"]
+[connection signal="animation_started" from="loading/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="pressed" from="Popup/Continue" to="." method="_on_pause_Button_pressed"]
 [connection signal="pressed" from="Popup/main_menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Popup/Settings" to="." method="_on_Button5_pressed"]

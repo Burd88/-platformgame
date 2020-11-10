@@ -11,5 +11,5 @@ dest_files=[ "res://.import/qubodupSlimeMonster-idle2.ogg-9b57df0c74fd6792076cc5
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

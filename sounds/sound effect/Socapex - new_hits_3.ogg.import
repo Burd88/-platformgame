@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Socapex - new_hits_3.ogg-24a2b31f9c065648ed321a6688279af5.oggstr"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - new_hits_3.ogg"
+dest_files=[ "res://.import/Socapex - new_hits_3.ogg-24a2b31f9c065648ed321a6688279af5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

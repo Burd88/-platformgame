@@ -1,8 +1,15 @@
 extends CanvasLayer
 var pause_menu = false
 var pause_visble = false
+var ready_press = false
 
 func _ready():
+	if GLOBAL.platform == "PC":
+		$Popup.rect_scale = Vector2(1,1)
+		$Popup.rect_position = Vector2(140,-50)
+	elif GLOBAL.platform == "MOBILE":
+		$Popup.rect_scale = Vector2(1.5,1.5)
+		$Popup.rect_position = Vector2(-100,-250)
 	$Popup/name.text = tr("PAUSE_MENU_NAME")
 	$Popup/Continue.text = tr("PAUSE_MENU_CONTINUE")
 	$Popup/Save.text = tr("PAUSE_MENU_SAVE")
@@ -16,12 +23,14 @@ func _physics_process(delta):
 		$Popup.show()
 		pause_visble = false
 	$music.volume_db = GLOBAL.music_value
+	open_pause()
 
 func _on_pause_Button_pressed():
-	get_parent().get_tree().paused = false
 	pause_menu = false
 	$music.visible = false
 	$Popup.hide()
+	get_tree().paused = false
+	
 	
 	#get_parent().modulate = Color(1, 1, 1)
 	#get_parent().get_node("Player/GUI").layer = 1
@@ -33,7 +42,15 @@ func _on_pause_Button_pressed():
 func _on_exitgame_pause_menu_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
-
+func open_pause():
+	if get_tree().get_nodes_in_group("player"):
+		if Input.is_action_just_released("ui_cancel") and ready_press:
+			$Popup.show()
+			pause_menu = true
+			$music.visible = true
+			get_tree().paused = true
+			var player = get_tree().get_nodes_in_group("player")
+			player[0].hide_all_gui()
 
 func _on_save_pressed():
 	_save_game_data()
@@ -42,7 +59,7 @@ func _save_game_data():
 	#Global_Player.save_data()
 	print("Auto save")
 	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
+	save_game.open(GLOBAL.save_path, File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	var save_data = {"savedata" : {}}
 	for i in save_nodes:
@@ -71,21 +88,21 @@ func _save_game_data():
 
 func _on_Button4_pressed():
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
-		get_tree().change_scene("res://main/main.tscn")
-		.get_tree().paused = false
+	if not save_game.file_exists(GLOBAL.save_path):
+		get_tree().change_scene(GLOBAL.save_path)
+		get_tree().paused = false
 	else:
 		GLOBAL.load_game = "loading_game"
 		preload_game()
 
 func preload_game():
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
-		get_tree().change_scene("res://main/main.tscn")
+	if not save_game.file_exists(GLOBAL.save_path):
+		get_tree().change_scene(GLOBAL.save_path)
 		return 
 		
-		print("error")
-	save_game.open("user://savegame.save", File.READ)
+		#print("error")
+	save_game.open(GLOBAL.save_path, File.READ)
 	var save_nodes = get_tree().get_nodes_in_group("save")
 	for i in save_nodes:
 		i.queue_free()
@@ -94,7 +111,7 @@ func preload_game():
 		if try_current_line != null:
 			if try_current_line.get("savelevel"):
 				var current_line = try_current_line["savelevel"]
-				print("Load : ", current_line["name"])
+				#print("Load : ", current_line["name"])
 				for i in current_line.keys():
 					if i == "level" or i == "name":
 						continue
@@ -103,7 +120,7 @@ func preload_game():
 				var current_line = try_current_line["inventory"]
 				Global_Player.load_inventory = current_line
 				Global_Player.load_data()
-				print(Global_Player.load_inventory)
+				#print(Global_Player.load_inventory)
 		elif try_current_line == null:
 			save_game.eof_reached() == true
 	save_game.close()
@@ -115,15 +132,15 @@ func preload_game():
 func load_game():
 	var save_game = File.new()
 	
-	if not save_game.file_exists("user://savegame.save"):
+	if not save_game.file_exists(GLOBAL.save_path):
 		return print("error")
-	save_game.open("user://savegame.save", File.READ)
+	save_game.open(GLOBAL.save_path, File.READ)
 	while save_game.eof_reached() == false:
 		var try_current_line = parse_json(save_game.get_line())
 		if try_current_line != null:
 			if try_current_line.get("savedata"):
 				var current_line = try_current_line["savedata"]
-				print("Load : ", current_line["name"])
+				#print("Load : ", current_line["name"])
 				var new_object = load(current_line['filename']).instance()
 				get_parent().get_node(current_line["parent"]).add_child(new_object)
 				new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
@@ -142,12 +159,12 @@ func load_game():
 	
 func _death_load_game():
 	GLOBAL.load_game = "loading_game"
-	print("должно быть загружено сохранение")
+	#print("должно быть загружено сохранение")
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	if not save_game.file_exists(GLOBAL.save_path):
 		return # Error! We don't have a save to load.
 
-	save_game.open("user://savegame.save", File.READ)
+	save_game.open(GLOBAL.save_path, File.READ)
 	
 	while save_game.eof_reached() == false:
 		var try_current_line = parse_json(save_game.get_line())
@@ -155,7 +172,7 @@ func _death_load_game():
 			if try_current_line.get("savelevel"):
 				var current_line = try_current_line["savelevel"]
 				get_tree().change_scene(current_line["level"])
-				print("change scene : " ,current_line["level"])
+				#print("change scene : " ,current_line["level"])
 		# Firstly, we need to create the object and add it to the tree and set its position.
 			#var new_object = load(current_line["filename"]).instance()
 		
@@ -172,7 +189,15 @@ func _death_load_game():
 	pass # Replace with function body.
 
 func _on_loading_animation_finished(anim_name):
-	load_game()
+	if GLOBAL.load_game == "new_game":
+		
+		get_tree().change_scene("res://levels/Level1/Level1.tscn")
+		get_parent().get_tree().paused = true
+		$loading/Timer.start()
+	elif GLOBAL.load_game == "loading_game":
+		load_game()
+	
+	PauseMenu.ready_press = true
 	pass
 
 
@@ -221,4 +246,11 @@ func _on_music_visibility_changed():
 func _on_main_menu_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://main/main.tscn")
+	$Popup.hide()
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "loading" :
+		PauseMenu.ready_press = false
 	pass # Replace with function body.

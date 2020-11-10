@@ -29,8 +29,8 @@
 [ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-05.png" type="Texture" id=27]
 [ext_resource path="res://player/Individual Sprites hand/adventurer-get-up-06.png" type="Texture" id=28]
 [ext_resource path="res://items/portal/sounds/portal-open.wav" type="AudioStream" id=29]
-[ext_resource path="res://player/sound/damage-1.wav" type="AudioStream" id=30]
-[ext_resource path="res://player/sound/sfx_step_grass_l.wav" type="AudioStream" id=31]
+[ext_resource path="res://player/sound/damage-1.ogg" type="AudioStream" id=30]
+[ext_resource path="res://player/sound/sfx_step_grass_l.ogg" type="AudioStream" id=31]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -44,14 +44,17 @@ export var cut_end = false
 func _ready():
 	$audio.volume_db = GLOBAL.sound_value
 	$Timer.start()
+	get_parent().get_node(\"Player\").hide()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if cut_end == true:
+		#get_parent().get_node(\"Player\").global_position = $AnimatedSprite.global_position
 		get_parent().get_node(\"Player\").show()
 		
 	else:
+		get_parent().get_node(\"Player\").hide_all_gui()
 		get_parent().get_node(\"Player\").hide()
 		get_parent().get_node(\"Player\").cut_scene = true
 	pass
@@ -89,6 +92,21 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "2",
@@ -97,21 +115,6 @@ animations = [ {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "4",
 "speed": 5.0
 } ]
 
@@ -137,7 +140,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9, 1.4, 5 ),
+"times": PoolRealArray( 0.8, 1.4, 5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.833317 ) ]
@@ -161,10 +164,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1, 1.56, 5.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.56, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 76.3322, 179.771 ), Vector2( 145.157, 246.89 ), Vector2( 117.384, 219.805 ) ]
+"values": [ Vector2( 76.3322, 179.771 ), Vector2( 76.3322, 179.771 ), Vector2( 145.157, 246.89 ), Vector2( 117.384, 219.805 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("AnimatedSprite:animation")
@@ -230,28 +233,27 @@ tracks/8/keys = {
 [node name="New_game_cut_scene" type="Node2D" groups=[
 "save",
 ]]
-visible = false
 script = SubResource( 1 )
-cut_end = true
 
 [node name="Portal" type="Node2D" parent="."]
 position = Vector2( 78.2888, 179.886 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Portal"]
 position = Vector2( -1.1376, -1.1376 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 1, 1, 0.833317 )
-position = Vector2( 145.157, 246.89 )
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 76.3322, 179.771 )
 frames = SubResource( 3 )
-animation = "5"
-frame = 3
+animation = "1"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -264,6 +266,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 31 )
+stream = ExtResource( 29 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

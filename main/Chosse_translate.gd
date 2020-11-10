@@ -6,6 +6,15 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PauseMenu.ready_press = false
+	if GLOBAL.platform == "PC":
+		$russian.rect_scale = Vector2(1,1)
+		$english.rect_scale = Vector2(1,1)
+		$russian.rect_position.x = 380
+	elif GLOBAL.platform == "MOBILE":
+		$russian.rect_scale = Vector2(2,2)
+		$english.rect_scale = Vector2(2,2)
+		$russian.rect_position.x = 300
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

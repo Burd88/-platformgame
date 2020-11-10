@@ -77,19 +77,22 @@ func _input(event) -> void:
 #		if event.is_action_released("key_shift"):
 #			isAwaitingSplit = false
 
-	if (event is InputEventMouseButton):
+	if (event is InputEventMouseButton ):
 		if (!isAwaitingSplit):
 			if (event.is_action_pressed("mouse_leftbtn")):
 				mouseButtonReleased = false
 				initial_mousePos = get_viewport().get_mouse_position()
+				
 			if (event.is_action_released("mouse_leftbtn")):
 				move_merge_item()
 				end_drag_item()
+				
 #		else:
 #			if (event.is_action_pressed("mouse_rightbtn")):
 #				if (activeItemSlot >= 0):
 #					begin_split_item()
-	if (event is InputEventMouseMotion):
+	
+	if (event is InputEventMouseMotion ):
 		if (cursor_insideItemList):
 			
 			activeItemSlot = get_item_at_position(get_local_mouse_position(),true)

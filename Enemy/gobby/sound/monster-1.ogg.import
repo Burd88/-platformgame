@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/monster-1.ogg-8eb159fc7efbf0fdc2bf60a8d9e28849.oggstr"
+
+[deps]
+
+source_file="res://Enemy/gobby/sound/monster-1.ogg"
+dest_files=[ "res://.import/monster-1.ogg-8eb159fc7efbf0fdc2bf60a8d9e28849.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -5,6 +5,7 @@ extends Node2D
 # var b = "text"
 var button = false
 export var end_kath = false
+
 var text1 = tr("FIRST_CUT_SCENE_TEXT_1")
 var text2 = tr("FIRST_CUT_SCENE_TEXT_2")
 var text3 = tr("FIRST_CUT_SCENE_TEXT_3")
@@ -14,14 +15,11 @@ var text6 = tr("FIRST_CUT_SCENE_TEXT_6")
 var text7 = tr("FIRST_CUT_SCENE_TEXT_7")
 var text8 = tr("FIRST_CUT_SCENE_TEXT_8")
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	pass # Replace with function body.
+var skip = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	if Input.is_action_just_pressed("ui_attack1") and button == false and visible == true:
+func _input(event):
+	if ((event is InputEventScreenTouch and event.is_pressed()) or Input.is_action_just_pressed("ui_attack1")) and button == false and visible == true:
+		print(1)
 		if $CanvasLayer/Label.text == text1:
 			if $CanvasLayer/Label.percent_visible != 1:
 				$text_full.stop()
@@ -29,6 +27,7 @@ func _process(delta):
 			elif $CanvasLayer/Label.percent_visible == 1:
 				$CanvasLayer/gobby.show()
 				$CanvasLayer/Label.text = text2
+				
 			$change_text.start()
 		elif $CanvasLayer/Label.text == "":
 			if $CanvasLayer/Label.percent_visible != 1:

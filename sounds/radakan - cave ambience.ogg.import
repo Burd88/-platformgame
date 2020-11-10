@@ -11,5 +11,5 @@ dest_files=[ "res://.import/radakan - cave ambience.ogg-a3b06ccf818880d55bbac329
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

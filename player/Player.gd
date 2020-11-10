@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-var speed = 150
+
+var speed = 100
 var jump_speed = 150
 var gravity = 230
 var player_type = true
@@ -30,28 +31,28 @@ var torch_time = 0
 		# 1 = меч
 		# 2 = лук
 ## sound load attack
-onready var figth_hand_sound = preload("res://sounds/figth sound/animal melee sound.wav")
-onready var figth_fit_sound = preload("res://sounds/figth sound/melee sound.wav")
-onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.wav")
+onready var figth_hand_sound = preload("res://sounds/figth sound/animal melee sound.ogg")
+onready var figth_fit_sound = preload("res://sounds/figth sound/melee sound.ogg")
+onready var figth_sword_sound = preload("res://sounds/figth sound/sword sound.ogg")
 
 
-onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.wav")
-onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big punch.wav")
-onready var damage_wood_sound = preload("res://sounds/sound effect/wood_damage.wav")
+onready var damage_sword_sound = preload("res://sounds/sound effect/Socapex - Swordsmall.ogg")
+onready var damage_hand_sound = preload("res://sounds/sound effect/Socapex - big punch.ogg")
+onready var damage_wood_sound = preload("res://sounds/sound effect/wood_damage.ogg")
 ## sound move 
-onready var move_stone1_sound = preload("res://player/sound/sfx_step_grass_l.wav")
-onready var move_stone2_sound = preload("res://player/sound/sfx_step_grass_r.wav")
+onready var move_stone1_sound = preload("res://player/sound/sfx_step_grass_l.ogg")
+onready var move_stone2_sound = preload("res://player/sound/sfx_step_grass_r.ogg")
 ## jump 
-onready var jump1_sound = preload("res://player/sound/jump 1.wav")
-onready var jump2_sound = preload("res://player/sound/jump 2.wav")
+onready var jump1_sound = preload("res://player/sound/jump 1.ogg")
+onready var jump2_sound = preload("res://player/sound/jump 2.ogg")
 ##damage self
-onready var damage1_sound = preload("res://player/sound/damage-1.wav")
-onready var damage2_sound = preload("res://player/sound/damage-2.wav")
+onready var damage1_sound = preload("res://player/sound/damage-1.ogg")
+onready var damage2_sound = preload("res://player/sound/damage-2.ogg")
 ##pick up items
-onready var pick_up_item1_sound = preload("res://player/sound/pick-up-item-1.wav")
-onready var pick_up_item2_sound = preload("res://player/sound/pick-up-item-2.wav")
+onready var pick_up_item1_sound = preload("res://player/sound/pick-up-item-1.ogg")
+onready var pick_up_item2_sound = preload("res://player/sound/pick-up-item-2.ogg")
 ##bottle drink
-onready var bottle_drink_sound = preload("res://player/sound/bottle-drink.wav")
+onready var bottle_drink_sound = preload("res://player/sound/bottle-drink.ogg")
 ##
 
 
@@ -157,12 +158,17 @@ var full_hp= 0
 
 
 func _ready(): # стартовые переменные персонажа
+	hide_all_gui()
 	if GLOBAL.load_game == "new_game":
-		position = Vector2(144,366)
+		global_position = Vector2(153.104416, 385.207825)
 		pass
 	elif GLOBAL.load_game == "loading_game":
-
+	
 		pass
+	if GLOBAL.platform == "PC":
+		$GUI/joystick.visible = true
+	elif GLOBAL.platform == "MOBILE":
+		$GUI/joystick.visible = true 
 
 	last_position_y = position.y
 	set_physics_process(true)
@@ -191,17 +197,32 @@ func _settings():# настройки пока звук
 	$move_sound.volume_db = GLOBAL.sound_value
 	$damage_sound.volume_db = GLOBAL.sound_value
 
+func hide_all_gui():
+	$inventary/inventory/bag1.cursor_insideItemList = false
+	$inventary/inventory.hide()
+	$GUI/HPbar1.hide()
+	$Light2D.hide()
+	$GUI/say_label.hide()
+	$UI_paneli/Health_potion.hide()
+	$GUI/Exp_bar.hide()
+	$GUI/level_bar.hide()
+	$UI_paneli/Button_UI.hide()
+	$Player_info/Statistics.hide()
+	$Player_info/equip_panel.hide()
+	$UI_paneli/Torch_light.hide()
+	$GUI/joystick.hide()
+
 func _physics_process(delta):# функция выполнения во время игры всех остальных функций
 	update()
 	_settings()
 	torch_time = $UI_paneli/Torch_light/Timer.time_left
-#	print(torch_time)
+	#print(global_position)
 	if $spr.animation == "смерть":
 		velocity.y += gravity*delta
 		move_and_slide(velocity,Vector2(0,-1))
 		pass
 	else:
-		if cut_scene == false and departure == false and hook_line_use == false:
+		if visible == true and cut_scene == false and departure == false and hook_line_use == false:
 #			inventory_use_button()
 			_move(delta)
 			_attack()
@@ -210,12 +231,20 @@ func _physics_process(delta):# функция выполнения во врем
 			$Light2D.show()
 			$GUI/Exp_bar.show()
 			$GUI/level_bar.show()
+			if GLOBAL.platform == "PC":
+				$GUI/joystick.visible = false
+			elif GLOBAL.platform == "MOBILE":
+				$GUI/joystick.visible = true 
 			$Camera2D.current = true
 			$UI_paneli/Button_UI.show()
 			check_rope_inventory()
 			if torch:
-				$UI_paneli/Torch_light.show()
-				
+				if GLOBAL.platform == "PC":
+					$UI_paneli/Torch_light.show()
+					$UI_paneli/Torch_light/use_key.show()
+				elif GLOBAL.platform == "MOBILE":
+					$UI_paneli/Torch_light.show()
+					$UI_paneli/Torch_light/use_key.hide()
 
 		elif cut_scene == true and departure == false and hook_line_use == false :
 			
@@ -229,18 +258,20 @@ func _physics_process(delta):# функция выполнения во врем
 				$spr.animation = "стойка"
 			elif weapon == 1:
 				$spr.animation =  "стойка_меч_1"
-			$inventary/inventory/bag1.cursor_insideItemList = false
-			$inventary/inventory.hide()
-			$GUI/HPbar1.hide()
-			$Light2D.hide()
-			$GUI/say_label.hide()
-			$UI_paneli/Health_potion.hide()
-			$GUI/Exp_bar.hide()
-			$GUI/level_bar.hide()
-			$UI_paneli/Button_UI.hide()
-			$Player_info/Statistics.hide()
-			$Player_info/equip_panel.hide()
-			$UI_paneli/Torch_light.hide()
+			hide_all_gui()
+#			$inventary/inventory/bag1.cursor_insideItemList = false
+#			$inventary/inventory.hide()
+#			$GUI/HPbar1.hide()
+#			$Light2D.hide()
+#			$GUI/say_label.hide()
+#			$UI_paneli/Health_potion.hide()
+#			$GUI/Exp_bar.hide()
+#			$GUI/level_bar.hide()
+#			$UI_paneli/Button_UI.hide()
+#			$Player_info/Statistics.hide()
+#			$Player_info/equip_panel.hide()
+#			$UI_paneli/Torch_light.hide()
+#			$GUI/joystick.hide()
 		elif departure == true and hook_line_use == false :
 			if finish_departure == false:
 				$spr.animation = "departure"
@@ -254,7 +285,7 @@ func _physics_process(delta):# функция выполнения во врем
 			move_and_slide(velocity,Vector2(0,-1))
 			
 		elif hook_line_use:
-			print(int(position.distance_to(hook_vector)))
+			#print(int(position.distance_to(hook_vector)))
 			if position.distance_to(hook_vector) > 30:
 				$spr.animation = "веревка_подъем"
 				$Line2D.set_point_position(1 , hook_vector - $Line2D.global_position)
@@ -333,8 +364,19 @@ func _departure():# функция отбрасывающая игрока
 	pass
 
 func _move(delta):# движение игрока
+	
+	
 	if health_now > 0 and attack == false and hook_enable == false: 
-		direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+		if GLOBAL.platform == "PC":
+			direction.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+		elif GLOBAL.platform == "MOBILE":
+			
+			if $GUI/joystick/move.get_value().x > 0:
+				direction.x = 1#
+			elif $GUI/joystick/move.get_value().x < 0:
+				direction.x = -1
+			else:
+				direction.x = 0
 	elif health_now <=0:
 		direction.x = 0
 	if direction.y > 0 and attack == false and !is_on_wall() and health_now > 0 and hook_enable == false:
@@ -397,11 +439,12 @@ func _move(delta):# движение игрока
 		$attack_area.position.x = 16
 		$use.position.x = 6
 		$"E-key".position.x = 14
-		$use_check.position.x = 14
+		$use_check.position.x = 6
 		$hook_area.position.x = 9
 #		$hook_line.position.x = 9
 #		$hook_line.position.y = -77
 		$Line2D.position.x = 7.5
+		$hook_line/CollisionShape2D.position.x = 20
 		
 
 	elif direction.x < 0:
@@ -409,12 +452,12 @@ func _move(delta):# движение игрока
 		$attack_area.position.x = -16
 		$use.position.x = -6
 		$"E-key".position.x = - 14
-		$use_check.position.x = -14
+		$use_check.position.x = -6
 		$hook_area.position.x = -9
 #		$hook_line.position.x = -9
 #		$hook_line.position.y = -77
 		$Line2D.position.x = -7.5
-
+		$hook_line/CollisionShape2D.position.x = -20
 	
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
@@ -466,7 +509,7 @@ func _move(delta):# движение игрока
 			$CollisionShape2D.scale.y =  1
 	elif !is_on_floor():
 		floor_enable = false
-
+		
 	if Input.is_action_just_pressed("ui_jump") and velocity.y >=0 and velocity.y <= 4 :
 #		var jump_sound_rndm = randi()%2
 #		if jump_sound_rndm == 0:
@@ -478,6 +521,7 @@ func _move(delta):# движение игрока
 		velocity.y = -jump_speed
 		direction.y = 1
 	if hook_enable :
+		$GUI/joystick/fall.show()
 		$spr.animation = "зацеп"
 		velocity.y = 0
 		velocity.x = 0
@@ -487,10 +531,12 @@ func _move(delta):# движение игрока
 			hook_enable = false
 			velocity.y = -jump_speed
 			direction.y = 1
-		if Input.is_action_just_pressed("ui_down"):
+			$GUI/joystick/fall.hide()
+		if Input.is_action_just_pressed("ui_down") :
 			hook_enable = false
-			velocity.y = jump_speed
+			#velocity.y = jump_speed
 			direction.y = 1
+			$GUI/joystick/fall.hide()
 		
 	if is_on_ceiling():
 		velocity.y = 0
@@ -504,7 +550,7 @@ func _damage(damage):# получение урона
 	$Regen_timer.start()
 	if health_now >0 :
 		if randi()%6 == parry:
-			print("parry")
+			#print("parry")
 			pass
 		else:
 			if damage > 30 :
@@ -522,7 +568,7 @@ func _use():# использование предмета
 	else:
 		$use/CollisionShape2D.disabled = true
 
-func _torch_fall():
+func _torch_fall():# бросание факела
 	if Input.is_action_just_pressed("torch_throw"):
 		if torch == true:
 			var item = torch_item.instance()
@@ -569,7 +615,7 @@ func _on_time_move_timeout():# таймер перемещения камеры 
 
 func _attack():# атака игрока
 	
-	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false and button == false: 
+	if Input.is_action_just_pressed("ui_attack1") and !$inventary/inventory/bag1.cursor_insideItemList and !is_on_wall() and health_now > 0 and hook_enable == false :#and button == false: 
 		#velocity.y = 0
 		if attack == false:
 			regen_hp = false
@@ -690,6 +736,7 @@ func _on_attack_area_body_entered(body):# урон по цели
 		elif weapon == 0:
 			$damage_sound.stream = damage_hand_sound
 			$damage_sound.play()
+		
 	elif body.get("broken") == true:
 		$damage_sound.stream = damage_wood_sound
 		$damage_sound.play()
@@ -697,8 +744,9 @@ func _on_attack_area_body_entered(body):# урон по цели
 			body._damage_move(-1)
 		elif  $spr.flip_h == false:
 			body._damage_move(1)
+		
 		body.health -=1
-	else : pass
+	
 
 	if !body:
 		$attack_area/col_Atack.disabled = true
@@ -716,7 +764,8 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 		elif $spr.frame == 3:
 			$move_sound.stream = move_stone2_sound
 			$move_sound.play()
-
+	
+	
 		
 	
 		
@@ -750,6 +799,7 @@ func _on_spr_frame_changed():# изменение кадров анимации 
 			$attack_area/col_Atack.disabled = false
 		elif $spr.frame == 3:
 			$attack_area/col_Atack.disabled = true
+	
 	if  $spr.animation == "departure":
 		if $spr.frame == 0:
 			velocity.y = -jump_speed
@@ -813,39 +863,19 @@ func _on_use_area_entered(area):# определение используемо�
 
 	else: pass #print("no item")
 
-#func inventory_use_button():# использование определенной ячейки инвенторя
-#	if Input.is_action_just_pressed("1"):
-#		inventory_check(0)
-#		pass
-#	elif Input.is_action_just_pressed("2"):
-#		inventory_check(1)
-#		pass
-#	elif Input.is_action_just_pressed("3"):
-#		inventory_check(2)
-#		pass
-#	elif Input.is_action_just_pressed("4"):
-#		inventory_check(3)
-#		pass
-#	elif Input.is_action_just_pressed("5"):
-#		inventory_check(4)
-#		pass
-#	elif Input.is_action_just_pressed("6"):
-#		inventory_check(5)
-#		pass
-#	elif Input.is_action_just_pressed("7"):
-#		inventory_check(6)
-#		pass
-#	elif Input.is_action_just_pressed("8"):
-#		inventory_check(7)
-#		pass
-#	elif Input.is_action_just_pressed("9"):
-#		inventory_check(8)
-#		pass
-#	elif Input.is_action_just_pressed("0"):
-#		inventory_check(9)
-#		pass
-	pass
-
+func visible_health_potion_button(indexing):
+	if GLOBAL.platform == "PC":
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(indexing)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(indexing)
+		$UI_paneli/Health_potion/use_key.show()
+	elif GLOBAL.platform == "MOBILE":
+		$UI_paneli/Health_potion.show()
+		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(indexing)["icon"])
+		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(indexing)
+		$UI_paneli/Health_potion/use_key.hide()
+		
+		
 func visible_health_potion():#функци отображения используемой фласки
 	for index in range(0, Global_Player.inventory_maxSlots):
 		if $inventary/inventory/bag1.get_item_metadata(index)["type"] ==  "heal_potion" :
@@ -869,37 +899,28 @@ func visible_health_potion():#функци отображения использ
 				major = true
 				mai = index
 	if lesser == true:
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(li)["icon"])
-		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(li)
+		visible_health_potion_button(li)
 		if Input.is_action_just_pressed("use_health_potion"):
 			inventory_check(li)
 	elif lesser == false and minor == true:
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(mii)["icon"])
-		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(mii)
+		visible_health_potion_button(mii)
 		if Input.is_action_just_pressed("use_health_potion"):
 			inventory_check(mii)
 	elif lesser == false and minor == false and norm == true:
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(ni)["icon"])
-		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(ni)
+		visible_health_potion_button(ni)
 		if Input.is_action_just_pressed("use_health_potion"):
 			inventory_check(ni)
 	elif lesser == false and minor == false and norm == false and big == true:
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(bi)["icon"])
-		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(bi)
+		visible_health_potion_button(bi)
 		if Input.is_action_just_pressed("use_health_potion"):
 			inventory_check(bi)
 	elif lesser == false and minor == false and norm == false and big == false and major == true:
-		$UI_paneli/Health_potion.show()
-		$UI_paneli/Health_potion/Icon.texture = load($inventary/inventory/bag1.get_item_metadata(mai)["icon"])
-		$UI_paneli/Health_potion/Label.text = $inventary/inventory/bag1.get_item_text(mai)
+		visible_health_potion_button(mai)
 		if Input.is_action_just_pressed("use_health_potion"):
 			inventory_check(mai)
 	elif lesser == false and minor == false and norm == false and big == false and major == false: 
 		$UI_paneli/Health_potion.hide()
+
 
 func inventory_check(index):# использование предмета инвенторе
 	if $inventary/inventory/bag1.get_item_metadata(index)["type"] == "arrow":
@@ -912,8 +933,8 @@ func inventory_check(index):# использование предмета инв
 			$move_sound.play()
 			var restore = randi()%100+100
 			health_now += restore
-			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
-			print(restore)
+			#print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			#print(restore)
 			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -921,7 +942,7 @@ func inventory_check(index):# использование предмета инв
 		elif health_now > full_hp:
 			health_now = full_hp
 		elif  health_now == full_hp:
-			print("full hp")
+			#print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MINOR_HEAL_POTION":
 		if  health_now < full_hp:
@@ -929,8 +950,8 @@ func inventory_check(index):# использование предмета инв
 			$move_sound.play()
 			var restore = randi()%100+200
 			health_now += restore
-			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
-			print(restore)
+			#print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			#print(restore)
 			
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
@@ -938,7 +959,7 @@ func inventory_check(index):# использование предмета инв
 		elif health_now > full_hp:
 			health_now = full_hp
 		elif  health_now == full_hp:
-			print("full hp")
+			#print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "HEAL_POTION":
 		if  health_now < full_hp:
@@ -946,15 +967,15 @@ func inventory_check(index):# использование предмета инв
 			$move_sound.play()
 			var restore = randi()%100+300
 			health_now += restore
-			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
-			print(restore)
+			#print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			#print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			norm = false
 		elif health_now > full_hp:
 			health_now = full_hp
 		elif  health_now == full_hp:
-			print("full hp")
+			#print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "BIG_HEAL_POTION":
 		if  health_now < full_hp:
@@ -962,15 +983,15 @@ func inventory_check(index):# использование предмета инв
 			$move_sound.play()
 			var restore = randi()%100+400
 			health_now += restore
-			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
-			print(restore)
+			#print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			#print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			big = false
 		elif health_now > full_hp:
 			health_now = full_hp
 		elif  health_now == full_hp:
-			print("full hp")
+			#print("full hp")
 			pass
 	elif $inventary/inventory/bag1.get_item_metadata(index)["name"] == "MAJOR_HEAL_POTION":
 		if  health_now < full_hp:
@@ -978,15 +999,15 @@ func inventory_check(index):# использование предмета инв
 			$move_sound.play()
 			var restore = randi()%100+500
 			health_now += restore
-			print($inventary/inventory/bag1.get_item_metadata(index)["name"])
-			print(restore)
+			#print($inventary/inventory/bag1.get_item_metadata(index)["name"])
+			#print(restore)
 			Global_Player.inventory_removeItem(index)
 			$inventary/inventory/bag1.update_slot(index)
 			major = false
 		elif health_now > full_hp:
 			health_now = full_hp
 		elif  health_now == full_hp:
-			print("full hp")
+			#print("full hp")
 			pass
 	pass
 	
@@ -1000,24 +1021,27 @@ func check_rope_inventory():
 func _on_use_check_area_entered(area):# предмет в зоне использования
 	#print(area.name)
 	if area.get("useable") == true:
-		
+		$GUI/joystick/use.show()
 		$"E-key".show()
 	else : pass
 
 func _on_use_check_area_exited(area):# предмет вышел из зоны использования
 	if area.get("useable") == true:
 		$"E-key".hide()
+		$GUI/joystick/use.hide()
 	else : pass
 
 func _on_use_check_body_entered(body):# тело в зоне использования
 	#print(body.name)
 	if body.get("useable") == true :
 		$"E-key".show()
+		$GUI/joystick/use.show()
 	else : pass
 
 func _on_use_check_body_exited(body):# тело вышело из зоны использования
 	if body.get("useable")  == true:
 		$"E-key".hide()
+		$GUI/joystick/use.hide()
 	else : pass
 
 func _on_hook_area_area_entered(area):# предмет зацепа в зоне
@@ -1041,19 +1065,23 @@ func _on_Button_focus_exited():# фокус курсора на кнопке в�
 	pass # Replace with function body.
 
 func _on_AudioStreamPlayer2D_finished():
-	$AudioStreamPlayer2D.play()
+	$music.play()
 	pass # Replace with function body.
 
 func _on_hook_line_area_entered(area):
 	if area.get("hook_line"):
 		if rope_in_inventory == true:
-			print(area.position)
+			#print(area.position)
+			$"E-key".show()
+			$GUI/joystick/use.show()
 			hook_line_pos = area.global_position
 	pass # Replace with function body.
 
 func _on_hook_line_area_exited(area):
 	if area.get("hook_line"):
 		hook_line_pos = null
+		$"E-key".hide()
+		$GUI/joystick/use.hide()
 		pass
 
 	pass # Replace with function body.

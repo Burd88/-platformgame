@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/melee sound.ogg-e976d0c46828985aacd79154fad52e3f.oggstr"
+
+[deps]
+
+source_file="res://sounds/figth sound/melee sound.ogg"
+dest_files=[ "res://.import/melee sound.ogg-e976d0c46828985aacd79154fad52e3f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

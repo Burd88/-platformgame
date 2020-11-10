@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/animal melee sound.ogg-07b83e658c12a72124b901a4e8b47dfb.oggstr"
+
+[deps]
+
+source_file="res://sounds/figth sound/animal melee sound.ogg"
+dest_files=[ "res://.import/animal melee sound.ogg-07b83e658c12a72124b901a4e8b47dfb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

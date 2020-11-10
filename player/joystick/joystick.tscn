@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://player/joystick/assets/SmallHandleFilledGrey.png" type="Texture" id=1]
+[ext_resource path="res://player/joystick/assets/Joystick.png" type="Texture" id=2]
+[ext_resource path="res://player/joystick/assets/SmallHandleFilled.png" type="Texture" id=3]
+[ext_resource path="res://fonts/17412.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://player/joystick/joystick.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends TouchScreenButton
+
+var radius = Vector2(50,50)
+var boundary = 100
+
+var ongoing_drag = -1
+
+var return_accel = 20
+
+var threshold = 20
+
+func _process(delta):
+	if ongoing_drag == -1:
+		var pos_difference = (Vector2(0,0) - radius) - position
+		position += pos_difference * return_accel * delta
+		
+	
+func get_button_pos():
+	return position + radius
+
+func _input(event):
+	if GLOBAL.platform == \"MOBILE\":
+		if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
+			var event_dist_from_center = (event.position - get_parent().global_position).length()
+			
+			if event_dist_from_center <= boundary * global_scale.x or event.get_index() == ongoing_drag:
+				set_global_position(event.position - radius * global_scale)
+			
+				if get_button_pos().length() > boundary:
+					set_position(get_button_pos().normalized() * boundary - radius)
+				ongoing_drag = event.get_index()
+		if event is InputEventScreenTouch and !event.is_pressed() and event.get_index() == ongoing_drag:
+			ongoing_drag = -1
+	
+func get_value():
+	if get_button_pos().length() > threshold:
+		return get_button_pos().normalized()
+	return Vector2(0,0)
+"
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+outline_color = Color( 0.0392157, 0.631373, 0.356863, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+outline_color = Color( 0.698039, 0.0313726, 0.0313726, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 13
+outline_color = Color( 0.0627451, 0.345098, 0.607843, 1 )
+font_data = ExtResource( 4 )
+
+[node name="joystick" type="Sprite"]
+position = Vector2( 197.925, 542.446 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="move" type="TouchScreenButton" parent="."]
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+shape = SubResource( 1 )
+shape_visible = false
+script = SubResource( 2 )
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2( 1273.67, -171.875 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+action = "ui_jump"
+
+[node name="Label" type="Label" parent="Jump"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -23.0
+margin_right = 120.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 3 )
+text = "MOBILE_JUMP_BUTTON"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="attack" type="TouchScreenButton" parent="."]
+position = Vector2( 1046.19, 14.9086 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+action = "ui_attack1"
+
+[node name="Label" type="Label" parent="attack"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.5
+margin_top = -8.5
+margin_right = 95.5
+margin_bottom = 8.5
+custom_fonts/font = SubResource( 4 )
+text = "MIBILE_ATTACK_BUTTON"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="use" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 1302.69, 70.1191 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+action = "use_button"
+
+[node name="Label" type="Label" parent="use"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.1516
+margin_top = -10.0
+margin_right = 97.8484
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 5 )
+text = "MOBILE_USE_BUTTON"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fall" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 1302.69, 70.1191 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+action = "ui_down"
+
+[node name="Label" type="Label" parent="fall"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.0
+margin_top = -15.5
+margin_right = 77.0
+margin_bottom = 15.5
+custom_fonts/font = SubResource( 5 )
+text = "MOBILE_FALL_BUTTON"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,6 +1,6 @@
 extends Node
 
-var url_PlayerData:String = "user://saveinventory.save"
+var url_PlayerData:String = GLOBAL.save_path
 var inventory:Dictionary = {}
 var inventory_maxSlots:int = 10
 onready var playerData:Dictionary = Global_DataParser.load_data(url_PlayerData)

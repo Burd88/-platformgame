@@ -7,7 +7,7 @@
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=5]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=6]
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 400, 400 )
 
@@ -20,7 +20,10 @@ script = ExtResource( 1 )
 visible = false
 margin_right = 400.0
 margin_bottom = 400.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Name" type="Label" parent="Panel"]
 margin_left = 140.0

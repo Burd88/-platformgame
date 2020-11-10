@@ -5,9 +5,9 @@
 [ext_resource path="res://resourse/button_Style_tex.tres" type="StyleBox" id=3]
 [ext_resource path="res://fonts/main_menu_button.tres" type="DynamicFont" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=37]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="GDScript" id=38]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Panel
 
 # Declare member variables here. Examples:
@@ -92,9 +92,9 @@ func inventory_updateItem(slot:int, new_id:int, new_amount:int) -> void:
 
 "
 
-[sub_resource type="StyleBoxEmpty" id=26]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="GDScript" id=39]
+[sub_resource type="GDScript" id=4]
 script/source = "extends ItemList
 
 var empty_slot = ResourceLoader.load(\"res://player/inventory/empty_slot.png\")
@@ -261,14 +261,14 @@ func inventory_addItem(itemId:int) -> int:
 	inventory = {\"id\": String(itemId), \"amount\": 1}
 	return slot"
 
-[sub_resource type="Gradient" id=28]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.895161, 1 )
 colors = PoolColorArray( 0.968627, 0.184314, 0.184314, 1, 0.992916, 0.815813, 0.815813, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=29]
-gradient = SubResource( 28 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=30]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 400, 120 )
 
@@ -277,26 +277,29 @@ margin_left = 63.7927
 margin_top = 149.497
 margin_right = 125.793
 margin_bottom = 209.497
-custom_styles/panel = SubResource( 37 )
-script = SubResource( 38 )
+custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="feet" type="ItemList" parent="."]
 margin_left = 19.4589
 margin_top = 18.9203
 margin_right = 51.4589
 margin_bottom = 53.9203
-custom_styles/bg = SubResource( 26 )
+custom_styles/bg = SubResource( 3 )
 custom_constants/icon_margin = -27
 fixed_icon_size = Vector2( 32, 32 )
-script = SubResource( 39 )
+script = SubResource( 4 )
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="."]
 margin_left = 439.183
 margin_top = 105.538
 margin_right = 769.183
 margin_bottom = 435.538
-custom_icons/close_highlight = SubResource( 29 )
-custom_styles/panel = SubResource( 30 )
+custom_icons/close_highlight = SubResource( 6 )
+custom_styles/panel = SubResource( 7 )
 
 [node name="ItemMenu_TextureFrame_Icon" type="TextureRect" parent="WindowDialog_ItemMenu"]
 margin_left = 130.013

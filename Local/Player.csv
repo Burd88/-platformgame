@@ -6,4 +6,8 @@ LEVEL_ONE_SWORD_EQUIP;Меч! Теперь не голыми кулаками м
 LEVEL_ONE_BOSS_VISIBLE;А вот и недостающая деталь, осталось ее только достать…;And here is the missing part, it remains only to get it…
 KNIGHT_DOOR_NO_KEY_TEXT;Дверь заперта, нужно найти ключ;The door is locked, need to find the key
 KNIGHT_DOOR_YES_KEY_TEXT;Надеюсь, этот ключ подойдет. Ура!;I hope this key fits. Hurray!
+MOBILE_JUMP_BUTTON;Прыжок;Jump
+MIBILE_ATTACK_BUTTON;Атака;Attack
+MOBILE_USE_BUTTON;Действие;Action
+MOBILE_FALL_BUTTON;Падать;Fall
 DOOR_CLOSED_UNDER_TEXT;Похоже эта дверь заперта изнутри;Looks like this door is locked from the inside

@@ -48,4 +48,5 @@ TOOL_STR_TEXT;Повышает урон и немного здоровье пе�
 TOOL_HP_TEXT;Повышает здоровье персонажа;Increases health of character
 UNEQUIP_BUTTON;Снять;Take off
 EQUIP_BUTTON;Надеть;Put on
+LIGHT_BUTTON;Зажечь;Light
 INVENTORY_FULL_TEXT;Инвентарь заполнен;Inventory is full

@@ -6,7 +6,7 @@
 [ext_resource path="res://resourse/portret_box_2.png" type="Texture" id=4]
 [ext_resource path="res://player/portret.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 669, 165 )
 
@@ -20,7 +20,7 @@ margin_right = 1020.0
 margin_bottom = 666.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "
 "

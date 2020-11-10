@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/long-door-creak.ogg-dcc1249a47d4908a22547cd1ea5be547.oggstr"
+
+[deps]
+
+source_file="res://items/door/sound/long-door-creak.ogg"
+dest_files=[ "res://.import/long-door-creak.ogg-dcc1249a47d4908a22547cd1ea5be547.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

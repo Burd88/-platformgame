@@ -4,10 +4,10 @@ onready var file = File.new()
 
 func load_data(url) -> Dictionary:
 	if url == null: 
-		print("нету файла") 
+		#print("нету файла") 
 		return {}
 	if !file.file_exists(url): 
-		print("пустой файл") 
+		#print("пустой файл") 
 		return {}
 	file.open(url, File.READ)
 	var data:Dictionary = {}
@@ -16,7 +16,7 @@ func load_data(url) -> Dictionary:
 	return data
 
 func write_data(url:String, dict:Dictionary):
-	print("save data inventory")
+	#print("save data inventory")
 	if url == null: return
 	file.open(url, File.WRITE)
 	file.store_line(to_json(dict))

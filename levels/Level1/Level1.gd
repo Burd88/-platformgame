@@ -23,6 +23,7 @@ func _ready():
 	$decor/Gear2/Sprite/AnimationPlayer.playback_speed = -0.5
 	$decor/Gear4/Sprite/AnimationPlayer.playback_speed = -0.5
 	$use_item/Gear6/Gear6/Sprite/AnimationPlayer.playback_speed = -0.5
+	PauseMenu.ready_press = true
 
 	if torch_delete == true:
 		$use_item/Torch.queue_free()
@@ -45,11 +46,11 @@ func _physics_process(delta):
 	setting()
 	update()
 	start_mechanism()
-	if Input.is_action_just_pressed("ui_cancel"):
-		$pause_menu/Popup.show()
-		$pause_menu.pause_menu = true
-		$pause_menu/music.visible = true
-		get_tree().paused = true
+#	if Input.is_action_just_pressed("ui_cancel"):
+#		$pause_menu/Popup.show()
+#		$pause_menu.pause_menu = true
+#		$pause_menu/music.visible = true
+#		get_tree().paused = true
 
 
 	if lever1:
@@ -85,6 +86,7 @@ func start_mechanism():
 func _on_Area2D_body_entered(body):
 	
 	if body.get("player_type"):
+		
 		body.last_position_y = 844
 		body.position = Vector2(296,844)
 	pass # Replace with function body.

@@ -16,11 +16,11 @@ _global_script_class_icons={
 [application]
 
 config/name="This the hard way. Mercenary"
-run/main_scene="res://main/Chosse_translate.tscn"
-boot_splash/image="res://logo/logo.png"
-boot_splash/bg_color=Color( 0.627451, 0.6, 0.588235, 1 )
+run/main_scene="res://logo/Start_logo.tscn"
+boot_splash/image="res://logo/logoza.ru (5).png"
+boot_splash/bg_color=Color( 0.329412, 0.329412, 0.329412, 1 )
 config/icon="res://resourse/Image8.png"
-config/version="0.0.75"
+config/version="0.0.77"
 config/name_en="This the hard way. Mercenary"
 config/name_ru="Этот нелегкий путь. Наёмник"
 
@@ -35,9 +35,11 @@ pause_menu="*res://Global_gui/pause_menu.tscn"
 Global_DataParser="*res://player/inventory/Global_DataParser.gd"
 Global_ItemDatabase="*res://player/inventory/Global_ItemDatabase.gd"
 Global_Player="*res://player/inventory/Global_Player.gd"
+PauseMenu="*res://Global_gui/pause_menu.tscn"
 
 [debug]
 
+settings/fps/force_fps=120
 gdscript/warnings/enable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
@@ -47,9 +49,10 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1280
 window/size/height=720
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
 mouse_cursor/custom_image="res://logo/New Piskel.png"
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
 
 [gui]
 
@@ -220,6 +223,10 @@ torch_throw={
  ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_render/layer_1="wall"
@@ -246,5 +253,6 @@ limits/multithreaded_server/rid_pool_prealloc=90
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
 environment/default_environment="res://default_env.tres"

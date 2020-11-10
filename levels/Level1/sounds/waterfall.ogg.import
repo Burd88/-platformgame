@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/waterfall.ogg-13e612e9c7a9be95b008e32f920ba4ed.oggstr"
+
+[deps]
+
+source_file="res://levels/Level1/sounds/waterfall.ogg"
+dest_files=[ "res://.import/waterfall.ogg-13e612e9c7a9be95b008e32f920ba4ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

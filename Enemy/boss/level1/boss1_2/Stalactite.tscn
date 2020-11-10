@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemy/boss/level1/boss1_2/Stalactite.gd" type="Script" id=1]
-[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_7.png" type="Texture" id=2]
-[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_8.png" type="Texture" id=3]
-[ext_resource path="res://assets/Dungeon1/Details/lava_drop2_9.png" type="Texture" id=4]
-[ext_resource path="res://assets/Dungeon1/Details/stalactite1.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/lava_drop2_7.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/lava_drop2_8.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/lava_drop2_9.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/boss/level1/boss1_2/assets/stalactite1.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

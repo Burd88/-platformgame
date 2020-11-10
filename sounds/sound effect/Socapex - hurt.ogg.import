@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Socapex - hurt.ogg-4d96ad75e09c08c235b97ab89cd4d709.oggstr"
+
+[deps]
+
+source_file="res://sounds/sound effect/Socapex - hurt.ogg"
+dest_files=[ "res://.import/Socapex - hurt.ogg-4d96ad75e09c08c235b97ab89cd4d709.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
